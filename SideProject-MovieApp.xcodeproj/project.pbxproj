@@ -14,7 +14,6 @@
 		2FC94E6929C00F0C0097E696 /* SideProject_MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E6829C00F0C0097E696 /* SideProject_MovieAppTests.swift */; };
 		2FC94E7329C00F0C0097E696 /* SideProject_MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E7229C00F0C0097E696 /* SideProject_MovieAppUITests.swift */; };
 		2FC94E7529C00F0C0097E696 /* SideProject_MovieAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E7429C00F0C0097E696 /* SideProject_MovieAppUITestsLaunchTests.swift */; };
-		2FC94E9829C0127A0097E696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E9729C0127A0097E696 /* Main.storyboard */; };
 		2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E9929C013530097E696 /* NetworkMonitor.swift */; };
 		2FC94E9D29C013810097E696 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E9C29C013810097E696 /* APIKey.swift */; };
 		2FC94E9F29C013880097E696 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E9E29C013880097E696 /* Router.swift */; };
@@ -28,6 +27,17 @@
 		2FC94EB129C015050097E696 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC94EB029C015050097E696 /* RxCocoa */; };
 		2FC94EB329C015050097E696 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FC94EB229C015050097E696 /* RxSwift */; };
 		2FC94EB529C033190097E696 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EB429C033190097E696 /* .gitignore */; };
+		2FC94EB929C0351D0097E696 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94EB829C0351C0097E696 /* Color.swift */; };
+		2FC94EC029C036DD0097E696 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBA29C036DD0097E696 /* NotoSansKR-Black.otf */; };
+		2FC94EC129C036DD0097E696 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBB29C036DD0097E696 /* NotoSansKR-Bold.otf */; };
+		2FC94EC229C036DD0097E696 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBC29C036DD0097E696 /* NotoSansKR-Medium.otf */; };
+		2FC94EC329C036DD0097E696 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBD29C036DD0097E696 /* NotoSansKR-Light.otf */; };
+		2FC94EC429C036DD0097E696 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBE29C036DD0097E696 /* NotoSansKR-Regular.otf */; };
+		2FC94EC529C036DD0097E696 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBF29C036DD0097E696 /* NotoSansKR-Thin.otf */; };
+		2FC94EC729C0376C0097E696 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94EC629C0376C0097E696 /* InitialViewController.swift */; };
+		2FC94ECC29C038000097E696 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* InitialView.swift */; };
+		2FC94ECE29C039620097E696 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* InitialCoordinator.swift */; };
+		2FC94ED029C03C3D0097E696 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECF29C03C3D0097E696 /* Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +69,6 @@
 		2FC94E6E29C00F0C0097E696 /* SideProject-MovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SideProject-MovieAppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E7229C00F0C0097E696 /* SideProject_MovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProject_MovieAppUITests.swift; sourceTree = "<group>"; };
 		2FC94E7429C00F0C0097E696 /* SideProject_MovieAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProject_MovieAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2FC94E9729C0127A0097E696 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2FC94E9929C013530097E696 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		2FC94E9C29C013810097E696 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		2FC94E9E29C013880097E696 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -70,6 +79,17 @@
 		2FC94EA829C0145F0097E696 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2FC94EAA29C0149B0097E696 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FC94EB429C033190097E696 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2FC94EB829C0351C0097E696 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		2FC94EBA29C036DD0097E696 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		2FC94EBB29C036DD0097E696 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		2FC94EBC29C036DD0097E696 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		2FC94EBD29C036DD0097E696 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		2FC94EBE29C036DD0097E696 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		2FC94EBF29C036DD0097E696 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		2FC94EC629C0376C0097E696 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		2FC94ECB29C038000097E696 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		2FC94ECD29C039620097E696 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
+		2FC94ECF29C03C3D0097E696 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +211,12 @@
 		2FC94E8629C010EF0097E696 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				2FC94EBA29C036DD0097E696 /* NotoSansKR-Black.otf */,
+				2FC94EBB29C036DD0097E696 /* NotoSansKR-Bold.otf */,
+				2FC94EBD29C036DD0097E696 /* NotoSansKR-Light.otf */,
+				2FC94EBC29C036DD0097E696 /* NotoSansKR-Medium.otf */,
+				2FC94EBE29C036DD0097E696 /* NotoSansKR-Regular.otf */,
+				2FC94EBF29C036DD0097E696 /* NotoSansKR-Thin.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -199,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				2FC94E5C29C00F0C0097E696 /* LaunchScreen.storyboard */,
-				2FC94E9729C0127A0097E696 /* Main.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -207,8 +232,9 @@
 		2FC94E8829C011100097E696 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				2FC94EA429C013EA0097E696 /* AppCoordinator.swift */,
 				2FC94EA629C013F30097E696 /* Coordinator.swift */,
+				2FC94EA429C013EA0097E696 /* AppCoordinator.swift */,
+				2FC94ECD29C039620097E696 /* InitialCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -216,6 +242,7 @@
 		2FC94E8929C011260097E696 /* Presents */ = {
 			isa = PBXGroup;
 			children = (
+				2FC94ECA29C037E60097E696 /* Initial */,
 			);
 			path = Presents;
 			sourceTree = "<group>";
@@ -265,6 +292,8 @@
 		2FC94E8F29C011760097E696 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				2FC94EB829C0351C0097E696 /* Color.swift */,
+				2FC94ECF29C03C3D0097E696 /* Font.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -326,6 +355,23 @@
 				2FC94E9929C013530097E696 /* NetworkMonitor.swift */,
 			);
 			path = Monitor;
+			sourceTree = "<group>";
+		};
+		2FC94EC929C037E10097E696 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FC94EC629C0376C0097E696 /* InitialViewController.swift */,
+				2FC94ECB29C038000097E696 /* InitialView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FC94ECA29C037E60097E696 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				2FC94EC929C037E10097E696 /* View */,
+			);
+			path = Initial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,10 +487,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC94EC529C036DD0097E696 /* NotoSansKR-Thin.otf in Resources */,
+				2FC94EC229C036DD0097E696 /* NotoSansKR-Medium.otf in Resources */,
 				2FC94EB529C033190097E696 /* .gitignore in Resources */,
-				2FC94E9829C0127A0097E696 /* Main.storyboard in Resources */,
+				2FC94EC329C036DD0097E696 /* NotoSansKR-Light.otf in Resources */,
 				2FC94E5E29C00F0C0097E696 /* LaunchScreen.storyboard in Resources */,
 				2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */,
+				2FC94EC029C036DD0097E696 /* NotoSansKR-Black.otf in Resources */,
+				2FC94EC429C036DD0097E696 /* NotoSansKR-Regular.otf in Resources */,
+				2FC94EC129C036DD0097E696 /* NotoSansKR-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,15 +521,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
+				2FC94EC729C0376C0097E696 /* InitialViewController.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2FC94ECC29C038000097E696 /* InitialView.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
+				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				2FC94E9D29C013810097E696 /* APIKey.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
+				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
+				2FC94ECE29C039620097E696 /* InitialCoordinator.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -631,7 +687,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -653,7 +709,6 @@
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -685,7 +740,6 @@
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

@@ -19,7 +19,12 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        let initialCoordinator = InitialCoordinator(window: window)
         print("start")
+        initialCoordinator.start()
+        window.rootViewController = initialCoordinator.navigationController
+        childCoordinators.append(initialCoordinator)
+        window.makeKeyAndVisible()
+        print(childCoordinators)
     }
-
 }
