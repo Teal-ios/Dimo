@@ -38,6 +38,8 @@
 		2FC94ECC29C038000097E696 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* InitialView.swift */; };
 		2FC94ECE29C039620097E696 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* InitialCoordinator.swift */; };
 		2FC94ED029C03C3D0097E696 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECF29C03C3D0097E696 /* Font.swift */; };
+		93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD35C229C303D500BBB213 /* HTTPMethod.swift */; };
+		93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */; };
 		93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */; };
 		93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F18FDA29C1B95E00ABC0A7 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		2FC94ECB29C038000097E696 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		2FC94ECD29C039620097E696 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
 		2FC94ECF29C03C3D0097E696 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		93DD35C229C303D500BBB213 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderContentType.swift; sourceTree = "<group>"; };
 		93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		93F18FDA29C1B95E00ABC0A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,6 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */,
+				93DD35C229C303D500BBB213 /* HTTPMethod.swift */,
+				93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */,
 				2FC94E9629C011E00097E696 /* Monitor */,
 				2FC94E9529C011D70097E696 /* Service */,
 				2FC94E9429C011C90097E696 /* API */,
@@ -526,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* InitialViewController.swift in Sources */,
@@ -537,6 +544,7 @@
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
+				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				2FC94E9D29C013810097E696 /* APIKey.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
