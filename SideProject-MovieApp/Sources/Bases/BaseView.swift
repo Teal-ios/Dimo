@@ -17,7 +17,7 @@ class BaseView: UIView {
         setupBinding()
     }
     
-    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }
