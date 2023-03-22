@@ -14,13 +14,14 @@ class IamTheMainCharacterViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, IamTheMainCharacterModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, IamTheMainCharacterModel>()
     
+    
+    
     override func loadView() {
         view = mainCharacterView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(String(describing: IamTheMainCharacterViewController.self))
         setDataSource()
     }
 
@@ -30,7 +31,6 @@ class IamTheMainCharacterViewController: BaseViewController {
         }
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainCharacterView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-        
             return cell
         }
         let header = UICollectionView.SupplementaryRegistration<IamTheMainCharacterHeader>(elementKind: IamTheMainCharacterHeader.identifier) { supplementaryView, elementKind, indexPath in

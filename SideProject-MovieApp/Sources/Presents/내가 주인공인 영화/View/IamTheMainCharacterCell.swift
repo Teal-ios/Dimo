@@ -17,6 +17,7 @@ class IamTheMainCharacterCell: UICollectionViewCell {
         imageView.layer.borderColor = UIColor.systemOrange.cgColor
         return imageView
     }()
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(imageView)
@@ -24,6 +25,7 @@ class IamTheMainCharacterCell: UICollectionViewCell {
             guard let self else { return }
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
+        
     }
     
     required init?(coder: NSCoder) {
