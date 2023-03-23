@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class IamTheMainCharacterCell: UICollectionViewCell {
+class IamTheMainCharacterCell: BaseCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "xmark.circle")
@@ -20,16 +20,13 @@ class IamTheMainCharacterCell: UICollectionViewCell {
    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(imageView)
-        imageView.snp.makeConstraints { [weak self] make in
-            guard let self else { return }
-            make.edges.equalTo(self.safeAreaLayoutGuide)
+             
+    }
+    
+    override func setupLayout() {
+        [imageView].forEach { self.addSubview($0) }
+        imageView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
         }
-        
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
