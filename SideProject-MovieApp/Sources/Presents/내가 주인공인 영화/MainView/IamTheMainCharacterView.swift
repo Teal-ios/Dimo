@@ -10,12 +10,12 @@ import SnapKit
 
 class IamTheMainCharacterView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
-    override func setupData() {
+    override func setupLayout() {
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { [weak self] make in
             guard let self else { return }

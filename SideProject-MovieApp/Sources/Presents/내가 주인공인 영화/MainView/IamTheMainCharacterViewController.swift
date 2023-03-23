@@ -51,7 +51,7 @@ class IamTheMainCharacterViewController: BaseViewController {
         var section1Arr: [IamTheMainCharacterModel] = []
         var section2Arr: [IamTheMainCharacterModel] = []
         var section3Arr: [IamTheMainCharacterModel] = []
-        for i in 1..<100 {
+        for _ in 1..<100 {
             section1Arr.append(IamTheMainCharacterModel())
             section2Arr.append(IamTheMainCharacterModel())
             section3Arr.append(IamTheMainCharacterModel())

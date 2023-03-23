@@ -19,7 +19,7 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let initialCoordinator = IamTheMainCharacterCoordinator(window: window)
+        let initialCoordinator = IamTheCharacterDetailCoordinator(window: window)
         print("start")
         initialCoordinator.start()
         window.rootViewController = initialCoordinator.navigationController
