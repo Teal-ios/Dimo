@@ -8,6 +8,6 @@
 import UIKit
 import SnapKit
 
-final class InitialView: BaseView {
+final class OnBoardingView: BaseView {
 
 }

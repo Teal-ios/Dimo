@@ -9,7 +9,7 @@ import UIKit
 
 class IamTheCharacterDetailViewController: BaseViewController {
     let detailView = IamTheCharacterDetailView()
-    weak var coordinator: IamTheCharacterDetailCoordinator?
+//    weak var coordinator: IamTheCharacterDetailCoordinator?
     
     var dataSource: UICollectionViewDiffableDataSource<Int, IamTheCharacterDetailModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, IamTheCharacterDetailModel>()

@@ -10,7 +10,21 @@ import UIKit
 class IamTheMainCharacterViewController: BaseViewController {
     let mainCharacterView = IamTheMainCharacterView()
     
-    weak var coordinator: IamTheMainCharacterCoordinator?
+//    weak var coordinator: IamTheMainCharacterCoordinator?
+    // Coordinator은 ViewModel에서 관리하는 거에 대해서 이야기 해봐야 함.
+    
+    //MARK: Delegate
+    private var viewModel: IamTheMainCharacterViewModel
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("GenderViewController: fatal error")
+    }
+    
+    init(viewModel: IamTheMainCharacterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     var dataSource: UICollectionViewDiffableDataSource<Int, IamTheMainCharacterModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, IamTheMainCharacterModel>()
     

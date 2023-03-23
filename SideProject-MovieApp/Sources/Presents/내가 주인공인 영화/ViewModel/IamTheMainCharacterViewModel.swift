@@ -9,6 +9,10 @@ import Foundation
 
 class IamTheMainCharacterViewModel {
     
-    
+    private weak var coordinator: MainCoordinator?
+
+    init(coordinator: MainCoordinator?) {
+        self.coordinator = coordinator
+    }
     
 }
