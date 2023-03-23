@@ -1,10 +1,3 @@
-//
-//  VoteCoordinator.swift
-//  SideProject-MovieApp
-//
-//  Created by Kim TaeSoo on 2023/03/23.
-//
-
 import UIKit
 
 final class IamTheCharacterDetailCoordinator: Coordinator {
@@ -26,3 +19,4 @@ final class IamTheCharacterDetailCoordinator: Coordinator {
     }
     
 }
+
