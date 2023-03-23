@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
+		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
+		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
+		2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -33,9 +37,9 @@
 		2FC94EC329C036DD0097E696 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBD29C036DD0097E696 /* NotoSansKR-Light.otf */; };
 		2FC94EC429C036DD0097E696 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBE29C036DD0097E696 /* NotoSansKR-Regular.otf */; };
 		2FC94EC529C036DD0097E696 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94EBF29C036DD0097E696 /* NotoSansKR-Thin.otf */; };
-		2FC94EC729C0376C0097E696 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94EC629C0376C0097E696 /* InitialViewController.swift */; };
-		2FC94ECC29C038000097E696 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* InitialView.swift */; };
-		2FC94ECE29C039620097E696 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* InitialCoordinator.swift */; };
+		2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94EC629C0376C0097E696 /* OnBoardingViewController.swift */; };
+		2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* OnBoardingView.swift */; };
+		2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* AuthCoordinator.swift */; };
 		2FC94ED029C03C3D0097E696 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECF29C03C3D0097E696 /* Font.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
@@ -86,6 +90,10 @@
 		2FBF4C9C29CC76E500B65125 /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
 		2FBF4C9D29CC76E500B65125 /* SUIT-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraLight.otf"; sourceTree = "<group>"; };
 		2FBF4C9E29CC76E500B65125 /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
+		2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
+		2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStyleCase.swift; sourceTree = "<group>"; };
+		2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,9 +121,9 @@
 		2FC94EBD29C036DD0097E696 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		2FC94EBE29C036DD0097E696 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		2FC94EBF29C036DD0097E696 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
-		2FC94EC629C0376C0097E696 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		2FC94ECB29C038000097E696 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
-		2FC94ECD29C039620097E696 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
+		2FC94EC629C0376C0097E696 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		2FC94ECB29C038000097E696 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		2FC94ECD29C039620097E696 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		2FC94ECF29C03C3D0097E696 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
 		930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterHeader.swift; sourceTree = "<group>"; };
@@ -181,6 +189,38 @@
 			children = (
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		2FBF4CA629CC962400B65125 /* CoordinatorDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */,
+			);
+			path = CoordinatorDelegate;
+			sourceTree = "<group>";
+		};
+		2FBF4CAB29CC979400B65125 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FBF4CAE29CC986300B65125 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2FC94ECD29C039620097E696 /* AuthCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2FBF4CAF29CC98E000B65125 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		2FC94E4529C00F0B0097E696 = {
@@ -288,9 +328,9 @@
 		2FC94E8829C011100097E696 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				2FBF4CA629CC962400B65125 /* CoordinatorDelegate */,
 				2FC94EA629C013F30097E696 /* Coordinator.swift */,
 				2FC94EA429C013EA0097E696 /* AppCoordinator.swift */,
-				2FC94ECD29C039620097E696 /* InitialCoordinator.swift */,
 				930B307329C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift */,
 				933028D229CC659500165B1E /* VoteCoordinator.swift */,
 			);
@@ -301,7 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				930B306329C999FD00935B41 /* 내가 주인공인 영화 */,
-				2FC94ECA29C037E60097E696 /* Initial */,
+				2FC94ECA29C037E60097E696 /* Auth */,
 			);
 			path = Presents;
 			sourceTree = "<group>";
@@ -358,6 +398,7 @@
 			children = (
 				2FC94EB829C0351C0097E696 /* Color.swift */,
 				2FC94ECF29C03C3D0097E696 /* Font.swift */,
+				2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -429,23 +470,26 @@
 		2FC94EC929C037E10097E696 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2FC94EC629C0376C0097E696 /* InitialViewController.swift */,
-				2FC94ECB29C038000097E696 /* InitialView.swift */,
+				2FC94EC629C0376C0097E696 /* OnBoardingViewController.swift */,
+				2FC94ECB29C038000097E696 /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		2FC94ECA29C037E60097E696 /* Initial */ = {
+		2FC94ECA29C037E60097E696 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				2FBF4CAE29CC986300B65125 /* Coordinator */,
+				2FBF4CAB29CC979400B65125 /* ViewModel */,
 				2FC94EC929C037E10097E696 /* View */,
 			);
-			path = Initial;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		930B306329C999FD00935B41 /* 내가 주인공인 영화 */ = {
 			isa = PBXGroup;
 			children = (
+				2FBF4CAF29CC98E000B65125 /* Coordinator */,
 				930B307229C99F1F00935B41 /* ViewModel */,
 				930B307129C99F1300935B41 /* Model */,
 				930B306429C999FD00935B41 /* MainView */,
@@ -671,18 +715,21 @@
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				930B306B29C999FD00935B41 /* IamTheMainCharacterCell.swift in Sources */,
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
-				2FC94EC729C0376C0097E696 /* InitialViewController.swift in Sources */,
+				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
 				933028D329CC659500165B1E /* VoteCoordinator.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */,
+				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
+				2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
+				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				930B307429C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift in Sources */,
 				933028D729CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift in Sources */,
 				933028D929CC6B1200165B1E /* IamTheCharacterDetailView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
-				2FC94ECC29C038000097E696 /* InitialView.swift in Sources */,
+				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				930B306E29C99EF600935B41 /* IamTheMainCharacterModel.swift in Sources */,
 				930B306C29C999FD00935B41 /* IamTheMainCharacterViewController.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
@@ -696,11 +743,12 @@
 				930B307029C99F0400935B41 /* IamTheMainCharacterViewModel.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */,
+				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				933028DD29CC6B2D00165B1E /* IamTheCharacterDetailModel.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
-				2FC94ECE29C039620097E696 /* InitialCoordinator.swift in Sources */,
+				2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

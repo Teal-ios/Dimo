@@ -8,23 +8,53 @@
 import UIKit
 
 final class AppCoordinator: Coordinator {
-    var childCoordinators: [Coordinator]
+
+    weak var delegate: CoordinatorDelegate?
+    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    let window: UIWindow
-    
-    init(window: UIWindow) {
-        self.childCoordinators = []
-        self.navigationController = UINavigationController()
-        self.window = window
+    var type: CoordinatorStyleCase = .app
+
+    private let userDefaults = UserDefaults.standard
+
+    init(_ navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        navigationController.setNavigationBarHidden(true, animated: false)
+
     }
-    
+
     func start() {
-        let initialCoordinator = IamTheCharacterDetailCoordinator(window: window)
-        print("start")
-        initialCoordinator.start()
-        window.rootViewController = initialCoordinator.navigationController
-        childCoordinators.append(initialCoordinator)
-        window.makeKeyAndVisible()
-        print(childCoordinators)
+        connectMainFlow()
+    }
+
+    private func connectAuthFlow() {
+        let authCoordinator = AuthCoordinator(self.navigationController)
+        authCoordinator.delegate = self
+        authCoordinator.start()
+        childCoordinators.append(authCoordinator)
+    }
+
+    private func connectMainFlow() {
+        let MainCoordinator = MainCoordinator(self.navigationController)
+        MainCoordinator.delegate = self
+        MainCoordinator.start()
+        childCoordinators.append(MainCoordinator)
+    }
+}
+
+extension AppCoordinator: CoordinatorDelegate {
+
+    func didFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })
+
+        self.navigationController.viewControllers.removeAll()
+
+        switch childCoordinator.type {
+        case .auth:
+            self.connectAuthFlow()
+        case .main:
+            self.connectMainFlow()
+        default:
+            break
+        }
     }
 }
