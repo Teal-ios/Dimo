@@ -36,7 +36,7 @@ class BaseView: UIView {
      */
     func setupAttributes() {
         // Override Attributes
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.black
     }
     
     /**

@@ -27,8 +27,14 @@ final class AuthCoordinator: Coordinator {
         let viewModel = OnBoardingViewModel(coordinator: self)
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
-    }
+        showSignupTermsViewController()
 
+    }
+    func showSignupTermsViewController() {
+        let viewModel = SignupTermsViewModel(coordinator: self)
+        let vc = SignupTermsViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 

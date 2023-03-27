@@ -23,7 +23,8 @@ final class AppCoordinator: Coordinator {
     }
 
     func start() {
-        connectMainFlow()
+        /// 조건에 따른 분기처리 필요
+        connectAuthFlow()
     }
 
     private func connectAuthFlow() {
