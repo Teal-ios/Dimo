@@ -1,23 +1,23 @@
 //
-//  MainView.swift
+//  LoginViewController.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/03/14.
+//  Created by Kim TaeSoo on 2023/03/27.
 //
 
 import UIKit
 
-class OnBoardingViewController: BaseViewController {
+class LoginViewController: BaseViewController {
     
 
     //MARK: Delegate
-    let onBoardingView = OnBoardingView()
+    let loginView = OnBoardingView()
 
     //MARK: Delegate
     private var viewModel: OnBoardingViewModel
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("GenderViewController: fatal error")
+        fatalError("LoginViewController: fatal error")
     }
     
     init(viewModel: OnBoardingViewModel) {
@@ -26,7 +26,7 @@ class OnBoardingViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = onBoardingView
+        view = loginView
     }
     
     override func viewDidLoad() {
