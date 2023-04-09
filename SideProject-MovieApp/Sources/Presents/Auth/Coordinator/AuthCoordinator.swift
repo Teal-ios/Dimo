@@ -51,7 +51,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showPasswordViewController() {
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .Password)
+        let viewModel = PasswordViewModel(coordinator: self, currentViewCases: .Password)
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
