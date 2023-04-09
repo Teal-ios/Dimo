@@ -11,11 +11,11 @@ class OnboardingButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    convenience init(title: String) {
+    convenience init(title: String, ofSize: CGFloat = UIFont.systemFontSize) {
         self.init()
         var configuration = UIButton.Configuration.gray()
         var titleAttr = AttributedString.init(title)
-        titleAttr.font = .suitFont(ofSize: 14, weight: .Medium)
+        titleAttr.font = .suitFont(ofSize: ofSize, weight: .Medium)
         configuration.attributedTitle = titleAttr
         configuration.cornerStyle = .fixed
         configuration.baseBackgroundColor = .purple100

@@ -15,10 +15,6 @@ class OnBoardingViewController: BaseViewController {
 
     //MARK: Delegate
     private var viewModel: OnBoardingViewModel
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("GenderViewController: fatal error")
-    }
     
     init(viewModel: OnBoardingViewModel) {
         self.viewModel = viewModel

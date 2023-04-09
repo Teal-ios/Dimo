@@ -35,6 +35,26 @@ final class AuthCoordinator: Coordinator {
         let vc = SignupTermsViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    func showSignupIdentificationViewController() {
+        let viewModel = SignupIdentificationViewModel(coordinator: self)
+        let vc = SignupIdentificationViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    func showIDRegisterViewController() {
+        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister)
+        let vc = IDRegisterViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    func showNickNameViewController() {
+        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .NickName)
+        let vc = NickNameViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    func showPasswordViewController() {
+        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .Password)
+        let vc = PasswordViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 

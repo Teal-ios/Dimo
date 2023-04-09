@@ -21,7 +21,7 @@ final class SignupTermsView: BaseView {
         return view
     }()
     let acceptButton: OnboardingButton = {
-        return OnboardingButton(title: "동의하고 계속하기")
+        return OnboardingButton(title: "동의하고 계속하기", ofSize: 14)
     }()
     
     override init(frame: CGRect) {
