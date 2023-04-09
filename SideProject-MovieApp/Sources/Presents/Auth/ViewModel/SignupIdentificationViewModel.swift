@@ -12,45 +12,56 @@ import RxCocoa
 final class SignupIdentificationViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     var disposebag: DisposeBag = DisposeBag()
+    var timer: Timer?
+    var leftTime: Int?
     
     struct Input {
         var phoneNumberInput: ControlProperty<String?>
         var telecomButtonTapped: ControlEvent<Void>
         var authInput: ControlProperty<String?>
         var nameInput: ControlProperty<String?>
-        
+        var idRequestButtonTapped: ControlEvent<Void>
         var nextButtonTapped: ControlEvent<Void>
     }
     struct Output {
         var phoneNumberOutput: ControlProperty<String>
+        var phoneNumberValid: Observable<Bool>
         var telecomButtonTapped: ControlEvent<Void>
+        var idRequestButtonTapped: ControlEvent<Void>
+        var nextButtonTapped: ControlEvent<Void>
         var nextButtonValid: Observable<Bool>
     }
     
     init(coordinator: AuthCoordinator?) {
         self.coordinator = coordinator
+        
     }
     
     func transform(input: Input) -> Output {
         let phoneStr = input.phoneNumberInput.orEmpty
         let nameValid = input.nameInput.orEmpty.map { str in
-            str.count >= 2 && str.count <= 15
+            return str.count >= 2 && str.count <= 15
         }
         let phoneValid = input.phoneNumberInput.orEmpty.map { str in
-            true
+            return str.count == 12 || str.count == 13
         }
         let authValid = input.authInput.orEmpty.map { str in
-            str.count == 6
+            return str.count == 6
+        }
+        let authCheck = input.authInput.orEmpty.map { str in
+            // 인증번호 확인 해야함
+            return true
         }
         let valid = Observable.combineLatest(nameValid, phoneValid, authValid).map {
-            $0 && $1 && $2
+            return $0 && $1 && $2
         }
+        
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showIDRegisterViewController()
         }.disposed(by: disposebag)
         
-        return Output(phoneNumberOutput: phoneStr, telecomButtonTapped: input.telecomButtonTapped, nextButtonValid: valid)
+        return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, idRequestButtonTapped: input.idRequestButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
     }
     ///  추후 USECase로 뺄 예정입니다!
     func phoneNumberFormat(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {

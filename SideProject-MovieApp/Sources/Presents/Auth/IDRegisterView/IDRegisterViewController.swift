@@ -35,7 +35,10 @@ class IDRegisterViewController: BaseViewController {
         print("check")
     }
     override func setupBinding() {
-        let input = IDNickNameViewModel.Input(nextButtonTapped: idRegisterView.nextButton.rx.tap)
+        let input = IDNickNameViewModel.Input(
+            textFieldInput: idRegisterView.idTextFieldView.tf.rx.text,
+            nextButtonTapped: idRegisterView.nextButton.rx.tap
+        )
         let _ = viewModel.transform(input: input)
     }
 }
