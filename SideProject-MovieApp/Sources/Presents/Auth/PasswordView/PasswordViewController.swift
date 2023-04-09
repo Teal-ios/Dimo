@@ -6,16 +6,19 @@
 //
 
 import UIKit
+import RxCocoa
 
 class PasswordViewController: BaseViewController {
     let passwordView = PasswordView(title: "비밀번호를 입력해 주세요", placeholder: "비밀번호")
-    /// 임시 패스워드 뷰 모델로 바꾸어 주어야함
-    private var viewModel: IDNickNameViewModel
+    private var viewModel: PasswordViewModel
+    
+    //MARK: Input
+    private lazy var input = PasswordViewModel.Input(passwordText: self.passwordView.idTextFieldView.tf.rx.text, checkpwText: self.passwordView.passwordCheckView.tf.rx.text, didNextButtonTap: self.passwordView.duplicateCheckButton.rx.tap.withLatestFrom(self.passwordView.passwordCheckView.tf.rx.text.orEmpty).asSignal(onErrorJustReturn: ""))
     
     override func loadView() {
         view = passwordView
     }
-    init(viewModel: IDNickNameViewModel) {
+    init(viewModel: PasswordViewModel) {
         self.viewModel = viewModel
         super.init()
     }
@@ -23,7 +26,19 @@ class PasswordViewController: BaseViewController {
         super.viewDidLoad()
     }
     override func setupBinding() {
-        let input = IDNickNameViewModel.Input(nextButtonTapped: passwordView.nextButton.rx.tap)
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+        
+        output.passwordDuplicationValid.withUnretained(self).bind { vc, valid in
+            let textColor: UIColor = valid ? .systemBlue : .systemRed
+            vc.passwordView.passwordCheckLabel.textColor = textColor
+            
+            let str: String = valid ?
+            "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
+            
+            vc.passwordView.passwordCheckLabel.text = str
+            
+        }
+        .disposed(by: disposeBag)
     }
+    
 }

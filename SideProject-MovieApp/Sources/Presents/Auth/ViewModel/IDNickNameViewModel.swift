@@ -33,7 +33,7 @@ class IDNickNameViewModel: ViewModelType {
             case .NickName:
                 self?.coordinator?.showPasswordViewController()
             case .Password:
-                print("currentView : Password")
+                self?.coordinator?.showPasswordViewController()
             default:
                 print("currentView : Password")
             }
