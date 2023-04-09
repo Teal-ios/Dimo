@@ -19,7 +19,26 @@ class NickNameViewController: BaseViewController {
         super.init()
     }
     override func setupBinding() {
-        let input = IDNickNameViewModel.Input(nextButtonTapped: nickNameView.nextButton.rx.tap)
-        let _ = viewModel.transform(input: input)
+        let input = IDNickNameViewModel.Input(
+            textFieldInput: nickNameView.idTextFieldView.tf.rx.text ,nextButtonTapped: nickNameView.nextButton.rx.tap
+        )
+        
+        let output = viewModel.transform(input: input)
+        output.idNickNameValid
+            .withUnretained(self)
+            .bind { vc, bool in
+                guard bool.policy && bool.repeatCheck else {
+                    if !bool.policy {
+                        vc.nickNameView.policyLabel.text = "사용할 수 없는 아이디입니다."
+                    }
+                    if !bool.repeatCheck {
+                        vc.nickNameView.policyLabel.text = "중복된 닉네임이 존재합니다."
+                    }
+                    vc.nickNameView.policyLabel.textColor = .error
+                    return
+                }
+                vc.nickNameView.policyLabel.textColor = .black
+                vc.nickNameView.nextButton.isEnabled = bool.policy
+            }.disposed(by: disposeBag)
     }
 }

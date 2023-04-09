@@ -34,7 +34,12 @@ final class SignupIdentificationView: BaseView {
     let extraTelecomButton: TelecomButton = {
         return TelecomButton(title: "알뜰폰", foregroundColor: .white100)
     }()
-    
+    let authNumberCheckLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .suitFont(ofSize: 12)
+        return label
+    }()
     let telecomSelectView: UIStackView = {
         let view = UIStackView()
         view.isHidden = true
@@ -59,6 +64,8 @@ final class SignupIdentificationView: BaseView {
     }()
     let authTextFieldView: OnboardingTextFieldView = {
         let view = OnboardingTextFieldView(placeholder: "인증 번호")
+        view.tf.isEnabled = false
+        view.isHidden = true
         view.tf.keyboardType = .decimalPad
         return view
     }()
@@ -80,6 +87,7 @@ final class SignupIdentificationView: BaseView {
          telecomButton,
          phoneNumberTextFieldView,
          authTextFieldView,
+         authNumberCheckLabel,
          telecomSelectView,
          nextButton]
             .forEach { self.addSubview($0) }
@@ -132,6 +140,10 @@ final class SignupIdentificationView: BaseView {
             make.height.equalTo(buttonHeight)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(betweenTerms)
+        }
+        authNumberCheckLabel.snp.makeConstraints { make in
+            make.top.equalTo(authTextFieldView.snp.bottom).offset(insidePadding)
+            make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)
         }
     }
 }

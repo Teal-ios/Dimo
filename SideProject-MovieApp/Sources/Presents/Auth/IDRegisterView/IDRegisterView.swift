@@ -24,8 +24,16 @@ class IDRegisterView: BaseView {
         button.configuration?.baseForegroundColor = .black80
         return button
     }()
+    let policyLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = .suitFont(ofSize: 12)
+        return label
+    }()
     let nextButton: OnboardingButton = {
-        return OnboardingButton(title: "다음", ofSize: 14)
+        let button = OnboardingButton(title: "다음", ofSize: 14)
+        button.configuration?.baseBackgroundColor = .black80
+        return button
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +45,7 @@ class IDRegisterView: BaseView {
         idTextFieldView.tf.placeholder = placeholder
     }
     override func setupLayout() {
-        [titleLabel, idTextFieldView, nextButton].forEach { self.addSubview($0) }
+        [titleLabel, idTextFieldView, nextButton, policyLabel].forEach { self.addSubview($0) }
         idTextFieldView.addSubview(duplicateCheckButton)
         let topLeading: CGFloat = 16
         let betweenTerms: CGFloat = 36
@@ -56,6 +64,10 @@ class IDRegisterView: BaseView {
         duplicateCheckButton.snp.makeConstraints { make in
             make.centerY.equalTo(idTextFieldView.snp.centerY)
             make.trailing.equalTo(idTextFieldView.snp.trailing).inset(insidePadding)
+        }
+        policyLabel.snp.makeConstraints { make in
+            make.top.equalTo(idTextFieldView.snp.bottom).offset(insidePadding)
+            make.leading.equalTo(idTextFieldView.snp.leading).offset(topLeading)
         }
         nextButton.snp.makeConstraints { make in
             make.height.equalTo(buttonHeight)
