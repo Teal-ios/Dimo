@@ -8,9 +8,13 @@
 import Foundation
 
 final class LoginStartViewModel {
-    private weak var coordinator: LoginCoordinator?
+    private weak var coordinator: AuthCoordinator?
 
-    init(coordinator: LoginCoordinator?) {
+    init(coordinator: AuthCoordinator?) {
         self.coordinator = coordinator
+    }
+    
+    func pushSignupTermsViewController() {
+        self.coordinator?.showSignupTermsViewController()
     }
 }

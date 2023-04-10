@@ -8,9 +8,9 @@
 import Foundation
 
 final class LoginSplashViewModel {
-    private weak var coordinator: LoginCoordinator?
+    private weak var coordinator: AuthCoordinator?
 
-    init(coordinator: LoginCoordinator?) {
+    init(coordinator: AuthCoordinator?) {
         self.coordinator = coordinator
     }
     

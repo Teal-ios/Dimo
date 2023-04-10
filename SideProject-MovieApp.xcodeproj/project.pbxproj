@@ -14,7 +14,6 @@
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
-		2FC2EB4329E3BB0100ECE2ED /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */; };
 		2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */; };
 		2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */; };
 		2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */; };
@@ -136,7 +135,6 @@
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
-		2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewModel.swift; sourceTree = "<group>"; };
 		2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartViewModel.swift; sourceTree = "<group>"; };
 		2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */,
+				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
+				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
 				93C48B3C29D1720700644F6A /* SignupTermsViewModel.swift */,
 				93C48B4B29D1855600644F6A /* SignupIdentificationViewModel.swift */,
 				93C48BAB29D6AE6D00644F6A /* IDNickNameViewModel.swift */,
@@ -296,26 +296,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		2FC2EB3829E2B5F200ECE2ED /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				2FC2EB4129E3BADB00ECE2ED /* Coordinator */,
-				2FC2EB3929E2B60A00ECE2ED /* ViewModel */,
-				2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */,
-				2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		2FC2EB3929E2B60A00ECE2ED /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
-				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,14 +303,6 @@
 				2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */,
 			);
 			path = LoginSplashView;
-			sourceTree = "<group>";
-		};
-		2FC2EB4129E3BADB00ECE2ED /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */ = {
@@ -459,7 +431,6 @@
 		2FC94E8929C011260097E696 /* Presents */ = {
 			isa = PBXGroup;
 			children = (
-				2FC2EB3829E2B5F200ECE2ED /* Login */,
 				930B306329C999FD00935B41 /* 내가 주인공인 영화 */,
 				2FC94ECA29C037E60097E696 /* Auth */,
 			);
@@ -610,6 +581,8 @@
 				2FBF4CAB29CC979400B65125 /* ViewModel */,
 				2FC94EC929C037E10097E696 /* OnboardingView */,
 				93C48B2D29D16CFE00644F6A /* LoginView */,
+				2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */,
+				2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */,
 				93C48B3229D16D7B00644F6A /* SignupTermsView */,
 				93C48B3729D16DE600644F6A /* SignupIdentificationView */,
 				93C48B9F29D5AF4900644F6A /* IDRegisterView */,
@@ -958,7 +931,6 @@
 				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
-				2FC2EB4329E3BB0100ECE2ED /* LoginCoordinator.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,

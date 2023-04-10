@@ -50,6 +50,7 @@ final class LoginStartView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
     }
     
     override func setupLayout() {
@@ -92,3 +93,4 @@ final class LoginStartView: BaseView {
         }
     }
 }
+
