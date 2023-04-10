@@ -14,7 +14,6 @@ final class SignupTermsViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
-        
         var acceptButtonTapped: ControlEvent<Void>
     }
     

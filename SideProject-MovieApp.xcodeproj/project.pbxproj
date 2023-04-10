@@ -11,6 +11,15 @@
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
 		2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */; };
+		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
+		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
+		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
+		2FC2EB4329E3BB0100ECE2ED /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */; };
+		2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */; };
+		2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */; };
+		2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */; };
+		2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */; };
+		2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -124,6 +133,15 @@
 		2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStyleCase.swift; sourceTree = "<group>"; };
 		2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
+		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
+		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
+		2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewModel.swift; sourceTree = "<group>"; };
+		2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartViewModel.swift; sourceTree = "<group>"; };
+		2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartViewController.swift; sourceTree = "<group>"; };
+		2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
+		2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +296,52 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		2FC2EB3829E2B5F200ECE2ED /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB4129E3BADB00ECE2ED /* Coordinator */,
+				2FC2EB3929E2B60A00ECE2ED /* ViewModel */,
+				2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */,
+				2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2FC2EB3929E2B60A00ECE2ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
+				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */,
+				2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */,
+			);
+			path = LoginSplashView;
+			sourceTree = "<group>";
+		};
+		2FC2EB4129E3BADB00ECE2ED /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB4229E3BB0100ECE2ED /* LoginCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */,
+				2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */,
+			);
+			path = LoginStartView;
+			sourceTree = "<group>";
+		};
 		2FC94E4529C00F0B0097E696 = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +459,7 @@
 		2FC94E8929C011260097E696 /* Presents */ = {
 			isa = PBXGroup;
 			children = (
+				2FC2EB3829E2B5F200ECE2ED /* Login */,
 				930B306329C999FD00935B41 /* 내가 주인공인 영화 */,
 				2FC94ECA29C037E60097E696 /* Auth */,
 			);
@@ -445,6 +510,7 @@
 				933028C129CB44D500165B1E /* UIFont+Extension.swift */,
 				933028C329CB469200165B1E /* UIFont+Enum.swift */,
 				933028C529CB46AF00165B1E /* UIColor+Extension.swift */,
+				2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -466,6 +532,7 @@
 				93C48B4D29D1863200644F6A /* OnboardingtextFieldView.swift */,
 				93C48B4F29D2ADCC00644F6A /* TelecomButton.swift */,
 				93C48BB529D9377900644F6A /* TelecomSelectView.swift */,
+				2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -843,12 +910,14 @@
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
+				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				930B306B29C999FD00935B41 /* IamTheMainCharacterCell.swift in Sources */,
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
+				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				933028D329CC659500165B1E /* VoteCoordinator.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
@@ -859,9 +928,12 @@
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
+				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
+				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				930B307429C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift in Sources */,
 				933028D729CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift in Sources */,
 				933028D929CC6B1200165B1E /* IamTheCharacterDetailView.swift in Sources */,
+				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
@@ -871,9 +943,11 @@
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
+				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
+				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
@@ -884,6 +958,8 @@
 				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
+				2FC2EB4329E3BB0100ECE2ED /* LoginCoordinator.swift in Sources */,
+				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,

@@ -24,7 +24,8 @@ final class AppCoordinator: Coordinator {
 
     func start() {
         /// 조건에 따른 분기처리 필요
-        connectAuthFlow()
+//        connectAuthFlow()
+        connectLoginFlow()
     }
 
     private func connectAuthFlow() {
@@ -40,6 +41,13 @@ final class AppCoordinator: Coordinator {
         MainCoordinator.start()
         childCoordinators.append(MainCoordinator)
     }
+    
+    private func connectLoginFlow() {
+        let loginCoordinator = LoginCoordinator(self.navigationController)
+        loginCoordinator.delegate = self
+        loginCoordinator.start()
+        childCoordinators.append(loginCoordinator)
+    }
 }
 
 extension AppCoordinator: CoordinatorDelegate {
@@ -54,6 +62,8 @@ extension AppCoordinator: CoordinatorDelegate {
             self.connectAuthFlow()
         case .main:
             self.connectMainFlow()
+        case .login:
+            self.connectLoginFlow()
         default:
             break
         }
