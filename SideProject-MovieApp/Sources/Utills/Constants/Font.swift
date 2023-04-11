@@ -20,11 +20,7 @@ struct Font {
     static let body2 = UIFont(name: SuitFont.Medium.rawValue, size: 16)
     static let body3 = UIFont(name: SuitFont.Medium.rawValue, size: 14)
     
-    static let caption = UIFont(name: SuitFont.Medium.rawValue, size: 12)
+    static let caption = UIFont(name: "SUIT-Medium", size: 12)
     static let button = UIFont(name: SuitFont.Medium.rawValue, size: 14)
-
-
-
-
 
 }

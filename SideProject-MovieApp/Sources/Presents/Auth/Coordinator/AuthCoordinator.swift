@@ -20,7 +20,20 @@ final class AuthCoordinator: Coordinator {
     }
 
     func start() {
-        showOnboardingViewController()
+        showLoginSplshViewController()
+    }
+    
+    func showLoginSplshViewController() {
+        let viewModel = LoginSplashViewModel(coordinator: self)
+        let vc = LoginSplashViewController(viewModel: viewModel)
+        navigationController.viewControllers = [vc]
+    }
+    
+    func showLoginStartViewController() {
+        let viewModel = LoginStartViewModel(coordinator: self)
+        let vc = LoginStartViewController(viewModel: viewModel)
+        changeAnimation()
+        navigationController.viewControllers = [vc]
     }
     
     func showOnboardingViewController() {

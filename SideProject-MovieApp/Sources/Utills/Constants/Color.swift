@@ -25,4 +25,5 @@ struct Color {
     static let success =  #colorLiteral(red: 0.3843137255, green: 0.5607843137, blue: 0.8980392157, alpha: 1)
     static let error =  #colorLiteral(red: 0.9137254902, green: 0.4, blue: 0.4196078431, alpha: 1)
     static let focus =  #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+    static let caption = #colorLiteral(red: 0.6588235294, green: 0.6588235294, blue: 0.6549019608, alpha: 1)
 }
