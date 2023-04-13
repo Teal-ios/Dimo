@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 class LoginStartViewController: BaseViewController {
     
@@ -14,6 +15,8 @@ class LoginStartViewController: BaseViewController {
     
     //MARK: Delegate
     private var viewModel: LoginStartViewModel
+    
+    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("LoginStartViewController: fatal error")
@@ -34,6 +37,10 @@ class LoginStartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("check")
+    }
+    
+    override func setupBinding() {
+        let output = viewModel.transform(input: input)
     }
 }
 

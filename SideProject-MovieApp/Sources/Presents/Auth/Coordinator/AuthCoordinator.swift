@@ -68,6 +68,11 @@ final class AuthCoordinator: Coordinator {
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    func showDimoLoginViewController() {
+        let viewModel = DimoLoginViewModel(coordinator: self)
+        let vc = DimoLoginViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 
