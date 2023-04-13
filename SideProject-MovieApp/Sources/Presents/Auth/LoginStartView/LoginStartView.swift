@@ -33,6 +33,12 @@ final class LoginStartView: BaseView {
         return button
     }()
     
+    let appleLoginButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "AppleLoginButton"), for: .normal)
+        return button
+    }()
+    
     let dimoLoginButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "DimoLoginButton"), for: .normal)
@@ -54,7 +60,7 @@ final class LoginStartView: BaseView {
     }
     
     override func setupLayout() {
-        [bgView, bannerView, kakaoLoginButton, googleLoginButton, dimoLoginButton, signupButton].forEach { self.addSubview($0) }
+        [bgView, bannerView, kakaoLoginButton, googleLoginButton, appleLoginButton, dimoLoginButton, signupButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
@@ -80,10 +86,16 @@ final class LoginStartView: BaseView {
             make.bottom.equalTo(signupButton.snp.top).offset(-24)
         }
         
-        googleLoginButton.snp.makeConstraints { make in
+        appleLoginButton.snp.makeConstraints { make in
             make.centerX.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(48)
             make.bottom.equalTo(dimoLoginButton.snp.top).offset(-24)
+        }
+        
+        googleLoginButton.snp.makeConstraints { make in
+            make.centerX.equalTo(safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(48)
+            make.bottom.equalTo(appleLoginButton.snp.top).offset(-24)
         }
         
         kakaoLoginButton.snp.makeConstraints { make in
