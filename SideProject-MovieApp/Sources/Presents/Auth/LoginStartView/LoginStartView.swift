@@ -45,14 +45,12 @@ final class LoginStartView: BaseView {
         return button
     }()
     
-    let signupButton: UILabel = {
-        let label = UILabel()
-        label.text = "회원가입"
-        label.textColor = Color.caption
-        label.font = Font.caption
-        label.addCharacterSpacing(0.04)
-        return label
+    let signupButton: WordLabelButton = {
+        let button = WordLabelButton(text: "회원가입")
+        button.backgroundColor = .clear
+       return button
     }()
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,7 +73,7 @@ final class LoginStartView: BaseView {
         
         signupButton.snp.makeConstraints { make in
             make.centerX.equalTo(safeAreaLayoutGuide)
-            make.width.equalTo(60)
+            make.width.equalTo(80)
             make.height.equalTo(16)
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
         }

@@ -26,7 +26,7 @@ final class AuthCoordinator: Coordinator {
     func showLoginSplshViewController() {
         let viewModel = LoginSplashViewModel(coordinator: self)
         let vc = LoginSplashViewController(viewModel: viewModel)
-        navigationController.viewControllers = [vc]
+        self.navigationController.viewControllers = [vc]
     }
     
     func showLoginStartViewController() {

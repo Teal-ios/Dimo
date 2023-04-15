@@ -20,6 +20,7 @@ final class LoginStartViewModel: ViewModelType {
 //        var kakaoLoginButtonTapped: ControlEvent<Void>
 //        var googleLoginButtonTapped: ControlEvent<Void>
 //        var appleLoginButtonTapped: ControlEvent<Void>
+        var signupButtonTapped: ControlEvent<Void>
 // 추후 작업 예정
     }
     
@@ -38,6 +39,13 @@ final class LoginStartViewModel: ViewModelType {
         input.dimoLoginButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showDimoLoginViewController()
         }.disposed(by: disposebag)
+        
+        input.signupButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showSignupTermsViewController()
+            
+        }
+        .disposed(by: disposebag)
+        
         
         return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped)
     }

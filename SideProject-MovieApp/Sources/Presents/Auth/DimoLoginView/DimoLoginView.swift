@@ -14,28 +14,19 @@ class DimoLoginView: BasicLoginView {
         return OnboardingTextFieldView(placeholder: "비밀번호")
     }()
     
-    let passwordFindLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.caption
-        label.textColor = UIColor(red: 168/255, green: 168/255, blue: 167/255, alpha: 1)
-        label.text = "비밀번호 찾기"
+    let passwordFindLabel: WordLabelButton = {
+        let label = WordLabelButton(text: "비밀번호 찾기")
         return label
     }()
     
-    let idFindLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.caption
-        label.text = "아이디 찾기"
-        label.textColor = UIColor(red: 168/255, green: 168/255, blue: 167/255, alpha: 1)
+    let idFindLabel: WordLabelButton = {
+        let label = WordLabelButton(text: "아이디 찾기")
         return label
     }()
     
-    let firstDimoLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.caption
-        label.text = "DIMO가 처음이신가요?"
-        label.textColor = UIColor(red: 168/255, green: 168/255, blue: 167/255, alpha: 1)
-        label.textAlignment = .center
+    let firstDimoLabel: WordLabelButton = {
+        let label = WordLabelButton(text: "DIMO가 처음이신가요?")
+        label.contentHorizontalAlignment = .center
         return label
     }()
     
@@ -51,7 +42,8 @@ class DimoLoginView: BasicLoginView {
         
         idFindLabel.snp.makeConstraints { make in
             make.top.equalTo(idTextFieldView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.width.equalTo(80)
             make.height.equalTo(16)
         }
         
@@ -63,7 +55,8 @@ class DimoLoginView: BasicLoginView {
         
         passwordFindLabel.snp.makeConstraints { make in
             make.top.equalTo(passwordView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.width.equalTo(100)
             make.height.equalTo(16)
         }
         
@@ -78,5 +71,4 @@ class DimoLoginView: BasicLoginView {
         duplicateCheckButton.isEnabled = false
         duplicateCheckButton.isHidden = true
     }
-    
 }

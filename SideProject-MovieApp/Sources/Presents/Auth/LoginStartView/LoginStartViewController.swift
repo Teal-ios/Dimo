@@ -16,7 +16,7 @@ class LoginStartViewController: BaseViewController {
     //MARK: Delegate
     private var viewModel: LoginStartViewModel
     
-    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap)
+    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap, signupButtonTapped: self.loginStartView.signupButton.rx.tap)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("LoginStartViewController: fatal error")
@@ -25,9 +25,7 @@ class LoginStartViewController: BaseViewController {
     init(viewModel: LoginStartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(signupTapped))
-        loginStartView.signupButton.isUserInteractionEnabled = true
-        loginStartView.signupButton.addGestureRecognizer(tapGesture)
+        
     }
     
     override func loadView() {
@@ -41,13 +39,10 @@ class LoginStartViewController: BaseViewController {
     
     override func setupBinding() {
         let output = viewModel.transform(input: input)
+        
     }
+    
 }
 
-extension LoginStartViewController {
-    @objc private func signupTapped() {
-        self.viewModel.pushSignupTermsViewController()
-    }
-}
 
 
