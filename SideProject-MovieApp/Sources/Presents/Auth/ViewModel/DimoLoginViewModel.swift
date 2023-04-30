@@ -31,7 +31,7 @@ class DimoLoginViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         input.nextButtonTapped.bind { [weak self] _ in
-            print("존재하지 않는 회원정보 띄워주기")
+            self?.coordinator?.showPopupViewController()
         }.disposed(by: disposebag)
         
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
@@ -54,4 +54,5 @@ class DimoLoginViewModel: ViewModelType {
         return Output(nextButtonTapped: input.nextButtonTapped, loginValid: loginValid)
     }
 }
+
 

@@ -14,17 +14,17 @@ class DimoLoginView: BasicLoginView {
         return OnboardingTextFieldView(placeholder: "비밀번호")
     }()
     
-    let passwordFindLabel: WordLabelButton = {
+    let passwordFindButton: WordLabelButton = {
         let label = WordLabelButton(text: "비밀번호 찾기")
         return label
     }()
     
-    let idFindLabel: WordLabelButton = {
+    let idFindButton: WordLabelButton = {
         let label = WordLabelButton(text: "아이디 찾기")
         return label
     }()
     
-    let firstDimoLabel: WordLabelButton = {
+    let firstDimoButton: WordLabelButton = {
         let label = WordLabelButton(text: "DIMO가 처음이신가요?")
         label.contentHorizontalAlignment = .center
         return label
@@ -35,12 +35,12 @@ class DimoLoginView: BasicLoginView {
         super.init(frame: frame)
         let top: CGFloat = 48
         let leadingTrailing: CGFloat = 16
-        self.addSubview(idFindLabel)
+        self.addSubview(idFindButton)
         self.addSubview(passwordView)
-        self.addSubview(passwordFindLabel)
-        self.addSubview(firstDimoLabel)
+        self.addSubview(passwordFindButton)
+        self.addSubview(firstDimoButton)
         
-        idFindLabel.snp.makeConstraints { make in
+        idFindButton.snp.makeConstraints { make in
             make.top.equalTo(idTextFieldView.snp.bottom).offset(8)
             make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
             make.width.equalTo(80)
@@ -53,14 +53,14 @@ class DimoLoginView: BasicLoginView {
             make.height.equalTo(52)
         }
         
-        passwordFindLabel.snp.makeConstraints { make in
+        passwordFindButton.snp.makeConstraints { make in
             make.top.equalTo(passwordView.snp.bottom).offset(8)
             make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
             make.width.equalTo(100)
             make.height.equalTo(16)
         }
         
-        firstDimoLabel.snp.makeConstraints { make in
+        firstDimoButton.snp.makeConstraints { make in
             make.bottom.equalTo(nextButton.snp.top).offset(-16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(16)

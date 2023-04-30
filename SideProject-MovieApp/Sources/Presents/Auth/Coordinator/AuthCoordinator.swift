@@ -73,6 +73,15 @@ final class AuthCoordinator: Coordinator {
         let vc = DimoLoginViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    func showPopupViewController() {
+        let viewModel = PopupViewModel(coordinator: self)
+        let vc = PopupViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    func popPopupViewController() {
+        navigationController.dismiss(animated: true)
+    }
 }
 
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
+		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
+		2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492329EE38F500F400CB /* GoogleSignIn */; };
+		2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492529EE38F500F400CB /* GoogleSignInSwift */; };
 		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
@@ -54,6 +58,7 @@
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
+		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
 		930B306B29C999FD00935B41 /* IamTheMainCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306729C999FD00935B41 /* IamTheMainCharacterCell.swift */; };
@@ -124,6 +129,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2FBF4C9629CC76E500B65125 /* SUIT-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.otf"; sourceTree = "<group>"; };
 		2FBF4C9729CC76E500B65125 /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
 		2FBF4C9829CC76E500B65125 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
@@ -181,6 +188,8 @@
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
+		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
+		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
 		930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterHeader.swift; sourceTree = "<group>"; };
 		930B306729C999FD00935B41 /* IamTheMainCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterCell.swift; sourceTree = "<group>"; };
@@ -229,7 +238,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */,
 				2FC94EB329C015050097E696 /* RxSwift in Frameworks */,
+				2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */,
 				2FC94EB129C015050097E696 /* RxCocoa in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
 			);
@@ -252,6 +263,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F39F67129FBA98F00F5D368 /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				2F39F67229FBA9B400F5D368 /* PopupViewController.swift */,
+				2F39F67429FBA9BF00F5D368 /* PopupView.swift */,
+			);
+			path = PopupView;
+			sourceTree = "<group>";
+		};
+		2F39F67629FBBD3F00F5D368 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		2FBF4CA229CC788C00B65125 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +314,7 @@
 				93C48BAB29D6AE6D00644F6A /* IDNickNameViewModel.swift */,
 				93C48BB329D929B100644F6A /* PasswordViewModel.swift */,
 				2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */,
+				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -349,6 +377,7 @@
 		2FC94E5029C00F0B0097E696 /* SideProject-MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */,
 				2FC94E8129C00F3F0097E696 /* Sources */,
 				2FC94E8229C00F430097E696 /* Resources */,
 				2FC94E8429C010BF0097E696 /* Supportings */,
@@ -442,6 +471,7 @@
 		2FC94E8929C011260097E696 /* Presents */ = {
 			isa = PBXGroup;
 			children = (
+				2F39F67629FBBD3F00F5D368 /* Home */,
 				930B306329C999FD00935B41 /* 내가 주인공인 영화 */,
 				2FC94ECA29C037E60097E696 /* Auth */,
 			);
@@ -601,6 +631,7 @@
 				93C48B9F29D5AF4900644F6A /* IDRegisterView */,
 				93C48BA629D6ADBE00644F6A /* NickNameView */,
 				2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */,
+				2F39F67129FBA98F00F5D368 /* PopupView */,
 				93C48BAD29D9298200644F6A /* PasswordView */,
 			);
 			path = Auth;
@@ -768,6 +799,8 @@
 				2FC94EAD29C014E80097E696 /* SnapKit */,
 				2FC94EB029C015050097E696 /* RxCocoa */,
 				2FC94EB229C015050097E696 /* RxSwift */,
+				2F7C492329EE38F500F400CB /* GoogleSignIn */,
+				2F7C492529EE38F500F400CB /* GoogleSignInSwift */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -844,6 +877,7 @@
 			packageReferences = (
 				2FC94EAC29C014E80097E696 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2FC94EAF29C015050097E696 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 2FC94E4F29C00F0B0097E696 /* Products */;
 			projectDirPath = "";
@@ -936,6 +970,7 @@
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				930B306E29C99EF600935B41 /* IamTheMainCharacterModel.swift in Sources */,
 				930B306C29C999FD00935B41 /* IamTheMainCharacterViewController.swift in Sources */,
@@ -948,6 +983,7 @@
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
+				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
@@ -956,6 +992,7 @@
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				930B307029C99F0400935B41 /* IamTheMainCharacterViewModel.swift in Sources */,
 				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
+				2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
@@ -1142,9 +1179,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FQ63CT4A3G;
+				DEVELOPMENT_TEAM = LL4R66V6Y3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1173,9 +1211,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FQ63CT4A3G;
+				DEVELOPMENT_TEAM = LL4R66V6Y3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1317,6 +1356,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		2FC94EAC29C014E80097E696 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1336,6 +1383,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F7C492329EE38F500F400CB /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		2F7C492529EE38F500F400CB /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		2FC94EAD29C014E80097E696 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2FC94EAC29C014E80097E696 /* XCRemoteSwiftPackageReference "SnapKit" */;
