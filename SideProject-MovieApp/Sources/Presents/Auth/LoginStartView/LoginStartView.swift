@@ -58,6 +58,7 @@ final class LoginStartView: BaseView {
     }
     
     override func setupLayout() {
+        
         [bgView, bannerView, kakaoLoginButton, googleLoginButton, appleLoginButton, dimoLoginButton, signupButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in

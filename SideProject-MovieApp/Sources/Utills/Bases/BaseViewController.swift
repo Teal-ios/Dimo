@@ -47,7 +47,7 @@ class BaseViewController: UIViewController {
     // MARK: Life Cycle Views
     
     override func viewDidLoad() {
-//        setupAttributes()
+        setupAttributes()
         setupLayout()
         setupLocalization()
         setupBinding()
@@ -76,8 +76,8 @@ class BaseViewController: UIViewController {
     
     func setupAttributes() {
         // Override Attributes
-        view.backgroundColor = Color.white
-        navigation()
+//        view.backgroundColor = Color.white
+//        navigation()
 //        view.backgroundColor = Color.mainContainerBackgroundColor
     }
     
