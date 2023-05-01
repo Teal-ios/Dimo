@@ -90,5 +90,4 @@ class IamTheMainCharacterView: BaseView {
             }
         }
     }
-    
 }

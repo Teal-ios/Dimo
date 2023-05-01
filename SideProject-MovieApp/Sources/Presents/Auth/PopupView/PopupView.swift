@@ -21,7 +21,7 @@ class PopupView: BaseView {
         let view = UIView()
         view.backgroundColor = .black80
         view.clipsToBounds = true
-        view.layer.cornerRadius = 4
+        view.layer.cornerRadius = 16
         return view
     }()
     
