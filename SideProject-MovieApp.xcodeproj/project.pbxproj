@@ -9,8 +9,20 @@
 /* Begin PBXBuildFile section */
 		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
 		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
+		2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */; };
+		2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */; };
 		2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492329EE38F500F400CB /* GoogleSignIn */; };
 		2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492529EE38F500F400CB /* GoogleSignInSwift */; };
+		2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19C929FF65860005B1FA /* VoteViewController.swift */; };
+		2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CB29FF67330005B1FA /* VoteView.swift */; };
+		2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */; };
+		2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CF29FF6E310005B1FA /* BaseCollectionViewController.swift */; };
+		2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */; };
+		2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */; };
+		2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19D829FF80BD0005B1FA /* VoteModel.swift */; };
+		2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */; };
+		2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */; };
+		2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */; };
 		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
@@ -69,7 +81,6 @@
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
 		933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C529CB46AF00165B1E /* UIColor+Extension.swift */; };
-		933028D329CC659500165B1E /* VoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028D229CC659500165B1E /* VoteCoordinator.swift */; };
 		933028D729CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028D629CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift */; };
 		933028D929CC6B1200165B1E /* IamTheCharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028D829CC6B1200165B1E /* IamTheCharacterDetailView.swift */; };
 		933028DB29CC6B1B00165B1E /* IamTheCharacterDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028DA29CC6B1B00165B1E /* IamTheCharacterDetailViewCell.swift */; };
@@ -131,6 +142,18 @@
 /* Begin PBXFileReference section */
 		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarCoordinator.swift; sourceTree = "<group>"; };
+		2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPageCase.swift; sourceTree = "<group>"; };
+		2FBD19C929FF65860005B1FA /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
+		2FBD19CB29FF67330005B1FA /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
+		2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FBD19CF29FF6E310005B1FA /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteHeaderView.swift; sourceTree = "<group>"; };
+		2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewModel.swift; sourceTree = "<group>"; };
+		2FBD19D829FF80BD0005B1FA /* VoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteModel.swift; sourceTree = "<group>"; };
+		2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCoordinator.swift; sourceTree = "<group>"; };
+		2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRecommandAndSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRecommandAndSearchHeaderView.swift; sourceTree = "<group>"; };
 		2FBF4C9629CC76E500B65125 /* SUIT-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.otf"; sourceTree = "<group>"; };
 		2FBF4C9729CC76E500B65125 /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
 		2FBF4C9829CC76E500B65125 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
@@ -200,7 +223,6 @@
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
 		933028C529CB46AF00165B1E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		933028D229CC659500165B1E /* VoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCoordinator.swift; sourceTree = "<group>"; };
 		933028D629CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IamTheCharacterDetailViewController.swift; sourceTree = "<group>"; };
 		933028D829CC6B1200165B1E /* IamTheCharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IamTheCharacterDetailView.swift; sourceTree = "<group>"; };
 		933028DA29CC6B1B00165B1E /* IamTheCharacterDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IamTheCharacterDetailViewCell.swift; sourceTree = "<group>"; };
@@ -275,8 +297,30 @@
 		2F39F67629FBBD3F00F5D368 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2F4D9CA629FE8247007B89E8 /* Coordinator */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2F4D9CA629FE8247007B89E8 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2FBD19C829FF65570005B1FA /* VoteView */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD19C929FF65860005B1FA /* VoteViewController.swift */,
+				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
+				2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */,
+				2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */,
+				2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */,
+				2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */,
+			);
+			path = VoteView;
 			sourceTree = "<group>";
 		};
 		2FBF4CA229CC788C00B65125 /* Data */ = {
@@ -331,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */,
+				2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -463,7 +508,6 @@
 				2FC94EA629C013F30097E696 /* Coordinator.swift */,
 				2FC94EA429C013EA0097E696 /* AppCoordinator.swift */,
 				930B307329C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift */,
-				933028D229CC659500165B1E /* VoteCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -484,6 +528,7 @@
 				2FC94EA829C0145F0097E696 /* BaseView.swift */,
 				2FC94EAA29C0149B0097E696 /* BaseViewController.swift */,
 				933028DE29CC736500165B1E /* BaseCollectionViewCell.swift */,
+				2FBD19CF29FF6E310005B1FA /* BaseCollectionViewController.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -533,6 +578,7 @@
 				2FC94EB829C0351C0097E696 /* Color.swift */,
 				2FC94ECF29C03C3D0097E696 /* Font.swift */,
 				2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */,
+				2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -653,6 +699,7 @@
 				930B307229C99F1F00935B41 /* ViewModel */,
 				930B307129C99F1300935B41 /* Model */,
 				930B306429C999FD00935B41 /* MainView */,
+				2FBD19C829FF65570005B1FA /* VoteView */,
 				933028D529CC6A1100165B1E /* DetailView */,
 			);
 			path = "내가 주인공인 영화";
@@ -674,6 +721,7 @@
 			children = (
 				930B306D29C99EF600935B41 /* IamTheMainCharacterModel.swift */,
 				933028DC29CC6B2D00165B1E /* IamTheCharacterDetailModel.swift */,
+				2FBD19D829FF80BD0005B1FA /* VoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				930B306F29C99F0400935B41 /* IamTheMainCharacterViewModel.swift */,
+				2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -938,12 +987,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
+				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				930B306B29C999FD00935B41 /* IamTheMainCharacterCell.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
+				2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
@@ -951,9 +1002,9 @@
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
 				2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
-				933028D329CC659500165B1E /* VoteCoordinator.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
+				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
@@ -962,6 +1013,8 @@
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
+				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
+				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				930B307429C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift in Sources */,
@@ -975,18 +1028,24 @@
 				930B306E29C99EF600935B41 /* IamTheMainCharacterModel.swift in Sources */,
 				930B306C29C999FD00935B41 /* IamTheMainCharacterViewController.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
+				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
+				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
+				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
+				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
+				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
+				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
 				933028DB29CC6B1B00165B1E /* IamTheCharacterDetailViewCell.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
@@ -997,6 +1056,7 @@
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
+				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */,

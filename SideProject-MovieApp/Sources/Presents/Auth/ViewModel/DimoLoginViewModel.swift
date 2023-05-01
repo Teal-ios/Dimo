@@ -31,7 +31,8 @@ class DimoLoginViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showPopupViewController()
+//            self?.coordinator?.showPopupViewController()
+            self?.coordinator?.connectHomeTabBarCoordinator()
         }.disposed(by: disposebag)
         
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"

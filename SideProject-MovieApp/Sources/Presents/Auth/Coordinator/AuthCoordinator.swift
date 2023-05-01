@@ -82,6 +82,11 @@ final class AuthCoordinator: Coordinator {
     func popPopupViewController() {
         navigationController.dismiss(animated: true)
     }
-}
+    
+    func connectHomeTabBarCoordinator() {
+        let tabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
+        tabBarCoordinator.start()
+        childCoordinators.append(tabBarCoordinator)
+    }}
 
 
