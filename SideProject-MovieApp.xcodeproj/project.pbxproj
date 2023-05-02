@@ -70,6 +70,7 @@
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
+		2FD11DC22A00D4C7006796DD /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC12A00D4C7006796DD /* CharacterModel.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
@@ -211,6 +212,7 @@
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
+		2FD11DC12A00D4C7006796DD /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
@@ -313,10 +315,9 @@
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
+				2FD11DC02A00BC92006796DD /* Cell */,
 				2FBD19C929FF65860005B1FA /* VoteViewController.swift */,
 				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
-				2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */,
-				2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */,
 				2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */,
 				2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */,
 			);
@@ -692,6 +693,15 @@
 			path = DimoLoginView;
 			sourceTree = "<group>";
 		};
+		2FD11DC02A00BC92006796DD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */,
+				2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		930B306329C999FD00935B41 /* 내가 주인공인 영화 */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,6 +732,7 @@
 				930B306D29C99EF600935B41 /* IamTheMainCharacterModel.swift */,
 				933028DC29CC6B2D00165B1E /* IamTheCharacterDetailModel.swift */,
 				2FBD19D829FF80BD0005B1FA /* VoteModel.swift */,
+				2FD11DC12A00D4C7006796DD /* CharacterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1023,6 +1034,7 @@
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2FD11DC22A00D4C7006796DD /* CharacterModel.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				930B306E29C99EF600935B41 /* IamTheMainCharacterModel.swift in Sources */,

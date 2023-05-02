@@ -34,7 +34,7 @@ class VoteHeaderView: UICollectionReusableView {
         let safeArea = self.safeAreaLayoutGuide
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(leading)
-            make.top.equalTo(safeArea).offset(72)
+            make.top.equalTo(safeArea)
             make.height.equalTo(32)
         }
     }

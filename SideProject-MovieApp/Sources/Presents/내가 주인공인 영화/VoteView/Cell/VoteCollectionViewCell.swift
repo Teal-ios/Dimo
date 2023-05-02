@@ -21,6 +21,7 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
     let movieTitleLabel: UILabel = {
         let view = UILabel()
         view.font = Font.caption
+        view.textColor = Color.caption
         view.text = "더퍼스트슬램덩크"
 
         return view
@@ -31,12 +32,17 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
         view.backgroundColor = .label
         view.image = UIImage(systemName: "person.fill")
         view.clipsToBounds = true
-        view.layer.cornerRadius = 20
         return view
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imgView.layer.cornerRadius = imgView.frame.width / 2
+    }
         
     override func configure() {
-        [imgView, nameLabel, movieTitleLabel].forEach { self.addSubview($0) }
+        addSubview(imgView)
+        [nameLabel, movieTitleLabel].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {

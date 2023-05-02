@@ -21,6 +21,7 @@ class CharacterRecommandAndSearchHeaderView: UICollectionReusableView {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = .suitFont(ofSize: 16, weight: .Medium)
+        label.textColor = Color.caption
         label.text = "MBTI를 투표해 주세요"
         return label
     }()
