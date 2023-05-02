@@ -35,7 +35,7 @@ class VoteViewController: BaseViewController {
     
     func setDataSource() {
         let cellCharacterRegistration = UICollectionView.CellRegistration<CharacterRecommandAndSearchCollectionViewCell, VoteModel> { cell, indexPath, itemIdentifier in
-
+            cell.imgView.image = itemIdentifier.image
         }
         
         let cellVoteRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, VoteModel> { cell, indexPath, itemIdentifier in
@@ -46,7 +46,6 @@ class VoteViewController: BaseViewController {
             
             switch indexPath.section {
             case 0:
-
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellCharacterRegistration, for: indexPath, item: itemIdentifier)
                 return cell
             default:
@@ -78,12 +77,11 @@ class VoteViewController: BaseViewController {
         var section1Arr: [VoteModel] = []
         var section2Arr: [VoteModel] = []
         
-        for _ in 1...2 {
-            section1Arr.append(VoteModel())
-        }
+        section1Arr.append(VoteModel(image: UIImage(named: "CharacterRandom")))
+        section1Arr.append(VoteModel(image: UIImage(named: "CharacterSearch")))
         
         for _ in 1..<100 {
-            section2Arr.append(VoteModel())
+            section2Arr.append(VoteModel(image: nil))
         }
         
         snapshot.appendItems(section1Arr, toSection: 0)
