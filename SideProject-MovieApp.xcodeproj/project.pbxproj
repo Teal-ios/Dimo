@@ -71,6 +71,12 @@
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
 		2FD11DC22A00D4C7006796DD /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC12A00D4C7006796DD /* CharacterModel.swift */; };
+		2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */; };
+		2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */; };
+		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
+		2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */; };
+		2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */; };
+		2FD11DD42A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
@@ -213,6 +219,12 @@
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
 		2FD11DC12A00D4C7006796DD /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewController.swift; sourceTree = "<group>"; };
+		2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumView.swift; sourceTree = "<group>"; };
+		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
+		2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewModel.swift; sourceTree = "<group>"; };
+		2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumFirstHeaderView.swift; sourceTree = "<group>"; };
+		2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumReusebleHeaderView.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
@@ -299,7 +311,10 @@
 		2F39F67629FBBD3F00F5D368 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2FD11DCB2A00DEC9006796DD /* ViewModel */,
 				2F4D9CA629FE8247007B89E8 /* Coordinator */,
+				2FBD19C829FF65570005B1FA /* VoteView */,
+				2FD11DC62A00DE58006796DD /* MyMomentumView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -308,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */,
+				2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */,
+				2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -315,6 +332,7 @@
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
+				2FD11DC52A00DDFD006796DD /* Model */,
 				2FD11DC02A00BC92006796DD /* Cell */,
 				2FBD19C929FF65860005B1FA /* VoteViewController.swift */,
 				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
@@ -376,7 +394,6 @@
 			isa = PBXGroup;
 			children = (
 				2FBF4CB029CC98E600B65125 /* MainCoordinator.swift */,
-				2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -702,6 +719,42 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		2FD11DC52A00DDFD006796DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD19D829FF80BD0005B1FA /* VoteModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FD11DC62A00DE58006796DD /* MyMomentumView */ = {
+			isa = PBXGroup;
+			children = (
+				2FD11DD02A00E389006796DD /* Cell */,
+				2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */,
+				2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */,
+				2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */,
+				2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */,
+			);
+			path = MyMomentumView;
+			sourceTree = "<group>";
+		};
+		2FD11DCB2A00DEC9006796DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */,
+				2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD11DD02A00E389006796DD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		930B306329C999FD00935B41 /* 내가 주인공인 영화 */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,7 +762,6 @@
 				930B307229C99F1F00935B41 /* ViewModel */,
 				930B307129C99F1300935B41 /* Model */,
 				930B306429C999FD00935B41 /* MainView */,
-				2FBD19C829FF65570005B1FA /* VoteView */,
 				933028D529CC6A1100165B1E /* DetailView */,
 			);
 			path = "내가 주인공인 영화";
@@ -731,7 +783,6 @@
 			children = (
 				930B306D29C99EF600935B41 /* IamTheMainCharacterModel.swift */,
 				933028DC29CC6B2D00165B1E /* IamTheCharacterDetailModel.swift */,
-				2FBD19D829FF80BD0005B1FA /* VoteModel.swift */,
 				2FD11DC12A00D4C7006796DD /* CharacterModel.swift */,
 			);
 			path = Model;
@@ -741,7 +792,6 @@
 			isa = PBXGroup;
 			children = (
 				930B306F29C99F0400935B41 /* IamTheMainCharacterViewModel.swift */,
-				2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1021,12 +1071,15 @@
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */,
+				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
+				2FD11DD42A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
+				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				930B307429C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift in Sources */,
 				933028D729CC6B0A00165B1E /* IamTheCharacterDetailViewController.swift in Sources */,
@@ -1043,6 +1096,7 @@
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
+				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
@@ -1055,6 +1109,7 @@
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
+				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
@@ -1082,6 +1137,7 @@
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,
+				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
 				2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,

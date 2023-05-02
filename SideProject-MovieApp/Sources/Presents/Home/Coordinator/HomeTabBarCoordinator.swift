@@ -8,19 +8,19 @@
 import UIKit
 
 final class HomeTabBarCoordinator: Coordinator {
-
+    
     weak var delegate: CoordinatorDelegate?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
     var type: CoordinatorStyleCase = .tab
-
+    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.setNavigationBarHidden(true, animated: false)
         self.tabBarController = UITabBarController()
     }
-
+    
     func start() {
         let pages: [TabBarPageCase] = TabBarPageCase.allCases
         let controllers: [UINavigationController] = pages.map({
@@ -28,20 +28,20 @@ final class HomeTabBarCoordinator: Coordinator {
         })
         self.configureTabBarController(with: controllers)
     }
-
+    
     func currentPage() -> TabBarPageCase? {
         TabBarPageCase(index: self.tabBarController.selectedIndex)
     }
-
+    
     func selectPage(_ page: TabBarPageCase) {
         self.tabBarController.selectedIndex = page.pageOrderNumber
     }
-
+    
     func setSelectedIndex(_ index: Int) {
         guard let page = TabBarPageCase(index: index) else { return }
         self.tabBarController.selectedIndex = page.pageOrderNumber
     }
-
+    
     private func configureTabBarController(with tabViewControllers: [UIViewController]) {
         self.tabBarController.setViewControllers(tabViewControllers, animated: true)
         self.tabBarController.selectedIndex = TabBarPageCase.home.pageOrderNumber
@@ -52,7 +52,7 @@ final class HomeTabBarCoordinator: Coordinator {
         self.changeAnimation()
         self.navigationController.pushViewController(tabBarController, animated: true)
     }
-
+    
     private func configureTabBarItem(of page: TabBarPageCase) -> UITabBarItem {
         return UITabBarItem(
             title: page.pageTitle,
@@ -60,7 +60,7 @@ final class HomeTabBarCoordinator: Coordinator {
             tag: page.pageOrderNumber
         )
     }
-
+    
     private func createTabNavigationController(of page: TabBarPageCase) -> UINavigationController {
         let tabNavigationController = UINavigationController()
         tabNavigationController.setNavigationBarHidden(false, animated: false)
@@ -68,7 +68,7 @@ final class HomeTabBarCoordinator: Coordinator {
         connectTabCoordinator(of: page, to: tabNavigationController)
         return tabNavigationController
     }
-
+    
     private func connectTabCoordinator(of page: TabBarPageCase, to tabNavigationController: UINavigationController) {
         switch page {
         case .home:
@@ -76,19 +76,18 @@ final class HomeTabBarCoordinator: Coordinator {
             mainCoordinator.delegate = self
             self.childCoordinators.append(mainCoordinator)
             mainCoordinator.start()
-
+            
         case .check:
             let voteCoordinator = VoteCoordinator(tabNavigationController)
             voteCoordinator.delegate = self
             self.childCoordinators.append(voteCoordinator)
             voteCoordinator.start()
-
+            
         case .profile:
-//            let myPageCoordinator = MyPageCoordinator(tabNavigationController)
-//            myPageCoordinator.delegate = self
-//            self.childCoordinators.append(myPageCoordinator)
-//            myPageCoordinator.start()
-            print("추후")
+            let myMomentumCoordinator = MyMomentumCoordinator(tabNavigationController)
+            myMomentumCoordinator.delegate = self
+            self.childCoordinators.append(myMomentumCoordinator)
+            myMomentumCoordinator.start()
         case .setting:
             print("추후")
         }
@@ -99,9 +98,9 @@ extension HomeTabBarCoordinator: CoordinatorDelegate {
     
     func didFinish(childCoordinator: Coordinator) {
         self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
-//        if childCoordinator.type == .myPage {
-//            self.navigationController.viewControllers.removeAll()
-//            self.delegate?.didFinish(childCoordinator: self)
-//        }
+        //        if childCoordinator.type == .myPage {
+        //            self.navigationController.viewControllers.removeAll()
+        //            self.delegate?.didFinish(childCoordinator: self)
+        //        }
     }
 }
