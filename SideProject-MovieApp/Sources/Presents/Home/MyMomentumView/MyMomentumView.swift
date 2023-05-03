@@ -26,7 +26,8 @@ class MyMomentumView: BaseView {
     private let itemRatio = 1.0
     private let groupRatio = 0.9
     private let headerRatio = 1.0
-    private let headerAbsolute = 140.0
+    private let headerAbsolute = 40.0
+    private let profileHeaderAbsolute = 500.0
     
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -34,9 +35,8 @@ class MyMomentumView: BaseView {
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
                     switch sectionIndex {
-                    case 0: return self.contentLayout()
-                    case 1: return self.characterLayout()
-                    default: return self.reviewAndCommentLayout()
+                    case 0: return self.profileLayout()
+                    default: return self.characterLayout()
                     }
                 },
             configuration: configuration)
@@ -45,74 +45,10 @@ class MyMomentumView: BaseView {
     
     private func profileLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 2),
-            heightDimension: .fractionalHeight(itemRatio / 1.2)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
-        return section
-    }
-    
-    private func voteLayout() -> NSCollectionLayoutSection{
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio),
+            widthDimension: .fractionalWidth(itemRatio / 3),
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 6) // Use fractionalHeight instead of fractionalWidth
-        )
-        
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Use vertical instead of horizontal
-        
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute / 3)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: VoteHeaderView.identifier, alignment: .top
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
-        
-        return section
-    }
-    
-}
-
-extension MyMomentumView {
-    private func contentLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 2),
-            heightDimension: .fractionalHeight(itemRatio / 1.2)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
         
         let groupSize = NSCollectionLayoutSize(
@@ -124,11 +60,11 @@ extension MyMomentumView {
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
+            heightDimension: .absolute(profileHeaderAbsolute)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
+            elementKind: ProfileHeaderView.identifier, alignment: .top
         )
         
         let section = NSCollectionLayoutSection(group: group)
@@ -142,41 +78,9 @@ extension MyMomentumView {
 extension MyMomentumView {
     private func characterLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 2),
-            heightDimension: .fractionalHeight(itemRatio / 1.2)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
-        return section
-    }
-}
+            widthDimension: .fractionalWidth(itemRatio / 3),
+            heightDimension: .fractionalHeight(itemRatio)
 
-extension MyMomentumView {
-    private func reviewAndCommentLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 2),
-            heightDimension: .fractionalHeight(itemRatio / 1.2)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
@@ -194,7 +98,7 @@ extension MyMomentumView {
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
+            elementKind: MyMomentumHeaderView.identifier, alignment: .top
         )
         
         let section = NSCollectionLayoutSection(group: group)
@@ -204,3 +108,69 @@ extension MyMomentumView {
         return section
     }
 }
+//
+//extension MyMomentumView {
+//    private func characterLayout() -> NSCollectionLayoutSection {
+//        let itemSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(itemRatio / 2),
+//            heightDimension: .fractionalHeight(itemRatio / 1.2)
+//        )
+//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
+//
+//        let groupSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(groupRatio),
+//            heightDimension: .fractionalHeight(groupRatio / 3)
+//        )
+//
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+//
+//        let headerSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(headerRatio),
+//            heightDimension: .absolute(headerAbsolute)
+//        )
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
+//        )
+//
+//        let section = NSCollectionLayoutSection(group: group)
+//
+//        section.boundarySupplementaryItems = [header]
+//        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+//        return section
+//    }
+//}
+//
+//extension MyMomentumView {
+//    private func reviewAndCommentLayout() -> NSCollectionLayoutSection {
+//        let itemSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(itemRatio / 2),
+//            heightDimension: .fractionalHeight(itemRatio / 1.2)
+//        )
+//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
+//
+//        let groupSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(groupRatio),
+//            heightDimension: .fractionalHeight(groupRatio / 3)
+//        )
+//
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+//
+//        let headerSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(headerRatio),
+//            heightDimension: .absolute(headerAbsolute)
+//        )
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
+//        )
+//
+//        let section = NSCollectionLayoutSection(group: group)
+//
+//        section.boundarySupplementaryItems = [header]
+//        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+//        return section
+//    }
+//}

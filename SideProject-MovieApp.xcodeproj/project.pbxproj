@@ -76,7 +76,11 @@
 		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
 		2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */; };
 		2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */; };
-		2FD11DD42A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */; };
+		2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */; };
+		2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */; };
+		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
+		2FD11DDC2A010430006796DD /* LikeContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDB2A010430006796DD /* LikeContentCollectionViewCell.swift */; };
+		2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
@@ -224,7 +228,11 @@
 		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
 		2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewModel.swift; sourceTree = "<group>"; };
 		2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumFirstHeaderView.swift; sourceTree = "<group>"; };
-		2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumReusebleHeaderView.swift; sourceTree = "<group>"; };
+		2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumModel.swift; sourceTree = "<group>"; };
+		2FD11DD92A01019E006796DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2FD11DDB2A010430006796DD /* LikeContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigFinishCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
@@ -730,11 +738,13 @@
 		2FD11DC62A00DE58006796DD /* MyMomentumView */ = {
 			isa = PBXGroup;
 			children = (
+				2FD11DD52A00FCE3006796DD /* Model */,
 				2FD11DD02A00E389006796DD /* Cell */,
 				2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */,
-				2FD11DD32A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift */,
+				2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */,
 				2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */,
 				2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */,
+				2FD11DD92A01019E006796DD /* ProfileView.swift */,
 			);
 			path = MyMomentumView;
 			sourceTree = "<group>";
@@ -751,8 +761,18 @@
 		2FD11DD02A00E389006796DD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2FD11DDB2A010430006796DD /* LikeContentCollectionViewCell.swift */,
+				2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		2FD11DD52A00FCE3006796DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		930B306329C999FD00935B41 /* 내가 주인공인 영화 */ = {
@@ -1049,6 +1069,7 @@
 			files = (
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
+				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
@@ -1071,9 +1092,10 @@
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */,
+				2FD11DDC2A010430006796DD /* LikeContentCollectionViewCell.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
-				2FD11DD42A00E3B7006796DD /* MyMomentumReusebleHeaderView.swift in Sources */,
+				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
@@ -1107,6 +1129,7 @@
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
+				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
@@ -1134,6 +1157,7 @@
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
+				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,

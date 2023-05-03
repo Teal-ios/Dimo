@@ -1,5 +1,5 @@
 //
-//  MyMomentumFirstHeaderView.swift
+//  MyMomentumReusebleHeaderView.swift
 //  SideProject-MovieApp
 //
 //  Created by 이병현 on 2023/05/02.
@@ -8,8 +8,13 @@
 import UIKit
 import SnapKit
 
-class MyMomentumHeaderView: UICollectionReusableView {
-    static let identifier = "MyMomentumHeaderView"
+class ProfileHeaderView: UICollectionReusableView {
+    static let identifier = "ProfileHeaderView"
+    
+    let profileView: ProfileView = {
+        let view = ProfileView()
+        return view
+    }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +31,7 @@ class MyMomentumHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(profileView)
         self.addSubview(titleLabel)
         self.addSubview(moreButton)
         makeConstraints()
@@ -38,15 +44,21 @@ class MyMomentumHeaderView: UICollectionReusableView {
     func makeConstraints() {
         let leading = 16.0
         let safeArea = self.safeAreaLayoutGuide
+        
+        profileView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(safeArea)
+            make.height.equalTo(400)
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(leading)
-            make.top.equalTo(safeArea)
+            make.top.equalTo(profileView.snp.bottom)
             make.height.equalTo(32)
         }
         
         moreButton.snp.makeConstraints { make in
             make.trailing.equalTo(safeArea).offset(-leading)
-            make.top.equalTo(safeArea)
+            make.top.equalTo(profileView.snp.bottom)
             make.height.equalTo(32)
         }
     }
