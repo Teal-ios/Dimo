@@ -6,12 +6,32 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-final class HomeViewModel {
+final class HomeViewModel: ViewModelType {
     
+    var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
+    
+    struct Input {
+        let categoryButtonTapped: PublishRelay<Void>
+    }
+    
+    struct Output {
+        
+    }
 
     init(coordinator: HomeCoordinator?) {
         self.coordinator = coordinator
+    }
+    
+    func transform(input: Input) -> Output {
+        input.categoryButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showCategoryViewController()
+        }
+        .disposed(by: disposebag)
+        
+        return Output()
     }
 }

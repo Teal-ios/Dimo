@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import RxCocoa
 
 class HomeViewController: BaseViewController {
     let homeView = HomeView()
     
     private var viewModel: HomeViewModel
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("HomeViewController: fatal error")
+        
     }
     
     init(viewModel: HomeViewModel) {
@@ -24,6 +26,8 @@ class HomeViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
     
+    let categoryButtonTap = PublishRelay<Void>()
+
     override func loadView() {
         view = homeView
     }
@@ -31,6 +35,11 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDataSource()
+    }
+    
+    override func setupBinding() {
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap)
+        let output = self.viewModel.transform(input: input)
     }
 
     func setDataSource() {
@@ -81,7 +90,11 @@ class HomeViewController: BaseViewController {
         }
         
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            supplementaryView.categoryButton.rx.tap.bind(to: self.categoryButtonTap).disposed(by: self.disposeBag)
+
+
         }
+        
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             switch indexPath.section {
