@@ -28,4 +28,15 @@ final class HomeCoordinator: Coordinator {
         let vc = HomeViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
+    
+    func showCategoryViewController() {
+        let viewModel = CategoryViewModel(coordinator: self)
+        let vc = CategoryViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    
+    func dismissCategoryViewController() {
+        navigationController.dismiss(animated: true)
+    }
 }
