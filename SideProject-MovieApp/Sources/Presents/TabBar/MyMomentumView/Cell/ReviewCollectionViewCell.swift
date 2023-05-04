@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class ReviewCollectionViewCell: BaseCollectionViewCell {
-    static let identifier = "DigFinishCharacterCollectionViewCell"
+    static let identifier = "ReviewCollectionViewCell"
 
     let bgView: UIView = {
         let view = UIView()

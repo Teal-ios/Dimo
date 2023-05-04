@@ -8,7 +8,7 @@
 import UIKit
 
 class MyMomentumViewController: BaseViewController {
-    let myMomentumView = MyMomentumView()
+    private let myMomentumView = MyMomentumView()
     
     private var viewModel: MyMomentumViewModel
 
@@ -21,8 +21,8 @@ class MyMomentumViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
+    private var dataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
+    private var snapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
     
     override func loadView() {
         view = myMomentumView
@@ -30,11 +30,12 @@ class MyMomentumViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigation()
         setDataSource()
     }
 
     func setDataSource() {
-        let cellLikeContentRegistration = UICollectionView.CellRegistration<LikeContentCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
+        let cellLikeContentRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
         }
         
         let cellDigFinishCharacterRegistration = UICollectionView.CellRegistration<DigFinishCharacterCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
@@ -120,5 +121,17 @@ class MyMomentumViewController: BaseViewController {
         snapshot.appendItems(section3Arr, toSection: 2)
         snapshot.appendItems(section4Arr, toSection: 3)
         dataSource.apply(snapshot)
+    }
+}
+
+extension MyMomentumViewController {
+    private func setNavigation() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell"), style: .plain, target: self, action: #selector(bellButtonTapped))
+        self.navigationItem.rightBarButtonItem?.tintColor = .naviColor
+    }
+    
+    @objc
+    func bellButtonTapped() {
+        
     }
 }

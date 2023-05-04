@@ -27,7 +27,7 @@ class MyMomentumView: BaseView {
     private let groupRatio = 0.9
     private let headerRatio = 1.0
     private let headerAbsolute = 40.0
-    private let profileHeaderAbsolute = 500.0
+    private let profileHeaderAbsolute = 430.0
     
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
