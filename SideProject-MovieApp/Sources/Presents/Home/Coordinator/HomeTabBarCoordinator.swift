@@ -55,8 +55,8 @@ final class HomeTabBarCoordinator: Coordinator {
     
     private func configureTabBarItem(of page: TabBarPageCase) -> UITabBarItem {
         return UITabBarItem(
-            title: page.pageTitle,
-            image: UIImage(systemName: page.tabIconName()),
+            title: nil,
+            image: UIImage(named: page.tabIconName()),
             tag: page.pageOrderNumber
         )
     }

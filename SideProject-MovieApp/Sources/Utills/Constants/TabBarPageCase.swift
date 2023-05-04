@@ -45,13 +45,13 @@ enum TabBarPageCase: String, CaseIterable {
     func tabIconName() -> String {
         switch self {
         case .home:
-            return "house"
+            return "Home"
         case .check:
-            return "magnifyingglass"
+            return "Vote"
         case .profile:
-            return "book"
+            return "Profile"
         case .setting:
-            return "person"
+            return "Setting"
         }
     }
 }
