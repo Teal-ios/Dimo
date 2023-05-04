@@ -72,10 +72,10 @@ final class HomeTabBarCoordinator: Coordinator {
     private func connectTabCoordinator(of page: TabBarPageCase, to tabNavigationController: UINavigationController) {
         switch page {
         case .home:
-            let mainCoordinator = MainCoordinator(tabNavigationController)
-            mainCoordinator.delegate = self
-            self.childCoordinators.append(mainCoordinator)
-            mainCoordinator.start()
+            let homeCoordinator = HomeCoordinator(tabNavigationController)
+            homeCoordinator.delegate = self
+            self.childCoordinators.append(homeCoordinator)
+            homeCoordinator.start()
             
         case .check:
             let voteCoordinator = VoteCoordinator(tabNavigationController)

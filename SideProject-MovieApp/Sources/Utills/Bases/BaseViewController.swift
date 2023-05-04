@@ -52,6 +52,7 @@ class BaseViewController: UIViewController {
         setupLocalization()
         setupBinding()
         setData()
+        navigation()
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -102,14 +103,14 @@ class BaseViewController: UIViewController {
     
     func navigation() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = Color.white
+        navigationBarAppearance.backgroundColor = .black
         
-        let attributes = [NSAttributedString.Key.foregroundColor: Color.black,
-                          NSAttributedString.Key.font: UIFont(name: "", size: 24) ]
+//        let attributes = [NSAttributedString.Key.foregroundColor: Color.black,
+//                          NSAttributedString.Key.font: UIFont(name: "", size: 24) ]
         
-        navigationBarAppearance.titleTextAttributes = attributes
-        navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
-        navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
+//        navigationBarAppearance.titleTextAttributes = attributes
+//        navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
+//        navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
 
         let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0))
 
@@ -119,8 +120,11 @@ class BaseViewController: UIViewController {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = Color.black
-        navigationController?.view.backgroundColor = Color.white              /// Navagation 배경 색상을 지정
+        navigationController?.navigationBar.tintColor = .naviColor
+        navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func configureNavigationBar() {

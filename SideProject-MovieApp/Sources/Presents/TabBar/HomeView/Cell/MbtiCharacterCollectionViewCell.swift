@@ -1,26 +1,28 @@
 //
-//  likeContentCollectionViewCell.swift
+//  MbtiCharacterCollectionViewCell.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/02.
+//  Created by 이병현 on 2023/05/04.
 //
 
 import UIKit
 import SnapKit
 
-class LikeContentCollectionViewCell: BaseCollectionViewCell {
-    static let identifier = "LikeContentCollectionViewCell"
+class MbtiCharacterCollectionViewCell: BaseCollectionViewCell {
+    static let identifier = "MbtiCharacterCollectionViewCell"
 
+    
     let imgView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "person.fill")
+        view.image = UIImage(named: "finishSignUp")
         view.backgroundColor = .white100
+        view.clipsToBounds = true
         return view
     }()
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        imgView.layer.cornerRadius = 8
+        imgView.layer.cornerRadius = imgView.frame.width / 2
     }
         
     override func configure() {
@@ -28,6 +30,7 @@ class LikeContentCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func setConstraints() {
+        
         imgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }

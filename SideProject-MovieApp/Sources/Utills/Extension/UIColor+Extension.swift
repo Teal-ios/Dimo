@@ -60,6 +60,7 @@ extension UIColor {
 
 extension UIColor {
     static let backgroundGray = makeColor(from: "#272727")
+    static let naviColor = makeColor(from: "#7D7C7B")
 
 }
 
