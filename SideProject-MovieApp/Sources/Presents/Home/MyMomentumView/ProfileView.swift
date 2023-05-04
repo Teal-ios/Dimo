@@ -51,19 +51,21 @@ class ProfileView: BaseView {
     let introduceView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 8
+        view.backgroundColor = .backgroundGray
         return view
     }()
     
     let introduceLabel: UILabel = {
         let label = UILabel()
-        label.text = "자기소개입니당.ㅇ라민ㅇ라;ㅣㅁㄴ아ㅣ람ㄴ;ㅣㅇ라;ㅣㅁㄴㅇ라ㅣ;ㅁ낭ㄹ;ㅣㅁ나일;ㅏㅁㄴ;ㅣㅇ람ㄴㅇㄹㅇㄹㅇㅇ"
+        label.numberOfLines = 3
+        label.text = "자기소개입니당.ㅇ라민ㅇ라;ㅣㅁㄴ아ㅣ람ㄴ;ㅣㅇ라;ㅣㅁㄴㅇ라ㅣ;ㅁ낭ㄹ;ㅣㅁ나일;ㅏㅁㄴ;ㅣㅇ람ㄴㅇㄹㅇㄹㅇㅇasdasdasdasdasdadsdasdasdasdsadasdsadsadas"
         return label
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+        introduceView.layer.cornerRadius = 8
     }
     
     override init(frame: CGRect) {
@@ -119,7 +121,7 @@ class ProfileView: BaseView {
         }
         
         introduceView.snp.makeConstraints { make in
-            make.edges.equalTo(introduceLabel).inset(-4)
+            make.edges.equalTo(introduceLabel).inset(-16)
         }
     }
 }
