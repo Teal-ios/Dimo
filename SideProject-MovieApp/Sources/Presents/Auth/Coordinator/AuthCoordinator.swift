@@ -83,10 +83,19 @@ final class AuthCoordinator: Coordinator {
         navigationController.dismiss(animated: true)
     }
     
+    func showJoinMbtiViewController() {
+        let viewModel = JoinMbtiViewModel(coordinator: self)
+        let vc = JoinMbtiViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func connectHomeTabBarCoordinator() {
         let tabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
         tabBarCoordinator.start()
         childCoordinators.append(tabBarCoordinator)
-    }}
+    }
+    
+}
+
 
 

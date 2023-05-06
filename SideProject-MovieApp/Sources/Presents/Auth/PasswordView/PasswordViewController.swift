@@ -13,7 +13,7 @@ class PasswordViewController: BaseViewController {
     private var viewModel: PasswordViewModel
     
     //MARK: Input
-    private lazy var input = PasswordViewModel.Input(passwordText: self.passwordView.idTextFieldView.tf.rx.text, checkpwText: self.passwordView.passwordCheckView.tf.rx.text, didNextButtonTap: self.passwordView.duplicateCheckButton.rx.tap.withLatestFrom(self.passwordView.passwordCheckView.tf.rx.text.orEmpty).asSignal(onErrorJustReturn: ""))
+    private lazy var input = PasswordViewModel.Input(passwordText: self.passwordView.idTextFieldView.tf.rx.text, checkpwText: self.passwordView.passwordCheckView.tf.rx.text, didNextButtonTap: self.passwordView.nextButton.rx.tap.withLatestFrom(self.passwordView.passwordCheckView.tf.rx.text.orEmpty).asSignal(onErrorJustReturn: ""))
     
     override func loadView() {
         view = passwordView

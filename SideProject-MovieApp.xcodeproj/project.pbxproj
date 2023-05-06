@@ -35,6 +35,9 @@
 		2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */; };
 		2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */; };
 		2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */; };
+		2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */; };
+		2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */; };
+		2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -198,6 +201,9 @@
 		2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartViewController.swift; sourceTree = "<group>"; };
 		2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
 		2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiViewController.swift; sourceTree = "<group>"; };
+		2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiView.swift; sourceTree = "<group>"; };
+		2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiViewModel.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -412,6 +418,7 @@
 				93C48BB329D929B100644F6A /* PasswordViewModel.swift */,
 				2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */,
 				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
+				2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -448,6 +455,15 @@
 				2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */,
 			);
 			path = LoginStartView;
+			sourceTree = "<group>";
+		};
+		2FC33F702A06485F00AD284B /* JoinMbtiView */ = {
+			isa = PBXGroup;
+			children = (
+				2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */,
+				2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */,
+			);
+			path = JoinMbtiView;
 			sourceTree = "<group>";
 		};
 		2FC94E4529C00F0B0097E696 = {
@@ -733,6 +749,7 @@
 				2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */,
 				2F39F67129FBA98F00F5D368 /* PopupView */,
 				93C48BAD29D9298200644F6A /* PasswordView */,
+				2FC33F702A06485F00AD284B /* JoinMbtiView */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1160,6 +1177,7 @@
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FBF4CB129CC98E600B65125 /* MainCoordinator.swift in Sources */,
+				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
@@ -1203,6 +1221,7 @@
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
+				2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */,
 				2FD69EB42A03984600AA5A6E /* CircleCollectionViewCell.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
@@ -1222,6 +1241,7 @@
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
+				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,
 				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
