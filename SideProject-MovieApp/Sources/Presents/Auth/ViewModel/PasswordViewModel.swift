@@ -45,6 +45,7 @@ class PasswordViewModel: ViewModelType {
             .emit { [weak self] text in
                 guard let self = self else { return }
                 print(text)
+                self.coordinator?.showJoinMbtiViewController()
             }
             .disposed(by: disposebag)
         
