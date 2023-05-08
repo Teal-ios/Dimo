@@ -51,7 +51,7 @@ class JoinMbtiView: BaseView {
     }
     
     private let itemRatio = 1.0
-    private let groupRatio = 0.9
+    private let groupRatio = 1.0
     private let headerRatio = 1.0
     private let posterHeightRatio = 0.67
     private let headerAbsolute = 40.0
@@ -62,7 +62,10 @@ class JoinMbtiView: BaseView {
         let collectionViewLayout = UICollectionViewCompositionalLayout(
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
-                    return self.mbtiCardLayout()
+                    switch sectionIndex {
+                    case 0: return self.mbtiHeaderCardLayout()
+                    default: return self.mbtiCardLayout()
+                    }
                 },
             configuration: configuration)
         return collectionViewLayout
@@ -70,34 +73,62 @@ class JoinMbtiView: BaseView {
 }
 
 extension JoinMbtiView {
-    private func mbtiCardLayout() -> NSCollectionLayoutSection {
+    private func mbtiHeaderCardLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 3),
+            widthDimension: .fractionalWidth(itemRatio),
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 8)
-        
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 8)
+
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
+            heightDimension: .fractionalHeight(groupRatio / 4.5)
         )
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 2
+        )
+
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(headerRatio),
             heightDimension: .absolute(headerAbsolute)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: MyMomentumHeaderView.identifier, alignment: .top
+            elementKind: IamTheMainCharacterHeader.identifier, alignment: .top
         )
-        
+
         let section = NSCollectionLayoutSection(group: group)
-        
+
         section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+        return section
+    }
+}
+
+extension JoinMbtiView {
+    private func mbtiCardLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemRatio),
+            heightDimension: .fractionalHeight(itemRatio)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 8)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(groupRatio),
+            heightDimension: .fractionalHeight(groupRatio / 4.5)
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 2
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
         return section
     }
 }

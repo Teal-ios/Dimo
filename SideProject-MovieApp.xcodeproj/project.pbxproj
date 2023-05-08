@@ -38,6 +38,8 @@
 		2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */; };
 		2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */; };
 		2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */; };
+		2FC33F7A2A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F792A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift */; };
+		2FC33F7D2A08B6FD00AD284B /* JoinMbtiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC33F7C2A08B6FD00AD284B /* JoinMbtiModel.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -204,6 +206,8 @@
 		2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiViewController.swift; sourceTree = "<group>"; };
 		2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiView.swift; sourceTree = "<group>"; };
 		2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiViewModel.swift; sourceTree = "<group>"; };
+		2FC33F792A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FC33F7C2A08B6FD00AD284B /* JoinMbtiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiModel.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -460,10 +464,28 @@
 		2FC33F702A06485F00AD284B /* JoinMbtiView */ = {
 			isa = PBXGroup;
 			children = (
+				2FC33F7B2A08B6F400AD284B /* Model */,
+				2FC33F782A08B4E400AD284B /* Cell */,
 				2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */,
 				2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */,
 			);
 			path = JoinMbtiView;
+			sourceTree = "<group>";
+		};
+		2FC33F782A08B4E400AD284B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2FC33F792A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2FC33F7B2A08B6F400AD284B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FC33F7C2A08B6FD00AD284B /* JoinMbtiModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2FC94E4529C00F0B0097E696 = {
@@ -1154,6 +1176,7 @@
 			files = (
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
+				2FC33F7A2A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
@@ -1205,6 +1228,7 @@
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
+				2FC33F7D2A08B6FD00AD284B /* JoinMbtiModel.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
