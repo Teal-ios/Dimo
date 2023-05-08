@@ -19,26 +19,26 @@ extension UIColor {
 
 extension UIColor {
     /// Purple
-    static let purple100 = UIColor(rgb: 0x705FFC)
-    static let purple80 = UIColor(rgb: 0x8D7FFD)
-    static let purple60 = UIColor(rgb: 0xA99FFD)
-    static let purple40 = UIColor(rgb: 0xC6BFFE)
-    static let purple20 = UIColor(rgb: 0xE2DFFE)
+    static let purple100 = UIColor.makeColor(from: "#705FFC")
+    static let purple80 = UIColor.makeColor(from: "#8D7FFD")
+    static let purple60 = UIColor.makeColor(from: "#A99FFD")
+    static let purple40 = UIColor.makeColor(from: "#C6BFFE")
+    static let purple20 = UIColor.makeColor(from: "#E2DFFE")
     
     /// Black
-    static let black100 = UIColor(rgb: 0x262523)
-    static let black80 = UIColor(rgb: 0x51514F)
-    static let black60 = UIColor(rgb: 0x7D7C7B)
-    static let black40 = UIColor(rgb: 0xA8A8A7)
-    static let black20 = UIColor(rgb: 0xD4D3D3)
-    static let black10 = UIColor(rgb: 0xE9E9E9)
-    static let black5 = UIColor(rgb: 0xF4F4F4)
-    
+    static let black100 = UIColor.makeColor(from: "#0F0F0F")
+    static let black90 =  UIColor.makeColor(from: "#272727")
+    static let black80 = UIColor.makeColor(from: "#3F3F3F")
+    static let black60 = UIColor.makeColor(from: "#7D7C7B")
+    static let black40 = UIColor.makeColor(from: "#A8A8A7")
+    static let black20 = UIColor.makeColor(from: "#D4D3D3")
+    static let black10 = UIColor.makeColor(from: "#E9E9E9")
+    static let black5 = UIColor.makeColor(from: "#F4F4F4")
     /// White
-    static let white100 = UIColor(rgb: 0xFFFFFF)
+    static let white100 = UIColor.makeColor(from: "#FFFFFF")
     
     /// Error
-    static let error = UIColor(rgb: 0xF24D46)
+    static let error = UIColor.makeColor(from: "#F24D46")
 }
 
 extension UIColor {
@@ -57,10 +57,3 @@ extension UIColor {
         return .init(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }
-
-extension UIColor {
-    static let backgroundGray = makeColor(from: "#272727")
-    static let naviColor = makeColor(from: "#7D7C7B")
-
-}
-

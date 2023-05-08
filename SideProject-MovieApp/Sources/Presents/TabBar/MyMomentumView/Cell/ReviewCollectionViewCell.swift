@@ -13,7 +13,7 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
 
     let bgView: UIView = {
         let view = UIView()
-        view.backgroundColor = .backgroundGray
+        view.backgroundColor = .black90
         view.clipsToBounds = true
         return view
     }()
