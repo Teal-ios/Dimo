@@ -14,9 +14,12 @@ class JoinMbtiViewModel: ViewModelType {
     var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
+    
     struct Input{
         let findMbtiButtonTapped: ControlEvent<Void>
         let nextButtonTapped: ControlEvent<Void>
+        var sectionSelected: BehaviorSubject<[Int]>
+
     }
     
     struct Output{
