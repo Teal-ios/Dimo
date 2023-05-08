@@ -120,7 +120,7 @@ class BaseViewController: UIViewController {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = .naviColor
+        navigationController?.navigationBar.tintColor = .black60
         navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

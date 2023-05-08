@@ -153,7 +153,7 @@ class HomeViewController: BaseViewController {
 extension HomeViewController {
     private func setNavigation() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell"), style: .plain, target: self, action: #selector(bellButtonTapped))
-        self.navigationItem.rightBarButtonItem?.tintColor = .naviColor
+        self.navigationItem.rightBarButtonItem?.tintColor = .black60
     }
     
     @objc

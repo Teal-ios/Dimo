@@ -51,7 +51,7 @@ class ProfileView: BaseView {
     let introduceView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .backgroundGray
+        view.backgroundColor = .black90
         return view
     }()
     
