@@ -9,7 +9,13 @@ import UIKit
 import SnapKit
 
 class JoinMbtiView: BaseView {
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    
+    let headerLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.title1
+        label.text = "당신의 MBTI는 무엇인가요?"
+        return label
+    }()
     
     let findMbtiButton: WordLabelButton = {
         let button = WordLabelButton(text: "나의 MBTI를 잘 모르겠어요")
@@ -23,112 +29,150 @@ class JoinMbtiView: BaseView {
         return button
     }()
     
+    let eView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "E"), title: "외향형")
+        return view
+    }()
+    
+    let iView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "I"), title: "내향형")
+        return view
+    }()
+    
+    let nView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "N"), title: "직관형")
+        return view
+    }()
+    
+    let sView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "S"), title: "감각형")
+        return view
+    }()
+    
+    let tView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "T"), title: "사고형")
+        return view
+    }()
+    
+    let fView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "F"), title: "감정형")
+        return view
+    }()
+    
+    let jView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "J"), title: "판단형")
+        return view
+    }()
+    
+    let pView: MbtiAlphabetView = {
+        let view = MbtiAlphabetView(image: UIImage(named: "P"), title: "인식형")
+        return view
+    }()
+    
+    lazy var totalStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            section1StackView, section2StackView, section3StackView, section4StackView
+        ])
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16
+        return stackView
+    }()
+    
+    lazy var section1StackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            eView, iView
+        ])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    lazy var section2StackView: UIStackView = {
+        
+        
+        let stackView = UIStackView(arrangedSubviews: [
+            nView, sView
+        ])
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    lazy var section3StackView: UIStackView = {
+        
+        
+        let stackView = UIStackView(arrangedSubviews: [
+            tView, fView
+        ])
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    lazy var section4StackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            jView, pView
+        ])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        hierarchy()
+        snapkit()
     }
     
-    override func setupLayout() {
-        self.addSubview(collectionView)
-        self.addSubview(findMbtiButton)
-        self.addSubview(nextButton)
-        collectionView.snp.makeConstraints { [weak self] make in
-            guard let self else { return }
-            make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(140)
+    
+    
+    
+    func hierarchy() {
+        
+        addSubview(headerLabel)
+        addSubview(totalStackView)
+        addSubview(findMbtiButton)
+        addSubview(nextButton)
+    }
+    
+    func snapkit() {
+        headerLabel.snp.makeConstraints { make in
+            make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(32)
+        }
+        
+        totalStackView.snp.makeConstraints { make in
+            make.top.equalTo(headerLabel.snp.bottom)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(findMbtiButton.snp.top).inset(16)
         }
         
         findMbtiButton.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom).offset(24)
+            make.top.equalTo(totalStackView.snp.bottom)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(16)
         }
         
         nextButton.snp.makeConstraints { make in
             make.top.equalTo(findMbtiButton.snp.bottom).offset(16)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(36)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(36)
         }
     }
-    
-    private let itemRatio = 1.0
-    private let groupRatio = 1.0
-    private let headerRatio = 1.0
-    private let posterHeightRatio = 0.67
-    private let headerAbsolute = 40.0
-    private let todayDIMOHeaderAbsolute = 108.0
-    
-    private func createLayout() -> UICollectionViewLayout {
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        let collectionViewLayout = UICollectionViewCompositionalLayout(
-            sectionProvider:
-                { sectionIndex, layoutEnvironment in
-                    switch sectionIndex {
-                    case 0: return self.mbtiHeaderCardLayout()
-                    default: return self.mbtiCardLayout()
-                    }
-                },
-            configuration: configuration)
-        return collectionViewLayout
-    }
 }
 
-extension JoinMbtiView {
-    private func mbtiHeaderCardLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio),
-            heightDimension: .fractionalHeight(itemRatio)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 8)
 
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 4.5)
-        )
 
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 2
-        )
 
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: IamTheMainCharacterHeader.identifier, alignment: .top
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-
-        section.boundarySupplementaryItems = [header]
-        return section
-    }
-}
-
-extension JoinMbtiView {
-    private func mbtiCardLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio),
-            heightDimension: .fractionalHeight(itemRatio)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 8)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 4.5)
-        )
-
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 2
-        )
-
-        let section = NSCollectionLayoutSection(group: group)
-        return section
-    }
-}

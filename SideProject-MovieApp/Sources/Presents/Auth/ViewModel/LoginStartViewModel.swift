@@ -41,7 +41,9 @@ final class LoginStartViewModel: ViewModelType {
         }.disposed(by: disposebag)
         
         input.signupButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showSignupTermsViewController()
+//            self?.coordinator?.showSignupTermsViewController()
+            self?.coordinator?.showJoinMbtiViewController()
+
             
         }
         .disposed(by: disposebag)
@@ -51,6 +53,7 @@ final class LoginStartViewModel: ViewModelType {
     }
     
     func pushSignupTermsViewController() {
-        self.coordinator?.showSignupTermsViewController()
+//        self.coordinator?.showSignupTermsViewController()
+        self.coordinator?.showJoinMbtiViewController()
     }
 }
