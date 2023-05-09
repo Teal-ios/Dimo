@@ -70,6 +70,10 @@
 		2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* OnBoardingView.swift */; };
 		2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* AuthCoordinator.swift */; };
 		2FC94ED029C03C3D0097E696 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECF29C03C3D0097E696 /* Font.swift */; };
+		2FCC96522A0A4A270031F1CF /* JoinMbtiSection2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96512A0A4A270031F1CF /* JoinMbtiSection2CollectionViewCell.swift */; };
+		2FCC96542A0A4A2E0031F1CF /* JoinMbtiSection3CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96532A0A4A2E0031F1CF /* JoinMbtiSection3CollectionViewCell.swift */; };
+		2FCC96562A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96552A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift */; };
+		2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
@@ -239,6 +243,10 @@
 		2FC94ECB29C038000097E696 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		2FC94ECD29C039620097E696 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		2FC94ECF29C03C3D0097E696 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		2FCC96512A0A4A270031F1CF /* JoinMbtiSection2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiSection2CollectionViewCell.swift; sourceTree = "<group>"; };
+		2FCC96532A0A4A2E0031F1CF /* JoinMbtiSection3CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiSection3CollectionViewCell.swift; sourceTree = "<group>"; };
+		2FCC96552A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMbtiSection4CollectionViewCell.swift; sourceTree = "<group>"; };
+		2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiAlphabetView.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
@@ -468,6 +476,7 @@
 				2FC33F782A08B4E400AD284B /* Cell */,
 				2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */,
 				2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */,
+				2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */,
 			);
 			path = JoinMbtiView;
 			sourceTree = "<group>";
@@ -476,6 +485,9 @@
 			isa = PBXGroup;
 			children = (
 				2FC33F792A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift */,
+				2FCC96512A0A4A270031F1CF /* JoinMbtiSection2CollectionViewCell.swift */,
+				2FCC96532A0A4A2E0031F1CF /* JoinMbtiSection3CollectionViewCell.swift */,
+				2FCC96552A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1228,6 +1240,7 @@
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
+				2FCC96542A0A4A2E0031F1CF /* JoinMbtiSection3CollectionViewCell.swift in Sources */,
 				2FC33F7D2A08B6FD00AD284B /* JoinMbtiModel.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
@@ -1242,6 +1255,7 @@
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
+				2FCC96562A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
@@ -1266,6 +1280,7 @@
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
 				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,
+				2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */,
 				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
 				2FC94E9F29C013880097E696 /* Router.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
@@ -1275,6 +1290,7 @@
 				93C48B4E29D1863200644F6A /* OnboardingtextFieldView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
+				2FCC96522A0A4A270031F1CF /* JoinMbtiSection2CollectionViewCell.swift in Sources */,
 				933028DD29CC6B2D00165B1E /* IamTheCharacterDetailModel.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,

@@ -1,32 +1,25 @@
 //
-//  JoinMbtiCollectionViewCell.swift
+//  JoinMbtiSection4CollectionViewCell.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/08.
+//  Created by 이병현 on 2023/05/09.
 //
 
 import UIKit
 import SnapKit
 
-class JoinMbtiSection1CollectionViewCell: BaseCollectionViewCell {
-    static let identifier = "JoinMbtiSection1CollectionViewCell"
+class JoinMbtiSection4CollectionViewCell: BaseCollectionViewCell {
+    static let identifier = "JoinMbtiSection4CollectionViewCell"
     var uuid: String?
 
-    
-    var cellTapped: Bool = false {
+    override var isSelected: Bool {
         didSet {
-            if uuid == "JoinMbtiSection1CollectionViewCell" {
-                update(isSelected: cellTapped)
-            }
+            bgView.layer.borderColor = isSelected ? UIColor.purple80.cgColor : UIColor.black80.cgColor
+            mbtiLabel.textColor = isSelected ? .white100 : .black80
+            bgView.backgroundColor = isSelected ? .black90 : .black100
         }
     }
     
-    func update(isSelected: Bool) {
-        bgView.layer.borderColor = isSelected ? UIColor.purple80.cgColor : UIColor.black80.cgColor
-        mbtiLabel.textColor = isSelected ? .white100 : .black80
-        bgView.backgroundColor = isSelected ? .black90 : .black100
-    }
-        
     let bgView: UIView = {
         let view = UIView()
         view.backgroundColor = .black100
