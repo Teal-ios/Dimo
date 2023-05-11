@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class JoinMbtiViewModel: ViewModelType {
+final class JoinMbtiViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
@@ -36,7 +36,7 @@ class JoinMbtiViewModel: ViewModelType {
         }.disposed(by: disposebag)
         
         input.nextButtonTapped.bind { [weak self] _ in
-            print("완료")
+            self?.coordinator?.showJoinCompleteViewController()
         }.disposed(by: disposebag)
         
         self.indexPathCell.bind { [weak self] index in

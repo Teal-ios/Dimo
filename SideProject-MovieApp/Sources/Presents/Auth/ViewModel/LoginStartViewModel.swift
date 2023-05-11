@@ -48,9 +48,4 @@ final class LoginStartViewModel: ViewModelType {
         
         return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped)
     }
-    
-    func pushSignupTermsViewController() {
-//        self.coordinator?.showSignupTermsViewController()
-        self.coordinator?.showJoinMbtiViewController()
-    }
 }

@@ -13,6 +13,11 @@
 		2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */; };
 		2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492329EE38F500F400CB /* GoogleSignIn */; };
 		2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492529EE38F500F400CB /* GoogleSignInSwift */; };
+		2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F1D2A0C927100A1CD53 /* JoinCompleteView.swift */; };
+		2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F1F2A0C928100A1CD53 /* JoinCompleteViewController.swift */; };
+		2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */; };
+		2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F242A0C9A8E00A1CD53 /* FindIDViewController.swift */; };
+		2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F262A0C9A9600A1CD53 /* FindIDView.swift */; };
 		2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19C929FF65860005B1FA /* VoteViewController.swift */; };
 		2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CB29FF67330005B1FA /* VoteView.swift */; };
 		2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */; };
@@ -176,6 +181,11 @@
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarCoordinator.swift; sourceTree = "<group>"; };
 		2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPageCase.swift; sourceTree = "<group>"; };
+		2F979F1D2A0C927100A1CD53 /* JoinCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteView.swift; sourceTree = "<group>"; };
+		2F979F1F2A0C928100A1CD53 /* JoinCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteViewController.swift; sourceTree = "<group>"; };
+		2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteViewModel.swift; sourceTree = "<group>"; };
+		2F979F242A0C9A8E00A1CD53 /* FindIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIDViewController.swift; sourceTree = "<group>"; };
+		2F979F262A0C9A9600A1CD53 /* FindIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIDView.swift; sourceTree = "<group>"; };
 		2FBD19C929FF65860005B1FA /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		2FBD19CB29FF67330005B1FA /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 		2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +391,24 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		2F979F1C2A0C925D00A1CD53 /* JoinCompleteView */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F1D2A0C927100A1CD53 /* JoinCompleteView.swift */,
+				2F979F1F2A0C928100A1CD53 /* JoinCompleteViewController.swift */,
+			);
+			path = JoinCompleteView;
+			sourceTree = "<group>";
+		};
+		2F979F232A0C9A7700A1CD53 /* FindingIDView */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F242A0C9A8E00A1CD53 /* FindIDViewController.swift */,
+				2F979F262A0C9A9600A1CD53 /* FindIDView.swift */,
+			);
+			path = FindingIDView;
+			sourceTree = "<group>";
+		};
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +459,7 @@
 				2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */,
 				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
 				2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */,
+				2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -784,6 +813,8 @@
 				2F39F67129FBA98F00F5D368 /* PopupView */,
 				93C48BAD29D9298200644F6A /* PasswordView */,
 				2FC33F702A06485F00AD284B /* JoinMbtiView */,
+				2F979F1C2A0C925D00A1CD53 /* JoinCompleteView */,
+				2F979F232A0C9A7700A1CD53 /* FindingIDView */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1223,6 +1254,7 @@
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
+				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				930B307429C9A56A00935B41 /* IamTheMainCharacterCoordinator.swift in Sources */,
@@ -1230,8 +1262,10 @@
 				933028D929CC6B1200165B1E /* IamTheCharacterDetailView.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
+				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2FD11DC22A00D4C7006796DD /* CharacterModel.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
@@ -1259,6 +1293,7 @@
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
+				2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */,
 				2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */,
 				2FD69EB42A03984600AA5A6E /* CircleCollectionViewCell.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
@@ -1295,6 +1330,7 @@
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
+				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
