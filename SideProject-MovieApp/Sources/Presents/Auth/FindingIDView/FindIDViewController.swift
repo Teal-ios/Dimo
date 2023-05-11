@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class FindIDViewController: BaseViewController {
+final class FindIDViewController: BaseViewController {
     
     //MARK: Delegate
     let findIDView = FindIDView()
