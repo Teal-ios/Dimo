@@ -28,7 +28,7 @@ final class NotificationIDViewModel: ViewModelType {
 
     func transform(input: Input) -> Output {
         input.pwFindButtonTapped.bind { [weak self]_ in
-            self?.coordinator?.showNotificationIDViewController()
+            self?.coordinator?.showFindPWViewController()
         }.disposed(by: disposebag)
         
         input.nextButtonTapped.bind { [weak self]_ in
