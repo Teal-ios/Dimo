@@ -35,7 +35,6 @@ class FindIDViewController: BaseViewController {
         super.viewDidLoad()
         
         
-        print("check")
     }
     
     override func setupBinding() {

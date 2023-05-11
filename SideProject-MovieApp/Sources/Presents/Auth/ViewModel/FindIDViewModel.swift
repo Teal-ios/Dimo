@@ -58,7 +58,7 @@ final class FindIDViewModel: ViewModelType {
         
         
         input.nextButtonTapped.bind { [weak self] _ in
-            print("ID알려주는 화면으로 이동")
+            self?.coordinator?.showNotificationIDViewController()
         }.disposed(by: disposebag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, idRequestButtonTapped: input.idRequestButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)

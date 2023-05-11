@@ -107,6 +107,12 @@ final class AuthCoordinator: Coordinator {
         let vc = FindIDViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showNotificationIDViewController() {
+        let viewModel = NotificationIDViewModel(coordinator: self)
+        let vc = NotificationIDViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 
