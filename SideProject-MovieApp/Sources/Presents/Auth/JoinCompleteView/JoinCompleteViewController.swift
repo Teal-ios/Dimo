@@ -14,6 +14,9 @@ class JoinCompleteViewController: BaseViewController {
     
     private var viewModel: JoinCompleteViewModel
     
+    //MARK: Input
+    private lazy var input = JoinCompleteViewModel.Input(dimoStartButtonTapped: joinCompleteView.dimoStartButton.rx.tap)
+    
     override func loadView() {
         view = joinCompleteView
     }
@@ -27,7 +30,7 @@ class JoinCompleteViewController: BaseViewController {
         
     }
     override func setupBinding() {
-        
+        let output = viewModel.transform(input: input)
         
     }
     

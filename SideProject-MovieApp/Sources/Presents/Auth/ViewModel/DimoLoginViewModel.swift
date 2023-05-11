@@ -18,6 +18,9 @@ class DimoLoginViewModel: ViewModelType {
         let nextButtonTapped: ControlEvent<Void>
         let idText: ControlProperty<String?>
         let passwordText: ControlProperty<String?>
+        let idFindButtonTapped: ControlEvent<Void>
+        let pwFindButtonTapped: ControlEvent<Void>
+
     }
     
     struct Output{
@@ -51,6 +54,15 @@ class DimoLoginViewModel: ViewModelType {
                 return nickname && password
             }
         
+        input.idFindButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showFindIDViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.pwFindButtonTapped.bind { [weak self] _ in
+            print("비밀번호 찾기로 이동")
+        }
+        .disposed(by: disposebag)
         
         return Output(nextButtonTapped: input.nextButtonTapped, loginValid: loginValid)
     }
