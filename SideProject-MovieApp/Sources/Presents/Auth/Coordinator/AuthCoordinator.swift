@@ -95,6 +95,12 @@ final class AuthCoordinator: Coordinator {
         childCoordinators.append(tabBarCoordinator)
     }
     
+    func showJoinCompleteViewController() {
+        let viewModel = JoinCompleteViewModel(coordinator: self)
+        let vc = JoinCompleteViewController(viewModel: viewModel)
+        changeAnimation()
+        navigationController.viewControllers = [vc]
+    }
 }
 
 

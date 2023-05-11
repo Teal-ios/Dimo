@@ -11,6 +11,7 @@ class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setHierarchy()
         setupAttributes()
         setupLayout()
         setupData()
@@ -21,6 +22,12 @@ class BaseView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    func setHierarchy() { }
+    
+    /**
+     code로 view에 addSubview를 여기서 작성
+     */
     
     func setupData() { }
     
