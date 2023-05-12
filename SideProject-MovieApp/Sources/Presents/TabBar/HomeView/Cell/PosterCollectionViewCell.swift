@@ -9,13 +9,22 @@ import UIKit
 import SnapKit
 
 class PosterCollectionViewCell: BaseCollectionViewCell {
+    
     static let identifier = "PosterCollectionViewCell"
-
-    lazy var gradientView: UIView = {
+    
+    let gradientView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
+    
+    let gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.gradientWhite.cgColor ,UIColor.gradientBlack.cgColor]
+        gradient.locations = [0.4 , 1.0]
+        return gradient
+    }()
+    
     
     let imgView: UIImageView = {
         let view = UIImageView()
@@ -40,13 +49,25 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        gradientView.layer.addSublayer(gradientLayer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = 8
+        gradientLayer.frame = gradientView.bounds
     }
-        
+    
+    
+    
     override func configure() {
-        [imgView, characterLabel, titleLabel, gradientView].forEach { self.addSubview($0) }
+        [imgView, gradientView, characterLabel, titleLabel].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
