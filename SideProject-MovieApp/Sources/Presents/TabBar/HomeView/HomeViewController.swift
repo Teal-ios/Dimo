@@ -98,7 +98,6 @@ class HomeViewController: BaseViewController {
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
             supplementaryView.categoryButton.rx.tap.bind(to: self.categoryButtonTap).disposed(by: self.disposeBag)
 
-
         }
         
         

@@ -18,13 +18,27 @@ final class JoinMbtiViewModel: ViewModelType {
     struct Input{
         let findMbtiButtonTapped: ControlEvent<Void>
         let nextButtonTapped: ControlEvent<Void>
+        let eButtonTapped: ControlEvent<Void>
+        let iButtonTapped: ControlEvent<Void>
+        let nButtonTapped: ControlEvent<Void>
+        let sButtonTapped: ControlEvent<Void>
+        let tButtonTapped: ControlEvent<Void>
+        let fButtonTapped: ControlEvent<Void>
+        let jButtonTapped: ControlEvent<Void>
+        let pButtonTapped: ControlEvent<Void>
 
     }
     
     struct Output{
+        let eButtonTapped: ControlEvent<Void>
+        let iButtonTapped: ControlEvent<Void>
+        let nButtonTapped: ControlEvent<Void>
+        let sButtonTapped: ControlEvent<Void>
+        let tButtonTapped: ControlEvent<Void>
+        let fButtonTapped: ControlEvent<Void>
+        let jButtonTapped: ControlEvent<Void>
+        let pButtonTapped: ControlEvent<Void>
     }
-    var indexPathCell: PublishSubject<Int> = PublishSubject()
-    var sectionSelected: BehaviorRelay<[Bool]> = BehaviorRelay(value: [false, false, false, false, false, false, false, false])
     
     init(coordinator: AuthCoordinator? = nil) {
         self.coordinator = coordinator
@@ -39,44 +53,7 @@ final class JoinMbtiViewModel: ViewModelType {
             self?.coordinator?.showJoinCompleteViewController()
         }.disposed(by: disposebag)
         
-        self.indexPathCell.bind { [weak self] index in
-            var indexArr = self?.sectionSelected.value ?? []
-            if index == 0 {
-                if indexArr[0] == false {
-                    if indexArr[1] == false {
-                        indexArr[0] = true
-                    } else {
-                        indexArr[0] = true
-                        indexArr[1] = false
-                    }
-                } else { // indexArr[0] 이 true일 때
-                    if indexArr[1] == false {
-                        indexArr[0] = false
-                    } else {
-                        indexArr[1] = false
-                        indexArr[0] = true
-                    }
-                }
-            } else if index == 1 {
-                if indexArr[1] == false {
-                    if indexArr[0] == false {
-                        indexArr[1] = true
-                    } else {
-                        indexArr[1] = true
-                        indexArr[0] = false
-                    }
-                } else { // indexArr[0] 이 true일 때
-                    if indexArr[0] == false {
-                        indexArr[1] = false
-                    } else {
-                        indexArr[0] = false
-                        indexArr[1] = true
-                    }
-                }
-            }
-            print(indexArr)
-        }.disposed(by: disposebag)
-
-        return Output()
+        return Output(eButtonTapped: input.eButtonTapped
+                      , iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped)
     }
 }
