@@ -60,7 +60,7 @@ class DimoLoginViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.pwFindButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showFindPWViewController()
+            print("비밀번호 찾기로 이동")
         }
         .disposed(by: disposebag)
         
