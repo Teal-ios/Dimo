@@ -20,7 +20,7 @@ class DimoLoginViewModel: ViewModelType {
         let passwordText: ControlProperty<String?>
         let idFindButtonTapped: ControlEvent<Void>
         let pwFindButtonTapped: ControlEvent<Void>
-
+        let dimoFirstStartButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -60,7 +60,12 @@ class DimoLoginViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.pwFindButtonTapped.bind { [weak self] _ in
-            print("비밀번호 찾기로 이동")
+            self?.coordinator?.showFindPWViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.dimoFirstStartButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showSignupTermsViewController()
         }
         .disposed(by: disposebag)
         

@@ -16,6 +16,7 @@ final class HomeViewModel: ViewModelType {
     
     struct Input {
         let categoryButtonTapped: PublishRelay<Void>
+        let posterCellSelected: PublishRelay<Void>
     }
     
     struct Output {
@@ -29,6 +30,11 @@ final class HomeViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.categoryButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showCategoryViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.posterCellSelected.bind { [weak self] _ in
+            print("posterCell 눌렸다.")
         }
         .disposed(by: disposebag)
         

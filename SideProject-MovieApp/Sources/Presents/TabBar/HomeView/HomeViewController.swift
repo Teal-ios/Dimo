@@ -27,6 +27,9 @@ class HomeViewController: BaseViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
     
     let categoryButtonTap = PublishRelay<Void>()
+    let posterCellSelected = PublishRelay<Void>()
+    
+    
 
     override func loadView() {
         view = homeView
@@ -38,12 +41,14 @@ class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, posterCellSelected: posterCellSelected)
         let output = self.viewModel.transform(input: input)
     }
+    
 
     func setDataSource() {
         let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+            // 문제 이거 해결해야함
         }
         
         let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
@@ -67,6 +72,7 @@ class HomeViewController: BaseViewController {
             switch indexPath.section {
             case 0:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellPosterRegistration, for: indexPath, item: itemIdentifier)
+
                 return cell
             case 1:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellHeroCharacterRegistration, for: indexPath, item: itemIdentifier)
@@ -147,8 +153,10 @@ class HomeViewController: BaseViewController {
         snapshot.appendItems(section4Arr, toSection: 3)
         snapshot.appendItems(section5Arr, toSection: 4)
         dataSource.apply(snapshot)
+
     }
 }
+
 
 extension HomeViewController {
     private func setNavigation() {
