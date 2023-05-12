@@ -11,6 +11,12 @@ import SnapKit
 class PosterCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "PosterCollectionViewCell"
 
+    lazy var gradientView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "loginBottom")
@@ -40,7 +46,7 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
     }
         
     override func configure() {
-        [imgView, characterLabel, titleLabel].forEach { self.addSubview($0) }
+        [imgView, characterLabel, titleLabel, gradientView].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -59,5 +65,10 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(24)
         }
+        
+        gradientView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
     }
 }
+

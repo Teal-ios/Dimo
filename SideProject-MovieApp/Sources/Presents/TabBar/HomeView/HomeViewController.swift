@@ -41,9 +41,13 @@ class HomeViewController: BaseViewController {
         let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap)
         let output = self.viewModel.transform(input: input)
     }
+    
 
     func setDataSource() {
         let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+            
+            // 문제 이거 해결해야함
+            cell.gradientView.setGradient(color1: .gradientWhite, color2: .gradientBlack)
         }
         
         let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in

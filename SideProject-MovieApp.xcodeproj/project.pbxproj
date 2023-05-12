@@ -116,6 +116,10 @@
 		2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EBB2A03A9E400AA5A6E /* CategoryViewController.swift */; };
 		2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
+		2FDFB1892A0DD80000732788 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB1882A0DD80000732788 /* SendMessageView.swift */; };
+		2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */; };
+		2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */; };
+		2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */; };
 		930B306929C999FD00935B41 /* IamTheMainCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */; };
 		930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */; };
 		930B306B29C999FD00935B41 /* IamTheMainCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B306729C999FD00935B41 /* IamTheMainCharacterCell.swift */; };
@@ -303,6 +307,10 @@
 		2FD69EBB2A03A9E400AA5A6E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
+		2FDFB1882A0DD80000732788 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
+		2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
+		2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewModel.swift; sourceTree = "<group>"; };
+		2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		930B306529C999FD00935B41 /* IamTheMainCharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterView.swift; sourceTree = "<group>"; };
 		930B306629C999FD00935B41 /* IamTheMainCharacterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterHeader.swift; sourceTree = "<group>"; };
 		930B306729C999FD00935B41 /* IamTheMainCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamTheMainCharacterCell.swift; sourceTree = "<group>"; };
@@ -497,6 +505,7 @@
 				2F979F282A0CA4E100A1CD53 /* FindIDViewModel.swift */,
 				2F979F2F2A0CB3ED00A1CD53 /* NotificationIDViewModel.swift */,
 				2F979F362A0D016F00A1CD53 /* FindingPWViewModel.swift */,
+				2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -737,6 +746,7 @@
 				933028C529CB46AF00165B1E /* UIColor+Extension.swift */,
 				2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */,
 				2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */,
+				2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -854,6 +864,7 @@
 				2F979F1C2A0C925D00A1CD53 /* JoinCompleteView */,
 				2F979F232A0C9A7700A1CD53 /* FindingIDView */,
 				2F979F2A2A0CABA700A1CD53 /* NotificaionIDView */,
+				2FDFB1872A0DD7CB00732788 /* SendMessageView */,
 				2F979F312A0CFE0A00A1CD53 /* FindingPWView */,
 			);
 			path = Auth;
@@ -963,6 +974,15 @@
 				2FD69EBB2A03A9E400AA5A6E /* CategoryViewController.swift */,
 			);
 			path = CategoryView;
+			sourceTree = "<group>";
+		};
+		2FDFB1872A0DD7CB00732788 /* SendMessageView */ = {
+			isa = PBXGroup;
+			children = (
+				2FDFB1882A0DD80000732788 /* SendMessageView.swift */,
+				2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */,
+			);
+			path = SendMessageView;
 			sourceTree = "<group>";
 		};
 		930B306329C999FD00935B41 /* 내가 주인공인 영화 */ = {
@@ -1260,6 +1280,7 @@
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				2FC33F7A2A08B4F100AD284B /* JoinMbtiCollectionViewCell.swift in Sources */,
+				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
@@ -1332,6 +1353,7 @@
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
+				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FCC96562A0A4A360031F1CF /* JoinMbtiSection4CollectionViewCell.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
@@ -1368,6 +1390,7 @@
 				930B306A29C999FD00935B41 /* IamTheMainCharacterHeader.swift in Sources */,
 				2F979F2E2A0CABFD00A1CD53 /* NotificationIDViewController.swift in Sources */,
 				93C48B4E29D1863200644F6A /* OnboardingtextFieldView.swift in Sources */,
+				2FDFB1892A0DD80000732788 /* SendMessageView.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
@@ -1386,6 +1409,7 @@
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
+				2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */,
 				2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */,
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,

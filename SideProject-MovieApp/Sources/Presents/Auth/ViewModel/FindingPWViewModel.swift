@@ -55,7 +55,7 @@ final class FindPWViewModel: ViewModelType {
         
         
         input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showNotificationIDViewController()
+            self?.coordinator?.showSendMessageViewController()
         }.disposed(by: disposebag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)

@@ -119,6 +119,12 @@ final class AuthCoordinator: Coordinator {
         let vc = FindPWViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showSendMessageViewController() {
+        let viewModel = SendMessageViewModel(coordinator: self)
+        let vc = SendMessageViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 

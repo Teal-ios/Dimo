@@ -23,7 +23,7 @@ class DimoLoginViewController: BaseViewController {
     override func setupBinding() {
         navigationController?.isNavigationBarHidden = false
 
-        let input = DimoLoginViewModel.Input(nextButtonTapped: dimoLoginView.nextButton.rx.tap, idText: dimoLoginView.idTextFieldView.tf.rx.text, passwordText: dimoLoginView.passwordView.tf.rx.text, idFindButtonTapped: dimoLoginView.idFindButton.rx.tap, pwFindButtonTapped: dimoLoginView.passwordFindButton.rx.tap)
+        let input = DimoLoginViewModel.Input(nextButtonTapped: dimoLoginView.nextButton.rx.tap, idText: dimoLoginView.idTextFieldView.tf.rx.text, passwordText: dimoLoginView.passwordView.tf.rx.text, idFindButtonTapped: dimoLoginView.idFindButton.rx.tap, pwFindButtonTapped: dimoLoginView.passwordFindButton.rx.tap, dimoFirstStartButtonTapped: dimoLoginView.firstDimoButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
