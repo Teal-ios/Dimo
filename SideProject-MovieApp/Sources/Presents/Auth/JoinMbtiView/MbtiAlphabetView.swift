@@ -25,6 +25,11 @@ class MbtiAlphabetView: BaseView {
         return label
     }()
     
+    let mbtiButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     lazy var totalStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [
             imgView, mbtiLabel
@@ -57,8 +62,12 @@ class MbtiAlphabetView: BaseView {
     override func setupLayout() {
         super.setupLayout()
         addSubview(totalStackView)
+        addSubview(mbtiButton)
         totalStackView.snp.makeConstraints { make in
             make.center.equalTo(self.snp.center)
+        }
+        mbtiButton.snp.makeConstraints { make in
+            make.edges.equalTo(self.snp.edges)
         }
     }
 }
