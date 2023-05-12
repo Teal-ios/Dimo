@@ -12,7 +12,6 @@ import RxCocoa
 final class FindPWViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     var disposebag: DisposeBag = DisposeBag()
-    var timer: Timer?
     var leftTime: Int?
     
     struct Input {

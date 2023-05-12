@@ -25,6 +25,7 @@
 		2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F322A0CFE3A00A1CD53 /* FindingPWView.swift */; };
 		2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F342A0CFE4100A1CD53 /* FindingPWViewController.swift */; };
 		2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F362A0D016F00A1CD53 /* FindingPWViewModel.swift */; };
+		2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */; };
 		2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19C929FF65860005B1FA /* VoteViewController.swift */; };
 		2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CB29FF67330005B1FA /* VoteView.swift */; };
 		2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */; };
@@ -200,6 +201,7 @@
 		2F979F322A0CFE3A00A1CD53 /* FindingPWView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingPWView.swift; sourceTree = "<group>"; };
 		2F979F342A0CFE4100A1CD53 /* FindingPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingPWViewController.swift; sourceTree = "<group>"; };
 		2F979F362A0D016F00A1CD53 /* FindingPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindingPWViewModel.swift; sourceTree = "<group>"; };
+		2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		2FBD19C929FF65860005B1FA /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		2FBD19CB29FF67330005B1FA /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 		2FBD19CD29FF6DF30005B1FA /* VoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				933028C329CB469200165B1E /* UIFont+Enum.swift */,
 				933028C529CB46AF00165B1E /* UIColor+Extension.swift */,
 				2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */,
+				2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1384,6 +1387,7 @@
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
 				2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */,
+				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
