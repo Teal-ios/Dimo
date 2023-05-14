@@ -63,13 +63,17 @@ class SettingViewController: BaseViewController {
             }
         }
         
+        let titleSettingHeader = UICollectionView.SupplementaryRegistration<TitleSettingHeaderView>(elementKind: TitleSettingHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        }
+        
+        
         let settingHeader = UICollectionView.SupplementaryRegistration<SettingHeaderView>(elementKind: SettingHeaderView.identifier) { supplementaryView, elementKind, indexPath in
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             switch indexPath.section {
             case 0:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: settingHeader, for: indexPath)
+                let header = collectionView.dequeueConfiguredReusableSupplementary(using: titleSettingHeader, for: indexPath)
                 header.titleLabel.text = "계정 설정"
                 return header
             case 1:

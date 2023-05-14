@@ -42,7 +42,7 @@ class DimoLoginView: BasicLoginView {
         
         idFindButton.snp.makeConstraints { make in
             make.top.equalTo(idTextFieldView.snp.bottom).offset(8)
-            make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(8)
             make.width.equalTo(80)
             make.height.equalTo(16)
         }
@@ -55,7 +55,7 @@ class DimoLoginView: BasicLoginView {
         
         passwordFindButton.snp.makeConstraints { make in
             make.top.equalTo(passwordView.snp.bottom).offset(8)
-            make.leading.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(8)
             make.width.equalTo(100)
             make.height.equalTo(16)
         }
