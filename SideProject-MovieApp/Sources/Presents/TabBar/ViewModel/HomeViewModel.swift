@@ -16,7 +16,7 @@ final class HomeViewModel: ViewModelType {
     
     struct Input {
         let categoryButtonTapped: PublishRelay<Void>
-        let posterCellSelected: PublishRelay<Void>
+        let posterCellSelected: PublishSubject<Void>
     }
     
     struct Output {
@@ -34,7 +34,7 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.posterCellSelected.bind { [weak self] _ in
-            print("posterCell 눌렸다.")
+            self?.coordinator?.showCharacterDetailViewController()
         }
         .disposed(by: disposebag)
         

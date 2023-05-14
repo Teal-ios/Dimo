@@ -15,7 +15,6 @@ class JoinMbtiViewController: BaseViewController {
     private var viewModel: JoinMbtiViewModel
     
     //MARK: Input
-    
     private lazy var input = JoinMbtiViewModel.Input(findMbtiButtonTapped: joinMbtiView.findMbtiButton.rx.tap, nextButtonTapped: joinMbtiView.nextButton.rx.tap, eButtonTapped: joinMbtiView.eView.mbtiButton.rx.tap, iButtonTapped: joinMbtiView.iView.mbtiButton.rx.tap, nButtonTapped: joinMbtiView.nView.mbtiButton.rx.tap, sButtonTapped: joinMbtiView.sView.mbtiButton.rx.tap, tButtonTapped: joinMbtiView.tView.mbtiButton.rx.tap, fButtonTapped: joinMbtiView.fView.mbtiButton.rx.tap, jButtonTapped: joinMbtiView.jView.mbtiButton.rx.tap, pButtonTapped: joinMbtiView.pView.mbtiButton.rx.tap)
     
     override func loadView() {

@@ -21,7 +21,7 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
     let gradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.gradientWhite.cgColor ,UIColor.gradientBlack.cgColor]
-        gradient.locations = [0.4 , 1.0]
+        gradient.locations = [0.3 , 1.0]
         return gradient
     }()
     
