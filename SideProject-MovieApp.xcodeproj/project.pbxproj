@@ -47,6 +47,7 @@
 		2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */; };
 		2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */; };
 		2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */; };
+		2FBF01112A10DB1200A06DD9 /* TitleSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF01102A10DB1200A06DD9 /* TitleSettingHeaderView.swift */; };
 		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
@@ -228,6 +229,7 @@
 		2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCoordinator.swift; sourceTree = "<group>"; };
 		2FBD19DC29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRecommandAndSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRecommandAndSearchHeaderView.swift; sourceTree = "<group>"; };
+		2FBF01102A10DB1200A06DD9 /* TitleSettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSettingHeaderView.swift; sourceTree = "<group>"; };
 		2FBF4C9629CC76E500B65125 /* SUIT-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.otf"; sourceTree = "<group>"; };
 		2FBF4C9729CC76E500B65125 /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
 		2FBF4C9829CC76E500B65125 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				2F1AB9D32A10C6CF001178EA /* SettingBaseCollectionViewCell.swift */,
 				2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */,
 				2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */,
+				2FBF01102A10DB1200A06DD9 /* TitleSettingHeaderView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1292,6 +1295,7 @@
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
+				2FBF01112A10DB1200A06DD9 /* TitleSettingHeaderView.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
