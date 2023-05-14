@@ -10,6 +10,14 @@
 		2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C22A10B7F7001178EA /* FeedView.swift */; };
 		2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */; };
 		2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */; };
+		2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9CA2A10C243001178EA /* SettingCoordinator.swift */; };
+		2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */; };
+		2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9CF2A10C28F001178EA /* SettingView.swift */; };
+		2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */; };
+		2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D32A10C6CF001178EA /* SettingBaseCollectionViewCell.swift */; };
+		2F1AB9D72A10C6F9001178EA /* SettingEtcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */; };
+		2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D92A10C710001178EA /* SettingModel.swift */; };
+		2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */; };
 		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
 		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
 		2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */; };
@@ -185,6 +193,14 @@
 		2F1AB9C22A10B7F7001178EA /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		2F1AB9CA2A10C243001178EA /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2F1AB9CF2A10C28F001178EA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		2F1AB9D32A10C6CF001178EA /* SettingBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEtcCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F1AB9D92A10C710001178EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -369,6 +385,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9D82A10C709001178EA /* Model */,
+				2F1AB9D52A10C6D1001178EA /* Cell */,
+				2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */,
+				2F1AB9CF2A10C28F001178EA /* SettingView.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		2F1AB9D52A10C6D1001178EA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9D32A10C6CF001178EA /* SettingBaseCollectionViewCell.swift */,
+				2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */,
+				2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2F1AB9D82A10C709001178EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9D92A10C710001178EA /* SettingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2F39F67129FBA98F00F5D368 /* PopupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +431,7 @@
 				2FBD19C829FF65570005B1FA /* VoteView */,
 				2FD69EA32A03741800AA5A6E /* HomeView */,
 				2FD11DC62A00DE58006796DD /* MyMomentumView */,
+				2F1AB9CC2A10C27C001178EA /* SettingView */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -394,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */,
+				2F1AB9CA2A10C243001178EA /* SettingCoordinator.swift */,
 				2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */,
 				2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */,
 				2FD69EAB2A03848200AA5A6E /* HomeCoordinator.swift */,
@@ -875,6 +922,7 @@
 				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
 				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
+				2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1248,6 +1296,7 @@
 				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
+				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
 				2FC94EA129C013A10097E696 /* EndPoint.swift in Sources */,
@@ -1259,6 +1308,7 @@
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
 				2FDD74532A10A4C300A75AB9 /* CharacterDetailView.swift in Sources */,
 				2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */,
+				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
@@ -1271,7 +1321,10 @@
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
+				2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
+				2F1AB9D72A10C6F9001178EA /* SettingEtcCollectionViewCell.swift in Sources */,
+				2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
@@ -1296,6 +1349,7 @@
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
+				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
 				2FC94EA329C013AC0097E696 /* URLConstant.swift in Sources */,
@@ -1351,6 +1405,7 @@
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
+				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
@@ -1359,6 +1414,7 @@
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
+				2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */,
 				2F979F302A0CB3ED00A1CD53 /* NotificationIDViewModel.swift in Sources */,
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,

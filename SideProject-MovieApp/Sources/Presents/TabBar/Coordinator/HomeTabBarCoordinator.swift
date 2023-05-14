@@ -89,7 +89,10 @@ final class HomeTabBarCoordinator: Coordinator {
             self.childCoordinators.append(myMomentumCoordinator)
             myMomentumCoordinator.start()
         case .setting:
-            print("추후")
+            let settingCoordinator = SettingCoordinator(tabNavigationController)
+            settingCoordinator.delegate = self
+            self.childCoordinators.append(settingCoordinator)
+            settingCoordinator.start()
         }
     }
 }
