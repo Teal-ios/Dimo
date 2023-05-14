@@ -33,13 +33,6 @@ final class AppCoordinator: Coordinator {
         authCoordinator.start()
         childCoordinators.append(authCoordinator)
     }
-
-    private func connectMainFlow() {
-        let MainCoordinator = MainCoordinator(self.navigationController)
-        MainCoordinator.delegate = self
-        MainCoordinator.start()
-        childCoordinators.append(MainCoordinator)
-    }
 }
 
 extension AppCoordinator: CoordinatorDelegate {
@@ -52,8 +45,6 @@ extension AppCoordinator: CoordinatorDelegate {
         switch childCoordinator.type {
         case .auth:
             self.connectAuthFlow()
-        case .main:
-            self.connectMainFlow()
         default:
             break
         }

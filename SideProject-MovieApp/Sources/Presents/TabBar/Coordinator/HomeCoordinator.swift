@@ -39,4 +39,10 @@ final class HomeCoordinator: Coordinator {
     func dismissCategoryViewController() {
         navigationController.dismiss(animated: true)
     }
+    
+    func showCharacterDetailViewController() {
+        let viewModel = CharacterDetailViewModel(coordinator: self)
+        let vc = CharacterDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

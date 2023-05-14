@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import RxCocoa
 
 class HomeViewController: BaseViewController {
@@ -27,16 +28,17 @@ class HomeViewController: BaseViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
     
     let categoryButtonTap = PublishRelay<Void>()
-    let posterCellSelected = PublishRelay<Void>()
+    let posterCellSelected = PublishSubject<Void>()
     
-    
-
     override func loadView() {
         view = homeView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.homeView.collectionView.delegate = self
+        setNavigation()
         setDataSource()
     }
     
@@ -48,7 +50,6 @@ class HomeViewController: BaseViewController {
 
     func setDataSource() {
         let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-            // 문제 이거 해결해야함
         }
         
         let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
@@ -156,10 +157,15 @@ class HomeViewController: BaseViewController {
     }
 }
 
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.posterCellSelected.onNext(())
+    }
+}
 
 extension HomeViewController {
     private func setNavigation() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bell"), style: .plain, target: self, action: #selector(bellButtonTapped))
+        self.navigationItem.rightBarButtonItem =  UIBarButtonItem(image: UIImage(named: "bell"), style: .plain, target: self, action: #selector(bellButtonTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .black60
     }
     
