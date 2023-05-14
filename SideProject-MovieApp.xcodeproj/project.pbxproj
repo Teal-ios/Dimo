@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C22A10B7F7001178EA /* FeedView.swift */; };
+		2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */; };
+		2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */; };
 		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
 		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
 		2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */; };
@@ -179,6 +182,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F1AB9C22A10B7F7001178EA /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -868,6 +874,7 @@
 				2FD69EA92A03843C00AA5A6E /* HomeViewModel.swift */,
 				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
+				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -968,6 +975,8 @@
 			isa = PBXGroup;
 			children = (
 				2FDD745D2A10AADA00A75AB9 /* FeedViewController.swift */,
+				2F1AB9C22A10B7F7001178EA /* FeedView.swift */,
+				2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */,
 			);
 			path = FeedView;
 			sourceTree = "<group>";
@@ -1260,6 +1269,7 @@
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
+				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
@@ -1341,9 +1351,11 @@
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
+				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
+				2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */,
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
