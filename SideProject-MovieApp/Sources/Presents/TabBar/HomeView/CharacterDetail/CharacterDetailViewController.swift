@@ -22,8 +22,8 @@ final class CharacterDetailViewController: TabmanViewController {
         return view
     }()
     
-    private var vcs: Array<BaseViewController> = [FeedViewController(), AnalyzeViewController()]
-    private var vc1 = FeedViewController()
+    private var vcs: Array<BaseViewController> = [FeedViewController(viewModel: FeedViewModel()), AnalyzeViewController()]
+    private var vc1 = FeedViewController(viewModel: FeedViewModel())
     private var vc2 = AnalyzeViewController()
     
     private let viewModel: CharacterDetailViewModel

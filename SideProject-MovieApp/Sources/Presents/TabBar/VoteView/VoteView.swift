@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class VoteView: BaseView {
+final class VoteView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
     override init(frame: CGRect) {
