@@ -134,6 +134,8 @@
 		2FDD9E6C2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9E6B2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift */; };
 		2FDD9E6F2A12235900A41FF7 /* FeedDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9E6E2A12235900A41FF7 /* FeedDetailModel.swift */; };
 		2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9E702A122FFA00A41FF7 /* TabmanCoordinator.swift */; };
+		2FDD9E732A12608600A41FF7 /* FeedDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9E722A12608600A41FF7 /* FeedDetailHeaderView.swift */; };
+		2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD9E742A12622F00A41FF7 /* DynamicCollectionView.swift */; };
 		2FDFB1892A0DD80000732788 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB1882A0DD80000732788 /* SendMessageView.swift */; };
 		2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */; };
 		2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */; };
@@ -331,6 +333,8 @@
 		2FDD9E6B2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FDD9E6E2A12235900A41FF7 /* FeedDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailModel.swift; sourceTree = "<group>"; };
 		2FDD9E702A122FFA00A41FF7 /* TabmanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanCoordinator.swift; sourceTree = "<group>"; };
+		2FDD9E722A12608600A41FF7 /* FeedDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderView.swift; sourceTree = "<group>"; };
+		2FDD9E742A12622F00A41FF7 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		2FDFB1882A0DD80000732788 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewModel.swift; sourceTree = "<group>"; };
@@ -789,6 +793,7 @@
 				2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */,
 				2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */,
 				2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */,
+				2FDD9E742A12622F00A41FF7 /* DynamicCollectionView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1059,6 +1064,7 @@
 				2FDD9E6A2A121FC100A41FF7 /* Cell */,
 				2FDD9E642A121EB300A41FF7 /* FeedDetailView.swift */,
 				2FDD9E662A121EB900A41FF7 /* FeedDetailViewController.swift */,
+				2FDD9E722A12608600A41FF7 /* FeedDetailHeaderView.swift */,
 			);
 			path = FeedDetail;
 			sourceTree = "<group>";
@@ -1351,6 +1357,7 @@
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
 				2FDD74532A10A4C300A75AB9 /* CharacterDetailView.swift in Sources */,
 				2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */,
+				2FDD9E732A12608600A41FF7 /* FeedDetailHeaderView.swift in Sources */,
 				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
@@ -1412,6 +1419,7 @@
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
+				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,

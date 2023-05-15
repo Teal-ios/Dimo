@@ -20,7 +20,7 @@ final class TabmanCoordinator: Coordinator {
     }
 
     func start() {
-        showFeedDetailViewController()
+        showCharacterDetailViewController()
     }
     
     func showCharacterDetailViewController() {
