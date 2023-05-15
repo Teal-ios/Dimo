@@ -12,9 +12,11 @@ class CategoryViewController: BaseViewController {
     private let categoryView = CategoryView()
     
     private var viewModel: CategoryViewModel
+    
     override func loadView() {
         view = categoryView
     }
+    
     init(viewModel: CategoryViewModel) {
         self.viewModel = viewModel
         super.init()

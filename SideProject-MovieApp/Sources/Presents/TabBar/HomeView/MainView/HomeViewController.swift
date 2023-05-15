@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController {
     let homeView = HomeView()
     
     private var viewModel: HomeViewModel
@@ -159,7 +159,12 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.posterCellSelected.onNext(())
+        switch indexPath.section {
+        case 0:
+            self.posterCellSelected.onNext(())
+        default:
+            print(indexPath.section)
+        }
     }
 }
 

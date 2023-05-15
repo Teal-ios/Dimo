@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class HomeCoordinator: Coordinator {
+final class HomeCoordinator: Coordinator, CoordinatorDelegate {
+    func didFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+        //        if childCoordinator.type == .myPage {
+        //            self.navigationController.viewControllers.removeAll()
+        //            self.delegate?.didFinish(childCoordinator: self)
+        //        }
+    }
+    
     weak var delegate: CoordinatorDelegate?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
@@ -41,8 +49,9 @@ final class HomeCoordinator: Coordinator {
     }
     
     func showCharacterDetailViewController() {
-        let viewModel = CharacterDetailViewModel(coordinator: self)
-        let vc = CharacterDetailViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        let tabmanCoordinator = TabmanCoordinator(navigationController)
+        tabmanCoordinator.delegate = self
+        self.childCoordinators.append(tabmanCoordinator)
+        tabmanCoordinator.start()
     }
 }
