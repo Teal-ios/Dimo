@@ -26,7 +26,7 @@ class FeedDetailView: BaseView {
     private let itemRatio = 1.0
     private let groupRatio = 1.0
     private let headerRatio = 1.0
-    private let headerAbsolute = 40.0
+    private let headerAbsolute = 500.0
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         let collectionViewLayout = UICollectionViewCompositionalLayout(
@@ -61,7 +61,7 @@ extension FeedDetailView {
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: MyMomentumHeaderView.identifier, alignment: .top
+            elementKind: FeedDetailHeaderView.identifier, alignment: .top
         )
         
         let section = NSCollectionLayoutSection(group: group)

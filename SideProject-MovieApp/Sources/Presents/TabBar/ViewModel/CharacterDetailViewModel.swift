@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class CharacterDetailViewModel: ViewModelType {
+final class CharacterDetailViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?

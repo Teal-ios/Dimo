@@ -35,7 +35,6 @@ class SettingHeaderView: UICollectionReusableView {
     }
     
     func makeConstraints() {
-        let leading = 16.0
         let safeArea = self.safeAreaLayoutGuide
 
         titleLabel.snp.makeConstraints { make in

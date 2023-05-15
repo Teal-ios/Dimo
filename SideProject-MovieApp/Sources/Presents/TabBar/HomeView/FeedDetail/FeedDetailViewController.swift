@@ -48,7 +48,7 @@ extension FeedDetailViewController {
             return cell
         })
         
-        let header = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        let header = UICollectionView.SupplementaryRegistration<FeedDetailHeaderView>(elementKind: FeedDetailHeaderView.identifier) { supplementaryView, elementKind, indexPath in
             
         }
         

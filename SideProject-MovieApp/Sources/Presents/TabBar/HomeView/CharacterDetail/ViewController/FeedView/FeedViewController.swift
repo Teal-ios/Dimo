@@ -34,7 +34,6 @@ final class FeedViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.feedView.collectionView.delegate = self
         setDataSource()
     }
@@ -74,6 +73,9 @@ extension FeedViewController {
 extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.reviewCellSelected.onNext(())
-        print("찍혀야지")
+        
+        //이부분을 어떻게 뺄 지 고민해보기
+        let vc = FeedDetailViewController(viewModel: FeedDetailViewModel())
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
