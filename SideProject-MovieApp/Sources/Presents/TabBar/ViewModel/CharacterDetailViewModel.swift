@@ -12,7 +12,7 @@ import RxCocoa
 class CharacterDetailViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
-    private weak var coordinator: HomeCoordinator?
+    private weak var coordinator: TabmanCoordinator?
     
     struct Input{
 
@@ -22,7 +22,7 @@ class CharacterDetailViewModel: ViewModelType {
     struct Output{
     }
     
-    init(coordinator: HomeCoordinator? = nil) {
+    init(coordinator: TabmanCoordinator? = nil) {
         self.coordinator = coordinator
     }
     

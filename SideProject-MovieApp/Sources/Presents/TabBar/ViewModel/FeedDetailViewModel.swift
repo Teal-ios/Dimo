@@ -1,21 +1,20 @@
 //
-//  FeedViewModel.swift
+//  FeedDetailViewModel.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/14.
+//  Created by 이병현 on 2023/05/15.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-final class FeedViewModel: ViewModelType {
+final class FeedDetailViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
     
     struct Input{
-        let reviewCellSelected: PublishSubject<Void>
 
 
     }
@@ -28,11 +27,7 @@ final class FeedViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.reviewCellSelected.bind { [weak self] _ in
-            print("이게 먹음?")
-            self?.coordinator?.showFeedDetailViewController()
-        }
-        .disposed(by: disposebag)
+
         return Output()
     }
 }
