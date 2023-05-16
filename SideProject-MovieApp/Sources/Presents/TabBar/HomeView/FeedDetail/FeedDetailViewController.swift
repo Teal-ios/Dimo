@@ -27,13 +27,45 @@ class FeedDetailViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
+    var categoryDataSource: UICollectionViewDiffableDataSource<Int, CategoryModel>!
+    var categorySnapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
+
     
     var dataSource: UICollectionViewDiffableDataSource<Int, FeedDetailModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, FeedDetailModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCategoryDataSource()
         setDataSource()
+    }
+}
+
+extension FeedDetailViewController {
+    func setCategoryDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<CategoryCollectionViewCell, CategoryModel> {  cell, indexPath, itemIdentifier in
+            cell.categoryLabel.text = itemIdentifier.category
+            if itemIdentifier.spoil == true {
+                cell.bgView.backgroundColor = .purple20
+                cell.categoryLabel.textColor = .purple100
+            }
+        }
+        
+        categoryDataSource = UICollectionViewDiffableDataSource(collectionView: feedDetailView.categoryCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        })
+        categorySnapshot.appendSections([0])
+        var categoryArr: [CategoryModel] = []
+        
+        categoryArr.append(CategoryModel(category: "스포주의", spoil: true))
+        categoryArr.append(CategoryModel(category: "정대만", spoil: false))
+        categoryArr.append(CategoryModel(category: "ENTP", spoil: false))
+        categoryArr.append(CategoryModel(category: "더퍼스트슬램덩크", spoil: false))
+
+
+        categorySnapshot.appendItems(categoryArr, toSection: 0)
+        categoryDataSource.apply(categorySnapshot)
     }
 }
 
