@@ -11,28 +11,34 @@ import SnapKit
 class FeedDetailHeaderView: UICollectionReusableView {
     static let identifier = "FeedDetailHeaderView"
     
-    let categoryCollectionView: DynamicCollectionView = {
-        let view = DynamicCollectionView(frame: CGRect.zero, collectionViewLayout: createLayout())
-       return view
-    }()
-    
     let profileImgView: UIImageView = {
         let view = UIImageView()
+        view.image = UIImage(named: "finishSignUp")
         return view
     }()
     
     let nicknameLabel: UILabel = {
         let label = UILabel()
+        label.text = "디모최고"
+        label.textColor = .white100
+        label.font = Font.body2
         return label
     }()
     
     let mbtiLabel: UILabel = {
         let label = UILabel()
+        label.font = Font.caption
+        label.textColor = Color.caption
+        label.text = "ISFJ"
         return label
     }()
     
     let mainTextLabel: UILabel = {
         let label = UILabel()
+        label.text = "않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다."
+        label.numberOfLines = 0
+        label.font = Font.body3
+        label.textColor = .white100
         return label
     }()
     
@@ -47,24 +53,30 @@ class FeedDetailHeaderView: UICollectionReusableView {
     let likeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "LikeSelect")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     let reviewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Review")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     let likeLabel: UILabel = {
         let label = UILabel()
         label.text = "좋아요"
+        label.font = Font.body3
+        label.textColor = .black60
         return label
     }()
     
     let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "댓글달기"
+        label.font = Font.body3
+        label.textColor = .black60
         return label
     }()
     
@@ -81,16 +93,18 @@ class FeedDetailHeaderView: UICollectionReusableView {
     lazy var likeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [likeImageView, likeLabel])
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 12
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
         return stackView
     }()
     
     lazy var reviewStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [reviewImageView, reviewLabel])
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 12
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
         return stackView
     }()
     
@@ -104,7 +118,6 @@ class FeedDetailHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(categoryCollectionView)
         self.addSubview(profileImgView)
         self.addSubview(nicknameLabel)
         self.addSubview(mbtiLabel)
@@ -122,13 +135,9 @@ class FeedDetailHeaderView: UICollectionReusableView {
     
     func makeConstraints() {
         let safeArea = self.safeAreaLayoutGuide
-        categoryCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(safeArea)
-            make.horizontalEdges.equalTo(safeArea).inset(16)
-            make.height.greaterThanOrEqualTo(48)
-        }
+
         profileImgView.snp.makeConstraints { make in
-            make.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
+            make.top.equalTo(safeArea)
             make.height.width.equalTo(50)
             make.leading.equalTo(16)
         }
@@ -140,18 +149,19 @@ class FeedDetailHeaderView: UICollectionReusableView {
         }
         
         mbtiLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(profileImgView.snp.top)
+            make.top.equalTo(nicknameLabel.snp.bottom).offset(4)
             make.leading.equalTo(profileImgView.snp.trailing).offset(8)
             make.height.equalTo(16)
         }
         
         totalStackView.snp.makeConstraints { make in
             make.height.equalTo(56)
-            make.horizontalEdges.bottom.equalTo(safeArea)
+            make.horizontalEdges.equalTo(safeArea).inset(32)
+            make.bottom.equalTo(safeArea)
         }
         
         likeAndReviewAndViewsLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(mbtiLabel.snp.top).offset(-16)
+            make.bottom.equalTo(totalStackView.snp.top).offset(8)
             make.horizontalEdges.equalTo(16)
             make.height.equalTo(16)
         }
@@ -159,7 +169,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
         mainTextLabel.snp.makeConstraints { make in
             make.top.equalTo(mbtiLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeArea).inset(16)
-            make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.bottom)
+            make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.top)
         }
     }
 }
