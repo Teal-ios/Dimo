@@ -20,7 +20,9 @@ final class TabmanCoordinator: Coordinator {
     }
 
     func start() {
-        showCharacterDetailViewController()
+      let viewModel = FeedViewModel(coordinator: self)
+      let vc = FeedViewController(viewModel: viewModel)
+      navigationController.pushViewController(vc, animated: true)
     }
     
     func showCharacterDetailViewController() {
@@ -31,8 +33,11 @@ final class TabmanCoordinator: Coordinator {
     }
         
     func showFeedDetailViewController() {
+      
         let viewModel = FeedDetailViewModel(coordinator: self)
+      
         let vc = FeedDetailViewController(viewModel: viewModel)
+      
         navigationController.pushViewController(vc, animated: true)
     }
 }

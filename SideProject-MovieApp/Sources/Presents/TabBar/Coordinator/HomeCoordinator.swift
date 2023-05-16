@@ -47,11 +47,18 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     func dismissCategoryViewController() {
         navigationController.dismiss(animated: true)
     }
+  
+  func showFeedViewcontroller() {
+    let tabmanCoordinator = TabmanCoordinator(navigationController)
+    tabmanCoordinator.delegate = self
+    self.childCoordinators.append(tabmanCoordinator)
+    tabmanCoordinator.start()
+  }
     
-    func showCharacterDetailViewController() {
-        let tabmanCoordinator = TabmanCoordinator(navigationController)
-        tabmanCoordinator.delegate = self
-        self.childCoordinators.append(tabmanCoordinator)
-        tabmanCoordinator.start()
-    }
+//    func showCharacterDetailViewController() {
+//        let tabmanCoordinator = TabmanCoordinator(navigationController)
+//        tabmanCoordinator.delegate = self
+//        self.childCoordinators.append(tabmanCoordinator)
+//        tabmanCoordinator.start()
+//    }
 }

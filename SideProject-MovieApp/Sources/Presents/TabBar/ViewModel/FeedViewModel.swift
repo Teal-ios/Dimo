@@ -30,7 +30,9 @@ final class FeedViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.reviewCellSelected.bind { [weak self] _ in
             print("이게 먹음?")
+          
             self?.coordinator?.showFeedDetailViewController()
+          
         }
         .disposed(by: disposebag)
         return Output()

@@ -60,6 +60,8 @@ final class CharacterDetailViewController: TabmanViewController {
         
         addBar(bar, dataSource: self, at: .custom(view: customContainer, layout: nil))
     }
+  
+  
 }
 
 extension CharacterDetailViewController: PageboyViewControllerDataSource, TMBarDataSource {

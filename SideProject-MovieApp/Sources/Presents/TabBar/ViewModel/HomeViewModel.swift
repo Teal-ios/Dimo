@@ -34,7 +34,7 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.posterCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showCharacterDetailViewController()
+            self?.coordinator?.showFeedViewcontroller()
         }
         .disposed(by: disposebag)
         
