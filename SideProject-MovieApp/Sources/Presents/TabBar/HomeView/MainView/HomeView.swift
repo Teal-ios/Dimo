@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeView: BaseView {
+final class HomeView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
     override init(frame: CGRect) {

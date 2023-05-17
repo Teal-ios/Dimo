@@ -43,22 +43,23 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.heroPlusButtonTapped.bind { [weak self] _ in
-            print("주인공인 영화버튼 더보기 클릭")
+            self?.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
         }
         .disposed(by: disposebag)
         
         input.characterPlusButtonTapped.bind { [weak self] _ in
-            print("캐릭터 모아보기")
+            self?.coordinator?.showContentMoreViewController(title: "캐릭터 모아보기")
         }
         .disposed(by: disposebag)
         
         input.mbtiRecommendPlusButtonTapped.bind { [weak self] _ in
-            print("추천한 영화")
+            self?.coordinator?.showContentMoreViewController(title: "추천한 영화")
+
         }
         .disposed(by: disposebag)
         
         input.hotMoviePlusButtonTapped.bind { [weak self] _ in
-            print("핫한영화")
+            self?.coordinator?.showContentMoreViewController(title: "핫한 영화")
         }
         .disposed(by: disposebag)
 
