@@ -20,9 +20,9 @@ final class TabmanCoordinator: Coordinator {
     }
 
     func start() {
-      let viewModel = FeedViewModel(coordinator: self)
-      let vc = FeedViewController(viewModel: viewModel)
-      navigationController.pushViewController(vc, animated: true)
+        let viewModel = CharacterDetailViewModel(coordinator: self)
+        let vc = CharacterDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func showCharacterDetailViewController() {

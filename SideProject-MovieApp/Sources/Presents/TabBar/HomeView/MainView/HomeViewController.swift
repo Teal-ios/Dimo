@@ -27,8 +27,12 @@ final class HomeViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
     
-    let categoryButtonTap = PublishRelay<Void>()
+    let categoryButtonTap = PublishSubject<Void>()
     let posterCellSelected = PublishSubject<Void>()
+    let heroPlusButtonTap = PublishSubject<Void>()
+    let mbtiCharacterPlusButtonTap = PublishSubject<Void>()
+    let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
+    let hotMoviePlusButtonTap = PublishSubject<Void>()
     
     override func loadView() {
         view = homeView
@@ -43,7 +47,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, posterCellSelected: posterCellSelected)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected)
         let output = self.viewModel.transform(input: input)
     }
     
@@ -94,6 +98,19 @@ final class HomeViewController: BaseViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            switch indexPath.section {
+            case 1:
+                supplementaryView.moreButton.rx.tap.bind(to: self.heroPlusButtonTap).disposed(by: self.disposeBag)
+            case 2:
+                supplementaryView.moreButton.rx.tap.bind(to: self.mbtiCharacterPlusButtonTap).disposed(by: self.disposeBag)
+            case 3:
+                supplementaryView.moreButton.rx.tap.bind(to: self.mbtiRecommendPlusButtonTap).disposed(by: self.disposeBag)
+            case 4:
+                supplementaryView.moreButton.rx.tap.bind(to: self.hotMoviePlusButtonTap).disposed(by: self.disposeBag)
+            default:
+                print("another Section")
+
+            }
         }
         
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in

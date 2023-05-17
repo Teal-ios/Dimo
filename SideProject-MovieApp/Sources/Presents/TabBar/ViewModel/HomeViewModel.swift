@@ -15,7 +15,11 @@ final class HomeViewModel: ViewModelType {
     private weak var coordinator: HomeCoordinator?
     
     struct Input {
-        let categoryButtonTapped: PublishRelay<Void>
+        let categoryButtonTapped: PublishSubject<Void>
+        let heroPlusButtonTapped: PublishSubject<Void>
+        let characterPlusButtonTapped: PublishSubject<Void>
+        let mbtiRecommendPlusButtonTapped: PublishSubject<Void>
+        let hotMoviePlusButtonTapped: PublishSubject<Void>
         let posterCellSelected: PublishSubject<Void>
     }
     
@@ -38,6 +42,26 @@ final class HomeViewModel: ViewModelType {
         }
         .disposed(by: disposebag)
         
+        input.heroPlusButtonTapped.bind { [weak self] _ in
+            print("주인공인 영화버튼 더보기 클릭")
+        }
+        .disposed(by: disposebag)
+        
+        input.characterPlusButtonTapped.bind { [weak self] _ in
+            print("캐릭터 모아보기")
+        }
+        .disposed(by: disposebag)
+        
+        input.mbtiRecommendPlusButtonTapped.bind { [weak self] _ in
+            print("추천한 영화")
+        }
+        .disposed(by: disposebag)
+        
+        input.hotMoviePlusButtonTapped.bind { [weak self] _ in
+            print("핫한영화")
+        }
+        .disposed(by: disposebag)
+
         return Output()
     }
 }
