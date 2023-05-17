@@ -28,7 +28,7 @@ class CategoryView: BaseView {
         let label = UILabel()
         label.textColor = .white100
         label.font = Font.title3
-        label.text = "존재하지 않는 회원정보"
+        label.text = "카테고리"
         label.textAlignment = .center
         return label
     }()
