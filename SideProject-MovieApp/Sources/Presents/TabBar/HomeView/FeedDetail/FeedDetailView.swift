@@ -38,7 +38,7 @@ class FeedDetailView: BaseScrollView {
     private let itemRatio = 1.0
     private let groupRatio = 1.0
     private let headerRatio = 1.0
-    private let headerAbsolute = 400.0
+    private let headerAbsolute = 500.0
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         let collectionViewLayout = UICollectionViewCompositionalLayout(
