@@ -61,4 +61,10 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
 //        self.childCoordinators.append(tabmanCoordinator)
 //        tabmanCoordinator.start()
 //    }
+    
+    func showContentMoreViewController(title: String) {
+        let viewModel = ContentMoreViewModel(coordinator: self)
+        let vc = ContentMoreViewController(viewModel: viewModel, title: title)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
