@@ -100,13 +100,25 @@ final class HomeViewController: BaseViewController {
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
             switch indexPath.section {
             case 1:
-                supplementaryView.moreButton.rx.tap.bind(to: self.heroPlusButtonTap).disposed(by: self.disposeBag)
+                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
+                    self?.heroPlusButtonTap.onNext(())
+                }
+                .disposed(by: self.disposeBag)
             case 2:
-                supplementaryView.moreButton.rx.tap.bind(to: self.mbtiCharacterPlusButtonTap).disposed(by: self.disposeBag)
+                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
+                    self?.mbtiCharacterPlusButtonTap.onNext(())
+                }
+                .disposed(by: self.disposeBag)
             case 3:
-                supplementaryView.moreButton.rx.tap.bind(to: self.mbtiRecommendPlusButtonTap).disposed(by: self.disposeBag)
+                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
+                    self?.mbtiRecommendPlusButtonTap.onNext(())
+                }
+                .disposed(by: self.disposeBag)
             case 4:
-                supplementaryView.moreButton.rx.tap.bind(to: self.hotMoviePlusButtonTap).disposed(by: self.disposeBag)
+                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
+                    self?.hotMoviePlusButtonTap.onNext(())
+                }
+                .disposed(by: self.disposeBag)
             default:
                 print("another Section")
 
