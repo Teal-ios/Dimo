@@ -17,7 +17,7 @@ protocol Coordinator: AnyObject {
     func start()
     func finish()
 
-    init(_ navigationController: UINavigationController)
+    
 }
 
 extension Coordinator {
