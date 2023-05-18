@@ -48,10 +48,11 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.dismiss(animated: true)
     }
   
-  func showFeedViewcontroller() {
+  func showTabmanCoordinator() {
     let tabmanCoordinator = TabmanCoordinator(navigationController)
     tabmanCoordinator.delegate = self
     self.childCoordinators.append(tabmanCoordinator)
+    print("asdfasdf")
     tabmanCoordinator.start()
   }
     

@@ -75,7 +75,7 @@ extension FeedViewController: UICollectionViewDelegate {
         self.reviewCellSelected.onNext(())
         
         //이부분을 어떻게 뺄 지 고민해보기
-        let vc = FeedDetailViewController(viewModel: FeedDetailViewModel())
-        self.navigationController?.pushViewController(vc, animated: true)
+        //let vc = FeedDetailViewController(viewModel: FeedDetailViewModel())
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
 }

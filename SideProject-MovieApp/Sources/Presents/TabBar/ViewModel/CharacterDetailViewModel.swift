@@ -12,7 +12,7 @@ import RxCocoa
 final class CharacterDetailViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
-    private weak var coordinator: TabmanCoordinator?
+    weak var coordinator: TabmanCoordinator?
     
     struct Input{
 
