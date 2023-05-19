@@ -41,6 +41,10 @@ final class CharacterDetailViewController: TabmanViewController {
     super.init(nibName: nil, bundle: nil)
   }
   
+  func configureFeedViewController() {
+    
+  }
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("CharacterDetailViewController: fatal error")
   }

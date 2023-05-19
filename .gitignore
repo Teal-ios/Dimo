@@ -118,3 +118,4 @@ iOSInjectionProject/
 # End of https://www.toptal.com/developers/gitignore/api/firebase,swift,xcode,cocoapods
 
 APIKey.swift
+.DS_Store
