@@ -11,9 +11,11 @@ import RxCocoa
 
 final class SignupIdentificationViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
+    private var authUseCase: AuthUseCase
     var disposebag: DisposeBag = DisposeBag()
     var timer: Timer?
     var leftTime: Int?
+    var phoneNum: String? = ""
     
     struct Input {
         var phoneNumberInput: ControlProperty<String?>
@@ -32,9 +34,9 @@ final class SignupIdentificationViewModel: ViewModelType {
         var nextButtonValid: Observable<Bool>
     }
     
-    init(coordinator: AuthCoordinator?) {
+    init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
-        
+        self.authUseCase = authUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -56,6 +58,21 @@ final class SignupIdentificationViewModel: ViewModelType {
             return $0 && $1 && $2
         }
         
+        input.phoneNumberInput.bind { [weak self] phoneNum in
+            self?.phoneNum = phoneNum
+        }
+        .disposed(by: disposebag)
+        
+        input.idRequestButtonTapped
+            .map {
+                self.authUseCase.phoneNumberCheckExcute(phone_number: self.phoneNum ?? "")
+            }
+            .subscribe { data in
+                print(data, "데이터들어왔다")
+            } onError: { error in
+                print(error)
+            }
+            .disposed(by: disposebag)
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showIDRegisterViewController()
@@ -80,7 +97,7 @@ final class SignupIdentificationViewModel: ViewModelType {
             number = String(number[number.startIndex..<end])
         }
         
-        if number.count < 7 {
+        if number.count < 8 {
             let end = number.index(number.startIndex, offsetBy: number.count)
             let range = number.startIndex..<end
             number = number.replacingOccurrences(of: "(\\d{3})(\\d+)", with: "$1-$2", options: .regularExpression, range: range)
@@ -88,8 +105,8 @@ final class SignupIdentificationViewModel: ViewModelType {
             let end = number.index(number.startIndex, offsetBy: number.count)
             let range = number.startIndex..<end
             
-            if number.count <= 10{
-                number = number.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: range)
+            if number.count <= 10 {
+                number = number.replacingOccurrences(of: "(\\d{3})(\\d{4})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: range)
             } else if number.count == 11 {
                 number = number.replacingOccurrences(of: "(\\d{3})(\\d{4})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: range)
             }

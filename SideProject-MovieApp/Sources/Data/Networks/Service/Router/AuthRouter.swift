@@ -14,6 +14,10 @@ enum AuthRouter {
 }
 
 extension AuthRouter: TargetType {
+    var port: Int {
+        return 3000
+    }
+    
     
     var scheme: String {
         return "http"
