@@ -53,4 +53,10 @@ final class SettingCoordinator: Coordinator {
         let vc = EditPasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showEditMbtiViewController() {
+        let viewModel = EditMbtiViewModel(coordinator: self)
+        let vc = EditMbtiViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
