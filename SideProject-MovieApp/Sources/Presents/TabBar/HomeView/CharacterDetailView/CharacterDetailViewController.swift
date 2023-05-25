@@ -24,7 +24,7 @@ final class CharacterDetailViewController: TabmanViewController {
   
   private var vc1: FeedViewController
   private var vc2: AnalyzeViewController
-  private var vcss: Array<BaseViewController>
+  private var vcs: Array<BaseViewController>
   
   private let viewModel: CharacterDetailViewModel
   
@@ -36,7 +36,7 @@ final class CharacterDetailViewController: TabmanViewController {
     vc1 = .init(viewModel: feedViewModel)
     vc2 = .init()
     
-    vcss = .init([vc1, vc2])
+    vcs = .init([vc1, vc2])
     
     super.init(nibName: nil, bundle: nil)
   }
