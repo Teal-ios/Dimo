@@ -52,6 +52,9 @@
 		2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0BD2A1F67F600898DCD /* EditPasswordViewModel.swift */; };
 		2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0BF2A1F67FE00898DCD /* EditPasswordView.swift */; };
 		2F53D0C22A1F680600898DCD /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C12A1F680600898DCD /* EditPasswordViewController.swift */; };
+		2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */; };
+		2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */; };
+		2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
 		2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */; };
@@ -281,6 +284,9 @@
 		2F53D0BD2A1F67F600898DCD /* EditPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewModel.swift; sourceTree = "<group>"; };
 		2F53D0BF2A1F67FE00898DCD /* EditPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordView.swift; sourceTree = "<group>"; };
 		2F53D0C12A1F680600898DCD /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
+		2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiView.swift; sourceTree = "<group>"; };
+		2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewController.swift; sourceTree = "<group>"; };
+		2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewModel.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
 		2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewModel.swift; sourceTree = "<group>"; };
@@ -480,6 +486,7 @@
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0C32A1F6E2400898DCD /* EditMbtiView */,
 				2F53D0BA2A1F67C100898DCD /* EditPasswordView */,
 				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
 				2F53D0A62A1F4A2100898DCD /* EditUserNameView */,
@@ -752,6 +759,32 @@
 				2F53D0BD2A1F67F600898DCD /* EditPasswordViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F53D0C32A1F6E2400898DCD /* EditMbtiView */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0C42A1F6E2C00898DCD /* ViewModel */,
+				2F53D0C52A1F6E3000898DCD /* View */,
+			);
+			path = EditMbtiView;
+			sourceTree = "<group>";
+		};
+		2F53D0C42A1F6E2C00898DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F53D0C52A1F6E3000898DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */,
+				2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2F6D7D052A14A4C200FA457D /* ContentMoreView */ = {
@@ -1755,6 +1788,7 @@
 				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
@@ -1784,6 +1818,7 @@
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
+				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
@@ -1841,6 +1876,7 @@
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
+				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
