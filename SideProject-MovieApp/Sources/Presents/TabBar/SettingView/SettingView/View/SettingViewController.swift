@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController {
     let settingView = SettingView()
     
     private var viewModel: SettingViewModel
@@ -24,13 +26,21 @@ class SettingViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, SettingModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, SettingModel>()
     
+    let cellSelected = PublishSubject<IndexPath>()
+    
     override func loadView() {
         view = settingView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.settingView.collectionView.delegate = self
         setDataSource()
+    }
+    
+    override func setupBinding() {
+        let input = SettingViewModel.Input(cellSelected: self.cellSelected)
+        let output = self.viewModel.transform(input: input)
     }
     
     func setDataSource() {
@@ -99,14 +109,14 @@ class SettingViewController: BaseViewController {
         
         acountArr.append(SettingModel(title: "내 정보 변경"))
         acountArr.append(SettingModel(title: "MBTI 변경"))
-
+        
         notificationArr.append(SettingModel(title: "푸시 알림"))
         notificationArr.append(SettingModel(title: "키워드 알림"))
         customerArr.append(SettingModel(title: "공지사항"))
         customerArr.append(SettingModel(title: "자주 묻는 질문"))
         customerArr.append(SettingModel(title: "1:1 문의"))
         customerArr.append(SettingModel(title: "캐릭터 요청하기"))
-
+        
         etcArr.append(SettingModel(title: "서비스 이용약관"))
         etcArr.append(SettingModel(title: "개인정보 취급 방침"))
         etcArr.append(SettingModel(title: "오픈소스 라이선스"))
@@ -116,7 +126,13 @@ class SettingViewController: BaseViewController {
         snapshot.appendItems(notificationArr, toSection: 1)
         snapshot.appendItems(customerArr, toSection: 2)
         snapshot.appendItems(etcArr, toSection: 3)
-
+        
         dataSource.apply(snapshot)
+    }
+}
+
+extension SettingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.cellSelected.onNext(indexPath)
     }
 }

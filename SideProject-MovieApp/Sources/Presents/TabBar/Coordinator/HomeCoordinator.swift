@@ -52,7 +52,6 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     let tabmanCoordinator = TabmanCoordinator(navigationController)
     tabmanCoordinator.delegate = self
     self.childCoordinators.append(tabmanCoordinator)
-    print("asdfasdf")
     tabmanCoordinator.start()
   }
     
