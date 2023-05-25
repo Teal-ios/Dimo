@@ -1,15 +1,15 @@
 //
-//  SettingViewModel.swift
+//  EditMyInfoViewModel.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/14.
+//  Created by 이병현 on 2023/05/25.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-final class SettingViewModel: ViewModelType {
+final class EditMyInfoViewModel: ViewModelType {
     
     var disposebag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
@@ -30,7 +30,6 @@ final class SettingViewModel: ViewModelType {
             switch indexPath {
             case [0, 0]:
                 print("내 정보 변경")
-                self.coordinator?.showEditMyInfoViewController()
             case [0, 1]:
                 print("mbti변경")
             default:

@@ -40,6 +40,9 @@
 		2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */; };
 		2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */; };
 		2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */; };
+		2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0A02A1F398C00898DCD /* EditMyInfoViewController.swift */; };
+		2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0A22A1F399800898DCD /* EditMyInfoViewModel.swift */; };
+		2F53D0A52A1F399F00898DCD /* EditMyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0A42A1F399F00898DCD /* EditMyInfoView.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
 		2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */; };
@@ -230,7 +233,7 @@
 		2F1AB9CA2A10C243001178EA /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2F1AB9CF2A10C28F001178EA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ../../../ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
 		2F1AB9D32A10C6CF001178EA /* SettingBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEtcCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F1AB9D92A10C710001178EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
@@ -257,6 +260,9 @@
 		2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheck.swift; sourceTree = "<group>"; };
 		2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPhoneNumberCheckDTO.swift; sourceTree = "<group>"; };
 		2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPhoneNumberVerifyDTO.swift; sourceTree = "<group>"; };
+		2F53D0A02A1F398C00898DCD /* EditMyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyInfoViewController.swift; sourceTree = "<group>"; };
+		2F53D0A22A1F399800898DCD /* EditMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyInfoViewModel.swift; sourceTree = "<group>"; };
+		2F53D0A42A1F399F00898DCD /* EditMyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyInfoView.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
 		2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewModel.swift; sourceTree = "<group>"; };
@@ -456,10 +462,8 @@
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				2F1AB9D82A10C709001178EA /* Model */,
-				2F1AB9D52A10C6D1001178EA /* Cell */,
-				2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */,
-				2F1AB9CF2A10C28F001178EA /* SettingView.swift */,
+				2F53D09D2A1F395D00898DCD /* EditMyInfoView */,
+				2F53D0982A1F364F00898DCD /* SettingView */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -596,6 +600,60 @@
 				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2F53D0982A1F364F00898DCD /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D09A2A1F368800898DCD /* View */,
+				2F53D0992A1F368300898DCD /* ViewModel */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		2F53D0992A1F368300898DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F53D09A2A1F368800898DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9D82A10C709001178EA /* Model */,
+				2F1AB9D52A10C6D1001178EA /* Cell */,
+				2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */,
+				2F1AB9CF2A10C28F001178EA /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F53D09D2A1F395D00898DCD /* EditMyInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D09F2A1F398100898DCD /* ViewModel */,
+				2F53D09E2A1F397E00898DCD /* View */,
+			);
+			path = EditMyInfoView;
+			sourceTree = "<group>";
+		};
+		2F53D09E2A1F397E00898DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0A02A1F398C00898DCD /* EditMyInfoViewController.swift */,
+				2F53D0A42A1F399F00898DCD /* EditMyInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F53D09F2A1F398100898DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0A22A1F399800898DCD /* EditMyInfoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2F6D7D052A14A4C200FA457D /* ContentMoreView */ = {
@@ -1126,7 +1184,6 @@
 				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
 				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
-				2F1AB9D12A10C2A2001178EA /* SettingViewModel.swift */,
 				2FDD9E682A121EC400A41FF7 /* FeedDetailViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1532,10 +1589,12 @@
 				2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
+				2F53D0A52A1F399F00898DCD /* EditMyInfoView.swift in Sources */,
 				2FBF01112A10DB1200A06DD9 /* TitleSettingHeaderView.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
+				2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
@@ -1610,6 +1669,7 @@
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
+				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
 				2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */,
 				2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */,
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
