@@ -21,9 +21,9 @@ struct RequestSignUpDTO: Codable {
         case user_id, password, name, sns_type, agency, phone_number, nickname, mbti
     }
 }
-
-extension RequestSignUpDTO {
-    var toDomain: SignUpQuery {
-        return .init(user_id: user_id, password: password, name: name, sns_type: sns_type, agency: agency, phone_number: phone_number, nickname: nickname, mbti: mbti)
-    }
-}
+//
+//extension RequestSignUpDTO {
+//    var toDomain: SignUpQuery {
+//        return .init(user_id: user_id, password: password, name: name, sns_type: sns_type, agency: agency, phone_number: phone_number, nickname: nickname, mbti: mbti)
+//    }
+//}

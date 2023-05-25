@@ -9,6 +9,8 @@ import Foundation
 
 enum AuthRouter {
     case signup(parameters: SignUpQuery)
+    case phoneNumberCheck(parameters: PhoneNumberCheckQuery)
+    case phoneNumberVerify(parameters: PhoneNumberVerifyQuery)
 }
 
 extension AuthRouter: TargetType {
@@ -23,14 +25,14 @@ extension AuthRouter: TargetType {
     
     var header: [String : String]? {
         switch self {
-        case .signup:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify:
             return .post
         }
     }
@@ -47,7 +49,10 @@ extension AuthRouter: TargetType {
         switch self {
         case .signup:
             return "/signup"
-
+        case .phoneNumberCheck:
+            return "/signup/phone-check"
+        case .phoneNumberVerify:
+            return "/signup/phone-check/verify"
         }
     }
     
@@ -59,6 +64,18 @@ extension AuthRouter: TargetType {
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(reqeustSignUpDTO)
+            
+        case .phoneNumberCheck(let parameters):
+            let requestPhoneNumberCheckDTO = RequestPhoneNumberCheckDTO(phone_number: parameters.phone_number)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestPhoneNumberCheckDTO)
+            
+        case .phoneNumberVerify(let parameters):
+            let requestPhoneNumberVerifyDTO = RequestPhoneNumberVerifyDTO(phone_number: parameters.phone_number, code: parameters.code)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestPhoneNumberVerifyDTO)
             
         }
     }
