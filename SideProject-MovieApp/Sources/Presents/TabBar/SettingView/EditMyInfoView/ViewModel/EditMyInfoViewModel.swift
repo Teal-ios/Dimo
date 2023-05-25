@@ -32,7 +32,9 @@ final class EditMyInfoViewModel: ViewModelType {
                 print("닉네임 변경")
                 self.coordinator?.showEditUserNameViewController()
             case [0, 1]:
-                print("mbti변경")
+                print("비밀번호 변경")
+                self.coordinator?.showEditPasswordViewController()
+                
             default:
                 print("미설정")
             }
