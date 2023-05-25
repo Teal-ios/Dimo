@@ -42,7 +42,8 @@ final class HomeViewModel: ViewModelType {
         }
         .disposed(by: disposebag)
         
-        input.heroPlusButtonTapped.bind { [weak self] _ in
+        input.heroPlusButtonTapped
+            .bind { [weak self] _ in
             self?.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
         }
         .disposed(by: disposebag)
@@ -59,6 +60,7 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.hotMoviePlusButtonTapped.bind { [weak self] _ in
+
             self?.coordinator?.showContentMoreViewController(title: "핫한 영화")
         }
         .disposed(by: disposebag)
