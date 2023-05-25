@@ -34,4 +34,10 @@ final class SettingCoordinator: Coordinator {
         let vc = EditMyInfoViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showEditUserNameViewController() {
+        let viewModel = EditUserNameViewModel(coordinator: self)
+        let vc = EditUserNameViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

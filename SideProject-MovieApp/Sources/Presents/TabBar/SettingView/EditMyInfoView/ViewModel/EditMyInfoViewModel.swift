@@ -29,7 +29,8 @@ final class EditMyInfoViewModel: ViewModelType {
         input.cellSelected.bind { indexPath in
             switch indexPath {
             case [0, 0]:
-                print("내 정보 변경")
+                print("닉네임 변경")
+                self.coordinator?.showEditUserNameViewController()
             case [0, 1]:
                 print("mbti변경")
             default:
