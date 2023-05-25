@@ -40,4 +40,11 @@ final class SettingCoordinator: Coordinator {
         let vc = EditUserNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showAlertEditUserNameViewController() {
+        let viewModel = AlertEditUserNameViewModel(coordinator: self)
+        let vc = AlertEditUserNameViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
 }

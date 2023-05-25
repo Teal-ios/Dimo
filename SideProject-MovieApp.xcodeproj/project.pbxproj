@@ -47,6 +47,9 @@
 		2F53D0AC2A1F4A6100898DCD /* EditUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AB2A1F4A6100898DCD /* EditUserNameViewController.swift */; };
 		2F53D0AE2A1F4A6A00898DCD /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AD2A1F4A6A00898DCD /* EditUserNameViewModel.swift */; };
 		2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AF2A1F4DF900898DCD /* CustomAlertView.swift */; };
+		2F53D0B52A1F61FB00898DCD /* AlertEditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B42A1F61FB00898DCD /* AlertEditUserNameViewModel.swift */; };
+		2F53D0B72A1F629D00898DCD /* AlertEditUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B62A1F629D00898DCD /* AlertEditUserNameViewController.swift */; };
+		2F53D0B92A1F62A500898DCD /* AlertEditUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B82A1F62A500898DCD /* AlertEditUserNameView.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
 		2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */; };
@@ -271,6 +274,9 @@
 		2F53D0AB2A1F4A6100898DCD /* EditUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewController.swift; sourceTree = "<group>"; };
 		2F53D0AD2A1F4A6A00898DCD /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
 		2F53D0AF2A1F4DF900898DCD /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		2F53D0B42A1F61FB00898DCD /* AlertEditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEditUserNameViewModel.swift; sourceTree = "<group>"; };
+		2F53D0B62A1F629D00898DCD /* AlertEditUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEditUserNameViewController.swift; sourceTree = "<group>"; };
+		2F53D0B82A1F62A500898DCD /* AlertEditUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEditUserNameView.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
 		2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewModel.swift; sourceTree = "<group>"; };
@@ -470,6 +476,7 @@
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
 				2F53D0A62A1F4A2100898DCD /* EditUserName */,
 				2F53D09D2A1F395D00898DCD /* EditMyInfoView */,
 				2F53D0982A1F364F00898DCD /* SettingView */,
@@ -687,6 +694,32 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0AD2A1F4A6A00898DCD /* EditUserNameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0B32A1F61E700898DCD /* ViewModel */,
+				2F53D0B22A1F61E200898DCD /* View */,
+			);
+			path = AlertEditUserNameView;
+			sourceTree = "<group>";
+		};
+		2F53D0B22A1F61E200898DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0B62A1F629D00898DCD /* AlertEditUserNameViewController.swift */,
+				2F53D0B82A1F62A500898DCD /* AlertEditUserNameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F53D0B32A1F61E700898DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0B42A1F61FB00898DCD /* AlertEditUserNameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1634,6 +1667,7 @@
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
+				2F53D0B72A1F629D00898DCD /* AlertEditUserNameViewController.swift in Sources */,
 				2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
@@ -1678,6 +1712,7 @@
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
+				2F53D0B92A1F62A500898DCD /* AlertEditUserNameView.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
 				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
 				2F53D0AA2A1F4A5700898DCD /* EditUserNameView.swift in Sources */,
@@ -1750,6 +1785,7 @@
 				2F53D0AC2A1F4A6100898DCD /* EditUserNameViewController.swift in Sources */,
 				2F53D0762A1F11AD00898DCD /* APIKey.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
+				2F53D0B52A1F61FB00898DCD /* AlertEditUserNameViewModel.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,

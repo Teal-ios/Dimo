@@ -26,7 +26,7 @@ final class EditUserNameViewModel: ViewModelType {
     }
     func transform(input: Input) -> Output {
         input.nextButtonTapped.bind { [weak self] _ in
-            print("다음")
+            self?.coordinator?.showAlertEditUserNameViewController()
             
         }.disposed(by: disposebag)
         // 닉네임 중복확인
