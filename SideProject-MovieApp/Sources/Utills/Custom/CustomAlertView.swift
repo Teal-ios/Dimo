@@ -69,8 +69,10 @@ class CustomAlertView: BaseView {
         configuration.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         self.okButton.configuration = configuration
         
+        var cancelAttrStr = AttributedString("아니요")
+        cancelAttrStr.font = .suitFont(ofSize: 16, weight: .Medium)
         var cancelConfiguration = UIButton.Configuration.gray()
-        cancelConfiguration.attributedTitle = attrStr
+        cancelConfiguration.attributedTitle = cancelAttrStr
         cancelConfiguration.baseBackgroundColor = .black90
         cancelConfiguration.baseForegroundColor = .white
         configuration.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
