@@ -14,7 +14,7 @@ protocol TargetType {
     var header: [String: String]? { get }
     var httpMethod: HTTPMethod { get }
     var parameters: String? { get }
-//    var port: Int { get }
+    var port: Int { get }
     var body: Data? { get }
 }
 
@@ -24,7 +24,7 @@ extension TargetType {
         components.host = host
         components.path = path
         components.scheme = scheme
-//        components.port = port
+        components.port = port
         return components
     }
     var request: URLRequest {
