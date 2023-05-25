@@ -47,4 +47,10 @@ final class SettingCoordinator: Coordinator {
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
+    
+    func showEditPasswordViewController() {
+        let viewModel = EditPasswordViewModel(coordinator: self)
+        let vc = EditPasswordViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
