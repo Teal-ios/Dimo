@@ -25,8 +25,21 @@
 		2F53D0702A1F0AC600898DCD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D06F2A1F0AC600898DCD /* NetworkError.swift */; };
 		2F53D0742A1F114900898DCD /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0732A1F114900898DCD /* TargetType.swift */; };
 		2F53D0762A1F11AD00898DCD /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0752A1F11AD00898DCD /* APIKey.swift */; };
-		2F53D0782A1F138100898DCD /* SignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0772A1F138100898DCD /* SignUpDTO.swift */; };
+		2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */; };
 		2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */; };
+		2F53D07E2A1F16D900898DCD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07D2A1F16D900898DCD /* Service.swift */; };
+		2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07F2A1F178500898DCD /* AuthRepository.swift */; };
+		2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */; };
+		2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */; };
+		2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0852A1F194B00898DCD /* AuthUseCase.swift */; };
+		2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */; };
+		2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */; };
+		2F53D08D2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */; };
+		2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */; };
+		2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */; };
+		2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */; };
+		2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */; };
+		2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
 		2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */; };
@@ -191,7 +204,6 @@
 		93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD35C229C303D500BBB213 /* HTTPMethod.swift */; };
 		93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */; };
 		93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */; };
-		93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F18FDA29C1B95E00ABC0A7 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,8 +242,21 @@
 		2F53D06F2A1F0AC600898DCD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2F53D0732A1F114900898DCD /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		2F53D0752A1F11AD00898DCD /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		2F53D0772A1F138100898DCD /* SignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDTO.swift; sourceTree = "<group>"; };
+		2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignUpDTO.swift; sourceTree = "<group>"; };
 		2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpQuery.swift; sourceTree = "<group>"; };
+		2F53D07D2A1F16D900898DCD /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		2F53D07F2A1F178500898DCD /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeResponseDTO.swift; sourceTree = "<group>"; };
+		2F53D0852A1F194B00898DCD /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberQuery.swift; sourceTree = "<group>"; };
+		2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVerifyQuery.swift; sourceTree = "<group>"; };
+		2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePhoneNumberVerifyDTO.swift; sourceTree = "<group>"; };
+		2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePhoneNumberCheckDTO.swift; sourceTree = "<group>"; };
+		2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVerify.swift; sourceTree = "<group>"; };
+		2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheck.swift; sourceTree = "<group>"; };
+		2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPhoneNumberCheckDTO.swift; sourceTree = "<group>"; };
+		2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPhoneNumberVerifyDTO.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
 		2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewModel.swift; sourceTree = "<group>"; };
@@ -395,7 +420,6 @@
 		93DD35C229C303D500BBB213 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderContentType.swift; sourceTree = "<group>"; };
 		93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
-		93F18FDA29C1B95E00ABC0A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,6 +531,7 @@
 		2F53D06C2A1F0A2F00898DCD /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D07F2A1F178500898DCD /* AuthRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -514,6 +539,7 @@
 		2F53D06D2A1F0A4400898DCD /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0852A1F194B00898DCD /* AuthUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -522,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0792A1F143200898DCD /* Query */,
+				2F53D0872A1F1A6600898DCD /* Model */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -529,7 +556,9 @@
 		2F53D0712A1F111900898DCD /* RequestDTO */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0772A1F138100898DCD /* SignUpDTO.swift */,
+				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
+				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
+				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -537,6 +566,7 @@
 		2F53D0722A1F112700898DCD /* RepositoryImpl */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -545,6 +575,8 @@
 			isa = PBXGroup;
 			children = (
 				2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */,
+				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
+				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -555,6 +587,15 @@
 				2FC94E9E29C013880097E696 /* AuthRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		2F53D0872A1F1A6600898DCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */,
+				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2F6D7D052A14A4C200FA457D /* ContentMoreView */ = {
@@ -670,7 +711,9 @@
 		2FBF4CA329CC78E700B65125 /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D07C2A1F155400898DCD /* Router */,
+				2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */,
+				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
+				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -969,16 +1012,8 @@
 			children = (
 				2FC94E9629C011E00097E696 /* Monitor */,
 				2FC94E9529C011D70097E696 /* Service */,
-				2FC94E9429C011C90097E696 /* API */,
 			);
 			path = Networks;
-			sourceTree = "<group>";
-		};
-		2FC94E9429C011C90097E696 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		2FC94E9529C011D70097E696 /* Service */ = {
@@ -987,10 +1022,11 @@
 				2F53D0722A1F112700898DCD /* RepositoryImpl */,
 				2F53D0712A1F111900898DCD /* RequestDTO */,
 				2FBF4CA329CC78E700B65125 /* ResponseDTO */,
+				2F53D07C2A1F155400898DCD /* Router */,
 				93DD35C229C303D500BBB213 /* HTTPMethod.swift */,
 				93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */,
 				93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */,
-				93F18FDA29C1B95E00ABC0A7 /* NetworkManager.swift */,
+				2F53D07D2A1F16D900898DCD /* Service.swift */,
 				2F53D06F2A1F0AC600898DCD /* NetworkError.swift */,
 				2F53D0732A1F114900898DCD /* TargetType.swift */,
 				2F53D0752A1F11AD00898DCD /* APIKey.swift */,
@@ -1498,7 +1534,6 @@
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
 				2FBF01112A10DB1200A06DD9 /* TitleSettingHeaderView.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
-				93F18FDB29C1B95E00ABC0A7 /* NetworkManager.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
@@ -1515,15 +1550,18 @@
 				2F6D7D112A14B27D00FA457D /* MovieDetailView.swift in Sources */,
 				2FDD9E732A12608600A41FF7 /* FeedDetailHeaderView.swift in Sources */,
 				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
+				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
+				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
+				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
@@ -1538,7 +1576,9 @@
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
+				2F53D07E2A1F16D900898DCD /* Service.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
+				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
@@ -1549,11 +1589,13 @@
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
+				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
+				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
 				2FDD9E652A121EB300A41FF7 /* FeedDetailView.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
@@ -1575,9 +1617,11 @@
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
+				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
+				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
@@ -1591,7 +1635,7 @@
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
-				2F53D0782A1F138100898DCD /* SignUpDTO.swift in Sources */,
+				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
@@ -1600,6 +1644,7 @@
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
+				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
 				2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */,
@@ -1622,6 +1667,7 @@
 				2F979F2E2A0CABFD00A1CD53 /* NotificationIDViewController.swift in Sources */,
 				93C48B4E29D1863200644F6A /* OnboardingtextFieldView.swift in Sources */,
 				2FDFB1892A0DD80000732788 /* SendMessageView.swift in Sources */,
+				2F53D08D2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
@@ -1630,6 +1676,7 @@
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
+				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
 				2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */,
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
@@ -1641,6 +1688,7 @@
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,
 				2F53D0742A1F114900898DCD /* TargetType.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
+				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
