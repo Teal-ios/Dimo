@@ -59,4 +59,10 @@ final class SettingCoordinator: Coordinator {
         let vc = EditMbtiViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showWithDrawViewController() {
+        let viewModel = WithDrawViewModel(coordinator: self)
+        let vc = WithDrawViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
