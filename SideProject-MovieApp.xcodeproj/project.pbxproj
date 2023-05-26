@@ -55,6 +55,10 @@
 		2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */; };
 		2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */; };
 		2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */; };
+		2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */; };
+		2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */; };
+		2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */; };
+		2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
 		2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */; };
@@ -287,6 +291,10 @@
 		2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiView.swift; sourceTree = "<group>"; };
 		2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewController.swift; sourceTree = "<group>"; };
 		2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewModel.swift; sourceTree = "<group>"; };
+		2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawViewModel.swift; sourceTree = "<group>"; };
+		2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
+		2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawViewController.swift; sourceTree = "<group>"; };
+		2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawButtonLabel.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
 		2F6D7D0C2A14A52500FA457D /* ContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +494,7 @@
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0CC2A1F7BE500898DCD /* WithDrawView */,
 				2F53D0C32A1F6E2400898DCD /* EditMbtiView */,
 				2F53D0BA2A1F67C100898DCD /* EditPasswordView */,
 				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
@@ -785,6 +794,32 @@
 				2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2F53D0CC2A1F7BE500898DCD /* WithDrawView */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0CE2A1F7BFB00898DCD /* ViewModel */,
+				2F53D0CD2A1F7BF900898DCD /* View */,
+			);
+			path = WithDrawView;
+			sourceTree = "<group>";
+		};
+		2F53D0CD2A1F7BF900898DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */,
+				2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F53D0CE2A1F7BFB00898DCD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2F6D7D052A14A4C200FA457D /* ContentMoreView */ = {
@@ -1175,6 +1210,7 @@
 				2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */,
 				2FDD9E742A12622F00A41FF7 /* DynamicCollectionView.swift */,
 				2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */,
+				2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1783,6 +1819,7 @@
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
+				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
@@ -1816,6 +1853,7 @@
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
+				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
@@ -1879,6 +1917,7 @@
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
+				2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
 				2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */,
@@ -1893,6 +1932,7 @@
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
+				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
