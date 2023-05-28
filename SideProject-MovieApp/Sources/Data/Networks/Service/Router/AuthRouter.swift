@@ -11,9 +11,19 @@ enum AuthRouter {
     case signup(parameters: SignUpQuery)
     case phoneNumberCheck(parameters: PhoneNumberCheckQuery)
     case phoneNumberVerify(parameters: PhoneNumberVerifyQuery)
+    case duplicationId(parameters: DuplicationIdQuery)
 }
 
 extension AuthRouter: TargetType {
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .duplicationId(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        default:
+            return nil
+        }
+    }
+    
     var port: Int {
         return 3000
     }
@@ -29,7 +39,7 @@ extension AuthRouter: TargetType {
     
     var header: [String : String]? {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -38,6 +48,8 @@ extension AuthRouter: TargetType {
         switch self {
         case .signup, .phoneNumberCheck, .phoneNumberVerify:
             return .post
+        case .duplicationId:
+            return .get
         }
     }
     
@@ -57,6 +69,8 @@ extension AuthRouter: TargetType {
             return "/signup/phone-check"
         case .phoneNumberVerify:
             return "/signup/phone-check/verify"
+        case .duplicationId:
+            return "/signup/is_id_dup"
         }
     }
     
@@ -81,6 +95,8 @@ extension AuthRouter: TargetType {
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestPhoneNumberVerifyDTO)
             
+        case .duplicationId:
+            return nil
         }
     }
 }

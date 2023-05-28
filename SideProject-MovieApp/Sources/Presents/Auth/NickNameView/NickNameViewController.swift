@@ -20,7 +20,8 @@ class NickNameViewController: BaseViewController {
     }
     override func setupBinding() {
         let input = IDNickNameViewModel.Input(
-            textFieldInput: nickNameView.idTextFieldView.tf.rx.text ,nextButtonTapped: nickNameView.nextButton.rx.tap
+            textFieldInput: nickNameView.idTextFieldView.tf.rx.text ,nextButtonTapped: nickNameView.nextButton.rx.tap,
+            duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap
         )
         
         let output = viewModel.transform(input: input)

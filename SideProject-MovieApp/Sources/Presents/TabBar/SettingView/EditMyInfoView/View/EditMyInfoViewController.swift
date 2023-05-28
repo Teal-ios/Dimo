@@ -74,8 +74,8 @@ final class EditMyInfoViewController: BaseViewController {
         
         myInfoArr.append(SettingModel(title: "닉네임 변경"))
         myInfoArr.append(SettingModel(title: "비밀번호 변경"))
-        myInfoArr.append(SettingModel(title: "로그아웃 변경"))
-        myInfoArr.append(SettingModel(title: "회원탈퇴 변경"))
+        myInfoArr.append(SettingModel(title: "로그아웃"))
+        myInfoArr.append(SettingModel(title: "회원탈퇴"))
 
         snapshot.appendItems(myInfoArr, toSection: 0)
         dataSource.apply(snapshot)

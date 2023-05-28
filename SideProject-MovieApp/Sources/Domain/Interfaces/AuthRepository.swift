@@ -14,4 +14,6 @@ protocol AuthRepository: AnyObject {
     func requestPhoneNumberCheck(query: PhoneNumberCheckQuery) -> AnyPublisher<PhoneNumberCheck, NetworkError>
     
     func requestPhoneNumberVerify(query: PhoneNumberVerifyQuery) -> AnyPublisher<PhoneNumberVerify, NetworkError>
+    
+    func requestDuplicationId(query: DuplicationIdQuery) -> AnyPublisher<DuplicationId, NetworkError>
 }

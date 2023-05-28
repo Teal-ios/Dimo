@@ -37,7 +37,7 @@ class IDRegisterViewController: BaseViewController {
     override func setupBinding() {
         let input = IDNickNameViewModel.Input(
             textFieldInput: idRegisterView.idTextFieldView.tf.rx.text,
-            nextButtonTapped: idRegisterView.nextButton.rx.tap
+            nextButtonTapped: idRegisterView.nextButton.rx.tap, duplicationButtonTap: idRegisterView.duplicateCheckButton.rx.tap
         )
         let _ = viewModel.transform(input: input)
     }

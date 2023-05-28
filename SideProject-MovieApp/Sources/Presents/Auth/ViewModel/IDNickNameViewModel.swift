@@ -14,19 +14,27 @@ class IDNickNameViewModel: ViewModelType {
     
     private weak var coordinator: AuthCoordinator?
     private var currnetViewCases: CurrentViewCases
+    private var authUseCase: AuthUseCase
+    var id: String? = ""
+
     
     struct Input {
         var textFieldInput: ControlProperty<String?>
         var nextButtonTapped: ControlEvent<Void>
+        var duplicationButtonTap: ControlEvent<Void>
     }
     struct Output {
         var idNickNameValid: Observable<(policy: Bool, repeatCheck:Bool)>
     }
-    init(coordinator: AuthCoordinator, currentViewCases: CurrentViewCases) {
+    init(coordinator: AuthCoordinator, currentViewCases: CurrentViewCases, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
         self.currnetViewCases = currentViewCases
+        self.authUseCase = authUseCase
     }
     func transform(input: Input) -> Output {
+        
+        
+        
         input.nextButtonTapped.bind { [weak self] _ in
             switch self?.currnetViewCases {
             case .IDRegister:
@@ -44,6 +52,22 @@ class IDNickNameViewModel: ViewModelType {
         let idNickNameValid = input.textFieldInput.map { str in
             return (policy:str != "태수", repeatCheck: true)
         }
+        
+        input.textFieldInput.bind { [weak self] id in
+            self?.id = id
+        }
+        .disposed(by: disposebag)
+        
+        input.duplicationButtonTap
+            .map {
+                self.authUseCase.duplicationIdExcute(user_id: self.id ?? "")
+            }
+            .subscribe { data in
+                print(data, "데이터들어왔다")
+            } onError: { error in
+                print(error)
+            }
+            .disposed(by: disposebag)
         
         return Output(idNickNameValid: idNickNameValid)
     }

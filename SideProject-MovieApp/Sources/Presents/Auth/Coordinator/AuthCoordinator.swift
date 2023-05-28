@@ -57,12 +57,18 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showIDRegisterViewController() {
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister)
+        let session = ServiceImpl.shared
+        let authRepositoryImpl = AuthRepositoryImpl(session: session)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister, authUseCase: authUseCaseImpl)
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showNickNameViewController() {
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .NickName)
+        let session = ServiceImpl.shared
+        let authRepositoryImpl = AuthRepositoryImpl(session: session)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .NickName, authUseCase: authUseCaseImpl)
         let vc = NickNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
