@@ -14,6 +14,8 @@ protocol AuthUseCase {
     func phoneNumberCheckExcute(phone_number: String) -> AnyPublisher<PhoneNumberCheck, NetworkError>
     
     func phoneNumberVerifyExcute(phone_number: String, code: String) -> AnyPublisher<PhoneNumberVerify, NetworkError>
+    
+    func duplicationIdExcute(user_id: String) -> AnyPublisher<DuplicationId, NetworkError>
 }
 
 final class AuthUseCaseImpl: AuthUseCase {
@@ -94,3 +96,25 @@ extension AuthUseCaseImpl {
     }
 }
 
+extension AuthUseCaseImpl {
+    func duplicationIdExcute(user_id: String) -> AnyPublisher<DuplicationId, NetworkError> {
+        let duplicationIdQuery = DuplicationIdQuery(user_id: user_id)
+        return Future<DuplicationId, NetworkError> { [weak self] promise in
+            guard let self else { return }
+            print("Query", duplicationIdQuery)
+            self.authRepository.requestDuplicationId(query: duplicationIdQuery).sink { completion in
+                if case .failure(let error) = completion {
+                    switch error {
+                    default:
+                        promise(.failure(error))
+                    }
+                }
+            } receiveValue: { duplicationId in
+                print("응답모델", duplicationId)
+                promise(.success(duplicationId))
+            }
+            .store(in: &self.anyCancellable)
+        }
+        .eraseToAnyPublisher()
+    }
+}

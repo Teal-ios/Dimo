@@ -144,6 +144,10 @@
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
+		2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */; };
+		2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */; };
+		2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */; };
+		2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073522A237F06003F7E56 /* DuplicationId.swift */; };
 		2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */; };
 		2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */; };
 		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
@@ -388,6 +392,10 @@
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
+		2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationIdQuery.swift; sourceTree = "<group>"; };
+		2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDuplicationIdDTO.swift; sourceTree = "<group>"; };
+		2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDuplicationIdDTO.swift; sourceTree = "<group>"; };
+		2FD073522A237F06003F7E56 /* DuplicationId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationId.swift; sourceTree = "<group>"; };
 		2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewController.swift; sourceTree = "<group>"; };
 		2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumView.swift; sourceTree = "<group>"; };
 		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
@@ -600,6 +608,7 @@
 				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
 				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
 				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
+				2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -618,6 +627,7 @@
 				2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */,
 				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
 				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
+				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -635,6 +645,7 @@
 			children = (
 				2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */,
 				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
+				2FD073522A237F06003F7E56 /* DuplicationId.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -938,6 +949,7 @@
 				2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */,
 				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
 				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
+				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -1787,6 +1799,7 @@
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
+				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
@@ -1822,6 +1835,7 @@
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
+				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
 				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
@@ -1839,6 +1853,7 @@
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
+				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
@@ -1893,6 +1908,7 @@
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
+				2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
 				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,

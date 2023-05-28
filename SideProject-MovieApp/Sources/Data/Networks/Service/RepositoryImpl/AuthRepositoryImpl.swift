@@ -78,3 +78,23 @@ extension AuthRepositoryImpl {
         .eraseToAnyPublisher()
     }
 }
+
+extension AuthRepositoryImpl {
+    func requestDuplicationId(query: DuplicationIdQuery) -> AnyPublisher<DuplicationId, NetworkError> {
+        return Future<DuplicationId, NetworkError> { promise in
+            self.session.request(target: AuthRouter.duplicationId(parameters: query), type: ResponseDuplicationIdDTO.self).sink { completion in
+                if case .failure(let error) = completion {
+                    switch error {
+                    default:
+                        promise(.failure(error))
+                    }
+                }
+            } receiveValue: { duplicationIdDTO in
+                let duplicationId = duplicationIdDTO.toDomain
+                promise(.success(duplicationId))
+            }
+            .store(in: &self.anyCancellable)
+        }
+        .eraseToAnyPublisher()
+    }
+}
