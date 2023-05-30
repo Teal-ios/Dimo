@@ -12,6 +12,15 @@ enum SettingRouter {
 }
 
 extension SettingRouter: TargetType {
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .duplicationNickname(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "nickname", value: parameters.user_nickname)]
+        default:
+            return nil
+        }
+    }
+    
     
     var port: Int {
         return 3000
@@ -51,7 +60,7 @@ extension SettingRouter: TargetType {
     var path: String {
         switch self {
         case .duplicationNickname(let parameters):
-            return "/signup/is_id_dup?user_id=\(parameters.user_id)&nickname=\(parameters.user_nickname)"
+            return "/signup/is_id_dup"
         }
     }
     
