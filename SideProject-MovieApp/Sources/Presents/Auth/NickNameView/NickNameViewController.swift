@@ -10,22 +10,19 @@ import RxCocoa
 
 class NickNameViewController: BaseViewController {
     private let nickNameView = NickNameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
-    private var viewModel: IDNickNameViewModel
+    private var viewModel: NickNameViewModel
     override func loadView() {
         view = nickNameView
     }
-    init(viewModel: IDNickNameViewModel) {
+    init(viewModel: NickNameViewModel) {
         self.viewModel = viewModel
         super.init()
     }
     override func setupBinding() {
-        let input = IDNickNameViewModel.Input(
-            textFieldInput: nickNameView.idTextFieldView.tf.rx.text ,nextButtonTapped: nickNameView.nextButton.rx.tap,
-            duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap
-        )
+        let input = NickNameViewModel.Input(textFieldInput: nickNameView.idTextFieldView.tf.rx.text, nextButtonTapped: nickNameView.nextButton.rx.tap, duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap)
         
         let output = viewModel.transform(input: input)
-        output.idNickNameValid
+        output.nickNameValid
             .withUnretained(self)
             .bind { vc, bool in
                 guard bool.policy && bool.repeatCheck else {
