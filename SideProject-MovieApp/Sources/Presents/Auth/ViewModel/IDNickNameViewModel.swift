@@ -64,6 +64,7 @@ class IDNickNameViewModel: ViewModelType {
             }
             .subscribe { data in
                 print(data, "데이터들어왔다")
+                UserDefaults.standard.set(self.id, forKey: "id")
             } onError: { error in
                 print(error)
             }

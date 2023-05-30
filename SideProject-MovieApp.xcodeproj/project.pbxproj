@@ -148,6 +148,14 @@
 		2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */; };
 		2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */; };
 		2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073522A237F06003F7E56 /* DuplicationId.swift */; };
+		2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073542A25BEB2003F7E56 /* SettingRouter.swift */; };
+		2FD073572A25BF49003F7E56 /* DuplicationNicknameQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073562A25BF49003F7E56 /* DuplicationNicknameQuery.swift */; };
+		2FD073592A25BF71003F7E56 /* DuplicationNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073582A25BF71003F7E56 /* DuplicationNickname.swift */; };
+		2FD0735B2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0735A2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift */; };
+		2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0735C2A25BFC5003F7E56 /* SettingRepositoryImpl.swift */; };
+		2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0735E2A25BFEB003F7E56 /* SettingRepository.swift */; };
+		2FD073612A25C0B0003F7E56 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073602A25C0B0003F7E56 /* SettingUseCase.swift */; };
+		2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073632A25C1DC003F7E56 /* NickNameViewModel.swift */; };
 		2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */; };
 		2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */; };
 		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
@@ -396,6 +404,14 @@
 		2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDuplicationIdDTO.swift; sourceTree = "<group>"; };
 		2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDuplicationIdDTO.swift; sourceTree = "<group>"; };
 		2FD073522A237F06003F7E56 /* DuplicationId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationId.swift; sourceTree = "<group>"; };
+		2FD073542A25BEB2003F7E56 /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
+		2FD073562A25BF49003F7E56 /* DuplicationNicknameQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationNicknameQuery.swift; sourceTree = "<group>"; };
+		2FD073582A25BF71003F7E56 /* DuplicationNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationNickname.swift; sourceTree = "<group>"; };
+		2FD0735A2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDuplicationNicknameDTO.swift; sourceTree = "<group>"; };
+		2FD0735C2A25BFC5003F7E56 /* SettingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepositoryImpl.swift; sourceTree = "<group>"; };
+		2FD0735E2A25BFEB003F7E56 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		2FD073602A25C0B0003F7E56 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
+		2FD073632A25C1DC003F7E56 /* NickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewModel.swift; sourceTree = "<group>"; };
 		2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewController.swift; sourceTree = "<group>"; };
 		2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumView.swift; sourceTree = "<group>"; };
 		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
@@ -581,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D07F2A1F178500898DCD /* AuthRepository.swift */,
+				2FD0735E2A25BFEB003F7E56 /* SettingRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -589,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0852A1F194B00898DCD /* AuthUseCase.swift */,
+				2FD073602A25C0B0003F7E56 /* SettingUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -617,6 +635,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */,
+				2FD0735C2A25BFC5003F7E56 /* SettingRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -628,6 +647,7 @@
 				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
 				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
 				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
+				2FD073562A25BF49003F7E56 /* DuplicationNicknameQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -636,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC94E9E29C013880097E696 /* AuthRouter.swift */,
+				2FD073542A25BEB2003F7E56 /* SettingRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -646,6 +667,7 @@
 				2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */,
 				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
 				2FD073522A237F06003F7E56 /* DuplicationId.swift */,
+				2FD073582A25BF71003F7E56 /* DuplicationNickname.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -950,6 +972,7 @@
 				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
 				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
 				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
+				2FD0735A2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -1324,6 +1347,14 @@
 			path = DimoLoginView;
 			sourceTree = "<group>";
 		};
+		2FD073622A25C1D2003F7E56 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD073632A25C1DC003F7E56 /* NickNameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FD11DC02A00BC92006796DD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1589,6 +1620,7 @@
 		93C48BA629D6ADBE00644F6A /* NickNameView */ = {
 			isa = PBXGroup;
 			children = (
+				2FD073622A25C1D2003F7E56 /* ViewModel */,
 				93C48BA729D6ADD800644F6A /* NickNameView.swift */,
 				93C48BA929D6ADE000644F6A /* NickNameViewController.swift */,
 			);
@@ -1806,6 +1838,7 @@
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
 				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
+				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
@@ -1818,6 +1851,7 @@
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
+				2FD073572A25BF49003F7E56 /* DuplicationNicknameQuery.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
 				2F53D07E2A1F16D900898DCD /* Service.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
@@ -1833,6 +1867,7 @@
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
+				2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
@@ -1848,6 +1883,7 @@
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
 				2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */,
+				2FD0735B2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift in Sources */,
 				2FDD9E692A121EC400A41FF7 /* FeedDetailViewModel.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
@@ -1862,6 +1898,7 @@
 				2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */,
 				2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */,
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
+				2FD073612A25C0B0003F7E56 /* SettingUseCase.swift in Sources */,
 				2FDD9E672A121EB900A41FF7 /* FeedDetailViewController.swift in Sources */,
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
@@ -1892,6 +1929,7 @@
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
+				2FD073592A25BF71003F7E56 /* DuplicationNickname.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
@@ -1908,6 +1946,7 @@
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
+				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
 				2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
@@ -1949,6 +1988,7 @@
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
+				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
