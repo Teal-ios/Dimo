@@ -46,7 +46,12 @@ class NickNameViewModel: ViewModelType {
                 self.settingUseCase.duplicationNicknameExcute(user_id: UserDefaults.standard.string(forKey: "id") ?? "", user_nickname: "이름")
             }
             .subscribe { data in
-                print(data, "데이터들어왔다")
+                data.sink { error in
+                    print(error)
+                } receiveValue: { duplicationNickname in
+                    print(duplicationNickname)
+                }
+
             } onError: { error in
                 print(error)
             }

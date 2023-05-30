@@ -15,6 +15,15 @@ enum AuthRouter {
 }
 
 extension AuthRouter: TargetType {
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .duplicationId(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        default:
+            return nil
+        }
+    }
+    
     
     var port: Int {
         return 3000
@@ -61,8 +70,8 @@ extension AuthRouter: TargetType {
             return "/signup/phone-check"
         case .phoneNumberVerify:
             return "/signup/phone-check/verify"
-        case .duplicationId(let parameters):
-            return "/signup/is_id_dup?user_id=\(parameters.user_id)"
+        case .duplicationId:
+            return "/signup/is_id_dup"
         }
     }
     
