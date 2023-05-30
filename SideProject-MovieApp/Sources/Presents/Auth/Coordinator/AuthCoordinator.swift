@@ -65,7 +65,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showNickNameViewController() {
-        let session = ServiceImpl.shared
+        let session = AsyncAwaitServiceImpl.shared
         let settingRepositoryImpl = SettingRepositoryImpl(session: session)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
