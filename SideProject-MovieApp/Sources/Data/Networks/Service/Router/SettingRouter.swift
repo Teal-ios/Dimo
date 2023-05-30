@@ -9,12 +9,15 @@ import Foundation
 
 enum SettingRouter {
     case duplicationNickname(parameters: DuplicationNicknameQuery)
+    case changeNickname(parameters: ChangeNicknameQuery)
 }
 
 extension SettingRouter: TargetType {
     var queryItems: [URLQueryItem]? {
         switch self {
         case .duplicationNickname(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "nickname", value: parameters.user_nickname)]
+        case .changeNickname(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "nickname", value: parameters.user_nickname)]
         default:
             return nil
@@ -37,14 +40,14 @@ extension SettingRouter: TargetType {
     
     var header: [String : String]? {
         switch self {
-        case .duplicationNickname:
+        case .duplicationNickname, .changeNickname:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .duplicationNickname:
+        case .duplicationNickname, .changeNickname:
             return .get
         }
     }
@@ -59,14 +62,16 @@ extension SettingRouter: TargetType {
     
     var path: String {
         switch self {
-        case .duplicationNickname(let parameters):
+        case .duplicationNickname:
             return "/signup/is_id_dup"
+        case .changeNickname:
+            return "/user_info/change_nickname"
         }
     }
     
     var body: Data? {
         switch self {
-        case .duplicationNickname:
+        case .duplicationNickname, .changeNickname:
             return nil
         }
     }

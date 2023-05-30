@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import Combine
 
 protocol SettingRepository: AnyObject {
     
-    func requestDuplicationNickname(query: DuplicationNicknameQuery) -> AnyPublisher<DuplicationNickname, NetworkError>
+    func requestDuplicationNickname(query: DuplicationNicknameQuery) async throws -> DuplicationNickname
+    
+    func requestChangeNickname(query: ChangeNicknameQuery) async throws -> ChangeNickname
 }

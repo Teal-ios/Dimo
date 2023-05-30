@@ -96,6 +96,10 @@
 		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
+		2FBFE1182A262708001D5425 /* ChangeNicknameQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1172A262708001D5425 /* ChangeNicknameQuery.swift */; };
+		2FBFE11A2A262735001D5425 /* ChangeNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1192A262735001D5425 /* ChangeNickname.swift */; };
+		2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */; };
+		2FBFE11E2A26286A001D5425 /* AsyncAwaitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */; };
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
@@ -351,6 +355,10 @@
 		2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
 		2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStyleCase.swift; sourceTree = "<group>"; };
 		2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		2FBFE1172A262708001D5425 /* ChangeNicknameQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameQuery.swift; sourceTree = "<group>"; };
+		2FBFE1192A262735001D5425 /* ChangeNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickname.swift; sourceTree = "<group>"; };
+		2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseChangeNicknameDTO.swift; sourceTree = "<group>"; };
+		2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitService.swift; sourceTree = "<group>"; };
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
@@ -648,6 +656,7 @@
 				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
 				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
 				2FD073562A25BF49003F7E56 /* DuplicationNicknameQuery.swift */,
+				2FBFE1172A262708001D5425 /* ChangeNicknameQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -668,6 +677,7 @@
 				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
 				2FD073522A237F06003F7E56 /* DuplicationId.swift */,
 				2FD073582A25BF71003F7E56 /* DuplicationNickname.swift */,
+				2FBFE1192A262735001D5425 /* ChangeNickname.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -973,6 +983,7 @@
 				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
 				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
 				2FD0735A2A25BF94003F7E56 /* ResponseDuplicationNicknameDTO.swift */,
+				2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -1288,6 +1299,7 @@
 				93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */,
 				93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */,
 				2F53D07D2A1F16D900898DCD /* Service.swift */,
+				2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */,
 				2F53D06F2A1F0AC600898DCD /* NetworkError.swift */,
 				2F53D0732A1F114900898DCD /* TargetType.swift */,
 				2F53D0752A1F11AD00898DCD /* APIKey.swift */,
@@ -1824,6 +1836,7 @@
 				2F6D7D112A14B27D00FA457D /* MovieDetailView.swift in Sources */,
 				2FDD9E732A12608600A41FF7 /* FeedDetailHeaderView.swift in Sources */,
 				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
+				2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */,
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
@@ -1850,6 +1863,7 @@
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
+				2FBFE11A2A262735001D5425 /* ChangeNickname.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* DuplicationNicknameQuery.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
@@ -1926,6 +1940,7 @@
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
+				2FBFE1182A262708001D5425 /* ChangeNicknameQuery.swift in Sources */,
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
@@ -1987,6 +2002,7 @@
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
+				2FBFE11E2A26286A001D5425 /* AsyncAwaitService.swift in Sources */,
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
