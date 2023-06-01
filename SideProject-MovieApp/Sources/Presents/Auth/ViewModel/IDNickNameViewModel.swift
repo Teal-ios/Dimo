@@ -58,16 +58,19 @@ class IDNickNameViewModel: ViewModelType {
         }
         .disposed(by: disposebag)
         
+
+        
         input.duplicationButtonTap
-            .map {
-                self.authUseCase.duplicationIdExcute(user_id: self.id ?? "")
+            .flatMapLatest { [weak self] _ in
+                (self?.authUseCase.duplicationIdExcute(user_id: self?.id ?? "")
+                    .do(onSuccess: { data in
+                        print(data, "data들어옴!!")
+                    }, onError: { error in
+                        print(error)
+                    })
+                        .asObservable())!
             }
-            .subscribe { data in
-                print(data, "데이터들어왔다")
-                UserDefaults.standard.set(self.id, forKey: "id")
-            } onError: { error in
-                print(error)
-            }
+            .subscribe()
             .disposed(by: disposebag)
         
         return Output(idNickNameValid: idNickNameValid)

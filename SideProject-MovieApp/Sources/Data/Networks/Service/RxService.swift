@@ -42,23 +42,27 @@ final class RxServiceImpl: RxService {
                 print("🚩 Response \(httpResponse.statusCode)")
                 
                 guard let data = data else {
-                    single(.failure(NetworkError.duplicatedError))
+                    single(.failure(NetworkError.internalError))
                     return
                 }
+                
                 switch httpResponse.statusCode {
-                case 200:
+                case 200..<300:
                     do {
                         let result = try decoder.decode(T.self, from: data)
                         single(.success(result))
                     } catch {
                         single(.failure(error))
                     }
-                case 401:
+                case 400..<500:
                     print("❌ Failure", String(data: data, encoding: .utf8)!)
-                    single(.failure(NetworkError.internalClientError))
+                    single(.failure(NetworkError.clientError))
+                case 500..<599:
+                    print("❌ Failure", String(data: data, encoding: .utf8)!)
+                    single(.failure(NetworkError.serverError))
                 default:
                     print("❌ Failure", String(data: data, encoding: .utf8)!)
-                    single(.failure(NetworkError.unknown))
+                    single(.failure(NetworkError.internalError))
                 }
             }
             

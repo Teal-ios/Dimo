@@ -49,7 +49,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showSignupIdentificationViewController() {
-        let session = ServiceImpl.shared
+        let session = RxServiceImpl.shared
         let authRepositoryImpl = AuthRepositoryImpl(session: session)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
         let viewModel = SignupIdentificationViewModel(coordinator: self, authUseCase: authUseCaseImpl)
@@ -57,7 +57,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showIDRegisterViewController() {
-        let session = ServiceImpl.shared
+        let session = RxServiceImpl.shared
         let authRepositoryImpl = AuthRepositoryImpl(session: session)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
         let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister, authUseCase: authUseCaseImpl)
@@ -65,7 +65,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showNickNameViewController() {
-        let session = AsyncAwaitServiceImpl.shared
+        let session = RxServiceImpl.shared
         let settingRepositoryImpl = SettingRepositoryImpl(session: session)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)

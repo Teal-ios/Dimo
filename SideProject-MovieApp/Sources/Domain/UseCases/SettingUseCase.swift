@@ -17,9 +17,6 @@ final class SettingUseCaseImpl: SettingUseCase {
     
     let settingRepository: SettingRepository
 
-    var successDuplicationNickname = PublishRelay<DuplicationNickname>()
-    var errorSignal = PublishRelay<Void>()
-        
     init(settingRepository: SettingRepository) {
         self.settingRepository = settingRepository
     }

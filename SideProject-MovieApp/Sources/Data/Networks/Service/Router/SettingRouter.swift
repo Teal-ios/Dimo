@@ -63,7 +63,7 @@ extension SettingRouter: TargetType {
     var path: String {
         switch self {
         case .duplicationNickname:
-            return "/signup/is_id_dup"
+            return "/user_info/confirm_nickname"
         case .changeNickname:
             return "/user_info/change_nickname"
         }
