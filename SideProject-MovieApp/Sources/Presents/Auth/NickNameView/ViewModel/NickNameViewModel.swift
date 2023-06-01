@@ -41,37 +41,18 @@ class NickNameViewModel: ViewModelType {
         }
         .disposed(by: disposebag)
         
-        let duplicationButtonTapAsync = input.duplicationButtonTap
-            .flatMapLatest { [weak self] _ -> Single<DuplicationNickname> in
-                guard let self = self else {
-                    return Single.error(NSError(domain: "", code: 0, userInfo: nil))
-                }
-                let user_id = UserDefaults.standard.string(forKey: "id") ?? ""
-                let user_nickname = "이름"
-                return Single<DuplicationNickname>.create { single in
-                    async {
-                        do {
-                            let duplicationNickname = try await self.settingUseCase.duplicationNicknameExcute(user_id: user_id, user_nickname: user_nickname)
-                            single(.success(duplicationNickname))
-                        } catch {
-                            single(.failure(error))
-                        }
-                    }
-                    return Disposables.create()
-                }
+        input.duplicationButtonTap
+            .flatMapLatest { [weak self] _ in
+                (self?.settingUseCase.duplicationNicknameExcute(user_id: UserDefaults.standard.string(forKey: "userId") ?? "", user_nickname: self?.id ?? "")
+                    .do(onSuccess: { data in
+                        print(data, "data들어옴!!")
+                    }, onError: { error in
+                        print(error)
+                    })
+                        .asObservable())!
             }
-
-        
-        duplicationButtonTapAsync
-            .subscribe(onNext: { duplicationNickname in
-                // 중복 확인 결과 처리
-                print(duplicationNickname)
-            }, onError: { error in
-                // 에러 처리
-                print(error)
-            })
+            .subscribe()
             .disposed(by: disposebag)
-        
         
         return Output(nickNameValid: idNickNameValid)
     }
