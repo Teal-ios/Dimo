@@ -7,15 +7,19 @@
 
 import Foundation
 import Combine
+import RxSwift
 
 final class AuthRepositoryImpl: AuthRepository {
     
     private let session: Service
+    private let rxSession: RxService
     
     private var anyCancellable = Set<AnyCancellable>()
+    private var disposeBag = DisposeBag()
     
-    init(session: Service) {
+    init(session: Service, rxSession: RxService) {
         self.session = session
+        self.rxSession = rxSession
     }
     
 }
@@ -96,5 +100,16 @@ extension AuthRepositoryImpl {
             .store(in: &self.anyCancellable)
         }
         .eraseToAnyPublisher()
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestSignUpRx(query: SignUpQuery, completion: @escaping (Result<Int, Error>) -> Void) {
+        self.rxSession.request(target: AuthRouter.signup(parameters: query), type: StatusCodeResponseDTO.self).subscribe { statusCode in
+            completion(.success(statusCode.statusCode!))
+        } onFailure: { error in
+            completion(.failure(error))
+        }
+        .disposed(by: disposeBag)
     }
 }
