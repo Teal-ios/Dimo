@@ -60,7 +60,7 @@ final class AuthCoordinator: Coordinator {
         let session = RxServiceImpl.shared
         let authRepositoryImpl = AuthRepositoryImpl(session: session)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister, authUseCase: authUseCaseImpl)
+        let viewModel = IDNickNameViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -73,7 +73,7 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showPasswordViewController() {
-        let viewModel = PasswordViewModel(coordinator: self, currentViewCases: .Password)
+        let viewModel = PasswordViewModel(coordinator: self)
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

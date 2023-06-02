@@ -64,14 +64,16 @@ final class SignupIdentificationViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.idRequestButtonTapped
-            .map {
-                self.authUseCase.phoneNumberCheckExcute(phone_number: self.phoneNum ?? "")
+            .flatMapLatest { [weak self] _ in
+                (self?.authUseCase.phoneNumberCheckExcute(phone_number: self?.phoneNum ?? "")
+                    .do(onSuccess: { data in
+                        print(data, "data들어옴!!")
+                    }, onError: { error in
+                        print(error)
+                    })
+                        .asObservable())!
             }
-            .subscribe { data in
-                print(data, "데이터들어왔다")
-            } onError: { error in
-                print(error)
-            }
+            .subscribe()
             .disposed(by: disposebag)
         
         input.nextButtonTapped.bind { [weak self] _ in

@@ -13,7 +13,6 @@ class PasswordViewModel: ViewModelType {
     var disposebag: DisposeBag = DisposeBag()
     
     private weak var coordinator: AuthCoordinator?
-    private var currentViewCases: CurrentViewCases
     
     struct Input {
         let passwordText: ControlProperty<String?>
@@ -28,9 +27,8 @@ class PasswordViewModel: ViewModelType {
     }
     
     
-    init(coordinator: AuthCoordinator? = nil, currentViewCases: CurrentViewCases) {
+    init(coordinator: AuthCoordinator? = nil) {
         self.coordinator = coordinator
-        self.currentViewCases = currentViewCases
     }
     func transform(input: Input) -> Output {
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
