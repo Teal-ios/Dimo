@@ -91,6 +91,7 @@ extension AuthUseCaseImpl {
             let disposable = self.authRepository.requestDuplicationId(query: query).subscribe { result in
                 switch result {
                 case .success(let data):
+                    UserDefaults.standard.set(user_id, forKey: "userId")
                     single(.success(data))
                 case .failure(let error):
                     single(.failure(error))

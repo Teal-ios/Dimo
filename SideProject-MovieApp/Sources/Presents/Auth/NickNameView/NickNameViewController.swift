@@ -36,13 +36,9 @@ class NickNameViewController: BaseViewController {
             .withUnretained(self)
             .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
             .bind { vc, bool in
-                    if bool == false {
-                        vc.nickNameView.policyLabel.text = "중복된 닉네임이 존재합니다."
-                    } else {
-                        vc.nickNameView.policyLabel.text = "사용 가능한 닉네임입니다."
-
-                    vc.nickNameView.policyLabel.textColor = .error
-                }
+            
+                vc.nickNameView.policyLabel.text = bool ? "사용 가능한 닉네임입니다." : "중복된 닉네임이 존재합니다."
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
                 vc.nickNameView.nextButton.isEnabled = bool
                 vc.nickNameView.nextButton.configuration?.baseBackgroundColor = bool ? .purple100 : .black80
                 vc.nickNameView.policyLabel.textColor = .black

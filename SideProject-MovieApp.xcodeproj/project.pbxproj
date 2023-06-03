@@ -171,6 +171,7 @@
 		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
 		2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */; };
 		2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */; };
+		2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -230,7 +231,6 @@
 		93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48B4F29D2ADCC00644F6A /* TelecomButton.swift */; };
 		93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BA029D5AF7200644F6A /* IDRegisterView.swift */; };
 		93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BA229D5AF7E00644F6A /* IDRegisterViewController.swift */; };
-		93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BA729D6ADD800644F6A /* NickNameView.swift */; };
 		93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BA929D6ADE000644F6A /* NickNameViewController.swift */; };
 		93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BAB29D6AE6D00644F6A /* IDNickNameViewModel.swift */; };
 		93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C48BAE29D9299400644F6A /* PasswordView.swift */; };
@@ -433,6 +433,7 @@
 		2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigFinishCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
+		2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -482,7 +483,6 @@
 		93C48B4F29D2ADCC00644F6A /* TelecomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TelecomButton.swift; path = "SideProject-MovieApp/Sources/Presents/Auth/ViewModel/TelecomButton.swift"; sourceTree = SOURCE_ROOT; };
 		93C48BA029D5AF7200644F6A /* IDRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDRegisterView.swift; sourceTree = "<group>"; };
 		93C48BA229D5AF7E00644F6A /* IDRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDRegisterViewController.swift; sourceTree = "<group>"; };
-		93C48BA729D6ADD800644F6A /* NickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameView.swift; sourceTree = "<group>"; };
 		93C48BA929D6ADE000644F6A /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		93C48BAB29D6AE6D00644F6A /* IDNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDNickNameViewModel.swift; sourceTree = "<group>"; };
 		93C48BAE29D9299400644F6A /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
@@ -1660,8 +1660,8 @@
 			isa = PBXGroup;
 			children = (
 				2FD073622A25C1D2003F7E56 /* ViewModel */,
-				93C48BA729D6ADD800644F6A /* NickNameView.swift */,
 				93C48BA929D6ADE000644F6A /* NickNameViewController.swift */,
+				2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */,
 			);
 			path = NickNameView;
 			sourceTree = "<group>";
@@ -1945,6 +1945,7 @@
 				2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
+				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
@@ -1975,7 +1976,6 @@
 				2FD073592A25BF71003F7E56 /* DuplicationNickname.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
-				93C48BA829D6ADD800644F6A /* NickNameView.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,

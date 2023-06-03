@@ -1,8 +1,8 @@
 //
-//  NickNameView.swift
+//  NicknameView.swift
 //  SideProject-MovieApp
 //
-//  Created by Kim TaeSoo on 2023/03/31.
+//  Created by 이병현 on 2023/06/03.
 //
 
 import UIKit
