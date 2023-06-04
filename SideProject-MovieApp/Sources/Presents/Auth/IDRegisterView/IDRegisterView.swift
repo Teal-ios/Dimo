@@ -75,5 +75,4 @@ class IDRegisterView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide).inset(betweenTerms)
         }
     }
-    
 }

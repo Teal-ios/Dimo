@@ -73,7 +73,7 @@ class WithDrawView: BaseView {
     }()
     
     let withdrawButton: OnboardingButton = {
-        return OnboardingButton(title: "변경하기", ofSize: 14)
+        return OnboardingButton(title: "탈퇴하기", ofSize: 14)
     }()
 
     

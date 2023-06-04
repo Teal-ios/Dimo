@@ -34,11 +34,10 @@ class PasswordViewController: BaseViewController {
             
             let str: String = valid ?
             "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
-            
+            vc.passwordView.nextButton.isEnabled = valid
+            vc.passwordView.nextButton.configuration?.baseBackgroundColor = valid ? .purple100 : .black80
             vc.passwordView.passwordCheckLabel.text = str
-            
         }
         .disposed(by: disposeBag)
     }
-    
 }

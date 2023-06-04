@@ -36,7 +36,7 @@ class NickNameViewModel: ViewModelType {
         }.disposed(by: disposebag)
         // 닉네임 중복확인
         let nicknameValid = input.textFieldInput.orEmpty.map { str in
-            str.count > 3
+            str.count > 2
         }
         
         input.textFieldInput.bind { [weak self] id in

@@ -178,6 +178,9 @@
 		2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */; };
 		2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */; };
 		2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */; };
+		2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */; };
+		2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */; };
+		2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -446,6 +449,9 @@
 		2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundView.swift; sourceTree = "<group>"; };
 		2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewController.swift; sourceTree = "<group>"; };
 		2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewModel.swift; sourceTree = "<group>"; };
+		2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationView.swift; sourceTree = "<group>"; };
+		2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationViewController.swift; sourceTree = "<group>"; };
+		2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationViewModel.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -540,12 +546,9 @@
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0CC2A1F7BE500898DCD /* WithDrawView */,
-				2F53D0C32A1F6E2400898DCD /* EditMbtiView */,
-				2F53D0BA2A1F67C100898DCD /* EditPasswordView */,
+				2FD4D0C22A2CB0C100B9AF61 /* NotificationSetting */,
+				2FD4D0C12A2CB06700B9AF61 /* AccountSetting */,
 				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
-				2F53D0A62A1F4A2100898DCD /* EditUserNameView */,
-				2F53D09D2A1F395D00898DCD /* EditMyInfoView */,
 				2F53D0982A1F364F00898DCD /* SettingView */,
 			);
 			path = SettingView;
@@ -1017,7 +1020,6 @@
 				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
 				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
 				93C48B3C29D1720700644F6A /* SignupTermsViewModel.swift */,
-				93C48BB329D929B100644F6A /* PasswordViewModel.swift */,
 				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
 				2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */,
 				2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */,
@@ -1528,6 +1530,101 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2FD4D0C02A2CB02800B9AF61 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0BA2A1F67C100898DCD /* EditPasswordView */,
+				2F53D09D2A1F395D00898DCD /* EditMyInfoView */,
+				2F53D0A62A1F4A2100898DCD /* EditUserNameView */,
+				2F53D0CC2A1F7BE500898DCD /* WithDrawView */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		2FD4D0C12A2CB06700B9AF61 /* AccountSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0C32A1F6E2400898DCD /* EditMbtiView */,
+				2FD4D0C02A2CB02800B9AF61 /* MyInfo */,
+			);
+			path = AccountSetting;
+			sourceTree = "<group>";
+		};
+		2FD4D0C22A2CB0C100B9AF61 /* NotificationSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0C42A2CB10500B9AF61 /* EditKeyword */,
+				2FD4D0C32A2CB0FD00B9AF61 /* EditNotification */,
+			);
+			path = NotificationSetting;
+			sourceTree = "<group>";
+		};
+		2FD4D0C32A2CB0FD00B9AF61 /* EditNotification */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0C82A2CB14600B9AF61 /* ViewModel */,
+				2FD4D0C72A2CB14400B9AF61 /* View */,
+			);
+			path = EditNotification;
+			sourceTree = "<group>";
+		};
+		2FD4D0C42A2CB10500B9AF61 /* EditKeyword */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0C62A2CB12500B9AF61 /* ViewModel */,
+				2FD4D0C52A2CB12300B9AF61 /* View */,
+			);
+			path = EditKeyword;
+			sourceTree = "<group>";
+		};
+		2FD4D0C52A2CB12300B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD4D0C62A2CB12500B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0C72A2CB14400B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */,
+				2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD4D0C82A2CB14600B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0CF2A2CC22100B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				93C48BB329D929B100644F6A /* PasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0D02A2CC22400B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93C48BAE29D9299400644F6A /* PasswordView.swift */,
+				93C48BB029D9299F00644F6A /* PasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1743,8 +1840,8 @@
 		93C48BAD29D9298200644F6A /* PasswordView */ = {
 			isa = PBXGroup;
 			children = (
-				93C48BAE29D9299400644F6A /* PasswordView.swift */,
-				93C48BB029D9299F00644F6A /* PasswordViewController.swift */,
+				2FD4D0D02A2CC22400B9AF61 /* View */,
+				2FD4D0CF2A2CC22100B9AF61 /* ViewModel */,
 			);
 			path = PasswordView;
 			sourceTree = "<group>";
@@ -2021,6 +2118,7 @@
 				2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
+				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
@@ -2028,6 +2126,7 @@
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
+				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
@@ -2088,6 +2187,7 @@
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
+				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
