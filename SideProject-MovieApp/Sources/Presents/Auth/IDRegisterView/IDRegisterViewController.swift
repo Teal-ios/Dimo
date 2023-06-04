@@ -55,7 +55,7 @@ class IDRegisterViewController: BaseViewController {
                 vc.idRegisterView.nextButton.isEnabled = bool
                 vc.idRegisterView.nextButton.configuration?.baseBackgroundColor = bool ? .purple100 : .black80
                 
-                vc.idRegisterView.policyLabel.text = bool ? "사용 가능한 아이디입니다.." : "중복 확인이 필요합니다."
+                vc.idRegisterView.policyLabel.text = bool ? "사용 가능한 아이디입니다." : "중복 확인이 필요합니다."
                 vc.idRegisterView.policyLabel.textColor = bool ? .black60 : .error
             }
             .disposed(by: disposeBag)

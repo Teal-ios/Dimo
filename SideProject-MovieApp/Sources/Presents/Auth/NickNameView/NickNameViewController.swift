@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 
 class NickNameViewController: BaseViewController {
-    private let nickNameView = NickNameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
+    private let nickNameView = NicknameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
     private var viewModel: NickNameViewModel
     override func loadView() {
         view = nickNameView
@@ -29,6 +29,8 @@ class NickNameViewController: BaseViewController {
             .bind { vc, bool in
                 vc.nickNameView.duplicateCheckButton.configuration?.baseForegroundColor = bool ? .white : .black80
                 vc.nickNameView.duplicateCheckButton.isEnabled = bool
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
+                vc.nickNameView.policyLabel.text = bool ? "" : "두글자 이상 입력해 주세요."
             }
             .disposed(by: disposeBag)
         
@@ -36,12 +38,11 @@ class NickNameViewController: BaseViewController {
             .withUnretained(self)
             .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
             .bind { vc, bool in
-            
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
                 vc.nickNameView.policyLabel.text = bool ? "사용 가능한 닉네임입니다." : "중복된 닉네임이 존재합니다."
                 vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
                 vc.nickNameView.nextButton.isEnabled = bool
                 vc.nickNameView.nextButton.configuration?.baseBackgroundColor = bool ? .purple100 : .black80
-                vc.nickNameView.policyLabel.textColor = .black
             }.disposed(by: disposeBag)
     }
 }
