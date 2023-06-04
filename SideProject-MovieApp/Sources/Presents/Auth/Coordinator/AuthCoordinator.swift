@@ -134,6 +134,18 @@ final class AuthCoordinator: Coordinator {
         let vc = SendMessageViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showErrorCommonViewController() {
+        let viewModel = ErrorCommonViewModel(coordinator: self)
+        let vc = ErrorCommonViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showErrorNotFoundViewController() {
+        let viewModel = ErrorNotFoundViewModel(coordinator: self)
+        let vc = ErrorNotFoundViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 

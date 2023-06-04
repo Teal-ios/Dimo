@@ -172,6 +172,12 @@
 		2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */; };
 		2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */; };
 		2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */; };
+		2FD4D0AF2A2CA53000B9AF61 /* ErrorCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0AE2A2CA53000B9AF61 /* ErrorCommonView.swift */; };
+		2FD4D0B12A2CA53700B9AF61 /* ErrorCommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0B02A2CA53700B9AF61 /* ErrorCommonViewModel.swift */; };
+		2FD4D0B52A2CA54D00B9AF61 /* ErrorCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0B42A2CA54D00B9AF61 /* ErrorCommonViewController.swift */; };
+		2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */; };
+		2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */; };
+		2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -434,6 +440,12 @@
 		2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigFinishCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
 		2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		2FD4D0AE2A2CA53000B9AF61 /* ErrorCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCommonView.swift; sourceTree = "<group>"; };
+		2FD4D0B02A2CA53700B9AF61 /* ErrorCommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCommonViewModel.swift; sourceTree = "<group>"; };
+		2FD4D0B42A2CA54D00B9AF61 /* ErrorCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCommonViewController.swift; sourceTree = "<group>"; };
+		2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundView.swift; sourceTree = "<group>"; };
+		2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewController.swift; sourceTree = "<group>"; };
+		2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewModel.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -1172,6 +1184,7 @@
 			children = (
 				2F39F67629FBBD3F00F5D368 /* TabBar */,
 				2FC94ECA29C037E60097E696 /* Auth */,
+				2FD4D0AA2A2CA4EE00B9AF61 /* Error */,
 			);
 			path = Presents;
 			sourceTree = "<group>";
@@ -1452,6 +1465,67 @@
 				2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0AA2A2CA4EE00B9AF61 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0B72A2CA9B400B9AF61 /* ErrorNotFoundView */,
+				2FD4D0AD2A2CA51F00B9AF61 /* ErrorCommonView */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		2FD4D0AD2A2CA51F00B9AF61 /* ErrorCommonView */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0B32A2CA53F00B9AF61 /* View */,
+				2FD4D0B22A2CA53C00B9AF61 /* ViewModel */,
+			);
+			path = ErrorCommonView;
+			sourceTree = "<group>";
+		};
+		2FD4D0B22A2CA53C00B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0B02A2CA53700B9AF61 /* ErrorCommonViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0B32A2CA53F00B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0AE2A2CA53000B9AF61 /* ErrorCommonView.swift */,
+				2FD4D0B42A2CA54D00B9AF61 /* ErrorCommonViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD4D0B72A2CA9B400B9AF61 /* ErrorNotFoundView */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0B92A2CA9BE00B9AF61 /* View */,
+				2FD4D0B82A2CA9BB00B9AF61 /* ViewModel */,
+			);
+			path = ErrorNotFoundView;
+			sourceTree = "<group>";
+		};
+		2FD4D0B82A2CA9BB00B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D0B92A2CA9BE00B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */,
+				2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {
@@ -1881,6 +1955,7 @@
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
+				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
@@ -1938,6 +2013,7 @@
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
 				2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */,
 				2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */,
+				2FD4D0B52A2CA54D00B9AF61 /* ErrorCommonViewController.swift in Sources */,
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
 				2FD073612A25C0B0003F7E56 /* SettingUseCase.swift in Sources */,
 				2FDD9E672A121EB900A41FF7 /* FeedDetailViewController.swift in Sources */,
@@ -1946,6 +2022,7 @@
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
+				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
@@ -1985,6 +2062,7 @@
 				2F53D0AC2A1F4A6100898DCD /* EditUserNameViewController.swift in Sources */,
 				2F53D0762A1F11AD00898DCD /* APIKey.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
+				2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */,
 				2F53D0B52A1F61FB00898DCD /* AlertEditUserNameViewModel.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
@@ -2006,6 +2084,7 @@
 				93C48B4E29D1863200644F6A /* OnboardingtextFieldView.swift in Sources */,
 				2FDFB1892A0DD80000732788 /* SendMessageView.swift in Sources */,
 				2F53D08D2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift in Sources */,
+				2FD4D0AF2A2CA53000B9AF61 /* ErrorCommonView.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
@@ -2030,6 +2109,7 @@
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
+				2FD4D0B12A2CA53700B9AF61 /* ErrorCommonViewModel.swift in Sources */,
 				2FBFE11E2A26286A001D5425 /* AsyncAwaitService.swift in Sources */,
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,

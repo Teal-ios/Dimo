@@ -18,7 +18,7 @@ class LoginStartViewController: BaseViewController {
     //MARK: Delegate
     private var viewModel: LoginStartViewModel
     
-    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap, signupButtonTapped: self.loginStartView.signupButton.rx.tap)
+    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap, kakaoLoginButtonTapped: self.loginStartView.kakaoLoginButton.rx.tap, googleLoginButtonTapped: self.loginStartView.googleLoginButton.rx.tap, signupButtonTapped: self.loginStartView.signupButton.rx.tap)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("LoginStartViewController: fatal error")

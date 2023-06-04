@@ -67,7 +67,7 @@ class IDRegisterView: BaseView {
         }
         policyLabel.snp.makeConstraints { make in
             make.top.equalTo(idTextFieldView.snp.bottom).offset(insidePadding)
-            make.leading.equalTo(idTextFieldView.snp.leading).offset(topLeading)
+            make.leading.equalTo(idTextFieldView.snp.leading).offset(0)
         }
         nextButton.snp.makeConstraints { make in
             make.height.equalTo(buttonHeight)

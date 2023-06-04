@@ -17,8 +17,8 @@ final class LoginStartViewModel: ViewModelType {
     struct Input{
         var dimoLoginButtonTapped: ControlEvent<Void>
         
-//        var kakaoLoginButtonTapped: ControlEvent<Void>
-//        var googleLoginButtonTapped: ControlEvent<Void>
+        var kakaoLoginButtonTapped: ControlEvent<Void>
+        var googleLoginButtonTapped: ControlEvent<Void>
 //        var appleLoginButtonTapped: ControlEvent<Void>
         var signupButtonTapped: ControlEvent<Void>
 // 추후 작업 예정
@@ -45,6 +45,15 @@ final class LoginStartViewModel: ViewModelType {
         }
         .disposed(by: disposebag)
         
+        input.kakaoLoginButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showErrorCommonViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.googleLoginButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showErrorNotFoundViewController()
+        }
+        .disposed(by: disposebag)
         
         return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped)
     }
