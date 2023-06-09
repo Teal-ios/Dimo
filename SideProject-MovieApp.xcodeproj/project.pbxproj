@@ -543,6 +543,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1046A52A32D51B00B22B29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2F1AB9CC2A10C27C001178EA /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,10 +1026,8 @@
 			children = (
 				2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */,
 				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
-				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
 				93C48B3C29D1720700644F6A /* SignupTermsViewModel.swift */,
 				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
-				2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */,
 				2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */,
 				2F979F282A0CA4E100A1CD53 /* FindIDViewModel.swift */,
 				2F979F2F2A0CB3ED00A1CD53 /* NotificationIDViewModel.swift */,
@@ -1051,6 +1057,7 @@
 		2FC2EB4629E3BC1A00ECE2ED /* LoginStartView */ = {
 			isa = PBXGroup;
 			children = (
+				2F1046A52A32D51B00B22B29 /* ViewModel */,
 				2FC2EB4929E3BC8400ECE2ED /* LoginStartViewController.swift */,
 				2FC2EB4B29E3BC8B00ECE2ED /* LoginStartView.swift */,
 			);
@@ -1060,9 +1067,8 @@
 		2FC33F702A06485F00AD284B /* JoinMbtiView */ = {
 			isa = PBXGroup;
 			children = (
-				2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */,
-				2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */,
-				2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */,
+				2FD4D0D22A2CCAAA00B9AF61 /* ViewModel */,
+				2FD4D0D12A2CCAA900B9AF61 /* View */,
 			);
 			path = JoinMbtiView;
 			sourceTree = "<group>";
@@ -1623,6 +1629,24 @@
 				93C48BB029D9299F00644F6A /* PasswordViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2FD4D0D12A2CCAA900B9AF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FC33F712A06489900AD284B /* JoinMbtiViewController.swift */,
+				2FC33F732A0648AC00AD284B /* JoinMbtiView.swift */,
+				2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD4D0D22A2CCAAA00B9AF61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FC33F752A0648EC00AD284B /* JoinMbtiViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {

@@ -38,11 +38,11 @@ class PasswordViewModel: ViewModelType {
             .map {  NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: $0) }
             .share()
         
-        
         input.didNextButtonTap
             .emit { [weak self] text in
                 guard let self = self else { return }
-                print(text)
+                print("password", text)
+                UserDefaults.standard.set(text, forKey: "password")
                 self.coordinator?.showJoinMbtiViewController()
             }
             .disposed(by: disposebag)

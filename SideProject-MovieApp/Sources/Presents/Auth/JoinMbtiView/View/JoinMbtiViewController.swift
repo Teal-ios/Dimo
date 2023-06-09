@@ -32,6 +32,8 @@ class JoinMbtiViewController: BaseViewController {
         let output = viewModel.transform(input: input)
                
         var cellSelectArr: [Bool] = [false, false, false, false, false, false, false, false]
+        var flag: [Bool] = [false, false, false, false, false, false, false, false]
+        var mbtiString: String = ""
 
         output.eButtonTapped.bind { [weak self] _ in
             if cellSelectArr[0] == false && cellSelectArr[1] == false {
@@ -241,6 +243,35 @@ class JoinMbtiViewController: BaseViewController {
                 self?.joinMbtiView.pView.backgroundColor = .black100
                 cellSelectArr[7] = false
             }
+        }
+        .disposed(by: disposeBag)
+        
+        input.nextButtonTapped.bind { [weak self] _ in
+            for i in 0...cellSelectArr.count - 1 {
+                if cellSelectArr[i] == true {
+                    switch i {
+                    case 0:
+                        mbtiString += "E"
+                    case 1:
+                        mbtiString += "I"
+                    case 2:
+                        mbtiString += "N"
+                    case 3:
+                        mbtiString += "S"
+                    case 4:
+                        mbtiString += "T"
+                    case 5:
+                        mbtiString += "F"
+                    case 6:
+                        mbtiString += "J"
+                    case 7:
+                        mbtiString += "P"
+                    default:
+                        break
+                    }
+                }
+            }
+            print(mbtiString)
         }
         .disposed(by: disposeBag)
     }
