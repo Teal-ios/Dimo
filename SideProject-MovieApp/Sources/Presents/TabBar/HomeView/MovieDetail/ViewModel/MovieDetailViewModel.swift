@@ -6,3 +6,28 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+final class MovieDetailViewModel: ViewModelType {
+    
+    var disposebag: DisposeBag = DisposeBag()
+    private weak var coordinator: HomeCoordinator?
+    
+    struct Input{
+
+
+    }
+    
+    struct Output{
+    }
+    
+    init(coordinator: HomeCoordinator? = nil) {
+        self.coordinator = coordinator
+    }
+    
+    func transform(input: Input) -> Output {
+
+        return Output()
+    }
+}

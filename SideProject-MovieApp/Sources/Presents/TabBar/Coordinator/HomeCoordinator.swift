@@ -67,4 +67,10 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         let vc = ContentMoreViewController(viewModel: viewModel, title: title)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showMovieDetailViewController() {
+        let viewModel = MovieDetailViewModel(coordinator: self)
+        let vc = MovieDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
