@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */; };
 		2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C22A10B7F7001178EA /* FeedView.swift */; };
 		2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */; };
 		2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */; };
@@ -269,6 +270,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
 		2F1AB9C22A10B7F7001178EA /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -1741,6 +1743,7 @@
 			isa = PBXGroup;
 			children = (
 				2FDD74612A10AB3C00A75AB9 /* AnalyzeViewController.swift */,
+				2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */,
 			);
 			path = AnalyzeView;
 			sourceTree = "<group>";
@@ -2241,6 +2244,7 @@
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
 				2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */,
+				2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */,
 				2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */,
 				2F53D0702A1F0AC600898DCD /* NetworkError.swift in Sources */,
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
