@@ -21,6 +21,10 @@ final class HomeViewModel: ViewModelType {
         let mbtiRecommendPlusButtonTapped: PublishSubject<Void>
         let hotMoviePlusButtonTapped: PublishSubject<Void>
         let posterCellSelected: PublishSubject<Void>
+        let mbtiMovieCellSelected: PublishSubject<Void>
+        let mbtiCharacterCellSelected: PublishSubject<Void>
+        let mbtiRecommendCellSeleted: PublishSubject<Void>
+        let hotMovieCellSelected: PublishSubject<Void>
     }
     
     struct Output {
@@ -38,9 +42,20 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposebag)
         
         input.posterCellSelected.bind { [weak self] _ in
+            self?.coordinator?.showMovieDetailViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.mbtiMovieCellSelected.bind { [weak self] _ in
+            self?.coordinator?.showMovieDetailViewController()
+        }
+        .disposed(by: disposebag)
+        
+        input.mbtiCharacterCellSelected.bind { [weak self] _ in
             self?.coordinator?.showTabmanCoordinator()
         }
         .disposed(by: disposebag)
+        
         
         input.heroPlusButtonTapped
             .bind { [weak self] _ in

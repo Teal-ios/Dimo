@@ -43,6 +43,14 @@ final class MovieDetailViewController: BaseViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
+        
+        let characterHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        }
+        
+        dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: characterHeader, for: indexPath)
+            return header
+        })
      
         snapshot.appendSections([0])
         var movieArr: [HomeModel] = []
