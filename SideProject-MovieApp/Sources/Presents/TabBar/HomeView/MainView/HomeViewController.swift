@@ -29,6 +29,10 @@ final class HomeViewController: BaseViewController {
     
     let categoryButtonTap = PublishSubject<Void>()
     let posterCellSelected = PublishSubject<Void>()
+    let mbtiMovieCellSelected = PublishSubject<Void>()
+    let mbtiCharacterCellSelected = PublishSubject<Void>()
+    let mbtiRecommendCellSeleted = PublishSubject<Void>()
+    let hotMovieCellSelected = PublishSubject<Void>()
     let heroPlusButtonTap = PublishSubject<Void>()
     let mbtiCharacterPlusButtonTap = PublishSubject<Void>()
     let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
@@ -47,7 +51,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected)
         let output = self.viewModel.transform(input: input)
     }
     
@@ -191,6 +195,15 @@ extension HomeViewController: UICollectionViewDelegate {
         switch indexPath.section {
         case 0:
             self.posterCellSelected.onNext(())
+        case 1:
+            self.mbtiMovieCellSelected.onNext(())
+        case 2:
+            print(indexPath.section)
+            self.mbtiCharacterCellSelected.onNext(())
+        case 3:
+            self.mbtiRecommendCellSeleted.onNext(())
+        case 4:
+            self.hotMovieCellSelected.onNext(())
         default:
             print(indexPath.section)
         }
