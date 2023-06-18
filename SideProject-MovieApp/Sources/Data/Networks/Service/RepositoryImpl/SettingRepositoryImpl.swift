@@ -19,7 +19,7 @@ final class SettingRepositoryImpl: SettingRepository {
 }
 
 extension SettingRepositoryImpl {
-    func requestDuplicationNickname(query: DuplicationNicknameQuery) -> Single<DuplicationNickname> {
+    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> Single<DuplicationNickname> {
         return Single.create { single in
             let disposable = self.session.request(target: SettingRouter.duplicationNickname(parameters: query), type: ResponseDuplicationNicknameDTO.self).subscribe { result in
                 switch result {
@@ -38,7 +38,7 @@ extension SettingRepositoryImpl {
 }
 
 extension SettingRepositoryImpl {
-    func requestChangeNickname(query: ChangeNicknameQuery) -> Single<ChangeNickname> {
+    func requestChangeNickname(query: NicknameChangeQuery) -> Single<ChangeNickname> {
         return Single.create { single in
             let disposable = self.session.request(target: SettingRouter.changeNickname(parameters: query), type: ResponseChangeNicknameDTO.self).subscribe { result in
                 switch result {

@@ -24,7 +24,6 @@ extension AuthRouter: TargetType {
         }
     }
     
-    
     var port: Int {
         return 3000
     }
