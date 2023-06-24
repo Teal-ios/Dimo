@@ -16,15 +16,15 @@ final class FeedDetailView: BaseScrollView {
     
     private let commentTotalView: UIView = {
         let view = UIView()
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 4
+        view.backgroundColor = .black
         return view
     }()
     
     private let commentContainView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 4
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .black90
         return view
     }()
     
@@ -36,7 +36,7 @@ final class FeedDetailView: BaseScrollView {
     let spoilerView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 4
+        view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black60.cgColor
         return view
@@ -45,6 +45,8 @@ final class FeedDetailView: BaseScrollView {
     let spoilerLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
+        label.textAlignment = .center
+        label.textColor = Color.caption
         label.text = "✓ 스포"
         return label
     }()
@@ -57,14 +59,17 @@ final class FeedDetailView: BaseScrollView {
     let registrationView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 4
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .black100
         return view
     }()
     
     let registrationLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
+        label.textAlignment = .center
         label.text = "등록"
+        label.textColor = .black80
         return label
     }()
     
@@ -118,7 +123,7 @@ final class FeedDetailView: BaseScrollView {
         }
         
         spoilerView.snp.makeConstraints { make in
-            make.verticalEdges.leading.equalTo(commentTotalView).inset(16)
+            make.verticalEdges.leading.equalTo(commentContainView).inset(8)
             make.width.equalTo(52)
         }
         
@@ -131,7 +136,7 @@ final class FeedDetailView: BaseScrollView {
         }
         
         registrationView.snp.makeConstraints { make in
-            make.verticalEdges.trailing.equalTo(commentTotalView).inset(16)
+            make.verticalEdges.trailing.equalTo(commentContainView).inset(8)
             make.width.equalTo(52)
         }
         

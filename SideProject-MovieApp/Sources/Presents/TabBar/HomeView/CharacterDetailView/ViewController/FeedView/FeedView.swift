@@ -26,7 +26,7 @@ final class FeedView: BaseView {
         self.addSubview(writeButton)
         collectionView.snp.makeConstraints { [weak self] make in
             guard let self else { return }
-            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(self.safeAreaLayoutGuide).offset(334)
         }
         
@@ -57,7 +57,7 @@ final class FeedView: BaseView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),

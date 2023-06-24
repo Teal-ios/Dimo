@@ -13,11 +13,11 @@ final class FeedDetailViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
-  var test: String = ""
+    var test: String = ""
     
     struct Input{
-
-
+        
+        
     }
     
     struct Output{
@@ -28,7 +28,7 @@ final class FeedDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-      print("\(test)")
+        print("\(test)")
         return Output()
     }
 }

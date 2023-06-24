@@ -57,7 +57,7 @@ final class CharacterDetailViewController: TabmanViewController {
     setupLayout()
     let bar = TMBar.ButtonBar()
     bar.backgroundView.style = .blur(style: .dark)
-    bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 8.0, bottom: 0.0, right: 8.0)
     bar.buttons.customize { button in
       button.tintColor = .black80
       button.selectedTintColor = .white100

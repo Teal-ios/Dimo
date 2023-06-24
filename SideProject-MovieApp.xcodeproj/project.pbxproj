@@ -1122,6 +1122,24 @@
 			path = JoinMbtiView;
 			sourceTree = "<group>";
 		};
+		2FC863892A47329600131690 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FDD9E642A121EB300A41FF7 /* FeedDetailView.swift */,
+				2FDD9E662A121EB900A41FF7 /* FeedDetailViewController.swift */,
+				2FDD9E722A12608600A41FF7 /* FeedDetailHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FC8638A2A4732BE00131690 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FDD9E682A121EC400A41FF7 /* FeedDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FC94E4529C00F0B0097E696 = {
 			isa = PBXGroup;
 			children = (
@@ -1473,7 +1491,6 @@
 				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
 				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
-				2FDD9E682A121EC400A41FF7 /* FeedDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1803,11 +1820,10 @@
 		2FDD9E622A121E9D00A41FF7 /* FeedDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				2FC8638A2A4732BE00131690 /* ViewModel */,
+				2FC863892A47329600131690 /* View */,
 				2FDD9E6D2A12234F00A41FF7 /* Model */,
 				2FDD9E6A2A121FC100A41FF7 /* Cell */,
-				2FDD9E642A121EB300A41FF7 /* FeedDetailView.swift */,
-				2FDD9E662A121EB900A41FF7 /* FeedDetailViewController.swift */,
-				2FDD9E722A12608600A41FF7 /* FeedDetailHeaderView.swift */,
 			);
 			path = FeedDetailView;
 			sourceTree = "<group>";
