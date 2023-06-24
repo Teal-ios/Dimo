@@ -28,6 +28,5 @@ final class DataTransferService {
         } catch {
             throw DataTransferError.decode
         }
-        
     }
 }

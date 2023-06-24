@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct RequestDuplicationIdDTO: Codable {
+struct NicknameDuplicationRequestDTO: Encodable {
     let user_id: String
+    let user_nickname: String
     
     enum CodingKeys: String, CodingKey {
-        case user_id
+        case user_id, user_nickname
     }
 }

@@ -11,4 +11,3 @@ struct NicknameChangeQuery: Hashable {
     let user_id: String
     let user_nickname: String
 }
-

@@ -14,9 +14,3 @@ struct RequestPhoneNumberCheckDTO: Codable {
         case phone_number
     }
 }
-//
-//extension RequestPhoneNumberCheckDTO {
-//    var toDomain: PhoneNumberCheckQuery {
-//        return .init(phone_number: phone_number)
-//    }
-//}

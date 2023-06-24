@@ -10,16 +10,23 @@ import RxSwift
 
 final class SettingRepositoryImpl: SettingRepository {
     
-    private var disposeBag = DisposeBag()
-    private let session: RxService
-        
-    init(session: RxService) {
-        self.session = session
+    private let dataTransferService: DataTransferService
+    
+    init(dataTransferService: DataTransferService) {
+        self.dataTransferService = dataTransferService
     }
 }
 
 extension SettingRepositoryImpl {
-    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> Single<DuplicationNickname> {
+    
+    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> NicknameDuplication {
+        let requestDTO = NicknameDuplicationRequestDTO(user_id: query.user_id, user_nickname: query.user_nickname)
+        let target = APIEnd
+        
+        
+        
+        
+        
         return Single.create { single in
             let disposable = self.session.request(target: SettingRouter.duplicationNickname(parameters: query), type: ResponseDuplicationNicknameDTO.self).subscribe { result in
                 switch result {
@@ -38,7 +45,7 @@ extension SettingRepositoryImpl {
 }
 
 extension SettingRepositoryImpl {
-    func requestChangeNickname(query: NicknameChangeQuery) -> Single<ChangeNickname> {
+    func requestChangeNickname(query: NicknameChangeQuery) -> NicknameChange {
         return Single.create { single in
             let disposable = self.session.request(target: SettingRouter.changeNickname(parameters: query), type: ResponseChangeNicknameDTO.self).subscribe { result in
                 switch result {

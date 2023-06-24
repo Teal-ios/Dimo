@@ -150,7 +150,7 @@
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
 		2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFEA0C2A2868C60093DD8F /* RxService.swift */; };
 		2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */; };
-		2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */; };
+		2FD0734F2A237EBF003F7E56 /* NicknameDuplicationRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* NicknameDuplicationRequestDTO.swift */; };
 		2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */; };
 		2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073522A237F06003F7E56 /* DuplicationId.swift */; };
 		2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073542A25BEB2003F7E56 /* SettingRouter.swift */; };
@@ -216,6 +216,13 @@
 		497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E12A3A1D3A0043D67E /* NetworkService.swift */; };
 		497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E32A3D7A130043D67E /* DataTransferService.swift */; };
 		497454E72A3DD5210043D67E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E62A3DD5210043D67E /* APIKey.swift */; };
+		497454E92A3F62B70043D67E /* TargetType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E82A3F62B70043D67E /* TargetType2.swift */; };
+		497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */; };
+		497454EF2A3F68C70043D67E /* NicknameChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */; };
+		497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */; };
+		497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */; };
+		497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F42A3F69050043D67E /* PasswordChangeQuery.swift */; };
+		497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F72A42025D0043D67E /* APIEndpoints.swift */; };
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
 		933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C529CB46AF00165B1E /* UIColor+Extension.swift */; };
@@ -423,7 +430,7 @@
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
 		2FCFEA0C2A2868C60093DD8F /* RxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxService.swift; sourceTree = "<group>"; };
 		2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationIdQuery.swift; sourceTree = "<group>"; };
-		2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDuplicationIdDTO.swift; sourceTree = "<group>"; };
+		2FD0734E2A237EBF003F7E56 /* NicknameDuplicationRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameDuplicationRequestDTO.swift; sourceTree = "<group>"; };
 		2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDuplicationIdDTO.swift; sourceTree = "<group>"; };
 		2FD073522A237F06003F7E56 /* DuplicationId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationId.swift; sourceTree = "<group>"; };
 		2FD073542A25BEB2003F7E56 /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
@@ -489,6 +496,13 @@
 		497454E12A3A1D3A0043D67E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		497454E32A3D7A130043D67E /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		497454E62A3DD5210043D67E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		497454E82A3F62B70043D67E /* TargetType2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType2.swift; sourceTree = "<group>"; };
+		497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInquiryQuery.swift; sourceTree = "<group>"; };
+		497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDateQuery.swift; sourceTree = "<group>"; };
+		497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeQuery.swift; sourceTree = "<group>"; };
+		497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDateQuery.swift; sourceTree = "<group>"; };
+		497454F42A3F69050043D67E /* PasswordChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeQuery.swift; sourceTree = "<group>"; };
+		497454F72A42025D0043D67E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
 		933028C529CB46AF00165B1E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -665,7 +679,7 @@
 				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
 				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
 				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
-				2FD0734E2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift */,
+				497454F62A42000C0043D67E /* Setting */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -686,8 +700,6 @@
 				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
 				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
 				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
-				2FD073562A25BF49003F7E56 /* NicknameDuplicationQuery.swift */,
-				2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -1300,6 +1312,7 @@
 		2FC94E9329C011B60097E696 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				497454EA2A3F660D0043D67E /*  Query */,
 				2FC94E9629C011E00097E696 /* Monitor */,
 				2FC94E9529C011D70097E696 /* Service */,
 			);
@@ -1323,8 +1336,9 @@
 				497454E32A3D7A130043D67E /* DataTransferService.swift */,
 				2F53D06F2A1F0AC600898DCD /* NetworkError.swift */,
 				2F53D0732A1F114900898DCD /* TargetType.swift */,
+				497454E82A3F62B70043D67E /* TargetType2.swift */,
 				497454E62A3DD5210043D67E /* APIKey.swift */,
-				497454E52A3D87E60043D67E /* Setting */,
+				497454F72A42025D0043D67E /* APIEndpoints.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1794,9 +1808,32 @@
 			path = SendMessageView;
 			sourceTree = "<group>";
 		};
-		497454E52A3D87E60043D67E /* Setting */ = {
+		497454EA2A3F660D0043D67E /*  Query */ = {
 			isa = PBXGroup;
 			children = (
+				497454EB2A3F66200043D67E /* Setting */,
+			);
+			path = " Query";
+			sourceTree = "<group>";
+		};
+		497454EB2A3F66200043D67E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */,
+				2FD073562A25BF49003F7E56 /* NicknameDuplicationQuery.swift */,
+				2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */,
+				497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */,
+				497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */,
+				497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */,
+				497454F42A3F69050043D67E /* PasswordChangeQuery.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		497454F62A42000C0043D67E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2FD0734E2A237EBF003F7E56 /* NicknameDuplicationRequestDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2079,11 +2116,13 @@
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
+				497454EF2A3F68C70043D67E /* NicknameChangeDateQuery.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
 				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
+				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
@@ -2094,6 +2133,7 @@
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
+				497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
@@ -2119,6 +2159,7 @@
 				2F53D0AA2A1F4A5700898DCD /* EditUserNameView.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
+				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
 				2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */,
@@ -2143,6 +2184,7 @@
 				2FDD9E692A121EC400A41FF7 /* FeedDetailViewModel.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
+				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
@@ -2195,6 +2237,7 @@
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
 				2FD073592A25BF71003F7E56 /* DuplicationNickname.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
+				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
@@ -2210,7 +2253,7 @@
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
-				2FD0734F2A237EBF003F7E56 /* RequestDuplicationIdDTO.swift in Sources */,
+				2FD0734F2A237EBF003F7E56 /* NicknameDuplicationRequestDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
 				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,
@@ -2257,6 +2300,7 @@
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
+				497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
 				2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */,

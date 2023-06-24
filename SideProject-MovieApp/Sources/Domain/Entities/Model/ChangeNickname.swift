@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChangeNickname: Hashable {
+struct NicknameChange: Hashable {
     let code: Int
     let message: String
     let user_id: String
