@@ -6,16 +6,19 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 
 protocol SettingUseCase {
-    func executeNicknameDuplication(user_id: String, user_nickname: String) -> Single<DuplicationNickname>
+    func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
+    
+    func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
+}
+
+enum SettingUsecaseError: String, Error {
+    case execute
 }
 
 final class SettingUseCaseImpl: SettingUseCase {
-    
-    let settingRepository: SettingRepository
+    private let settingRepository: SettingRepository
 
     init(settingRepository: SettingRepository) {
         self.settingRepository = settingRepository
@@ -23,21 +26,21 @@ final class SettingUseCaseImpl: SettingUseCase {
 }
 
 extension SettingUseCaseImpl {
-    
-    func executeNicknameDuplication(user_id: String, user_nickname: String) -> Single<DuplicationNickname> {
-        let query = NicknameDuplicationQuery(user_id: user_id, user_nickname: user_nickname)
-        return Single.create { single in
-            let disposable = self.settingRepository.requestDuplicationNickname(query: query).subscribe { result in
-                switch result {
-                case .success(let duplicationNickname):
-                    single(.success(duplicationNickname))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
+        do {
+            return try await settingRepository.fetchDuplicationNickname(query: query)
+        } catch {
+            throw SettingUsecaseError.execute
+        }
+    }
+}
+
+extension SettingUseCaseImpl {
+    func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange {
+        do {
+            return try await settingRepository.fetchChangeNickname(query: query)
+        } catch {
+            throw SettingUsecaseError.execute
         }
     }
 }

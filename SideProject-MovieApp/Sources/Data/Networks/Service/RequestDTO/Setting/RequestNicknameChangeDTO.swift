@@ -1,13 +1,13 @@
 //
-//  RequestDuplicationIdDTO.swift
+//  NicknameChangeRequestDTO.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/28.
+//  Created by 이동기 on 2023/06/24.
 //
 
 import Foundation
 
-struct NicknameDuplicationRequestDTO: Encodable {
+struct RequestNicknameChangeDTO: Encodable {
     let user_id: String
     let user_nickname: String
     

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class FeedViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
     
     struct Input{
@@ -32,7 +32,7 @@ final class FeedViewModel: ViewModelType {
             self?.coordinator?.showFeedDetailViewController()
           
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         return Output()
     }
 }

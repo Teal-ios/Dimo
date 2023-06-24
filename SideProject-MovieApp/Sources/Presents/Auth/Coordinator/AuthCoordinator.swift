@@ -65,8 +65,8 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showNickNameViewController() {
-        let session = RxServiceImpl.shared
-        let settingRepositoryImpl = SettingRepositoryImpl(session: session)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
         let vc = NickNameViewController(viewModel: viewModel)

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class SettingViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
     
     struct Input{
@@ -37,7 +37,7 @@ final class SettingViewModel: ViewModelType {
                 print("미설정")
             }
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         return Output()
     }
 }

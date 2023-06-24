@@ -11,7 +11,7 @@ import RxCocoa
 
 final class ErrorCommonViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     
@@ -25,7 +25,7 @@ final class ErrorCommonViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.retryButtonTapped.bind { [weak self] _ in
             self?.coordinator?.popPopupViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
     init(coordinator: AuthCoordinator?) {

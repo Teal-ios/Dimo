@@ -11,7 +11,7 @@ import RxCocoa
 
 class CategoryViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     
     struct Input{
@@ -30,11 +30,11 @@ class CategoryViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.movieButtonTapped.bind { [weak self] _ in
             self?.coordinator?.dismissCategoryViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         input.dramaButtonTapped.bind { [weak self] _ in
             self?.coordinator?.dismissCategoryViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
 }

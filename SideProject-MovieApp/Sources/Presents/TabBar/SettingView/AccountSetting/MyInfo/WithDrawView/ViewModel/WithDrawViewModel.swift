@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class WithDrawViewModel: ViewModelType {
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: SettingCoordinator?
     

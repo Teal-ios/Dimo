@@ -11,7 +11,7 @@ import RxCocoa
 
 final class HomeViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     
     struct Input {
@@ -39,46 +39,46 @@ final class HomeViewModel: ViewModelType {
         input.categoryButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showCategoryViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.posterCellSelected.bind { [weak self] _ in
             self?.coordinator?.showMovieDetailViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.mbtiMovieCellSelected.bind { [weak self] _ in
             self?.coordinator?.showMovieDetailViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.mbtiCharacterCellSelected.bind { [weak self] _ in
             self?.coordinator?.showTabmanCoordinator()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         
         input.heroPlusButtonTapped
             .bind { [weak self] _ in
             self?.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.characterPlusButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showContentMoreViewController(title: "캐릭터 모아보기")
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.mbtiRecommendPlusButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showContentMoreViewController(title: "추천한 영화")
 
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.hotMoviePlusButtonTapped.bind { [weak self] _ in
 
             self?.coordinator?.showContentMoreViewController(title: "핫한 영화")
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
 
         return Output()
     }

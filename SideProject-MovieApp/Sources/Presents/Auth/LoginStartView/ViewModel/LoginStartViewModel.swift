@@ -11,7 +11,7 @@ import RxCocoa
 
 final class LoginStartViewModel: ViewModelType {
     
-    var disposebag = DisposeBag()
+    var disposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -38,22 +38,22 @@ final class LoginStartViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.dimoLoginButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showDimoLoginViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         input.signupButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showSignupTermsViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.kakaoLoginButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showErrorCommonViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.googleLoginButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showErrorNotFoundViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped)
     }

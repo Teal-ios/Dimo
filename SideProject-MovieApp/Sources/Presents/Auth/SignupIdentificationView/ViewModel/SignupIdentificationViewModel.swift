@@ -12,7 +12,7 @@ import RxCocoa
 final class SignupIdentificationViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     private var authUseCase: AuthUseCase
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     var timer: Timer?
     var leftTime: Int?
     var phoneNum: String? = ""
@@ -61,7 +61,7 @@ final class SignupIdentificationViewModel: ViewModelType {
         input.phoneNumberInput.bind { [weak self] phoneNum in
             self?.phoneNum = phoneNum
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.idRequestButtonTapped
             .flatMapLatest { [weak self] _ in
@@ -74,11 +74,11 @@ final class SignupIdentificationViewModel: ViewModelType {
                         .asObservable())!
             }
             .subscribe()
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showIDRegisterViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, idRequestButtonTapped: input.idRequestButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
     }

@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 
 class EditPasswordViewModel: ViewModelType {
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: SettingCoordinator?
     
@@ -44,7 +44,7 @@ class EditPasswordViewModel: ViewModelType {
                 guard let self = self else { return }
                 print(text)
             }
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
         
         let passwordDuplicationValid = Observable.combineLatest(input.passwordText.orEmpty, input.checkpwText.orEmpty).map { $0 == $1 && $0.count >= 8 && $0.count <= 16 }
         

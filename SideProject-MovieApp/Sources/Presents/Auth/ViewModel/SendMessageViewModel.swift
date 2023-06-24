@@ -11,7 +11,7 @@ import RxCocoa
 
 final class SendMessageViewModel: ViewModelType {
 
-    var disposebag = DisposeBag()
+    var disposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -29,11 +29,11 @@ final class SendMessageViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.returnMessageButtonTapped.bind { [weak self]_ in
             print("message 다시 받는 로직 추가")
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         input.nextButtonTapped.bind { [weak self]_ in
             self?.coordinator?.showLoginStartViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
 }

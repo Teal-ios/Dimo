@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import RxSwift
 
 protocol SettingRepository: AnyObject {
     
-    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> NicknameDuplication
+    func fetchDuplicationNickname(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
     
-    func requestChangeNickname(query: NicknameChangeQuery) -> NicknameChange
+    func fetchChangeNickname(query: NicknameChangeQuery) async throws -> NicknameChange
 }
