@@ -11,7 +11,7 @@ import RxCocoa
 
 final class MovieDetailViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     
     struct Input{

@@ -53,7 +53,7 @@ class SignupIdentificationViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, str in
             vc.signupIdentificationView.phoneNumberTextFieldView.tf.text = vc.viewModel.phoneNumberFormat(phoneNumber: str)
-        }.disposed(by: viewModel.disposebag)
+        }.disposed(by: viewModel.disposeBag)
         
         output.nextButtonValid
             .withUnretained(self)
@@ -69,7 +69,7 @@ class SignupIdentificationViewController: BaseViewController {
                 vc.viewModel.timer?.invalidate()
                 vc.signupIdentificationView.authNumberCheckLabel.text = "인증 번호가 올바르지 않습니다."
                 
-            }.disposed(by: viewModel.disposebag)
+            }.disposed(by: viewModel.disposeBag)
         
         output.telecomButtonTapped
             .withUnretained(self)

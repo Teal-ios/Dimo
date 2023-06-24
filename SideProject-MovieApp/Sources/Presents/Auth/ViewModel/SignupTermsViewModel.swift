@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class SignupTermsViewModel: ViewModelType {
-    var disposebag = DisposeBag()
+    var disposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -28,7 +28,7 @@ final class SignupTermsViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.acceptButtonTapped.bind { [weak self]_ in
             self?.coordinator?.showSignupIdentificationViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         return Output(acceptButtonTapped: input.acceptButtonTapped)
     }

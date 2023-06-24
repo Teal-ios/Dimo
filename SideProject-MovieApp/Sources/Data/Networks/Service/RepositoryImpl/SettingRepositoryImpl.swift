@@ -8,8 +8,12 @@
 import Foundation
 import RxSwift
 
+enum SettingRepositoryError: Error {
+    case request
+}
+
 final class SettingRepositoryImpl: SettingRepository {
-    
+
     private let dataTransferService: DataTransferService
     
     init(dataTransferService: DataTransferService) {
@@ -18,47 +22,29 @@ final class SettingRepositoryImpl: SettingRepository {
 }
 
 extension SettingRepositoryImpl {
-    
-    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> NicknameDuplication {
-        let requestDTO = NicknameDuplicationRequestDTO(user_id: query.user_id, user_nickname: query.user_nickname)
-        let target = APIEnd
+    func fetchDuplicationNickname(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
+        let requestDTO = RequestNicknameDuplicationDTO(user_id: query.user_id, user_nickname: query.user_nickname)
+        let target = APIEndpoints.getNicknameDuplicationInfo(with: requestDTO)
         
-        
-        
-        
-        
-        return Single.create { single in
-            let disposable = self.session.request(target: SettingRouter.duplicationNickname(parameters: query), type: ResponseDuplicationNicknameDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.toDomain
-                    single(.success(response))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
         }
     }
 }
 
 extension SettingRepositoryImpl {
-    func requestChangeNickname(query: NicknameChangeQuery) -> NicknameChange {
-        return Single.create { single in
-            let disposable = self.session.request(target: SettingRouter.changeNickname(parameters: query), type: ResponseChangeNicknameDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.toDomain
-                    single(.success(response))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func fetchChangeNickname(query: NicknameChangeQuery) async throws -> NicknameChange {
+        let requestDTO = RequestNicknameChangeDTO(user_id: query.user_id, user_nickname: query.user_nickname)
+        let target = APIEndpoints.postNicknameChange(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
         }
     }
 }

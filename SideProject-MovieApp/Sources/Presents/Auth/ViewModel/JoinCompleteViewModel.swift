@@ -11,7 +11,7 @@ import RxCocoa
 
 final class JoinCompleteViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     
@@ -25,7 +25,7 @@ final class JoinCompleteViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.dimoStartButtonTapped.bind { [weak self] _ in
             self?.coordinator?.connectHomeTabBarCoordinator()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
     init(coordinator: AuthCoordinator?) {

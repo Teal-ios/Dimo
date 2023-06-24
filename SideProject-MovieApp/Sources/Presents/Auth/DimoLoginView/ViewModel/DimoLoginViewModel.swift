@@ -11,7 +11,7 @@ import RxSwift
 
 class DimoLoginViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -36,7 +36,7 @@ class DimoLoginViewModel: ViewModelType {
         input.nextButtonTapped.bind { [weak self] _ in
 //            self?.coordinator?.showPopupViewController()
             self?.coordinator?.connectHomeTabBarCoordinator()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
         
@@ -57,17 +57,17 @@ class DimoLoginViewModel: ViewModelType {
         input.idFindButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showFindIDViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.pwFindButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showFindPWViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         input.dimoFirstStartButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showSignupTermsViewController()
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
         
         return Output(nextButtonTapped: input.nextButtonTapped, loginValid: loginValid)
     }

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class JoinMbtiViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     
@@ -47,11 +47,11 @@ final class JoinMbtiViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.findMbtiButtonTapped.bind { [weak self] _ in
             print("Mbti 찾는 곳으로 이동")
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showJoinCompleteViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         return Output(eButtonTapped: input.eButtonTapped
                       , iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped)

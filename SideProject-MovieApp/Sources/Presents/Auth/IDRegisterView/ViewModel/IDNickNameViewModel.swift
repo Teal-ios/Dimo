@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class IDNickNameViewModel: ViewModelType {
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: AuthCoordinator?
     private var authUseCase: AuthUseCase
@@ -36,7 +36,7 @@ class IDNickNameViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showNickNameViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         // 닉네임 중복확인
         let idValid = input.textFieldInput.orEmpty.map { str in
@@ -46,7 +46,7 @@ class IDNickNameViewModel: ViewModelType {
         input.textFieldInput.bind { [weak self] id in
             self?.id = id
         }
-        .disposed(by: disposebag)
+        .disposed(by: disposeBag)
 
         
         input.duplicationButtonTap
@@ -62,7 +62,7 @@ class IDNickNameViewModel: ViewModelType {
             }
             .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
             .subscribe()
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
         
         
         return Output(idValid: idValid, nextButtonValid: self.duplicationValid)

@@ -11,7 +11,7 @@ import RxCocoa
 
 final class FindPWViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     var leftTime: Int?
     
     struct Input {
@@ -56,7 +56,7 @@ final class FindPWViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showSendMessageViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
     }

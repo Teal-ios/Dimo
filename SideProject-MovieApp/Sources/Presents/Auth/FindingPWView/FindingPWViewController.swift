@@ -49,7 +49,7 @@ final class FindPWViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, str in
                 vc.findPWView.phoneNumberTextFieldView.tf.text = vc.viewModel.phoneNumberFormat(phoneNumber: str)
-            }.disposed(by: viewModel.disposebag)
+            }.disposed(by: viewModel.disposeBag)
         
         output.nextButtonValid
             .withUnretained(self)

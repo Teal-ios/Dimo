@@ -11,7 +11,7 @@ import RxCocoa
 
 final class FindIDViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     var timer: Timer?
     var leftTime: Int?
     
@@ -59,7 +59,7 @@ final class FindIDViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showNotificationIDViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, idRequestButtonTapped: input.idRequestButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
     }
