@@ -64,7 +64,7 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.characterPlusButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showContentMoreViewController(title: "캐릭터 모아보기")
+            self?.coordinator?.showCharacterMoreViewController()
         }
         .disposed(by: disposeBag)
         
