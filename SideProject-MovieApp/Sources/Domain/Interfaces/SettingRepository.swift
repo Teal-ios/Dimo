@@ -10,7 +10,7 @@ import RxSwift
 
 protocol SettingRepository: AnyObject {
     
-    func requestDuplicationNickname(query: DuplicationNicknameQuery) -> Single<DuplicationNickname>
+    func requestDuplicationNickname(query: NicknameDuplicationQuery) -> NicknameDuplication
     
-    func requestChangeNickname(query: ChangeNicknameQuery) -> Single<ChangeNickname>
+    func requestChangeNickname(query: NicknameChangeQuery) -> NicknameChange
 }

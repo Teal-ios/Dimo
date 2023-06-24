@@ -147,7 +147,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.joinMbtiView.tView.layer.borderColor = UIColor.purple80.cgColor
                 self.joinMbtiView.tView.mbtiLabel.textColor = .white100
                 self.joinMbtiView.tView.backgroundColor = .black90
-                cellSelectArr[4] = true
+                self.cellSelectArr[4] = true
 
             } else if self.cellSelectArr[4] == true && self.cellSelectArr[5] == false {
                 self.joinMbtiView.tView.layer.borderColor = UIColor.black80.cgColor
@@ -277,7 +277,7 @@ class JoinMbtiViewController: BaseViewController {
                     }
                 }
             }
-            print(mbtiString)
+            
         }
         .disposed(by: disposeBag)
     }

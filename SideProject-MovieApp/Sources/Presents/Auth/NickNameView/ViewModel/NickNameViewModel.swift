@@ -38,15 +38,15 @@ class NickNameViewModel: ViewModelType {
         let nicknameValid = input.textFieldInput.orEmpty.map { str in
             str.count > 2
         }
-        
+
         input.textFieldInput.bind { [weak self] id in
             self?.id = id
         }
         .disposed(by: disposebag)
-        
+
         input.duplicationButtonTap
             .flatMapLatest { [weak self] _ in
-                (self?.settingUseCase.duplicationNicknameExcute(user_id: UserDefaults.standard.string(forKey: "userId") ?? "", user_nickname: self?.id ?? "")
+                (self?.settingUseCase.executeNicknameDuplication(user_id: UserDefaults.standard.string(forKey: "userId") ?? "", user_nickname: self?.id ?? "")
                     .do(onSuccess: { data in
                         print(data, "data들어옴!!")
                         self?.duplicationValid.accept(true)
@@ -58,7 +58,7 @@ class NickNameViewModel: ViewModelType {
             .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
             .subscribe()
             .disposed(by: disposebag)
-        
+
         return Output(nicknameValid: nicknameValid, nextButtonValid: self.duplicationValid)
     }
 }

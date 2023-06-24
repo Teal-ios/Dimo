@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DuplicationNicknameQuery: Hashable {
+struct NicknameDuplicationQuery: Hashable {
     let user_id: String
     let user_nickname: String
 }

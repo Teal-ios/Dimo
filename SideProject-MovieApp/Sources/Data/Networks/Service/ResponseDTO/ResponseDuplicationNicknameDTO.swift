@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ResponseDuplicationNicknameDTO: Codable {
+struct NicknameDuplicationResponseDTO: Decodable {
     let code: Int
     let message: String
     let user_id: String
@@ -17,8 +17,8 @@ struct ResponseDuplicationNicknameDTO: Codable {
     }
 }
 
-extension ResponseDuplicationNicknameDTO {
-    var toDomain: DuplicationNickname {
+extension NicknameDuplicationResponseDTO {
+    var toDomain: NicknameDuplication {
         return .init(code: code, message: message, user_id: user_id)
     }
 }

@@ -32,20 +32,20 @@ final class RxServiceImpl: RxService {
                     single(.failure(error))
                     return
                 }
-                
+
                 guard let httpResponse = response as? HTTPURLResponse else {
                     single(.failure(URLError(.unknown)))
                     return
                 }
-                
+
                 print("📭 Request \(target.request.url!)")
                 print("🚩 Response \(httpResponse.statusCode)")
-                
+
                 guard let data = data else {
                     single(.failure(NetworkError.internalError))
                     return
                 }
-                
+
                 switch httpResponse.statusCode {
                 case 200..<300:
                     do {
@@ -65,7 +65,7 @@ final class RxServiceImpl: RxService {
                     single(.failure(NetworkError.internalError))
                 }
             }
-            
+
             task.resume()
             
             return Disposables.create {

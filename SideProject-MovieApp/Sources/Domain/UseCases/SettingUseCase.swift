@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 protocol SettingUseCase {
-    func duplicationNicknameExcute(user_id: String, user_nickname: String) -> Single<DuplicationNickname>
+    func executeNicknameDuplication(user_id: String, user_nickname: String) -> Single<DuplicationNickname>
 }
 
 final class SettingUseCaseImpl: SettingUseCase {
@@ -24,8 +24,8 @@ final class SettingUseCaseImpl: SettingUseCase {
 
 extension SettingUseCaseImpl {
     
-    func duplicationNicknameExcute(user_id: String, user_nickname: String) -> Single<DuplicationNickname> {
-        let query = DuplicationNicknameQuery(user_id: user_id, user_nickname: user_nickname)
+    func executeNicknameDuplication(user_id: String, user_nickname: String) -> Single<DuplicationNickname> {
+        let query = NicknameDuplicationQuery(user_id: user_id, user_nickname: user_nickname)
         return Single.create { single in
             let disposable = self.settingRepository.requestDuplicationNickname(query: query).subscribe { result in
                 switch result {
