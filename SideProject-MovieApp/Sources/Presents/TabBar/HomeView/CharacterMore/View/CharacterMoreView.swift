@@ -1,20 +1,20 @@
 //
-//  ContentMoreView.swift
+//  CharacterMoreView.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/17.
+//  Created by 이병현 on 2023/06/23.
 //
 
 import UIKit
 import SnapKit
 
-final class ContentMoreView: BaseView {
-    
+final class CharacterMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
         label.textColor = .white100
-        label.text = "ISFJ가 주인공인 영화"
+        label.numberOfLines = 2
+        label.text = "스포주의!\nISFJ 캐릭터 모아보기"
         return label
     }()
     
@@ -24,61 +24,53 @@ final class ContentMoreView: BaseView {
         super.init(frame: frame)
     }
     
-    override func setHierarchy() {
+    override func setupLayout() {
         self.addSubview(titleLabel)
         self.addSubview(collectionView)
-    }
-    
-    override func setupLayout() {
-
+        
         titleLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(28)
+            make.height.equalTo(74)
         }
+        
         collectionView.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
-            
         }
     }
     
     private let itemRatio = 1.0
-    private let groupRatio = 1.0
-    private let headerRatio = 1.0
-    private let posterHeightRatio = 0.67
-    private let headerAbsolute = 40.0
-    private let todayDIMOHeaderAbsolute = 108.0
+    private let groupRatio = 0.9
     
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         let collectionViewLayout = UICollectionViewCompositionalLayout(
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
-                    return self.cardLayout()
+                    return self.characterLayout()
                 },
             configuration: configuration)
         return collectionViewLayout
     }
-}
-
-extension ContentMoreView {
-    private func cardLayout() -> NSCollectionLayoutSection {
+    
+    private func characterLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio / 3),
+            widthDimension: .fractionalWidth(itemRatio),
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
+            heightDimension: .fractionalHeight(groupRatio / 7) // Use fractionalHeight instead of fractionalWidth
         )
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Use vertical instead of horizontal
+        
         
         let section = NSCollectionLayoutSection(group: group)
         return section

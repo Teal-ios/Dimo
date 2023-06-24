@@ -37,7 +37,7 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imgView.layer.cornerRadius = imgView.frame.width / 2
+        imgView.layer.cornerRadius = imgView.bounds.height / 2
     }
         
     override func configure() {
@@ -47,13 +47,13 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
     
     override func setConstraints() {
         imgView.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview().inset(8)
+            make.top.leading.bottom.equalToSuperview().inset(4)
             make.width.equalTo(imgView.snp.height)
         }
         
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(imgView.snp.trailing).offset(8)
-            make.top.equalTo(imgView.snp.top).offset(4)
+            make.top.equalTo(imgView.snp.top).offset(8)
             make.trailing.equalToSuperview()
             make.height.equalTo(24)
         }

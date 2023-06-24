@@ -106,7 +106,7 @@ final class MovieDetailView: BaseScrollView {
     private let itemRatio = 1.0
     private let groupRatio = 1.0
     private let headerRatio = 1.0
-    private let headerAbsolute = 40.0
+    private let headerAbsolute = 200.0
     
     override func setHierarchy() {
         self.addSubview(detailHeaderView)
@@ -124,7 +124,7 @@ final class MovieDetailView: BaseScrollView {
     
     override func setupLayout() {
         detailHeaderView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalToSuperview()
+            make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(280)
         }
         
@@ -157,7 +157,7 @@ final class MovieDetailView: BaseScrollView {
         characterCollectionView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(summaryExplainLabel.snp.bottom).offset(16)
-            make.height.equalTo(240)
+            make.height.equalTo(400)
         }
         
         gradeTitleLabel.snp.makeConstraints { make in
