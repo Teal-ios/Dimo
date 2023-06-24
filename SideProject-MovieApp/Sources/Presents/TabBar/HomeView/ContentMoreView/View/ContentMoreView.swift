@@ -24,9 +24,13 @@ final class ContentMoreView: BaseView {
         super.init(frame: frame)
     }
     
-    override func setupLayout() {
+    override func setHierarchy() {
         self.addSubview(titleLabel)
         self.addSubview(collectionView)
+    }
+    
+    override func setupLayout() {
+
         titleLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(16)

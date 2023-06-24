@@ -69,7 +69,7 @@ final class VoteView: BaseView {
         let section = NSCollectionLayoutSection(group: group)
         
         section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+        section.orthogonalScrollingBehavior = .groupPagingCentered
         return section
     }
     
@@ -83,10 +83,10 @@ final class VoteView: BaseView {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 9) // Use fractionalHeight instead of fractionalWidth
+            heightDimension: .fractionalHeight(groupRatio / 9)
         )
         
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Use vertical instead of horizontal
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(headerRatio),
