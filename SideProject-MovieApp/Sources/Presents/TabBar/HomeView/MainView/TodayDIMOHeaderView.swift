@@ -19,11 +19,22 @@ class TodayDIMOHeaderView: UICollectionReusableView {
        return label
     }()
     
+    let categoryInsetLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black60
+        label.font = Font.body3
+        label.text = "영화"
+        return label
+    }()
+    
+    let arrowBottomLabel: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "arrow_bottom")
+        return view
+    }()
+    
     let categoryButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영화 >", for: .normal)
-        button.titleLabel?.font = Font.body3
-        button.titleLabel?.textColor = Color.caption
         return button
     }()
     
@@ -31,15 +42,17 @@ class TodayDIMOHeaderView: UICollectionReusableView {
         super.layoutSubviews()
         categoryButton.layer.cornerRadius = 8
         categoryButton.layer.borderWidth = 1
-        categoryButton.backgroundColor = .black100
+        categoryButton.backgroundColor = .black90
         categoryButton.tintColor = Color.caption
-        categoryButton.layer.borderColor = Color.caption.cgColor
+        categoryButton.layer.borderColor = UIColor.black80.cgColor
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(titleLabel)
         self.addSubview(categoryButton)
+        self.addSubview(categoryInsetLabel)
+        self.addSubview(arrowBottomLabel)
         makeConstraints()
     }
     
@@ -60,8 +73,21 @@ class TodayDIMOHeaderView: UICollectionReusableView {
         categoryButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(24)
             make.height.equalTo(32)
-            make.width.equalTo(68)
+            make.width.equalTo(69)
             make.leading.equalTo(safeArea).inset(16)
+        }
+        
+        categoryInsetLabel.snp.makeConstraints { make in
+            make.leading.equalTo(categoryButton.snp.leading).offset(12)
+            make.width.equalTo(25)
+            make.height.equalTo(21)
+            make.centerY.equalTo(categoryButton)
+        }
+        
+        arrowBottomLabel.snp.makeConstraints { make in
+            make.height.width.equalTo(16)
+            make.centerY.equalTo(categoryButton)
+            make.leading.equalTo(categoryInsetLabel.snp.trailing).offset(4)
         }
     }
 }

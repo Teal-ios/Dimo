@@ -38,7 +38,7 @@ final class FeedDetailView: BaseScrollView {
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black60.cgColor
+        view.layer.borderColor = UIColor.black80.cgColor
         return view
     }()
     
@@ -46,7 +46,7 @@ final class FeedDetailView: BaseScrollView {
         let label = UILabel()
         label.font = Font.caption
         label.textAlignment = .center
-        label.textColor = Color.caption
+        label.textColor = .black60
         label.text = "✓ 스포"
         return label
     }()
@@ -81,6 +81,12 @@ final class FeedDetailView: BaseScrollView {
         return tf
     }()
     
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black90
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -98,6 +104,7 @@ final class FeedDetailView: BaseScrollView {
         self.addSubview(registrationLabel)
         self.addSubview(registrationButton)
         self.addSubview(commentTextField)
+        self.addSubview(lineView)
     }
     
     override func setupLayout() {
@@ -108,7 +115,7 @@ final class FeedDetailView: BaseScrollView {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(categoryCollectionView.snp.bottom).offset(24)
         }
         
@@ -153,6 +160,12 @@ final class FeedDetailView: BaseScrollView {
             make.trailing.equalTo(registrationView.snp.leading).offset(8)
             make.verticalEdges.equalTo(commentContainView)
         }
+        
+        lineView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(commentTotalView.snp.top)
+        }
     }
     
     private let itemRatio = 1.0
@@ -191,7 +204,7 @@ extension FeedDetailView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
@@ -236,8 +249,8 @@ extension FeedDetailView {
             group.interItemSpacing = .fixed(8)
             //sections
             let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 8
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0)
+            section.interGroupSpacing = 0
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 0)
             
             return section
         }

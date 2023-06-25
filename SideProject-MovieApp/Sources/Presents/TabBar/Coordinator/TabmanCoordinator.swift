@@ -23,6 +23,7 @@ final class TabmanCoordinator: Coordinator {
   func start() {
     let tabmanViewModel = CharacterDetailViewModel(coordinator: self)
     let tabmanviewController = CharacterDetailViewController(viewModel: tabmanViewModel)
+    tabmanviewController.hidesBottomBarWhenPushed = true
     navigationController.pushViewController(tabmanviewController, animated: true)
   }
   

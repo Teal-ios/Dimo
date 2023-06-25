@@ -24,7 +24,7 @@ final class HomeView: BaseView {
     }
     
     private let itemRatio = 1.0
-    private let groupRatio = 0.9
+    private let groupRatio = 0.92
     private let headerRatio = 1.0
     private let posterHeightRatio = 0.67
     private let headerAbsolute = 40.0

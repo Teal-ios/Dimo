@@ -17,7 +17,7 @@ class TelecomButton: UIButton {
         var attrStr = AttributedString(title ?? "")
         attrStr.font = .suitFont(ofSize: 16, weight: .Medium)
         configuration.attributedTitle = attrStr
-        configuration.baseBackgroundColor = .black80
+        configuration.baseBackgroundColor = .black90
         configuration.baseForegroundColor = foregroundColor
         configuration.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         self.contentHorizontalAlignment = .left

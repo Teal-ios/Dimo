@@ -221,3 +221,7 @@ extension HomeViewController {
         
     }
 }
+
+extension HomeViewController: UITabBarDelegate {
+    
+}

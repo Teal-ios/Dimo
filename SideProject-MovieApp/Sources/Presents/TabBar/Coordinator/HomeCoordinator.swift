@@ -65,18 +65,21 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     func showContentMoreViewController(title: String) {
         let viewModel = ContentMoreViewModel(coordinator: self)
         let vc = ContentMoreViewController(viewModel: viewModel, title: title)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
     
     func showMovieDetailViewController() {
         let viewModel = MovieDetailViewModel(coordinator: self)
         let vc = MovieDetailViewController(viewModel: viewModel)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
     
     func showCharacterMoreViewController() {
         let viewModel = CharacterMoreViewModel(coordinator: self)
         let vc = CharacterMoreViewController(viewModel: viewModel)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
 }
