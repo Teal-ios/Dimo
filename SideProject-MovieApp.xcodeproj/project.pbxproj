@@ -151,6 +151,8 @@
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
+		2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */; };
+		2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */; };
 		2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFEA0C2A2868C60093DD8F /* RxService.swift */; };
 		2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */; };
 		2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */; };
@@ -435,6 +437,8 @@
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
+		2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailHeaderView.swift; sourceTree = "<group>"; };
+		2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FCFEA0C2A2868C60093DD8F /* RxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxService.swift; sourceTree = "<group>"; };
 		2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationIdQuery.swift; sourceTree = "<group>"; };
 		2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameDuplicationDTO.swift; sourceTree = "<group>"; };
@@ -969,6 +973,7 @@
 		2F6D7D0F2A14B27000FA457D /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2FCF862A2A4829CA00759F71 /* Cell */,
 				2F6D7D152A14B29100FA457D /* ViewModel */,
 				2F6D7D142A14B28A00FA457D /* View */,
 			);
@@ -980,6 +985,7 @@
 			children = (
 				2F6D7D102A14B27D00FA457D /* MovieDetailView.swift */,
 				2F6D7D122A14B28800FA457D /* MovieDetailViewController.swift */,
+				2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1442,6 +1448,14 @@
 				2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */,
 			);
 			path = DimoLoginView;
+			sourceTree = "<group>";
+		};
+		2FCF862A2A4829CA00759F71 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		2FD073622A25C1D2003F7E56 /* ViewModel */ = {
@@ -2240,6 +2254,7 @@
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
 				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
+				2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
@@ -2255,6 +2270,7 @@
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
 				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
+				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,

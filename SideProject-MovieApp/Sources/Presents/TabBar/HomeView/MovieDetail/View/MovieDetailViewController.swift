@@ -37,7 +37,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     func setDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<CharacterMbtiCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.characterCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -45,7 +45,7 @@ final class MovieDetailViewController: BaseViewController {
             return cell
         })
         
-        let characterHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        let characterHeader = UICollectionView.SupplementaryRegistration<MovieDetailHeaderView>(elementKind: MovieDetailHeaderView.identifier) { supplementaryView, elementKind, indexPath in
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
