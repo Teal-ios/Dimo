@@ -34,11 +34,15 @@ class FeedDetailViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, FeedDetailModel>!
     var snapshot = NSDiffableDataSourceSnapshot<Int, FeedDetailModel>()
     
+    let plusNavigationButtonTap = PublishSubject<Void>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        plusNavigationItemSet()
         setCategoryDataSource()
         setDataSource()
     }
+    
 }
 
 extension FeedDetailViewController {
@@ -97,5 +101,18 @@ extension FeedDetailViewController {
         }
         snapshot.appendItems(reviewArr, toSection: 0)
         dataSource.apply(snapshot)
+    }
+}
+
+extension FeedDetailViewController {
+    private func plusNavigationItemSet() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "vertical_ellipsis"), style: .plain, target: self, action: #selector(plusButtonClicked))
+        self.navigationItem.rightBarButtonItem?.tintColor = .black60
+
+    }
+    
+    @objc
+    func plusButtonClicked() {
+        self.plusNavigationButtonTap.onNext(())
     }
 }

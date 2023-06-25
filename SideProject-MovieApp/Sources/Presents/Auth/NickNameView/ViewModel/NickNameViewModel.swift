@@ -47,6 +47,7 @@ class NickNameViewModel: ViewModelType {
         
         input.duplicationButtonTap
             .bind(onNext: {
+                print("버튼 클릭")
                 Task { [weak self] in
                     guard let self = self else { return }
                     guard let userId = UserDefaults.standard.string(forKey: "userId"),

@@ -19,7 +19,7 @@ class CategoryView: BaseView {
     
     let baseCategoryView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black80
+        view.backgroundColor = .black90
         view.clipsToBounds = true
         return view
     }()
@@ -29,22 +29,35 @@ class CategoryView: BaseView {
         label.textColor = .white100
         label.font = Font.title3
         label.text = "카테고리"
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
     
+    let movieLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white100
+        label.font = Font.body2
+        label.text = "영화"
+        label.textAlignment = .left
+        return label
+    }()
     
     let movieButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영화", for: .normal)
-        button.setTitleColor(.white, for: .normal)
         return button
+    }()
+    
+    let dramaLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black60
+        label.font = Font.body2
+        label.text = "드라마"
+        label.textAlignment = .left
+        return label
     }()
     
     let dramaButton: UIButton = {
         let button = UIButton()
-        button.setTitle("드라마", for: .normal)
-        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
@@ -54,7 +67,7 @@ class CategoryView: BaseView {
     }
     
     override func setupLayout() {
-        [bgView, baseCategoryView, titleLabel, movieButton, dramaButton].forEach { self.addSubview($0) }
+        [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, dramaLabel, dramaButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
@@ -71,16 +84,24 @@ class CategoryView: BaseView {
             make.height.equalTo(64)
         }
         
-        movieButton.snp.makeConstraints { make in
+        movieLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(titleLabel.snp.bottom)
             make.height.equalTo(52)
         }
         
-        dramaButton.snp.makeConstraints { make in
+        movieButton.snp.makeConstraints { make in
+            make.edges.equalTo(movieLabel)
+        }
+        
+        dramaLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(movieButton.snp.bottom)
             make.height.equalTo(52)
+        }
+        
+        dramaButton.snp.makeConstraints { make in
+            make.edges.equalTo(dramaLabel)
         }
     }
 }

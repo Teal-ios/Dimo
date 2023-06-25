@@ -202,7 +202,7 @@ class EditMbtiView: BaseView {
         
         totalStackView.snp.makeConstraints { make in
             make.top.equalTo(lastChangeDayLabel.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(140)
         }
         
