@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 final class MovieDetailViewController: BaseViewController {
     let selfView = MovieDetailView()
