@@ -16,6 +16,7 @@ final class MovieDetailViewModel: ViewModelType {
     
     struct Input{
         let plusButtonTapped: ControlEvent<Void>
+        let evaluateButtonTapped: PublishSubject<Void>
 
     }
     
@@ -29,7 +30,11 @@ final class MovieDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-
+        input.evaluateButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showMovieDetailRankViewController()
+        }
+        .disposed(by: disposeBag)
+        
         return Output(plusButtonTapped: input.plusButtonTapped)
     }
 }

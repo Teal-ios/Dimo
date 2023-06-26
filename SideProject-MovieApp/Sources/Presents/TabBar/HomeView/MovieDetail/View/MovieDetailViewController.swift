@@ -24,6 +24,8 @@ final class MovieDetailViewController: BaseViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
     
     let characterCellSelected = PublishSubject<Void>()
+    let evaluateButtonTapped = PublishSubject<Void>()
+
 
     override func loadView() {
         view = selfView
@@ -37,7 +39,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap)
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.evaluateButtonTapped)
         let output = self.viewModel.transform(input: input)
         
         output.plusButtonTapped.bind { [weak self] _ in
@@ -60,6 +62,10 @@ final class MovieDetailViewController: BaseViewController {
         })
         
         let characterHeader = UICollectionView.SupplementaryRegistration<MovieDetailHeaderView>(elementKind: MovieDetailHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            supplementaryView.evaluateButton.rx.tap.bind { [weak self] _ in
+                self?.evaluateButtonTapped.onNext(())
+            }
+            .disposed(by: self.disposeBag)
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
