@@ -29,7 +29,7 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "loginBottom")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         return view
     }()
     

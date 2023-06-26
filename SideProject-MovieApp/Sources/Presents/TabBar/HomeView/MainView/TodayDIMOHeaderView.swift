@@ -14,7 +14,7 @@ class TodayDIMOHeaderView: UICollectionReusableView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "Today's DIMO"
        return label
     }()

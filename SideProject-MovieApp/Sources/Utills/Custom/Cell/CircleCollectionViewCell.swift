@@ -15,7 +15,7 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         view.clipsToBounds = true
         return view
     }()

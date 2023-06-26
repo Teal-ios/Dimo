@@ -17,7 +17,7 @@ class OnboardingTextField: UITextField {
         self.layer.cornerRadius = 8
         self.backgroundColor = .black80
         self.placeholder = placeholder
-        self.textColor = .white100
+        self.textColor = .black5
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,6 +38,7 @@ class OnboardingTextFieldView: UIView {
     convenience init(placeholder: String?) {
         self.init()
         tf.placeholder = placeholder
+        tf.setPlaceholder(color: .black80)
         setupLayout()
     }
     required init?(coder: NSCoder) {
@@ -50,5 +51,6 @@ class OnboardingTextFieldView: UIView {
         tf.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide).inset(edges)
         }
+        
     }
 }

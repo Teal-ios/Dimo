@@ -36,6 +36,20 @@ final class MovieDetailViewController: BaseViewController {
         setDataSource()
     }
     
+    override func setupBinding() {
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap)
+        let output = self.viewModel.transform(input: input)
+        
+        output.plusButtonTapped.bind { [weak self] _ in
+            if self?.selfView.unfoldStackView.isHidden == true {
+                self?.selfView.changeIsHidden(isHidden: false)
+            } else {
+                self?.selfView.changeIsHidden(isHidden: true)
+            }
+        }
+        .disposed(by: disposeBag)
+    }
+    
     func setDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<CharacterMbtiCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
         }

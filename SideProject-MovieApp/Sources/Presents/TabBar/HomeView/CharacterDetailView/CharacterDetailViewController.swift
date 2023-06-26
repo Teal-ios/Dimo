@@ -60,10 +60,10 @@ final class CharacterDetailViewController: TabmanViewController {
     bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 8.0, bottom: 0.0, right: 8.0)
     bar.buttons.customize { button in
       button.tintColor = .black80
-      button.selectedTintColor = .white100
+      button.selectedTintColor = .black5
     }
     
-    bar.indicator.tintColor = .white100
+    bar.indicator.tintColor = .black5
     bar.indicator.weight = .light
     bar.layout.alignment = .centerDistributed
     bar.layout.contentMode = .fit

@@ -14,7 +14,7 @@ class MyMomentumHeaderView: UICollectionReusableView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title3
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "좋아하는 컨텐츠"
        return label
     }()

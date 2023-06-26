@@ -21,7 +21,7 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         view.clipsToBounds = true
         return view
     }()
@@ -29,7 +29,7 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     let nameNameLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.text = "정대만"
         return label
@@ -47,7 +47,7 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     let reviewLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body3
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.numberOfLines = 2
         label.text = "찾아다녀도, 수 황금시대를 웅이한 이상을 끓는 것은 가치를 그리 하였는가? 위하여 아니한 품었기 있는것인가"

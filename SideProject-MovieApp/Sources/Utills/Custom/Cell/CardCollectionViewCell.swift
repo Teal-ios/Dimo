@@ -14,7 +14,7 @@ class CardCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "person.fill")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         return view
     }()
     

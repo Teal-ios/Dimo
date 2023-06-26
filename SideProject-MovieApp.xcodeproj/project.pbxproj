@@ -153,6 +153,7 @@
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
 		2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */; };
 		2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */; };
+		2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */; };
 		2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFEA0C2A2868C60093DD8F /* RxService.swift */; };
 		2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */; };
 		2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */; };
@@ -439,6 +440,7 @@
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
 		2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailHeaderView.swift; sourceTree = "<group>"; };
 		2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension.swift"; sourceTree = "<group>"; };
 		2FCFEA0C2A2868C60093DD8F /* RxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxService.swift; sourceTree = "<group>"; };
 		2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationIdQuery.swift; sourceTree = "<group>"; };
 		2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameDuplicationDTO.swift; sourceTree = "<group>"; };
@@ -1311,6 +1313,7 @@
 				2FC2EB4D29E3DF8500ECE2ED /* UILabel+Extension.swift */,
 				2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */,
 				2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */,
+				2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2245,6 +2248,7 @@
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
+				2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */,
 				2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */,

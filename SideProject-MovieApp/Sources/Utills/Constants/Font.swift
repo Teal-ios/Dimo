@@ -14,7 +14,7 @@ struct Font {
     
     static let subtitle1 = UIFont(name: SuitFont.SemiBold.rawValue, size: 20)
     static let subtitle2 =  UIFont(name: "SUIT-SemiBold", size: 16)
-    static let subtitle3 = UIFont(name: SuitFont.SemiBold.rawValue, size: 14)
+    static let subtitle3 = UIFont(name: "SUIT-SemiBold", size: 14)
 
     static let body1 = UIFont(name: SuitFont.Medium.rawValue, size: 20)
     static let body2 = UIFont(name: "SUIT-Medium", size: 16)

@@ -13,7 +13,7 @@ final class DetailHeaderView: BaseView {
     let moviePosterView: UIImageView = {
         let view = UIImageView()
 //        view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         return view
     }()
     
@@ -25,7 +25,7 @@ final class DetailHeaderView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .center
 
        return label

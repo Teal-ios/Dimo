@@ -15,11 +15,13 @@ final class MovieDetailViewModel: ViewModelType {
     private weak var coordinator: HomeCoordinator?
     
     struct Input{
-
+        let plusButtonTapped: ControlEvent<Void>
 
     }
     
     struct Output{
+        let plusButtonTapped: ControlEvent<Void>
+
     }
     
     init(coordinator: HomeCoordinator? = nil) {
@@ -28,6 +30,6 @@ final class MovieDetailViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
 
-        return Output()
+        return Output(plusButtonTapped: input.plusButtonTapped)
     }
 }

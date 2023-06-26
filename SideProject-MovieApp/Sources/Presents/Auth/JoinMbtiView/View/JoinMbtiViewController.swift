@@ -37,7 +37,7 @@ class JoinMbtiViewController: BaseViewController {
         output.eButtonTapped.bind { [weak self] _ in
             if self?.cellSelectArr[0] == false && self?.cellSelectArr[1] == false {
                 self?.joinMbtiView.eView.layer.borderColor = UIColor.purple80.cgColor
-                self?.joinMbtiView.eView.mbtiLabel.textColor = .white100
+                self?.joinMbtiView.eView.mbtiLabel.textColor = .black5
                 self?.joinMbtiView.eView.backgroundColor = .black90
                 self?.cellSelectArr[0] = true
 
@@ -48,7 +48,7 @@ class JoinMbtiViewController: BaseViewController {
                 self?.cellSelectArr[0] = false
             } else if self?.cellSelectArr[0] == false && self?.cellSelectArr[1] == true {
                 self?.joinMbtiView.eView.layer.borderColor = UIColor.purple80.cgColor
-                self?.joinMbtiView.eView.mbtiLabel.textColor = .white100
+                self?.joinMbtiView.eView.mbtiLabel.textColor = .black5
                 self?.joinMbtiView.eView.backgroundColor = .black90
                 
                 self?.joinMbtiView.iView.layer.borderColor = UIColor.black80.cgColor
@@ -63,7 +63,7 @@ class JoinMbtiViewController: BaseViewController {
         output.iButtonTapped.bind { [weak self] _ in
             if self?.cellSelectArr[0] == false && self?.cellSelectArr[1] == false {
                 self?.joinMbtiView.iView.layer.borderColor = UIColor.purple80.cgColor
-                self?.joinMbtiView.iView.mbtiLabel.textColor = .white100
+                self?.joinMbtiView.iView.mbtiLabel.textColor = .black5
                 self?.joinMbtiView.iView.backgroundColor = .black90
                 self?.cellSelectArr[1] = true
 
@@ -73,7 +73,7 @@ class JoinMbtiViewController: BaseViewController {
                 self?.joinMbtiView.eView.backgroundColor = .black100
                 
                 self?.joinMbtiView.iView.layer.borderColor = UIColor.purple80.cgColor
-                self?.joinMbtiView.iView.mbtiLabel.textColor = .white100
+                self?.joinMbtiView.iView.mbtiLabel.textColor = .black5
                 self?.joinMbtiView.iView.backgroundColor = .black90
                 self?.cellSelectArr[0] = false
                 self?.cellSelectArr[1] = true
@@ -90,7 +90,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[2] == false && self.cellSelectArr[3] == false {
                 self.joinMbtiView.nView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.nView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.nView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.nView.backgroundColor = .black90
                 self.cellSelectArr[2] = true
 
@@ -102,7 +102,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.cellSelectArr[2] = false
             } else if self.cellSelectArr[2] == false && self.cellSelectArr[3] == true {
                 self.joinMbtiView.nView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.nView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.nView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.nView.backgroundColor = .black90
                 
                 self.joinMbtiView.sView.layer.borderColor = UIColor.black80.cgColor
@@ -118,7 +118,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[2] == false && self.cellSelectArr[3] == false {
                 self.joinMbtiView.sView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.sView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.sView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.sView.backgroundColor = .black90
                 self.cellSelectArr[3] = true
 
@@ -128,7 +128,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.joinMbtiView.nView.backgroundColor = .black100
                 
                 self.joinMbtiView.sView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.sView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.sView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.sView.backgroundColor = .black90
                 self.cellSelectArr[2] = false
                 self.cellSelectArr[3] = true
@@ -145,7 +145,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[4] == false && self.cellSelectArr[5] == false {
                 self.joinMbtiView.tView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.tView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.tView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.tView.backgroundColor = .black90
                 self.cellSelectArr[4] = true
 
@@ -157,7 +157,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.cellSelectArr[4] = false
             } else if self.cellSelectArr[4] == false && self.cellSelectArr[5] == true {
                 self.joinMbtiView.tView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.tView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.tView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.tView.backgroundColor = .black90
                 
                 self.joinMbtiView.fView.layer.borderColor = UIColor.black80.cgColor
@@ -173,7 +173,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[4] == false && self.cellSelectArr[5] == false {
                 self.joinMbtiView.fView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.fView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.fView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.fView.backgroundColor = .black90
                 self.cellSelectArr[5] = true
 
@@ -183,7 +183,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.joinMbtiView.tView.backgroundColor = .black100
                 
                 self.joinMbtiView.fView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.fView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.fView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.fView.backgroundColor = .black90
                 self.cellSelectArr[4] = false
                 self.cellSelectArr[5] = true
@@ -200,7 +200,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[6] == false && self.cellSelectArr[7] == false {
                 self.joinMbtiView.jView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.jView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.jView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.jView.backgroundColor = .black90
                 self.cellSelectArr[6] = true
 
@@ -212,7 +212,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.cellSelectArr[6] = false
             } else if self.cellSelectArr[6] == false && self.cellSelectArr[7] == true {
                 self.joinMbtiView.jView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.jView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.jView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.jView.backgroundColor = .black90
                 
                 self.joinMbtiView.pView.layer.borderColor = UIColor.black80.cgColor
@@ -228,7 +228,7 @@ class JoinMbtiViewController: BaseViewController {
             guard let self else { return }
             if self.cellSelectArr[6] == false && self.cellSelectArr[7] == false {
                 self.joinMbtiView.pView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.pView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.pView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.pView.backgroundColor = .black90
                 self.cellSelectArr[7] = true
 
@@ -238,7 +238,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.joinMbtiView.jView.backgroundColor = .black100
                 
                 self.joinMbtiView.pView.layer.borderColor = UIColor.purple80.cgColor
-                self.joinMbtiView.pView.mbtiLabel.textColor = .white100
+                self.joinMbtiView.pView.mbtiLabel.textColor = .black5
                 self.joinMbtiView.pView.backgroundColor = .black90
                 self.cellSelectArr[6] = false
                 self.cellSelectArr[7] = true

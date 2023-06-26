@@ -11,7 +11,7 @@ import SnapKit
 final class ErrorNotFoundView: BaseView {
     let explainLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.title3
         label.textAlignment = .center
         label.text = "페이지를 찾을 수 없어요"

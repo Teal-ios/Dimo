@@ -75,7 +75,7 @@ class MovieDetailHeaderView: UICollectionReusableView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title3
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "등장인물"
        return label
     }()

@@ -13,7 +13,7 @@ class TitleSettingHeaderView: UICollectionReusableView {
     
     let mainTitleLable: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "설정"
         label.font = Font.title1
         return label
