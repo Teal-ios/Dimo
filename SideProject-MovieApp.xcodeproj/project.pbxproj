@@ -233,6 +233,7 @@
 		497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */; };
 		497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F42A3F69050043D67E /* PasswordChangeQuery.swift */; };
 		497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F72A42025D0043D67E /* APIEndpoints.swift */; };
+		49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */; };
 		49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */; };
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
@@ -524,6 +525,7 @@
 		497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDateQuery.swift; sourceTree = "<group>"; };
 		497454F42A3F69050043D67E /* PasswordChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeQuery.swift; sourceTree = "<group>"; };
 		497454F72A42025D0043D67E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDTO.swift; sourceTree = "<group>"; };
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
@@ -1348,6 +1350,7 @@
 				2F979F382A0D1BAB00A1CD53 /* UIViewController+Rx.swift */,
 				2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */,
 				2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */,
+				49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2378,6 +2381,7 @@
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */,
 				2F53D0B52A1F61FB00898DCD /* AlertEditUserNameViewModel.swift in Sources */,
+				49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,

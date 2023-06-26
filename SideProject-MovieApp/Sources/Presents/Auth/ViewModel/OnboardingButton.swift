@@ -20,6 +20,7 @@ class OnboardingButton: UIButton {
         configuration.cornerStyle = .fixed
         configuration.baseBackgroundColor = .purple100
         configuration.baseForegroundColor = .white
+        self.titleLabel?.textAlignment = .center
         self.configuration = configuration
     }
     required init?(coder: NSCoder) {
