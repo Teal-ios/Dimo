@@ -14,8 +14,10 @@ final class MovieDetailView: BaseView {
         let view = UIScrollView()
         view.addSubview(characterCollectionView)
         view.addSubview(gradeTitleLabel)
+        view.addSubview(gradeTotalView)
         view.addSubview(gradeContainView)
         view.addSubview(mbtiPreferContainView)
+        view.addSubview(mbtiPreferLabel)
         view.addSubview(detailLabel)
         view.addSubview(unfoldButton)
         view.addSubview(arrowBottomLabel)
@@ -32,11 +34,39 @@ final class MovieDetailView: BaseView {
         return label
     }()
     
-    let gradeContainView: UIView = {
+    let gradeTotalView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.backgroundColor = .black90
+        return view
+    }()
+    
+    lazy var gradeContainView: UIStackView = {
+        let view = UIStackView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8
+        view.distribution = .fillEqually
+        view.axis = .vertical
+        view.spacing = 16
+        view.addArrangedSubview(firstStarView)
+        view.addArrangedSubview(secondStarView)
+        view.addArrangedSubview(thirdStarView)
+        return view
+    }()
+    
+    let firstStarView: StarView = {
+        let view = StarView()
+        return view
+    }()
+    
+    let secondStarView: StarView = {
+        let view = StarView()
+        return view
+    }()
+    
+    let thirdStarView: StarView = {
+        let view = StarView()
         return view
     }()
     
@@ -46,6 +76,20 @@ final class MovieDetailView: BaseView {
         view.layer.cornerRadius = 8
         view.backgroundColor = .black90
         return view
+    }()
+        
+    let heartImgView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "heart")
+        return view
+    }()
+    
+    let mbtiPreferLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.subtitle3
+        label.textColor = Color.caption
+        label.text = "아직 평가를 받지 않았어요."
+        return label
     }()
     
     let detailLabel: UILabel = {
@@ -223,16 +267,26 @@ final class MovieDetailView: BaseView {
             make.height.equalTo(20)
         }
         
-        gradeContainView.snp.makeConstraints { make in
+        gradeTotalView.snp.makeConstraints { make in
             make.top.equalTo(gradeTitleLabel.snp.bottom).offset(16)
             make.height.equalTo(176)
             make.horizontalEdges.equalTo(scrollView.safeAreaLayoutGuide).inset(16)
         }
         
+        gradeContainView.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(gradeTotalView).inset(24)
+            make.horizontalEdges.equalTo(gradeTotalView).inset(68)
+            make.centerX.equalTo(gradeTotalView)
+        }
+        
         mbtiPreferContainView.snp.makeConstraints { make in
-            make.top.equalTo(gradeContainView.snp.bottom).offset(16)
+            make.top.equalTo(gradeTotalView.snp.bottom).offset(16)
             make.height.equalTo(56)
             make.horizontalEdges.equalTo(scrollView.safeAreaLayoutGuide).inset(16)
+        }
+        
+        mbtiPreferLabel.snp.makeConstraints { make in
+            make.edges.equalTo(mbtiPreferContainView).inset(16)
         }
         
         detailLabel.snp.makeConstraints { make in
@@ -243,7 +297,7 @@ final class MovieDetailView: BaseView {
         }
         
         unfoldButton.snp.makeConstraints { make in
-            make.top.equalTo(mbtiPreferContainView.snp.bottom).offset(36)
+            make.centerY.equalTo(detailLabel)
             make.bottom.equalTo(scrollView.snp.bottom)
             make.trailing.equalTo(scrollView.safeAreaLayoutGuide).offset(-20)
             make.width.equalTo(60)
@@ -255,22 +309,6 @@ final class MovieDetailView: BaseView {
             make.trailing.equalTo(scrollView.safeAreaLayoutGuide).offset(-16)
             make.width.equalTo(arrowBottomLabel.snp.height)
         }
-        
-        //        unfoldStackView.snp.makeConstraints { make in
-        //            make.height.equalTo(222)
-        //            make.leading.equalTo(16)
-        //            make.width.equalTo(117)
-        //            make.top.equalTo(arrowBottomLabel.snp.bottom).offset(18)
-        //            make.bottom.equalTo(scrollView.snp.bottom)
-        //        }
-        //
-        //        unfoldExplainStackView.snp.makeConstraints { make in
-        //            make.height.equalTo(222)
-        //            make.leading.equalTo(unfoldStackView.snp.trailing)
-        //            make.trailing.equalTo(scrollView.safeAreaLayoutGuide).offset(-16)
-        //            make.top.equalTo(arrowBottomLabel.snp.bottom).offset(18)
-        //            make.bottom.equalTo(scrollView.snp.bottom)
-        //        }
     }
 }
 
@@ -369,5 +407,22 @@ extension MovieDetailView {
         }
         scrollView.layoutIfNeeded()
 
+    }
+}
+
+extension MovieDetailView {
+    func gradeContainViewIsHidden() {
+        gradeTotalView.isHidden = true
+        gradeContainView.isHidden = true
+        gradeTotalView.snp.removeConstraints()
+        gradeContainView.snp.removeConstraints()
+        
+        mbtiPreferContainView.snp.removeConstraints()
+        mbtiPreferContainView.snp.remakeConstraints{ make in
+            make.top.equalTo(gradeTitleLabel.snp.bottom).offset(16)
+            make.height.equalTo(56)
+            make.horizontalEdges.equalTo(scrollView.safeAreaLayoutGuide).inset(16)
+        }
+        scrollView.layoutIfNeeded()
     }
 }
