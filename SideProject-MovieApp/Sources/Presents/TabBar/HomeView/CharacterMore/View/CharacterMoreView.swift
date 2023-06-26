@@ -12,7 +12,7 @@ final class CharacterMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.textColor = .white100
+        label.textColor = .black5
         label.numberOfLines = 2
         label.text = "스포주의!\nISFJ 캐릭터 모아보기"
         return label
@@ -43,7 +43,7 @@ final class CharacterMoreView: BaseView {
     }
     
     private let itemRatio = 1.0
-    private let groupRatio = 0.9
+    private let groupRatio = 1.0
     
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -62,11 +62,11 @@ final class CharacterMoreView: BaseView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 7) // Use fractionalHeight instead of fractionalWidth
+            heightDimension: .fractionalHeight(groupRatio / 8.5) // Use fractionalHeight instead of fractionalWidth
         )
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Use vertical instead of horizontal

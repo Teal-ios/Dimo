@@ -26,7 +26,7 @@ class CategoryView: BaseView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.title3
         label.text = "카테고리"
         label.textAlignment = .left
@@ -35,7 +35,7 @@ class CategoryView: BaseView {
     
     let movieLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.body2
         label.text = "영화"
         label.textAlignment = .left

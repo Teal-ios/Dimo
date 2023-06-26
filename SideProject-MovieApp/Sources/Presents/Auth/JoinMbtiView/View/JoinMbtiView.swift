@@ -165,14 +165,14 @@ class JoinMbtiView: BaseView {
     
     func snapkit() {
         headerLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.top.equalTo(safeAreaLayoutGuide).offset(40)
-            make.height.equalTo(48)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(safeAreaLayoutGuide).offset(16)
+            make.height.equalTo(29)
         }
         
         totalStackView.snp.makeConstraints { make in
             make.top.equalTo(headerLabel.snp.bottom).offset(24)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(140)
         }
         

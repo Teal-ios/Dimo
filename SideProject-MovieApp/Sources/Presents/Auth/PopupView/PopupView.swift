@@ -27,7 +27,7 @@ class PopupView: BaseView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.title3
         label.text = "존재하지 않는 회원정보"
         label.textAlignment = .center

@@ -11,7 +11,7 @@ import SnapKit
 final class JoinCompleteView: BaseView {
     let finishSignUpLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.title1
         label.text = "회원가입을 완료했어요"
         return label
@@ -37,8 +37,8 @@ final class JoinCompleteView: BaseView {
     
     override func setupLayout() {
         finishSignUpLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(72)
-            make.height.equalTo(32)
+            make.top.equalTo(safeAreaLayoutGuide).offset(16)
+            make.height.equalTo(29)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         

@@ -1,22 +1,21 @@
 //
-//  CategoryViewModel.swift
+//  MovieDetailRankViewModel.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/04.
+//  Created by 이병현 on 2023/06/26.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-class CategoryViewModel: ViewModelType {
+class MovieDetailRankViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     
     struct Input{
-        let movieButtonTapped: ControlEvent<Void>
-        let dramaButtonTapped: ControlEvent<Void>
+        let backgroundButtonTapped: ControlEvent<Void>
 
     }
     
@@ -28,13 +27,11 @@ class CategoryViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.movieButtonTapped.bind { [weak self] _ in
+        input.backgroundButtonTapped.bind { [weak self] _ in
             self?.coordinator?.dismissViewController()
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
         
-        input.dramaButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.dismissViewController()
-        }.disposed(by: disposeBag)
         return Output()
     }
 }

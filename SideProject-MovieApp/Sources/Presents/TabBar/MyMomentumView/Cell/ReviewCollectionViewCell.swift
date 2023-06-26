@@ -21,7 +21,7 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         view.clipsToBounds = true
         return view
     }()
@@ -29,7 +29,7 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
     let characterNameLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.text = "정대만"
         return label
@@ -47,7 +47,7 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
     let reviewLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body3
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.text = "슬램덩크속 정대만 캐릭터의 솔직 리뷰"
         return label

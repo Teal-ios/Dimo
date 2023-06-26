@@ -27,16 +27,16 @@ final class FindPWView: BaseView {
         return TelecomButton(title: "통신사", foregroundColor: .black60)
     }()
     let sktButton: TelecomButton = {
-        return TelecomButton(title: "SKT", foregroundColor: .white100)
+        return TelecomButton(title: "SKT", foregroundColor: .black5)
     }()
     let ktButton: TelecomButton = {
-        return TelecomButton(title: "KT", foregroundColor: .white100)
+        return TelecomButton(title: "KT", foregroundColor: .black5)
     }()
     let uplusButton: TelecomButton = {
-        return TelecomButton(title: "LGU+", foregroundColor: .white100)
+        return TelecomButton(title: "LGU+", foregroundColor: .black5)
     }()
     let extraTelecomButton: TelecomButton = {
-        return TelecomButton(title: "알뜰폰", foregroundColor: .white100)
+        return TelecomButton(title: "알뜰폰", foregroundColor: .black5)
     }()
     let authNumberCheckLabel: UILabel = {
         let label = UILabel()

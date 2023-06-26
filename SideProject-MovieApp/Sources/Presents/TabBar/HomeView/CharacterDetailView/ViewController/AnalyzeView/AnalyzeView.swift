@@ -12,7 +12,7 @@ final class AnalyzeView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title3
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "DIMO 유저들의 생각"
         return label
     }()

@@ -16,7 +16,7 @@ final class ScopeStackView: UIStackView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
-        stackView.spacing = 8
+        stackView.spacing = 4
         return stackView
       }()
     
@@ -79,9 +79,9 @@ extension ScopeStackView {
         for index in 0..<5 {
           if intValue == 1 {
             intValue -= 1 // index에 맞추기 위해 -1
-            starImageViews[index].image = UIImage(named: "ic_rating_on")
+            starImageViews[index].image = UIImage(named: "ic_rating_on_white")
           } else if index < intValue { // intValue 보다 작은 건 칠하기
-            starImageViews[index].image = UIImage(named: "ic_rating_on")
+            starImageViews[index].image = UIImage(named: "ic_rating_on_white")
           } else { // intValue 보다 크면 빈 별 처리
             starImageViews[index].image = UIImage(named: "ic_rating_off")
           }

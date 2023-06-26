@@ -36,7 +36,7 @@ final class EditMbtiViewController: BaseViewController {
         output.eButtonTapped.bind { [weak self] _ in
             if cellSelectArr[0] == false && cellSelectArr[1] == false {
                 self?.selfView.eView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.eView.mbtiLabel.textColor = .white100
+                self?.selfView.eView.mbtiLabel.textColor = .black5
                 self?.selfView.eView.backgroundColor = .black90
                 cellSelectArr[0] = true
 
@@ -47,7 +47,7 @@ final class EditMbtiViewController: BaseViewController {
                 cellSelectArr[0] = false
             } else if cellSelectArr[0] == false && cellSelectArr[1] == true {
                 self?.selfView.eView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.eView.mbtiLabel.textColor = .white100
+                self?.selfView.eView.mbtiLabel.textColor = .black5
                 self?.selfView.eView.backgroundColor = .black90
                 
                 self?.selfView.iView.layer.borderColor = UIColor.black80.cgColor
@@ -62,7 +62,7 @@ final class EditMbtiViewController: BaseViewController {
         output.iButtonTapped.bind { [weak self] _ in
             if cellSelectArr[0] == false && cellSelectArr[1] == false {
                 self?.selfView.iView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.iView.mbtiLabel.textColor = .white100
+                self?.selfView.iView.mbtiLabel.textColor = .black5
                 self?.selfView.iView.backgroundColor = .black90
                 cellSelectArr[1] = true
 
@@ -72,7 +72,7 @@ final class EditMbtiViewController: BaseViewController {
                 self?.selfView.eView.backgroundColor = .black100
                 
                 self?.selfView.iView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.iView.mbtiLabel.textColor = .white100
+                self?.selfView.iView.mbtiLabel.textColor = .black5
                 self?.selfView.iView.backgroundColor = .black90
                 cellSelectArr[0] = false
                 cellSelectArr[1] = true
@@ -88,7 +88,7 @@ final class EditMbtiViewController: BaseViewController {
         output.nButtonTapped.bind { [weak self] _ in
             if cellSelectArr[2] == false && cellSelectArr[3] == false {
                 self?.selfView.nView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.nView.mbtiLabel.textColor = .white100
+                self?.selfView.nView.mbtiLabel.textColor = .black5
                 self?.selfView.nView.backgroundColor = .black90
                 cellSelectArr[2] = true
 
@@ -100,7 +100,7 @@ final class EditMbtiViewController: BaseViewController {
                 cellSelectArr[2] = false
             } else if cellSelectArr[2] == false && cellSelectArr[3] == true {
                 self?.selfView.nView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.nView.mbtiLabel.textColor = .white100
+                self?.selfView.nView.mbtiLabel.textColor = .black5
                 self?.selfView.nView.backgroundColor = .black90
                 
                 self?.selfView.sView.layer.borderColor = UIColor.black80.cgColor
@@ -115,7 +115,7 @@ final class EditMbtiViewController: BaseViewController {
         output.sButtonTapped.bind { [weak self] _ in
             if cellSelectArr[2] == false && cellSelectArr[3] == false {
                 self?.selfView.sView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.sView.mbtiLabel.textColor = .white100
+                self?.selfView.sView.mbtiLabel.textColor = .black5
                 self?.selfView.sView.backgroundColor = .black90
                 cellSelectArr[3] = true
 
@@ -125,7 +125,7 @@ final class EditMbtiViewController: BaseViewController {
                 self?.selfView.nView.backgroundColor = .black100
                 
                 self?.selfView.sView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.sView.mbtiLabel.textColor = .white100
+                self?.selfView.sView.mbtiLabel.textColor = .black5
                 self?.selfView.sView.backgroundColor = .black90
                 cellSelectArr[2] = false
                 cellSelectArr[3] = true
@@ -141,7 +141,7 @@ final class EditMbtiViewController: BaseViewController {
         output.tButtonTapped.bind { [weak self] _ in
             if cellSelectArr[4] == false && cellSelectArr[5] == false {
                 self?.selfView.tView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.tView.mbtiLabel.textColor = .white100
+                self?.selfView.tView.mbtiLabel.textColor = .black5
                 self?.selfView.tView.backgroundColor = .black90
                 cellSelectArr[4] = true
 
@@ -153,7 +153,7 @@ final class EditMbtiViewController: BaseViewController {
                 cellSelectArr[4] = false
             } else if cellSelectArr[4] == false && cellSelectArr[5] == true {
                 self?.selfView.tView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.tView.mbtiLabel.textColor = .white100
+                self?.selfView.tView.mbtiLabel.textColor = .black5
                 self?.selfView.tView.backgroundColor = .black90
                 
                 self?.selfView.fView.layer.borderColor = UIColor.black80.cgColor
@@ -168,7 +168,7 @@ final class EditMbtiViewController: BaseViewController {
         output.fButtonTapped.bind { [weak self] _ in
             if cellSelectArr[4] == false && cellSelectArr[5] == false {
                 self?.selfView.fView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.fView.mbtiLabel.textColor = .white100
+                self?.selfView.fView.mbtiLabel.textColor = .black5
                 self?.selfView.fView.backgroundColor = .black90
                 cellSelectArr[5] = true
 
@@ -178,7 +178,7 @@ final class EditMbtiViewController: BaseViewController {
                 self?.selfView.tView.backgroundColor = .black100
                 
                 self?.selfView.fView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.fView.mbtiLabel.textColor = .white100
+                self?.selfView.fView.mbtiLabel.textColor = .black5
                 self?.selfView.fView.backgroundColor = .black90
                 cellSelectArr[4] = false
                 cellSelectArr[5] = true
@@ -194,7 +194,7 @@ final class EditMbtiViewController: BaseViewController {
         output.jButtonTapped.bind { [weak self] _ in
             if cellSelectArr[6] == false && cellSelectArr[7] == false {
                 self?.selfView.jView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.jView.mbtiLabel.textColor = .white100
+                self?.selfView.jView.mbtiLabel.textColor = .black5
                 self?.selfView.jView.backgroundColor = .black90
                 cellSelectArr[6] = true
 
@@ -206,7 +206,7 @@ final class EditMbtiViewController: BaseViewController {
                 cellSelectArr[6] = false
             } else if cellSelectArr[6] == false && cellSelectArr[7] == true {
                 self?.selfView.jView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.jView.mbtiLabel.textColor = .white100
+                self?.selfView.jView.mbtiLabel.textColor = .black5
                 self?.selfView.jView.backgroundColor = .black90
                 
                 self?.selfView.pView.layer.borderColor = UIColor.black80.cgColor
@@ -221,7 +221,7 @@ final class EditMbtiViewController: BaseViewController {
         output.pButtonTapped.bind { [weak self] _ in
             if cellSelectArr[6] == false && cellSelectArr[7] == false {
                 self?.selfView.pView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.pView.mbtiLabel.textColor = .white100
+                self?.selfView.pView.mbtiLabel.textColor = .black5
                 self?.selfView.pView.backgroundColor = .black90
                 cellSelectArr[7] = true
 
@@ -231,7 +231,7 @@ final class EditMbtiViewController: BaseViewController {
                 self?.selfView.jView.backgroundColor = .black100
                 
                 self?.selfView.pView.layer.borderColor = UIColor.purple80.cgColor
-                self?.selfView.pView.mbtiLabel.textColor = .white100
+                self?.selfView.pView.mbtiLabel.textColor = .black5
                 self?.selfView.pView.backgroundColor = .black90
                 cellSelectArr[6] = false
                 cellSelectArr[7] = true

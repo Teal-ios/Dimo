@@ -18,7 +18,7 @@ class DrawButtonLabel: BaseView {
     let textLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         return label
     }()
     

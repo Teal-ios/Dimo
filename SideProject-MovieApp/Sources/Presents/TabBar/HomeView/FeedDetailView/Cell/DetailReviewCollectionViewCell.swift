@@ -21,7 +21,7 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         view.clipsToBounds = true
         return view
     }()
@@ -29,7 +29,7 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     let characterNameLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.text = "정대만"
         return label
@@ -47,7 +47,7 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     let reviewLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body3
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         label.numberOfLines = 0
         label.text = "불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다."

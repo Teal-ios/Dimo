@@ -15,11 +15,14 @@ final class MovieDetailViewModel: ViewModelType {
     private weak var coordinator: HomeCoordinator?
     
     struct Input{
-
+        let plusButtonTapped: ControlEvent<Void>
+        let evaluateButtonTapped: PublishSubject<Void>
 
     }
     
     struct Output{
+        let plusButtonTapped: ControlEvent<Void>
+
     }
     
     init(coordinator: HomeCoordinator? = nil) {
@@ -27,7 +30,11 @@ final class MovieDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-
-        return Output()
+        input.evaluateButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showMovieDetailRankViewController()
+        }
+        .disposed(by: disposeBag)
+        
+        return Output(plusButtonTapped: input.plusButtonTapped)
     }
 }

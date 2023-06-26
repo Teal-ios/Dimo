@@ -44,7 +44,7 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
-    func dismissCategoryViewController() {
+    func dismissViewController() {
         navigationController.dismiss(animated: true)
     }
   
@@ -81,5 +81,12 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         let vc = CharacterMoreViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showMovieDetailRankViewController() {
+        let viewModel = MovieDetailRankViewModel(coordinator: self)
+        let vc = MovieDetailRankViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
     }
 }

@@ -43,6 +43,7 @@ class BasicLoginView: BaseView {
         self.init()
         titleLabel.text = title
         idTextFieldView.tf.placeholder = placeholder
+        idTextFieldView.tf.setPlaceholder(color: .black80)
     }
     override func setupLayout() {
         [titleLabel, idTextFieldView, nextButton, policyLabel].forEach { self.addSubview($0) }

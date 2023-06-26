@@ -20,7 +20,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
     let nicknameLabel: UILabel = {
         let label = UILabel()
         label.text = "디모최고"
-        label.textColor = .white100
+        label.textColor = .black5
         label.font = Font.body2
         return label
     }()
@@ -38,7 +38,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
         label.text = "않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다."
         label.numberOfLines = 0
         label.font = Font.body3
-        label.textColor = .white100
+        label.textColor = .black5
         return label
     }()
     
@@ -139,7 +139,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
         profileImgView.snp.makeConstraints { make in
             make.top.equalTo(safeArea)
             make.height.width.equalTo(50)
-            make.leading.equalTo(16)
+            make.leading.equalTo(safeArea)
         }
         
         nicknameLabel.snp.makeConstraints { make in
@@ -162,13 +162,13 @@ class FeedDetailHeaderView: UICollectionReusableView {
         
         likeAndReviewAndViewsLabel.snp.makeConstraints { make in
             make.bottom.equalTo(totalStackView.snp.top).offset(8)
-            make.horizontalEdges.equalTo(16)
+            make.horizontalEdges.equalTo(safeArea)
             make.height.equalTo(16)
         }
         
         mainTextLabel.snp.makeConstraints { make in
             make.top.equalTo(mbtiLabel.snp.bottom).offset(20)
-            make.horizontalEdges.equalTo(safeArea).inset(16)
+            make.horizontalEdges.equalTo(safeArea)
             make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.top)
         }
     }

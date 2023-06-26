@@ -15,7 +15,7 @@ class SettingEtcCollectionViewCell: BaseCollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .left
         return label
     }()

@@ -34,9 +34,7 @@ extension UIColor {
     static let black20 = UIColor.makeColor(from: "#D4D3D3")
     static let black10 = UIColor.makeColor(from: "#E9E9E9")
     static let black5 = UIColor.makeColor(from: "#F4F4F4")
-    /// White
-    static let white100 = UIColor.makeColor(from: "#FFFFFF")
-    
+
     /// Error
     static let error = UIColor.makeColor(from: "#F24D46")
     static let gradientWhite = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 0)

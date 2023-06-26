@@ -28,7 +28,7 @@ class CustomAlertView: BaseView {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = Font.title3
-        label.textColor = .white100
+        label.textColor = .black5
         return label
     }()
     

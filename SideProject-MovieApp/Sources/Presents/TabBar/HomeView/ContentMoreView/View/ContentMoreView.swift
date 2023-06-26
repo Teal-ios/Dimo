@@ -13,7 +13,7 @@ final class ContentMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.textColor = .white100
+        label.textColor = .black5
         label.text = "ISFJ가 주인공인 영화"
         return label
     }()

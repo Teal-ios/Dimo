@@ -14,14 +14,14 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         return view
     }()
     
     let characterNameLabel: UILabel = {
         let label = UILabel()
         label.font = Font.body2
-        label.textColor = .white100
+        label.textColor = .black5
         label.textAlignment = .center
         label.text = "정대만"
         return label
