@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class PosterCollectionViewCell: BaseCollectionViewCell {
     
@@ -90,6 +91,13 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
         gradientView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
+    }
+    
+    func configureAttribute(with item: AnimationData) {
+        let imageUrl = URL(string: item.poster)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        titleLabel.text = item.title
     }
 }
 

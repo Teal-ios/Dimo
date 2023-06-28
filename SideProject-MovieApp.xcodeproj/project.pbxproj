@@ -28,6 +28,17 @@
 		2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */; };
 		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
 		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
+		2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */; };
+		2F437C002A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437BFF2A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift */; };
+		2F437C022A4BE617000B7A61 /* ResponseCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */; };
+		2F437C062A4BE8F0000B7A61 /* ContentRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C052A4BE8F0000B7A61 /* ContentRepositoryImpl.swift */; };
+		2F437C082A4BE912000B7A61 /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C072A4BE912000B7A61 /* ContentRepository.swift */; };
+		2F437C0A2A4BED61000B7A61 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C092A4BED61000B7A61 /* Character.swift */; };
+		2F437C0C2A4BEEF8000B7A61 /* ContentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C0B2A4BEEF8000B7A61 /* ContentUseCase.swift */; };
+		2F437C0E2A4BFE47000B7A61 /* AnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */; };
+		2F437C132A4C0FDA000B7A61 /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F437C122A4C0FDA000B7A61 /* Mock.json */; };
+		2F437C152A4C176C000B7A61 /* MockParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437C142A4C176C000B7A61 /* MockParser.swift */; };
+		2F437C182A4C1D42000B7A61 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2F437C172A4C1D42000B7A61 /* Kingfisher */; };
 		2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */; };
 		2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */; };
 		2F53D0702A1F0AC600898DCD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D06F2A1F0AC600898DCD /* NetworkError.swift */; };
@@ -312,6 +323,16 @@
 		2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
+		2F437BFF2A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAnimationDataDTO.swift; sourceTree = "<group>"; };
+		2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCharacterDTO.swift; sourceTree = "<group>"; };
+		2F437C052A4BE8F0000B7A61 /* ContentRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepositoryImpl.swift; sourceTree = "<group>"; };
+		2F437C072A4BE912000B7A61 /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
+		2F437C092A4BED61000B7A61 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		2F437C0B2A4BEEF8000B7A61 /* ContentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentUseCase.swift; sourceTree = "<group>"; };
+		2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationData.swift; sourceTree = "<group>"; };
+		2F437C122A4C0FDA000B7A61 /* Mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
+		2F437C142A4C176C000B7A61 /* MockParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockParser.swift; sourceTree = "<group>"; };
 		2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarCoordinator.swift; sourceTree = "<group>"; };
 		2F4D9CA929FE82AC007B89E8 /* TabBarPageCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPageCase.swift; sourceTree = "<group>"; };
 		2F53D06F2A1F0AC600898DCD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -563,6 +584,7 @@
 			files = (
 				2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */,
 				2FC94EB329C015050097E696 /* RxSwift in Frameworks */,
+				2F437C182A4C1D42000B7A61 /* Kingfisher in Frameworks */,
 				2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */,
 				2FC94EB129C015050097E696 /* RxCocoa in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
@@ -699,6 +721,53 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		2F437BFB2A4BE411000B7A61 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F437C0F2A4C0D19000B7A61 /* MockData */,
+				2F437C092A4BED61000B7A61 /* Character.swift */,
+				2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		2F437BFE2A4BE50B000B7A61 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F437BFF2A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift */,
+				2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		2F437C032A4BE87C000B7A61 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
+				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
+				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2F437C042A4BE8A1000B7A61 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
+				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
+				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2F437C0F2A4C0D19000B7A61 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				2F437C122A4C0FDA000B7A61 /* Mock.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
 		2F4D9CA629FE8247007B89E8 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +796,7 @@
 			children = (
 				2F53D07F2A1F178500898DCD /* AuthRepository.swift */,
 				2FD0735E2A25BFEB003F7E56 /* SettingRepository.swift */,
+				2F437C072A4BE912000B7A61 /* ContentRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -736,6 +806,7 @@
 			children = (
 				2F53D0852A1F194B00898DCD /* AuthUseCase.swift */,
 				2FD073602A25C0B0003F7E56 /* SettingUseCase.swift */,
+				2F437C0B2A4BEEF8000B7A61 /* ContentUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -752,9 +823,7 @@
 		2F53D0712A1F111900898DCD /* RequestDTO */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
-				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
-				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
+				2F437C042A4BE8A1000B7A61 /* Auth */,
 				497454F62A42000C0043D67E /* Setting */,
 			);
 			path = RequestDTO;
@@ -765,6 +834,7 @@
 			children = (
 				2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */,
 				2FD0735C2A25BFC5003F7E56 /* SettingRepositoryImpl.swift */,
+				2F437C052A4BE8F0000B7A61 /* ContentRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -786,6 +856,7 @@
 			children = (
 				2FC94E9E29C013880097E696 /* AuthRouter.swift */,
 				2FD073542A25BEB2003F7E56 /* SettingRouter.swift */,
+				2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -795,6 +866,7 @@
 			children = (
 				49A743842A46C17B00651011 /* Auth */,
 				49A743852A46C17F00651011 /* Setting */,
+				2F437BFB2A4BE411000B7A61 /* Content */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1097,11 +1169,10 @@
 		2FBF4CA329CC78E700B65125 /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
+				2F437C032A4BE87C000B7A61 /* Auth */,
+				2F437BFE2A4BE50B000B7A61 /* Content */,
 				497454F92A46BEDA0043D67E /* Setting */,
 				2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */,
-				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
-				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
-				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -1429,6 +1500,7 @@
 				2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */,
 				497454E12A3A1D3A0043D67E /* NetworkService.swift */,
 				497454E32A3D7A130043D67E /* DataTransferService.swift */,
+				2F437C142A4C176C000B7A61 /* MockParser.swift */,
 				2F53D06F2A1F0AC600898DCD /* NetworkError.swift */,
 				2F53D0732A1F114900898DCD /* TargetType.swift */,
 				497454E82A3F62B70043D67E /* TargetType2.swift */,
@@ -2071,6 +2143,7 @@
 				2F7C492329EE38F500F400CB /* GoogleSignIn */,
 				2F7C492529EE38F500F400CB /* GoogleSignInSwift */,
 				2FDD745A2A10AA8200A75AB9 /* Tabman */,
+				2F437C172A4C1D42000B7A61 /* Kingfisher */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -2149,6 +2222,7 @@
 				2FC94EAF29C015050097E696 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				2FDD74592A10AA8200A75AB9 /* XCRemoteSwiftPackageReference "Tabman" */,
+				2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2FC94E4F29C00F0B0097E696 /* Products */;
 			projectDirPath = "";
@@ -2177,6 +2251,7 @@
 				2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */,
 				2FC94EC029C036DD0097E696 /* NotoSansKR-Black.otf in Resources */,
 				93C48B4029D17CAA00644F6A /* SUIT-Bold.otf in Resources */,
+				2F437C132A4C0FDA000B7A61 /* Mock.json in Resources */,
 				93C48B4629D17CB900644F6A /* SUIT-Regular.otf in Resources */,
 				2FC94EC429C036DD0097E696 /* NotoSansKR-Regular.otf in Resources */,
 				93C48B4529D17CB700644F6A /* SUIT-Medium.otf in Resources */,
@@ -2259,6 +2334,7 @@
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
+				2F437C0C2A4BEEF8000B7A61 /* ContentUseCase.swift in Sources */,
 				497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */,
@@ -2306,12 +2382,14 @@
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
+				2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */,
 				2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */,
 				497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */,
 				2FD0735B2A25BF94003F7E56 /* ResponseNicknameDuplicationDTO.swift in Sources */,
 				2FDD9E692A121EC400A41FF7 /* FeedDetailViewModel.swift in Sources */,
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
+				2F437C082A4BE912000B7A61 /* ContentRepository.swift in Sources */,
 				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
@@ -2341,6 +2419,9 @@
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2F149DD52A49961C0098AF64 /* MovieDetailRankViewModel.swift in Sources */,
+				2F437C0E2A4BFE47000B7A61 /* AnimationData.swift in Sources */,
+				2F437C0A2A4BED61000B7A61 /* Character.swift in Sources */,
+				2F437C152A4C176C000B7A61 /* MockParser.swift in Sources */,
 				2F1890062A4592170097D38E /* CharacterMoreViewController.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
@@ -2375,6 +2456,7 @@
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
+				2F437C022A4BE617000B7A61 /* ResponseCharacterDTO.swift in Sources */,
 				2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */,
 				2F6D7D192A14B6D600FA457D /* TapUISlider.swift in Sources */,
 				2F53D0AC2A1F4A6100898DCD /* EditUserNameViewController.swift in Sources */,
@@ -2395,6 +2477,7 @@
 				2FC94E9F29C013880097E696 /* AuthRouter.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */,
+				2F437C062A4BE8F0000B7A61 /* ContentRepositoryImpl.swift in Sources */,
 				2FD69EB02A0387F600AA5A6E /* PosterCollectionViewCell.swift in Sources */,
 				2FDD9E6C2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift in Sources */,
 				2FD69EAA2A03843C00AA5A6E /* HomeViewModel.swift in Sources */,
@@ -2435,6 +2518,7 @@
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
+				2F437C002A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift in Sources */,
 				497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
@@ -2651,7 +2735,7 @@
 				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AW5HC5SGGG;
+				DEVELOPMENT_TEAM = LL4R66V6Y3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2793,6 +2877,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
 		2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -2828,6 +2920,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F437C172A4C1D42000B7A61 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		2F7C492329EE38F500F400CB /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

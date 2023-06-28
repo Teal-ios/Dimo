@@ -32,7 +32,10 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     }
     
     func showHomeViewController() {
-        let viewModel = HomeViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = HomeViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
         let vc = HomeViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
