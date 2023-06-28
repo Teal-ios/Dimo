@@ -36,8 +36,11 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showEditUserNameViewController() {
-        let viewModel = EditUserNameViewModel(coordinator: self)
-        let vc = EditUserNameViewController(viewModel: viewModel)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = EditNicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
+        let vc = EditNicknameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     

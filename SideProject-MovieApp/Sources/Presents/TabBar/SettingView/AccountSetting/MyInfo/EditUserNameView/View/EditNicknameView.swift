@@ -6,15 +6,16 @@
 //
 
 import UIKit
-import SnapKit
 
-class EditUserNameView: BaseView {
+class EditNicknameView: BaseView {
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .suitFont(ofSize: 24, weight: .Bold)
         return label
     }()
+    
     let explainLabel: UILabel = {
         let label = UILabel()
         label.font = Font.subtitle3
@@ -26,12 +27,14 @@ class EditUserNameView: BaseView {
     let idTextFieldView: OnboardingTextFieldView = {
         return OnboardingTextFieldView()
     }()
-    let duplicateCheckButton: OnboardingButton = {
+    
+    let duplicationCheckButton: OnboardingButton = {
         let button = OnboardingButton(title: "중복확인")
         button.configuration?.baseBackgroundColor = .black100
         button.configuration?.baseForegroundColor = .black80
         return button
     }()
+    
     let policyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black60
@@ -39,11 +42,13 @@ class EditUserNameView: BaseView {
         label.text = "마지막 변경일 : 2023.05.25"
         return label
     }()
+    
     let nextButton: OnboardingButton = {
         let button = OnboardingButton(title: "변경하기", ofSize: 14)
         button.configuration?.baseBackgroundColor = .black80
         return button
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -53,9 +58,11 @@ class EditUserNameView: BaseView {
         titleLabel.text = title
         idTextFieldView.tf.placeholder = placeholder
     }
+    
     override func setupLayout() {
         [titleLabel, explainLabel, idTextFieldView, nextButton, policyLabel].forEach { self.addSubview($0) }
-        idTextFieldView.addSubview(duplicateCheckButton)
+        idTextFieldView.addSubview(duplicationCheckButton)
+        
         let topLeading: CGFloat = 16
         let betweenTerms: CGFloat = 36
         let insidePadding: CGFloat = 8
@@ -75,7 +82,7 @@ class EditUserNameView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
             make.height.equalTo(textFieldHeight)
         }
-        duplicateCheckButton.snp.makeConstraints { make in
+        duplicationCheckButton.snp.makeConstraints { make in
             make.centerY.equalTo(idTextFieldView.snp.centerY)
             make.trailing.equalTo(idTextFieldView.snp.trailing).inset(insidePadding)
         }
@@ -89,5 +96,4 @@ class EditUserNameView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide).inset(betweenTerms)
         }
     }
-    
 }
