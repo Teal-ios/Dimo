@@ -90,7 +90,6 @@ final class HomeViewModel: ViewModelType {
                 let animationDataObservable = self?.contentUseCase.excuteFetchAnimationData()
                 
                 animationDataObservable?.bind(onNext: { data in
-                    print(data, "✅✅✅✅✅")
                     self?.animationData.accept(data)
                 })
             }

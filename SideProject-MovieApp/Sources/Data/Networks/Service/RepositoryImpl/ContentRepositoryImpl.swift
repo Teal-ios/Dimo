@@ -27,7 +27,6 @@ extension ContentRepositoryImpl {
             guard let data = MockParser.load() else {
                 throw ContentRepositoryError.request
             }
-            print(data, "✅✅✅ 그러면 이게 찍히는거네")
             return data
         } catch {
             throw ContentRepositoryError.request

@@ -37,3 +37,14 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension CircleCollectionViewCell {
+    func configureAttribute(with item: Character) {
+        guard let data = Data(base64Encoded: item.characterImg, options: .ignoreUnknownCharacters)
+        else { return }
+        print(data, "인코딩된 이미지")
+        guard let image = UIImage(data: data) else { return }
+        imgView.image = image
+        imgView.contentMode = .scaleToFill
+    }
+}
