@@ -7,17 +7,25 @@
 
 import UIKit
 import RxCocoa
+import SnapKit
 
 class DimoLoginViewController: BaseViewController {
-    private let dimoLoginView = DimoLoginView(title: "당신의 과몰입을\n완성해 보세요", placeholder: "아이디")
     
+    private let dimoLoginView = DimoLoginView(title: "당신의 과몰입을\n완성해 보세요", placeholder: "아이디")
     private var viewModel: DimoLoginViewModel
+    
     override func loadView() {
         view = dimoLoginView
     }
+    
     init(viewModel: DimoLoginViewModel) {
         self.viewModel = viewModel
         super.init()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboard()
     }
     
     override func setupBinding() {
