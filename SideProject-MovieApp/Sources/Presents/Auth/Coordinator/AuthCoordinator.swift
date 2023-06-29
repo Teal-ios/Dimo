@@ -98,6 +98,12 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showJoinTermsViewController() {
+        let viewModel = JoinTermsViewModel(coordinator: self)
+        let vc = JoinTermsViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func connectHomeTabBarCoordinator() {
         let tabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
         tabBarCoordinator.start()

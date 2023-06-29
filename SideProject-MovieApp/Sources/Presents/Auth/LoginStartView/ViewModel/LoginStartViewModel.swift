@@ -41,7 +41,7 @@ final class LoginStartViewModel: ViewModelType {
         }.disposed(by: disposeBag)
         
         input.signupButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showSignupTermsViewController()
+            self?.coordinator?.showJoinTermsViewController()
         }
         .disposed(by: disposeBag)
         
