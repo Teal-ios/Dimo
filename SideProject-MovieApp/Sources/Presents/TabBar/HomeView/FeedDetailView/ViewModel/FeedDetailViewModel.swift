@@ -13,10 +13,9 @@ final class FeedDetailViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
-    var test: String = ""
     
     struct Input{
-        
+        let plusNavigationButtonTapped: PublishSubject<Void>
         
     }
     
@@ -28,7 +27,11 @@ final class FeedDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        print("\(test)")
+        input.plusNavigationButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.showFeedDetailMoreMyViewMController()
+        }
+        .disposed(by: disposeBag)
+        
         return Output()
     }
 }
