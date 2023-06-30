@@ -66,11 +66,11 @@ final class HomeViewController: BaseViewController {
                 var section4Arr: [AnimationData] = []
                 var section5Arr: [AnimationData] = []
                 
-                section1Arr.append(contentsOf: [data[0], data[1], data[2]])
-                section2Arr.append(contentsOf: [data[3], data[4], data[5]])
-                section3Arr.append(contentsOf: [data[6], data[7], data[8]])
-                section4Arr.append(contentsOf: [data[9], data[10], data[11]])
-                section5Arr.append(contentsOf: [data[12], data[13]])
+                section1Arr.append(contentsOf: [data[0], data[1], data[2], data[3], data[4], data[5]])
+                section2Arr.append(contentsOf: [data[6], data[7], data[8], data[9], data[10]])
+                section3Arr.append(contentsOf: [data[11], data[12], data[13], data[14], data[15], data[16]])
+                section4Arr.append(contentsOf: [data[17], data[18], data[19], data[20], data[21], data[22]])
+                section5Arr.append(contentsOf: [data[23], data[24], data[25], data[26], data[27], data[28]])
 
                 
                 print(section1Arr, "포스터 배열")
