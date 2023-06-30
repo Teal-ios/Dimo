@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class FeedViewController: BaseViewController {
-    let feedView = FeedView()
+    let selfView = FeedView()
     
     private var viewModel: FeedViewModel
     
@@ -29,17 +29,17 @@ final class FeedViewController: BaseViewController {
     let reviewCellSelected = PublishSubject<Void>()
     
     override func loadView() {
-        view = feedView
+        view = selfView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.feedView.collectionView.delegate = self
+        self.selfView.collectionView.delegate = self
         setDataSource()
     }
     
     override func setupBinding() {
-        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected)
+        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap)
         let output = self.viewModel.transform(input: input)
         
     }
@@ -51,7 +51,7 @@ extension FeedViewController {
             cell.imgView.image = itemIdentifier.image
         }
         
-        dataSource = UICollectionViewDiffableDataSource(collectionView: feedView.collectionView) { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView) { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell

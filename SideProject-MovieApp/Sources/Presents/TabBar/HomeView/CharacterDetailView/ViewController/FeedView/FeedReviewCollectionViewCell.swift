@@ -63,6 +63,30 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    let spoilerContainView: UIStackView = {
+        let view = UIStackView()
+        view.backgroundColor = .black80
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 4
+        return view
+    }()
+    
+    let spoilerWarningImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "warning")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    let spoilerLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.body3
+        label.textColor = .black5
+        label.text = "스포일러가 포함된 리뷰입니다."
+        return label
+    }()
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.frame.width / 2
@@ -70,7 +94,9 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     }
         
     override func configure() {
-        [bgView, imgView, nameNameLabel, mbtiLabel, reviewLabel, likeAndReviewAndInquireLabel].forEach { self.addSubview($0) }
+        [bgView, imgView, nameNameLabel, mbtiLabel, reviewLabel, likeAndReviewAndInquireLabel, spoilerContainView].forEach { self.addSubview($0) }
+        spoilerContainView.addArrangedSubview(spoilerWarningImageView)
+        spoilerContainView.addArrangedSubview(spoilerLabel)
     }
     
     override func setConstraints() {
@@ -108,6 +134,22 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalTo(bgView).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(24)
+        }
+        
+        spoilerContainView.snp.makeConstraints { make in
+            make.edges.equalTo(reviewLabel)
+        }
+        
+        spoilerWarningImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(reviewLabel)
+            make.verticalEdges.equalTo(reviewLabel).inset(4)
+            make.leading.equalTo(reviewLabel.snp.leading).offset(8)
+        }
+        
+        spoilerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(reviewLabel.snp.leading).offset(36)
+            make.centerY.equalTo(reviewLabel)
+            make.trailing.equalTo(reviewLabel.snp.trailing).offset(-4)
         }
     }
 }
