@@ -13,6 +13,8 @@ final class HomeViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
+    private var contentUseCase: ContentUseCase
+    var animationData = PublishRelay<[AnimationData]>()
     
     struct Input {
         let categoryButtonTapped: PublishSubject<Void>
@@ -25,14 +27,16 @@ final class HomeViewModel: ViewModelType {
         let mbtiCharacterCellSelected: PublishSubject<Void>
         let mbtiRecommendCellSeleted: PublishSubject<Void>
         let hotMovieCellSelected: PublishSubject<Void>
+        let viewDidLoad: Observable<Void>
     }
     
     struct Output {
-        
+        let animationData: PublishRelay<[AnimationData]>
     }
 
-    init(coordinator: HomeCoordinator?) {
+    init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase) {
         self.coordinator = coordinator
+        self.contentUseCase = contentUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -79,7 +83,18 @@ final class HomeViewModel: ViewModelType {
             self?.coordinator?.showContentMoreViewController(title: "핫한 영화")
         }
         .disposed(by: disposeBag)
+        
+        input.viewDidLoad
+            .bind { [weak self] _ in
+                print("viewDidLoad 실행")
+                let animationDataObservable = self?.contentUseCase.excuteFetchAnimationData()
+                
+                animationDataObservable?.bind(onNext: { data in
+                    self?.animationData.accept(data)
+                })
+            }
+            .disposed(by: disposeBag)
 
-        return Output()
+        return Output(animationData: self.animationData)
     }
 }

@@ -33,3 +33,11 @@ class CardCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension CardCollectionViewCell {
+    func configureAttribute(with item: AnimationData) {
+        let imageUrl = URL(string: item.poster)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+    }
+}

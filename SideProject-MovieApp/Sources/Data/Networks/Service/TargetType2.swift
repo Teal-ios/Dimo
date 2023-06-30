@@ -14,7 +14,7 @@ protocol TargetType2 {
     var host: String { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
-    var queryItems: [URLQueryItem] { get }
+    var queryItems: [URLQueryItem]? { get }
     var header: [String: String] { get }
     var parameters: String? { get }
     var port: Int { get }

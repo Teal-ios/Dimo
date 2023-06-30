@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 final class HomeViewController: BaseViewController {
     let homeView = HomeView()
@@ -24,8 +25,7 @@ final class HomeViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
+    private var posterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
     let categoryButtonTap = PublishSubject<Void>()
     let posterCellSelected = PublishSubject<Void>()
@@ -44,44 +44,75 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.homeView.collectionView.delegate = self
         setNavigation()
         setDataSource()
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: Observable.just(()))
         let output = self.viewModel.transform(input: input)
-    }
-    
+        
+        output.animationData
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] data in
+                guard let self = self else { return }
+                print(data.count, "data 개수")
+                var snapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                snapshot.appendSections([0, 1, 2, 3, 4])
+                var section1Arr: [AnimationData] = []
+                var section2Arr: [AnimationData] = []
+                var section3Arr: [AnimationData] = []
+                var section4Arr: [AnimationData] = []
+                var section5Arr: [AnimationData] = []
+                
+                section1Arr.append(contentsOf: [data[0], data[1], data[2]])
+                section2Arr.append(contentsOf: [data[3], data[4], data[5]])
+                section3Arr.append(contentsOf: [data[6], data[7], data[8]])
+                section4Arr.append(contentsOf: [data[9], data[10], data[11]])
+                section5Arr.append(contentsOf: [data[12], data[13]])
 
+                
+                print(section1Arr, "포스터 배열")
+                print(section5Arr, "섹션5")
+                snapshot.appendItems(section1Arr, toSection: 0)
+                snapshot.appendItems(section2Arr, toSection: 1)
+                snapshot.appendItems(section3Arr, toSection: 2)
+                snapshot.appendItems(section4Arr, toSection: 3)
+                snapshot.appendItems(section5Arr, toSection: 4)
+                self.posterDataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
+    }
+}
+//MARK: DataSource 관련
+extension HomeViewController {
     func setDataSource() {
-        let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+        let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
         }
         
-        let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-            
+        let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
         }
         
-        let cellCharacterRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-            
+        let cellCharacterRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier.characters[0])
         }
         
-        let cellRecommandRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-            
+        let cellRecommandRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
         }
         
-        let cellHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-            
+        let cellHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
         }
         
-        dataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView) { collectionView, indexPath, itemIdentifier in
+        posterDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView) { collectionView, indexPath, itemIdentifier in
             
             switch indexPath.section {
             case 0:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellPosterRegistration, for: indexPath, item: itemIdentifier)
-
                 return cell
             case 1:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellHeroCharacterRegistration, for: indexPath, item: itemIdentifier)
@@ -94,6 +125,7 @@ final class HomeViewController: BaseViewController {
                 return cell
             case 4:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellHotRegistration, for: indexPath, item: itemIdentifier)
+
                 return cell
             default:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellHotRegistration, for: indexPath, item: itemIdentifier)
@@ -135,7 +167,7 @@ final class HomeViewController: BaseViewController {
         }
         
         
-        dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+        posterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             switch indexPath.section {
             case 0:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: todayDIMOHeader, for: indexPath)
@@ -162,30 +194,6 @@ final class HomeViewController: BaseViewController {
                 return header
             }
         })
-        
-        snapshot.appendSections([0, 1, 2, 3, 4])
-        var section1Arr: [HomeModel] = []
-        var section2Arr: [HomeModel] = []
-        var section3Arr: [HomeModel] = []
-        var section4Arr: [HomeModel] = []
-        var section5Arr: [HomeModel] = []
-
-        
-        for _ in 1..<50 {
-            section1Arr.append(HomeModel(image: nil))
-            section2Arr.append(HomeModel(image: nil))
-            section3Arr.append(HomeModel(image: nil))
-            section4Arr.append(HomeModel(image: nil))
-            section5Arr.append(HomeModel(image: nil))
-            
-        }
-        
-        snapshot.appendItems(section1Arr, toSection: 0)
-        snapshot.appendItems(section2Arr, toSection: 1)
-        snapshot.appendItems(section3Arr, toSection: 2)
-        snapshot.appendItems(section4Arr, toSection: 3)
-        snapshot.appendItems(section5Arr, toSection: 4)
-        dataSource.apply(snapshot)
 
     }
 }

@@ -43,6 +43,10 @@ class FeedDetailViewController: BaseViewController {
         setDataSource()
     }
     
+    override func setupBinding() {
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap)
+        let output = viewModel.transform(input: input)
+    }
 }
 
 extension FeedDetailViewController {

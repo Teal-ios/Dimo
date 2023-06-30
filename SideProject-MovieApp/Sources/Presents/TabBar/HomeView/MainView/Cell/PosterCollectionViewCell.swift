@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class PosterCollectionViewCell: BaseCollectionViewCell {
     
@@ -36,18 +37,11 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title2
-        label.text = "더 콘크리트"
         label.textAlignment = .center
         return label
     }()
     
-    let characterLabel: UILabel = {
-        let label = UILabel()
-        label.font =  UIFont(name: "SUIT-SemiBold", size: 12)
-        label.text = "기막성 이병현 박시콩"
-        label.textAlignment = .center
-        return label
-    }()
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,18 +61,12 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
     
     
     override func configure() {
-        [imgView, gradientView, characterLabel, titleLabel].forEach { self.addSubview($0) }
+        [imgView, gradientView, titleLabel].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
         imgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
-        }
-        
-        characterLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(24)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(16)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -90,6 +78,13 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
         gradientView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
+    }
+    
+    func configureAttribute(with item: AnimationData) {
+        let imageUrl = URL(string: item.poster)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        titleLabel.text = item.title
     }
 }
 

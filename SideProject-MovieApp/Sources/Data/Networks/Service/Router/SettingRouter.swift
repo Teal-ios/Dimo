@@ -52,7 +52,7 @@ extension SettingRouter: TargetType2 {
         }
     }
     
-    var queryItems: [URLQueryItem] {
+    var queryItems: [URLQueryItem]? {
         switch self {
         case .userInfoInquiry(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
