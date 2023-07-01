@@ -15,8 +15,8 @@ final class FeedDetailMoreMyViewModel: ViewModelType {
     private weak var coordinator: TabmanCoordinator?
     
     struct Input{
-        let movieButtonTapped: ControlEvent<Void>
-        let dramaButtonTapped: ControlEvent<Void>
+        let modifyButtonTapped: ControlEvent<Void>
+        let deleteButtonTapped: ControlEvent<Void>
 
     }
     
@@ -28,12 +28,14 @@ final class FeedDetailMoreMyViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.movieButtonTapped.bind { [weak self] _ in
+        input.modifyButtonTapped.bind { [weak self] _ in
             self?.coordinator?.dismissViewController()
         }.disposed(by: disposeBag)
         
-        input.dramaButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.dismissViewController()
+        input.deleteButtonTapped.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.coordinator?.dismissViewController()
+            self.coordinator?.showFeedDetailDeleteViewController()
         }.disposed(by: disposeBag)
         return Output()
     }

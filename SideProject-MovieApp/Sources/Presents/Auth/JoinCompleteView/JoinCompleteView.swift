@@ -37,7 +37,7 @@ final class JoinCompleteView: BaseView {
     
     override func setupLayout() {
         finishSignUpLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(safeAreaLayoutGuide).offset(72)
             make.height.equalTo(29)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }

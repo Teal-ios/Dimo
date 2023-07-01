@@ -23,7 +23,6 @@ final class WriteViewController: BaseViewController {
     }
     
     let textViewPlaceHolder = "정대만에 대한 생각을 자유롭게 남겨 주세요"
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -64,9 +64,12 @@ final class WriteViewModel: ViewModelType {
         input.reviewText.bind { [weak self] text in
             guard let text = text else { return }
             guard var textValid = try? textValidSubject.value() else { return }
+            print(text.count, "text진짜")
 
-            if text != "정대만에 대한 생각을 자유롭게 남겨 주세요" && text.count != 0 {
+            if text != "정대만에 대한 생각을 자유롭게 남겨 주세요" && text.count > 2 {
                 textValid = true
+            } else {
+                textValid = false
             }
             textValidSubject.onNext(textValid)
         }
