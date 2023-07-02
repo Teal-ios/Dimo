@@ -42,11 +42,11 @@ extension SettingRouter: TargetType2 {
         case .nicknameChange:
             return "/user_info/change_nickname"
         case .nicknameChangeDateCheck:
-            return ""
+            return "/user_info/confirm_nickname_modify"
         case .mbtiChange:
             return "/user_info/change_mbti"
         case .mbtiChangeDateCheck:
-            return ""
+            return "/user_info/confirm_mbti_modify"
         case .passwordChange:
             return "/user_info/change_pw"
         }

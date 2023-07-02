@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditNicknameView: BaseView {
+final class EditNicknameView: BaseView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -28,10 +28,15 @@ class EditNicknameView: BaseView {
         return OnboardingTextFieldView()
     }()
     
-    let duplicationCheckButton: OnboardingButton = {
-        let button = OnboardingButton(title: "중복확인")
-        button.configuration?.baseBackgroundColor = .black100
-        button.configuration?.baseForegroundColor = .black80
+    let duplicationCheckButton: UIButton = {
+        let button = UIButton()
+        button.isEnabled = false
+        button.titleLabel?.font = .suitFont(ofSize: 12, weight: .Medium)
+        button.titleLabel?.textAlignment = .center
+        button.layer.cornerRadius = 8.0
+        button.backgroundColor = .black100
+        button.setTitle("중복확인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
@@ -43,8 +48,9 @@ class EditNicknameView: BaseView {
         return label
     }()
     
-    let nextButton: OnboardingButton = {
+    let nicknameChangeButton: OnboardingButton = {
         let button = OnboardingButton(title: "변경하기", ofSize: 14)
+        button.isEnabled = false
         button.configuration?.baseBackgroundColor = .black80
         return button
     }()
@@ -60,7 +66,7 @@ class EditNicknameView: BaseView {
     }
     
     override func setupLayout() {
-        [titleLabel, explainLabel, idTextFieldView, nextButton, policyLabel].forEach { self.addSubview($0) }
+        [titleLabel, explainLabel, idTextFieldView, nicknameChangeButton, policyLabel].forEach { self.addSubview($0) }
         idTextFieldView.addSubview(duplicationCheckButton)
         
         let topLeading: CGFloat = 16
@@ -83,6 +89,8 @@ class EditNicknameView: BaseView {
             make.height.equalTo(textFieldHeight)
         }
         duplicationCheckButton.snp.makeConstraints { make in
+            make.width.equalTo(72.0)
+            make.height.equalTo(36.0)
             make.centerY.equalTo(idTextFieldView.snp.centerY)
             make.trailing.equalTo(idTextFieldView.snp.trailing).inset(insidePadding)
         }
@@ -90,10 +98,63 @@ class EditNicknameView: BaseView {
             make.top.equalTo(idTextFieldView.snp.bottom).offset(insidePadding)
             make.leading.equalTo(idTextFieldView.snp.leading)
         }
-        nextButton.snp.makeConstraints { make in
+        nicknameChangeButton.snp.makeConstraints { make in
             make.height.equalTo(buttonHeight)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(betweenTerms)
         }
+    }
+}
+
+extension EditNicknameView {
+    
+    func enableDuplicationCheckButton(isEnabled: Bool) {
+        if isEnabled {
+            duplicationCheckButton.isEnabled = true
+            duplicationCheckButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            duplicationCheckButton.isEnabled = false
+            duplicationCheckButton.setTitleColor(UIColor.black80, for: .disabled)
+        }
+    }
+    
+    func checkNicknameChangeButton(isValid: Bool) {
+        if isValid {
+            nicknameChangeButton.isEnabled = true
+            nicknameChangeButton.configuration?.baseBackgroundColor = .purple100
+        } else {
+            nicknameChangeButton.isEnabled = false
+            nicknameChangeButton.configuration?.baseBackgroundColor = .black80
+        }
+    }
+}
+
+
+// MARK: - Policy Label Text
+extension EditNicknameView {
+    
+    func showLastNicknameChangedDate() {
+        policyLabel.text = "마지막 변경일 : 2023.05.25"
+        policyLabel.textColor = .black60
+    }
+    
+    func showEmptyMessage() {
+        policyLabel.text = ""
+        policyLabel.textColor = .black60
+    }
+    
+    func showUnvalidNicknameFormatMessage() {
+        policyLabel.text = "두 글자 이상 입력해주세요."
+        policyLabel.textColor = Color.error
+    }
+    
+    func showDuplicatedNicknameMessage() {
+        policyLabel.text = "중복된 닉네임이 존재합니다."
+        policyLabel.textColor = Color.error
+    }
+    
+    func showValidNicknameMessage() {
+        policyLabel.text = "사용 가능한 닉네임입니다."
+        policyLabel.textColor = .black60
     }
 }

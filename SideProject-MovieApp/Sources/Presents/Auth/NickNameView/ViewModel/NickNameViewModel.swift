@@ -49,15 +49,15 @@ class NickNameViewModel: ViewModelType {
         
         input.duplicationButtonTap
             .bind(onNext: {
-                guard let userId = UserDefaults.standard.string(forKey: "userId"),
-                      let userNickname = self.nickname else { return }
-                let query = NicknameDuplicationQuery(user_id: userId, user_nickname: userNickname)
-                let nicknameDuplicationObservable = self.settingUseCase.executeNicknameDuplication(query: query)
-                
-                nicknameDuplicationObservable.bind { [weak self] data  in
-                    print(data, "데이터 드러옴")
-                    self?.duplicationValid.accept(true)
-                }
+//                guard let userId = UserDefaults.standard.string(forKey: "userId"),
+//                      let userNickname = self.nickname else { return }
+//                let query = NicknameDuplicationQuery(user_id: userId, user_nickname: userNickname)
+//                let nicknameDuplicationObservable = self.settingUseCase.executeNicknameDuplication(query: query)
+//                
+//                nicknameDuplicationObservable.bind { [weak self] data  in
+//                    print(data, "데이터 드러옴")
+//                    self?.duplicationValid.accept(true)
+//                }
             })
             .disposed(by: disposeBag)
         

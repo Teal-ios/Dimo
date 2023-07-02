@@ -36,9 +36,23 @@ extension SettingRepositoryImpl {
 }
 
 extension SettingRepositoryImpl {
-    func fetchChangeNickname(query: NicknameChangeQuery) async throws -> NicknameChange {
+    func fetchNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange {
         let requestDTO = RequestNicknameChangeDTO(user_id: query.user_id, user_nickname: query.user_nickname)
         let target = APIEndpoints.postNicknameChange(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
+        }
+    }
+}
+
+extension SettingRepositoryImpl {
+    func fetchNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate {
+        let requestDTO = RequestNicknameChangeDateDTO(user_id: query.user_id)
+        let target = APIEndpoints.getNicknameChangeDate(with: requestDTO)
         
         do {
             let data = try await dataTransferService.request(with: target)

@@ -250,6 +250,9 @@
 		2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */; };
 		2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */; };
 		2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */; };
+		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
+		4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */; };
+		4932D77F2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */; };
 		497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E12A3A1D3A0043D67E /* NetworkService.swift */; };
 		497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E32A3D7A130043D67E /* DataTransferService.swift */; };
 		497454E72A3DD5210043D67E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E62A3DD5210043D67E /* APIKey.swift */; };
@@ -566,6 +569,9 @@
 		2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewModel.swift; sourceTree = "<group>"; };
 		2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
+		4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDateDTO.swift; sourceTree = "<group>"; };
+		4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNicknameChangeDateDTO.swift; sourceTree = "<group>"; };
 		497454E12A3A1D3A0043D67E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		497454E32A3D7A130043D67E /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		497454E62A3DD5210043D67E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -2152,6 +2158,7 @@
 			children = (
 				2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */,
 				49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */,
+				4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2161,6 +2168,7 @@
 			children = (
 				2FD0735A2A25BF94003F7E56 /* ResponseNicknameDuplicationDTO.swift */,
 				2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */,
+				4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2180,6 +2188,7 @@
 			children = (
 				2FD073582A25BF71003F7E56 /* NicknameDuplication.swift */,
 				2FBFE1192A262735001D5425 /* NicknameChange.swift */,
+				4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2444,6 +2453,7 @@
 				2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
+				4932D77F2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift in Sources */,
 				2F53D0A52A1F399F00898DCD /* EditMyInfoView.swift in Sources */,
 				2F1890042A4592100097D38E /* CharacterMoreViewModel.swift in Sources */,
 				2F53D0C22A1F680600898DCD /* EditPasswordViewController.swift in Sources */,
@@ -2536,6 +2546,7 @@
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
 				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
 				2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */,
+				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
@@ -2662,6 +2673,7 @@
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
+				4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */,
