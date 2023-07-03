@@ -51,4 +51,11 @@ final class TabmanCoordinator: Coordinator {
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
+    
+    func showFeedDetailDeleteViewController() {
+        let viewModel = FeedDetailDeleteViewModel(coordinator: self)
+        let vc = FeedDetailDeleteViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
 }

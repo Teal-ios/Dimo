@@ -17,6 +17,7 @@ class OnboardingTextField: UITextField {
         self.layer.cornerRadius = 8
         self.backgroundColor = .black80
         self.placeholder = placeholder
+        self.setPlaceholder(color: .black80)
         self.textColor = .black5
     }
     required init?(coder: NSCoder) {

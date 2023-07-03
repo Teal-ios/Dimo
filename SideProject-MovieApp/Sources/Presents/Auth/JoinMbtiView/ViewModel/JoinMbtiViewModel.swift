@@ -26,7 +26,7 @@ final class JoinMbtiViewModel: ViewModelType {
         let fButtonTapped: ControlEvent<Void>
         let jButtonTapped: ControlEvent<Void>
         let pButtonTapped: ControlEvent<Void>
-
+        let mbtiInfo: PublishRelay<[Bool]>
     }
     
     struct Output{
@@ -38,7 +38,11 @@ final class JoinMbtiViewModel: ViewModelType {
         let fButtonTapped: ControlEvent<Void>
         let jButtonTapped: ControlEvent<Void>
         let pButtonTapped: ControlEvent<Void>
+        let mbtiValid: PublishRelay<Bool>
     }
+    
+    var mbtiString = ""
+    let mbtiValid = PublishRelay<Bool>()
     
     init(coordinator: AuthCoordinator? = nil) {
         self.coordinator = coordinator
@@ -46,14 +50,63 @@ final class JoinMbtiViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         input.findMbtiButtonTapped.bind { [weak self] _ in
+            guard let self else { return }
             print("Mbti 찾는 곳으로 이동")
         }.disposed(by: disposeBag)
         
         input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showJoinCompleteViewController()
+            guard let self else { return }
+            self.coordinator?.showJoinCompleteViewController()
         }.disposed(by: disposeBag)
         
+        input.mbtiInfo.bind { [weak self] mbti in
+            guard let self = self else { return }
+            print(mbti)
+            var count = 0
+            for i in mbti {
+                if i == true {
+                    count += 1
+                }
+                if count == 4 {
+                    self.mbtiDefindLogic(mbti: mbti)
+                }
+            }
+        }
+        .disposed(by: disposeBag)
+        
         return Output(eButtonTapped: input.eButtonTapped
-                      , iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped)
+                      , iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped, mbtiValid: self.mbtiValid)
+    }
+}
+
+extension JoinMbtiViewModel {
+    private func mbtiDefindLogic(mbti: [Bool]) {
+        self.mbtiString = ""
+        for i in 0...mbti.count - 1 {
+            if mbti[i] == true {
+                switch i {
+                case 0:
+                    self.mbtiString += "E"
+                case 1:
+                    self.mbtiString += "I"
+                case 2:
+                    self.mbtiString += "N"
+                case 3:
+                    self.mbtiString += "S"
+                case 4:
+                    self.mbtiString += "T"
+                case 5:
+                    self.mbtiString += "F"
+                case 6:
+                    self.mbtiString += "J"
+                case 7:
+                    self.mbtiString += "P"
+                default:
+                    break
+                }
+            }
+        }
+        self.mbtiValid.accept(true)
+        print(mbtiString)
     }
 }
