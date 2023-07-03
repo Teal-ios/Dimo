@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */; };
+		2F124ACD2A4EA04600A452F1 /* Dimo_splash_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */; };
+		2F124AD02A4EA0CD00A452F1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F124ACF2A4EA0CD00A452F1 /* Lottie */; };
 		2F149DCA2A4978C40098AF64 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DC92A4978C40098AF64 /* StarView.swift */; };
 		2F149DD12A4995FC0098AF64 /* MovieDetailRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DD02A4995FC0098AF64 /* MovieDetailRankViewController.swift */; };
 		2F149DD32A4996120098AF64 /* MovieDetailRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DD22A4996120098AF64 /* MovieDetailRankView.swift */; };
@@ -309,6 +311,7 @@
 
 /* Begin PBXFileReference section */
 		2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
+		2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dimo_splash_animation.json; sourceTree = "<group>"; };
 		2F149DC92A4978C40098AF64 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		2F149DD02A4995FC0098AF64 /* MovieDetailRankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRankViewController.swift; sourceTree = "<group>"; };
 		2F149DD22A4996120098AF64 /* MovieDetailRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRankView.swift; sourceTree = "<group>"; };
@@ -601,6 +604,7 @@
 				2FC94EB129C015050097E696 /* RxCocoa in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
 				2FDD745B2A10AA8200A75AB9 /* Tabman in Frameworks */,
+				2F124AD02A4EA0CD00A452F1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +631,14 @@
 				2FC2EB4729E3BC6800ECE2ED /* LoginStartViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F124ACB2A4EA02D00A452F1 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		2F149DCB2A4994EF0098AF64 /* MovieDetailRank */ = {
@@ -1357,6 +1369,7 @@
 		2FC94E8229C00F430097E696 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F124ACB2A4EA02D00A452F1 /* Animation */,
 				2FC94E8729C011010097E696 /* StoryBoards */,
 				2FC94E8629C010EF0097E696 /* Font */,
 				2FC94E8529C010E50097E696 /* Assets */,
@@ -2210,6 +2223,7 @@
 				2F7C492529EE38F500F400CB /* GoogleSignInSwift */,
 				2FDD745A2A10AA8200A75AB9 /* Tabman */,
 				2F437C172A4C1D42000B7A61 /* Kingfisher */,
+				2F124ACF2A4EA0CD00A452F1 /* Lottie */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -2289,6 +2303,7 @@
 				2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				2FDD74592A10AA8200A75AB9 /* XCRemoteSwiftPackageReference "Tabman" */,
 				2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 2FC94E4F29C00F0B0097E696 /* Products */;
 			projectDirPath = "";
@@ -2306,6 +2321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F124ACD2A4EA04600A452F1 /* Dimo_splash_animation.json in Resources */,
 				93C48B4329D17CB200644F6A /* SUIT-Heavy.otf in Resources */,
 				2FC94EC529C036DD0097E696 /* NotoSansKR-Thin.otf in Resources */,
 				93C48B4129D17CAD00644F6A /* SUIT-ExtraBold.otf in Resources */,
@@ -2949,6 +2965,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -2992,6 +3016,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F124ACF2A4EA0CD00A452F1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		2F437C172A4C1D42000B7A61 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */;
