@@ -39,5 +39,6 @@ class PasswordViewController: BaseViewController {
             vc.passwordView.passwordCheckLabel.text = str
         }
         .disposed(by: disposeBag)
+        
     }
 }

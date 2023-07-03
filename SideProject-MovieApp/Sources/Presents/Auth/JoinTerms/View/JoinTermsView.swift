@@ -26,10 +26,10 @@ final class JoinTermsView: BaseView {
         return view
     }()
     
-    let totalCheckImageView: UIView = {
+    let totalCheckImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "check_gray")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         return view
     }()
     
@@ -49,7 +49,7 @@ final class JoinTermsView: BaseView {
     let firstCheckImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "check_gray")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         return view
     }()
     
@@ -61,10 +61,15 @@ final class JoinTermsView: BaseView {
         return label
     }()
     
+    let firstAgreeButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     let secondCheckImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "check_gray")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         return view
     }()
     
@@ -76,16 +81,26 @@ final class JoinTermsView: BaseView {
         return label
     }()
     
+    let secondAgreeButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     let secondWordButton: WordLabelButton = {
         let button = WordLabelButton(text: "보기")
-        button.titleLabel?.setUnderline(range: NSRange(location: 0, length: button.currentTitle?.count ?? 0))
         return button
+    }()
+    
+    let secondLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black60
+        return view
     }()
     
     let thirdCheckImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "check_gray")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         return view
     }()
     
@@ -99,14 +114,24 @@ final class JoinTermsView: BaseView {
     
     let thirdWordButton: WordLabelButton = {
         let button = WordLabelButton(text: "보기")
-        button.titleLabel?.setUnderline(range: NSRange(location: 0, length: button.currentTitle?.count ?? 0))
+        return button
+    }()
+    
+    let thirdLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black60
+        return view
+    }()
+    
+    let thirdAgreeButton: UIButton = {
+        let button = UIButton()
         return button
     }()
     
     let fourCheckImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "check_gray")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         return view
     }()
     
@@ -116,6 +141,11 @@ final class JoinTermsView: BaseView {
         label.textColor = .black5
         label.text = "(선택) 이벤트 앱 푸시 알림 동의"
         return label
+    }()
+    
+    let fourAgreeButton: UIButton = {
+        let button = UIButton()
+        return button
     }()
     
     let acceptButton: OnboardingButton = {
@@ -135,15 +165,20 @@ final class JoinTermsView: BaseView {
         self.addSubview(totalAgreeButton)
         self.addSubview(firstCheckImageView)
         self.addSubview(firstAgreementLabel)
+        self.addSubview(firstAgreeButton)
         self.addSubview(secondCheckImageView)
         self.addSubview(secondAgreementLabel)
         self.addSubview(secondWordButton)
+        self.addSubview(secondAgreeButton)
         self.addSubview(thirdCheckImageView)
         self.addSubview(thirdAgreementLabel)
         self.addSubview(thirdWordButton)
+        self.addSubview(thirdAgreeButton)
         self.addSubview(fourCheckImageView)
         self.addSubview(fourAgreementLabel)
-        
+        self.addSubview(fourAgreeButton)
+        self.addSubview(secondLineView)
+        self.addSubview(thirdLineView)
     }
     override func setupLayout() {
         let topLeading: CGFloat = 16
@@ -179,6 +214,10 @@ final class JoinTermsView: BaseView {
             make.height.equalTo(24)
         }
         
+        totalAgreeButton.snp.makeConstraints { make in
+            make.edges.equalTo(totalAgreeView)
+        }
+        
         firstCheckImageView.snp.makeConstraints { make in
             make.top.equalTo(totalAgreeView.snp.bottom).offset(30)
             make.width.height.equalTo(24)
@@ -188,7 +227,12 @@ final class JoinTermsView: BaseView {
         firstAgreementLabel.snp.makeConstraints { make in
             make.centerY.equalTo(firstCheckImageView)
             make.leading.equalTo(firstCheckImageView.snp.trailing).offset(8)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-40)
+        }
+        
+        firstAgreeButton.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalTo(firstAgreementLabel)
+            make.leading.equalTo(firstCheckImageView.snp.leading)
         }
         
         secondCheckImageView.snp.makeConstraints { make in
@@ -200,14 +244,19 @@ final class JoinTermsView: BaseView {
         secondAgreementLabel.snp.makeConstraints { make in
             make.centerY.equalTo(secondCheckImageView)
             make.leading.equalTo(secondCheckImageView.snp.trailing).offset(8)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-40)
         }
         
         secondWordButton.snp.makeConstraints { make in
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-24)
             make.width.equalTo(24)
             make.centerY.equalTo(secondCheckImageView)
             make.height.equalTo(16)
+        }
+        
+        secondAgreeButton.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalTo(secondAgreementLabel)
+            make.leading.equalTo(secondCheckImageView.snp.leading)
         }
         
         thirdCheckImageView.snp.makeConstraints { make in
@@ -219,14 +268,19 @@ final class JoinTermsView: BaseView {
         thirdAgreementLabel.snp.makeConstraints { make in
             make.centerY.equalTo(thirdCheckImageView)
             make.leading.equalTo(thirdCheckImageView.snp.trailing).offset(8)
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-40)
         }
         
         thirdWordButton.snp.makeConstraints { make in
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).offset(-24)
             make.width.equalTo(24)
             make.centerY.equalTo(thirdCheckImageView)
             make.height.equalTo(16)
+        }
+        
+        thirdAgreeButton.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalTo(thirdAgreementLabel)
+            make.leading.equalTo(thirdCheckImageView.snp.leading)
         }
         
         fourCheckImageView.snp.makeConstraints { make in
@@ -238,7 +292,26 @@ final class JoinTermsView: BaseView {
         fourAgreementLabel.snp.makeConstraints { make in
             make.centerY.equalTo(fourCheckImageView)
             make.leading.equalTo(fourCheckImageView.snp.trailing).offset(8)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-40)
+        }
+        
+        fourAgreeButton.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalTo(fourAgreementLabel)
+            make.leading.equalTo(fourCheckImageView.snp.leading)
+        }
+        
+        secondLineView.snp.makeConstraints { make in
+            make.top.equalTo(secondWordButton.snp.bottom)
             make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.width.equalTo(20)
+            make.height.equalTo(1)
+        }
+        
+        thirdLineView.snp.makeConstraints { make in
+            make.top.equalTo(thirdWordButton.snp.bottom)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.width.equalTo(20)
+            make.height.equalTo(1)
         }
     }
 }
