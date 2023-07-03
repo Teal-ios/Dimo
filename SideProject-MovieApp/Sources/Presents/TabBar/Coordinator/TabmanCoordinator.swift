@@ -44,4 +44,11 @@ final class TabmanCoordinator: Coordinator {
     func dismissViewController() {
         navigationController.dismiss(animated: true)
     }
+    
+    func showWriteViewController() {
+        let viewModel = WriteViewModel(coordinator: self)
+        let vc = WriteViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
 }

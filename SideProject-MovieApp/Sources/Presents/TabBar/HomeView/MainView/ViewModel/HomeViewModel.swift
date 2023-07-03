@@ -14,8 +14,7 @@ final class HomeViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     private var contentUseCase: ContentUseCase
-    var animationData = PublishRelay<[AnimationData]>()
-    
+
     struct Input {
         let categoryButtonTapped: PublishSubject<Void>
         let heroPlusButtonTapped: PublishSubject<Void>
@@ -33,6 +32,9 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let animationData: PublishRelay<[AnimationData]>
     }
+    
+    var animationData = PublishRelay<[AnimationData]>()
+
 
     init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase) {
         self.coordinator = coordinator

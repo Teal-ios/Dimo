@@ -61,7 +61,7 @@ final class FeedView: BaseView {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 1.5) // Use fractionalHeight instead of fractionalWidth
+            heightDimension: .fractionalHeight(groupRatio / 2) // Use fractionalHeight instead of fractionalWidth
         )
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Use vertical instead of horizontal

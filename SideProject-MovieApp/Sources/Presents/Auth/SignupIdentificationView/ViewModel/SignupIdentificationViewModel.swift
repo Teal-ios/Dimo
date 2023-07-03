@@ -34,6 +34,8 @@ final class SignupIdentificationViewModel: ViewModelType {
         var nextButtonValid: Observable<Bool>
     }
     
+    let toastMessage = PublishRelay<String>()
+    
     init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
         self.authUseCase = authUseCase
@@ -75,6 +77,14 @@ final class SignupIdentificationViewModel: ViewModelType {
             }
             .subscribe()
             .disposed(by: disposeBag)
+        
+        input.idRequestButtonTapped
+            .bind { [weak self] _ in
+                guard let self = self else { return }
+                self.toastMessage.accept("인증 번호를 발송했어요")
+            }
+            .disposed(by: disposeBag)
+        
         
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showIDRegisterViewController()

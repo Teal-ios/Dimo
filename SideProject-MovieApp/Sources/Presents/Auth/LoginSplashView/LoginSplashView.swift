@@ -30,7 +30,7 @@ final class LoginSplashView: BaseView {
     
     let animationView: LottieAnimationView = {
         let lottieView = LottieAnimationView(name: "Dimo_splash_animation")
-        lottieView.loopMode = .loop
+        lottieView.loopMode = .playOnce
         return lottieView
     }()
 
@@ -58,7 +58,7 @@ final class LoginSplashView: BaseView {
         }
         
         animationView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(-28)
             make.height.equalTo(animationView.snp.width)
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-40)
         }

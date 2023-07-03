@@ -16,7 +16,7 @@ final class FeedViewModel: ViewModelType {
     
     struct Input{
         let reviewCellSelected: PublishSubject<Void>
-
+        let writeButtonTapped: ControlEvent<Void>
 
     }
     
@@ -33,6 +33,13 @@ final class FeedViewModel: ViewModelType {
           
         }
         .disposed(by: disposeBag)
+        
+        input.writeButtonTapped.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.coordinator?.showWriteViewController()
+        }
+        .disposed(by: disposeBag)
+        
         return Output()
     }
 }

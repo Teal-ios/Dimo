@@ -10,6 +10,10 @@
 		2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */; };
 		2F124ACD2A4EA04600A452F1 /* Dimo_splash_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */; };
 		2F124AD02A4EA0CD00A452F1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F124ACF2A4EA0CD00A452F1 /* Lottie */; };
+		2F124AD32A4EB60A00A452F1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 2F124AD22A4EB60A00A452F1 /* Toast */; };
+		2F124AD82A4EBFF700A452F1 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F124AD72A4EBFF700A452F1 /* WriteViewModel.swift */; };
+		2F124ADA2A4EBFFD00A452F1 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F124AD92A4EBFFD00A452F1 /* WriteViewController.swift */; };
+		2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F124ADB2A4EC00300A452F1 /* WriteView.swift */; };
 		2F149DCA2A4978C40098AF64 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DC92A4978C40098AF64 /* StarView.swift */; };
 		2F149DD12A4995FC0098AF64 /* MovieDetailRankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DD02A4995FC0098AF64 /* MovieDetailRankViewController.swift */; };
 		2F149DD32A4996120098AF64 /* MovieDetailRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F149DD22A4996120098AF64 /* MovieDetailRankView.swift */; };
@@ -312,6 +316,9 @@
 /* Begin PBXFileReference section */
 		2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
 		2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dimo_splash_animation.json; sourceTree = "<group>"; };
+		2F124AD72A4EBFF700A452F1 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
+		2F124AD92A4EBFFD00A452F1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		2F124ADB2A4EC00300A452F1 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		2F149DC92A4978C40098AF64 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		2F149DD02A4995FC0098AF64 /* MovieDetailRankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRankViewController.swift; sourceTree = "<group>"; };
 		2F149DD22A4996120098AF64 /* MovieDetailRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRankView.swift; sourceTree = "<group>"; };
@@ -600,6 +607,7 @@
 				2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */,
 				2FC94EB329C015050097E696 /* RxSwift in Frameworks */,
 				2F437C182A4C1D42000B7A61 /* Kingfisher in Frameworks */,
+				2F124AD32A4EB60A00A452F1 /* Toast in Frameworks */,
 				2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */,
 				2FC94EB129C015050097E696 /* RxCocoa in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
@@ -639,6 +647,32 @@
 				2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		2F124AD42A4EBFE100A452F1 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				2F124AD62A4EBFEB00A452F1 /* ViewModel */,
+				2F124AD52A4EBFE900A452F1 /* View */,
+			);
+			path = Write;
+			sourceTree = "<group>";
+		};
+		2F124AD52A4EBFE900A452F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F124AD92A4EBFFD00A452F1 /* WriteViewController.swift */,
+				2F124ADB2A4EC00300A452F1 /* WriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F124AD62A4EBFEB00A452F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F124AD72A4EBFF700A452F1 /* WriteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2F149DCB2A4994EF0098AF64 /* MovieDetailRank */ = {
@@ -1900,6 +1934,7 @@
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				2F124AD42A4EBFE100A452F1 /* Write */,
 				2F437C192A4C5773000B7A61 /* FeedDetailMoreMy */,
 				2F1890002A4591F60097D38E /* CharacterMore */,
 				2F6D7D0F2A14B27000FA457D /* MovieDetail */,
@@ -2224,6 +2259,7 @@
 				2FDD745A2A10AA8200A75AB9 /* Tabman */,
 				2F437C172A4C1D42000B7A61 /* Kingfisher */,
 				2F124ACF2A4EA0CD00A452F1 /* Lottie */,
+				2F124AD22A4EB60A00A452F1 /* Toast */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -2304,6 +2340,7 @@
 				2FDD74592A10AA8200A75AB9 /* XCRemoteSwiftPackageReference "Tabman" */,
 				2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				2F124AD12A4EB60A00A452F1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 2FC94E4F29C00F0B0097E696 /* Products */;
 			projectDirPath = "";
@@ -2510,12 +2547,14 @@
 				2F437C0A2A4BED61000B7A61 /* Character.swift in Sources */,
 				2F437C152A4C176C000B7A61 /* MockParser.swift in Sources */,
 				2F1890062A4592170097D38E /* CharacterMoreViewController.swift in Sources */,
+				2F124AD82A4EBFF700A452F1 /* WriteViewModel.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
+				2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
@@ -2540,6 +2579,7 @@
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				2F18900A2A4592270097D38E /* CharacterMoreView.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
+				2F124ADA2A4EBFFD00A452F1 /* WriteViewController.swift in Sources */,
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
@@ -2973,6 +3013,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		2F124AD12A4EB60A00A452F1 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -3020,6 +3068,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		2F124AD22A4EB60A00A452F1 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F124AD12A4EB60A00A452F1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		2F437C172A4C1D42000B7A61 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
