@@ -129,6 +129,13 @@ extension EditNicknameView {
     }
 }
 
+extension EditNicknameView {
+    
+    func showCurrentNickname() {
+        let currentNickname = UserDefaults.standard.string(forKey: "userId")
+        idTextFieldView.tf.text = currentNickname ?? ""
+    }
+}
 
 // MARK: - Policy Label Text
 extension EditNicknameView {

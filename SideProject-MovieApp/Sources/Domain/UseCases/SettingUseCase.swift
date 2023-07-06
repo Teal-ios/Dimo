@@ -9,15 +9,9 @@ import Foundation
 import RxSwift
 
 protocol SettingUseCase {
-    func executeNicknameDuplication(query: NicknameDuplicationQuery) -> Observable<NicknameDuplication>
-    
-    func executeNicknameChange(query: NicknameChangeQuery) -> Observable<NicknameChange>
-    
-    func executeNicknameChangeDate(query: NicknameChangeDateQuery) -> Observable<NicknameChangeDate>
-    
-    func executeDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
-    
-    func executeNicknameChnage(query: NicknameChangeQuery) async throws -> NicknameChange
+    func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
+    func executeNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate
+    func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
 }
 
 enum SettingUsecaseError: String, Error {
@@ -34,63 +28,9 @@ final class SettingUseCaseImpl: SettingUseCase {
 }
 
 extension SettingUseCaseImpl {
-    func executeNicknameDuplication(query: NicknameDuplicationQuery) -> Observable<NicknameDuplication> {
-        let nicknameDuplicationObservable: Observable<NicknameDuplication> = Observable.create { observer in
-            let task = Task {
-                let nicknameDuplication = try await self.settingRepository.fetchDuplicationNickname(query: query)
-                observer.on(.next(nicknameDuplication))
-                observer.on(.completed)
-            }
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-        
-        return nicknameDuplicationObservable
-    }
-}
-
-extension SettingUseCaseImpl {
-    func executeNicknameChange(query: NicknameChangeQuery) -> Observable<NicknameChange> {
-        let nicknameChangeObservable: Observable<NicknameChange> = Observable.create { observer in
-            let task = Task {
-                let nicknameChange = try await self.settingRepository.fetchNicknameChange(query: query)
-                observer.on(.next(nicknameChange))
-                observer.on(.completed)
-            }
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-            
-        return nicknameChangeObservable
-    }
-}
-
-extension SettingUseCaseImpl {
-    func executeNicknameChangeDate(query: NicknameChangeDateQuery) -> Observable<NicknameChangeDate> {
-        let nicknameChangeDateObservable: Observable<NicknameChangeDate> = Observable.create { observer in
-            let task = Task {
-                let nicknameChangeDate  = try await self.settingRepository.fetchNicknameChangeDate(query: query)
-                observer.on(.next(nicknameChangeDate))
-                observer.onCompleted()
-            }
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-        
-        return nicknameChangeDateObservable
-    }
-}
-
-extension SettingUseCaseImpl {
-    func executeDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
+    func executeNicknameChangeDate(query: NicknameChangeDateQuery) async  throws -> NicknameChangeDate {
         do {
-            return try await self.settingRepository.fetchDuplicationNickname(query: query)
+            return try await settingRepository.fetchNicknameChangeDate(query: query)
         } catch {
             throw SettingUsecaseError.execute
         }
@@ -98,9 +38,19 @@ extension SettingUseCaseImpl {
 }
 
 extension SettingUseCaseImpl {
-    func executeNicknameChnage(query: NicknameChangeQuery) async throws -> NicknameChange {
+    func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
         do {
-            return try await self.settingRepository.fetchNicknameChange(query: query)
+            return try await settingRepository.fetchDuplicationNickname(query: query)
+        } catch {
+            throw SettingUsecaseError.execute
+        }
+    }
+}
+
+extension SettingUseCaseImpl {
+    func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange {
+        do {
+            return try await settingRepository.fetchNicknameChange(query: query)
         } catch {
             throw SettingUsecaseError.execute
         }

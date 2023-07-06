@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class AlertEditUserNameViewModel: ViewModelType {
+final class ChangeNicknameAlertViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: SettingCoordinator?
@@ -18,19 +18,20 @@ final class AlertEditUserNameViewModel: ViewModelType {
     
     struct Input {
         var cancelButtonTapped: ControlEvent<Void>
-        var okButtonTapped: ControlEvent<Void>
+        var changeButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
-        var isNicknameChanged: BehaviorRelay<Bool>
+        var isNicknameChanged: PublishRelay<Bool>
     }
     
-    private var isNicknameChanged = BehaviorRelay<Bool>(value: false)
+    private var isNicknameChanged: PublishRelay<Bool>
     
     init(coordinator: SettingCoordinator?, settingUseCase: SettingUseCase, newNickname: String?) {
         self.coordinator = coordinator
         self.settingUseCase = settingUseCase
         self.newNickname = newNickname
+        self.isNicknameChanged = PublishRelay<Bool>()
     }
     
     func transform(input: Input) -> Output {
@@ -38,12 +39,11 @@ final class AlertEditUserNameViewModel: ViewModelType {
             self?.isNicknameChanged.accept(false)
         }.disposed(by: disposeBag)
         
-        input.okButtonTapped.bind { [weak self] _ in
+        input.changeButtonTapped.bind { [weak self] _ in
             self?.loadNicknameChange(to: self?.newNickname)
         }
         .disposed(by: disposeBag)
 
-        
         return Output(isNicknameChanged: isNicknameChanged)
     }
     
@@ -52,8 +52,8 @@ final class AlertEditUserNameViewModel: ViewModelType {
               let newNickname = newNickname else { return }
         let query = NicknameChangeQuery(user_id: userId, user_nickname: newNickname)
         
-        Task { @MainActor () -> Void in
-            let nicknameChange = try await settingUseCase.executeNicknameChnage(query: query)
+        Task {
+            let nicknameChange = try await settingUseCase.executeNicknameChange(query: query)
             if nicknameChange.code == 200 {
                 self.isNicknameChanged.accept(true)
             } else {

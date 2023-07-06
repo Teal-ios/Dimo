@@ -44,12 +44,12 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showAlertEditUserNameViewController(with newNickname: String?) {
+    func showAlertEditUserNameViewController(with newNickname: String?, toast: ( () -> Void )? ) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = AlertEditUserNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
-        let vc = AlertEditUserNameViewController(viewModel: viewModel)
+        let viewModel = ChangeNicknameAlertViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
+        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, toast: toast)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         navigationController.present(vc, animated: true)

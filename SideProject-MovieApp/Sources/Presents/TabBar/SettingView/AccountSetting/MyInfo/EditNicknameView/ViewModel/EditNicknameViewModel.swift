@@ -14,6 +14,7 @@ final class EditNicknameViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private var settingUseCase: SettingUseCase
     private weak var coordinator: SettingCoordinator?
+    var toast: ( () -> Void )?
     
     struct Input {
         var textFieldEditingDidBegin: ControlEvent<Void>
@@ -31,9 +32,11 @@ final class EditNicknameViewModel: ViewModelType {
         var isTextFieldEditingChanged: BehaviorRelay<Bool>
         var isDuplicatedNickname: BehaviorRelay<Bool>
         var isTextFieldChanged: BehaviorRelay<Bool>
+        var lastNicknameChangeDate: BehaviorRelay<String>
     }
     
     private var nickname: String?
+    private var lastNicknameChangeDate = BehaviorRelay<String>(value: "")
     private var isDuplicatedNickname = BehaviorRelay<Bool>(value: true)
     private var isTextFielEditingDidBegin = BehaviorRelay<Bool>(value: false)
     private var isTextFieldChanged = BehaviorRelay<Bool>(value: false)
@@ -76,51 +79,61 @@ final class EditNicknameViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        input.viewDidLoad.emit { _ in
-            self.loadNicknameChangeDate()
+        input.viewDidLoad.emit { [weak self] _ in
+            self?.loadNicknameChangeDate()
         }
         .disposed(by: disposeBag)
         
         input.nicknameDuplicationButtonTapped
             .bind(onNext: { [weak self] in
-                self?.checkDuplicationNickname()
+                self?.loadNicknameDuplication()
             })
             .disposed(by: disposeBag)
         
         input.nicknameChangeButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showAlertEditUserNameViewController(with: self?.nickname)
+            self?.coordinator?.showAlertEditUserNameViewController(with: self?.nickname, toast: self?.toast)
         }.disposed(by: disposeBag)
         
         return Output(isTextFieldEditingDidBegin: isTextFielEditingDidBegin,
                       isTextFieldEditingDidEnd: isTextFieldEiditinDidEnd,
                       isTextFieldEditingChanged: isTextFieldEditingChanged,
                       isDuplicatedNickname: isDuplicatedNickname,
-                      isTextFieldChanged: isTextFieldChanged)
+                      isTextFieldChanged: isTextFieldChanged,
+                      lastNicknameChangeDate: lastNicknameChangeDate)
+    }
+}
+
+// MARK: Network
+extension EditNicknameViewModel {
+    
+    private func loadNicknameChangeDate() {
+        let userId = UserDefaults.standard.string(forKey: "userId") ?? ""
+        let query = NicknameChangeDateQuery(user_id: userId)
+        
+        Task {
+            let nicknameChangeDate = try await settingUseCase.executeNicknameChangeDate(query: query)
+            print("🔥", nicknameChangeDate)
+            if nicknameChangeDate.code == 200 {
+                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+            } else { // 401
+                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+            }
+        }
     }
     
-    private func checkDuplicationNickname() {
+    private func loadNicknameDuplication() {
         guard let userId = UserDefaults.standard.string(forKey: "userId"),
               let nickname = self.nickname else { return }
         let query = NicknameDuplicationQuery(user_id: userId, user_nickname: nickname)
         
-        Task { @MainActor () -> Void in
-            let nicknameDuplication = try await settingUseCase.executeDuplication(query: query)
+        Task {
+            let nicknameDuplication = try await settingUseCase.executeNicknameDuplication(query: query)
             print("🔥", nicknameDuplication)
             if nicknameDuplication.code == 200 {
                 isDuplicatedNickname.accept(false)
             } else {
                 isDuplicatedNickname.accept(true)
             }
-        }
-    }
-    
-    func loadNicknameChangeDate() {
-        let userId = UserDefaults.standard.string(forKey: "userId") ?? ""
-        let query = NicknameChangeDateQuery(user_id: userId)
-        let nicknameChangeDateObservable = self.settingUseCase.executeNicknameChangeDate(query: query)
-        
-        nicknameChangeDateObservable.bind { [weak self] changeDate in
-            print("🔥", changeDate)
         }
     }
 }

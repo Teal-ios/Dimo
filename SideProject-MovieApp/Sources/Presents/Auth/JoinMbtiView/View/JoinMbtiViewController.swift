@@ -65,7 +65,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.cellSelectArr[0] = true
                 self.cellSelectArr[1] = false
             }
-            self.mbtiArrayPublishSubject.accept(cellSelectArr)
+            self.mbtiArrayPublishSubject.accept(self.cellSelectArr)
         }
         .disposed(by: disposeBag)
         

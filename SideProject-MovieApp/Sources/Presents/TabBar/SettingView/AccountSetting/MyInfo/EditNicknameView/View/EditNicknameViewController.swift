@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Toast
 
 final class EditNicknameViewController: BaseViewController {
     
@@ -31,12 +32,24 @@ final class EditNicknameViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-        viewModel.loadNicknameChangeDate()
+        self.configureToast()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.editNicknameView.showLastNicknameChangedDate()
+        self.editNicknameView.showCurrentNickname()
+    }
+    
+    private func configureToast() {
+        self.viewModel.toast = {
+            self.editNicknameView.makeToast("닉네임 변경을 완료했어요", style: ToastStyle.dimoToastStyle)
+            self.editNicknameView.enableDuplicationCheckButton(isEnabled: false)
+            self.editNicknameView.checkNicknameChangeButton(isValid: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     override func setupBinding() {
@@ -87,6 +100,7 @@ final class EditNicknameViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.isDuplicatedNickname
+            .observe(on: MainScheduler.instance)
             .bind { [weak self] isDuplicatedNickname in
                 if isDuplicatedNickname {
                     self?.editNicknameView.showDuplicatedNicknameMessage()
@@ -95,6 +109,12 @@ final class EditNicknameViewController: BaseViewController {
                     self?.editNicknameView.checkNicknameChangeButton(isValid: true)
                 }
             }
+            .disposed(by: disposeBag)
+        
+        output.lastNicknameChangeDate
+            .observe(on: MainScheduler.instance)
+            .asDriver(onErrorJustReturn: "")
+            .drive(editNicknameView.idTextFieldView.tf.rx.text)
             .disposed(by: disposeBag)
     }
 }
