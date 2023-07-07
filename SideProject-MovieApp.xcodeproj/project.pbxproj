@@ -100,6 +100,12 @@
 		2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */; };
 		2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492329EE38F500F400CB /* GoogleSignIn */; };
 		2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492529EE38F500F400CB /* GoogleSignInSwift */; };
+		2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A12A52A43F0098939B /* SearchViewModel.swift */; };
+		2F9793A42A52A4450098939B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A32A52A4450098939B /* SearchView.swift */; };
+		2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A52A52A44B0098939B /* SearchViewController.swift */; };
+		2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A72A53E99C0098939B /* SearchHeaderView.swift */; };
+		2F9793AC2A53FFC30098939B /* RecentSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793AB2A53FFC30098939B /* RecentSearchCollectionViewCell.swift */; };
+		2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793AD2A54102A0098939B /* CustomSearchBar.swift */; };
 		2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F1D2A0C927100A1CD53 /* JoinCompleteView.swift */; };
 		2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F1F2A0C928100A1CD53 /* JoinCompleteViewController.swift */; };
 		2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */; };
@@ -410,6 +416,12 @@
 		2F6D7D162A14B2A100FA457D /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		2F6D7D182A14B6D600FA457D /* TapUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUISlider.swift; sourceTree = "<group>"; };
 		2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeStackView.swift; sourceTree = "<group>"; };
+		2F9793A12A52A43F0098939B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		2F9793A32A52A4450098939B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		2F9793A52A52A44B0098939B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2F9793A72A53E99C0098939B /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		2F9793AB2A53FFC30098939B /* RecentSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F9793AD2A54102A0098939B /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		2F979F1D2A0C927100A1CD53 /* JoinCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteView.swift; sourceTree = "<group>"; };
 		2F979F1F2A0C928100A1CD53 /* JoinCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteViewController.swift; sourceTree = "<group>"; };
 		2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCompleteViewModel.swift; sourceTree = "<group>"; };
@@ -1234,6 +1246,72 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2F97939C2A52A4020098939B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD11DC52A00DDFD006796DD /* Model */,
+				2FD11DC02A00BC92006796DD /* Cell */,
+				2FBD19C929FF65860005B1FA /* VoteViewController.swift */,
+				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
+				2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */,
+				2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F97939D2A52A4140098939B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F97939E2A52A42D0098939B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				2F9793A02A52A4380098939B /* ViewModel */,
+				2F97939F2A52A4360098939B /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		2F97939F2A52A4360098939B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F9793AA2A53FFB00098939B /* Cell */,
+				2F9793A32A52A4450098939B /* SearchView.swift */,
+				2F9793A52A52A44B0098939B /* SearchViewController.swift */,
+				2F9793A72A53E99C0098939B /* SearchHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F9793A02A52A4380098939B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F9793A12A52A43F0098939B /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F9793A92A53EE1F0098939B /* Vote */ = {
+			isa = PBXGroup;
+			children = (
+				2F97939D2A52A4140098939B /* ViewModel */,
+				2F97939C2A52A4020098939B /* View */,
+			);
+			path = Vote;
+			sourceTree = "<group>";
+		};
+		2F9793AA2A53FFB00098939B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2F9793AB2A53FFC30098939B /* RecentSearchCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		2F979F1C2A0C925D00A1CD53 /* JoinCompleteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1273,12 +1351,8 @@
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
-				2FD11DC52A00DDFD006796DD /* Model */,
-				2FD11DC02A00BC92006796DD /* Cell */,
-				2FBD19C929FF65860005B1FA /* VoteViewController.swift */,
-				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
-				2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */,
-				2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */,
+				2F9793A92A53EE1F0098939B /* Vote */,
+				2F97939E2A52A42D0098939B /* Search */,
 			);
 			path = VoteView;
 			sourceTree = "<group>";
@@ -1583,6 +1657,7 @@
 				2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */,
 				2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */,
 				2F149DC92A4978C40098AF64 /* StarView.swift */,
+				2F9793AD2A54102A0098939B /* CustomSearchBar.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1743,7 +1818,6 @@
 		2FD11DCB2A00DEC9006796DD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FBD19D329FF786D0005B1FA /* VoteViewModel.swift */,
 				2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */,
 				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
@@ -2496,6 +2570,7 @@
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
 				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
 				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
+				2F9793AC2A53FFC30098939B /* RecentSearchCollectionViewCell.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
@@ -2517,6 +2592,7 @@
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
+				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
@@ -2570,6 +2646,7 @@
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2F437C232A4C57AF000B7A61 /* FeedDetailMoreMyViewController.swift in Sources */,
 				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
+				2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
@@ -2588,6 +2665,7 @@
 				2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
+				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
 				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
@@ -2680,6 +2758,7 @@
 				4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
+				2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */,
 				2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
@@ -2688,6 +2767,7 @@
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
+				2F9793A42A52A4450098939B /* SearchView.swift in Sources */,
 				2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */,
 				2F979F302A0CB3ED00A1CD53 /* NotificationIDViewModel.swift in Sources */,
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,

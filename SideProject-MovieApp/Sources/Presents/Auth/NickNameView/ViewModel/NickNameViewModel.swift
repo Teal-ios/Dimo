@@ -26,6 +26,7 @@ class NickNameViewModel: ViewModelType {
     struct Output {
         var nicknameValid: Observable<Bool>
         var nextButtonValid: BehaviorRelay<Bool>
+        
     }
     
     init(coordinator: AuthCoordinator, settingUseCase: SettingUseCase) {
