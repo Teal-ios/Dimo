@@ -151,9 +151,6 @@ extension BaseViewController {
         present(alert, animated: true)
     }
     
-    
-    
-    
     /// scroll in textfield
     func keyBoardHiddenGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))

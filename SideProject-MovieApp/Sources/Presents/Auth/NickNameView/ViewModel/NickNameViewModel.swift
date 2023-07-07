@@ -14,8 +14,8 @@ class NickNameViewModel: ViewModelType {
     
     private weak var coordinator: AuthCoordinator?
     private var settingUseCase: SettingUseCase
-    var id: String? = ""
-    var duplicationValid = BehaviorRelay<Bool>(value: false)
+    private var nickname: String?
+    private var duplicationValid = BehaviorRelay<Bool>(value: false)
     
     struct Input {
         var textFieldInput: ControlProperty<String?>
@@ -38,29 +38,29 @@ class NickNameViewModel: ViewModelType {
             self?.coordinator?.showPasswordViewController()
         }.disposed(by: disposeBag)
         // 닉네임 중복확인
-        let nicknameValid = input.textFieldInput.orEmpty.map { str in
+        let isValidNickname = input.textFieldInput.orEmpty.map { str in
             str.count > 2
         }
         
-        input.textFieldInput.bind { [weak self] id in
-            self?.id = id
+        input.textFieldInput.bind { [weak self] nickname in
+            self?.nickname = nickname
         }
         .disposed(by: disposeBag)
         
         input.duplicationButtonTap
             .bind(onNext: {
-                guard let userId = UserDefaults.standard.string(forKey: "userId"),
-                      let userNickname = self.id else { return }
-                let query = NicknameDuplicationQuery(user_id: userId, user_nickname: userNickname)
-                let nicknameDuplicationObservable = self.settingUseCase.executeNicknameDuplication(query: query)
-                
-                nicknameDuplicationObservable.bind { [weak self] data  in
-                    print(data, "데이터 드러옴")
-                    self?.duplicationValid.accept(true)
-                }
+//                guard let userId = UserDefaults.standard.string(forKey: "userId"),
+//                      let userNickname = self.nickname else { return }
+//                let query = NicknameDuplicationQuery(user_id: userId, user_nickname: userNickname)
+//                let nicknameDuplicationObservable = self.settingUseCase.executeNicknameDuplication(query: query)
+//                
+//                nicknameDuplicationObservable.bind { [weak self] data  in
+//                    print(data, "데이터 드러옴")
+//                    self?.duplicationValid.accept(true)
+//                }
             })
             .disposed(by: disposeBag)
         
-        return Output(nicknameValid: nicknameValid, nextButtonValid: self.duplicationValid)
+        return Output(nicknameValid: isValidNickname, nextButtonValid: self.duplicationValid)
     }
 }

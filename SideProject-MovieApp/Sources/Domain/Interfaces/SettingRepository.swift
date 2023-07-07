@@ -11,5 +11,7 @@ protocol SettingRepository: AnyObject {
     
     func fetchDuplicationNickname(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
     
-    func fetchChangeNickname(query: NicknameChangeQuery) async throws -> NicknameChange
+    func fetchNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
+    
+    func fetchNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate
 }

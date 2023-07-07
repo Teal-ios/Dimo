@@ -9,12 +9,15 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class AlertEditUserNameViewController: BaseViewController {
-    private let selfView = CustomAlertView(title: "닉네임을 변경할까요?", subtitle: "한 번 설정한 닉네임은 한 달 동안 변경할 수 없습니다.", okButtonTitle: "변경하기")
-    private var viewModel: AlertEditUserNameViewModel
+final class ChangeNicknameAlertViewController: BaseViewController {
     
-    init(viewModel: AlertEditUserNameViewModel) {
+    private let selfView = CustomAlertView(title: "닉네임을 변경할까요?", subtitle: "한 번 설정한 닉네임은 한 달 동안 변경할 수 없습니다.", okButtonTitle: "변경하기")
+    private var viewModel: ChangeNicknameAlertViewModel
+    private var toast: ( () -> Void )?
+    
+    init(viewModel: ChangeNicknameAlertViewModel, toast: ( () -> Void)? ) {
         self.viewModel = viewModel
+        self.toast = toast
         super.init()
     }
     
@@ -36,8 +39,22 @@ final class AlertEditUserNameViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = AlertEditUserNameViewModel.Input(cancelButtonTapped: selfView.cancelButton.rx.tap, okButtonTapped: selfView.okButton.rx.tap)
+        let input = ChangeNicknameAlertViewModel.Input(cancelButtonTapped: selfView.cancelButton.rx.tap,
+                                                     changeButtonTapped: selfView.okButton.rx.tap)
         
         let output = viewModel.transform(input: input)
+        
+        output.isNicknameChanged
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] isChanged in
+                if isChanged {
+                    self?.dismiss(animated: true)
+                    self?.toast?()
+                    print("🔥 Nickname Changed")
+                } else {
+                    self?.dismiss(animated: true)   
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

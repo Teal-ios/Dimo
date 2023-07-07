@@ -26,6 +26,7 @@ final class DataTransferService {
             let decodedData = try JSONDecoder().decode(T.self, from: responseData)
             return decodedData
         } catch {
+            print("👊", DataTransferError.decode)
             throw DataTransferError.decode
         }
     }
