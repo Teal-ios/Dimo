@@ -32,8 +32,6 @@ class IDNickNameViewModel: ViewModelType {
     }
     func transform(input: Input) -> Output {
         
-        
-        
         input.nextButtonTapped.bind { [weak self] _ in
             self?.coordinator?.showNickNameViewController()
         }.disposed(by: disposeBag)
@@ -48,20 +46,11 @@ class IDNickNameViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
 
-        
         input.duplicationButtonTap
-            .flatMapLatest { [weak self] _ in
-                (self?.authUseCase.duplicationIdExcute(user_id: self?.id ?? "")
-                    .do(onSuccess: { data in
-                        print(data, "data들어옴!!")
-                        self?.duplicationValid.accept(true)
-                    }, onError: { error in
-                        print(error)
-                    })
-                        .asObservable())!
+            .bind { [weak self] _ in
+                guard let self else { return }
+                self.duplcationIdCheck(user_Id: self.id ?? "")
             }
-            .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
-            .subscribe()
             .disposed(by: disposeBag)
         
         
@@ -69,4 +58,19 @@ class IDNickNameViewModel: ViewModelType {
     }
 }
 
-
+extension IDNickNameViewModel {
+    
+    private func duplcationIdCheck(user_Id: String) {
+        let query = DuplicationIdQuery(user_id: user_Id)
+        
+        Task {
+            let duplicationId = try await authUseCase.excuteDuplicationId(user_id: query.user_id)
+            print("🔥", duplicationId)
+            if duplicationId.code == 200 {
+                duplicationValid.accept(true)
+            } else {
+                duplicationValid.accept(false)
+            }
+        }
+    }
+}

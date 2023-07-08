@@ -30,7 +30,7 @@ final class LoginSplashView: BaseView {
     
     let animationView: LottieAnimationView = {
         let lottieView = LottieAnimationView(name: "Dimo_splash_animation")
-        lottieView.loopMode = .playOnce
+        lottieView.loopMode = .loop
         return lottieView
     }()
 

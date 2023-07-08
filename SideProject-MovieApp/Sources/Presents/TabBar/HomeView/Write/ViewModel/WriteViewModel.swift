@@ -62,6 +62,7 @@ final class WriteViewModel: ViewModelType {
         let textValidSubject = BehaviorSubject<Bool>(value: false)
         
         input.reviewText.bind { [weak self] text in
+            guard let self else { return }
             guard let text = text else { return }
             guard var textValid = try? textValidSubject.value() else { return }
             print(text.count, "text진짜")

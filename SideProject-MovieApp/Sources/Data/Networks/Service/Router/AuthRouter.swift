@@ -7,14 +7,24 @@
 
 import Foundation
 
-enum AuthRouter {
+enum AuthRouter<R> {
     case signup(parameters: SignUpQuery)
     case phoneNumberCheck(parameters: PhoneNumberCheckQuery)
     case phoneNumberVerify(parameters: PhoneNumberVerifyQuery)
     case duplicationId(parameters: DuplicationIdQuery)
 }
 
-extension AuthRouter: TargetType {
+extension AuthRouter: TargetType2 {
+    var header: [String : String] {
+        switch self {
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId:
+            return ["accept" : "application/json" , "Content-Type": "application/json"]
+        }
+    }
+    
+    
+    typealias Response = R
+    
     var queryItems: [URLQueryItem]? {
         switch self {
         case .duplicationId(let parameters):
@@ -35,13 +45,6 @@ extension AuthRouter: TargetType {
     
     var host: String {
         return APIKey.baseURL
-    }
-    
-    var header: [String : String]? {
-        switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId:
-            return ["accept" : "application/json" , "Content-Type": "application/json"]
-        }
     }
     
     var httpMethod: HTTPMethod {

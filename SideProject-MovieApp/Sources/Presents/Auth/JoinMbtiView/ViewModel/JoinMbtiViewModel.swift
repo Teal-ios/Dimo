@@ -12,8 +12,8 @@ import RxCocoa
 final class JoinMbtiViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
+    private var authUseCase: AuthUseCase
     private weak var coordinator: AuthCoordinator?
-    
     
     struct Input{
         let findMbtiButtonTapped: ControlEvent<Void>
@@ -44,8 +44,9 @@ final class JoinMbtiViewModel: ViewModelType {
     var mbtiString = ""
     let mbtiValid = PublishRelay<Bool>()
     
-    init(coordinator: AuthCoordinator? = nil) {
+    init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
+        self.authUseCase = authUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -56,7 +57,16 @@ final class JoinMbtiViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             guard let self else { return }
-            self.coordinator?.showJoinCompleteViewController()
+            guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
+            guard let password = UserDefaults.standard.string(forKey: "password") else { return }
+            guard let name = UserDefaults.standard.string(forKey: "name") else { return }
+            guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
+            guard let sns_type = UserDefaults.standard.string(forKey: "sns_type") else { return }
+            guard let agency = UserDefaults.standard.string(forKey: "agency") else { return }
+            guard let phoneNumber = UserDefaults.standard.string(forKey: "phoneNumber") else { return }
+
+            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: sns_type, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString)
+            self.signUp(query: query)
         }.disposed(by: disposeBag)
         
         input.mbtiInfo.bind { [weak self] mbti in
@@ -108,5 +118,23 @@ extension JoinMbtiViewModel {
         }
         self.mbtiValid.accept(true)
         print(mbtiString)
+    }
+}
+
+extension JoinMbtiViewModel {
+    
+    private func signUp(query: SignUpQuery) {
+        
+        let query = SignUpQuery(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti)
+        
+        print("🔥", query)
+        Task {
+            let signUp = try await authUseCase.excuteSignUp(query: query)
+            print("🔥", signUp)
+            if signUp.code == 200 {
+                UserDefaults.standard.set(mbtiString, forKey: "mbti")
+                coordinator?.showJoinCompleteViewController()
+            }
+        }
     }
 }

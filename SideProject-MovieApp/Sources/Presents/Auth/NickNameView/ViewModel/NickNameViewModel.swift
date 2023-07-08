@@ -26,6 +26,7 @@ class NickNameViewModel: ViewModelType {
     struct Output {
         var nicknameValid: Observable<Bool>
         var nextButtonValid: BehaviorRelay<Bool>
+        
     }
     
     init(coordinator: AuthCoordinator, settingUseCase: SettingUseCase) {
@@ -48,19 +49,30 @@ class NickNameViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.duplicationButtonTap
-            .bind(onNext: {
-//                guard let userId = UserDefaults.standard.string(forKey: "userId"),
-//                      let userNickname = self.nickname else { return }
-//                let query = NicknameDuplicationQuery(user_id: userId, user_nickname: userNickname)
-//                let nicknameDuplicationObservable = self.settingUseCase.executeNicknameDuplication(query: query)
-//                
-//                nicknameDuplicationObservable.bind { [weak self] data  in
-//                    print(data, "데이터 드러옴")
-//                    self?.duplicationValid.accept(true)
-//                }
-            })
+            .bind { [weak self] _ in
+                guard let self else { return }
+                guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
+                guard let nickname = nickname else { return }
+                self.duplicationNicknameCheck(user_id: userId, user_nickname: nickname)
+                self.duplicationNicknameCheck(user_id: userId, user_nickname: nickname)
+            }
             .disposed(by: disposeBag)
         
         return Output(nicknameValid: isValidNickname, nextButtonValid: self.duplicationValid)
+    }
+}
+
+extension NickNameViewModel {
+    
+    private func duplicationNicknameCheck(user_id: String, user_nickname: String) {
+        
+        let query = NicknameDuplicationQuery(user_id: user_id, user_nickname: user_nickname)
+        Task {
+            let duplicationNickname = try await settingUseCase.executeNicknameDuplication(query: query)
+            print("🔥", duplicationNickname)
+            if duplicationNickname.code == 200 {
+                duplicationValid.accept(true)
+            }
+        }
     }
 }

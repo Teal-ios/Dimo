@@ -28,4 +28,13 @@ final class VoteCoordinator: Coordinator {
         let vc = VoteViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
+    
+    func showSearchViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = SearchViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let vc = SearchViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
