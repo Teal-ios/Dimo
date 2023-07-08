@@ -14,8 +14,6 @@ final class TabmanCoordinator: Coordinator {
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tabman
     
-    private let userDefaults = UserDefaults.standard
-    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

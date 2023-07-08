@@ -14,8 +14,6 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .app
 
-    private let userDefaults = UserDefaults.standard
-
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.setNavigationBarHidden(true, animated: false)
