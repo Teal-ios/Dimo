@@ -42,7 +42,7 @@ class PasswordViewModel: ViewModelType {
             .emit { [weak self] text in
                 guard let self = self else { return }
                 print("password", text)
-                UserDefaults.standard.set(text, forKey: "password")
+                UserDefaultManager.password = text
                 self.coordinator?.showJoinMbtiViewController()
             }
             .disposed(by: disposeBag)

@@ -57,15 +57,15 @@ final class JoinMbtiViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             guard let self else { return }
-            guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
-            guard let password = UserDefaults.standard.string(forKey: "password") else { return }
-            guard let name = UserDefaults.standard.string(forKey: "name") else { return }
-            guard let nickname = UserDefaults.standard.string(forKey: "nickname") else { return }
-            guard let sns_type = UserDefaults.standard.string(forKey: "sns_type") else { return }
-            guard let agency = UserDefaults.standard.string(forKey: "agency") else { return }
-            guard let phoneNumber = UserDefaults.standard.string(forKey: "phoneNumber") else { return }
+            guard let userId = UserDefaultManager.userId,
+                  let password = UserDefaultManager.password,
+                  let name = UserDefaultManager.userName,
+                  let nickname = UserDefaultManager.nickname,
+                  let snsType = UserDefaultManager.snsType,
+                  let agency = UserDefaultManager.agency,
+                  let phoneNumber = UserDefaultManager.phoneNumber else { return }
 
-            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: sns_type, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString)
+            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString)
             self.signUp(query: query)
         }.disposed(by: disposeBag)
         
@@ -132,7 +132,7 @@ extension JoinMbtiViewModel {
             let signUp = try await authUseCase.excuteSignUp(query: query)
             print("🔥", signUp)
             if signUp.code == 200 {
-                UserDefaults.standard.set(mbtiString, forKey: "mbti")
+                UserDefaultManager.mbti = mbtiString
                 coordinator?.showJoinCompleteViewController()
             }
         }

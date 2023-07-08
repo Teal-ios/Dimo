@@ -31,7 +31,22 @@ struct UserDefaultManager {
     @UserDefault(key: "password", defaultValue: nil)
     static var password: String?
     
+    @UserDefault(key: "userName", defaultValue: nil)
+    static var userName: String?
+    
+    @UserDefault(key: "nickname", defaultValue: nil)
+    static var nickname: String?
+    
+    @UserDefault(key: "sns_type", defaultValue: nil)
+    static var snsType: String?
+    
     @UserDefault(key: "agency", defaultValue: nil)
     static var agency: String?
+    
+    @UserDefault(key: "mbti", defaultValue: nil)
+    static var mbti: String?
+    
+    @UserDefault(key: "phoneNumber", defaultValue: nil)
+    static var phoneNumber: String?
     
 }

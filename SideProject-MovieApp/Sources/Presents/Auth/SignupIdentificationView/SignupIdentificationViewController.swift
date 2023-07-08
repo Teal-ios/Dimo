@@ -84,8 +84,7 @@ class SignupIdentificationViewController: BaseViewController {
                 .withUnretained(self)
                 .bind { vc, _ in
                     var attrStr = AttributedString(button?.titleLabel?.text ?? "")
-                    UserDefaults.standard.set(button?.titleLabel?.text ?? "", forKey: "agency")
-                    
+                    UserDefaultManager.agency = button?.titleLabel?.text ?? ""
                     attrStr.font = .suitFont(ofSize: 16, weight: .Medium)
                     vc.signupIdentificationView.telecomButton.configuration?.attributedTitle = attrStr
                     vc.signupIdentificationView.telecomButton.configuration?.baseForegroundColor = .white
