@@ -44,7 +44,6 @@ enum NetworkError: Error {
     case clientError
     case serverError
     case internalError
-    
     case httpURLResponse
 }
 

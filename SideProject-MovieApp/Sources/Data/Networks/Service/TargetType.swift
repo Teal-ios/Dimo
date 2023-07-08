@@ -8,6 +8,9 @@
 import Foundation
 
 protocol TargetType {
+    
+    associatedtype Response
+
     var scheme: String { get }
     var host: String { get }
     var path: String { get }

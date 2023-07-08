@@ -14,7 +14,7 @@ protocol SettingUseCase {
     func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
 }
 
-enum SettingUsecaseError: String, Error {
+enum SettingUseCaseError: String, Error {
     case execute
 }
 
@@ -32,7 +32,7 @@ extension SettingUseCaseImpl {
         do {
             return try await settingRepository.fetchNicknameChangeDate(query: query)
         } catch {
-            throw SettingUsecaseError.execute
+            throw SettingUseCaseError.execute
         }
     }
 }
@@ -42,7 +42,7 @@ extension SettingUseCaseImpl {
         do {
             return try await settingRepository.fetchDuplicationNickname(query: query)
         } catch {
-            throw SettingUsecaseError.execute
+            throw SettingUseCaseError.execute
         }
     }
 }
@@ -52,7 +52,7 @@ extension SettingUseCaseImpl {
         do {
             return try await settingRepository.fetchNicknameChange(query: query)
         } catch {
-            throw SettingUsecaseError.execute
+            throw SettingUseCaseError.execute
         }
     }
 }

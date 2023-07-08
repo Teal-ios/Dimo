@@ -49,16 +49,16 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showSignupIdentificationViewController() {
-        let session = RxServiceImpl.shared
-        let authRepositoryImpl = AuthRepositoryImpl(session: session)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
         let viewModel = SignupIdentificationViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = SignupIdentificationViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showIDRegisterViewController() {
-        let session = RxServiceImpl.shared
-        let authRepositoryImpl = AuthRepositoryImpl(session: session)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
         let viewModel = IDNickNameViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = IDRegisterViewController(viewModel: viewModel)
@@ -93,7 +93,10 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showJoinMbtiViewController() {
-        let viewModel = JoinMbtiViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = JoinMbtiViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = JoinMbtiViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

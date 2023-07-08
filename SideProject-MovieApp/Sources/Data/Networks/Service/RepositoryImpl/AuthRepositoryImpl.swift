@@ -6,91 +6,72 @@
 //
 
 import Foundation
-import Combine
-import RxSwift
+
+enum AuthRepositoryError: Error {
+    case request
+}
 
 final class AuthRepositoryImpl: AuthRepository {
     
-    private let session: RxService
-    private var disposeBag = DisposeBag()
+    private let dataTransferService: DataTransferService
     
-    init(session: RxService) {
-        self.session = session
+    init(dataTransferService: DataTransferService) {
+        self.dataTransferService = dataTransferService
     }
 }
 
 extension AuthRepositoryImpl {
-    func requestSignUp(query: SignUpQuery) -> Single<Int> {
-        return Single.create { single in
-            let disposable = self.session.request(target: AuthRouter.signup(parameters: query), type: StatusCodeResponseDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.statusCode
-                    single(.success(response ?? 404))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func requestSignUp(query: SignUpQuery) async throws -> SignUp {
+        let requestDTO = RequestSignUpDTO(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti)
+        
+        let target = AuthAPIEndpoints.postSignUp(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
         }
     }
 }
 
 extension AuthRepositoryImpl {
-    func requestPhoneNumberCheck(query: PhoneNumberCheckQuery) -> Single<PhoneNumberCheck> {
-        return Single.create { single in
-            let disposable = self.session.request(target: AuthRouter.phoneNumberCheck(parameters: query), type: ResponsePhoneNumberCheckDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.toDomain
-                    single(.success(response))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func requestPhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck {
+        let requestDTO = RequestPhoneNumberCheckDTO(phone_number: query.phone_number)
+        let target = AuthAPIEndpoints.postPhoneNumberCheck(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
         }
     }
 }
 
 extension AuthRepositoryImpl {
-    func requestPhoneNumberVerify(query: PhoneNumberVerifyQuery) -> Single<PhoneNumberVerify> {
-        return Single.create { single in
-            let disposable = self.session.request(target: AuthRouter.phoneNumberVerify(parameters: query), type: ResponsePhoneNumberVerifyDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.toDomain
-                    single(.success(response))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func requestPhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify {
+        let requestDTO = RequestPhoneNumberVerifyDTO(phone_number: query.phone_number, code: query.code)
+        let target = AuthAPIEndpoints.postPhoneNumberVerify(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
         }
     }
 }
 
 extension AuthRepositoryImpl {
-    func requestDuplicationId(query: DuplicationIdQuery) -> Single<DuplicationId> {
-        return Single.create { single in
-            let disposable = self.session.request(target: AuthRouter.duplicationId(parameters: query), type: ResponseDuplicationIdDTO.self).subscribe { result in
-                switch result {
-                case .success(let responseDTO):
-                    let response = responseDTO.toDomain
-                    single(.success(response))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create {
-                disposable.dispose()
-            }
+    func fetchDuplicationId(query: DuplicationIdQuery) async throws -> DuplicationId {
+        let target = AuthAPIEndpoints.postDuplicationId(with: query.user_id)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
         }
     }
 }

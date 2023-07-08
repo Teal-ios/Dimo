@@ -66,29 +66,23 @@ final class SignupIdentificationViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.idRequestButtonTapped
-            .flatMapLatest { [weak self] _ in
-                (self?.authUseCase.phoneNumberCheckExcute(phone_number: self?.phoneNum ?? "")
-                    .do(onSuccess: { data in
-                        print(data, "data들어옴!!")
-                    }, onError: { error in
-                        print(error)
-                    })
-                        .asObservable())!
-            }
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        input.idRequestButtonTapped
             .bind { [weak self] _ in
                 guard let self = self else { return }
                 self.toastMessage.accept("인증 번호를 발송했어요")
             }
             .disposed(by: disposeBag)
         
-        
         input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showIDRegisterViewController()
+            guard let self else { return }
+            self.coordinator?.showIDRegisterViewController()
         }.disposed(by: disposeBag)
+        
+        input.idRequestButtonTapped
+            .bind { [weak self] _ in
+                guard let self else { return }
+                self.phoneNumberCheck(phoneNumber: self.phoneNum ?? "")
+            }
+            .disposed(by: disposeBag)
         
         return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, idRequestButtonTapped: input.idRequestButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
     }
@@ -125,5 +119,20 @@ final class SignupIdentificationViewModel: ViewModelType {
         }
         
         return number
+    }
+}
+
+extension SignupIdentificationViewModel {
+    
+    private func phoneNumberCheck(phoneNumber: String) {
+        let query = PhoneNumberCheckQuery(phone_number: phoneNumber)
+        
+        Task {
+            let phoneNumberCheck = try await authUseCase.excutePhoneNumberCheck(query: query)
+            print("🔥", phoneNumberCheck)
+            if phoneNumberCheck.msg == "success" {
+                UserDefaults.standard.set(query.phone_number, forKey: "phoneNumber")
+            }
+        }
     }
 }

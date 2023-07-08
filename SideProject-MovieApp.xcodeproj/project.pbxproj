@@ -237,6 +237,34 @@
 		2FD6C93A2A4D5B3E00EFB684 /* JoinTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6C9392A4D5B3E00EFB684 /* JoinTermsViewController.swift */; };
 		2FD6C93C2A4D5B4500EFB684 /* JoinTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6C93B2A4D5B4500EFB684 /* JoinTermsView.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
+		2FD87A252A583F28003C276B /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A242A583F28003C276B /* LoginQuery.swift */; };
+		2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */; };
+		2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A282A583F92003C276B /* GoogleLoginQuery.swift */; };
+		2FD87A2B2A583FCF003C276B /* SocialQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A2A2A583FCF003C276B /* SocialQuery.swift */; };
+		2FD87A2D2A584058003C276B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A2C2A584058003C276B /* SignUp.swift */; };
+		2FD87A2F2A58409A003C276B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A2E2A58409A003C276B /* Login.swift */; };
+		2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A302A5840CE003C276B /* KakaoLogin.swift */; };
+		2FD87A332A5840F0003C276B /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A322A5840F0003C276B /* GoogleLogin.swift */; };
+		2FD87A352A584114003C276B /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A342A584114003C276B /* Social.swift */; };
+		2FD87A372A58420F003C276B /* DropQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A362A58420F003C276B /* DropQuery.swift */; };
+		2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A382A584268003C276B /* SocialLoginCheckQuery.swift */; };
+		2FD87A3B2A5842BB003C276B /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A3A2A5842BB003C276B /* Drop.swift */; };
+		2FD87A3D2A5842E0003C276B /* SocialLoginCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A3C2A5842E0003C276B /* SocialLoginCheck.swift */; };
+		2FD87A3F2A58431D003C276B /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A3E2A58431D003C276B /* Logout.swift */; };
+		2FD87A412A584627003C276B /* RequestLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A402A584627003C276B /* RequestLoginDTO.swift */; };
+		2FD87A432A58469B003C276B /* RequestKakaoLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A422A58469B003C276B /* RequestKakaoLoginDTO.swift */; };
+		2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A442A5846D0003C276B /* RequestGoogleLoginDTO.swift */; };
+		2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A462A5846F7003C276B /* ReqeustSocialDTO.swift */; };
+		2FD87A492A58472F003C276B /* RequestDropDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A482A58472F003C276B /* RequestDropDTO.swift */; };
+		2FD87A4B2A5848BD003C276B /* ResponseLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A4A2A5848BD003C276B /* ResponseLoginDTO.swift */; };
+		2FD87A4D2A584959003C276B /* ResponseKakaoLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A4C2A584959003C276B /* ResponseKakaoLoginDTO.swift */; };
+		2FD87A4F2A584962003C276B /* ResponseGoogleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A4E2A584962003C276B /* ResponseGoogleLoginDTO.swift */; };
+		2FD87A512A584975003C276B /* ResponseSocialDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A502A584975003C276B /* ResponseSocialDTO.swift */; };
+		2FD87A532A58498B003C276B /* ResponseLogoutDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A522A58498B003C276B /* ResponseLogoutDTO.swift */; };
+		2FD87A552A584999003C276B /* ResponseDropDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A542A584999003C276B /* ResponseDropDTO.swift */; };
+		2FD87A572A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A562A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift */; };
+		2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */; };
+		2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A5A2A585406003C276B /* AuthAPIEndpoints.swift */; };
 		2FDD74532A10A4C300A75AB9 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD74522A10A4C300A75AB9 /* CharacterDetailView.swift */; };
 		2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD74542A10A4DA00A75AB9 /* CharacterDetailViewController.swift */; };
 		2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD74572A10A75A00A75AB9 /* DetailHeaderView.swift */; };
@@ -564,6 +592,34 @@
 		2FD6C9392A4D5B3E00EFB684 /* JoinTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTermsViewController.swift; sourceTree = "<group>"; };
 		2FD6C93B2A4D5B4500EFB684 /* JoinTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTermsView.swift; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
+		2FD87A242A583F28003C276B /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
+		2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginQuery.swift; sourceTree = "<group>"; };
+		2FD87A282A583F92003C276B /* GoogleLoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginQuery.swift; sourceTree = "<group>"; };
+		2FD87A2A2A583FCF003C276B /* SocialQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialQuery.swift; sourceTree = "<group>"; };
+		2FD87A2C2A584058003C276B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		2FD87A2E2A58409A003C276B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		2FD87A302A5840CE003C276B /* KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLogin.swift; sourceTree = "<group>"; };
+		2FD87A322A5840F0003C276B /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
+		2FD87A342A584114003C276B /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
+		2FD87A362A58420F003C276B /* DropQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropQuery.swift; sourceTree = "<group>"; };
+		2FD87A382A584268003C276B /* SocialLoginCheckQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginCheckQuery.swift; sourceTree = "<group>"; };
+		2FD87A3A2A5842BB003C276B /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		2FD87A3C2A5842E0003C276B /* SocialLoginCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginCheck.swift; sourceTree = "<group>"; };
+		2FD87A3E2A58431D003C276B /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		2FD87A402A584627003C276B /* RequestLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A422A58469B003C276B /* RequestKakaoLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKakaoLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A442A5846D0003C276B /* RequestGoogleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGoogleLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A462A5846F7003C276B /* ReqeustSocialDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqeustSocialDTO.swift; sourceTree = "<group>"; };
+		2FD87A482A58472F003C276B /* RequestDropDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDropDTO.swift; sourceTree = "<group>"; };
+		2FD87A4A2A5848BD003C276B /* ResponseLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A4C2A584959003C276B /* ResponseKakaoLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseKakaoLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A4E2A584962003C276B /* ResponseGoogleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGoogleLoginDTO.swift; sourceTree = "<group>"; };
+		2FD87A502A584975003C276B /* ResponseSocialDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSocialDTO.swift; sourceTree = "<group>"; };
+		2FD87A522A58498B003C276B /* ResponseLogoutDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLogoutDTO.swift; sourceTree = "<group>"; };
+		2FD87A542A584999003C276B /* ResponseDropDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDropDTO.swift; sourceTree = "<group>"; };
+		2FD87A562A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSocialLoginCheckDTO.swift; sourceTree = "<group>"; };
+		2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSignUpDTO.swift; sourceTree = "<group>"; };
+		2FD87A5A2A585406003C276B /* AuthAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIEndpoints.swift; sourceTree = "<group>"; };
 		2FDD74522A10A4C300A75AB9 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		2FDD74542A10A4DA00A75AB9 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		2FDD74572A10A75A00A75AB9 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
@@ -858,6 +914,14 @@
 				2F53D08C2A1F1BD400898DCD /* ResponsePhoneNumberVerifyDTO.swift */,
 				2F53D08E2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift */,
 				2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */,
+				2FD87A4A2A5848BD003C276B /* ResponseLoginDTO.swift */,
+				2FD87A4C2A584959003C276B /* ResponseKakaoLoginDTO.swift */,
+				2FD87A4E2A584962003C276B /* ResponseGoogleLoginDTO.swift */,
+				2FD87A502A584975003C276B /* ResponseSocialDTO.swift */,
+				2FD87A522A58498B003C276B /* ResponseLogoutDTO.swift */,
+				2FD87A542A584999003C276B /* ResponseDropDTO.swift */,
+				2FD87A562A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift */,
+				2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -868,6 +932,11 @@
 				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
 				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
 				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
+				2FD87A402A584627003C276B /* RequestLoginDTO.swift */,
+				2FD87A422A58469B003C276B /* RequestKakaoLoginDTO.swift */,
+				2FD87A442A5846D0003C276B /* RequestGoogleLoginDTO.swift */,
+				2FD87A462A5846F7003C276B /* ReqeustSocialDTO.swift */,
+				2FD87A482A58472F003C276B /* RequestDropDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -980,10 +1049,7 @@
 		2F53D0792A1F143200898DCD /* Query */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */,
-				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
-				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
-				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
+				2FD87A232A583EED003C276B /* Auth */,
 				497454EB2A3F66200043D67E /* Setting */,
 			);
 			path = Query;
@@ -1510,7 +1576,6 @@
 				2FC94E9229C011AE0097E696 /* Application */,
 				2FC94E8929C011260097E696 /* Presents */,
 				2FBF4CA229CC788C00B65125 /* Data */,
-				2F53D06B2A1F0A1C00898DCD /* Domain */,
 				2FC94E8B29C011500097E696 /* Utills */,
 			);
 			path = Sources;
@@ -1696,6 +1761,7 @@
 				2F53D0712A1F111900898DCD /* RequestDTO */,
 				2FBF4CA329CC78E700B65125 /* ResponseDTO */,
 				2F53D07C2A1F155400898DCD /* Router */,
+				2FD87A5D2A58FEC2003C276B /* Endpoints */,
 				93DD35C229C303D500BBB213 /* HTTPMethod.swift */,
 				93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */,
 				93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */,
@@ -1709,7 +1775,7 @@
 				2F53D0732A1F114900898DCD /* TargetType.swift */,
 				497454E82A3F62B70043D67E /* TargetType2.swift */,
 				497454E62A3DD5210043D67E /* APIKey.swift */,
-				497454F72A42025D0043D67E /* APIEndpoints.swift */,
+				2F53D06B2A1F0A1C00898DCD /* Domain */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2118,6 +2184,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2FD87A232A583EED003C276B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */,
+				2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */,
+				2F53D08A2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift */,
+				2F53D0882A1F1B4E00898DCD /* PhoneNumberQuery.swift */,
+				2FD87A242A583F28003C276B /* LoginQuery.swift */,
+				2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */,
+				2FD87A282A583F92003C276B /* GoogleLoginQuery.swift */,
+				2FD87A2A2A583FCF003C276B /* SocialQuery.swift */,
+				2FD87A362A58420F003C276B /* DropQuery.swift */,
+				2FD87A382A584268003C276B /* SocialLoginCheckQuery.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		2FD87A5D2A58FEC2003C276B /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				497454F72A42025D0043D67E /* APIEndpoints.swift */,
+				2FD87A5A2A585406003C276B /* AuthAPIEndpoints.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
 		2FDD74502A10A44B00A75AB9 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2256,6 +2348,14 @@
 				2F53D0902A1F1C7F00898DCD /* PhoneNumberVerify.swift */,
 				2F53D0922A1F1CEE00898DCD /* PhoneNumberCheck.swift */,
 				2FD073522A237F06003F7E56 /* DuplicationId.swift */,
+				2FD87A2C2A584058003C276B /* SignUp.swift */,
+				2FD87A2E2A58409A003C276B /* Login.swift */,
+				2FD87A302A5840CE003C276B /* KakaoLogin.swift */,
+				2FD87A322A5840F0003C276B /* GoogleLogin.swift */,
+				2FD87A342A584114003C276B /* Social.swift */,
+				2FD87A3A2A5842BB003C276B /* Drop.swift */,
+				2FD87A3C2A5842E0003C276B /* SocialLoginCheck.swift */,
+				2FD87A3E2A58431D003C276B /* Logout.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2527,6 +2627,7 @@
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
+				2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */,
 				2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
@@ -2544,13 +2645,16 @@
 				2FD6C93A2A4D5B3E00EFB684 /* JoinTermsViewController.swift in Sources */,
 				2F149DD32A4996120098AF64 /* MovieDetailRankView.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
+				2FD87A492A58472F003C276B /* RequestDropDTO.swift in Sources */,
 				2F53D0B72A1F629D00898DCD /* ChangeNicknameAlertViewController.swift in Sources */,
 				2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */,
+				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
+				2FD87A3D2A5842E0003C276B /* SocialLoginCheck.swift in Sources */,
 				2FDD74532A10A4C300A75AB9 /* CharacterDetailView.swift in Sources */,
 				2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */,
 				2F6D7D112A14B27D00FA457D /* MovieDetailView.swift in Sources */,
@@ -2565,8 +2669,10 @@
 				497454EF2A3F68C70043D67E /* NicknameChangeDateQuery.swift in Sources */,
 				2FD6C93C2A4D5B4500EFB684 /* JoinTermsView.swift in Sources */,
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
+				2FD87A432A58469B003C276B /* RequestKakaoLoginDTO.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
+				2FD87A512A584975003C276B /* ResponseSocialDTO.swift in Sources */,
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
 				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
 				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
@@ -2585,14 +2691,19 @@
 				497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
 				2F1AB9D42A10C6CF001178EA /* SettingBaseCollectionViewCell.swift in Sources */,
+				2FD87A532A58498B003C276B /* ResponseLogoutDTO.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
 				2F1AB9D72A10C6F9001178EA /* SettingEtcCollectionViewCell.swift in Sources */,
 				2FDD9E6F2A12235900A41FF7 /* FeedDetailModel.swift in Sources */,
+				2FD87A412A584627003C276B /* RequestLoginDTO.swift in Sources */,
 				2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */,
+				2FD87A372A58420F003C276B /* DropQuery.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
+				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
+				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
@@ -2608,24 +2719,31 @@
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
 				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
+				2FD87A4B2A5848BD003C276B /* ResponseLoginDTO.swift in Sources */,
 				2F53D0AA2A1F4A5700898DCD /* EditNicknameView.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
+				2FD87A2D2A584058003C276B /* SignUp.swift in Sources */,
 				2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */,
 				2FD073552A25BEB2003F7E56 /* SettingRouter.swift in Sources */,
+				2FD87A2B2A583FCF003C276B /* SocialQuery.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */,
+				2FD87A4D2A584959003C276B /* ResponseKakaoLoginDTO.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
 				2F979F222A0C929900A1CD53 /* JoinCompleteViewModel.swift in Sources */,
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
+				2FD87A572A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
 				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
 				2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */,
+				2FD87A352A584114003C276B /* Social.swift in Sources */,
 				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
+				2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
@@ -2648,12 +2766,16 @@
 				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
 				2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
+				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
+				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
+				2FD87A552A584999003C276B /* ResponseDropDTO.swift in Sources */,
+				2FD87A252A583F28003C276B /* LoginQuery.swift in Sources */,
 				2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */,
 				2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */,
 				2FD4D0B52A2CA54D00B9AF61 /* ErrorCommonViewController.swift in Sources */,
@@ -2670,6 +2792,7 @@
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
+				2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
@@ -2683,6 +2806,7 @@
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
+				2FD87A3B2A5842BB003C276B /* Drop.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
@@ -2706,6 +2830,7 @@
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
 				2FD073592A25BF71003F7E56 /* NicknameDuplication.swift in Sources */,
+				2FD87A4F2A584962003C276B /* ResponseGoogleLoginDTO.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
@@ -2715,6 +2840,7 @@
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
+				2FD87A2F2A58409A003C276B /* Login.swift in Sources */,
 				2F437C022A4BE617000B7A61 /* ResponseCharacterDTO.swift in Sources */,
 				2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */,
 				2F6D7D192A14B6D600FA457D /* TapUISlider.swift in Sources */,
@@ -2728,12 +2854,14 @@
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
+				2FD87A332A5840F0003C276B /* GoogleLogin.swift in Sources */,
 				2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
 				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,
 				2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */,
 				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
+				2FD87A3F2A58431D003C276B /* Logout.swift in Sources */,
 				2FC94E9F29C013880097E696 /* AuthRouter.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */,
