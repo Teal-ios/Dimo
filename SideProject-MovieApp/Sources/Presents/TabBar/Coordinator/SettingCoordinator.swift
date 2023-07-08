@@ -12,8 +12,6 @@ final class SettingCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
-    
-    private let userDefaults = UserDefaults.standard
 
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
