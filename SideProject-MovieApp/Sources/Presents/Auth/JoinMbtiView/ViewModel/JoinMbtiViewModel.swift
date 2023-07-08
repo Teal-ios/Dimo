@@ -43,6 +43,7 @@ final class JoinMbtiViewModel: ViewModelType {
     
     var mbtiString = ""
     let mbtiValid = PublishRelay<Bool>()
+    let signUpSuccess = PublishRelay<Bool>()
     
     init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
@@ -81,6 +82,14 @@ final class JoinMbtiViewModel: ViewModelType {
                     self.mbtiDefindLogic(mbti: mbti)
                 }
             }
+        }
+        .disposed(by: disposeBag)
+        
+        signUpSuccess
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            guard let self else { return }
+            self.coordinator?.showJoinCompleteViewController()
         }
         .disposed(by: disposeBag)
         
@@ -133,8 +142,10 @@ extension JoinMbtiViewModel {
             print("🔥", signUp)
             if signUp.code == 200 {
                 UserDefaultManager.mbti = mbtiString
-                coordinator?.showJoinCompleteViewController()
+                
+                signUpSuccess.accept(true)
             }
         }
     }
 }
+

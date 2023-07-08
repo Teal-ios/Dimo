@@ -58,7 +58,6 @@
 		2F53D0742A1F114900898DCD /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0732A1F114900898DCD /* TargetType.swift */; };
 		2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */; };
 		2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */; };
-		2F53D07E2A1F16D900898DCD /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07D2A1F16D900898DCD /* Service.swift */; };
 		2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D07F2A1F178500898DCD /* AuthRepository.swift */; };
 		2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */; };
 		2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */; };
@@ -136,7 +135,6 @@
 		2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */; };
 		2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1192A262735001D5425 /* NicknameChange.swift */; };
 		2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */; };
-		2FBFE11E2A26286A001D5425 /* AsyncAwaitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */; };
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
@@ -188,7 +186,6 @@
 		2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */; };
 		2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */; };
 		2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */; };
-		2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCFEA0C2A2868C60093DD8F /* RxService.swift */; };
 		2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */; };
 		2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */; };
 		2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */; };
@@ -405,7 +402,6 @@
 		2F53D0732A1F114900898DCD /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignUpDTO.swift; sourceTree = "<group>"; };
 		2F53D07A2A1F143A00898DCD /* SignUpQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpQuery.swift; sourceTree = "<group>"; };
-		2F53D07D2A1F16D900898DCD /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2F53D07F2A1F178500898DCD /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		2F53D0812A1F17FE00898DCD /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
 		2F53D0832A1F189E00898DCD /* StatusCodeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeResponseDTO.swift; sourceTree = "<group>"; };
@@ -490,7 +486,6 @@
 		2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeQuery.swift; sourceTree = "<group>"; };
 		2FBFE1192A262735001D5425 /* NicknameChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChange.swift; sourceTree = "<group>"; };
 		2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseChangeNicknameDTO.swift; sourceTree = "<group>"; };
-		2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitService.swift; sourceTree = "<group>"; };
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
@@ -543,7 +538,6 @@
 		2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailHeaderView.swift; sourceTree = "<group>"; };
 		2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension.swift"; sourceTree = "<group>"; };
-		2FCFEA0C2A2868C60093DD8F /* RxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxService.swift; sourceTree = "<group>"; };
 		2FD0734C2A237E98003F7E56 /* DuplicationIdQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationIdQuery.swift; sourceTree = "<group>"; };
 		2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameDuplicationDTO.swift; sourceTree = "<group>"; };
 		2FD073502A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDuplicationIdDTO.swift; sourceTree = "<group>"; };
@@ -1768,9 +1762,6 @@
 				93DD35C229C303D500BBB213 /* HTTPMethod.swift */,
 				93DD35C429C303E700BBB213 /* HTTPHeaderContentType.swift */,
 				93F18FD829C1B93E00ABC0A7 /* NetworkStatus.swift */,
-				2F53D07D2A1F16D900898DCD /* Service.swift */,
-				2FCFEA0C2A2868C60093DD8F /* RxService.swift */,
-				2FBFE11D2A26286A001D5425 /* AsyncAwaitService.swift */,
 				497454E12A3A1D3A0043D67E /* NetworkService.swift */,
 				497454E32A3D7A130043D67E /* DataTransferService.swift */,
 				2F437C142A4C176C000B7A61 /* MockParser.swift */,
@@ -2721,7 +2712,6 @@
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* NicknameDuplicationQuery.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
-				2F53D07E2A1F16D900898DCD /* Service.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
@@ -2796,7 +2786,6 @@
 				2FDD9E672A121EB900A41FF7 /* FeedDetailViewController.swift in Sources */,
 				2F124AE72A4FCD2C00A452F1 /* AlertButtonSecondView.swift in Sources */,
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
-				2FCFEA0D2A2868C60093DD8F /* RxService.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
@@ -2918,7 +2907,6 @@
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
 				2FD4D0B12A2CA53700B9AF61 /* ErrorCommonViewModel.swift in Sources */,
 				2F437C1F2A4C57A2000B7A61 /* FeedDetailMoreMyViewModel.swift in Sources */,
-				2FBFE11E2A26286A001D5425 /* AsyncAwaitService.swift in Sources */,
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,

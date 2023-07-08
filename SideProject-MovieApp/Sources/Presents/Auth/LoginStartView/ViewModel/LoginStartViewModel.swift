@@ -37,21 +37,29 @@ final class LoginStartViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         input.dimoLoginButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showDimoLoginViewController()
+            guard let self else { return }
+            UserDefaultManager.snsType = "none"
+            self.coordinator?.showDimoLoginViewController()
         }.disposed(by: disposeBag)
         
         input.signupButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showJoinTermsViewController()
+            guard let self else { return }
+            UserDefaultManager.snsType = "none"
+            self.coordinator?.showJoinTermsViewController()
         }
         .disposed(by: disposeBag)
         
         input.kakaoLoginButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showErrorCommonViewController()
+            guard let self else { return }
+            UserDefaultManager.snsType = "kakao"
+            self.coordinator?.showErrorCommonViewController()
         }
         .disposed(by: disposeBag)
         
         input.googleLoginButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showErrorNotFoundViewController()
+            guard let self else { return }
+            UserDefaultManager.snsType = "google"
+            self.coordinator?.showErrorNotFoundViewController()
         }
         .disposed(by: disposeBag)
         

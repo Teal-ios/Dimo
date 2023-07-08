@@ -171,7 +171,7 @@ class JoinMbtiView: BaseView {
         }
         
         totalStackView.snp.makeConstraints { make in
-            make.top.equalTo(headerLabel.snp.bottom).offset(24)
+            make.top.equalTo(headerLabel.snp.bottom).offset(36)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(140)
         }

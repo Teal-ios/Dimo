@@ -16,6 +16,7 @@ final class SignupIdentificationViewModel: ViewModelType {
     var timer: Timer?
     var leftTime: Int?
     var phoneNum: String? = ""
+    var userName: String? = ""
     
     struct Input {
         var phoneNumberInput: ControlProperty<String?>
@@ -44,6 +45,7 @@ final class SignupIdentificationViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let phoneStr = input.phoneNumberInput.orEmpty
         let nameValid = input.nameInput.orEmpty.map { str in
+            self.userName = str
             return str.count >= 2 && str.count <= 15
         }
         let phoneValid = input.phoneNumberInput.orEmpty.map { str in
@@ -132,6 +134,7 @@ extension SignupIdentificationViewModel {
             print("🔥", phoneNumberCheck)
             if phoneNumberCheck.msg == "success" {
                 UserDefaultManager.phoneNumber = query.phone_number
+                UserDefaultManager.userName = userName
             }
         }
     }

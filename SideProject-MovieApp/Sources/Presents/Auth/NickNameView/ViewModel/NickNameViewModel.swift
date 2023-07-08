@@ -71,6 +71,7 @@ extension NickNameViewModel {
             let duplicationNickname = try await settingUseCase.executeNicknameDuplication(query: query)
             print("🔥", duplicationNickname)
             if duplicationNickname.code == 200 {
+                UserDefaultManager.nickname = query.user_nickname
                 duplicationValid.accept(true)
             }
         }

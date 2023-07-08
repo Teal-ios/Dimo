@@ -14,11 +14,11 @@ final class AuthCoordinator: Coordinator {
     var type: CoordinatorStyleCase = .auth
     
     private let userDefaults = UserDefaults.standard
-
+    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         showLoginSplshViewController()
     }
@@ -41,7 +41,7 @@ final class AuthCoordinator: Coordinator {
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
         showSignupTermsViewController()
-
+        
     }
     func showSignupTermsViewController() {
         let viewModel = SignupTermsViewModel(coordinator: self)
@@ -118,6 +118,7 @@ final class AuthCoordinator: Coordinator {
         let vc = JoinCompleteViewController(viewModel: viewModel)
         changeAnimation()
         navigationController.viewControllers = [vc]
+        
     }
     
     func showFindIDViewController() {
