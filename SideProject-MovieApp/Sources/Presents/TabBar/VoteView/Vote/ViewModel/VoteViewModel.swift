@@ -31,7 +31,7 @@ final class VoteViewModel: ViewModelType {
         input.characterRandomRecommandCellTapped.bind { [weak self] _ in
             guard let self else { return }
             print("이건울리니")
-            self.coordinator?.showSearchViewController()
+            self.coordinator?.showRecommendViewController()
         }
         .disposed(by: disposeBag)
         

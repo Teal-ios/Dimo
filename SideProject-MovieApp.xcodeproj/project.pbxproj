@@ -208,6 +208,9 @@
 		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
 		2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */; };
 		2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */; };
+		2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */; };
+		2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274112A5A8AEC003AA144 /* RecommendView.swift */; };
+		2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274132A5A8B38003AA144 /* RecommendViewController.swift */; };
 		2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */; };
 		2FD4D0AF2A2CA53000B9AF61 /* ErrorCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0AE2A2CA53000B9AF61 /* ErrorCommonView.swift */; };
 		2FD4D0B12A2CA53700B9AF61 /* ErrorCommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0B02A2CA53700B9AF61 /* ErrorCommonViewModel.swift */; };
@@ -561,6 +564,9 @@
 		2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigFinishCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
+		2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
+		2FD274112A5A8AEC003AA144 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		2FD274132A5A8B38003AA144 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		2FD4D0A82A2B051E00B9AF61 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		2FD4D0AE2A2CA53000B9AF61 /* ErrorCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCommonView.swift; sourceTree = "<group>"; };
 		2FD4D0B02A2CA53700B9AF61 /* ErrorCommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCommonViewModel.swift; sourceTree = "<group>"; };
@@ -1415,6 +1421,7 @@
 			children = (
 				2F9793A92A53EE1F0098939B /* Vote */,
 				2F97939E2A52A42D0098939B /* Search */,
+				2FD2740C2A5A8ABD003AA144 /* Recommend */,
 			);
 			path = VoteView;
 			sourceTree = "<group>";
@@ -1901,6 +1908,32 @@
 				2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2FD2740C2A5A8ABD003AA144 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				2FD2740E2A5A8AD6003AA144 /* ViewModel */,
+				2FD2740D2A5A8AD2003AA144 /* View */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		2FD2740D2A5A8AD2003AA144 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD274112A5A8AEC003AA144 /* RecommendView.swift */,
+				2FD274132A5A8B38003AA144 /* RecommendViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD2740E2A5A8AD6003AA144 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2FD392282A29A10900DFDBA7 /* ViewModel */ = {
@@ -2667,6 +2700,7 @@
 				2F124AE12A4FCBB000A452F1 /* FeedDetailDeleteViewModel.swift in Sources */,
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
+				2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
 				497454EF2A3F68C70043D67E /* NicknameChangeDateQuery.swift in Sources */,
 				2FD6C93C2A4D5B4500EFB684 /* JoinTermsView.swift in Sources */,
@@ -2707,6 +2741,7 @@
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
+				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
@@ -2715,6 +2750,7 @@
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
+				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,

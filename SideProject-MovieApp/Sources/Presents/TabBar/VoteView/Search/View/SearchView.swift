@@ -18,30 +18,34 @@ final class SearchView: BaseView {
         return label
     }()
     
-    let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.clipsToBounds = true
-        searchBar.layer.cornerRadius = 4
-        searchBar.placeholder = "작품명 / 캐릭터명을 입력해 주세요."
-        
-        return searchBar
+    let searchContainView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .black90
+        return view
     }()
     
-//    let searchBarContainView: SearchBarContainerView = {
-//        let searchBar = UISearchBar()
-//        searchBar.clipsToBounds = true
-//        searchBar.layer.cornerRadius = 4
-//        searchBar.placeholder = "작품명 / 캐릭터명을 입력해 주세요."
-//        let view = SearchBarContainerView(customSearchBar: searchBar)
-//        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 52)
-//        return view
-//    }()
+    let searchImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Search")
+        view.tintColor = .black80
+        return view
+    }()
+    
+    let searchTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "작품명 / 캐릭터명을 입력해 주세요"
+        return tf
+    }()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
     override func setHierarchy() {
         self.addSubview(titleLabel)
-        self.addSubview(searchBar)
+        self.addSubview(searchContainView)
+        self.addSubview(searchImageView)
+        self.addSubview(searchTextField)
         self.addSubview(collectionView)
     }
     
@@ -52,15 +56,28 @@ final class SearchView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide)
         }
         
-        searchBar.snp.makeConstraints { make in
-            make.height.equalTo(84)
+        searchContainView.snp.makeConstraints { make in
+            make.height.equalTo(52)
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+        
+        searchImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(searchContainView)
+            make.leading.equalTo(searchContainView.snp.leading).offset(16)
+            make.height.width.equalTo(20)
+        }
+        
+        searchTextField.snp.makeConstraints { make in
+            make.leading.equalTo(searchImageView.snp.trailing).offset(8)
+            make.centerY.equalTo(searchContainView)
+            make.trailing.equalTo(searchContainView.snp.trailing).offset(-16)
+            make.verticalEdges.equalTo(searchContainView)
         }
         
         collectionView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(searchBar.snp.bottom).offset(16)
+            make.top.equalTo(searchContainView.snp.bottom).offset(16)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
