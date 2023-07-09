@@ -15,6 +15,8 @@ protocol AuthUseCase {
     func excutePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify
     
     func excuteDuplicationId(user_id: String) async throws -> DuplicationId
+    
+    func excuteLogin(query: LoginQuery) async throws -> Login
 }
 
 enum AuthUseCaseError: String, Error {
@@ -64,6 +66,16 @@ extension AuthUseCaseImpl {
     func excutePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify {
         do {
             return try await authRepository.requestPhoneNumberVerify(query: query)
+        } catch {
+            throw AuthUseCaseError.execute
+        }
+    }
+}
+
+extension AuthUseCaseImpl {
+    func excuteLogin(query: LoginQuery) async throws -> Login {
+        do {
+            return try await authRepository.requestLogin(query: query)
         } catch {
             throw AuthUseCaseError.execute
         }

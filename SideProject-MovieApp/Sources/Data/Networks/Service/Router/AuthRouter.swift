@@ -12,12 +12,13 @@ enum AuthRouter<R> {
     case phoneNumberCheck(parameters: PhoneNumberCheckQuery)
     case phoneNumberVerify(parameters: PhoneNumberVerifyQuery)
     case duplicationId(parameters: DuplicationIdQuery)
+    case login(parameters: LoginQuery)
 }
 
 extension AuthRouter: TargetType2 {
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -49,7 +50,7 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login:
             return .post
         case .duplicationId:
             return .get
@@ -74,6 +75,8 @@ extension AuthRouter: TargetType2 {
             return "/signup/phone-check/verify"
         case .duplicationId:
             return "/signup/is_id_dup"
+        case .login:
+            return  "/login"
         }
     }
     
@@ -98,6 +101,11 @@ extension AuthRouter: TargetType2 {
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestPhoneNumberVerifyDTO)
             
+        case .login(let parameters):
+            let requestLoginDTO = RequestLoginDTO(user_id: parameters.user_id, password: parameters.password)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestLoginDTO)
         case .duplicationId:
             return nil
         }

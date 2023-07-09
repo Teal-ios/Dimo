@@ -12,6 +12,7 @@ import RxCocoa
 final class LoginStartViewModel: ViewModelType {
     
     var disposeBag = DisposeBag()
+    private var authUseCase: AuthUseCase
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -31,8 +32,9 @@ final class LoginStartViewModel: ViewModelType {
 //        var appleLoginButtonTapped: ControlEvent<Void>
     }
 
-    init(coordinator: AuthCoordinator?) {
+    init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase) {
         self.coordinator = coordinator
+        self.authUseCase = authUseCase
     }
     
     func transform(input: Input) -> Output {

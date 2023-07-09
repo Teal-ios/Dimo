@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import SnapKit
+import Toast
 
 class DimoLoginViewController: BaseViewController {
     
@@ -42,5 +43,11 @@ class DimoLoginViewController: BaseViewController {
                 vc.dimoLoginView.nextButton.configuration?
                     .baseBackgroundColor = valid ? .purple100 : .black80
             }.disposed(by: disposeBag)
+        
+        output.toastMessage
+            .bind { message in
+                self.dimoLoginView.makeToast(message, style: ToastStyle.dimoToastStyle)
+            }
+            .disposed(by: disposeBag)
     }
 }

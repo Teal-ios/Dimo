@@ -30,7 +30,10 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showLoginStartViewController() {
-        let viewModel = LoginStartViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = LoginStartViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = LoginStartViewController(viewModel: viewModel)
         changeAnimation()
         navigationController.viewControllers = [vc]
@@ -78,7 +81,10 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showDimoLoginViewController() {
-        let viewModel = DimoLoginViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = DimoLoginViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = DimoLoginViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

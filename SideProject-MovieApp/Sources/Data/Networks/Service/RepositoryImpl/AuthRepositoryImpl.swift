@@ -75,3 +75,17 @@ extension AuthRepositoryImpl {
         }
     }
 }
+
+extension AuthRepositoryImpl {
+    func requestLogin(query: LoginQuery) async throws -> Login {
+        let requestDTO = RequestLoginDTO(user_id: query.user_id, password: query.password)
+        let target = AuthAPIEndpoints.postLogin(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}

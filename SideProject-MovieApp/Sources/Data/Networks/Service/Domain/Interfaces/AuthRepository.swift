@@ -16,4 +16,6 @@ protocol AuthRepository: AnyObject {
     func requestPhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify
     
     func fetchDuplicationId(query: DuplicationIdQuery) async throws -> DuplicationId
+    
+    func requestLogin(query: LoginQuery) async throws -> Login
 }

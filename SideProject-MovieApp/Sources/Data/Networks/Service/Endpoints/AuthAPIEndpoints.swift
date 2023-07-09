@@ -23,4 +23,8 @@ struct AuthAPIEndpoints {
     static func postDuplicationId(with user_id: String) -> AuthRouter<ResponseDuplicationIdDTO> {
         return AuthRouter<ResponseDuplicationIdDTO>.duplicationId(parameters: DuplicationIdQuery(user_id: user_id))
     }
+    
+    static func postLogin(with requestDTO: RequestLoginDTO) -> AuthRouter<ResponseLoginDTO> {
+        return AuthRouter<ResponseLoginDTO>.login(parameters: LoginQuery(user_id: requestDTO.user_id, password: requestDTO.password))
+    }
 }
