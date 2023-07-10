@@ -65,7 +65,7 @@ extension AuthRepositoryImpl {
 
 extension AuthRepositoryImpl {
     func fetchDuplicationId(query: DuplicationIdQuery) async throws -> DuplicationId {
-        let target = AuthAPIEndpoints.postDuplicationId(with: query.user_id)
+        let target = AuthAPIEndpoints.getDuplicationId(with: query.user_id)
         
         do {
             let data = try await dataTransferService.request(with: target)
@@ -81,6 +81,86 @@ extension AuthRepositoryImpl {
         let requestDTO = RequestLoginDTO(user_id: query.user_id, password: query.password)
         let target = AuthAPIEndpoints.postLogin(with: requestDTO)
         
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin {
+        let requestDTO = RequestKakaoLoginDTO(user_id: query.user_id, name: query.name, sns_type: query.sns_type)
+        let target = AuthAPIEndpoints.postKakaoLogin(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin {
+        let requestDTO = RequestGoogleLoginDTO(user_id: query.user_id, name: query.name, sns_type: query.sns_type)
+        let target = AuthAPIEndpoints.postGoogleLogin(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestSocial(query: SocialQuery) async throws -> Social {
+        let requestDTO = RequestSocialDTO(user_id: query.user_id, nickname: query.nickname, mbti: query.mbti)
+        let target = AuthAPIEndpoints.postSocial(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestDrop(query: DropQuery) async throws -> Drop {
+        let requestDTO = RequestDropDTO(user_id: query.user_id, drop_reason: query.drop_reason)
+        let target = AuthAPIEndpoints.postDrop(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func fetchLogout() async throws -> Logout {
+        let target = AuthAPIEndpoints.getLogout()
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func fetchSocialLoginCheck(user_id: String, sns_type: String) async throws -> SocialLoginCheck {
+        let target = AuthAPIEndpoints.getSocialLoginCheck(user_id: user_id, sns_type: sns_type)
         do {
             let data = try await dataTransferService.request(with: target)
             return data.toDomain

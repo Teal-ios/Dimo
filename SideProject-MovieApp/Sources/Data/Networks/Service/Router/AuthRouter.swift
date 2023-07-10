@@ -13,12 +13,18 @@ enum AuthRouter<R> {
     case phoneNumberVerify(parameters: PhoneNumberVerifyQuery)
     case duplicationId(parameters: DuplicationIdQuery)
     case login(parameters: LoginQuery)
+    case kakaoLogin(parameters: KakaoLoginQuery)
+    case googleLogin(parameters: GoogleLoginQuery)
+    case social(parameters: SocialQuery)
+    case logout
+    case drop(parameters: DropQuery)
+    case socialLoginCheck(parameters: SocialLoginCheckQuery)
 }
 
 extension AuthRouter: TargetType2 {
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -30,6 +36,8 @@ extension AuthRouter: TargetType2 {
         switch self {
         case .duplicationId(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        case .socialLoginCheck(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "sns_type", value: parameters.sns_type)]
         default:
             return nil
         }
@@ -50,9 +58,9 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop:
             return .post
-        case .duplicationId:
+        case .duplicationId, .logout, .socialLoginCheck:
             return .get
         }
     }
@@ -77,6 +85,18 @@ extension AuthRouter: TargetType2 {
             return "/signup/is_id_dup"
         case .login:
             return  "/login"
+        case .kakaoLogin:
+            return "/social/kakao_login"
+        case .googleLogin:
+            return "/social/google_login"
+        case .social:
+            return "/social"
+        case .logout:
+            return "/logout"
+        case .drop:
+            return "/drop"
+        case .socialLoginCheck:
+            return "/social/check"
         }
     }
     
@@ -107,6 +127,36 @@ extension AuthRouter: TargetType2 {
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestLoginDTO)
         case .duplicationId:
+            return nil
+            
+        case .kakaoLogin(let parameters):
+            let requestKakaoLoginDTO = RequestKakaoLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestKakaoLoginDTO)
+            
+        case .googleLogin(let parameters):
+            let requestGoogleLoginDTO = RequestGoogleLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestGoogleLoginDTO)
+            
+        case .social(let parameters):
+            let requestSocialDTO = RequestSocialDTO(user_id: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestSocialDTO)
+            
+        case .logout:
+            return nil
+            
+        case .drop(let parameters):
+            let requestDropDTO = RequestDropDTO(user_id: parameters.user_id, drop_reason: parameters.drop_reason)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestDropDTO)
+            
+        case .socialLoginCheck:
             return nil
         }
     }

@@ -18,4 +18,16 @@ protocol AuthRepository: AnyObject {
     func fetchDuplicationId(query: DuplicationIdQuery) async throws -> DuplicationId
     
     func requestLogin(query: LoginQuery) async throws -> Login
+    
+    func requestKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin
+    
+    func requestGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
+    
+    func requestSocial(query: SocialQuery) async throws -> Social
+    
+    func requestDrop(query: DropQuery) async throws -> Drop
+    
+    func fetchLogout() async throws -> Logout
+    
+    func fetchSocialLoginCheck(user_id: String, sns_type: String) async throws -> SocialLoginCheck
 }

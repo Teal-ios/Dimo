@@ -9,6 +9,6 @@ import Foundation
 
 struct KakaoLoginQuery: Hashable {
     let user_id: String
-    let password: String
+    let name: String
     let sns_type: String
 }
