@@ -9,5 +9,6 @@ import Foundation
 
 struct PasswordChangeQuery: Hashable {
     let user_id: String
-    let password: String
+    let currentPassword: String
+    let newPassword: String
 }

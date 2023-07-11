@@ -21,7 +21,9 @@ final class SettingRepositoryImpl: SettingRepository {
     }
 }
 
+// MARK: 닉네임 변경
 extension SettingRepositoryImpl {
+    
     func fetchDuplicationNickname(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
         let requestDTO = RequestNicknameDuplicationDTO(user_id: query.user_id, user_nickname: query.user_nickname)
         let target = APIEndpoints.getNicknameDuplicationInfo(with: requestDTO)
@@ -33,9 +35,7 @@ extension SettingRepositoryImpl {
             throw SettingRepositoryError.request
         }
     }
-}
-
-extension SettingRepositoryImpl {
+    
     func fetchNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange {
         let requestDTO = RequestNicknameChangeDTO(user_id: query.user_id, user_nickname: query.user_nickname)
         let target = APIEndpoints.postNicknameChange(with: requestDTO)
@@ -47,12 +47,28 @@ extension SettingRepositoryImpl {
             throw SettingRepositoryError.request
         }
     }
-}
-
-extension SettingRepositoryImpl {
+    
     func fetchNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate {
         let requestDTO = RequestNicknameChangeDateDTO(user_id: query.user_id)
         let target = APIEndpoints.getNicknameChangeDate(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
+        }
+    }
+}
+
+// MARK: 패스워드 변경
+extension SettingRepositoryImpl {
+    
+    func fetchPasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange {
+        let requestDTO = RequestPasswordChangeDTO(user_id: query.user_id,
+                                                  password: query.currentPassword,
+                                                  new_password: query.newPassword)
+        let target = APIEndpoints.getPasswordChange(with: requestDTO)
         
         do {
             let data = try await dataTransferService.request(with: target)

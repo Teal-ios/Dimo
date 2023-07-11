@@ -12,6 +12,7 @@ protocol SettingUseCase {
     func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
     func executeNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate
     func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
+    func executePasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange
 }
 
 enum SettingUseCaseError: String, Error {
@@ -27,7 +28,9 @@ final class SettingUseCaseImpl: SettingUseCase {
     }
 }
 
+// MARK: Nickname Change
 extension SettingUseCaseImpl {
+    
     func executeNicknameChangeDate(query: NicknameChangeDateQuery) async  throws -> NicknameChangeDate {
         do {
             return try await settingRepository.fetchNicknameChangeDate(query: query)
@@ -35,9 +38,7 @@ extension SettingUseCaseImpl {
             throw SettingUseCaseError.execute
         }
     }
-}
-
-extension SettingUseCaseImpl {
+    
     func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication {
         do {
             return try await settingRepository.fetchDuplicationNickname(query: query)
@@ -45,9 +46,7 @@ extension SettingUseCaseImpl {
             throw SettingUseCaseError.execute
         }
     }
-}
-
-extension SettingUseCaseImpl {
+    
     func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange {
         do {
             return try await settingRepository.fetchNicknameChange(query: query)
@@ -56,3 +55,17 @@ extension SettingUseCaseImpl {
         }
     }
 }
+
+// MARK: Password Change
+extension SettingUseCaseImpl {
+    
+    func executePasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange {
+        do {
+            return try await settingRepository.fetchPasswordChange(query: query)
+        } catch {
+            throw SettingUseCaseError.execute
+        }
+    }
+}
+
+

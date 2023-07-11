@@ -9,45 +9,108 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class EditPasswordViewModel: ViewModelType {
+class EditPasswordViewModel {
+    
     var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: SettingCoordinator?
+    private var settingUseCase: SettingUseCase
     
     struct Input {
-        let passwordText: ControlProperty<String?>
-        let checkpwText: ControlProperty<String?>
-        let didNextButtonTap: Signal<String>
+        let currentPassWordTextFieldText: ControlProperty<String?>
+        let newPasswordTextFieldText: ControlProperty<String?>
+        let newPasswordCheckTextFieldText: ControlProperty<String?>
+        let passwordChangeButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
-        let pwConditionValidation: Observable<Bool>
-        //Password 조건에 만족하는지 판별
-        let passwordDuplicationValid: Observable<Bool>
+        let isSameWithExistingPassword: BehaviorRelay<Bool>
+        let isValidPasswordFormat: BehaviorRelay<Bool>
+        let isSameWithNewPassword: BehaviorRelay<Bool>
+        let isChanged: BehaviorRelay<Bool>
     }
     
+    private var newPasswordTextFieldText = BehaviorRelay<String?>(value: "")
+    private var isSameWithExistingPassword = BehaviorRelay<Bool>(value: false)
+    private var isValidPasswordFormat = BehaviorRelay<Bool>(value: false)
+    private var isSameWithNewPassword = BehaviorRelay<Bool>(value: false)
+    private var isChanged = BehaviorRelay<Bool>(value: false)
     
-    init(coordinator: SettingCoordinator? = nil) {
+    init(coordinator: SettingCoordinator, settingUseCase: SettingUseCase) {
         self.coordinator = coordinator
+        self.settingUseCase = settingUseCase
     }
+    
     func transform(input: Input) -> Output {
-        let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
+//        let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
         
-        let pwValid = input.passwordText
+        input.currentPassWordTextFieldText
             .orEmpty
-            .map {  NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: $0) }
-            .share()
+            .bind(onNext: { [weak self] text in
+                guard let self else { return }
+                guard let existingPassword = UserDefaultManager.password else { return }
+                if text == existingPassword {
+                    self.isSameWithExistingPassword.accept(true)
+                }
+            })
+            .disposed(by: disposeBag)
         
+        input.newPasswordTextFieldText
+            .orEmpty
+            .map { $0.count >= 8 && $0.count <= 16}
+//            .map {  NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: $0) }
+            .bind(to: isValidPasswordFormat)
+            .disposed(by: disposeBag)
         
-        input.didNextButtonTap
-            .emit { [weak self] text in
-                guard let self = self else { return }
-                print(text)
+        input.newPasswordTextFieldText
+            .orEmpty
+            .bind(to: newPasswordTextFieldText)
+            .disposed(by: disposeBag)
+        
+        input.newPasswordCheckTextFieldText
+            .orEmpty
+            .bind { [weak self] text in
+                guard let self else { return }
+                if text == self.newPasswordTextFieldText.value {
+                    self.isSameWithNewPassword.accept(true)
+                }
             }
             .disposed(by: disposeBag)
         
-        let passwordDuplicationValid = Observable.combineLatest(input.passwordText.orEmpty, input.checkpwText.orEmpty).map { $0 == $1 && $0.count >= 8 && $0.count <= 16 }
+        input.passwordChangeButtonTapped
+            .bind { [weak self] in
+                guard let self else { return }
+                self.loadPasswordChange()
+            }
+            .disposed(by: disposeBag)
+
+        return Output(isSameWithExistingPassword: isSameWithExistingPassword,
+                      isValidPasswordFormat: isValidPasswordFormat,
+                      isSameWithNewPassword: isSameWithNewPassword,
+                      isChanged: isChanged)
+    }
+}
+
+extension EditPasswordViewModel {
+    
+    private func loadPasswordChange() {
+        guard isSameWithExistingPassword.value,
+              isValidPasswordFormat.value,
+              isSameWithNewPassword.value else { return }
         
-        return Output(pwConditionValidation: pwValid, passwordDuplicationValid: passwordDuplicationValid)
+        guard let userId = UserDefaultManager.userId,
+              let currentPassword = UserDefaultManager.password,
+              let newPassword = self.newPasswordTextFieldText.value else { return }
+              
+        let query = PasswordChangeQuery(user_id: userId, currentPassword: currentPassword, newPassword: newPassword)
+        
+        Task {
+            let passwordChange = try await settingUseCase.executePasswordChange(query: query)
+            if passwordChange.code == 200 {
+                isChanged.accept(true)
+            } else {
+                isChanged.accept(false)
+            }
+        }
     }
 }

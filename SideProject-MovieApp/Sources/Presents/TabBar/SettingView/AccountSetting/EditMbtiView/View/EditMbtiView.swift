@@ -21,7 +21,7 @@ class EditMbtiView: BaseView {
         let label = UILabel()
         label.font = Font.subtitle3
         label.textColor = .black60
-        label.text = "한달에 한 번만 변경할 수 있어요"
+        label.text = "한 달에 한 번만 변경할 수 있어요"
         return label
     }()
     

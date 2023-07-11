@@ -48,7 +48,7 @@ class DimoLoginViewController: BaseViewController {
         output.toastMessage
             .observe(on: MainScheduler.instance)
             .bind { message in
-                self.dimoLoginView.makeToast(message, style: ToastStyle.dimoToastStyle)
+                self.dimoLoginView.makeToast(message, style: ToastStyle.dimo)
             }
             .disposed(by: disposeBag)
     }

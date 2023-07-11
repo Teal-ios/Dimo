@@ -43,7 +43,7 @@ final class EditNicknameViewController: BaseViewController {
     
     private func configureToast() {
         self.viewModel.toast = {
-            self.editNicknameView.makeToast("닉네임 변경을 완료했어요", style: ToastStyle.dimoToastStyle)
+            self.editNicknameView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
             self.editNicknameView.enableDuplicationCheckButton(isEnabled: false)
             self.editNicknameView.checkNicknameChangeButton(isValid: false)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {

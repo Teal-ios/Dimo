@@ -9,11 +9,20 @@ import UIKit
 import SnapKit
 
 class EditPasswordView: IDRegisterView {
+    
+    let existingPasswordView: OnboardingTextFieldView = {
+        return OnboardingTextFieldView(placeholder: "기존 비밀번호")
+    }()
+    
     let newPasswordView: OnboardingTextFieldView = {
         return OnboardingTextFieldView(placeholder: "새로운 비밀번호")
     }()
     
-    let passwordCheckLabel: UILabel = {
+    let newPasswordkCheckView: OnboardingTextFieldView = {
+        return OnboardingTextFieldView(placeholder: "새로운 비밀번호 재입력")
+    }()
+    
+    let passwordValidationCheckLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
         label.text = "숫자, 문자, 특수문자 포함 총 8글자 이상"
@@ -43,7 +52,7 @@ class EditPasswordView: IDRegisterView {
         let leadingTrailing: CGFloat = 16
         self.addSubview(passwordConditionLabel)
         self.addSubview(newPasswordView)
-        self.addSubview(passwordCheckLabel)
+        self.addSubview(passwordValidationCheckLabel)
         self.addSubview(newPasswordCheckView)
         self.addSubview(newPasswordCheckLabel)
         
@@ -59,7 +68,7 @@ class EditPasswordView: IDRegisterView {
             make.height.equalTo(52)
         }
         
-        passwordCheckLabel.snp.makeConstraints { make in
+        passwordValidationCheckLabel.snp.makeConstraints { make in
             make.top.equalTo(newPasswordView.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
             make.height.equalTo(16)
@@ -84,5 +93,13 @@ class EditPasswordView: IDRegisterView {
         duplicateCheckButton.isEnabled = false
         duplicateCheckButton.isHidden = true
     }
+}
+
+extension EditPasswordView {
     
+    func disableChangeButton() {
+        nextButton.isEnabled = false
+        nextButton.setTitleColor(UIColor.white, for: .disabled)
+        nextButton.configuration?.baseBackgroundColor = .black80
+    }
 }

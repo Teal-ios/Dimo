@@ -105,22 +105,20 @@ class BaseViewController: UIViewController {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = .black
         
-        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -100.0, bottom: 0.0, right: 0.0))
-        
-
-        navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-        
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    
+        let backButtonImage = UIImage(named: "Icon_arrow_left")
+        self.navigationController?.navigationBar.backIndicatorImage = backButtonImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
+        self.navigationController?.navigationBar.backItem?.title = ""
         navigationController?.navigationBar.tintColor = .black60
         navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
         self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    @objc func didTappedBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func configureNavigationBar() {
@@ -128,8 +126,6 @@ class BaseViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
     }
 }
-
-
 
 extension BaseViewController {
     

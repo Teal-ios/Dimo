@@ -14,4 +14,6 @@ protocol SettingRepository: AnyObject {
     func fetchNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
     
     func fetchNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate
+    
+    func fetchPasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange
 }

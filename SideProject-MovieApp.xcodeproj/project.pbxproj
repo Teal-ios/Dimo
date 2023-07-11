@@ -339,6 +339,9 @@
 		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
 		4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */; };
 		4932D77F2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */; };
+		493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */; };
+		493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */; };
+		493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */; };
 		497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E12A3A1D3A0043D67E /* NetworkService.swift */; };
 		497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E32A3D7A130043D67E /* DataTransferService.swift */; };
 		497454E72A3DD5210043D67E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E62A3DD5210043D67E /* APIKey.swift */; };
@@ -744,6 +747,9 @@
 		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
 		4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDateDTO.swift; sourceTree = "<group>"; };
 		4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNicknameChangeDateDTO.swift; sourceTree = "<group>"; };
+		493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChange.swift; sourceTree = "<group>"; };
+		493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordChangeDTO.swift; sourceTree = "<group>"; };
+		493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePasswordChangeDTO.swift; sourceTree = "<group>"; };
 		497454E12A3A1D3A0043D67E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		497454E32A3D7A130043D67E /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		497454E62A3DD5210043D67E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -2633,6 +2639,7 @@
 				2FD0734E2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift */,
 				49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */,
 				4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */,
+				493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2643,6 +2650,7 @@
 				2FD0735A2A25BF94003F7E56 /* ResponseNicknameDuplicationDTO.swift */,
 				2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */,
 				4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */,
+				493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2671,6 +2679,7 @@
 				2FD073582A25BF71003F7E56 /* NicknameDuplication.swift */,
 				2FBFE1192A262735001D5425 /* NicknameChange.swift */,
 				4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */,
+				493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3181,6 +3190,7 @@
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				2FD4D9282A6CCF9400E7972B /* ResponseLikeContentDTO.swift in Sources */,
 				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
+				493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				2F18900A2A4592270097D38E /* CharacterMoreView.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
@@ -3204,6 +3214,7 @@
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
 				2FD87A332A5840F0003C276B /* GoogleLogin.swift in Sources */,
+				493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */,
 				2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
@@ -3228,6 +3239,7 @@
 				2FBF64B22A71FE5C0036401F /* MyContentMoreView.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */,
+				493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */,
 				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
 				2FD4D9002A6BB16800E7972B /* MyMomentumRouter.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
