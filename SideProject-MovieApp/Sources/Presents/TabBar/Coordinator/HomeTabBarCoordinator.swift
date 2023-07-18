@@ -47,7 +47,6 @@ final class HomeTabBarCoordinator: Coordinator {
         self.tabBarController.selectedIndex = TabBarPageCase.home.pageOrderNumber
         self.tabBarController.view.backgroundColor = .systemBackground
         self.tabBarController.tabBar.backgroundColor = .systemBackground
-        
         self.tabBarController.tabBar.tintColor = .black20
         self.tabBarController.tabBar.unselectedItemTintColor = .black60
         self.changeAnimation()
@@ -66,7 +65,6 @@ final class HomeTabBarCoordinator: Coordinator {
         let tabNavigationController = UINavigationController()
         tabNavigationController.setNavigationBarHidden(false, animated: false)
         tabNavigationController.tabBarItem = self.configureTabBarItem(of: page)
-        tabNavigationController.tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
         connectTabCoordinator(of: page, to: tabNavigationController)
         return tabNavigationController
     }
