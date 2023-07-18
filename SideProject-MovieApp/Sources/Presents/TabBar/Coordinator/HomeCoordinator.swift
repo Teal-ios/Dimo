@@ -26,20 +26,20 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     }
 
     func start() {
-        showHomeViewController()
+        showHomeViewController(category: "애니")
     }
     
-    func showHomeViewController() {
+    func showHomeViewController(category: String) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
         let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = HomeViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let viewModel = HomeViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, category: category)
         let vc = HomeViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
     
-    func showCategoryViewController() {
-        let viewModel = CategoryViewModel(coordinator: self)
+    func showCategoryViewController(category: String) {
+        let viewModel = CategoryViewModel(coordinator: self, category: category)
         let vc = CategoryViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)

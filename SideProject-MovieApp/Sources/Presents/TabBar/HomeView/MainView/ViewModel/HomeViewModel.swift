@@ -14,9 +14,10 @@ final class HomeViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     private var contentUseCase: ContentUseCase
+    private var category: BehaviorRelay<String>
 
     struct Input {
-        let categoryButtonTapped: PublishSubject<Void>
+        let categoryButtonTapped: PublishSubject<String>
         let heroPlusButtonTapped: PublishSubject<Void>
         let characterPlusButtonTapped: PublishSubject<Void>
         let mbtiRecommendPlusButtonTapped: PublishSubject<Void>
@@ -31,19 +32,21 @@ final class HomeViewModel: ViewModelType {
     
     struct Output {
         let animationData: PublishRelay<[AnimationData]>
+        let category: BehaviorRelay<String>
     }
     
     var animationData = PublishRelay<[AnimationData]>()
 
 
-    init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase) {
+    init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, category: String) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
+        self.category = BehaviorRelay(value: category)
     }
     
     func transform(input: Input) -> Output {
-        input.categoryButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showCategoryViewController()
+        input.categoryButtonTapped.bind { [weak self] text in
+            self?.coordinator?.showCategoryViewController(category: text)
         }
         .disposed(by: disposeBag)
         
@@ -97,6 +100,6 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData)
+        return Output(animationData: self.animationData, category: self.category)
     }
 }

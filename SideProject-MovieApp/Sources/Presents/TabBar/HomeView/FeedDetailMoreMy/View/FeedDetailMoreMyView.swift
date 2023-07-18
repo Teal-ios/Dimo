@@ -15,8 +15,8 @@ final class FeedDetailMoreMyView: BaseView {
         view.backgroundColor = .clear
         view.titleLabel.text = "더보기"
         view.movieLabel.text = "수정하기"
-        view.dramaLabel.text = "삭제하기"
-        view.dramaLabel.textColor = .black5
+        view.animationLabel.text = "삭제하기"
+        view.animationLabel.textColor = .black5
         return view
     }()
     

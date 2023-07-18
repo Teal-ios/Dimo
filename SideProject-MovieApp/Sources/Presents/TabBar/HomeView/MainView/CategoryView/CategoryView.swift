@@ -47,16 +47,16 @@ class CategoryView: BaseView {
         return button
     }()
     
-    let dramaLabel: UILabel = {
+    let animationLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black60
         label.font = Font.body2
-        label.text = "드라마"
+        label.text = "애니"
         label.textAlignment = .left
         return label
     }()
     
-    let dramaButton: UIButton = {
+    let animationButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -67,7 +67,7 @@ class CategoryView: BaseView {
     }
     
     override func setupLayout() {
-        [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, dramaLabel, dramaButton].forEach { self.addSubview($0) }
+        [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, animationLabel, animationButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
@@ -94,14 +94,26 @@ class CategoryView: BaseView {
             make.edges.equalTo(movieLabel)
         }
         
-        dramaLabel.snp.makeConstraints { make in
+        animationLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(movieButton.snp.bottom)
             make.height.equalTo(52)
         }
         
-        dramaButton.snp.makeConstraints { make in
-            make.edges.equalTo(dramaLabel)
+        animationButton.snp.makeConstraints { make in
+            make.edges.equalTo(animationLabel)
+        }
+    }
+}
+
+extension CategoryView {
+    func updateCategory(category: String) {
+        if category == "영화" {
+            animationLabel.textColor = .black60
+            movieLabel.textColor = .black5
+        } else {
+            animationLabel.textColor = .black5
+            movieLabel.textColor = .black60
         }
     }
 }

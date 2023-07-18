@@ -27,7 +27,7 @@ final class HomeViewController: BaseViewController {
     
     private var posterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
-    let categoryButtonTap = PublishSubject<Void>()
+    let categoryButtonTap = PublishSubject<String>()
     let posterCellSelected = PublishSubject<Void>()
     let mbtiMovieCellSelected = PublishSubject<Void>()
     let mbtiCharacterCellSelected = PublishSubject<Void>()
@@ -37,6 +37,7 @@ final class HomeViewController: BaseViewController {
     let mbtiCharacterPlusButtonTap = PublishSubject<Void>()
     let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
     let hotMoviePlusButtonTap = PublishSubject<Void>()
+    let categoryTitle = BehaviorRelay(value: "")
     
     override func loadView() {
         view = homeView
@@ -83,6 +84,12 @@ final class HomeViewController: BaseViewController {
                 self.posterDataSource.apply(snapshot)
             }
             .disposed(by: disposeBag)
+        
+        output.category.bind { [weak self] category in
+            guard let self else { return }
+            self.categoryTitle.accept(category)
+        }
+        .disposed(by: self.disposeBag)
     }
 }
 //MARK: DataSource 관련
@@ -162,7 +169,19 @@ extension HomeViewController {
         }
         
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.categoryButton.rx.tap.bind(to: self.categoryButtonTap).disposed(by: self.disposeBag)
+            
+            supplementaryView.categoryButton.rx.tap.bind { [weak self] _ in
+                guard let self else { return }
+                let categoryOnTitle = supplementaryView.categoryInsetLabel.text ?? ""
+                self.categoryButtonTap.onNext(categoryOnTitle)
+            }
+            .disposed(by: self.disposeBag)
+            
+            self.categoryTitle.bind { [weak self] category in
+                guard let self else { return }
+                supplementaryView.categoryInsetLabel.text = category
+            }
+            .disposed(by: self.disposeBag)
 
         }
         

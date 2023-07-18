@@ -1886,7 +1886,6 @@
 			isa = PBXGroup;
 			children = (
 				2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */,
-				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
 				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
 			);
@@ -2179,6 +2178,7 @@
 		2FD69EBA2A03A9B800AA5A6E /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
+				2FD69EBD2A03AC5300AA5A6E /* CategoryViewModel.swift */,
 				2FD69EB82A03A8CF00AA5A6E /* CategoryView.swift */,
 				2FD69EBB2A03A9E400AA5A6E /* CategoryViewController.swift */,
 			);

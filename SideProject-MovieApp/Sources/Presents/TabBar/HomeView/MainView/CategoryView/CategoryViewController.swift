@@ -22,11 +22,24 @@ class CategoryViewController: BaseViewController {
         super.init()
     }
     
+    let category = BehaviorRelay(value: "")
+    
     override func setupBinding() {
         
-        let input = CategoryViewModel.Input(movieButtonTapped: categoryView.movieButton.rx.tap, dramaButtonTapped: categoryView.dramaButton.rx.tap)
+        let input = CategoryViewModel.Input(movieButtonTapped: categoryView.movieButton.rx.tap, dramaButtonTapped: categoryView.animationButton.rx.tap)
         
         let output = viewModel.transform(input: input)
+        output.category.bind { [weak self] category in
+            guard let self else { return }
+            self.category.accept(category)
+        }
+        .disposed(by: self.disposeBag)
+        
+        category.bind { [weak self] category in
+            guard let self else { return }
+            self.categoryView.updateCategory(category: category)
+        }
+        .disposed(by: disposeBag)
     }
     
     override func setupAttributes() {

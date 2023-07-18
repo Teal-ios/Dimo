@@ -13,6 +13,7 @@ class CategoryViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
+    private var category: BehaviorRelay<String>
     
     struct Input{
         let movieButtonTapped: ControlEvent<Void>
@@ -21,10 +22,13 @@ class CategoryViewModel: ViewModelType {
     }
     
     struct Output{
+        let category: BehaviorRelay<String>
+
     }
     
-    init(coordinator: HomeCoordinator? = nil) {
+    init(coordinator: HomeCoordinator? = nil, category: String) {
         self.coordinator = coordinator
+        self.category = BehaviorRelay(value: category)
     }
     
     func transform(input: Input) -> Output {
@@ -35,6 +39,6 @@ class CategoryViewModel: ViewModelType {
         input.dramaButtonTapped.bind { [weak self] _ in
             self?.coordinator?.dismissViewController()
         }.disposed(by: disposeBag)
-        return Output()
+        return Output(category: self.category)
     }
 }
