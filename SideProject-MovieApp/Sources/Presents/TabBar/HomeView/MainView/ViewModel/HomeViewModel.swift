@@ -46,8 +46,9 @@ final class HomeViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.categoryButtonTapped.bind { [weak self] text in
-            self?.coordinator?.showCategoryViewController(category: text)
+        input.categoryButtonTapped.bind { [weak self] _ in
+            guard let self else { return }
+            self.coordinator?.showCategoryViewController(category: self.category)
         }
         .disposed(by: disposeBag)
         

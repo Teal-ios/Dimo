@@ -27,19 +27,24 @@ class CategoryViewModel: ViewModelType {
         let dramaButtonTapped: ControlEvent<Void>
     }
     
-    init(coordinator: HomeCoordinator? = nil, category: String) {
+    init(coordinator: HomeCoordinator? = nil, category: BehaviorRelay<String>) {
         self.coordinator = coordinator
-        self.category = BehaviorRelay(value: category)
+        self.category = category
     }
     
     func transform(input: Input) -> Output {
         input.movieButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.dismissViewController()
+            guard let self else { return }
+            self.category.accept("영화")
+            self.coordinator?.dismissViewController()
         }.disposed(by: disposeBag)
         
         input.dramaButtonTapped.bind { [weak self] _ in
-//            self?.coordinator?.dismissViewController()
+            guard let self else { return }
+            self.category.accept("애니")
+            self.coordinator?.dismissViewController()
         }.disposed(by: disposeBag)
+        
         return Output(category: self.category, movieButtonTapped: input.movieButtonTapped, dramaButtonTapped: input.dramaButtonTapped)
     }
 }

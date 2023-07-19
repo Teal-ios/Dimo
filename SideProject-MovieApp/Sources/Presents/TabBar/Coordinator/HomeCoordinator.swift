@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     func didFinish(childCoordinator: Coordinator) {
@@ -38,7 +40,7 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.viewControllers = [vc]
     }
     
-    func showCategoryViewController(category: String) {
+    func showCategoryViewController(category: BehaviorRelay<String>) {
         let viewModel = CategoryViewModel(coordinator: self, category: category)
         let vc = CategoryViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen

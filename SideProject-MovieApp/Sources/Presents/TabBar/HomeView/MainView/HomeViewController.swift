@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-final class HomeViewController: BaseViewController, SendCategoryDelegate {
+final class HomeViewController: BaseViewController {
     
     let homeView = HomeView()
     
@@ -19,7 +19,6 @@ final class HomeViewController: BaseViewController, SendCategoryDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("HomeViewController: fatal error")
-        
     }
     
     init(viewModel: HomeViewModel) {
@@ -51,11 +50,6 @@ final class HomeViewController: BaseViewController, SendCategoryDelegate {
         
         setNavigation()
         setDataSource()
-    }
-    
-    func sendCategory(category: String) {
-        print(category, "이게 와 안찌깋누")
-        self.categoryTitle.accept(category)
     }
     
     override func setupBinding() {
@@ -98,19 +92,6 @@ final class HomeViewController: BaseViewController, SendCategoryDelegate {
             self.categoryTitle.accept(category)
         }
         .disposed(by: self.disposeBag)
-        
-        output.categoryButtonTapped.bind { [weak self] _ in
-            guard let self else { return }
-            var category = ""
-            self.categoryTitle.bind { str in
-                category = str
-            }
-            .disposed(by: disposeBag)
-            
-            print(category)
-            let vc = CategoryViewController(viewModel: CategoryViewModel(category: category))
-            vc.delegate = self
-        }
     }
 }
 //MARK: DataSource 관련
@@ -200,6 +181,7 @@ extension HomeViewController {
             
             self.categoryTitle.bind { [weak self] category in
                 guard let self else { return }
+                print(category, "카테고리 타이틀 변경될때마다 확인")
                 supplementaryView.categoryInsetLabel.text = category
             }
             .disposed(by: self.disposeBag)
