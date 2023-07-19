@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
 import SnapKit
 import Toast
 
@@ -45,6 +46,7 @@ class DimoLoginViewController: BaseViewController {
             }.disposed(by: disposeBag)
         
         output.toastMessage
+            .observe(on: MainScheduler.instance)
             .bind { message in
                 self.dimoLoginView.makeToast(message, style: ToastStyle.dimoToastStyle)
             }

@@ -26,7 +26,7 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     }
 
     func start() {
-        showHomeViewController(category: "애니")
+        showHomeViewController(category: "영화")
     }
     
     func showHomeViewController(category: String) {

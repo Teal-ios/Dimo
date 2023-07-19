@@ -23,7 +23,8 @@ class CategoryViewModel: ViewModelType {
     
     struct Output{
         let category: BehaviorRelay<String>
-
+        let movieButtonTapped: ControlEvent<Void>
+        let dramaButtonTapped: ControlEvent<Void>
     }
     
     init(coordinator: HomeCoordinator? = nil, category: String) {
@@ -37,8 +38,8 @@ class CategoryViewModel: ViewModelType {
         }.disposed(by: disposeBag)
         
         input.dramaButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.dismissViewController()
+//            self?.coordinator?.dismissViewController()
         }.disposed(by: disposeBag)
-        return Output(category: self.category)
+        return Output(category: self.category, movieButtonTapped: input.movieButtonTapped, dramaButtonTapped: input.dramaButtonTapped)
     }
 }

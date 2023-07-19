@@ -10,10 +10,12 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-final class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController, SendCategoryDelegate {
+    
     let homeView = HomeView()
     
     private var viewModel: HomeViewModel
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("HomeViewController: fatal error")
@@ -46,8 +48,14 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.homeView.collectionView.delegate = self
+        
         setNavigation()
         setDataSource()
+    }
+    
+    func sendCategory(category: String) {
+        print(category, "이게 와 안찌깋누")
+        self.categoryTitle.accept(category)
     }
     
     override func setupBinding() {
@@ -90,6 +98,19 @@ final class HomeViewController: BaseViewController {
             self.categoryTitle.accept(category)
         }
         .disposed(by: self.disposeBag)
+        
+        output.categoryButtonTapped.bind { [weak self] _ in
+            guard let self else { return }
+            var category = ""
+            self.categoryTitle.bind { str in
+                category = str
+            }
+            .disposed(by: disposeBag)
+            
+            print(category)
+            let vc = CategoryViewController(viewModel: CategoryViewModel(category: category))
+            vc.delegate = self
+        }
     }
 }
 //MARK: DataSource 관련

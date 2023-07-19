@@ -33,6 +33,7 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let animationData: PublishRelay<[AnimationData]>
         let category: BehaviorRelay<String>
+        let categoryButtonTapped: PublishSubject<String>
     }
     
     var animationData = PublishRelay<[AnimationData]>()
@@ -100,6 +101,6 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData, category: self.category)
+        return Output(animationData: self.animationData, category: self.category, categoryButtonTapped: input.categoryButtonTapped)
     }
 }
