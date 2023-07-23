@@ -27,7 +27,7 @@ final class HomeViewModel: ViewModelType {
         let mbtiCharacterCellSelected: PublishSubject<Void>
         let mbtiRecommendCellSeleted: PublishSubject<Void>
         let hotMovieCellSelected: PublishSubject<Void>
-        let viewDidLoad: Observable<Void>
+        let viewDidLoad: PublishRelay<Void>
     }
     
     struct Output {

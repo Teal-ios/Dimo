@@ -23,7 +23,7 @@ class MyMomentumViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    let viewDidLoadTriger = PublishRelay<Void>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
@@ -34,14 +34,14 @@ class MyMomentumViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewDidLoadTriger.accept(())
+        self.viewDidLoadTrigger.accept(())
         setupBinding()
         setNavigation()
         setDataSource()
     }
     
     override func setupBinding() {
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTriger)
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
         
         let output = viewModel.transform(input: input)
     }

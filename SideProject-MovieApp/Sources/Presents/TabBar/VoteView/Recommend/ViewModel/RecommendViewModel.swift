@@ -21,7 +21,7 @@ final class RecommendViewModel: ViewModelType {
     }
     
     struct Input{
-        let viewDidLoad: Observable<Void>
+        let viewDidLoad: PublishRelay<Void>
     }
     
     struct Output{
@@ -29,7 +29,6 @@ final class RecommendViewModel: ViewModelType {
     }
     
     var animationData = PublishRelay<[AnimationData]>()
-
     
     func transform(input: Input) -> Output {
         

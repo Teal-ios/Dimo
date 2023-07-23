@@ -39,6 +39,7 @@ final class HomeViewController: BaseViewController {
     let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
     let hotMoviePlusButtonTap = PublishSubject<Void>()
     let categoryTitle = BehaviorRelay(value: "")
+    let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func loadView() {
         view = homeView
@@ -46,6 +47,7 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewDidLoadTrigger.accept(())
         self.homeView.collectionView.delegate = self
         
         setNavigation()
@@ -53,7 +55,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: Observable.just(()))
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
         let output = self.viewModel.transform(input: input)
         
         output.animationData

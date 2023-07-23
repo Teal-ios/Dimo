@@ -31,16 +31,18 @@ final class RecommendViewController: BaseViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
     let searchNavigationButtonTap = PublishSubject<Void>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewDidLoadTrigger.accept(())
         self.selfView.collectionView.delegate = self
         searchNavigationItemSet()
         setDataSource()
     }
     
     override func setupBinding() {
-        let input = RecommendViewModel.Input(viewDidLoad: Observable.just(()))
+        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
         
         let output = self.viewModel.transform(input: input)
         output.animationData
