@@ -42,7 +42,6 @@ class MyMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
-
         
         let output = viewModel.transform(input: input)
     }
