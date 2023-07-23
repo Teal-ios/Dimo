@@ -36,7 +36,7 @@ final class HomeViewModel: ViewModelType {
         let categoryButtonTapped: PublishSubject<String>
     }
     
-    var animationData = PublishRelay<[AnimationData]>()
+    let animationData = PublishRelay<[AnimationData]>()
 
 
     init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, category: String) {

@@ -33,7 +33,7 @@ class SignupIdentificationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboard()
         
         print("check")
     }

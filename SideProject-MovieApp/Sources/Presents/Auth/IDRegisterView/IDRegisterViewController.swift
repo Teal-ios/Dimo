@@ -33,6 +33,7 @@ class IDRegisterViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         print("check")
     }
     override func setupBinding() {

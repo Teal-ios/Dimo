@@ -104,10 +104,10 @@ extension AuthRouter: TargetType2 {
         switch self {
             
         case .signup(let parameters):
-            let reqeustSignUpDTO = RequestSignUpDTO(user_id: parameters.user_id, password: parameters.password, name: parameters.name, sns_type: parameters.sns_type, agency: parameters.agency, phone_number: parameters.phone_number, nickname: parameters.nickname, mbti: parameters.mbti)
+            let requestSignUpDTO = RequestSignUpDTO(user_id: parameters.user_id, password: parameters.password, name: parameters.name, sns_type: parameters.sns_type, agency: parameters.agency, phone_number: parameters.phone_number, nickname: parameters.nickname, mbti: parameters.mbti)
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
-            return try? encoder.encode(reqeustSignUpDTO)
+            return try? encoder.encode(requestSignUpDTO)
             
         case .phoneNumberCheck(let parameters):
             let requestPhoneNumberCheckDTO = RequestPhoneNumberCheckDTO(phone_number: parameters.phone_number)

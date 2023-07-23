@@ -19,6 +19,11 @@ class NickNameViewController: BaseViewController {
         self.viewModel = viewModel
         super.init()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboard()
+    }
     override func setupBinding() {
         let input = NickNameViewModel.Input(textFieldInput: nickNameView.idTextFieldView.tf.rx.text, nextButtonTapped: nickNameView.nextButton.rx.tap, duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap)
         

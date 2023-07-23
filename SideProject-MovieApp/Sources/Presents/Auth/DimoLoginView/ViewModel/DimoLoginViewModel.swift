@@ -114,6 +114,7 @@ extension DimoLoginViewModel {
             print("🔥", login)
             
             if login.code == 200 {
+                UserDefaultManager.userId = login.user_id
                 loginRequestValid.accept(true)
             } else {
                 toastMessage.accept("아이디 비밀번호를 확인해 주세요.")

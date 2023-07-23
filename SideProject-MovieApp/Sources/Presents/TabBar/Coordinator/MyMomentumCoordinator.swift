@@ -22,7 +22,10 @@ final class MyMomentumCoordinator: Coordinator {
     }
     
     func showMyMomentumViewController() {
-        let viewModel = MyMomentumViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
+        let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
+        let viewModel = MyMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl)
         let vc = MyMomentumViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }

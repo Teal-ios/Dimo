@@ -12,6 +12,7 @@ final class NetworkService {
     func request(target: any TargetType2) async throws -> Data {
         do {
             let urlRequest = target.request
+            print("✅ 보내는 URLRequest",target.request)
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
              guard let response = response as? HTTPURLResponse else { throw NetworkError.httpURLResponse}
             

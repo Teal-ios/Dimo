@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MyMomentumViewController: BaseViewController {
     private let myMomentumView = MyMomentumView()
@@ -21,6 +23,8 @@ class MyMomentumViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    let viewDidLoadTriger = PublishRelay<Void>()
+    
     private var dataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
     
@@ -30,10 +34,20 @@ class MyMomentumViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewDidLoadTriger.accept(())
+        setupBinding()
         setNavigation()
         setDataSource()
     }
+    
+    override func setupBinding() {
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTriger)
+        
+        let output = viewModel.transform(input: input)
+    }
+}
 
+extension MyMomentumViewController {
     func setDataSource() {
         let cellLikeContentRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
         }
