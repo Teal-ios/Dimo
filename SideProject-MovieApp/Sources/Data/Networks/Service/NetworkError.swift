@@ -1,0 +1,49 @@
+//
+//  NetworkError.swift
+//  SideProject-MovieApp
+//
+//  Created by 이병현 on 2023/05/25.
+//
+//
+//import Foundation
+//
+//enum NetworkError: Int, Error {
+//
+//    case duplicatedError = 201
+//    case inValidInputBodyError = 202
+//    case inValidIDTokenError = 401
+//    case inValidURL = 404
+//    case unregisterUser = 406
+//    case internalServerError = 500
+//    case internalClientError = 501
+//    case unknown
+//
+//    var description: String { self.errorDescription }
+//}
+//
+//extension NetworkError {
+//
+//    var errorDescription: String {
+//        switch self {
+//        case .duplicatedError: return "201:DUPLICATE_ERROR"
+//        case .inValidInputBodyError: return "202:INVALID_INPUT_BODY_ERROR"
+//        case .inValidIDTokenError: return "401:INVALID_FCM_TOKEN_ERROR"
+//        case .inValidURL: return "404:INVALID_URL_ERROR"
+//        case .unregisterUser: return "406:UNREGISTER_USER_ERROR"
+//        case .internalServerError: return "500:INTERNAL_SERVER_ERROR"
+//        case .internalClientError: return "501:INTERNAL_CLIENT_ERROR"
+//        default: return "UN_KNOWN_ERROR"
+//        }
+//    }
+//}
+import Foundation
+
+enum NetworkError: Error {
+    case unexpectedData
+    case decodingError
+    case clientError
+    case serverError
+    case internalError
+    case httpURLResponse
+}
+

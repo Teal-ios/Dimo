@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class FindIDViewController: BaseViewController {
+final class FindIDViewController: BaseViewController {
     
     //MARK: Delegate
     let findIDView = FindIDView()
@@ -33,8 +33,8 @@ class FindIDViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.hideKeyboard()
+
     }
     
     override func setupBinding() {
@@ -52,7 +52,7 @@ class FindIDViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, str in
                 vc.findIDView.phoneNumberTextFieldView.tf.text = vc.viewModel.phoneNumberFormat(phoneNumber: str)
-            }.disposed(by: viewModel.disposebag)
+            }.disposed(by: viewModel.disposeBag)
         
         output.nextButtonValid
             .withUnretained(self)
@@ -68,7 +68,7 @@ class FindIDViewController: BaseViewController {
                 vc.viewModel.timer?.invalidate()
                 vc.findIDView.authNumberCheckLabel.text = "인증 번호가 올바르지 않습니다."
                 
-            }.disposed(by: viewModel.disposebag)
+            }.disposed(by: viewModel.disposeBag)
         
         output.telecomButtonTapped
             .withUnretained(self)

@@ -14,7 +14,7 @@ class CardCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "person.fill")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         return view
     }()
     
@@ -31,5 +31,13 @@ class CardCollectionViewCell: BaseCollectionViewCell {
         imgView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
+    }
+}
+
+extension CardCollectionViewCell {
+    func configureAttribute(with item: AnimationData) {
+        let imageUrl = URL(string: item.poster)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
     }
 }

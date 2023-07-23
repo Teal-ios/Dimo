@@ -7,38 +7,47 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
 
 class NickNameViewController: BaseViewController {
-    private let nickNameView = NickNameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
-    private var viewModel: IDNickNameViewModel
+    private let nickNameView = NicknameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
+    private var viewModel: NickNameViewModel
     override func loadView() {
         view = nickNameView
     }
-    init(viewModel: IDNickNameViewModel) {
+    init(viewModel: NickNameViewModel) {
         self.viewModel = viewModel
         super.init()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboard()
+    }
     override func setupBinding() {
-        let input = IDNickNameViewModel.Input(
-            textFieldInput: nickNameView.idTextFieldView.tf.rx.text ,nextButtonTapped: nickNameView.nextButton.rx.tap
-        )
+        let input = NickNameViewModel.Input(textFieldInput: nickNameView.idTextFieldView.tf.rx.text, nextButtonTapped: nickNameView.nextButton.rx.tap, duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap)
         
         let output = viewModel.transform(input: input)
-        output.idNickNameValid
+        
+        output.nicknameValid
             .withUnretained(self)
             .bind { vc, bool in
-                guard bool.policy && bool.repeatCheck else {
-                    if !bool.policy {
-                        vc.nickNameView.policyLabel.text = "사용할 수 없는 아이디입니다."
-                    }
-                    if !bool.repeatCheck {
-                        vc.nickNameView.policyLabel.text = "중복된 닉네임이 존재합니다."
-                    }
-                    vc.nickNameView.policyLabel.textColor = .error
-                    return
-                }
-                vc.nickNameView.policyLabel.textColor = .black
-                vc.nickNameView.nextButton.isEnabled = bool.policy
+                vc.nickNameView.duplicateCheckButton.configuration?.baseForegroundColor = bool ? .white : .black80
+                vc.nickNameView.duplicateCheckButton.isEnabled = bool
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
+                vc.nickNameView.policyLabel.text = bool ? "" : "두글자 이상 입력해 주세요."
+            }
+            .disposed(by: disposeBag)
+        
+        output.nextButtonValid
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
+            .bind { vc, bool in
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
+                vc.nickNameView.policyLabel.text = bool ? "사용 가능한 닉네임입니다." : "중복된 닉네임이 존재합니다."
+                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
+                vc.nickNameView.nextButton.isEnabled = bool
+                vc.nickNameView.nextButton.configuration?.baseBackgroundColor = bool ? .purple100 : .black80
             }.disposed(by: disposeBag)
     }
 }

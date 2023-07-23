@@ -33,7 +33,7 @@ class SignupIdentificationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboard()
         
         print("check")
     }
@@ -53,7 +53,7 @@ class SignupIdentificationViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, str in
             vc.signupIdentificationView.phoneNumberTextFieldView.tf.text = vc.viewModel.phoneNumberFormat(phoneNumber: str)
-        }.disposed(by: viewModel.disposebag)
+        }.disposed(by: viewModel.disposeBag)
         
         output.nextButtonValid
             .withUnretained(self)
@@ -69,7 +69,7 @@ class SignupIdentificationViewController: BaseViewController {
                 vc.viewModel.timer?.invalidate()
                 vc.signupIdentificationView.authNumberCheckLabel.text = "인증 번호가 올바르지 않습니다."
                 
-            }.disposed(by: viewModel.disposebag)
+            }.disposed(by: viewModel.disposeBag)
         
         output.telecomButtonTapped
             .withUnretained(self)
@@ -84,6 +84,8 @@ class SignupIdentificationViewController: BaseViewController {
                 .withUnretained(self)
                 .bind { vc, _ in
                     var attrStr = AttributedString(button?.titleLabel?.text ?? "")
+                    UserDefaultManager.agency = button?.titleLabel?.text ?? ""
+                    
                     attrStr.font = .suitFont(ofSize: 16, weight: .Medium)
                     vc.signupIdentificationView.telecomButton.configuration?.attributedTitle = attrStr
                     vc.signupIdentificationView.telecomButton.configuration?.baseForegroundColor = .white

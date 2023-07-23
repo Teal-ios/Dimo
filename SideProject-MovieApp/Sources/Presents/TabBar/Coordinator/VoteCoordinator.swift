@@ -12,8 +12,6 @@ final class VoteCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
-    
-    private let userDefaults = UserDefaults.standard
 
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -27,5 +25,23 @@ final class VoteCoordinator: Coordinator {
         let viewModel = VoteViewModel(coordinator: self)
         let vc = VoteViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
+    }
+    
+    func showSearchViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = SearchViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let vc = SearchViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showRecommendViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = RecommendViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let vc = RecommendViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

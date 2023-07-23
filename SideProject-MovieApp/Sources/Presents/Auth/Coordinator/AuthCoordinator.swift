@@ -14,11 +14,11 @@ final class AuthCoordinator: Coordinator {
     var type: CoordinatorStyleCase = .auth
     
     private let userDefaults = UserDefaults.standard
-
+    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         showLoginSplshViewController()
     }
@@ -30,7 +30,10 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showLoginStartViewController() {
-        let viewModel = LoginStartViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = LoginStartViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = LoginStartViewController(viewModel: viewModel)
         changeAnimation()
         navigationController.viewControllers = [vc]
@@ -41,7 +44,7 @@ final class AuthCoordinator: Coordinator {
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
         showSignupTermsViewController()
-
+        
     }
     func showSignupTermsViewController() {
         let viewModel = SignupTermsViewModel(coordinator: self)
@@ -49,27 +52,39 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func showSignupIdentificationViewController() {
-        let viewModel = SignupIdentificationViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = SignupIdentificationViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = SignupIdentificationViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showIDRegisterViewController() {
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .IDRegister)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = IDNickNameViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showNickNameViewController() {
-        let viewModel = IDNickNameViewModel(coordinator: self, currentViewCases: .NickName)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
         let vc = NickNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showPasswordViewController() {
-        let viewModel = PasswordViewModel(coordinator: self, currentViewCases: .Password)
+        let viewModel = PasswordViewModel(coordinator: self)
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     func showDimoLoginViewController() {
-        let viewModel = DimoLoginViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = DimoLoginViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = DimoLoginViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -84,8 +99,17 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showJoinMbtiViewController() {
-        let viewModel = JoinMbtiViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = JoinMbtiViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = JoinMbtiViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showJoinTermsViewController() {
+        let viewModel = JoinTermsViewModel(coordinator: self)
+        let vc = JoinTermsViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -100,6 +124,7 @@ final class AuthCoordinator: Coordinator {
         let vc = JoinCompleteViewController(viewModel: viewModel)
         changeAnimation()
         navigationController.viewControllers = [vc]
+        
     }
     
     func showFindIDViewController() {
@@ -111,6 +136,30 @@ final class AuthCoordinator: Coordinator {
     func showNotificationIDViewController() {
         let viewModel = NotificationIDViewModel(coordinator: self)
         let vc = NotificationIDViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showFindPWViewController() {
+        let viewModel = FindPWViewModel(coordinator: self)
+        let vc = FindPWViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showSendMessageViewController() {
+        let viewModel = SendMessageViewModel(coordinator: self)
+        let vc = SendMessageViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showErrorCommonViewController() {
+        let viewModel = ErrorCommonViewModel(coordinator: self)
+        let vc = ErrorCommonViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showErrorNotFoundViewController() {
+        let viewModel = ErrorNotFoundViewModel(coordinator: self)
+        let vc = ErrorNotFoundViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
 }

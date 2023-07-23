@@ -30,6 +30,7 @@ class LoginSplashViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginSplashView.animationView.play()
         //2초있다가 로그인 화면으로!!
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: viewModel.presentLoginStartViewController)
     }

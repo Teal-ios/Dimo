@@ -15,7 +15,7 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
     let imgView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
-        view.backgroundColor = .white100
+        view.backgroundColor = .black5
         view.clipsToBounds = true
         return view
     }()
@@ -35,5 +35,16 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(imgView.snp.width)
         }
+    }
+}
+
+extension CircleCollectionViewCell {
+    func configureAttribute(with item: Character) {
+        guard let data = Data(base64Encoded: item.characterImg, options: .ignoreUnknownCharacters)
+        else { return }
+        print(data, "인코딩된 이미지")
+        guard let image = UIImage(data: data) else { return }
+        imgView.image = image
+        imgView.contentMode = .scaleToFill
     }
 }

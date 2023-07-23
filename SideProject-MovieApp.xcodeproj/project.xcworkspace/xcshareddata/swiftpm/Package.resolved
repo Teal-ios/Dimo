@@ -37,6 +37,33 @@
       }
     },
     {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "c1f60c63f356d364f4284ba82961acbe7de79bcc",
+        "version" : "7.8.1"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "d6feea26a370019b4d3a85f5984cb95a2734776f",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "pageboy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uias/Pageboy",
+      "state" : {
+        "revision" : "5522aa6ae88633f6c23cf504e9cd684e963822f1",
+        "version" : "4.0.2"
+      }
+    },
+    {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
@@ -52,6 +79,24 @@
       "state" : {
         "revision" : "f222cbdf325885926566172f6f5f06af95473158",
         "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "tabman",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uias/Tabman.git",
+      "state" : {
+        "revision" : "6a87a2825939f5da06cf52a6582d67a646488cff",
+        "version" : "3.0.1"
+      }
+    },
+    {
+      "identity" : "toast-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scalessec/Toast-Swift.git",
+      "state" : {
+        "revision" : "0c9493eeacb102cc614da385cfaaf475379f4ab4",
+        "version" : "5.0.1"
       }
     }
   ],

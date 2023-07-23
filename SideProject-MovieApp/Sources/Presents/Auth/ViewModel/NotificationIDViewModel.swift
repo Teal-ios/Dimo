@@ -11,7 +11,7 @@ import RxCocoa
 
 final class NotificationIDViewModel: ViewModelType {
 
-    var disposebag = DisposeBag()
+    var disposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -28,12 +28,12 @@ final class NotificationIDViewModel: ViewModelType {
 
     func transform(input: Input) -> Output {
         input.pwFindButtonTapped.bind { [weak self]_ in
-            self?.coordinator?.showNotificationIDViewController()
-        }.disposed(by: disposebag)
+            self?.coordinator?.showFindPWViewController()
+        }.disposed(by: disposeBag)
         
         input.nextButtonTapped.bind { [weak self]_ in
             self?.coordinator?.showLoginStartViewController()
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
 }

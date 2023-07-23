@@ -105,19 +105,15 @@ class BaseViewController: UIViewController {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = .black
         
-//        let attributes = [NSAttributedString.Key.foregroundColor: Color.black,
-//                          NSAttributedString.Key.font: UIFont(name: "", size: 24) ]
+        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -100.0, bottom: 0.0, right: 0.0))
         
-//        navigationBarAppearance.titleTextAttributes = attributes
-//        navigationBarAppearance.buttonAppearance.normal.titleTextAttributes = attributes
-//        navigationBarAppearance.doneButtonAppearance.normal.titleTextAttributes = attributes
-
-        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0))
 
         navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
         
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .black60
@@ -154,9 +150,6 @@ extension BaseViewController {
         alert.addAction(canel)
         present(alert, animated: true)
     }
-    
-    
-    
     
     /// scroll in textfield
     func keyBoardHiddenGesture() {

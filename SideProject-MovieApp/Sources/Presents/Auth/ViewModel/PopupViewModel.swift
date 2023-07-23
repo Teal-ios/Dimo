@@ -11,7 +11,7 @@ import RxCocoa
 
 class PopupViewModel: ViewModelType {
     
-    var disposebag: DisposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
@@ -29,7 +29,7 @@ class PopupViewModel: ViewModelType {
         input.okButtonTapped.bind { [weak self] _ in
             self?.coordinator?.popPopupViewController()
             print("이게 찍혀야하는데")
-        }.disposed(by: disposebag)
+        }.disposed(by: disposeBag)
         return Output()
     }
 }
