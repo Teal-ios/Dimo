@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ProfileView: BaseView {
     
@@ -57,8 +58,9 @@ class ProfileView: BaseView {
     
     let introduceLabel: UILabel = {
         let label = UILabel()
+        label.font = Font.body3
         label.numberOfLines = 3
-        label.text = "자기소개입니당.ㅇ라민ㅇ라;ㅣㅁㄴ아ㅣ람ㄴ;ㅣㅇ라;ㅣㅁㄴㅇ라ㅣ;ㅁ낭ㄹ;ㅣㅁ나일;ㅏㅁㄴ;ㅣㅇ람ㄴㅇㄹㅇㄹㅇㅇasdasdasdasdasdadsdasdasdasdsadasdsadsadas"
+        label.textAlignment = .left
         return label
     }()
     
@@ -122,6 +124,24 @@ class ProfileView: BaseView {
         
         introduceView.snp.makeConstraints { make in
             make.edges.equalTo(introduceLabel).inset(-16)
+        }
+    }
+}
+
+extension ProfileView {
+    func configureProfileUpdate(profile: MyProfile) {
+        self.nicknameLabel.text = profile.nickname
+        self.mbtiLabel.text = profile.mbti
+        if profile.intro == nil {
+            self.introduceLabel.text = "자기소개를 추가해 보세요."
+            self.introduceLabel.textColor = .black60
+        } else {
+            self.introduceLabel.text = profile.intro
+        }
+        
+        let imageURL = URL(string: profile.profile_img ?? "nil")
+        if imageURL != URL(string: "nil") {
+            self.profileImageView.kf.setImage(with: imageURL)
         }
     }
 }

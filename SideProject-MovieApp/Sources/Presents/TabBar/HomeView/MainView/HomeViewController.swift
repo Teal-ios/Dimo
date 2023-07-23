@@ -38,7 +38,7 @@ final class HomeViewController: BaseViewController {
     let mbtiCharacterPlusButtonTap = PublishSubject<Void>()
     let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
     let hotMoviePlusButtonTap = PublishSubject<Void>()
-    let categoryTitle = BehaviorRelay(value: "")
+    let categoryTitle = PublishRelay<String>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func loadView() {
@@ -144,26 +144,31 @@ extension HomeViewController {
             }
         }
         
-        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { [weak self] supplementaryView, elementKind, indexPath in
+            guard let self else { return }
             switch indexPath.section {
             case 1:
                 supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    self?.heroPlusButtonTap.onNext(())
+                    guard let self else { return }
+                    self.heroPlusButtonTap.onNext(())
                 }
                 .disposed(by: self.disposeBag)
             case 2:
                 supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    self?.mbtiCharacterPlusButtonTap.onNext(())
+                    guard let self else { return }
+                    self.mbtiCharacterPlusButtonTap.onNext(())
                 }
                 .disposed(by: self.disposeBag)
             case 3:
                 supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    self?.mbtiRecommendPlusButtonTap.onNext(())
+                    guard let self else { return }
+                    self.mbtiRecommendPlusButtonTap.onNext(())
                 }
                 .disposed(by: self.disposeBag)
             case 4:
                 supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    self?.hotMoviePlusButtonTap.onNext(())
+                    guard let self else { return }
+                    self.hotMoviePlusButtonTap.onNext(())
                 }
                 .disposed(by: self.disposeBag)
             default:

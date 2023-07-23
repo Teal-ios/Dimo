@@ -24,6 +24,7 @@ class MyMomentumViewController: BaseViewController {
     }
     
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let myProfileData = PublishRelay<MyProfile>()
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
@@ -44,6 +45,13 @@ class MyMomentumViewController: BaseViewController {
         let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
         
         let output = viewModel.transform(input: input)
+        
+        output.myProfileData.bind { [weak self] myProfile in
+            guard let self else { return }
+            self.myProfileData.accept(myProfile)
+        }
+        .disposed(by: self.disposeBag)
+        
     }
 }
 
@@ -95,6 +103,13 @@ extension MyMomentumViewController {
             switch indexPath.section {
             case 0:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: ProfileHeader, for: indexPath)
+                self.myProfileData
+                    .observe(on: MainScheduler.instance)
+                    .bind { [weak self] profile in
+                    guard let self else { return }
+                    header.profileView.configureProfileUpdate(profile: profile)
+                }
+                .disposed(by: self.disposeBag)
                 return header
             case 1:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
