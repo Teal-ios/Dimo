@@ -20,40 +20,64 @@ final class MovieDetailViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Int, Characters>!
     
     let characterCellSelected = PublishSubject<Void>()
     let evaluateButtonTapped = PublishSubject<Void>()
-
-
+    let animationData = PublishRelay<DetailAnimationData>()
+    
+    
     override func loadView() {
         view = selfView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.selfView.characterCollectionView.delegate = self
         setDataSource()
+
     }
     
     override func setupBinding() {
-        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.evaluateButtonTapped)
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap)
         let output = self.viewModel.transform(input: input)
         
         output.plusButtonTapped.bind { [weak self] _ in
-            if self?.selfView.unfoldStackView.isHidden == true {
-                self?.selfView.changeIsHidden(isHidden: false)
+            guard let self else { return }
+            if self.selfView.unfoldStackView.isHidden == true {
+                self.selfView.changeIsHidden(isHidden: false)
             } else {
-                self?.selfView.changeIsHidden(isHidden: true)
+                self.selfView.changeIsHidden(isHidden: true)
             }
         }
         .disposed(by: disposeBag)
+        
+        output.animationData
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] animationData in
+                guard let self else { return }
+                self.animationData.accept(animationData)
+                self.selfView.configureUpdateUI(animationData: animationData)
+                self.selfView.headerView.configureUpdateUI(animationData: animationData)
+            }
+            .disposed(by: disposeBag)
+        
+        output.characterData
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] characters in
+                guard let self else { return }
+                var snapshot = NSDiffableDataSourceSnapshot<Int, Characters>()
+                snapshot.appendSections([0])
+                var sectionArr: [Characters] = characters
+                snapshot.appendItems(sectionArr, toSection: 0)
+                self.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
     }
     
     func setDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<CharacterMbtiCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<CharacterMbtiCollectionViewCell, Characters> { cell, indexPath, itemIdentifier in
+            cell.configureUpdateUI(characterData: itemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.characterCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -61,26 +85,14 @@ final class MovieDetailViewController: BaseViewController {
             return cell
         })
         
-        let characterHeader = UICollectionView.SupplementaryRegistration<MovieDetailHeaderView>(elementKind: MovieDetailHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.evaluateButton.rx.tap.bind { [weak self] _ in
-                self?.evaluateButtonTapped.onNext(())
-            }
-            .disposed(by: self.disposeBag)
+        let characterHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             let header = collectionView.dequeueConfiguredReusableSupplementary(using: characterHeader, for: indexPath)
             return header
         })
-     
-        snapshot.appendSections([0])
-        var movieArr: [HomeModel] = []
-        for _ in 1..<50 {
-            movieArr.append(HomeModel(image: nil))
-        }
-        
-        snapshot.appendItems(movieArr, toSection: 0)
-        dataSource.apply(snapshot)
     }
 }
 

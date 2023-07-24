@@ -12,10 +12,16 @@ class MyMomentumView: BaseView {
     
     lazy var containScrollView: UIScrollView = {
         let view = UIScrollView()
+        view.addSubview(profileView)
         view.addSubview(profileCollectionView)
         view.addSubview(digFinishCharacherCollectionView)
         view.addSubview(reviewCollectionView)
         view.addSubview(commentCollectionView)
+        return view
+    }()
+    
+    let profileView: ProfileView = {
+        let view = ProfileView()
         return view
     }()
     
@@ -44,10 +50,16 @@ class MyMomentumView: BaseView {
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
-        profileCollectionView.snp.makeConstraints { make in
+        profileView.snp.makeConstraints { make in
             make.top.equalTo(containScrollView.snp.top)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(600)
+            make.height.greaterThanOrEqualTo(350)
+        }
+        
+        profileCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(profileView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(240)
         }
         
         digFinishCharacherCollectionView.snp.makeConstraints { make in
@@ -74,7 +86,6 @@ class MyMomentumView: BaseView {
     private let groupRatio = 0.93
     private let headerRatio = 1.0
     private let headerAbsolute = 40.0
-    private let profileHeaderAbsolute = 410.0
     
     private func createProfileLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -109,25 +120,25 @@ class MyMomentumView: BaseView {
     private func profileLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemRatio / 3),
-            heightDimension: .fractionalHeight(itemRatio)
+            heightDimension: .fractionalHeight(itemRatio / 1.2)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
+            heightDimension: .fractionalHeight(groupRatio)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(profileHeaderAbsolute)
+            heightDimension: .absolute(headerAbsolute)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: ProfileHeaderView.identifier, alignment: .top
+            elementKind: MyMomentumHeaderView.identifier, alignment: .top
         )
         
         let section = NSCollectionLayoutSection(group: group)

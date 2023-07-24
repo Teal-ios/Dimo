@@ -9,9 +9,14 @@ import UIKit
 import SnapKit
 
 final class MovieDetailView: BaseView {
+    let headerView: MovieDetailHeaderView = {
+        let view = MovieDetailHeaderView()
+        return view
+    }()
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
+        view.addSubview(headerView)
         view.addSubview(characterCollectionView)
         view.addSubview(gradeTitleLabel)
         view.addSubview(gradeTotalView)
@@ -114,8 +119,8 @@ final class MovieDetailView: BaseView {
     lazy var unfoldStackView: UIStackView = {
         let view = UIStackView()
         view.isHidden = true
-        view.distribution = .fillEqually
-        view.spacing = 0
+        view.distribution = .fill
+        view.spacing = 20
         view.axis = .vertical
         view.addArrangedSubview(categoryLabel)
         view.addArrangedSubview(genreLabel)
@@ -129,8 +134,8 @@ final class MovieDetailView: BaseView {
     lazy var unfoldExplainStackView: UIStackView = {
         let view = UIStackView()
         view.isHidden = true
-        view.distribution = .fillEqually
-        view.spacing = 0
+        view.distribution = .fill
+        view.spacing = 20
         view.axis = .vertical
         view.addArrangedSubview(categoryExplainLabel)
         view.addArrangedSubview(genreExplainLabel)
@@ -177,7 +182,7 @@ final class MovieDetailView: BaseView {
         let label = UILabel()
         label.textColor = .black5
         label.font = Font.subtitle3
-        label.text = "공개"
+        label.text = "방영일"
         return label
     }()
     
@@ -209,7 +214,7 @@ final class MovieDetailView: BaseView {
         let label = UILabel()
         label.textColor = .black5
         label.font = Font.subtitle3
-        label.text = "크리에이터"
+        label.text = "감독"
         return label
     }()
     
@@ -225,7 +230,7 @@ final class MovieDetailView: BaseView {
         let label = UILabel()
         label.textColor = .black5
         label.font = Font.subtitle3
-        label.text = "관람가"
+        label.text = "등급"
         return label
     }()
     
@@ -240,12 +245,16 @@ final class MovieDetailView: BaseView {
     lazy var characterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
     private let itemRatio = 1.0
-    private let groupRatio = 0.92
+    private let groupRatio = 0.93
     private let headerRatio = 1.0
-    private let headerAbsolute = 520.0
+    private let headerAbsolute = 40.0
     
     override func setHierarchy() {
         self.addSubview(scrollView)
+    }
+    
+    override func setupAttributes() {
+        self.characterCollectionView.isScrollEnabled = false
     }
     
     override func setupLayout() {
@@ -254,11 +263,17 @@ final class MovieDetailView: BaseView {
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
+        headerView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top)
+            make.width.equalTo(scrollView.snp.width)
+            make.height.greaterThanOrEqualTo(480)
+        }
+        
         characterCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
             make.width.equalTo(scrollView.snp.width)
             make.centerX.equalToSuperview()
-            make.top.equalTo(scrollView.snp.top)
-            make.height.equalTo(700)
+            make.height.equalTo(240)
         }
         
         gradeTitleLabel.snp.makeConstraints { make in
@@ -338,7 +353,7 @@ extension MovieDetailView {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 4)
+            heightDimension: .fractionalHeight(groupRatio)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -349,7 +364,7 @@ extension MovieDetailView {
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
-            elementKind: MovieDetailHeaderView.identifier, alignment: .top
+            elementKind: MyMomentumHeaderView.identifier, alignment: .top
         )
         
         let section = NSCollectionLayoutSection(group: group)
@@ -378,6 +393,7 @@ extension MovieDetailView {
             }
             unfoldStackView.snp.removeConstraints()
             unfoldExplainStackView.snp.removeConstraints()
+            unfoldButton.updateButtonText(buttonText: "펼치기")
 
         } else {
             unfoldButton.snp.removeConstraints()
@@ -390,20 +406,19 @@ extension MovieDetailView {
             
             unfoldStackView.snp.removeConstraints()
             unfoldStackView.snp.remakeConstraints { make in
-                make.height.equalTo(222)
                 make.leading.equalTo(16)
                 make.width.equalTo(117)
-                make.top.equalTo(arrowBottomLabel.snp.bottom).offset(18)
+                make.top.equalTo(arrowBottomLabel.snp.bottom).offset(20)
                 make.bottom.equalTo(scrollView.snp.bottom)
             }
             unfoldExplainStackView.snp.removeConstraints()
             unfoldExplainStackView.snp.remakeConstraints { make in
-                make.height.equalTo(222)
                 make.leading.equalTo(unfoldStackView.snp.trailing)
                 make.trailing.equalTo(scrollView.safeAreaLayoutGuide).offset(-16)
-                make.top.equalTo(arrowBottomLabel.snp.bottom).offset(18)
+                make.top.equalTo(arrowBottomLabel.snp.bottom).offset(20)
                 make.bottom.equalTo(scrollView.snp.bottom)
             }
+            unfoldButton.updateButtonText(buttonText: "접기")
         }
         scrollView.layoutIfNeeded()
 
@@ -424,5 +439,16 @@ extension MovieDetailView {
             make.horizontalEdges.equalTo(scrollView.safeAreaLayoutGuide).inset(16)
         }
         scrollView.layoutIfNeeded()
+    }
+}
+
+extension MovieDetailView {
+    func configureUpdateUI(animationData: DetailAnimationData) {
+        self.categoryExplainLabel.text = "애니"
+        self.genreExplainLabel.text = animationData.genre
+        self.creatorExplainLabel.text = animationData.director
+        self.audienceExplainLabel.text = animationData.rate + "세 이상 관람가"
+        self.runningTimeLabel.isHidden = true
+        self.runningTimeExplainLabel.isHidden = true
     }
 }

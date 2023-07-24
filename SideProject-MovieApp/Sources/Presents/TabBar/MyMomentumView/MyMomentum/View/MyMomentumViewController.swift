@@ -61,6 +61,13 @@ class MyMomentumViewController: BaseViewController {
         }
         .disposed(by: self.disposeBag)
         
+        self.myProfileData
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] profile in
+            guard let self else { return }
+                myMomentumView.profileView.configureProfileUpdate(profile: profile)
+        }
+        .disposed(by: self.disposeBag)
     }
 }
 
@@ -75,18 +82,12 @@ extension MyMomentumViewController {
             return cell
         })
         
-        let ProfileHeader = UICollectionView.SupplementaryRegistration<ProfileHeaderView>(elementKind: ProfileHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        let profileHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
         }
         
         likeContentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
-            let header = collectionView.dequeueConfiguredReusableSupplementary(using: ProfileHeader, for: indexPath)
-            self.myProfileData
-                .observe(on: MainScheduler.instance)
-                .bind { [weak self] profile in
-                guard let self else { return }
-                header.profileView.configureProfileUpdate(profile: profile)
-            }
-            .disposed(by: self.disposeBag)
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: profileHeader, for: indexPath)
+
             return header
         })
         

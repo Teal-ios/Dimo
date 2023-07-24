@@ -16,7 +16,7 @@ struct DetailAnimationData: Hashable {
     let plot: String
     let poster_img: String
     let director: String
-    let release: String
+    let release: String?
     let rate: String
     let characters: [Characters]
 }

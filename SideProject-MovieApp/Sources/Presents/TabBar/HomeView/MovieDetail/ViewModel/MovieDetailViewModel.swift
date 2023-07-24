@@ -24,17 +24,20 @@ final class MovieDetailViewModel: ViewModelType {
     
     struct Input{
         let plusButtonTapped: ControlEvent<Void>
-        let evaluateButtonTapped: PublishSubject<Void>
+        let evaluateButtonTapped: ControlEvent<Void>
 
     }
     
     struct Output{
         let plusButtonTapped: ControlEvent<Void>
-
+        let animationData: PublishRelay<DetailAnimationData>
+        let characterData: PublishRelay<[Characters]>
     }
     
     var contentId = BehaviorRelay(value: "")
     let detailAnimationData = PublishRelay<DetailAnimationData>()
+    let characterData = PublishRelay<[Characters]>()
+
     
     func transform(input: Input) -> Output {
         input.evaluateButtonTapped.bind { [weak self] _ in
@@ -49,7 +52,7 @@ final class MovieDetailViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
         
-        return Output(plusButtonTapped: input.plusButtonTapped)
+        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData)
     }
 }
 
@@ -59,6 +62,7 @@ extension MovieDetailViewModel {
             let detailAnimationData = try await contentUseCase.excuteFetchDetailAnimationData(query: DetailAnimationDataQuery(content_id: content_id))
             print(detailAnimationData)
             self.detailAnimationData.accept(detailAnimationData)
+            self.characterData.accept(detailAnimationData.characters)
         }
     }
 }
