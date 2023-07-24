@@ -13,10 +13,10 @@ class MyMomentumView: BaseView {
     lazy var containScrollView: UIScrollView = {
         let view = UIScrollView()
         view.addSubview(profileView)
-        view.addSubview(profileCollectionView)
-        view.addSubview(digFinishCharacherCollectionView)
-        view.addSubview(reviewCollectionView)
-        view.addSubview(commentCollectionView)
+        view.addSubview(profileStackView)
+        view.addSubview(digStackView)
+        view.addSubview(reivewStackView)
+        view.addSubview(commentStackView)
         return view
     }()
     
@@ -29,6 +29,57 @@ class MyMomentumView: BaseView {
     lazy var digFinishCharacherCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createDigFinishLayout())
     lazy var reviewCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createReviewCommentLayout())
     lazy var commentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createReviewCommentLayout())
+    
+    lazy var profileStackView: UIStackView = {
+        let view = UIStackView()
+        view.distribution = .fill
+        view.addArrangedSubview(profileCollectionView)
+        view.addArrangedSubview(exceptionHandlingLikeContentView)
+        return view
+    }()
+    
+    lazy var digStackView: UIStackView = {
+        let view = UIStackView()
+        view.distribution = .fill
+        view.addArrangedSubview(digFinishCharacherCollectionView)
+        view.addArrangedSubview(exceptionHandlingDigView)
+        return view
+    }()
+    lazy var reivewStackView: UIStackView = {
+        let view = UIStackView()
+        view.distribution = .fill
+        view.addArrangedSubview(reviewCollectionView)
+        view.addArrangedSubview(exceptionHandlingReviewView)
+        return view
+    }()
+    
+    lazy var commentStackView: UIStackView = {
+        let view = UIStackView()
+        view.distribution = .fill
+        view.addArrangedSubview(commentCollectionView)
+        view.addArrangedSubview(exceptionHandlingCommentView)
+        return view
+    }()
+    
+    let exceptionHandlingLikeContentView: MyMomentumBaseExceptionHandlingView = {
+        let view = MyMomentumBaseExceptionHandlingView(title: "좋아하는 컨텐츠", subtitle: "좋아하는 컨텐츠가 없어요")
+        return view
+    }()
+    
+    let exceptionHandlingDigView: MyMomentumDigExceptionHandlingView = {
+        let view = MyMomentumDigExceptionHandlingView(title: "Dig 완료한 캐릭터", subtitle: "아직 기록이 없어요")
+        return view
+    }()
+    
+    let exceptionHandlingReviewView: MyMomentumBaseExceptionHandlingView = {
+        let view = MyMomentumBaseExceptionHandlingView(title: "내가 쓴 리뷰", subtitle: "작성된 리뷰가 없어요")
+        return view
+    }()
+    
+    let exceptionHandlingCommentView: MyMomentumBaseExceptionHandlingView = {
+        let view = MyMomentumBaseExceptionHandlingView(title: "내가 쓴 댓글", subtitle: "작성한 댓글이 없어요")
+        return view
+    }()
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,28 +107,28 @@ class MyMomentumView: BaseView {
             make.height.greaterThanOrEqualTo(350)
         }
         
-        profileCollectionView.snp.makeConstraints { make in
+        profileStackView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(240)
+            make.height.lessThanOrEqualTo(240)
         }
         
-        digFinishCharacherCollectionView.snp.makeConstraints { make in
+        digStackView.snp.makeConstraints { make in
             make.top.equalTo(profileCollectionView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(240)
+            make.height.lessThanOrEqualTo(240)
         }
         
-        reviewCollectionView.snp.makeConstraints { make in
+        reivewStackView.snp.makeConstraints { make in
             make.top.equalTo(digFinishCharacherCollectionView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(240)
+            make.height.lessThanOrEqualTo(240)
         }
         
-        commentCollectionView.snp.makeConstraints { make in
+        commentStackView.snp.makeConstraints { make in
             make.top.equalTo(reviewCollectionView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(240)
+            make.height.lessThanOrEqualTo(240)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
     }
@@ -214,5 +265,29 @@ extension MyMomentumView {
         section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
         return section
+    }
+}
+
+extension MyMomentumView {
+    func configureProfileUpdateUI(bool: Bool) {
+        if bool == true {
+            self.exceptionHandlingLikeContentView.isHidden = true
+            self.exceptionHandlingDigView.isHidden = true
+            self.exceptionHandlingReviewView.isHidden = true
+            self.exceptionHandlingCommentView.isHidden = true
+            self.profileCollectionView.isHidden = false
+            self.digFinishCharacherCollectionView.isHidden = false
+            self.reviewCollectionView.isHidden = false
+            self.commentCollectionView.isHidden = false
+        } else {
+            self.exceptionHandlingLikeContentView.isHidden = false
+            self.exceptionHandlingDigView.isHidden = false
+            self.exceptionHandlingReviewView.isHidden = false
+            self.exceptionHandlingCommentView.isHidden = false
+            self.profileCollectionView.isHidden = true
+            self.digFinishCharacherCollectionView.isHidden = true
+            self.reviewCollectionView.isHidden = true
+            self.commentCollectionView.isHidden = true
+        }
     }
 }
