@@ -70,7 +70,7 @@ class MyMomentumDigExceptionHandlingView: BaseView {
         digMeButton.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(32)
-            make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-32)
             make.height.equalTo(48)
         }
         
@@ -78,7 +78,7 @@ class MyMomentumDigExceptionHandlingView: BaseView {
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(digMeButton.snp.bottom).offset(16)
-            make.bottom.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
         }
     }
 }

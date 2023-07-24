@@ -269,25 +269,96 @@ extension MyMomentumView {
 }
 
 extension MyMomentumView {
-    func configureProfileUpdateUI(bool: Bool) {
-        if bool == true {
+    func configureProfileUpdateUI(dataExist: Bool) {
+        if dataExist {
             self.exceptionHandlingLikeContentView.isHidden = true
-            self.exceptionHandlingDigView.isHidden = true
-            self.exceptionHandlingReviewView.isHidden = true
-            self.exceptionHandlingCommentView.isHidden = true
-            self.profileCollectionView.isHidden = false
-            self.digFinishCharacherCollectionView.isHidden = false
-            self.reviewCollectionView.isHidden = false
-            self.commentCollectionView.isHidden = false
+            updateProfileExistLayout()
         } else {
             self.exceptionHandlingLikeContentView.isHidden = false
-            self.exceptionHandlingDigView.isHidden = false
-            self.exceptionHandlingReviewView.isHidden = false
-            self.exceptionHandlingCommentView.isHidden = false
             self.profileCollectionView.isHidden = true
+        }
+    }
+}
+
+extension MyMomentumView {
+    func configureDigUpdateUI(dataExist: Bool) {
+        if dataExist == true {
+            self.exceptionHandlingDigView.isHidden = true
+            updateDigExistLayout()
+        } else {
+            self.exceptionHandlingDigView.isHidden = false
             self.digFinishCharacherCollectionView.isHidden = true
+        }
+    }
+}
+
+extension MyMomentumView {
+    func configureReviewUpdateUI(dataExist: Bool) {
+        if dataExist == true {
+            self.exceptionHandlingReviewView.isHidden = true
+            updateReviewExistLayout()
+        } else {
+            self.exceptionHandlingReviewView.isHidden = false
             self.reviewCollectionView.isHidden = true
+        }
+    }
+}
+
+extension MyMomentumView {
+    func configureCommentUpdateUI(dataExist: Bool) {
+        if dataExist == true {
+            self.exceptionHandlingCommentView.isHidden = true
+            updateCommentExistLayout()
+        } else {
+            self.exceptionHandlingCommentView.isHidden = false
             self.commentCollectionView.isHidden = true
         }
+    }
+}
+
+extension MyMomentumView {
+    func updateProfileExistLayout() {
+        self.profileStackView.snp.remakeConstraints { make in
+            make.top.equalTo(profileView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(240)
+        }
+        
+        self.layoutIfNeeded()
+    }
+}
+
+extension MyMomentumView {
+    func updateDigExistLayout() {
+        self.digStackView.snp.remakeConstraints { make in
+            make.top.equalTo(profileCollectionView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(240)
+        }
+        self.layoutIfNeeded()
+    }
+}
+
+extension MyMomentumView {
+    func updateReviewExistLayout() {
+        self.reivewStackView.snp.remakeConstraints { make in
+            make.top.equalTo(digFinishCharacherCollectionView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(240)
+        }
+        self.layoutIfNeeded()
+    }
+}
+
+extension MyMomentumView {
+    func updateCommentExistLayout() {
+        self.commentStackView.snp.remakeConstraints { make in
+            make.top.equalTo(reviewCollectionView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(240)
+            make.bottom.equalTo(containScrollView.snp.bottom)
+        }
+        
+        self.layoutIfNeeded()
     }
 }
