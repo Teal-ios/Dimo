@@ -53,12 +53,12 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.posterCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showMovieDetailViewController()
+            self?.coordinator?.showMovieDetailViewController(content_id: "3371")
         }
         .disposed(by: disposeBag)
         
         input.mbtiMovieCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showMovieDetailViewController()
+            self?.coordinator?.showMovieDetailViewController(content_id: "3371")
         }
         .disposed(by: disposeBag)
         

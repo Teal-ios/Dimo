@@ -10,6 +10,8 @@ import RxSwift
 
 protocol ContentUseCase {
     func excuteFetchAnimationData() -> Observable<[AnimationData]>
+    
+    func excuteFetchDetailAnimationData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData
 }
 
 enum ContentUseCaseError: String, Error {
@@ -39,5 +41,15 @@ extension ContentUseCaseImpl {
         }
         
         return animationDataObservable
+    }
+}
+
+extension ContentUseCaseImpl {
+    func excuteFetchDetailAnimationData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData {
+        do {
+            return try await contentRepository.fetchDetailAnimatonData(query: query)
+        } catch {
+            throw ContentUseCaseError.excute
+        }
     }
 }

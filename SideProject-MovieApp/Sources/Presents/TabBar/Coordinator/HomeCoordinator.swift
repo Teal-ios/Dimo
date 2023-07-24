@@ -72,8 +72,11 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showMovieDetailViewController() {
-        let viewModel = MovieDetailViewModel(coordinator: self)
+    func showMovieDetailViewController(content_id: String) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = MovieDetailViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id)
         let vc = MovieDetailViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)

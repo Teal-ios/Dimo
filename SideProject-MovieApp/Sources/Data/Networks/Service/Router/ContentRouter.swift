@@ -9,9 +9,9 @@ import Foundation
 
 enum ContentRouter<R> {
     case inquireAnimationData
-    case inquireAnimationDetailData(parameters: String)
     case clickLike
     case cancelLike
+    case inquireDetailAnimationData(parameters: String)
 }
 
 extension ContentRouter: TargetType2 {
@@ -34,8 +34,8 @@ extension ContentRouter: TargetType2 {
         switch self {
         case .inquireAnimationData:
             return "/crawling/animedata"
-        case .inquireAnimationDetailData:
-            return "/detail/animedata"
+        case .inquireDetailAnimationData(let parameters):
+            return "/detail/animedata/\(parameters)"
         case .clickLike:
             return "/detail/like"
         case .cancelLike:
@@ -45,8 +45,6 @@ extension ContentRouter: TargetType2 {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .inquireAnimationDetailData(let parameters):
-            return [URLQueryItem(name: "content_Id", value: parameters)]
         default:
             return nil
         }
@@ -58,7 +56,7 @@ extension ContentRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .inquireAnimationDetailData, .inquireAnimationData, .clickLike, .cancelLike:
+        case .inquireAnimationData, .clickLike, .cancelLike, .inquireDetailAnimationData:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -69,7 +67,7 @@ extension ContentRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .inquireAnimationDetailData, .inquireAnimationData:
+        case .inquireDetailAnimationData, .inquireAnimationData:
             return .get
         case .cancelLike, .clickLike:
             return .post

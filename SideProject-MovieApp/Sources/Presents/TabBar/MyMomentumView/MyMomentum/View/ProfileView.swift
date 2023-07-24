@@ -14,6 +14,7 @@ class ProfileView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .suitFont(ofSize: 24, weight: .Bold)
+        label.textAlignment = .left
         label.text = "My Momentum"
         return label
     }()
@@ -85,7 +86,7 @@ class ProfileView: BaseView {
         let safeArea = self.safeAreaLayoutGuide
 
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(leading)
+            make.leading.equalTo(safeArea).offset(leading)
             make.top.equalTo(safeArea)
             make.height.equalTo(32)
         }
@@ -118,7 +119,7 @@ class ProfileView: BaseView {
         
         introduceLabel.snp.makeConstraints { make in
             make.top.equalTo(mbtiLabel.snp.bottom).offset(32)
-            make.horizontalEdges.equalTo(safeArea).inset(leading)
+            make.horizontalEdges.equalTo(safeArea).inset(32)
             make.height.greaterThanOrEqualTo(20)
         }
         

@@ -11,8 +11,16 @@ import RxCocoa
 
 final class MovieDetailViewModel: ViewModelType {
     
-    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
+    private let contentUseCase: ContentUseCase
+    
+    var disposeBag: DisposeBag = DisposeBag()
+    
+    init(coordinator: HomeCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String) {
+        self.coordinator = coordinator
+        self.contentUseCase = contentUseCase
+        self.contentId = BehaviorRelay(value: content_id)
+    }
     
     struct Input{
         let plusButtonTapped: ControlEvent<Void>
@@ -25,16 +33,32 @@ final class MovieDetailViewModel: ViewModelType {
 
     }
     
-    init(coordinator: HomeCoordinator? = nil) {
-        self.coordinator = coordinator
-    }
+    var contentId = BehaviorRelay(value: "")
+    let detailAnimationData = PublishRelay<DetailAnimationData>()
     
     func transform(input: Input) -> Output {
         input.evaluateButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showMovieDetailRankViewController()
+            guard let self else { return }
+            self.coordinator?.showMovieDetailRankViewController()
+        }
+        .disposed(by: disposeBag)
+        
+        self.contentId.bind { [weak self] contentId in
+            guard let self else { return }
+            self.getDetailAnimationViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
         
         return Output(plusButtonTapped: input.plusButtonTapped)
+    }
+}
+
+extension MovieDetailViewModel {
+    private func getDetailAnimationViewController(content_id: String) {
+        Task {
+            let detailAnimationData = try await contentUseCase.excuteFetchDetailAnimationData(query: DetailAnimationDataQuery(content_id: content_id))
+            print(detailAnimationData)
+            self.detailAnimationData.accept(detailAnimationData)
+        }
     }
 }
