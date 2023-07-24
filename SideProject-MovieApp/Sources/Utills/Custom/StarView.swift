@@ -78,11 +78,27 @@ class StarView: BaseView {
         }
         
         starStackView.snp.makeConstraints { make in
-            make.height.equalTo(32)
+            make.height.equalTo(star1ImageView.snp.height)
             make.centerY.equalToSuperview() // 수직 중앙 정렬 수정
             make.leading.equalTo(mbtiLabel.snp.trailing).offset(8)
             make.trailing.equalToSuperview()
             // 왼쪽 여백 수정
+        }
+        
+        star1ImageView.snp.makeConstraints { make in
+            make.width.equalTo(star1ImageView.snp.height)
+        }
+        star2ImageView.snp.makeConstraints { make in
+            make.width.equalTo(star1ImageView.snp.height)
+        }
+        star3ImageView.snp.makeConstraints { make in
+            make.width.equalTo(star1ImageView.snp.height)
+        }
+        star4ImageView.snp.makeConstraints { make in
+            make.width.equalTo(star1ImageView.snp.height)
+        }
+        star5ImageView.snp.makeConstraints { make in
+            make.width.equalTo(star1ImageView.snp.height)
         }
     }
 }

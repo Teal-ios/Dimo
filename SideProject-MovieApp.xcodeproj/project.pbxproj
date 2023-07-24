@@ -202,7 +202,7 @@
 		2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */; };
 		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
 		2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */; };
-		2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */; };
+		2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */; };
 		2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */; };
 		2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */; };
 		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
@@ -241,7 +241,6 @@
 		2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9232A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift */; };
 		2FD4D9262A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9252A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift */; };
 		2FD4D9282A6CCF9400E7972B /* ResponseLikeContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9272A6CCF9400E7972B /* ResponseLikeContentDTO.swift */; };
-		2FD4D9302A6E3EF100E7972B /* MyMomentumExceptionHandlingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D92F2A6E3EF100E7972B /* MyMomentumExceptionHandlingCollectionViewCell.swift */; };
 		2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */; };
 		2FD4D9352A6E453400E7972B /* DetailAnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */; };
 		2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9362A6E45A700E7972B /* Characters.swift */; };
@@ -584,7 +583,7 @@
 		2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumView.swift; sourceTree = "<group>"; };
 		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
 		2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewModel.swift; sourceTree = "<group>"; };
-		2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumFirstHeaderView.swift; sourceTree = "<group>"; };
+		2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumHeaderView.swift; sourceTree = "<group>"; };
 		2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumModel.swift; sourceTree = "<group>"; };
 		2FD11DD92A01019E006796DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -624,7 +623,6 @@
 		2FD4D9232A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeAnimationContentDTO.swift; sourceTree = "<group>"; };
 		2FD4D9252A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeMovieContentDTO.swift; sourceTree = "<group>"; };
 		2FD4D9272A6CCF9400E7972B /* ResponseLikeContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeContentDTO.swift; sourceTree = "<group>"; };
-		2FD4D92F2A6E3EF100E7972B /* MyMomentumExceptionHandlingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumExceptionHandlingCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimationDataQuery.swift; sourceTree = "<group>"; };
 		2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimationData.swift; sourceTree = "<group>"; };
 		2FD4D9362A6E45A700E7972B /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
@@ -2230,7 +2228,6 @@
 		2FD4D9292A6CDB2C00E7972B /* MyMomentum */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D92E2A6E3E9900E7972B /* Cell */,
 				2FD4D92B2A6CDB6400E7972B /* ViewModel */,
 				2FD11DD52A00FCE3006796DD /* Model */,
 				2FD4D92A2A6CDB5300E7972B /* View */,
@@ -2242,7 +2239,7 @@
 			isa = PBXGroup;
 			children = (
 				2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */,
-				2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */,
+				2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */,
 				2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */,
 				2FD11DD92A01019E006796DD /* ProfileView.swift */,
 				2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */,
@@ -2256,14 +2253,6 @@
 				2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2FD4D92E2A6E3E9900E7972B /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				2FD4D92F2A6E3EF100E7972B /* MyMomentumExceptionHandlingCollectionViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		2FD4D9312A6E44DB00E7972B /* Content */ = {
@@ -2893,7 +2882,7 @@
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
-				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
+				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* NicknameDuplicationQuery.swift in Sources */,
@@ -2967,7 +2956,6 @@
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
-				2FD4D9302A6E3EF100E7972B /* MyMomentumExceptionHandlingCollectionViewCell.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
