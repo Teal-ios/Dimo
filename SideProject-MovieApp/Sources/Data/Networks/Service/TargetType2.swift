@@ -39,6 +39,7 @@ extension TargetType2 {
         request.allHTTPHeaderFields = header
         request.httpBody = parameters?.data(using: .utf8)
         request.httpBody = body
+        let decoder = JSONDecoder()
         return request
     }
 }

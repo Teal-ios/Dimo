@@ -30,6 +30,7 @@ class CategoryViewController: BaseViewController {
         let input = CategoryViewModel.Input(movieButtonTapped: categoryView.movieButton.rx.tap, dramaButtonTapped: categoryView.animationButton.rx.tap)
         
         let output = viewModel.transform(input: input)
+        
         output.category.bind { [weak self] category in
             guard let self else { return }
             self.category.accept(category)

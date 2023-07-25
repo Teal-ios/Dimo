@@ -29,4 +29,13 @@ final class MyMomentumCoordinator: Coordinator {
         let vc = MyMomentumViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
+    
+    func showEditProfileViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
+        let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
+        let viewModel = EditProfileViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl)
+        let vc = EditProfileViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

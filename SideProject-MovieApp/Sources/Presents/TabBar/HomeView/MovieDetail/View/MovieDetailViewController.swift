@@ -75,6 +75,7 @@ final class MovieDetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.likeButtonTapped
+            .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
                 if self.selfView.headerView.likeButton.image(for: .normal) == UIImage(named: "LikeNonSelect") {

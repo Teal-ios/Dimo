@@ -42,7 +42,7 @@ final class MovieDetailViewModel: ViewModelType {
     let likeChoice = PublishRelay<LikeChoice>()
     let likeCancel = PublishRelay<LikeCancel>()
     let likeContentCheck = PublishRelay<LikeContentCheck>()
-
+    
     
     func transform(input: Input) -> Output {
         
@@ -57,7 +57,7 @@ final class MovieDetailViewModel: ViewModelType {
         self.contentId.bind { [weak self] contentId in
             guard let self else { return }
             guard let user_id = UserDefaultManager.userId else { return }
-
+            
             self.getDetailAnimationViewController(content_id: contentId)
             self.getLikeContentCheck(user_id: user_id, content_type: "anime", contentId: contentId)
             nextContentId = contentId
@@ -71,7 +71,6 @@ final class MovieDetailViewModel: ViewModelType {
                 self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
                 self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
             } else {
-                self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
                 self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
             }
         }

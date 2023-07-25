@@ -150,6 +150,9 @@
 		2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */; };
 		2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */; };
 		2FBFF83F2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */; };
+		2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */; };
+		2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */; };
+		2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */; };
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
@@ -547,6 +550,9 @@
 		2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeCancelDTO.swift; sourceTree = "<group>"; };
 		2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGradeChoiceAndModifyDTO.swift; sourceTree = "<group>"; };
 		2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeContentCheckDTO.swift; sourceTree = "<group>"; };
+		2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
@@ -1597,6 +1603,42 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		2FBFF8402A6FA59E007914A1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D92B2A6CDB6400E7972B /* ViewModel */,
+				2FD11DD52A00FCE3006796DD /* Model */,
+				2FD4D92A2A6CDB5300E7972B /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2FBFF8412A6FA5AC007914A1 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8432A6FA5CC007914A1 /* ViewModel */,
+				2FBFF8422A6FA5C8007914A1 /* View */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		2FBFF8422A6FA5C8007914A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */,
+				2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FBFF8432A6FA5CC007914A1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2283,9 +2325,8 @@
 		2FD4D9292A6CDB2C00E7972B /* MyMomentum */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D92B2A6CDB6400E7972B /* ViewModel */,
-				2FD11DD52A00FCE3006796DD /* Model */,
-				2FD4D92A2A6CDB5300E7972B /* View */,
+				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
+				2FBFF8402A6FA59E007914A1 /* Main */,
 			);
 			path = MyMomentum;
 			sourceTree = "<group>";
@@ -2942,12 +2983,14 @@
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
+				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
+				2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* NicknameDuplicationQuery.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
@@ -3044,6 +3087,7 @@
 				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
+				2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,

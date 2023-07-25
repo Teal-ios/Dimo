@@ -18,10 +18,10 @@ final class HomeViewModel: ViewModelType {
 
     struct Input {
         let categoryButtonTapped: PublishSubject<String>
-        let heroPlusButtonTapped: PublishSubject<Void>
-        let characterPlusButtonTapped: PublishSubject<Void>
-        let mbtiRecommendPlusButtonTapped: PublishSubject<Void>
-        let hotMoviePlusButtonTapped: PublishSubject<Void>
+        let heroPlusButtonTapped: ControlEvent<Void>
+        let characterPlusButtonTapped: ControlEvent<Void>
+        let mbtiRecommendPlusButtonTapped: ControlEvent<Void>
+        let hotMoviePlusButtonTapped: ControlEvent<Void>
         let posterCellSelected: PublishSubject<Void>
         let mbtiMovieCellSelected: PublishSubject<Void>
         let mbtiCharacterCellSelected: PublishSubject<Void>
@@ -72,7 +72,8 @@ final class HomeViewModel: ViewModelType {
         
         input.heroPlusButtonTapped
             .bind { [weak self] _ in
-            self?.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
+                guard let self else { return }
+            self.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
         }
         .disposed(by: disposeBag)
         
