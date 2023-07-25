@@ -9,9 +9,11 @@ import Foundation
 
 enum ContentRouter<R> {
     case inquireAnimationData
-    case clickLike
-    case cancelLike
     case inquireDetailAnimationData(parameters: String)
+    case likeChoice(parameters: LikeChoiceQuery)
+    case likeCancel(parameters: LikeCancelQuery)
+    case gradeChoiceAndModify(parameters: GradeChoiceAndModifyQuery)
+    case likeContentCheck(parameters: LikeContentCheckQuery)
 }
 
 extension ContentRouter: TargetType2 {
@@ -36,15 +38,21 @@ extension ContentRouter: TargetType2 {
             return "/crawling/animedata"
         case .inquireDetailAnimationData(let parameters):
             return "/detail/animedata/\(parameters)"
-        case .clickLike:
+        case .likeChoice:
             return "/detail/like"
-        case .cancelLike:
+        case .likeCancel:
             return "/detail/dislike"
+        case .gradeChoiceAndModify:
+            return "/detail/grade"
+        case .likeContentCheck:
+            return "/detail/is_like"
         }
     }
     
     var queryItems: [URLQueryItem]? {
         switch self {
+        case .likeContentCheck(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "contentId", value: parameters.contentId)]
         default:
             return nil
         }
@@ -56,20 +64,43 @@ extension ContentRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .inquireAnimationData, .clickLike, .cancelLike, .inquireDetailAnimationData:
+        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
     
     var body: Data? {
-        return nil
+        switch self {
+        case .likeChoice(let parameters):
+            let requestLikeChoiceDTO = RequestLikeChoiceDTO(user_id: parameters.user_id, content_type: parameters.content_type, contentId: parameters.contentId)
+            print(requestLikeChoiceDTO)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestLikeChoiceDTO)
+            
+        case .likeCancel(let parameters):
+            let requestLikeCancelDTO = RequestLikeCancelDTO(user_id: parameters.user_id, content_type: parameters.content_type, contentId: parameters.contentId)
+            print(requestLikeCancelDTO)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestLikeCancelDTO)
+            
+        case .gradeChoiceAndModify(let parameters):
+            let requestGradeChoiceAndModifyDTO = RequestGradeChoiceAndModifyDTO(user_id: parameters.user_id, contentId: parameters.contentId, content_type: parameters.content_type, grade: parameters.grade)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestGradeChoiceAndModifyDTO)
+            
+        default:
+            return nil
+        }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .inquireDetailAnimationData, .inquireAnimationData:
+        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck:
             return .get
-        case .cancelLike, .clickLike:
+        case .likeCancel, .likeChoice, .gradeChoiceAndModify:
             return .post
         }
     }

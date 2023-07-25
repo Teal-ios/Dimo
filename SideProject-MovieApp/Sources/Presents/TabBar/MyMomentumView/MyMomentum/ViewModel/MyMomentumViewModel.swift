@@ -25,15 +25,15 @@ final class MyMomentumViewModel: ViewModelType {
         let viewDidLoad: PublishRelay<Void>
     }
     
-    let myProfile = PublishRelay<MyProfile>()
-    let likeAnimationContent = PublishRelay<LikeAnimationContent>()
-    let likeMoviewContent = PublishRelay<LikeMovieContent>()
-    
     struct Output {
         let myProfileData: PublishRelay<MyProfile>
         let likeAnimationContentData: PublishRelay<LikeAnimationContent>
         let likeMovieContentData: PublishRelay<LikeMovieContent>
     }
+    
+    let myProfile = PublishRelay<MyProfile>()
+    let likeAnimationContent = PublishRelay<LikeAnimationContent>()
+    let likeMoviewContent = PublishRelay<LikeMovieContent>()
     
     func transform(input: Input) -> Output {
         

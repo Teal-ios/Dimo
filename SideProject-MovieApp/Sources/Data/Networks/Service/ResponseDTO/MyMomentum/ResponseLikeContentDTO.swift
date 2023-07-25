@@ -8,7 +8,7 @@
 import Foundation
 
 struct ResponseLikeContentDTO: Decodable {
-    let content_type: String
+    let content_type: String?
     let content_id: Int
     
     enum CodingKeys: String, CodingKey {

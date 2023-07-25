@@ -11,4 +11,8 @@ struct RequestModifyMyProfileDTO: Encodable {
     let user_id: String
     let profile_img: String?
     let intro: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case user_id, profile_img, intro
+    }
 }
