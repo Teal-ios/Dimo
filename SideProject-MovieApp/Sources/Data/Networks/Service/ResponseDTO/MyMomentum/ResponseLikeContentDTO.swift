@@ -8,15 +8,15 @@
 import Foundation
 
 struct ResponseLikeContentDTO: Decodable {
-    let content_type: String?
-    let content_id: Int
+    let anime_id: Int
+    let poster_img: String
     
     enum CodingKeys: String, CodingKey {
-        case content_type, content_id
+        case anime_id, poster_img
     }
 }
 extension ResponseLikeContentDTO {
     var toDomain: LikeContent {
-        return .init(content_type: content_type, content_id: content_id)
+        return .init(anime_id: anime_id, poster_img: poster_img)
     }
 }

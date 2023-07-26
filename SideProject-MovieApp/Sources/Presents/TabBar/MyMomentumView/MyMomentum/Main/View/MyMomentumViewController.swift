@@ -73,7 +73,7 @@ class MyMomentumViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] likeAnimationContent in
                 guard let self else { return }
-                if likeAnimationContent.like_content == [] {
+                if likeAnimationContent.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
                     self.myMomentumView.configureDigUpdateUI(dataExist: true)
                     self.myMomentumView.configureCommentUpdateUI(dataExist: true)
@@ -113,7 +113,7 @@ extension MyMomentumViewController {
         var sectionArr: [LikeContent] = []
         
         for i in 1...10 {
-            sectionArr.append(LikeContent(content_type: "", content_id: i))
+            sectionArr.append(LikeContent(anime_id: i, poster_img: "123"))
         }
         
         likeContentSnapshot.appendItems(sectionArr, toSection: 0)

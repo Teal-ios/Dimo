@@ -20,6 +20,13 @@ extension ContentRouter: TargetType2 {
     
     typealias Response = R
     
+    var header: [String : String] {
+        switch self {
+        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify:
+            return ["accept" : "application/json" , "Content-Type": "application/json"]
+        }
+    }
+        
     var port: Int {
         return 3000
     }
@@ -58,15 +65,17 @@ extension ContentRouter: TargetType2 {
         }
     }
     
-    var parameters: String? {
-        return nil
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck:
+            return .get
+        case .likeCancel, .likeChoice, .gradeChoiceAndModify:
+            return .post
+        }
     }
     
-    var header: [String : String] {
-        switch self {
-        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify:
-            return ["accept" : "application/json" , "Content-Type": "application/json"]
-        }
+    var parameters: String? {
+        return nil
     }
     
     var body: Data? {
@@ -93,15 +102,6 @@ extension ContentRouter: TargetType2 {
             
         default:
             return nil
-        }
-    }
-    
-    var httpMethod: HTTPMethod {
-        switch self {
-        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck:
-            return .get
-        case .likeCancel, .likeChoice, .gradeChoiceAndModify:
-            return .post
         }
     }
 }

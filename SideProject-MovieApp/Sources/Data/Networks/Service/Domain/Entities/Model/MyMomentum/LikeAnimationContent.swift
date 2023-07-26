@@ -10,5 +10,5 @@ import Foundation
 struct LikeAnimationContent: Hashable {
     let code: Int
     let message: String
-    let like_content: [LikeContent?]
+    let like_content_info: [LikeContent?]
 }
