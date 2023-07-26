@@ -23,6 +23,8 @@ final class EditProfileViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    let profileImage = PublishRelay<String?>()
+    
     let textViewPlaceHolder = "자기소개를 입력해 보세요"
     
     override func loadView() {
@@ -36,7 +38,7 @@ final class EditProfileViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = EditProfileViewModel.Input(introduceText: self.selfView.introduceEditTextView.rx.text, editProfileImageButtonTap: self.selfView.profileImageEditButton.rx.tap)
+        let input = EditProfileViewModel.Input(introduceText: self.selfView.introduceEditTextView.rx.text, editProfileImageButtonTap: self.selfView.profileImageEditButton.rx.tap, okButtonTap: self.selfView.okButton.rx.tap, profileImage: self.profileImage)
         
         let output = viewModel.transform(input: input)
         
@@ -74,6 +76,11 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.selfView.updateProfileImage(image: pickedImage)
+            
+            if let data = pickedImage.jpegData(compressionQuality: 1) {
+                let base64 = data.base64EncodedString()
+                self.profileImage.accept(base64)
+            }
         }
         self.dismiss(animated: true)
     }

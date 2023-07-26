@@ -24,6 +24,8 @@ final class EditProfileViewModel: ViewModelType {
     struct Input {
         let introduceText: ControlProperty<String?>
         let editProfileImageButtonTap: ControlEvent<Void>
+        let okButtonTap: ControlEvent<Void>
+        let profileImage: PublishRelay<String?>
     }
     
     struct Output {

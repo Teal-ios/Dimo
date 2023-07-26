@@ -87,6 +87,37 @@ final class MovieDetailViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.likeChoice
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            guard let self else { return }
+            self.selfView.headerView.updateLikeButtonUI(like: true)
+        }
+        .disposed(by: disposeBag)
+        
+        output.likeCancel
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+                guard let self else { return }
+                self.selfView.headerView.updateLikeButtonUI(like: false)
+        }
+        .disposed(by: disposeBag)
+        
+        output.likeContentCheck
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] likeContent in
+                guard let self else { return }
+                switch likeContent.code {
+                case 200:
+                    self.selfView.headerView.updateLikeButtonUI(like: true)
+                case 201:
+                    self.selfView.headerView.updateLikeButtonUI(like: false)
+                default:
+                    return
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     func setDataSource() {

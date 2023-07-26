@@ -34,6 +34,9 @@ final class MovieDetailViewModel: ViewModelType {
         let animationData: PublishRelay<DetailAnimationData>
         let characterData: PublishRelay<[Characters]>
         let likeButtonTapped: ControlEvent<Void>
+        let likeChoice: PublishRelay<LikeChoice>
+        let likeCancel: PublishRelay<LikeCancel>
+        let likeContentCheck: PublishRelay<LikeContentCheck>
     }
     
     var contentId = BehaviorRelay(value: "")
@@ -69,17 +72,15 @@ final class MovieDetailViewModel: ViewModelType {
             guard let user_id = UserDefaultManager.userId else { return }
             if likeContentCheck == true {
                 print("컨텐츠가 있다면")
-                self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
                 self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
             } else {
                 print("컨텐츠가 없다면")
                 self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
-                self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
             }
         }
         .disposed(by: disposeBag)
         
-        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped)
+        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck)
     }
 }
 
