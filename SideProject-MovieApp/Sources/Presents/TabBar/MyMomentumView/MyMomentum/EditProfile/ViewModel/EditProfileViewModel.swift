@@ -22,14 +22,15 @@ final class EditProfileViewModel: ViewModelType {
     }
     
     struct Input {
-        
+        let introduceText: ControlProperty<String?>
+        let editProfileImageButtonTap: ControlEvent<Void>
     }
     
     struct Output {
-        
+        let editProfileImageButtonTap: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        return Output(editProfileImageButtonTap: input.editProfileImageButtonTap)
     }
 }

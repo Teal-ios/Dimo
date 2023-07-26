@@ -79,8 +79,10 @@ final class MovieDetailViewController: BaseViewController {
             .bind { [weak self] _ in
                 guard let self else { return }
                 if self.selfView.headerView.likeButton.image(for: .normal) == UIImage(named: "LikeNonSelect") {
+                    print("몇번울리니")
                     self.likeContentCheckTrigger.accept(false)
                 } else {
+                    print("몇번울리니")
                     self.likeContentCheckTrigger.accept(true)
                 }
             }
@@ -98,7 +100,7 @@ final class MovieDetailViewController: BaseViewController {
         })
         
         let characterHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            
+            supplementaryView.titleLabel.text = "등장인물"
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

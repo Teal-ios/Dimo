@@ -68,9 +68,12 @@ final class MovieDetailViewModel: ViewModelType {
             guard let self else { return }
             guard let user_id = UserDefaultManager.userId else { return }
             if likeContentCheck == true {
-                self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
+                print("컨텐츠가 있다면")
                 self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
+                self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
             } else {
+                print("컨텐츠가 없다면")
+                self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
                 self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
             }
         }

@@ -73,7 +73,6 @@ final class WriteView: BaseView {
     
     let reviewTextView: UITextView = {
        let view = UITextView()
-        view.backgroundColor = .black100
         view.text = "정대만에 대한 생각을 자유롭게 남겨 주세요"
         view.textColor = .black80
         return view
