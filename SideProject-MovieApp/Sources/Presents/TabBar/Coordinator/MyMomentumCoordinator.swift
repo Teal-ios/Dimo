@@ -38,4 +38,13 @@ final class MyMomentumCoordinator: Coordinator {
         let vc = EditProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showMyContentMoreViewController(likeContentList: [LikeContent?]) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
+        let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
+        let viewModel = MyContentMoreViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl, likeContent: likeContentList)
+        let vc = MyContentMoreViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

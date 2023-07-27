@@ -24,16 +24,20 @@ final class MyMomentumViewModel: ViewModelType {
     struct Input {
         let viewDidLoad: PublishRelay<Void>
         let editProfileButtonTap: ControlEvent<Void>
+        let likeContentMoreButtonTap: PublishRelay<Void>
+        let digFinishMoreButtonTap: PublishRelay<Void>
+        let reviewMoreButtonTap: PublishRelay<Void>
+        let commentMoreButtonTap: PublishRelay<Void>
     }
     
     struct Output {
         let myProfileData: PublishRelay<MyProfile>
-        let likeAnimationContentData: PublishRelay<LikeAnimationContent>
+        let likeAnimationContentData: BehaviorRelay<LikeAnimationContent?>
         let likeMovieContentData: PublishRelay<LikeMovieContent>
     }
     
     let myProfile = PublishRelay<MyProfile>()
-    let likeAnimationContent = PublishRelay<LikeAnimationContent>()
+    let likeAnimationContent = BehaviorRelay<LikeAnimationContent?>(value: nil)
     let likeMoviewContent = PublishRelay<LikeMovieContent>()
     
     func transform(input: Input) -> Output {
@@ -59,7 +63,17 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        
+        input.likeContentMoreButtonTap
+            .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
+                return self.likeAnimationContent
+            })
+            .bind { [weak self] likeAnimation in
+                guard let self else { return }
+                guard let likeAnimation else { return }
+                self.coordinator?.showMyContentMoreViewController(likeContentList: likeAnimation.like_content_info)
+            }
+            .disposed(by: disposeBag)
+
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent)
     }
 }

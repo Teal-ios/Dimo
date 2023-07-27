@@ -157,7 +157,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            
+            supplementaryView.titleLabel.text = "ISFJ가 주인공인 영화"
         }
         
         mbtiHeroDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -181,6 +181,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "스포주의! ISFJ 캐릭터 모아보기"
         }
         
         characterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -204,6 +205,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "ISFJ가 추천한 영화"
         }
         
         recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -227,6 +229,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "지금 핫한 영화"
         }
         
         nowHotDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

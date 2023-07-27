@@ -8,13 +8,18 @@
 import UIKit
 import SnapKit
 
-final class FeedDetailView: BaseScrollView {
+final class FeedDetailView: BaseView {
+    
+    lazy var containScrollView: UIScrollView = {
+        let view = UIScrollView()
+        return view
+    }()
     
     lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryLayout())
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
-    private let commentTotalView: UIView = {
+    let commentTotalView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         return view
@@ -42,12 +47,18 @@ final class FeedDetailView: BaseScrollView {
         return view
     }()
     
+    let spoilerCheckImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "spoilerCheckOff")
+        return view
+    }()
+    
     let spoilerLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
         label.textAlignment = .center
         label.textColor = .black60
-        label.text = "✓ 스포"
+        label.text = "스포"
         return label
     }()
     
@@ -98,6 +109,7 @@ final class FeedDetailView: BaseScrollView {
         self.addSubview(commentTotalView)
         self.addSubview(commentContainView)
         self.addSubview(spoilerView)
+        self.addSubview(spoilerCheckImageView)
         self.addSubview(spoilerLabel)
         self.addSubview(spoilerButton)
         self.addSubview(registrationView)
@@ -111,12 +123,13 @@ final class FeedDetailView: BaseScrollView {
         
         categoryCollectionView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(60)
+            make.height.equalTo(44)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(categoryCollectionView.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(categoryCollectionView.snp.bottom)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-84)
         }
         
         commentTotalView.snp.makeConstraints { make in
@@ -134,8 +147,15 @@ final class FeedDetailView: BaseScrollView {
             make.width.equalTo(52)
         }
         
+        spoilerCheckImageView.snp.makeConstraints { make in
+            make.leading.equalTo(spoilerView.snp.leading).offset(4)
+            make.width.height.equalTo(16)
+            make.centerY.equalTo(spoilerView)
+        }
+        
         spoilerLabel.snp.makeConstraints { make in
-            make.edges.equalTo(spoilerView).inset(4)
+            make.trailing.verticalEdges.equalTo(spoilerView).inset(4)
+            make.leading.equalTo(spoilerCheckImageView.snp.trailing).offset(2)
         }
         
         spoilerButton.snp.makeConstraints { make in
@@ -204,11 +224,11 @@ extension FeedDetailView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
+            heightDimension: .absolute(216)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -254,4 +274,33 @@ extension FeedDetailView {
             
             return section
         }
+}
+
+extension FeedDetailView {
+    func updateSpoilerButtonUI(spoiler: Bool) {
+        switch spoiler {
+        case true:
+            spoilerView.layer.borderColor = UIColor.purple100.cgColor
+            spoilerCheckImageView.image = UIImage(named: "spoilerCheckOn")
+            spoilerLabel.textColor = .white100
+        case false:
+            spoilerView.layer.borderColor = UIColor.black80.cgColor
+            spoilerCheckImageView.image = UIImage(named: "spoilerCheckOff")
+            spoilerLabel.textColor = .black60
+        }
+    }
+}
+
+extension FeedDetailView {
+    func updateCommentTextField(textValid: Bool) {
+        switch textValid {
+            
+        case true:
+            commentTextField.textColor = .black5
+            registrationLabel.textColor = .black5
+        case false:
+            commentTextField.textColor = .black80
+            registrationLabel.textColor = .black80
+        }
+    }
 }

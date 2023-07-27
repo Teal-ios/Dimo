@@ -132,6 +132,9 @@
 		2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */; };
 		2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */; };
 		2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */; };
+		2FBF64B22A71FE5C0036401F /* MyContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF64B12A71FE5C0036401F /* MyContentMoreView.swift */; };
+		2FBF64B42A71FE6B0036401F /* MyContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF64B32A71FE6B0036401F /* MyContentMoreViewController.swift */; };
+		2FBF64B62A71FE7D0036401F /* MyContentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF64B52A71FE7D0036401F /* MyContentMoreViewModel.swift */; };
 		2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */; };
 		2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1192A262735001D5425 /* NicknameChange.swift */; };
 		2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */; };
@@ -533,6 +536,9 @@
 		2FBF4CA729CC964200B65125 /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
 		2FBF4CA929CC96A100B65125 /* CoordinatorStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStyleCase.swift; sourceTree = "<group>"; };
 		2FBF4CAC29CC979D00B65125 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		2FBF64B12A71FE5C0036401F /* MyContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentMoreView.swift; sourceTree = "<group>"; };
+		2FBF64B32A71FE6B0036401F /* MyContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentMoreViewController.swift; sourceTree = "<group>"; };
+		2FBF64B52A71FE7D0036401F /* MyContentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentMoreViewModel.swift; sourceTree = "<group>"; };
 		2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeQuery.swift; sourceTree = "<group>"; };
 		2FBFE1192A262735001D5425 /* NicknameChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChange.swift; sourceTree = "<group>"; };
 		2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseChangeNicknameDTO.swift; sourceTree = "<group>"; };
@@ -1595,6 +1601,32 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		2FBF64AB2A71FE0B0036401F /* MyContentMore */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF64AD2A71FE2C0036401F /* View */,
+				2FBF64AC2A71FE290036401F /* ViewModel */,
+			);
+			path = MyContentMore;
+			sourceTree = "<group>";
+		};
+		2FBF64AC2A71FE290036401F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF64B52A71FE7D0036401F /* MyContentMoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FBF64AD2A71FE2C0036401F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF64B12A71FE5C0036401F /* MyContentMoreView.swift */,
+				2FBF64B32A71FE6B0036401F /* MyContentMoreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2FBFF8312A6F5907007914A1 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -2036,6 +2068,8 @@
 		2FD11DC62A00DE58006796DD /* MyMomentumView */ = {
 			isa = PBXGroup;
 			children = (
+				2FBF64AB2A71FE0B0036401F /* MyContentMore */,
+				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
 				2FD4D9292A6CDB2C00E7972B /* MyMomentum */,
 			);
 			path = MyMomentumView;
@@ -2328,7 +2362,6 @@
 		2FD4D9292A6CDB2C00E7972B /* MyMomentum */ = {
 			isa = PBXGroup;
 			children = (
-				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
 				2FBFF8402A6FA59E007914A1 /* Main */,
 			);
 			path = MyMomentum;
@@ -3023,6 +3056,7 @@
 				2FD87A2B2A583FCF003C276B /* SocialQuery.swift in Sources */,
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */,
+				2FBF64B62A71FE7D0036401F /* MyContentMoreViewModel.swift in Sources */,
 				2FD87A4D2A584959003C276B /* ResponseKakaoLoginDTO.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
@@ -3064,6 +3098,7 @@
 				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
 				2FD4D9262A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift in Sources */,
 				2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */,
+				2FBF64B42A71FE6B0036401F /* MyContentMoreViewController.swift in Sources */,
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
 				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
@@ -3190,6 +3225,7 @@
 				2FD4D0AF2A2CA53000B9AF61 /* ErrorCommonView.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
+				2FBF64B22A71FE5C0036401F /* MyContentMoreView.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */,
 				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
