@@ -88,7 +88,6 @@ final class MyMomentumViewModel: ViewModelType {
             self.getMyProfile(user_id: user_id)
             self.getLikeMoviewContent(user_id: user_id)
             self.getLikeAnimationwContent(user_id: user_id)
-            self.coordinator?.start()
         }
         .disposed(by: disposeBag)
         

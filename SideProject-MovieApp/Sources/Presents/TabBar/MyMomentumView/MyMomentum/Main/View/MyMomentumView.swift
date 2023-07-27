@@ -383,7 +383,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
-        
+        self.likeContentMoreButton.isEnabled = true
         self.layoutIfNeeded()
     }
     
@@ -393,7 +393,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(104)
         }
-        
+        self.likeContentMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -405,6 +405,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
+        self.digFinishMoreButton.isEnabled = true
         self.layoutIfNeeded()
     }
     
@@ -414,6 +415,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(216)
         }
+        self.digFinishMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -425,6 +427,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
+        self.reviewMoreButton.isEnabled = true
         self.layoutIfNeeded()
     }
     
@@ -434,6 +437,7 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(104)
         }
+        self.reviewMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -446,7 +450,7 @@ extension MyMomentumView {
             make.height.equalTo(240)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
-        
+        self.commentMoreButton.isEnabled = true
         self.layoutIfNeeded()
     }
     
@@ -457,6 +461,7 @@ extension MyMomentumView {
             make.height.equalTo(104)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
+        self.commentMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
