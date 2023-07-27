@@ -128,31 +128,31 @@ class MyMomentumView: BaseView {
         profileView.snp.makeConstraints { make in
             make.top.equalTo(containScrollView.snp.top)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.greaterThanOrEqualTo(350)
+            make.height.equalTo(350)
         }
         
         profileStackView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
         }
         
         digStackView.snp.makeConstraints { make in
             make.top.equalTo(profileStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(216)
+            make.height.equalTo(216)
         }
         
         reivewStackView.snp.makeConstraints { make in
             make.top.equalTo(digStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
         }
         
         commentStackView.snp.makeConstraints { make in
             make.top.equalTo(reivewStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
         
@@ -391,7 +391,7 @@ extension MyMomentumView {
         profileStackView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
         }
         
         self.layoutIfNeeded()
@@ -412,7 +412,7 @@ extension MyMomentumView {
         digStackView.snp.makeConstraints { make in
             make.top.equalTo(profileStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(216)
+            make.height.equalTo(216)
         }
         self.layoutIfNeeded()
     }
@@ -432,7 +432,7 @@ extension MyMomentumView {
         reivewStackView.snp.makeConstraints { make in
             make.top.equalTo(digStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
         }
         self.layoutIfNeeded()
     }
@@ -454,7 +454,7 @@ extension MyMomentumView {
         commentStackView.snp.makeConstraints { make in
             make.top.equalTo(reivewStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(104)
+            make.height.equalTo(104)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
         self.layoutIfNeeded()
