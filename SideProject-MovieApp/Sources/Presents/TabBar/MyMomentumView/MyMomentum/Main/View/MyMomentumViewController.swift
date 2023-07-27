@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MyMomentumViewController: BaseViewController {
+final class MyMomentumViewController: BaseViewController {
     private let myMomentumView = MyMomentumView()
     
     private var viewModel: MyMomentumViewModel
@@ -25,10 +25,6 @@ class MyMomentumViewController: BaseViewController {
     
     let viewDidLoadTrigger = PublishRelay<Void>()
     let myProfileData = PublishRelay<MyProfile>()
-    let likeContentMoreButtonTap = PublishRelay<Void>()
-    let digFinishMoreButtonTap = PublishRelay<Void>()
-    let reviewMoreButtonTap = PublishRelay<Void>()
-    let commentMoreButtonTap = PublishRelay<Void>()
     
     private var likeContentDataSource: UICollectionViewDiffableDataSource<Int, LikeContent>!
     private var digFinishDataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
@@ -55,11 +51,12 @@ class MyMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.likeContentMoreButtonTap, digFinishMoreButtonTap: self.digFinishMoreButtonTap, reviewMoreButtonTap: self.reviewMoreButtonTap, commentMoreButtonTap: self.commentMoreButtonTap)
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
-        output.myProfileData.bind { [weak self] myProfile in
+        output.myProfileData
+            .bind { [weak self] myProfile in
             guard let self else { return }
             self.myProfileData.accept(myProfile)
         }
@@ -82,14 +79,10 @@ class MyMomentumViewController: BaseViewController {
                     likeAnimationContent?.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
                     self.myMomentumView.configureDigUpdateUI(dataExist: true)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
                     self.myMomentumView.configureReviewUpdateUI(dataExist: false)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
                 } else {
                     guard let likeAnimationContent else { return }
-                    self.myMomentumView.configureProfileUpdateUI(dataExist: true)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
-                    self.myMomentumView.configureReviewUpdateUI(dataExist: true)
                     
                     var likeContentSnapshot = NSDiffableDataSourceSnapshot<Int, LikeContent>()
                     likeContentSnapshot.appendSections([0])
@@ -100,6 +93,11 @@ class MyMomentumViewController: BaseViewController {
                     }
                     likeContentSnapshot.appendItems(sectionArr, toSection: 0)
                     self.likeContentDataSource.apply(likeContentSnapshot)
+                    
+                    self.myMomentumView.configureProfileUpdateUI(dataExist: true)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: false)
+                    self.myMomentumView.configureReviewUpdateUI(dataExist: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -119,13 +117,6 @@ extension MyMomentumViewController {
         })
         
         let profileHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.moreButton.rx.tap
-                .debug()
-                .bind { [weak self] _ in
-                    guard let self else { return }
-                    self.likeContentMoreButtonTap.accept(())
-                }
-                .disposed(by: self.disposeBag)
         }
         
         likeContentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -157,13 +148,6 @@ extension MyMomentumViewController {
         })
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.moreButton.rx.tap
-                .debug()
-                .bind { [weak self] _ in
-                    guard let self else { return }
-                    self.digFinishMoreButtonTap.accept(())
-                }
-                .disposed(by: self.disposeBag)
         }
         
         digFinishDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -196,12 +180,7 @@ extension MyMomentumViewController {
         })
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.moreButton.rx.tap
-                .bind { [weak self] _ in
-                    guard let self else { return }
-                    self.reviewMoreButtonTap.accept(())
-                }
-                .disposed(by: self.disposeBag)
+
         }
         
         reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -234,13 +213,6 @@ extension MyMomentumViewController {
         })
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            supplementaryView.moreButton.rx.tap
-                .debug()
-                .bind { [weak self] _ in
-                    guard let self else { return }
-                    self.commentMoreButtonTap.accept(())
-                }
-                .disposed(by: self.disposeBag)
         }
         
         commentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

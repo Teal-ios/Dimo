@@ -101,6 +101,7 @@ extension MovieDetailViewModel {
             let likeChoice = try await contentUseCase.excuteLikeChoice(query: LikeChoiceQuery(user_id: user_id, content_type: content_type, contentId: contentId))
             print(likeChoice, "좋아요를 눌렀어~~")
             self.likeChoice.accept(likeChoice)
+            NotificationCenter.default.post(name: NSNotification.Name("likeButtonTap"), object: ())
         }
     }
 }
@@ -111,6 +112,7 @@ extension MovieDetailViewModel {
             let likeCancel = try await contentUseCase.excuteLikeCancel(query: LikeCancelQuery(user_id: user_id, content_type: content_type, contentId: contentId))
             print(likeChoice, "좋아요를 취소했습니다~~")
             self.likeCancel.accept(likeCancel)
+            NotificationCenter.default.post(name: NSNotification.Name("likeButtonTap"), object: ())
         }
     }
 }

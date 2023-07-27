@@ -44,6 +44,7 @@ final class MyContentMoreViewController: BaseViewController {
         
         output.viewDidLoadToSetDataSource
             .observe(on: MainScheduler.instance)
+            .withUnretained(self)
             .flatMap { void -> BehaviorRelay<[LikeContent?]> in
                 return output.likeContent
             }

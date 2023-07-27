@@ -24,21 +24,23 @@ final class MyMomentumViewModel: ViewModelType {
     struct Input {
         let viewDidLoad: PublishRelay<Void>
         let editProfileButtonTap: ControlEvent<Void>
-        let likeContentMoreButtonTap: PublishRelay<Void>
-        let digFinishMoreButtonTap: PublishRelay<Void>
-        let reviewMoreButtonTap: PublishRelay<Void>
-        let commentMoreButtonTap: PublishRelay<Void>
+        let likeContentMoreButtonTap: ControlEvent<Void>
+        let digFinishMoreButtonTap: ControlEvent<Void>
+        let reviewMoreButtonTap: ControlEvent<Void>
+        let commentMoreButtonTap: ControlEvent<Void>
     }
     
     struct Output {
         let myProfileData: PublishRelay<MyProfile>
         let likeAnimationContentData: BehaviorRelay<LikeAnimationContent?>
         let likeMovieContentData: PublishRelay<LikeMovieContent>
+        let likeButtonTapToNotificaiton: PublishRelay<Void>
     }
     
     let myProfile = PublishRelay<MyProfile>()
     let likeAnimationContent = BehaviorRelay<LikeAnimationContent?>(value: nil)
     let likeMoviewContent = PublishRelay<LikeMovieContent>()
+    let likeButtonTapToNotificationEventTrigger = PublishRelay<Void>()
     
     func transform(input: Input) -> Output {
         
@@ -64,17 +66,35 @@ final class MyMomentumViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.likeContentMoreButtonTap
+            .withUnretained(self)
             .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
                 return self.likeAnimationContent
             })
+            .observe(on: MainScheduler.instance)
             .bind { [weak self] likeAnimation in
                 guard let self else { return }
                 guard let likeAnimation else { return }
                 self.coordinator?.showMyContentMoreViewController(likeContentList: likeAnimation.like_content_info)
             }
             .disposed(by: disposeBag)
+        
+        likeButtonTapToNotificationEventTrigger
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .debug()
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            guard let self else { return }
+            guard let user_id = UserDefaultManager.userId else { return }
+            self.getMyProfile(user_id: user_id)
+            self.getLikeMoviewContent(user_id: user_id)
+            self.getLikeAnimationwContent(user_id: user_id)
 
-        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent)
+        }
+        .disposed(by: disposeBag)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
+
+        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger)
     }
 }
 
@@ -105,5 +125,12 @@ extension MyMomentumViewModel {
             print(likeAnimationContent, "내가 좋아요를 누른 애니메이션 조회")
             self.likeAnimationContent.accept(likeAnimationContent)
         }
+    }
+}
+
+extension MyMomentumViewModel {
+    @objc
+    func likeButtonTapToMovieDetailViewModel(_ notification: Notification) {
+        self.likeButtonTapToNotificationEventTrigger.accept(())
     }
 }

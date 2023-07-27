@@ -34,6 +34,7 @@ final class MyContentMoreViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        
         return Output(likeContent: self.likeContent, viewDidLoadToSetDataSource: input.viewDidLoadToSetDataSource)
     }
 }
