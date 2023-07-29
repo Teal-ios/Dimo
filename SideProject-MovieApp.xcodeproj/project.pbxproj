@@ -97,8 +97,6 @@
 		2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D162A14B2A100FA457D /* MovieDetailViewModel.swift */; };
 		2F6D7D192A14B6D600FA457D /* TapUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D182A14B6D600FA457D /* TapUISlider.swift */; };
 		2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */; };
-		2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492329EE38F500F400CB /* GoogleSignIn */; };
-		2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2F7C492529EE38F500F400CB /* GoogleSignInSwift */; };
 		2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A12A52A43F0098939B /* SearchViewModel.swift */; };
 		2F9793A42A52A4450098939B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A32A52A4450098939B /* SearchView.swift */; };
 		2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A52A52A44B0098939B /* SearchViewController.swift */; };
@@ -334,6 +332,12 @@
 		2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */; };
 		2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */; };
 		2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */; };
+		2FE110EE2A74C08A0013A49E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE110ED2A74C08A0013A49E /* FirebaseAnalytics */; };
+		2FE110F02A74C08A0013A49E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE110EF2A74C08A0013A49E /* FirebaseAuth */; };
+		2FE110F22A74C08A0013A49E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE110F12A74C08A0013A49E /* FirebaseCrashlytics */; };
+		2FE1110A2A74ED3A0013A49E /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE111092A74ED3A0013A49E /* KakaoSDK */; };
+		2FE1110C2A74F8FE0013A49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FE1110B2A74F8FE0013A49E /* GoogleService-Info.plist */; };
+		2FE111142A750C220013A49E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE111132A750C220013A49E /* GoogleSignIn */; };
 		4926773C2A5714E20003C882 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773B2A5714E20003C882 /* Toast+Extension.swift */; };
 		4926773F2A5935510003C882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773E2A5935510003C882 /* UserDefault.swift */; };
 		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
@@ -742,6 +746,7 @@
 		2FDFB18A2A0DD80600732788 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewModel.swift; sourceTree = "<group>"; };
 		2FDFB18E2A0DDECD00732788 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		2FE1110B2A74F8FE0013A49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4926773B2A5714E20003C882 /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
 		4926773E2A5935510003C882 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
@@ -796,14 +801,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F7C492629EE38F500F400CB /* GoogleSignInSwift in Frameworks */,
+				2FE1110A2A74ED3A0013A49E /* KakaoSDK in Frameworks */,
 				2FC94EB329C015050097E696 /* RxSwift in Frameworks */,
 				2F437C182A4C1D42000B7A61 /* Kingfisher in Frameworks */,
 				2F124AD32A4EB60A00A452F1 /* Toast in Frameworks */,
-				2F7C492429EE38F500F400CB /* GoogleSignIn in Frameworks */,
 				2FC94EB129C015050097E696 /* RxCocoa in Frameworks */,
+				2FE111142A750C220013A49E /* GoogleSignIn in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
+				2FE110F02A74C08A0013A49E /* FirebaseAuth in Frameworks */,
 				2FDD745B2A10AA8200A75AB9 /* Tabman in Frameworks */,
+				2FE110F22A74C08A0013A49E /* FirebaseCrashlytics in Frameworks */,
+				2FE110EE2A74C08A0013A49E /* FirebaseAnalytics in Frameworks */,
 				2F124AD02A4EA0CD00A452F1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1799,6 +1807,7 @@
 		2FC94E8429C010BF0097E696 /* Supportings */ = {
 			isa = PBXGroup;
 			children = (
+				2FE1110B2A74F8FE0013A49E /* GoogleService-Info.plist */,
 				2FC94E5F29C00F0C0097E696 /* Info.plist */,
 			);
 			path = Supportings;
@@ -2790,12 +2799,15 @@
 				2FC94EAD29C014E80097E696 /* SnapKit */,
 				2FC94EB029C015050097E696 /* RxCocoa */,
 				2FC94EB229C015050097E696 /* RxSwift */,
-				2F7C492329EE38F500F400CB /* GoogleSignIn */,
-				2F7C492529EE38F500F400CB /* GoogleSignInSwift */,
 				2FDD745A2A10AA8200A75AB9 /* Tabman */,
 				2F437C172A4C1D42000B7A61 /* Kingfisher */,
 				2F124ACF2A4EA0CD00A452F1 /* Lottie */,
 				2F124AD22A4EB60A00A452F1 /* Toast */,
+				2FE110ED2A74C08A0013A49E /* FirebaseAnalytics */,
+				2FE110EF2A74C08A0013A49E /* FirebaseAuth */,
+				2FE110F12A74C08A0013A49E /* FirebaseCrashlytics */,
+				2FE111092A74ED3A0013A49E /* KakaoSDK */,
+				2FE111132A750C220013A49E /* GoogleSignIn */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -2872,11 +2884,13 @@
 			packageReferences = (
 				2FC94EAC29C014E80097E696 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				2FC94EAF29C015050097E696 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				2FDD74592A10AA8200A75AB9 /* XCRemoteSwiftPackageReference "Tabman" */,
 				2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2F124AD12A4EB60A00A452F1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				2FE110EC2A74C08A0013A49E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2FE111082A74ED3A0013A49E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				2FE111122A750C220013A49E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 2FC94E4F29C00F0B0097E696 /* Products */;
 			projectDirPath = "";
@@ -2914,6 +2928,7 @@
 				93C48B4429D17CB500644F6A /* SUIT-Light.otf in Resources */,
 				93C48B4729D17CBC00644F6A /* SUIT-SemiBold.otf in Resources */,
 				93C48B4829D17CBE00644F6A /* SUIT-Thin.otf in Resources */,
+				2FE1110C2A74F8FE0013A49E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3464,10 +3479,12 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LL4R66V6Y3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3498,10 +3515,12 @@
 				DEVELOPMENT_TEAM = LL4R66V6Y3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SideProject-MovieApp/Supportings/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3661,14 +3680,6 @@
 				minimumVersion = 7.8.0;
 			};
 		};
-		2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		2FC94EAC29C014E80097E696 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -3693,6 +3704,30 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		2FE110EC2A74C08A0013A49E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 10.12.0;
+			};
+		};
+		2FE111082A74ED3A0013A49E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2FE111122A750C220013A49E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3710,16 +3745,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F437C162A4C1D42000B7A61 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		2F7C492329EE38F500F400CB /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
-		};
-		2F7C492529EE38F500F400CB /* GoogleSignInSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F7C492229EE38F400F400CB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
 		};
 		2FC94EAD29C014E80097E696 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3740,6 +3765,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2FDD74592A10AA8200A75AB9 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
+		};
+		2FE110ED2A74C08A0013A49E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE110EC2A74C08A0013A49E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2FE110EF2A74C08A0013A49E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE110EC2A74C08A0013A49E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		2FE110F12A74C08A0013A49E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE110EC2A74C08A0013A49E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		2FE111092A74ED3A0013A49E /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE111082A74ED3A0013A49E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		2FE111132A750C220013A49E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE111122A750C220013A49E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

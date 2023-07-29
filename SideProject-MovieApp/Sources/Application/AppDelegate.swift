@@ -6,15 +6,21 @@
 //
 
 import UIKit
+import KakaoSDKCommon
+import GoogleSignIn
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetworkMonitor.shared.startMonitoring()
-
+        KakaoSDK.initSDK(appKey: APIKey.kakaoNativeAppKey)
+        FirebaseApp.configure()
         return true
     }
+    
+    
 
     // MARK: UISceneSession Lifecycle
 

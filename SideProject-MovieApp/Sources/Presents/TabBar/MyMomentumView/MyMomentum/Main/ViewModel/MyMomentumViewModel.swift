@@ -67,6 +67,7 @@ final class MyMomentumViewModel: ViewModelType {
         
         input.likeContentMoreButtonTap
             .withUnretained(self)
+            .debug()
             .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
                 return self.likeAnimationContent
             })
