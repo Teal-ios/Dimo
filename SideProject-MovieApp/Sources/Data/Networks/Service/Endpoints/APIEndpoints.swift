@@ -16,10 +16,6 @@ struct APIEndpoints {
     static func postNicknameChange(with requestDTO: RequestNicknameChangeDTO) -> SettingRouter<ResponseNicknameChangeDTO> {
         return SettingRouter<ResponseNicknameChangeDTO>.nicknameChange(parameters: NicknameChangeQuery(user_id: requestDTO.user_id, user_nickname: requestDTO.user_nickname))
     }
-    
-    static func getAnimationData() -> ContentRouter<[ResponseAnimationDataDTO]> {
-        return ContentRouter<[ResponseAnimationDataDTO]>.inquireAnimationData
-    }
 
     static func getNicknameChangeDate(with requestDTO: RequestNicknameChangeDateDTO) -> SettingRouter<ResponseNicknameChangeDateDTO> {
         return SettingRouter<ResponseNicknameChangeDateDTO>.nicknameChangeDateCheck(parameters: NicknameChangeDateQuery(user_id: requestDTO.user_id))

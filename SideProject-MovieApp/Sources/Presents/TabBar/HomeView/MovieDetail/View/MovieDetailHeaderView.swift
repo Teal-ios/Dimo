@@ -7,9 +7,9 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
-class MovieDetailHeaderView: UICollectionReusableView {
-    static let identifier = "MovieDetailHeaderView"
+class MovieDetailHeaderView: BaseView {
     
     let detailHeaderView : DetailHeaderView = {
         let view = DetailHeaderView(title: "스즈메의 문단속", subTitle: "애니메이션 | 124분")
@@ -72,21 +72,11 @@ class MovieDetailHeaderView: UICollectionReusableView {
         return label
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.title3
-        label.textColor = .black5
-        label.text = "등장인물"
-       return label
-    }()
-    
-    let moreButton: WordLabelButton = {
-        let button = WordLabelButton(text: "더보기 >")
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    override func setHierarchy() {
         self.addSubview(detailHeaderView)
         self.addSubview(likeButton)
         self.addSubview(likeLabel)
@@ -95,16 +85,9 @@ class MovieDetailHeaderView: UICollectionReusableView {
         self.addSubview(evaluateNumberLabel)
         self.addSubview(summarytitleLabel)
         self.addSubview(summaryExplainLabel)
-        self.addSubview(titleLabel)
-        self.addSubview(moreButton)
-        makeConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func makeConstraints() {
+    override func setupLayout() {
         detailHeaderView.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(280)
@@ -151,19 +134,18 @@ class MovieDetailHeaderView: UICollectionReusableView {
         summaryExplainLabel.snp.makeConstraints { make in
             make.top.equalTo(summarytitleLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(44)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
+    }
+}
+
+extension MovieDetailHeaderView {
+    func configureUpdateUI(animationData: DetailAnimationData) {
+        self.detailHeaderView.titleLabel.text = animationData.title
+        self.detailHeaderView.subTitleLabel.text = ""
+        self.summaryExplainLabel.text = animationData.plot
         
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(16)
-            make.top.equalTo(summaryExplainLabel.snp.bottom).offset(16)
-            make.height.equalTo(19)
-        }
-        
-        moreButton.snp.makeConstraints { make in
-            make.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.height.equalTo(16)
-        }
+        let imageURL = URL(string: animationData.poster_img)
+        self.detailHeaderView.moviePosterView.kf.setImage(with: imageURL)
     }
 }

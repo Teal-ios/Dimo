@@ -7,10 +7,10 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CharacterMbtiCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "CharacterMbtiCollectionViewCell"
-
     
     let imgView: UIImageView = {
         let view = UIImageView()
@@ -66,6 +66,17 @@ class CharacterMbtiCollectionViewCell: BaseCollectionViewCell {
             make.width.equalTo(imgView.snp.width)
             make.height.equalTo(16)
             make.horizontalEdges.equalTo(imgView)
+        }
+    }
+}
+
+extension CharacterMbtiCollectionViewCell {
+    func configureUpdateUI(characterData: Characters) {
+        self.nicknameLabel.text = characterData.character_name
+        self.mbtiLabel.text = characterData.character_mbti ?? "미정"
+        let imageURL = URL(string: characterData.character_img ?? "nil")
+        if imageURL != URL(string: "nil") {
+            self.imgView.kf.setImage(with: imageURL)
         }
     }
 }

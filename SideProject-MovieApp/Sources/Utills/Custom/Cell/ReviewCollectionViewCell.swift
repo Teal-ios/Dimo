@@ -75,7 +75,8 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
     override func setConstraints() {
         
         bgView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
         }
         
         imgView.snp.makeConstraints { make in

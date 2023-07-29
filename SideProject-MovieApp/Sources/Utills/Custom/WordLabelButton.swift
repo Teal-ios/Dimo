@@ -33,4 +33,15 @@ class WordLabelButton: UIButton {
     }
 }
 
-
+extension WordLabelButton {
+    func updateButtonText(buttonText: String) {
+        var configuration = UIButton.Configuration.gray()
+        var attrStr = AttributedString(buttonText)
+        attrStr.font = Font.caption
+        configuration.attributedTitle = attrStr
+        configuration.baseBackgroundColor = .clear
+        configuration.baseForegroundColor = Color.caption
+        self.contentHorizontalAlignment = .left
+        self.configuration = configuration
+    }
+}

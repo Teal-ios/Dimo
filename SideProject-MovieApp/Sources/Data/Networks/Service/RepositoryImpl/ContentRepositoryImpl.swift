@@ -33,3 +33,16 @@ extension ContentRepositoryImpl {
         }
     }
 }
+
+extension ContentRepositoryImpl {
+    func fetchDetailAnimatonData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData {
+        let  target = ContentAPIEndpoints.getDetailAnimationData(with: query.content_id)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}

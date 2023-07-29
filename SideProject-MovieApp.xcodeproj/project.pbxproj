@@ -202,7 +202,7 @@
 		2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */; };
 		2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */; };
 		2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */; };
-		2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */; };
+		2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */; };
 		2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */; };
 		2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */; };
 		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
@@ -241,6 +241,12 @@
 		2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9232A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift */; };
 		2FD4D9262A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9252A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift */; };
 		2FD4D9282A6CCF9400E7972B /* ResponseLikeContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9272A6CCF9400E7972B /* ResponseLikeContentDTO.swift */; };
+		2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */; };
+		2FD4D9352A6E453400E7972B /* DetailAnimationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */; };
+		2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9362A6E45A700E7972B /* Characters.swift */; };
+		2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */; };
+		2FD4D93C2A6E46DD00E7972B /* ResponseCharactersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */; };
+		2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -577,7 +583,7 @@
 		2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumView.swift; sourceTree = "<group>"; };
 		2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumCoordinator.swift; sourceTree = "<group>"; };
 		2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumViewModel.swift; sourceTree = "<group>"; };
-		2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumFirstHeaderView.swift; sourceTree = "<group>"; };
+		2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumHeaderView.swift; sourceTree = "<group>"; };
 		2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		2FD11DD62A00FCF7006796DD /* MyMomentumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumModel.swift; sourceTree = "<group>"; };
 		2FD11DD92A01019E006796DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -617,6 +623,12 @@
 		2FD4D9232A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeAnimationContentDTO.swift; sourceTree = "<group>"; };
 		2FD4D9252A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeMovieContentDTO.swift; sourceTree = "<group>"; };
 		2FD4D9272A6CCF9400E7972B /* ResponseLikeContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeContentDTO.swift; sourceTree = "<group>"; };
+		2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimationDataQuery.swift; sourceTree = "<group>"; };
+		2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimationData.swift; sourceTree = "<group>"; };
+		2FD4D9362A6E45A700E7972B /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDetailAnimationDataDTO.swift; sourceTree = "<group>"; };
+		2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCharactersDTO.swift; sourceTree = "<group>"; };
+		2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPIEndpoints.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -936,7 +948,9 @@
 			children = (
 				2F437C0F2A4C0D19000B7A61 /* MockData */,
 				2F437C092A4BED61000B7A61 /* Character.swift */,
+				2FD4D9362A6E45A700E7972B /* Characters.swift */,
 				2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */,
+				2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -946,6 +960,8 @@
 			children = (
 				2F437BFF2A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift */,
 				2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */,
+				2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */,
+				2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1097,6 +1113,7 @@
 			children = (
 				2FD87A232A583EED003C276B /* Auth */,
 				497454EB2A3F66200043D67E /* Setting */,
+				2FD4D9312A6E44DB00E7972B /* Content */,
 				2FD4D9032A6BB1A600E7972B /* MyMomentum */,
 			);
 			path = Query;
@@ -2222,7 +2239,7 @@
 			isa = PBXGroup;
 			children = (
 				2FD11DC92A00DEC3006796DD /* MyMomentumView.swift */,
-				2FD11DD12A00E39D006796DD /* MyMomentumFirstHeaderView.swift */,
+				2FD11DD12A00E39D006796DD /* MyMomentumHeaderView.swift */,
 				2FD11DD32A00E3B7006796DD /* ProfileHeaderView.swift */,
 				2FD11DD92A01019E006796DD /* ProfileView.swift */,
 				2FD11DC72A00DEA1006796DD /* MyMomentumViewController.swift */,
@@ -2236,6 +2253,14 @@
 				2FD11DCE2A00DF21006796DD /* MyMomentumViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FD4D9312A6E44DB00E7972B /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		2FD598892A36EA3E00614F34 /* ViewModel */ = {
@@ -2341,6 +2366,7 @@
 				497454F72A42025D0043D67E /* APIEndpoints.swift */,
 				2FD87A5A2A585406003C276B /* AuthAPIEndpoints.swift */,
 				2FD4D9012A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift */,
+				2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -2796,6 +2822,7 @@
 				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
+				2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
@@ -2827,6 +2854,7 @@
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
+				2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */,
 				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
@@ -2854,7 +2882,7 @@
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
-				2FD11DD22A00E39D006796DD /* MyMomentumFirstHeaderView.swift in Sources */,
+				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* NicknameDuplicationQuery.swift in Sources */,
@@ -2889,8 +2917,10 @@
 				2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */,
 				2FD87A572A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift in Sources */,
 				2FC94E9A29C013530097E696 /* NetworkMonitor.swift in Sources */,
+				2FD4D93C2A6E46DD00E7972B /* ResponseCharactersDTO.swift in Sources */,
 				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
 				2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */,
+				2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */,
 				2FD87A352A584114003C276B /* Social.swift in Sources */,
 				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
 				2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */,
@@ -2954,6 +2984,7 @@
 				2FD4D8FE2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift in Sources */,
 				2FD4D9122A6CC3D300E7972B /* LikeMovieContentQuery.swift in Sources */,
 				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
+				2FD4D9352A6E453400E7972B /* DetailAnimationData.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FD4D90E2A6CC35E00E7972B /* MyProfileQuery.swift in Sources */,
 				2F149DD52A49961C0098AF64 /* MovieDetailRankViewModel.swift in Sources */,
@@ -3065,6 +3096,7 @@
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,
 				2F53D0742A1F114900898DCD /* TargetType.swift in Sources */,
+				2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */,
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,

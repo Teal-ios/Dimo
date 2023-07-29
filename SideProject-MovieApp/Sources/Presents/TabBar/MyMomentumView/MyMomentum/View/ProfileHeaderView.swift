@@ -20,6 +20,7 @@ class ProfileHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.font = Font.title3
         label.textColor = .black5
+        label.textAlignment = .left
         label.text = "좋아하는 컨텐츠"
        return label
     }()
@@ -46,19 +47,20 @@ class ProfileHeaderView: UICollectionReusableView {
         let safeArea = self.safeAreaLayoutGuide
         
         profileView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(safeArea)
-            make.height.equalTo(400)
+            make.top.equalTo(safeArea)
+            make.horizontalEdges.equalTo(safeArea)
+            make.height.equalTo(320)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(leading)
-            make.top.equalTo(profileView.snp.bottom)
+            make.leading.equalTo(safeArea).offset(16)
+            make.top.equalTo(profileView.snp.bottom).offset(32)
             make.height.equalTo(32)
         }
         
         moreButton.snp.makeConstraints { make in
             make.trailing.equalTo(safeArea).offset(-leading)
-            make.top.equalTo(profileView.snp.bottom)
+            make.top.equalTo(profileView.snp.bottom).offset(32)
             make.height.equalTo(32)
         }
     }
