@@ -66,7 +66,7 @@ final class MyMomentumViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] profile in
             guard let self else { return }
-                myMomentumView.profileView.configureProfileUpdate(profile: profile)
+                self.myMomentumView.profileView.configureProfileUpdate(profile: profile)
         }
         .disposed(by: self.disposeBag)
         

@@ -32,10 +32,6 @@ final class EditPasswordViewController: BaseViewController {
         super.init()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func setupBinding() {
         let output = viewModel.transform(input: input)
         
@@ -55,11 +51,18 @@ final class EditPasswordViewController: BaseViewController {
         
         output.passwordChageButtonTappedOutput
             .observe(on: MainScheduler.instance)
-            .bind { [weak self] (isSameWithExistingPassword, isValidPasswordFormat, isSameWithNewPassword) in
+            .bind { [weak self] (isValidPasswordFormat, isSameWithNewPassword) in
                 guard let self else { return }
-                self.editPasswordView.showExistingPasswordTextFieldState(isSameWithExistingPassword)
                 self.editPasswordView.showPasswordValidationTextFieldState(isValidPasswordFormat)
                 self.editPasswordView.showNewPasswordTextFieldState(isSameWithNewPassword)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isSameWithCurrentPassword
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] isSame in
+                guard let self else { return }
+                self.editPasswordView.showExistingPasswordTextFieldState(isSame)
             }
             .disposed(by: disposeBag)
     }
