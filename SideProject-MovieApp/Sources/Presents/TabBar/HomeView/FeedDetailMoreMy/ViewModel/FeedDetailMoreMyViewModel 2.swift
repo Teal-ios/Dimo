@@ -1,0 +1,42 @@
+//
+//  FeedDetailMoreMyViewModel.swift
+//  SideProject-MovieApp
+//
+//  Created by 이병현 on 2023/06/28.
+//
+
+import Foundation
+import RxSwift
+import RxCocoa
+
+final class FeedDetailMoreMyViewModel: ViewModelType {
+    
+    var disposeBag: DisposeBag = DisposeBag()
+    private weak var coordinator: TabmanCoordinator?
+    
+    struct Input{
+        let modifyButtonTapped: ControlEvent<Void>
+        let deleteButtonTapped: ControlEvent<Void>
+
+    }
+    
+    struct Output{
+    }
+    
+    init(coordinator: TabmanCoordinator? = nil) {
+        self.coordinator = coordinator
+    }
+    
+    func transform(input: Input) -> Output {
+        input.modifyButtonTapped.bind { [weak self] _ in
+            self?.coordinator?.dismissViewController()
+        }.disposed(by: disposeBag)
+        
+        input.deleteButtonTapped.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.coordinator?.dismissViewController()
+            self.coordinator?.showFeedDetailDeleteViewController()
+        }.disposed(by: disposeBag)
+        return Output()
+    }
+}

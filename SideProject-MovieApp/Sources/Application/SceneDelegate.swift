@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let nav = UINavigationController()
+        self.configureNavigationAppearance()
         coordinator = AppCoordinator(nav)
         coordinator?.start()
         window?.rootViewController = nav
@@ -50,7 +51,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
+extension SceneDelegate {
+    private func configureNavigationAppearance() {
+        let backButtonImage = UIImage(named: "Icon_arrow_left")
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.setBackIndicatorImage(backButtonImage, transitionMaskImage: backButtonImage)
+        UINavigationBar.appearance().standardAppearance = appearance
+    }
+}

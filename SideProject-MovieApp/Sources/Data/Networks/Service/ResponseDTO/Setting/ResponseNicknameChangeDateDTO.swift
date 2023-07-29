@@ -18,3 +18,4 @@ extension ResponseNicknameChangeDateDTO {
         return .init(code: code, message: message, user_id: user_id)
     }
 }
+    

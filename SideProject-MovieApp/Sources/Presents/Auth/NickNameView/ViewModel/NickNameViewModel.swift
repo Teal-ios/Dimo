@@ -52,7 +52,7 @@ class NickNameViewModel: ViewModelType {
             .bind { [weak self] _ in
                 guard let self else { return }
                 guard let userId = UserDefaults.standard.string(forKey: "userId") else { return }
-                guard let nickname = nickname else { return }
+                guard let nickname = self.nickname else { return }
                 self.duplicationNicknameCheck(user_id: userId, user_nickname: nickname)
                 self.duplicationNicknameCheck(user_id: userId, user_nickname: nickname)
             }

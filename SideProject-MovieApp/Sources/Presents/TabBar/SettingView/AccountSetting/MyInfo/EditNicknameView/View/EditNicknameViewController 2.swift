@@ -8,7 +8,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import Toast
 
 final class EditNicknameViewController: BaseViewController {
     
@@ -43,10 +42,10 @@ final class EditNicknameViewController: BaseViewController {
     
     private func configureToast() {
         self.viewModel.toast = {
-            self.editNicknameView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
+            // showToast
             self.editNicknameView.enableDuplicationCheckButton(isEnabled: false)
             self.editNicknameView.checkNicknameChangeButton(isValid: false)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.navigationController?.popViewController(animated: true)
             }
         }

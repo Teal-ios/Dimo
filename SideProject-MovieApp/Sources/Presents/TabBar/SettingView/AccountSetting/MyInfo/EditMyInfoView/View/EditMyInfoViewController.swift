@@ -35,8 +35,8 @@ final class EditMyInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.selfView.collectionView.delegate = self
-        setDataSource()
-        applySnapshot()
+        self.setDataSource()
+        self.applySnapshot()
     }
     
     override func setupBinding() {

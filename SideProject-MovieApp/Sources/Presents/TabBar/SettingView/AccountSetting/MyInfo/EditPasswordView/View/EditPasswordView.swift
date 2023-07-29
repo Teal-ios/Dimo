@@ -8,81 +8,172 @@
 import UIKit
 import SnapKit
 
-class EditPasswordView: IDRegisterView {
+class EditPasswordView: BaseView {
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.text = "비밀번호 변경"
+        label.font = .suitFont(ofSize: 24, weight: .Bold)
+        return label
+    }()
+    
+    let currentPasswordView: OnboardingTextFieldView = {
+        return OnboardingTextFieldView(placeholder: "기존 비밀번호")
+    }()
+    
+    let existingPasswordCheckLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.caption
+        label.isHidden = true
+        return label
+    }()
+    
+    private lazy var existingPasswordStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 8.0
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(currentPasswordView)
+        stackView.addArrangedSubview(existingPasswordCheckLabel)
+        return stackView
+    }()
+    
     let newPasswordView: OnboardingTextFieldView = {
         return OnboardingTextFieldView(placeholder: "새로운 비밀번호")
     }()
     
-    let passwordCheckLabel: UILabel = {
+    let passwordValidationCheckLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
         label.text = "숫자, 문자, 특수문자 포함 총 8글자 이상"
-        label.textColor = UIColor(red: 168/255, green: 168/255, blue: 167/255, alpha: 1)
+        label.textColor = .black60
         return label
     }()
     
-    let passwordConditionLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.caption
-        return label
+    private lazy var newPasswordStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 8.0
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(newPasswordView)
+        stackView.addArrangedSubview(passwordValidationCheckLabel)
+        return stackView
     }()
     
     let newPasswordCheckView: OnboardingTextFieldView = {
         return OnboardingTextFieldView(placeholder: "새로운 비밀번호 재입력")
     }()
     
-    let newPasswordCheckLabel: UILabel = {
+    private let newPasswordCheckLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
         return label
     }()
     
+    private lazy var newPasswordCheckStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 8.0
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(newPasswordCheckView)
+        stackView.addArrangedSubview(newPasswordCheckLabel)
+        return stackView
+    }()
+    
+    let passwordChangeButton: OnboardingButton = {
+        let button = OnboardingButton(title: "변경하기", ofSize: 14)
+        button.configuration?.baseBackgroundColor = .purple100
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let top: CGFloat = 48
-        let leadingTrailing: CGFloat = 16
-        self.addSubview(passwordConditionLabel)
-        self.addSubview(newPasswordView)
-        self.addSubview(passwordCheckLabel)
-        self.addSubview(newPasswordCheckView)
-        self.addSubview(newPasswordCheckLabel)
-        
-        passwordConditionLabel.snp.makeConstraints { make in
-            make.top.equalTo(idTextFieldView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
-            make.height.equalTo(16)
-        }
-        
-        newPasswordView.snp.makeConstraints { make in
-            make.top.equalTo(idTextFieldView.snp.bottom).offset(top)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
-            make.height.equalTo(52)
-        }
-        
-        passwordCheckLabel.snp.makeConstraints { make in
-            make.top.equalTo(newPasswordView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
-            make.height.equalTo(16)
-        }
-        
-        newPasswordCheckView.snp.makeConstraints { make in
-            make.top.equalTo(newPasswordView.snp.bottom).offset(top)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
-            make.height.equalTo(52)
-        }
-        
-        newPasswordCheckLabel.snp.makeConstraints { make in
-            make.top.equalTo(newPasswordCheckView.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(leadingTrailing)
-            make.height.equalTo(16)
-        }
-        
-        newPasswordView.tf.isSecureTextEntry = true
-        idTextFieldView.tf.isSecureTextEntry = true
-        newPasswordCheckView.tf.isSecureTextEntry = true
-        
-        duplicateCheckButton.isEnabled = false
-        duplicateCheckButton.isHidden = true
+        self.passwordChangeButton.configuration?.baseBackgroundColor = UIColor.purple100
+        self.configureTestField()
     }
     
+    func configureTestField() {
+        currentPasswordView.tf.isSecureTextEntry = true
+        newPasswordView.tf.isSecureTextEntry = true
+        newPasswordCheckView.tf.isSecureTextEntry = true
+    }
+    
+    override func setupLayout() {
+        [titleLabel, existingPasswordStackView, newPasswordStackView, newPasswordCheckStackView, passwordChangeButton].forEach { self.addSubview($0) }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(16)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(16)
+        }
+        
+        existingPasswordStackView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(44)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+        }
+        
+        newPasswordStackView.snp.makeConstraints { make in
+            make.top.equalTo(existingPasswordStackView.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+        }
+        
+        newPasswordCheckStackView.snp.makeConstraints { make in
+            make.top.equalTo(newPasswordStackView.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+        }
+        
+        passwordChangeButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(36)
+        }
+    }
+}
+
+extension EditPasswordView {
+    
+    func showExistingPasswordTextFieldState(_ isSame: Bool?) {
+        guard let isSame = isSame else { return }
+        
+        if isSame {
+            existingPasswordCheckLabel.isHidden = true
+        } else {
+            existingPasswordCheckLabel.isHidden = false
+            existingPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
+            existingPasswordCheckLabel.textColor = UIColor.error
+        }
+    }
+    
+    func disableChangeButton() {
+        passwordChangeButton.isEnabled = false
+        passwordChangeButton.setTitleColor(UIColor.white, for: .disabled)
+        passwordChangeButton.configuration?.baseBackgroundColor = .black80
+    }
+    
+    func enableChangeButton() {
+        passwordChangeButton.isEnabled = true
+        passwordChangeButton.configuration?.baseBackgroundColor = .purple100
+    }
+    
+    func showPasswordValidationTextFieldState(_ isValid: Bool?) {
+        guard let isValid = isValid else { return }
+        
+        if isValid {
+            passwordValidationCheckLabel.textColor = .black60
+        } else {
+            passwordValidationCheckLabel.textColor = .error
+        }
+    }
+    
+    func showNewPasswordTextFieldState(_ isSame: Bool?) {
+        guard let isSame = isSame else { return }
+        
+        if isSame {
+            newPasswordCheckLabel.isHidden = true
+        } else {
+            newPasswordCheckLabel.isHidden = false
+            newPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
+            newPasswordCheckLabel.textColor = UIColor.error
+        }
+    }
 }

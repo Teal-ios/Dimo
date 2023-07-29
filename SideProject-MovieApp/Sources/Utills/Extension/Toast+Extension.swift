@@ -10,7 +10,7 @@ import Toast
 
 extension ToastStyle {
     
-    static var dimoToastStyle: ToastStyle {
+    static var dimo: ToastStyle {
         var toastStyle = ToastStyle()
         toastStyle.messageFont = .suitFont(ofSize: 14.0, weight: .Medium) ?? UIFont()
         toastStyle.messageColor = .black80

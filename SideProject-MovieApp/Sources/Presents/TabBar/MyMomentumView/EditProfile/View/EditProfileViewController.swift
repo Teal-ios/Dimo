@@ -48,7 +48,7 @@ final class EditProfileViewController: BaseViewController {
                 guard let self else { return }
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
-                present(imagePicker, animated: true)
+                self.present(imagePicker, animated: true)
             }
             .disposed(by: disposeBag)
         

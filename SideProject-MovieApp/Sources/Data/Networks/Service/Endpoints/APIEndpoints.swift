@@ -20,4 +20,8 @@ struct APIEndpoints {
     static func getNicknameChangeDate(with requestDTO: RequestNicknameChangeDateDTO) -> SettingRouter<ResponseNicknameChangeDateDTO> {
         return SettingRouter<ResponseNicknameChangeDateDTO>.nicknameChangeDateCheck(parameters: NicknameChangeDateQuery(user_id: requestDTO.user_id))
     }
+    
+    static func getPasswordChange(with requestDTO: RequestPasswordChangeDTO) -> SettingRouter<ResponsePasswordChangeDTO> {
+        return SettingRouter<ResponsePasswordChangeDTO>.passwordChange(parameters: PasswordChangeQuery(user_id: requestDTO.user_id, currentPassword: requestDTO.password, newPassword: requestDTO.new_password))
+    }
 }

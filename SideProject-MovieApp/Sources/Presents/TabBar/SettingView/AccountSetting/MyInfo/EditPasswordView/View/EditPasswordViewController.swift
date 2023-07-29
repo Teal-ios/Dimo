@@ -6,40 +6,64 @@
 //
 
 import UIKit
+import RxSwift
 import RxCocoa
+import Toast
 
 final class EditPasswordViewController: BaseViewController {
-    let selfView = EditPasswordView(title: "비밀번호를 입력해주세요", placeholder: "기존 비밀번호")
+    
+    private let editPasswordView = EditPasswordView()
     
     private var viewModel: EditPasswordViewModel
     
-    //MARK: Input
-    private lazy var input = EditPasswordViewModel.Input(passwordText: self.selfView.idTextFieldView.tf.rx.text, checkpwText: self.selfView.newPasswordCheckView.tf.rx.text, didNextButtonTap: self.selfView.nextButton.rx.tap.withLatestFrom(self.selfView.newPasswordCheckView.tf.rx.text.orEmpty).asSignal(onErrorJustReturn: ""))
+    private lazy var input = EditPasswordViewModel.Input(
+        currentPassWordTextFieldText: editPasswordView.currentPasswordView.tf.rx.text,
+        newPasswordTextFieldText: editPasswordView.newPasswordView.tf.rx.text,
+        newPasswordCheckTextFieldText: editPasswordView.newPasswordCheckView.tf.rx.text,
+        passwordChangeButtonTapped: editPasswordView.passwordChangeButton.rx.tap
+    )
     
     override func loadView() {
-        view = selfView
+        self.view = editPasswordView
     }
+    
     init(viewModel: EditPasswordViewModel) {
         self.viewModel = viewModel
         super.init()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
     override func setupBinding() {
         let output = viewModel.transform(input: input)
         
-        output.passwordDuplicationValid.withUnretained(self).bind { vc, valid in
-            let textColor: UIColor = valid ? .systemBlue : .systemRed
-            vc.selfView.newPasswordCheckLabel.textColor = textColor
-            
-            let str: String = valid ?
-            "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
-            
-            vc.selfView.newPasswordCheckLabel.text = str
-            
-        }
-        .disposed(by: disposeBag)
+        output.isChanged
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] isChanged in
+                guard let self else { return }
+                if isChanged {
+                    self.editPasswordView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
+                    self.editPasswordView.disableChangeButton()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.passwordChageButtonTappedOutput
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] (isValidPasswordFormat, isSameWithNewPassword) in
+                guard let self else { return }
+                self.editPasswordView.showPasswordValidationTextFieldState(isValidPasswordFormat)
+                self.editPasswordView.showNewPasswordTextFieldState(isSameWithNewPassword)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isSameWithCurrentPassword
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] isSame in
+                guard let self else { return }
+                self.editPasswordView.showExistingPasswordTextFieldState(isSame)
+            }
+            .disposed(by: disposeBag)
     }
-    
 }

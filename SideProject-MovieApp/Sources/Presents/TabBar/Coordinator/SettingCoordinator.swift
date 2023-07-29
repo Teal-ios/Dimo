@@ -16,7 +16,7 @@ final class SettingCoordinator: Coordinator {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         showSettingViewController()
     }
@@ -54,7 +54,10 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showEditPasswordViewController() {
-        let viewModel = EditPasswordViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = EditPasswordViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = EditPasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

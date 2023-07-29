@@ -47,12 +47,12 @@ class BaseViewController: UIViewController {
     // MARK: Life Cycle Views
     
     override func viewDidLoad() {
-        setupAttributes()
-        setupLayout()
-        setupLocalization()
-        setupBinding()
-        setData()
-        navigation()
+        self.setupAttributes()
+        self.setupLayout()
+        self.setupLocalization()
+        self.setupBinding()
+        self.setData()
+        self.setNavigationBar()
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -100,36 +100,21 @@ class BaseViewController: UIViewController {
     
     
     // MARK: Custom Func
-    
-    func navigation() {
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = .black
-        
-        let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -100.0, bottom: 0.0, right: 0.0))
-        
-
-        navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-        
-        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = .black60
-        navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
-        self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.backItem?.title = ""
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .black60
     }
     
-    private func configureNavigationBar() {
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
+    @objc func didTappedBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
+    
+//    private func configureNavigationBar() {
+//        navigationController?.isNavigationBarHidden = true
+//        navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
+//    }
 }
-
-
 
 extension BaseViewController {
     

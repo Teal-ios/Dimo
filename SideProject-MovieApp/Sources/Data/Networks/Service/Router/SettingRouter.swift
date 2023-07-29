@@ -71,7 +71,8 @@ extension SettingRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .passwordChange(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
-                    URLQueryItem(name: "password", value: parameters.password)]
+                    URLQueryItem(name: "password", value: parameters.currentPassword),
+                    URLQueryItem(name: "new_password", value: parameters.newPassword)]
         }
     }
     
