@@ -149,3 +149,14 @@ extension MovieDetailHeaderView {
         self.detailHeaderView.moviePosterView.kf.setImage(with: imageURL)
     }
 }
+
+extension MovieDetailHeaderView {
+    func updateLikeButtonUI(like: Bool) {
+        switch like {
+        case true:
+            self.likeButton.setImage(UIImage(named: "LikeSelect"), for: .normal)
+        case false:
+            self.likeButton.setImage(UIImage(named: "LikeNonSelect"), for: .normal)
+        }
+    }
+}

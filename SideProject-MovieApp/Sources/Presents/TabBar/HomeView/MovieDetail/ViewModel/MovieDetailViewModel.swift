@@ -34,6 +34,9 @@ final class MovieDetailViewModel: ViewModelType {
         let animationData: PublishRelay<DetailAnimationData>
         let characterData: PublishRelay<[Characters]>
         let likeButtonTapped: ControlEvent<Void>
+        let likeChoice: PublishRelay<LikeChoice>
+        let likeCancel: PublishRelay<LikeCancel>
+        let likeContentCheck: PublishRelay<LikeContentCheck>
     }
     
     var contentId = BehaviorRelay(value: "")
@@ -68,15 +71,16 @@ final class MovieDetailViewModel: ViewModelType {
             guard let self else { return }
             guard let user_id = UserDefaultManager.userId else { return }
             if likeContentCheck == true {
+                print("컨텐츠가 있다면")
                 self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
-                self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
             } else {
-                self.postLikeCancel(user_id: user_id, content_type: "anime", contentId: nextContentId)
+                print("컨텐츠가 없다면")
+                self.postLikeChoice(user_id: user_id, content_type: "anime", contentId: nextContentId)
             }
         }
         .disposed(by: disposeBag)
         
-        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped)
+        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck)
     }
 }
 
@@ -97,6 +101,7 @@ extension MovieDetailViewModel {
             let likeChoice = try await contentUseCase.excuteLikeChoice(query: LikeChoiceQuery(user_id: user_id, content_type: content_type, contentId: contentId))
             print(likeChoice, "좋아요를 눌렀어~~")
             self.likeChoice.accept(likeChoice)
+            NotificationCenter.default.post(name: NSNotification.Name("likeButtonTap"), object: ())
         }
     }
 }
@@ -107,6 +112,7 @@ extension MovieDetailViewModel {
             let likeCancel = try await contentUseCase.excuteLikeCancel(query: LikeCancelQuery(user_id: user_id, content_type: content_type, contentId: contentId))
             print(likeChoice, "좋아요를 취소했습니다~~")
             self.likeCancel.accept(likeCancel)
+            NotificationCenter.default.post(name: NSNotification.Name("likeButtonTap"), object: ())
         }
     }
 }

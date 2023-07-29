@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MyMomentumViewController: BaseViewController {
+final class MyMomentumViewController: BaseViewController {
     private let myMomentumView = MyMomentumView()
     
     private var viewModel: MyMomentumViewModel
@@ -51,11 +51,12 @@ class MyMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap)
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
-        output.myProfileData.bind { [weak self] myProfile in
+        output.myProfileData
+            .bind { [weak self] myProfile in
             guard let self else { return }
             self.myProfileData.accept(myProfile)
         }
@@ -73,16 +74,30 @@ class MyMomentumViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] likeAnimationContent in
                 guard let self else { return }
-                if likeAnimationContent.like_content_info == [] {
+                
+                if likeAnimationContent != nil &&
+                    likeAnimationContent?.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
                     self.myMomentumView.configureDigUpdateUI(dataExist: true)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
                     self.myMomentumView.configureReviewUpdateUI(dataExist: false)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
                 } else {
-                    self.myMomentumView.configureProfileUpdateUI(dataExist: false)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
-                    self.myMomentumView.configureReviewUpdateUI(dataExist: false)
+                    guard let likeAnimationContent else { return }
+                    
+                    var likeContentSnapshot = NSDiffableDataSourceSnapshot<Int, LikeContent>()
+                    likeContentSnapshot.appendSections([0])
+                    var sectionArr: [LikeContent] = []
+                    for i in likeAnimationContent.like_content_info {
+                        guard let i = i else { return }
+                        sectionArr.append(i)
+                    }
+                    likeContentSnapshot.appendItems(sectionArr, toSection: 0)
+                    self.likeContentDataSource.apply(likeContentSnapshot)
+                    
+                    self.myMomentumView.configureProfileUpdateUI(dataExist: true)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: false)
+                    self.myMomentumView.configureReviewUpdateUI(dataExist: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -93,6 +108,7 @@ class MyMomentumViewController: BaseViewController {
 extension MyMomentumViewController {
     private func setLikeContentDataSource() {
         let cellLikeContentRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, LikeContent> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(likeContent: itemIdentifier)
         }
         
         likeContentDataSource = UICollectionViewDiffableDataSource(collectionView: myMomentumView.profileCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -164,6 +180,7 @@ extension MyMomentumViewController {
         })
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+
         }
         
         reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -201,6 +218,7 @@ extension MyMomentumViewController {
         commentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
             header.titleLabel.text = "내가 쓴 댓글"
+            
             return header
         })
         

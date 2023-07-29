@@ -79,9 +79,42 @@ final class MovieDetailViewController: BaseViewController {
             .bind { [weak self] _ in
                 guard let self else { return }
                 if self.selfView.headerView.likeButton.image(for: .normal) == UIImage(named: "LikeNonSelect") {
+                    print("몇번울리니")
                     self.likeContentCheckTrigger.accept(false)
                 } else {
+                    print("몇번울리니")
                     self.likeContentCheckTrigger.accept(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.likeChoice
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+            guard let self else { return }
+            self.selfView.headerView.updateLikeButtonUI(like: true)
+        }
+        .disposed(by: disposeBag)
+        
+        output.likeCancel
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] _ in
+                guard let self else { return }
+                self.selfView.headerView.updateLikeButtonUI(like: false)
+        }
+        .disposed(by: disposeBag)
+        
+        output.likeContentCheck
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] likeContent in
+                guard let self else { return }
+                switch likeContent.code {
+                case 200:
+                    self.selfView.headerView.updateLikeButtonUI(like: true)
+                case 201:
+                    self.selfView.headerView.updateLikeButtonUI(like: false)
+                default:
+                    return
                 }
             }
             .disposed(by: disposeBag)
@@ -98,7 +131,7 @@ final class MovieDetailViewController: BaseViewController {
         })
         
         let characterHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            
+            supplementaryView.titleLabel.text = "등장인물"
         }
         
         dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

@@ -35,17 +35,44 @@ class FeedDetailViewController: BaseViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Int, FeedDetailModel>()
     
     let plusNavigationButtonTap = PublishSubject<Void>()
+    let spoilerValid = PublishRelay<Bool>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         plusNavigationItemSet()
         setCategoryDataSource()
         setDataSource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.addKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeKeyboardNotifications()
+    }
+    
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text)
         let output = viewModel.transform(input: input)
+        
+        output.spoilerValid
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] bool in
+                guard let self else { return }
+                print(bool, "스포일러 여부")
+                self.feedDetailView.updateSpoilerButtonUI(spoiler: bool)
+            }
+            .disposed(by: disposeBag)
+
+        output.textValid
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] valid in
+                guard let self else { return }
+                self.feedDetailView.updateCommentTextField(textValid: valid)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -105,6 +132,7 @@ extension FeedDetailViewController {
         }
         snapshot.appendItems(reviewArr, toSection: 0)
         dataSource.apply(snapshot)
+        
     }
 }
 
@@ -118,5 +146,43 @@ extension FeedDetailViewController {
     @objc
     func plusButtonClicked() {
         self.plusNavigationButtonTap.onNext(())
+    }
+}
+
+extension FeedDetailViewController {
+    // 노티피케이션을 추가하는 메서드
+    func addKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        // 키보드가 사라질 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    // 노티피케이션을 제거하는 메서드
+    func removeKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        // 키보드가 사라질 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // 키보드가 나타났다는 알림을 받으면 실행할 메서드
+    @objc func keyboardWillShow(_ noti: NSNotification){
+        // 키보드의 높이만큼 화면을 올려준다.
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y -= keyboardHeight
+        }
+    }
+
+    // 키보드가 사라졌다는 알림을 받으면 실행할 메서드
+    @objc func keyboardWillHide(_ noti: NSNotification){
+        // 키보드의 높이만큼 화면을 내려준다.
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y += keyboardHeight
+        }
     }
 }

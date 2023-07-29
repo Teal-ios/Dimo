@@ -270,7 +270,7 @@ final class MovieDetailView: BaseView {
         }
         
         characterCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom)
+            make.top.equalTo(headerView.snp.bottom).offset(36)
             make.width.equalTo(scrollView.snp.width)
             make.centerX.equalToSuperview()
             make.height.equalTo(240)

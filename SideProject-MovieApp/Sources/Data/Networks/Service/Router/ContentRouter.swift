@@ -84,20 +84,17 @@ extension ContentRouter: TargetType2 {
             let requestLikeChoiceDTO = RequestLikeChoiceDTO(user_id: parameters.user_id, content_type: parameters.content_type, contentId: parameters.contentId)
             print(requestLikeChoiceDTO)
             let encoder = JSONEncoder()
-            encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestLikeChoiceDTO)
             
         case .likeCancel(let parameters):
             let requestLikeCancelDTO = RequestLikeCancelDTO(user_id: parameters.user_id, content_type: parameters.content_type, contentId: parameters.contentId)
             print(requestLikeCancelDTO)
             let encoder = JSONEncoder()
-            encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestLikeCancelDTO)
             
         case .gradeChoiceAndModify(let parameters):
             let requestGradeChoiceAndModifyDTO = RequestGradeChoiceAndModifyDTO(user_id: parameters.user_id, contentId: parameters.contentId, content_type: parameters.content_type, grade: parameters.grade)
             let encoder = JSONEncoder()
-            encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestGradeChoiceAndModifyDTO)
             
         default:

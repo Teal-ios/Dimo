@@ -31,7 +31,7 @@ final class HomeViewController: BaseViewController {
     private var recommendDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
-    let categoryButtonTap = PublishSubject<String>()
+//    let categoryButtonTap = PublishSubject<String>()
     let posterCellSelected = PublishSubject<Void>()
     let mbtiMovieCellSelected = PublishSubject<Void>()
     let mbtiCharacterCellSelected = PublishSubject<Void>()
@@ -62,7 +62,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.homeView.mbtiHeroMoreButton.rx.tap, characterPlusButtonTapped: self.homeView.characterMoreButton.rx.tap, mbtiRecommendPlusButtonTapped: self.homeView.recommendMoreButton.rx.tap, hotMoviePlusButtonTapped: self.homeView.nowHotMoreButton.rx.tap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.homeView.categoryButton.rx.tap.withLatestFrom(self.categoryTitle).asSignal(onErrorJustReturn: "영화"), heroPlusButtonTapped: self.homeView.mbtiHeroMoreButton.rx.tap, characterPlusButtonTapped: self.homeView.characterMoreButton.rx.tap, mbtiRecommendPlusButtonTapped: self.homeView.recommendMoreButton.rx.tap, hotMoviePlusButtonTapped: self.homeView.nowHotMoreButton.rx.tap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
         
         let output = self.viewModel.transform(input: input)
         
@@ -128,6 +128,13 @@ extension HomeViewController {
         }
         
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            self.categoryTitle
+                .debug()
+                .bind { [weak self] title in
+                guard let self else { return }
+                supplementaryView.categoryInsetLabel.text = title
+            }
+            .disposed(by: self.disposeBag)
         }
         
         posterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -150,7 +157,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            
+            supplementaryView.titleLabel.text = "ISFJ가 주인공인 영화"
         }
         
         mbtiHeroDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -174,6 +181,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "스포주의! ISFJ 캐릭터 모아보기"
         }
         
         characterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -197,6 +205,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "ISFJ가 추천한 영화"
         }
         
         recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -220,6 +229,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            supplementaryView.titleLabel.text = "지금 핫한 영화"
         }
         
         nowHotDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

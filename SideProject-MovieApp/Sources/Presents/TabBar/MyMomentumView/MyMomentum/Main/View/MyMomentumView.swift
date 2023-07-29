@@ -80,6 +80,26 @@ class MyMomentumView: BaseView {
         let view = MyMomentumBaseExceptionHandlingView(title: "내가 쓴 댓글", subtitle: "작성한 댓글이 없어요")
         return view
     }()
+    
+    let likeContentMoreButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    let digFinishMoreButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    let reviewMoreButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
+    let commentMoreButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,6 +107,10 @@ class MyMomentumView: BaseView {
     
     override func setHierarchy() {
         self.addSubview(containScrollView)
+        self.addSubview(likeContentMoreButton)
+        self.addSubview(digFinishMoreButton)
+        self.addSubview(reviewMoreButton)
+        self.addSubview(commentMoreButton)
     }
     
     override func setupAttributes() {
@@ -104,32 +128,56 @@ class MyMomentumView: BaseView {
         profileView.snp.makeConstraints { make in
             make.top.equalTo(containScrollView.snp.top)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.greaterThanOrEqualTo(350)
+            make.height.equalTo(350)
         }
         
         profileStackView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(240)
+            make.height.equalTo(104)
         }
         
         digStackView.snp.makeConstraints { make in
-            make.top.equalTo(profileCollectionView.snp.bottom)
+            make.top.equalTo(profileStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(240)
+            make.height.equalTo(216)
         }
         
         reivewStackView.snp.makeConstraints { make in
-            make.top.equalTo(digFinishCharacherCollectionView.snp.bottom)
+            make.top.equalTo(digStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(240)
+            make.height.equalTo(104)
         }
         
         commentStackView.snp.makeConstraints { make in
-            make.top.equalTo(reviewCollectionView.snp.bottom)
+            make.top.equalTo(reivewStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.lessThanOrEqualTo(240)
+            make.height.equalTo(104)
             make.bottom.equalTo(containScrollView.snp.bottom)
+        }
+        
+        likeContentMoreButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(profileStackView)
+            make.width.equalTo(72)
+            make.height.equalTo(44)
+        }
+        
+        digFinishMoreButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(digStackView)
+            make.width.equalTo(72)
+            make.height.equalTo(44)
+        }
+        
+        reviewMoreButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(reivewStackView)
+            make.width.equalTo(72)
+            make.height.equalTo(44)
+        }
+        
+        commentMoreButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(commentStackView)
+            make.width.equalTo(72)
+            make.height.equalTo(44)
         }
     }
     
@@ -246,7 +294,7 @@ extension MyMomentumView {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio)
+            heightDimension: .absolute(168)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -272,11 +320,14 @@ extension MyMomentumView {
     func configureProfileUpdateUI(dataExist: Bool) {
         if dataExist {
             self.exceptionHandlingLikeContentView.isHidden = true
+            self.profileCollectionView.isHidden = false
             updateProfileExistLayout()
         } else {
             self.exceptionHandlingLikeContentView.isHidden = false
             self.profileCollectionView.isHidden = true
+            updateProfileNonexistentLayout()
         }
+        self.layoutIfNeeded()
     }
 }
 
@@ -284,11 +335,14 @@ extension MyMomentumView {
     func configureDigUpdateUI(dataExist: Bool) {
         if dataExist == true {
             self.exceptionHandlingDigView.isHidden = true
+            self.digFinishCharacherCollectionView.isHidden = false
             updateDigExistLayout()
         } else {
             self.exceptionHandlingDigView.isHidden = false
             self.digFinishCharacherCollectionView.isHidden = true
+            updateDigNonexistentLayout()
         }
+        self.layoutIfNeeded()
     }
 }
 
@@ -296,11 +350,14 @@ extension MyMomentumView {
     func configureReviewUpdateUI(dataExist: Bool) {
         if dataExist == true {
             self.exceptionHandlingReviewView.isHidden = true
+            self.reviewCollectionView.isHidden = false
             updateReviewExistLayout()
         } else {
             self.exceptionHandlingReviewView.isHidden = false
             self.reviewCollectionView.isHidden = true
+            updateReviewNonexistentLayout()
         }
+        self.layoutIfNeeded()
     }
 }
 
@@ -308,11 +365,14 @@ extension MyMomentumView {
     func configureCommentUpdateUI(dataExist: Bool) {
         if dataExist == true {
             self.exceptionHandlingCommentView.isHidden = true
+            self.commentCollectionView.isHidden = false
             updateCommentExistLayout()
         } else {
             self.exceptionHandlingCommentView.isHidden = false
             self.commentCollectionView.isHidden = true
+            updateCommentNonexistentLayout()
         }
+        self.layoutIfNeeded()
     }
 }
 
@@ -323,7 +383,17 @@ extension MyMomentumView {
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
-        
+        self.likeContentMoreButton.isEnabled = true
+        self.layoutIfNeeded()
+    }
+    
+    func updateProfileNonexistentLayout() {
+        profileStackView.snp.makeConstraints { make in
+            make.top.equalTo(profileView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(104)
+        }
+        self.likeContentMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -331,10 +401,21 @@ extension MyMomentumView {
 extension MyMomentumView {
     func updateDigExistLayout() {
         self.digStackView.snp.remakeConstraints { make in
-            make.top.equalTo(profileCollectionView.snp.bottom)
+            make.top.equalTo(profileStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
+        self.digFinishMoreButton.isEnabled = true
+        self.layoutIfNeeded()
+    }
+    
+    func updateDigNonexistentLayout() {
+        digStackView.snp.makeConstraints { make in
+            make.top.equalTo(profileStackView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(216)
+        }
+        self.digFinishMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -342,10 +423,21 @@ extension MyMomentumView {
 extension MyMomentumView {
     func updateReviewExistLayout() {
         self.reivewStackView.snp.remakeConstraints { make in
-            make.top.equalTo(digFinishCharacherCollectionView.snp.bottom)
+            make.top.equalTo(digStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
         }
+        self.reviewMoreButton.isEnabled = true
+        self.layoutIfNeeded()
+    }
+    
+    func updateReviewNonexistentLayout() {
+        reivewStackView.snp.makeConstraints { make in
+            make.top.equalTo(digStackView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(104)
+        }
+        self.reviewMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }
@@ -353,12 +445,23 @@ extension MyMomentumView {
 extension MyMomentumView {
     func updateCommentExistLayout() {
         self.commentStackView.snp.remakeConstraints { make in
-            make.top.equalTo(reviewCollectionView.snp.bottom)
+            make.top.equalTo(reivewStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
             make.height.equalTo(240)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
-        
+        self.commentMoreButton.isEnabled = true
+        self.layoutIfNeeded()
+    }
+    
+    func updateCommentNonexistentLayout() {
+        commentStackView.snp.makeConstraints { make in
+            make.top.equalTo(reivewStackView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(104)
+            make.bottom.equalTo(containScrollView.snp.bottom)
+        }
+        self.commentMoreButton.isEnabled = false
         self.layoutIfNeeded()
     }
 }

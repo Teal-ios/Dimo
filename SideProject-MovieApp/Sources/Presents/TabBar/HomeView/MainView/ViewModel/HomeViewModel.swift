@@ -17,7 +17,8 @@ final class HomeViewModel: ViewModelType {
     private var category: BehaviorRelay<String>
 
     struct Input {
-        let categoryButtonTapped: PublishSubject<String>
+        let categoryButtonTapped: Signal<String>
+//        let categoryButtonTapped: PublishSubject<String>
         let heroPlusButtonTapped: ControlEvent<Void>
         let characterPlusButtonTapped: ControlEvent<Void>
         let mbtiRecommendPlusButtonTapped: ControlEvent<Void>
@@ -33,7 +34,7 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let animationData: PublishRelay<[AnimationData]>
         let category: BehaviorRelay<String>
-        let categoryButtonTapped: PublishSubject<String>
+//        let categoryButtonTapped: PublishRelay<String>
     }
     
     let animationData = PublishRelay<[AnimationData]>()
@@ -46,8 +47,9 @@ final class HomeViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         input.categoryButtonTapped
-            .bind { [weak self] _ in
+            .emit { [weak self] category in
             guard let self else { return }
+            self.category.accept(category)
             self.coordinator?.showCategoryViewController(category: self.category)
         }
         .disposed(by: disposeBag)
@@ -107,7 +109,7 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData, category: self.category, categoryButtonTapped: input.categoryButtonTapped)
+        return Output(animationData: self.animationData, category: self.category)
     }
 }
 

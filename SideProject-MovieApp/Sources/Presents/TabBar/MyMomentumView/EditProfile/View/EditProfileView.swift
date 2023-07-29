@@ -12,7 +12,6 @@ final class EditProfileView: BaseView {
     
     let bgView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black100
         return view
     }()
     
@@ -33,7 +32,7 @@ final class EditProfileView: BaseView {
     
     let profileImageEditButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "ProfileSetting"), for: .normal)
+        button.setImage(UIImage(named: "camera"), for: .normal)
         return button
     }()
     
@@ -54,6 +53,9 @@ final class EditProfileView: BaseView {
     
     let introduceEditTextView: UITextView = {
         let view = UITextView()
+        view.backgroundColor = .black90
+        view.text = "자기소개를 입력해 보세요"
+        view.textColor = .black60
         return view
     }()
     
@@ -72,6 +74,13 @@ final class EditProfileView: BaseView {
         self.addSubview(introduceEditTextView)
         self.addSubview(okButton)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        introduceEditContainView.layer.cornerRadius = 8
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+    }
+        
     
     override func setupLayout() {
         
@@ -120,5 +129,29 @@ final class EditProfileView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(48)
         }
+    }
+}
+
+extension EditProfileView {
+    func updateIntroduceTextView() {
+        let textViewPlaceHolder = "자기소개를 입력해 보세요"
+
+        if introduceEditTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            introduceEditTextView.text = textViewPlaceHolder
+            introduceEditTextView.textColor = .black80
+        }
+    }
+    
+    func updateIntroduceTextViewTextNil() {
+        introduceEditTextView.text = nil
+        introduceEditTextView.textColor = .black5
+    }
+}
+
+extension EditProfileView {
+    func updateProfileImage(image: UIImage) {
+        self.profileImageView.contentMode = .scaleToFill
+        let resizeImage = image.resizeImageTo(size: CGSize(width: self.profileImageView.frame.width, height: self.profileImageView.frame.height))
+        self.profileImageView.image = resizeImage
     }
 }

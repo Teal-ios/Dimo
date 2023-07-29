@@ -23,7 +23,7 @@ class TodayDIMOHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.textColor = .black60
         label.font = Font.body3
-        label.text = "영화"
+        label.text = "애니"
         return label
     }()
     
