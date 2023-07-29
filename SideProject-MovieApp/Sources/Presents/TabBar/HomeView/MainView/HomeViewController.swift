@@ -150,6 +150,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+            
         }
         
         mbtiHeroDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

@@ -10,15 +10,15 @@ import Foundation
 struct ResponseLikeAnimationContentDTO: Decodable {
     let code: Int
     let message: String
-    let like_content: [ResponseLikeContentDTO?]
+    let like_content_info: [ResponseLikeContentDTO?]
     
     enum CodingKeys: String, CodingKey {
-        case code, message, like_content
+        case code, message, like_content_info
     }
 }
 
 extension ResponseLikeAnimationContentDTO {
     var toDomain: LikeAnimationContent {
-        return .init(code: code, message: message, like_content: like_content.map { $0?.toDomain })
+        return .init(code: code, message: message, like_content_info: like_content_info.map { $0?.toDomain })
     }
 }

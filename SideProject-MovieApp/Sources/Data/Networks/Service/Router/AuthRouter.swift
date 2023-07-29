@@ -22,24 +22,13 @@ enum AuthRouter<R> {
 }
 
 extension AuthRouter: TargetType2 {
+    
+    typealias Response = R
+
     var header: [String : String] {
         switch self {
         case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
-        }
-    }
-    
-    
-    typealias Response = R
-    
-    var queryItems: [URLQueryItem]? {
-        switch self {
-        case .duplicationId(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
-        case .socialLoginCheck(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "sns_type", value: parameters.sns_type)]
-        default:
-            return nil
         }
     }
     
@@ -54,23 +43,6 @@ extension AuthRouter: TargetType2 {
     
     var host: String {
         return APIKey.baseURL
-    }
-    
-    var httpMethod: HTTPMethod {
-        switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop:
-            return .post
-        case .duplicationId, .logout, .socialLoginCheck:
-            return .get
-        }
-    }
-    
-    var parameters: String? {
-        return nil
-    }
-    
-    var baseURL: URL {
-        return URL(string: APIKey.baseURL)!
     }
     
     var path: String {
@@ -98,6 +70,30 @@ extension AuthRouter: TargetType2 {
         case .socialLoginCheck:
             return "/social/check"
         }
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .duplicationId(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        case .socialLoginCheck(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "sns_type", value: parameters.sns_type)]
+        default:
+            return nil
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop:
+            return .post
+        case .duplicationId, .logout, .socialLoginCheck:
+            return .get
+        }
+    }
+    
+    var parameters: String? {
+        return nil
     }
     
     var body: Data? {

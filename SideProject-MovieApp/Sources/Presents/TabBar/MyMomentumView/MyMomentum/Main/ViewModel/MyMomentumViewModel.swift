@@ -36,10 +36,6 @@ final class MyMomentumViewModel: ViewModelType {
     let likeAnimationContent = PublishRelay<LikeAnimationContent>()
     let likeMoviewContent = PublishRelay<LikeMovieContent>()
     
-    func test() {
-        coordinator?.showEditProfileViewController()
-    }
-    
     func transform(input: Input) -> Output {
         
         input.viewDidLoad

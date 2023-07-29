@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestLoginDTO: Codable {
+struct RequestLoginDTO: Encodable {
     let user_id: String
     let password: String
     
