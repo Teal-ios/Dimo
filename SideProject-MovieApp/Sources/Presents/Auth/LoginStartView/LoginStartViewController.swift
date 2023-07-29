@@ -8,7 +8,9 @@
 import UIKit
 import RxCocoa
 import AuthenticationServices
-
+import KakaoSDKAuth
+import KakaoSDKUser
+import GoogleSignIn
 
 class LoginStartViewController: BaseViewController {
     
@@ -38,11 +40,25 @@ class LoginStartViewController: BaseViewController {
         super.viewDidLoad()
         print("check")
         self.loginStartView.appleLoginButton.addTarget(self, action: #selector(appleLoginButtonTapped), for: .touchUpInside)
+        
     }
     
     override func setupBinding() {
         let output = viewModel.transform(input: input)
         
+        output.kakaoLoginButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.kakaoLogin()
+            }
+            .disposed(by: disposeBag)
+        
+        output.googleLoginButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+
+        }
+        .disposed(by: disposeBag)
     }
 }
 
@@ -51,7 +67,7 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
     func appleLoginButtonTapped() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
-
+        
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
@@ -60,7 +76,7 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
     
     // 로그인 성공시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-
+        
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             // Create an account in your system.
@@ -101,7 +117,7 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
             switch credentialState {
             case .authorized:
                 print("authorized")
-            // The Apple ID credential is valid.
+                // The Apple ID credential is valid.
             case .revoked:
                 print("revoked")
             case .notFound:
@@ -124,3 +140,47 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
 }
 
 
+extension LoginStartViewController {
+    func kakaoLoginButtonTouchUpInside() {
+        // 카카오톡 설치 여부 확인
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+                    
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }
+    }
+    
+    func kakaoLogin() {
+        // 카카오 계정으로 로그인
+//        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            else {
+//                print("카카오 로그인 성공")
+//
+//                _ = oauthToken
+//                /// 로그인 관련 메소드 추가
+//            }
+//        }
+        UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("카카오 로그인 성공")
+
+                _ = oauthToken
+                /// 로그인 관련 메소드 추가
+            }
+        }
+    }
+}

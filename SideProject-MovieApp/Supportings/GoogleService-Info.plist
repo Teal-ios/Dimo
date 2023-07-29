@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>243553414650-tmoac8jg2ihvfq9h0dauahj2hcqc5jj2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.243553414650-tmoac8jg2ihvfq9h0dauahj2hcqc5jj2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDEK7d0KObRGPRaq29vInRQbiUq7d_q0Gw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>243553414650</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cody.SideProject-MovieApp</string>
+	<key>PROJECT_ID</key>
+	<string>dimo-1681785342159</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dimo-1681785342159.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:243553414650:ios:f6d91d1e55707a5cac4843</string>
+</dict>
+</plist>

@@ -27,8 +27,8 @@ final class LoginStartViewModel: ViewModelType {
     
     struct Output{
         var dimoLoginButtonTapped: ControlEvent<Void>
-//        var kakaoLoginButtonTapped: ControlEvent<Void>
-//        var googleLoginButtonTapped: ControlEvent<Void>
+        var kakaoLoginButtonTapped: ControlEvent<Void>
+        var googleLoginButtonTapped: ControlEvent<Void>
 //        var appleLoginButtonTapped: ControlEvent<Void>
     }
 
@@ -54,17 +54,17 @@ final class LoginStartViewModel: ViewModelType {
         input.kakaoLoginButtonTapped.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "kakao"
-            self.coordinator?.showErrorCommonViewController()
+//            self.coordinator?.showErrorCommonViewController()
         }
         .disposed(by: disposeBag)
         
         input.googleLoginButtonTapped.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "google"
-            self.coordinator?.showErrorNotFoundViewController()
+//            self.coordinator?.showErrorNotFoundViewController()
         }
         .disposed(by: disposeBag)
         
-        return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped)
+        return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped, kakaoLoginButtonTapped: input.kakaoLoginButtonTapped, googleLoginButtonTapped: input.googleLoginButtonTapped)
     }
 }

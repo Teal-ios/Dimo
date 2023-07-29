@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import Firebase
+import GoogleSignIn
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -24,6 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+            let _ = GIDSignIn.sharedInstance.handle(url)
+        }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
