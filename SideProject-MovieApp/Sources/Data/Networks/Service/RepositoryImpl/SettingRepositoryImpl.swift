@@ -69,9 +69,9 @@ extension SettingRepositoryImpl {
                                                   password: query.currentPassword,
                                                   new_password: query.newPassword)
         let target = APIEndpoints.getPasswordChange(with: requestDTO)
-        
         do {
             let data = try await dataTransferService.request(with: target)
+            print("🔥 PASSWORD CHANGE TARGET: \(target)")
             return data.toDomain
         } catch {
             throw SettingRepositoryError.request

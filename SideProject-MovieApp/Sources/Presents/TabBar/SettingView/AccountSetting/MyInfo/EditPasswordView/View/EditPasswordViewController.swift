@@ -12,16 +12,15 @@ import Toast
 
 final class EditPasswordViewController: BaseViewController {
     
-    private let editPasswordView = EditPasswordView(title: "비밀번호를 입력해주세요", placeholder: "기존 비밀번호")
+    private let editPasswordView = EditPasswordView()
     
     private var viewModel: EditPasswordViewModel
     
-    //MARK: Input
     private lazy var input = EditPasswordViewModel.Input(
-        currentPassWordTextFieldText: editPasswordView.idTextFieldView.tf.rx.text,
-        newPasswordTextFieldText: editPasswordView.idTextFieldView.tf.rx.text,
-        newPasswordCheckTextFieldText: editPasswordView.idTextFieldView.tf.rx.text,
-        passwordChangeButtonTapped: editPasswordView.nextButton.rx.tap
+        currentPassWordTextFieldText: editPasswordView.currentPasswordView.tf.rx.text,
+        newPasswordTextFieldText: editPasswordView.newPasswordView.tf.rx.text,
+        newPasswordCheckTextFieldText: editPasswordView.newPasswordCheckView.tf.rx.text,
+        passwordChangeButtonTapped: editPasswordView.passwordChangeButton.rx.tap
     )
     
     override func loadView() {
@@ -40,7 +39,6 @@ final class EditPasswordViewController: BaseViewController {
     override func setupBinding() {
         let output = viewModel.transform(input: input)
         
-        
         output.isChanged
             .observe(on: MainScheduler.instance)
             .bind { [weak self] isChanged in
@@ -52,6 +50,16 @@ final class EditPasswordViewController: BaseViewController {
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        output.passwordChageButtonTappedOutput
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] (isSameWithExistingPassword, isValidPasswordFormat, isSameWithNewPassword) in
+                guard let self else { return }
+                self.editPasswordView.showExistingPasswordTextFieldState(isSameWithExistingPassword)
+                self.editPasswordView.showPasswordValidationTextFieldState(isValidPasswordFormat)
+                self.editPasswordView.showNewPasswordTextFieldState(isSameWithNewPassword)
             }
             .disposed(by: disposeBag)
     }

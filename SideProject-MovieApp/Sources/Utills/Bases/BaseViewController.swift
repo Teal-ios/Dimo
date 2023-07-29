@@ -47,12 +47,12 @@ class BaseViewController: UIViewController {
     // MARK: Life Cycle Views
     
     override func viewDidLoad() {
-        setupAttributes()
-        setupLayout()
-        setupLocalization()
-        setupBinding()
-        setData()
-        navigation()
+        self.setupAttributes()
+        self.setupLayout()
+        self.setupLocalization()
+        self.setupBinding()
+        self.setData()
+        self.setNavigationBar()
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -100,31 +100,20 @@ class BaseViewController: UIViewController {
     
     
     // MARK: Custom Func
-    
-    func navigation() {
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.backgroundColor = .black
-        
-        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-    
-        let backButtonImage = UIImage(named: "Icon_arrow_left")
-        self.navigationController?.navigationBar.backIndicatorImage = backButtonImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
+    func setNavigationBar() {
         self.navigationController?.navigationBar.backItem?.title = ""
-        navigationController?.navigationBar.tintColor = .black60
-        navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .black60
     }
     
     @objc func didTappedBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func configureNavigationBar() {
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
-    }
+//    private func configureNavigationBar() {
+//        navigationController?.isNavigationBarHidden = true
+//        navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
+//    }
 }
 
 extension BaseViewController {

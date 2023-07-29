@@ -16,13 +16,13 @@ final class AppCoordinator: Coordinator {
 
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.setNavigationBarHidden(true, animated: false)
-
     }
 
     func start() {
         /// 조건에 따른 분기처리 필요
+//        connectTabBarFlow()
         connectAuthFlow()
+//        connectSettingFlow()
     }
 
     private func connectAuthFlow() {
@@ -30,6 +30,20 @@ final class AppCoordinator: Coordinator {
         authCoordinator.delegate = self
         authCoordinator.start()
         childCoordinators.append(authCoordinator)
+    }
+    
+    private func connectTabBarFlow() {
+        let homeTabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
+        homeTabBarCoordinator.delegate = self
+        homeTabBarCoordinator.start()
+        childCoordinators.append(homeTabBarCoordinator)
+    }
+    
+    private func connectSettingFlow() {
+        let settingCoordinator = SettingCoordinator(self.navigationController)
+        settingCoordinator.delegate = self
+        settingCoordinator.start()
+        childCoordinators.append(settingCoordinator)
     }
 }
 

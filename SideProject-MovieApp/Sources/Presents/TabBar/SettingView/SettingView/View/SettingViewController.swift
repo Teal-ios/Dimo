@@ -35,7 +35,7 @@ final class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingView.collectionView.delegate = self
-        setDataSource()
+        self.setDataSource()
     }
     
     override func setupBinding() {

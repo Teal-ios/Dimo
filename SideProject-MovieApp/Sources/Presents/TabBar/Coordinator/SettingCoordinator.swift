@@ -16,7 +16,7 @@ final class SettingCoordinator: Coordinator {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         showSettingViewController()
     }

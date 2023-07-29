@@ -170,15 +170,12 @@ class EditMbtiView: BaseView {
     }
     
     func hierarchy() {
-        
         addSubview(headerLabel)
         addSubview(subTitleLabel)
         addSubview(lastChangeDayLabel)
         addSubview(totalStackView)
         addSubview(findMbtiButton)
         addSubview(nextButton)
-
-        
     }
     
     func snapkit() {

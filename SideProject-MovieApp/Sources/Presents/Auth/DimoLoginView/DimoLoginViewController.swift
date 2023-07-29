@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import RxCocoa
 import RxSwift
 import SnapKit
@@ -28,27 +29,27 @@ class DimoLoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func setupBinding() {
-        navigationController?.isNavigationBarHidden = false
-
         let input = DimoLoginViewModel.Input(nextButtonTapped: dimoLoginView.nextButton.rx.tap, idText: dimoLoginView.idTextFieldView.tf.rx.text, passwordText: dimoLoginView.passwordView.tf.rx.text, idFindButtonTapped: dimoLoginView.idFindButton.rx.tap, pwFindButtonTapped: dimoLoginView.passwordFindButton.rx.tap, dimoFirstStartButtonTapped: dimoLoginView.firstDimoButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
         output.loginValid
             .withUnretained(self)
-            .bind { vc, valid in
+            .bind { (vc, valid) in
                 vc.dimoLoginView.nextButton.isEnabled = valid
                 vc.dimoLoginView.nextButton.configuration?
                     .baseBackgroundColor = valid ? .purple100 : .black80
             }.disposed(by: disposeBag)
         
         output.toastMessage
+            .withUnretained(self)
             .observe(on: MainScheduler.instance)
-            .bind { message in
-                self.dimoLoginView.makeToast(message, style: ToastStyle.dimo)
+            .bind { (vc, message) in
+                vc.dimoLoginView.makeToast(message, style: ToastStyle.dimo)
             }
             .disposed(by: disposeBag)
     }
