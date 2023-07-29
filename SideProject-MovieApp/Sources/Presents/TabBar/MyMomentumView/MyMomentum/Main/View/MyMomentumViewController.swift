@@ -41,7 +41,6 @@ class MyMomentumViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBinding()
         setNavigation()
         setLikeContentDataSource()
         setDigFinishCharacterDataSource()
@@ -51,7 +50,8 @@ class MyMomentumViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -79,7 +79,10 @@ class MyMomentumViewController: BaseViewController {
                     self.myMomentumView.configureCommentUpdateUI(dataExist: true)
                     self.myMomentumView.configureReviewUpdateUI(dataExist: false)
                 } else {
-                    self.myMomentumView.configureProfileUpdateUI(dataExist: true)
+                    self.myMomentumView.configureProfileUpdateUI(dataExist: false)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
+                    self.myMomentumView.configureReviewUpdateUI(dataExist: false)
                 }
             }
             .disposed(by: disposeBag)

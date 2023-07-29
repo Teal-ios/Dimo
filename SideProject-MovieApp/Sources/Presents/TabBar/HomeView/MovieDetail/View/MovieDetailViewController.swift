@@ -25,7 +25,7 @@ final class MovieDetailViewController: BaseViewController {
     let characterCellSelected = PublishSubject<Void>()
     let evaluateButtonTapped = PublishSubject<Void>()
     let animationData = PublishRelay<DetailAnimationData>()
-    
+    let likeContentCheckTrigger = PublishRelay<Bool>()
     
     override func loadView() {
         view = selfView
@@ -39,7 +39,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap)
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap, likeButtonTapped: self.selfView.headerView.likeButton.rx.tap, likeContentCheckValid: self.likeContentCheckTrigger)
         let output = self.viewModel.transform(input: input)
         
         output.plusButtonTapped.bind { [weak self] _ in
@@ -71,6 +71,18 @@ final class MovieDetailViewController: BaseViewController {
                 var sectionArr: [Characters] = characters
                 snapshot.appendItems(sectionArr, toSection: 0)
                 self.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.likeButtonTapped
+            .debug()
+            .bind { [weak self] _ in
+                guard let self else { return }
+                if self.selfView.headerView.likeButton.image(for: .normal) == UIImage(named: "LikeNonSelect") {
+                    self.likeContentCheckTrigger.accept(false)
+                } else {
+                    self.likeContentCheckTrigger.accept(true)
+                }
             }
             .disposed(by: disposeBag)
     }

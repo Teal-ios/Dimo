@@ -18,10 +18,10 @@ final class HomeViewModel: ViewModelType {
 
     struct Input {
         let categoryButtonTapped: PublishSubject<String>
-        let heroPlusButtonTapped: PublishSubject<Void>
-        let characterPlusButtonTapped: PublishSubject<Void>
-        let mbtiRecommendPlusButtonTapped: PublishSubject<Void>
-        let hotMoviePlusButtonTapped: PublishSubject<Void>
+        let heroPlusButtonTapped: ControlEvent<Void>
+        let characterPlusButtonTapped: ControlEvent<Void>
+        let mbtiRecommendPlusButtonTapped: ControlEvent<Void>
+        let hotMoviePlusButtonTapped: ControlEvent<Void>
         let posterCellSelected: PublishSubject<Void>
         let mbtiMovieCellSelected: PublishSubject<Void>
         let mbtiCharacterCellSelected: PublishSubject<Void>
@@ -38,7 +38,6 @@ final class HomeViewModel: ViewModelType {
     
     let animationData = PublishRelay<[AnimationData]>()
 
-
     init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, category: String) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
@@ -46,14 +45,17 @@ final class HomeViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.categoryButtonTapped.bind { [weak self] _ in
+        input.categoryButtonTapped
+            .bind { [weak self] _ in
             guard let self else { return }
             self.coordinator?.showCategoryViewController(category: self.category)
         }
         .disposed(by: disposeBag)
         
-        input.posterCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showMovieDetailViewController(content_id: "3371")
+        input.posterCellSelected
+            .bind { [weak self] _ in
+                guard let self else { return }
+            self.coordinator?.showMovieDetailViewController(content_id: "3371")
         }
         .disposed(by: disposeBag)
         
@@ -70,7 +72,8 @@ final class HomeViewModel: ViewModelType {
         
         input.heroPlusButtonTapped
             .bind { [weak self] _ in
-            self?.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
+                guard let self else { return }
+            self.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
         }
         .disposed(by: disposeBag)
         
@@ -94,14 +97,17 @@ final class HomeViewModel: ViewModelType {
         input.viewDidLoad
             .bind { [weak self] _ in
                 print("viewDidLoad 실행")
-                let animationDataObservable = self?.contentUseCase.excuteFetchAnimationData()
+                guard let self else { return }
+                let animationDataObservable = self.contentUseCase.excuteFetchAnimationData()
                 
-                animationDataObservable?.bind(onNext: { data in
-                    self?.animationData.accept(data)
+                animationDataObservable.bind(onNext: { data in
+                    self.animationData.accept(data)
                 })
+                .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
 
         return Output(animationData: self.animationData, category: self.category, categoryButtonTapped: input.categoryButtonTapped)
     }
 }
+

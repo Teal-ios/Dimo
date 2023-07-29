@@ -46,3 +46,59 @@ extension ContentRepositoryImpl {
         }
     }
 }
+
+extension ContentRepositoryImpl {
+    func fetchLikeContentCheck(query: LikeContentCheckQuery) async throws -> LikeContentCheck {
+        let target = ContentAPIEndpoints.getLikeContentCheckk(user_id: query.user_id, content_type: query.content_type, contentId: query.contentId)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}
+
+extension ContentRepositoryImpl {
+    func requestLikeCancel(query: LikeCancelQuery) async throws -> LikeCancel {
+        let requestDTO = RequestLikeCancelDTO(user_id: query.user_id, content_type: query.content_type, contentId: query.contentId)
+        let target = ContentAPIEndpoints.postLikeCancel(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}
+
+extension ContentRepositoryImpl {
+    func requestLikeChoice(query: LikeChoiceQuery) async throws -> LikeChoice {
+        let requestDTO = RequestLikeChoiceDTO(user_id: query.user_id, content_type: query.content_type, contentId: query.contentId)
+        let target = ContentAPIEndpoints.postLikeChoice(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}
+
+extension ContentRepositoryImpl {
+    func requestGradeChoiceAndModify(query: GradeChoiceAndModifyQuery) async throws -> GradeChoiceAndModify {
+        let requestDTO = RequestGradeChoiceAndModifyDTO(user_id: query.user_id, contentId: query.contentId, content_type: query.content_type, grade: query.grade)
+        
+        let target = ContentAPIEndpoints.postGradeChoiceAndModify(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}

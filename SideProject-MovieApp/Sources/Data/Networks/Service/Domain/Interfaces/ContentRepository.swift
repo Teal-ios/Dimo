@@ -12,4 +12,12 @@ protocol ContentRepository: AnyObject {
     func fetchAnimationData() async throws -> [AnimationData]
     
     func fetchDetailAnimatonData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData
+    
+    func requestLikeChoice(query: LikeChoiceQuery) async throws -> LikeChoice
+    
+    func requestLikeCancel(query: LikeCancelQuery) async throws -> LikeCancel
+    
+    func requestGradeChoiceAndModify(query: GradeChoiceAndModifyQuery) async throws -> GradeChoiceAndModify
+    
+    func fetchLikeContentCheck(query: LikeContentCheckQuery) async throws -> LikeContentCheck
 }

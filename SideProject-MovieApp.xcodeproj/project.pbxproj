@@ -135,6 +135,24 @@
 		2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */; };
 		2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE1192A262735001D5425 /* NicknameChange.swift */; };
 		2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */; };
+		2FBFF8222A6F4EF5007914A1 /* LikeChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8212A6F4EF5007914A1 /* LikeChoice.swift */; };
+		2FBFF8242A6F4F01007914A1 /* LikeCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8232A6F4F01007914A1 /* LikeCancel.swift */; };
+		2FBFF8262A6F4F3B007914A1 /* GradeChoiceAndModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8252A6F4F3B007914A1 /* GradeChoiceAndModify.swift */; };
+		2FBFF8282A6F4F60007914A1 /* LikeContentCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8272A6F4F60007914A1 /* LikeContentCheck.swift */; };
+		2FBFF82A2A6F54D6007914A1 /* LikeChoiceQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8292A6F54D6007914A1 /* LikeChoiceQuery.swift */; };
+		2FBFF82C2A6F54EE007914A1 /* LikeCancelQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF82B2A6F54EE007914A1 /* LikeCancelQuery.swift */; };
+		2FBFF82E2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF82D2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift */; };
+		2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF82F2A6F5505007914A1 /* LikeContentCheckQuery.swift */; };
+		2FBFF8332A6F5938007914A1 /* RequestLikeChoiceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8322A6F5938007914A1 /* RequestLikeChoiceDTO.swift */; };
+		2FBFF8352A6F5944007914A1 /* RequestLikeCancelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8342A6F5944007914A1 /* RequestLikeCancelDTO.swift */; };
+		2FBFF8372A6F596B007914A1 /* RequestGradeChoiceAndModifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8362A6F596B007914A1 /* RequestGradeChoiceAndModifyDTO.swift */; };
+		2FBFF8392A6F5980007914A1 /* ResponseLikeChoiceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8382A6F5980007914A1 /* ResponseLikeChoiceDTO.swift */; };
+		2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */; };
+		2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */; };
+		2FBFF83F2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */; };
+		2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */; };
+		2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */; };
+		2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */; };
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
@@ -517,6 +535,24 @@
 		2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeQuery.swift; sourceTree = "<group>"; };
 		2FBFE1192A262735001D5425 /* NicknameChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChange.swift; sourceTree = "<group>"; };
 		2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseChangeNicknameDTO.swift; sourceTree = "<group>"; };
+		2FBFF8212A6F4EF5007914A1 /* LikeChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeChoice.swift; sourceTree = "<group>"; };
+		2FBFF8232A6F4F01007914A1 /* LikeCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCancel.swift; sourceTree = "<group>"; };
+		2FBFF8252A6F4F3B007914A1 /* GradeChoiceAndModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeChoiceAndModify.swift; sourceTree = "<group>"; };
+		2FBFF8272A6F4F60007914A1 /* LikeContentCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeContentCheck.swift; sourceTree = "<group>"; };
+		2FBFF8292A6F54D6007914A1 /* LikeChoiceQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeChoiceQuery.swift; sourceTree = "<group>"; };
+		2FBFF82B2A6F54EE007914A1 /* LikeCancelQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCancelQuery.swift; sourceTree = "<group>"; };
+		2FBFF82D2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeChoiceAndModifyQuery.swift; sourceTree = "<group>"; };
+		2FBFF82F2A6F5505007914A1 /* LikeContentCheckQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeContentCheckQuery.swift; sourceTree = "<group>"; };
+		2FBFF8322A6F5938007914A1 /* RequestLikeChoiceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLikeChoiceDTO.swift; sourceTree = "<group>"; };
+		2FBFF8342A6F5944007914A1 /* RequestLikeCancelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLikeCancelDTO.swift; sourceTree = "<group>"; };
+		2FBFF8362A6F596B007914A1 /* RequestGradeChoiceAndModifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGradeChoiceAndModifyDTO.swift; sourceTree = "<group>"; };
+		2FBFF8382A6F5980007914A1 /* ResponseLikeChoiceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeChoiceDTO.swift; sourceTree = "<group>"; };
+		2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeCancelDTO.swift; sourceTree = "<group>"; };
+		2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGradeChoiceAndModifyDTO.swift; sourceTree = "<group>"; };
+		2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeContentCheckDTO.swift; sourceTree = "<group>"; };
+		2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
@@ -955,6 +991,10 @@
 				2FD4D9362A6E45A700E7972B /* Characters.swift */,
 				2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */,
 				2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */,
+				2FBFF8212A6F4EF5007914A1 /* LikeChoice.swift */,
+				2FBFF8232A6F4F01007914A1 /* LikeCancel.swift */,
+				2FBFF8252A6F4F3B007914A1 /* GradeChoiceAndModify.swift */,
+				2FBFF8272A6F4F60007914A1 /* LikeContentCheck.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -966,6 +1006,10 @@
 				2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */,
 				2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */,
 				2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */,
+				2FBFF8382A6F5980007914A1 /* ResponseLikeChoiceDTO.swift */,
+				2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */,
+				2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */,
+				2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1097,6 +1141,7 @@
 				2F437C042A4BE8A1000B7A61 /* Auth */,
 				497454F62A42000C0043D67E /* Setting */,
 				2FD4D91B2A6CC85200E7972B /* MyMomentum */,
+				2FBFF8312A6F5907007914A1 /* Content */,
 			);
 			path = RequestDTO;
 			sourceTree = "<group>";
@@ -1546,6 +1591,52 @@
 				2FC94ECD29C039620097E696 /* AuthCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2FBFF8312A6F5907007914A1 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8322A6F5938007914A1 /* RequestLikeChoiceDTO.swift */,
+				2FBFF8342A6F5944007914A1 /* RequestLikeCancelDTO.swift */,
+				2FBFF8362A6F596B007914A1 /* RequestGradeChoiceAndModifyDTO.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		2FBFF8402A6FA59E007914A1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2FD4D92B2A6CDB6400E7972B /* ViewModel */,
+				2FD11DD52A00FCE3006796DD /* Model */,
+				2FD4D92A2A6CDB5300E7972B /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2FBFF8412A6FA5AC007914A1 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8432A6FA5CC007914A1 /* ViewModel */,
+				2FBFF8422A6FA5C8007914A1 /* View */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		2FBFF8422A6FA5C8007914A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */,
+				2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FBFF8432A6FA5CC007914A1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2FC2EB3A29E2B61C00ECE2ED /* LoginSplashView */ = {
@@ -2234,9 +2325,8 @@
 		2FD4D9292A6CDB2C00E7972B /* MyMomentum */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D92B2A6CDB6400E7972B /* ViewModel */,
-				2FD11DD52A00FCE3006796DD /* Model */,
-				2FD4D92A2A6CDB5300E7972B /* View */,
+				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
+				2FBFF8402A6FA59E007914A1 /* Main */,
 			);
 			path = MyMomentum;
 			sourceTree = "<group>";
@@ -2265,6 +2355,10 @@
 			isa = PBXGroup;
 			children = (
 				2FD4D9322A6E452500E7972B /* DetailAnimationDataQuery.swift */,
+				2FBFF8292A6F54D6007914A1 /* LikeChoiceQuery.swift */,
+				2FBFF82B2A6F54EE007914A1 /* LikeCancelQuery.swift */,
+				2FBFF82D2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift */,
+				2FBFF82F2A6F5505007914A1 /* LikeContentCheckQuery.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -2805,9 +2899,11 @@
 				2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */,
 				2FD4D90C2A6BC09700E7972B /* ModifyMyProfile.swift in Sources */,
 				2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */,
+				2FBFF8262A6F4F3B007914A1 /* GradeChoiceAndModify.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
 				4932D77F2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift in Sources */,
+				2FBFF82A2A6F54D6007914A1 /* LikeChoiceQuery.swift in Sources */,
 				2F53D0A52A1F399F00898DCD /* EditMyInfoView.swift in Sources */,
 				2F1890042A4592100097D38E /* CharacterMoreViewModel.swift in Sources */,
 				2F53D0C22A1F680600898DCD /* EditPasswordViewController.swift in Sources */,
@@ -2821,6 +2917,7 @@
 				2FD6C93A2A4D5B3E00EFB684 /* JoinTermsViewController.swift in Sources */,
 				2F149DD32A4996120098AF64 /* MovieDetailRankView.swift in Sources */,
 				2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */,
+				2FBFF8372A6F596B007914A1 /* RequestGradeChoiceAndModifyDTO.swift in Sources */,
 				2FD4D9202A6CCA6000E7972B /* ResponseMyProfileDTO.swift in Sources */,
 				2FD87A492A58472F003C276B /* RequestDropDTO.swift in Sources */,
 				2F53D0B72A1F629D00898DCD /* ChangeNicknameAlertViewController.swift in Sources */,
@@ -2828,6 +2925,7 @@
 				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
+				2FBFF8392A6F5980007914A1 /* ResponseLikeChoiceDTO.swift in Sources */,
 				2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
@@ -2839,6 +2937,7 @@
 				2FDD9E732A12608600A41FF7 /* FeedDetailHeaderView.swift in Sources */,
 				2F124AE52A4FCBBF00A452F1 /* FeedDetailDeleteView.swift in Sources */,
 				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
+				2FBFF83F2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift in Sources */,
 				2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */,
 				2F124AE12A4FCBB000A452F1 /* FeedDetailDeleteViewModel.swift in Sources */,
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
@@ -2884,18 +2983,21 @@
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
+				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
+				2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */,
 				2FC94EAB29C0149B0097E696 /* BaseViewController.swift in Sources */,
 				2FD073572A25BF49003F7E56 /* NicknameDuplicationQuery.swift in Sources */,
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
+				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
@@ -2906,6 +3008,7 @@
 				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
 				2FD87A4B2A5848BD003C276B /* ResponseLoginDTO.swift in Sources */,
 				2F53D0AA2A1F4A5700898DCD /* EditNicknameView.swift in Sources */,
+				2FBFF8222A6F4EF5007914A1 /* LikeChoice.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
@@ -2973,15 +3076,18 @@
 				2FD4D0B52A2CA54D00B9AF61 /* ErrorCommonViewController.swift in Sources */,
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
 				2FD073612A25C0B0003F7E56 /* SettingUseCase.swift in Sources */,
+				2FBFF82C2A6F54EE007914A1 /* LikeCancelQuery.swift in Sources */,
 				2FDD9E672A121EB900A41FF7 /* FeedDetailViewController.swift in Sources */,
 				2F124AE72A4FCD2C00A452F1 /* AlertButtonSecondView.swift in Sources */,
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
+				2FBFF8282A6F4F60007914A1 /* LikeContentCheck.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
 				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
+				2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
@@ -3002,6 +3108,7 @@
 				2F124AD82A4EBFF700A452F1 /* WriteViewModel.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
+				2FBFF8352A6F5944007914A1 /* RequestLikeCancelDTO.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
 				2FD87A3B2A5842BB003C276B /* Drop.swift in Sources */,
 				2FD4D9182A6CC59500E7972B /* LikeMovieContent.swift in Sources */,
@@ -3021,6 +3128,7 @@
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
 				2FD4D9402A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
+				2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
@@ -3028,6 +3136,7 @@
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
+				2FBFF8242A6F4F01007914A1 /* LikeCancel.swift in Sources */,
 				2FD073592A25BF71003F7E56 /* NicknameDuplication.swift in Sources */,
 				2FD87A4F2A584962003C276B /* ResponseGoogleLoginDTO.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
@@ -3082,6 +3191,7 @@
 				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
 				2FD4D9002A6BB16800E7972B /* MyMomentumRouter.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
+				2FBFF8332A6F5938007914A1 /* RequestLikeChoiceDTO.swift in Sources */,
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
@@ -3109,6 +3219,7 @@
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
 				2FD4D0B12A2CA53700B9AF61 /* ErrorCommonViewModel.swift in Sources */,
+				2FBFF82E2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift in Sources */,
 				2FD4D91D2A6CC87F00E7972B /* RequestModifyMyProfileDTO.swift in Sources */,
 				2F437C1F2A4C57A2000B7A61 /* FeedDetailMoreMyViewModel.swift in Sources */,
 				2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */,
@@ -3124,6 +3235,7 @@
 				2F53D0702A1F0AC600898DCD /* NetworkError.swift in Sources */,
 				2F149DCA2A4978C40098AF64 /* StarView.swift in Sources */,
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
+				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

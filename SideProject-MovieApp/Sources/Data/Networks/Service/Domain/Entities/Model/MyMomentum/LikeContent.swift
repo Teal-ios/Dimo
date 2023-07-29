@@ -8,6 +8,6 @@
 import Foundation
 
 struct LikeContent: Hashable {
-    let content_type: String
+    let content_type: String?
     let content_id: Int
 }

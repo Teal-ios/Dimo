@@ -16,7 +16,6 @@ final class HomeViewController: BaseViewController {
     
     private var viewModel: HomeViewModel
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("HomeViewController: fatal error")
     }
@@ -27,6 +26,10 @@ final class HomeViewController: BaseViewController {
     }
     
     private var posterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var characterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var mbtiHeroDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var recommendDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
     let categoryButtonTap = PublishSubject<String>()
     let posterCellSelected = PublishSubject<Void>()
@@ -34,10 +37,6 @@ final class HomeViewController: BaseViewController {
     let mbtiCharacterCellSelected = PublishSubject<Void>()
     let mbtiRecommendCellSeleted = PublishSubject<Void>()
     let hotMovieCellSelected = PublishSubject<Void>()
-    let heroPlusButtonTap = PublishSubject<Void>()
-    let mbtiCharacterPlusButtonTap = PublishSubject<Void>()
-    let mbtiRecommendPlusButtonTap = PublishSubject<Void>()
-    let hotMoviePlusButtonTap = PublishSubject<Void>()
     let categoryTitle = PublishRelay<String>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
@@ -48,14 +47,23 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewDidLoadTrigger.accept(())
-        self.homeView.collectionView.delegate = self
+        self.homeView.posterCollectionView.delegate = self
+        self.homeView.characterCollectionView.delegate = self
+        self.homeView.mbtiHeroCharacterCollectionView.delegate = self
+        self.homeView.recommendCollectionView.delegate = self
+        self.homeView.nowHotCollectionView.delegate = self
         
         setNavigation()
-        setDataSource()
+        setPosterDataSource()
+        setMbtiHeroDataSource()
+        setCharacterDataSource()
+        setRecommendDataSource()
+        setNowHotDataSource()
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.heroPlusButtonTap, characterPlusButtonTapped: self.mbtiCharacterPlusButtonTap, mbtiRecommendPlusButtonTapped: self.mbtiRecommendPlusButtonTap, hotMoviePlusButtonTapped: self.hotMoviePlusButtonTap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.categoryButtonTap, heroPlusButtonTapped: self.homeView.mbtiHeroMoreButton.rx.tap, characterPlusButtonTapped: self.homeView.characterMoreButton.rx.tap, mbtiRecommendPlusButtonTapped: self.homeView.recommendMoreButton.rx.tap, hotMoviePlusButtonTapped: self.homeView.nowHotMoreButton.rx.tap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
+        
         let output = self.viewModel.transform(input: input)
         
         output.animationData
@@ -63,8 +71,16 @@ final class HomeViewController: BaseViewController {
             .bind { [weak self] data in
                 guard let self = self else { return }
                 print(data.count, "data 개수")
-                var snapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                snapshot.appendSections([0, 1, 2, 3, 4])
+                var posterSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                var mbtiHeroSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                var characterSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                var recommendSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                var nowHotSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+                posterSnapshot.appendSections([0])
+                mbtiHeroSnapshot.appendSections([0])
+                characterSnapshot.appendSections([0])
+                recommendSnapshot.appendSections([0])
+                nowHotSnapshot.appendSections([0])
                 var section1Arr: [AnimationData] = []
                 var section2Arr: [AnimationData] = []
                 var section3Arr: [AnimationData] = []
@@ -76,173 +92,158 @@ final class HomeViewController: BaseViewController {
                 section3Arr.append(contentsOf: [data[11], data[12], data[13], data[14], data[15], data[16]])
                 section4Arr.append(contentsOf: [data[17], data[18], data[19], data[20], data[21], data[22]])
                 section5Arr.append(contentsOf: [data[23], data[24], data[25], data[26], data[27], data[28]])
-
                 
-                print(section1Arr, "포스터 배열")
-                print(section5Arr, "섹션5")
-                snapshot.appendItems(section1Arr, toSection: 0)
-                snapshot.appendItems(section2Arr, toSection: 1)
-                snapshot.appendItems(section3Arr, toSection: 2)
-                snapshot.appendItems(section4Arr, toSection: 3)
-                snapshot.appendItems(section5Arr, toSection: 4)
-                self.posterDataSource.apply(snapshot)
+                posterSnapshot.appendItems(section1Arr, toSection: 0)
+                mbtiHeroSnapshot.appendItems(section2Arr, toSection: 0)
+                characterSnapshot.appendItems(section3Arr, toSection: 0)
+                recommendSnapshot.appendItems(section4Arr, toSection: 0)
+                nowHotSnapshot.appendItems(section5Arr, toSection: 0)
+                self.posterDataSource.apply(posterSnapshot)
+                self.mbtiHeroDataSource.apply(mbtiHeroSnapshot)
+                self.characterDataSource.apply(characterSnapshot)
+                self.recommendDataSource.apply(recommendSnapshot)
+                self.nowHotDataSource.apply(nowHotSnapshot)
             }
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
         
-        output.category.bind { [weak self] category in
-            guard let self else { return }
-            self.categoryTitle.accept(category)
-        }
-        .disposed(by: self.disposeBag)
+        output.category
+            .bind { [weak self] category in
+                guard let self else { return }
+                self.categoryTitle.accept(category)
+            }
+            .disposed(by: self.disposeBag)
     }
 }
-//MARK: DataSource 관련
+
+//MARK: PosterDataSource 설정
 extension HomeViewController {
-    func setDataSource() {
+    func setPosterDataSource() {
         let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
+        posterDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.posterCollectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellPosterRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        }
+        
+        let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+        }
+        
+        posterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: todayDIMOHeader, for: indexPath)
+            return header
+        })
+    }
+}
+
+//MARK: MbtiHeroDataSource 설정
+extension HomeViewController {
+    func setMbtiHeroDataSource() {
         let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
+        mbtiHeroDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.mbtiHeroCharacterCollectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellHeroCharacterRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        }
+        
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+        }
+        
+        mbtiHeroDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
+            
+            return header
+        })
+    }
+}
+
+//MARK: CharacterDataSource 설정
+extension HomeViewController {
+    func setCharacterDataSource() {
         let cellCharacterRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier.characters[0])
         }
         
-        let cellRecommandRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
-            cell.configureAttribute(with: itemIdentifier)
+        characterDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.characterCollectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellCharacterRegistration, for: indexPath, item: itemIdentifier)
+            return cell
         }
         
-        let cellHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
-            cell.configureAttribute(with: itemIdentifier)
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
         }
         
-        posterDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView) { collectionView, indexPath, itemIdentifier in
+        characterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
             
-            switch indexPath.section {
-            case 0:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellPosterRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            case 1:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellHeroCharacterRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            case 2:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellCharacterRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            case 3:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellRecommandRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            case 4:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellHotRegistration, for: indexPath, item: itemIdentifier)
-
-                return cell
-            default:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellHotRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            }
-        }
-        
-        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { [weak self] supplementaryView, elementKind, indexPath in
-            guard let self else { return }
-            switch indexPath.section {
-            case 1:
-                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    guard let self else { return }
-                    self.heroPlusButtonTap.onNext(())
-                }
-                .disposed(by: self.disposeBag)
-            case 2:
-                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    guard let self else { return }
-                    self.mbtiCharacterPlusButtonTap.onNext(())
-                }
-                .disposed(by: self.disposeBag)
-            case 3:
-                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    guard let self else { return }
-                    self.mbtiRecommendPlusButtonTap.onNext(())
-                }
-                .disposed(by: self.disposeBag)
-            case 4:
-                supplementaryView.moreButton.rx.tap.bind { [weak self] _ in
-                    guard let self else { return }
-                    self.hotMoviePlusButtonTap.onNext(())
-                }
-                .disposed(by: self.disposeBag)
-            default:
-                print("another Section")
-
-            }
-        }
-        
-        let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            
-            supplementaryView.categoryButton.rx.tap.bind { [weak self] _ in
-                guard let self else { return }
-                let categoryOnTitle = supplementaryView.categoryInsetLabel.text ?? ""
-                self.categoryButtonTap.onNext(categoryOnTitle)
-            }
-            .disposed(by: self.disposeBag)
-            
-            self.categoryTitle.bind { [weak self] category in
-                guard let self else { return }
-                print(category, "카테고리 타이틀 변경될때마다 확인")
-                supplementaryView.categoryInsetLabel.text = category
-            }
-            .disposed(by: self.disposeBag)
-
-        }
-        
-        
-        posterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
-            switch indexPath.section {
-            case 0:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: todayDIMOHeader, for: indexPath)
-                return header
-            case 1:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                header.titleLabel.text = "ISFJ가 주인공인 영화"
-                return header
-            case 2:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                header.titleLabel.text = "스포주의! ISFJ 캐릭터 모아보기"
-                return header
-            case 3:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                header.titleLabel.text = "ISFJ가 추천한 영화"
-                return header
-            case 4:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                header.titleLabel.text = "지금 핫한 영화"
-                return header
-            default:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                header.titleLabel.text = "내가 쓴 댓글"
-                return header
-            }
+            return header
         })
-
     }
 }
 
+//MARK: RecommendDataSource 설정
+extension HomeViewController {
+    func setRecommendDataSource() {
+        let cellRecommendRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
+        }
+        
+        recommendDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.recommendCollectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRecommendRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        }
+        
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+        }
+        
+        recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
+            
+            return header
+        })
+    }
+}
+
+//MARK: NowHotDataSource 설정
+extension HomeViewController {
+    func setNowHotDataSource() {
+        let cellNowHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
+        }
+        
+        nowHotDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.nowHotCollectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellNowHotRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        }
+        
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
+        }
+        
+        nowHotDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
+            
+            return header
+        })
+    }
+}
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            self.posterCellSelected.onNext(())
-        case 1:
+
+        switch collectionView {
+        case self.homeView.posterCollectionView:
+                self.posterCellSelected.onNext(())
+        case self.homeView.mbtiHeroCharacterCollectionView:
             self.mbtiMovieCellSelected.onNext(())
-        case 2:
-            print(indexPath.section)
+        case self.homeView.characterCollectionView:
             self.mbtiCharacterCellSelected.onNext(())
-        case 3:
+        case self.homeView.recommendCollectionView:
             self.mbtiRecommendCellSeleted.onNext(())
-        case 4:
+        case self.homeView.nowHotCollectionView:
             self.hotMovieCellSelected.onNext(())
         default:
-            print(indexPath.section)
+            print("다른컬렉션뷰클릭함")
         }
     }
 }

@@ -23,11 +23,8 @@ final class MyMomentumViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoad: PublishRelay<Void>
+        let editProfileButtonTap: ControlEvent<Void>
     }
-    
-    let myProfile = PublishRelay<MyProfile>()
-    let likeAnimationContent = PublishRelay<LikeAnimationContent>()
-    let likeMoviewContent = PublishRelay<LikeMovieContent>()
     
     struct Output {
         let myProfileData: PublishRelay<MyProfile>
@@ -35,9 +32,18 @@ final class MyMomentumViewModel: ViewModelType {
         let likeMovieContentData: PublishRelay<LikeMovieContent>
     }
     
+    let myProfile = PublishRelay<MyProfile>()
+    let likeAnimationContent = PublishRelay<LikeAnimationContent>()
+    let likeMoviewContent = PublishRelay<LikeMovieContent>()
+    
+    func test() {
+        coordinator?.showEditProfileViewController()
+    }
+    
     func transform(input: Input) -> Output {
         
         input.viewDidLoad
+            .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
@@ -47,6 +53,16 @@ final class MyMomentumViewModel: ViewModelType {
                 self.getLikeAnimationwContent(user_id: user_id)
             }
             .disposed(by: disposeBag)
+        
+        input.editProfileButtonTap
+            .debug()
+            .bind { [weak self] _ in
+                guard let self else { return }
+                self.coordinator?.showEditProfileViewController()
+                print("몇번 울리니")
+            }
+            .disposed(by: disposeBag)
+        
         
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent)
     }
