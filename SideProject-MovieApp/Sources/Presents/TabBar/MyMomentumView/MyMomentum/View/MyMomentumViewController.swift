@@ -68,6 +68,21 @@ class MyMomentumViewController: BaseViewController {
                 myMomentumView.profileView.configureProfileUpdate(profile: profile)
         }
         .disposed(by: self.disposeBag)
+        
+        output.likeAnimationContentData
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] likeAnimationContent in
+                guard let self else { return }
+                if likeAnimationContent.like_content == [] {
+                    self.myMomentumView.configureProfileUpdateUI(dataExist: false)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
+                    self.myMomentumView.configureReviewUpdateUI(dataExist: false)
+                } else {
+                    self.myMomentumView.configureProfileUpdateUI(dataExist: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 

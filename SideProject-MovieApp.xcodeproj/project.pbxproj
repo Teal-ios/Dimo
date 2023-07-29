@@ -247,6 +247,8 @@
 		2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */; };
 		2FD4D93C2A6E46DD00E7972B /* ResponseCharactersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */; };
 		2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */; };
+		2FD4D9402A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */; };
+		2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9412A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -629,6 +631,8 @@
 		2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDetailAnimationDataDTO.swift; sourceTree = "<group>"; };
 		2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCharactersDTO.swift; sourceTree = "<group>"; };
 		2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPIEndpoints.swift; sourceTree = "<group>"; };
+		2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumBaseExceptionHandlingView.swift; sourceTree = "<group>"; };
+		2FD4D9412A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumDigExceptionHandlingView.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -1792,6 +1796,8 @@
 				2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */,
 				2F149DC92A4978C40098AF64 /* StarView.swift */,
 				2F9793AD2A54102A0098939B /* CustomSearchBar.swift */,
+				2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */,
+				2FD4D9412A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -2889,6 +2895,7 @@
 				2FD11DD42A00E3B7006796DD /* ProfileHeaderView.swift in Sources */,
 				93F18FD929C1B93E00ABC0A7 /* NetworkStatus.swift in Sources */,
 				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
+				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
@@ -3012,6 +3019,7 @@
 				2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */,
 				2FD69EB42A03984600AA5A6E /* CircleCollectionViewCell.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
+				2FD4D9402A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
