@@ -19,7 +19,7 @@ struct ResponseRandomCharacterRecommendListDTO: Decodable {
 }
 
 extension ResponseRandomCharacterRecommendListDTO {
-    var toDomain: RandomCharacterList {
+    var toDomain: RandomCharacterRecommendList {
         return .init(code: code, message: message, user_id: user_id, character_info: character_info.map { $0.toDomain })
     }
 }

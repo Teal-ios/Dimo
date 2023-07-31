@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestVoteCharacterDTO: Hashable {
+struct RequestVoteCharacterDTO: Encodable {
     let user_id: String
     let content_id: String
     let character_id: String

@@ -327,6 +327,10 @@
 		2FD82DBC2A775AE800372D24 /* ResponseGetCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DBB2A775AE800372D24 /* ResponseGetCommentDTO.swift */; };
 		2FD82DBE2A775AF500372D24 /* ResponseReviewListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DBD2A775AF500372D24 /* ResponseReviewListDTO.swift */; };
 		2FD82DC02A775AFE00372D24 /* ResponseCommentListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DBF2A775AFE00372D24 /* ResponseCommentListDTO.swift */; };
+		2FD82DC22A77609200372D24 /* VoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DC12A77609200372D24 /* VoteRouter.swift */; };
+		2FD82DC42A7760A400372D24 /* CharacterDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DC32A7760A400372D24 /* CharacterDetailRouter.swift */; };
+		2FD82DC62A7771D500372D24 /* VoteAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DC52A7771D500372D24 /* VoteAPIEndpoints.swift */; };
+		2FD82DC82A7771E000372D24 /* CharacterDetailEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD82DC72A7771E000372D24 /* CharacterDetailEndpoints.swift */; };
 		2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */; };
 		2FD87A252A583F28003C276B /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A242A583F28003C276B /* LoginQuery.swift */; };
 		2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */; };
@@ -800,6 +804,10 @@
 		2FD82DBB2A775AE800372D24 /* ResponseGetCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetCommentDTO.swift; sourceTree = "<group>"; };
 		2FD82DBD2A775AF500372D24 /* ResponseReviewListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseReviewListDTO.swift; sourceTree = "<group>"; };
 		2FD82DBF2A775AFE00372D24 /* ResponseCommentListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCommentListDTO.swift; sourceTree = "<group>"; };
+		2FD82DC12A77609200372D24 /* VoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteRouter.swift; sourceTree = "<group>"; };
+		2FD82DC32A7760A400372D24 /* CharacterDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailRouter.swift; sourceTree = "<group>"; };
+		2FD82DC52A7771D500372D24 /* VoteAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAPIEndpoints.swift; sourceTree = "<group>"; };
+		2FD82DC72A7771E000372D24 /* CharacterDetailEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEndpoints.swift; sourceTree = "<group>"; };
 		2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		2FD87A242A583F28003C276B /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
 		2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginQuery.swift; sourceTree = "<group>"; };
@@ -1319,6 +1327,8 @@
 				2FD073542A25BEB2003F7E56 /* SettingRouter.swift */,
 				2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */,
 				2FD4D8FF2A6BB16800E7972B /* MyMomentumRouter.swift */,
+				2FD82DC12A77609200372D24 /* VoteRouter.swift */,
+				2FD82DC32A7760A400372D24 /* CharacterDetailRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -2705,6 +2715,8 @@
 				2FD87A5A2A585406003C276B /* AuthAPIEndpoints.swift */,
 				2FD4D9012A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift */,
 				2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */,
+				2FD82DC52A7771D500372D24 /* VoteAPIEndpoints.swift */,
+				2FD82DC72A7771E000372D24 /* CharacterDetailEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -3383,6 +3395,7 @@
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				2FD2DD032A70E3F7000C5EB7 /* UIImage+Extension.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
+				2FD82DC82A7771E000372D24 /* CharacterDetailEndpoints.swift in Sources */,
 				2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */,
 				2FD4D9162A6CC52B00E7972B /* LikeAnimationContent.swift in Sources */,
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
@@ -3396,6 +3409,7 @@
 				2FBD19D029FF6E310005B1FA /* BaseCollectionViewController.swift in Sources */,
 				2FD69EAC2A03848200AA5A6E /* HomeCoordinator.swift in Sources */,
 				2F437C082A4BE912000B7A61 /* ContentRepository.swift in Sources */,
+				2FD82DC62A7771D500372D24 /* VoteAPIEndpoints.swift in Sources */,
 				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2F437C232A4C57AF000B7A61 /* FeedDetailMoreMyViewController.swift in Sources */,
@@ -3473,6 +3487,7 @@
 				2FE111342A76687B0013A49E /* VoteCharacterQuery.swift in Sources */,
 				2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */,
 				2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */,
+				2FD82DC22A77609200372D24 /* VoteRouter.swift in Sources */,
 				2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */,
 				2FD69EB42A03984600AA5A6E /* CircleCollectionViewCell.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
@@ -3550,6 +3565,7 @@
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */,
 				2FE111162A7663AD0013A49E /* VoteRepository.swift in Sources */,
+				2FD82DC42A7760A400372D24 /* CharacterDetailRouter.swift in Sources */,
 				493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */,
 				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
 				2FD4D9002A6BB16800E7972B /* MyMomentumRouter.swift in Sources */,
