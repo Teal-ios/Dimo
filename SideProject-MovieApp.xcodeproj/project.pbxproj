@@ -1700,6 +1700,7 @@
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
+				2FEC15D92A77A8CF009CF59D /* Dig */,
 				2F9793A92A53EE1F0098939B /* Vote */,
 				2F97939E2A52A42D0098939B /* Search */,
 				2FD2740C2A5A8ABD003AA144 /* Recommend */,
@@ -2888,6 +2889,29 @@
 				2FD82D7B2A77474100372D24 /* GetCommentQuery.swift */,
 			);
 			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		2FEC15D92A77A8CF009CF59D /* Dig */ = {
+			isa = PBXGroup;
+			children = (
+				2FEC15DB2A77A8EF009CF59D /* ViewModel */,
+				2FEC15DA2A77A8ED009CF59D /* View */,
+			);
+			path = Dig;
+			sourceTree = "<group>";
+		};
+		2FEC15DA2A77A8ED009CF59D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEC15DB2A77A8EF009CF59D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4926773D2A5935430003C882 /* Storage */ = {
