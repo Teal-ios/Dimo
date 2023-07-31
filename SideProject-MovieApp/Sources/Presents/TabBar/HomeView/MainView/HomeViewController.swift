@@ -32,7 +32,7 @@ final class HomeViewController: BaseViewController {
     private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
 //    let categoryButtonTap = PublishSubject<String>()
-    let posterCellSelected = PublishSubject<Void>()
+    let posterCellSelected = PublishRelay<String>()
     let mbtiMovieCellSelected = PublishSubject<Void>()
     let mbtiCharacterCellSelected = PublishSubject<Void>()
     let mbtiRecommendCellSeleted = PublishSubject<Void>()
@@ -205,7 +205,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            supplementaryView.titleLabel.text = "ISFJ가 추천한 영화"
+            supplementaryView.titleLabel.text = "ISFJ가 관심있는 영화/애니"
         }
         
         recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -244,7 +244,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
         switch collectionView {
         case self.homeView.posterCollectionView:
-                self.posterCellSelected.onNext(())
+                self.posterCellDataFetching(indexPath: indexPath)
         case self.homeView.mbtiHeroCharacterCollectionView:
             self.mbtiMovieCellSelected.onNext(())
         case self.homeView.characterCollectionView:
@@ -273,4 +273,11 @@ extension HomeViewController {
 
 extension HomeViewController: UITabBarDelegate {
     
+}
+
+extension HomeViewController {
+    func posterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = posterDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.posterCellSelected.accept(selectedItem.contentId)
+    }
 }

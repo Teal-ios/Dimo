@@ -42,7 +42,7 @@ class CharacterRecommandAndSearchHeaderView: UICollectionReusableView {
         let safeArea = self.safeAreaLayoutGuide
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(0)
-            make.top.equalTo(safeArea).offset(72)
+            make.top.equalTo(safeArea).offset(40)
             make.height.equalTo(32)
         }
         subtitleLabel.snp.makeConstraints { make in

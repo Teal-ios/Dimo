@@ -11,6 +11,8 @@ import SnapKit
 final class MyContentMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = Font.title1
+        label.text = "관심있는 컨텐츠"
         return label
     }()
     
@@ -120,7 +122,7 @@ extension MyContentMoreView {
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+//        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
         return section
     }
 }

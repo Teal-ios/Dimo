@@ -14,7 +14,7 @@ final class RecommendView: BaseView {
         let label = UILabel()
         label.textColor = .white100
         label.font = Font.title1
-        label.text = "캐릭터 추천받기"
+        label.text = "캐릭터 랜덤 추천"
         return label
     }()
     
@@ -22,7 +22,7 @@ final class RecommendView: BaseView {
         let label = UILabel()
         label.textColor = .black60
         label.font = Font.body3
-        label.text = "랜덤"
+        label.text = "랜덤순"
         return label
     }()
     
@@ -63,13 +63,13 @@ final class RecommendView: BaseView {
         categoryButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.height.equalTo(32)
-            make.width.equalTo(69)
+            make.width.equalTo(82)
             make.leading.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
         categoryInsetLabel.snp.makeConstraints { make in
             make.leading.equalTo(categoryButton.snp.leading).offset(12)
-            make.width.equalTo(25)
+            make.width.equalTo(38)
             make.height.equalTo(21)
             make.centerY.equalTo(categoryButton)
         }

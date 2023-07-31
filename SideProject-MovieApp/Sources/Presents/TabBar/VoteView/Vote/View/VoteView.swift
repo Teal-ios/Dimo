@@ -20,7 +20,7 @@ final class VoteView: BaseView {
         collectionView.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.verticalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(12)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(16)
         }
     }
     
@@ -46,14 +46,14 @@ final class VoteView: BaseView {
     private func characterLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemRatio / 2),
-            heightDimension: .fractionalHeight(itemRatio / 1.3)
+            heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 36, leading: 4, bottom: 0, trailing: 4)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 36, trailing: 4)
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 3)
+            widthDimension: .absolute(self.bounds.width - 32),
+            heightDimension: .absolute(self.bounds.width * (142 / 343))
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])

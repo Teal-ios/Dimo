@@ -62,7 +62,7 @@ class MyMomentumView: BaseView {
     }()
     
     let exceptionHandlingLikeContentView: MyMomentumBaseExceptionHandlingView = {
-        let view = MyMomentumBaseExceptionHandlingView(title: "좋아하는 컨텐츠", subtitle: "좋아하는 컨텐츠가 없어요")
+        let view = MyMomentumBaseExceptionHandlingView(title: "관심있는 컨텐츠", subtitle: "관심있는 컨텐츠가 없어요")
         return view
     }()
     

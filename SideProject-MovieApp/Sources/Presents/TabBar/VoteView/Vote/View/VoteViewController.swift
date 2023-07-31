@@ -90,7 +90,7 @@ final class VoteViewController: BaseViewController {
         var section2Arr: [VoteModel] = []
         
         section1Arr.append(VoteModel(image: UIImage(named: "CharacterRandom")))
-        section1Arr.append(VoteModel(image: UIImage(named: "CharacterSearch")))
+        section1Arr.append(VoteModel(image: UIImage(named: "CharacterSearchNew")))
         
         for _ in 1..<100 {
             section2Arr.append(VoteModel(image: nil))

@@ -23,7 +23,7 @@ final class HomeViewModel: ViewModelType {
         let characterPlusButtonTapped: ControlEvent<Void>
         let mbtiRecommendPlusButtonTapped: ControlEvent<Void>
         let hotMoviePlusButtonTapped: ControlEvent<Void>
-        let posterCellSelected: PublishSubject<Void>
+        let posterCellSelected: PublishRelay<String>
         let mbtiMovieCellSelected: PublishSubject<Void>
         let mbtiCharacterCellSelected: PublishSubject<Void>
         let mbtiRecommendCellSeleted: PublishSubject<Void>
@@ -55,9 +55,9 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.posterCellSelected
-            .bind { [weak self] _ in
-                guard let self else { return }
-            self.coordinator?.showMovieDetailViewController(content_id: "3371")
+            .withUnretained(self)
+            .bind { vm, contentId in
+            vm.coordinator?.showMovieDetailViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
         

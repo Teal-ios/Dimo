@@ -26,8 +26,6 @@ final class WriteViewModel: ViewModelType {
         let textValid: BehaviorSubject<Bool>
     }
     
-    
-    
     init(coordinator: TabmanCoordinator? = nil) {
         self.coordinator = coordinator
     }
