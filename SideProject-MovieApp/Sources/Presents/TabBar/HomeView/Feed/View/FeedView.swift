@@ -11,6 +11,12 @@ import SnapKit
 final class FeedView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
+    let reviewExceptionView: ReviewExceptionView = {
+        let view = ReviewExceptionView(explainText: "아직 작성된 리뷰가 없어요 \n첫 번째 리뷰를 작성해 보세요")
+        view.isHidden = true
+        return view
+    }()
+    
     let writeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "write"), for: .normal)
@@ -21,12 +27,22 @@ final class FeedView: BaseView {
         super.init(frame: frame)
     }
     
-    override func setupLayout() {
+    override func setHierarchy() {
         self.addSubview(collectionView)
+        self.addSubview(reviewExceptionView)
         self.addSubview(writeButton)
+    }
+    
+    override func setupLayout() {
+
         collectionView.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(368)
+        }
+        
+        reviewExceptionView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
             make.top.equalTo(self.safeAreaLayoutGuide).offset(368)
         }
         
@@ -70,5 +86,10 @@ final class FeedView: BaseView {
         
         return section
     }
-    
+}
+
+extension FeedView {
+    func reviewException(data: Bool) {
+        reviewExceptionView.isHidden = data
+    }
 }

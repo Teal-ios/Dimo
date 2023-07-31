@@ -22,7 +22,7 @@ final class MovieDetailViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, Characters>!
     
-    let characterCellSelected = PublishSubject<Void>()
+    let characterCellSelected = PublishRelay<Characters>()
     let evaluateButtonTapped = PublishSubject<Void>()
     let animationData = PublishRelay<DetailAnimationData>()
     let likeContentCheckTrigger = PublishRelay<Bool>()
@@ -39,7 +39,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap, likeButtonTapped: self.selfView.headerView.likeButton.rx.tap, likeContentCheckValid: self.likeContentCheckTrigger)
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap, likeButtonTapped: self.selfView.headerView.likeButton.rx.tap, likeContentCheckValid: self.likeContentCheckTrigger, characterCellSelected: self.characterCellSelected)
         let output = self.viewModel.transform(input: input)
         
         output.plusButtonTapped.bind { [weak self] _ in
@@ -143,7 +143,13 @@ final class MovieDetailViewController: BaseViewController {
 
 extension MovieDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.characterCellSelected.onNext(())
+        self.characterCellDataFetching(indexPath: indexPath)
     }
 }
 
+extension MovieDetailViewController {
+    func characterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.characterCellSelected.accept(selectedItem)
+    }
+}

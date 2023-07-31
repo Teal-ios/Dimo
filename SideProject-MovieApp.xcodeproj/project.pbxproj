@@ -404,6 +404,7 @@
 		2FE111362A76688A0013A49E /* SameWorkCharacterListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */; };
 		2FEC15D62A7788DB009CF59D /* VoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15D52A7788DB009CF59D /* VoteUseCase.swift */; };
 		2FEC15D82A7788FB009CF59D /* CharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15D72A7788FB009CF59D /* CharacterDetailUseCase.swift */; };
+		2FEC15EA2A77DE0F009CF59D /* ReviewExceptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15E92A77DE0F009CF59D /* ReviewExceptionView.swift */; };
 		4926773C2A5714E20003C882 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773B2A5714E20003C882 /* Toast+Extension.swift */; };
 		4926773F2A5935510003C882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773E2A5935510003C882 /* UserDefault.swift */; };
 		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
@@ -879,6 +880,7 @@
 		2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameWorkCharacterListQuery.swift; sourceTree = "<group>"; };
 		2FEC15D52A7788DB009CF59D /* VoteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteUseCase.swift; sourceTree = "<group>"; };
 		2FEC15D72A7788FB009CF59D /* CharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailUseCase.swift; sourceTree = "<group>"; };
+		2FEC15E92A77DE0F009CF59D /* ReviewExceptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewExceptionView.swift; sourceTree = "<group>"; };
 		4926773B2A5714E20003C882 /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
 		4926773E2A5935510003C882 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
@@ -2242,8 +2244,6 @@
 		2FD11DCB2A00DEC9006796DD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
-				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2582,6 +2582,8 @@
 				2F149DCB2A4994EF0098AF64 /* MovieDetailRank */,
 				2F6D7D052A14A4C200FA457D /* ContentMoreView */,
 				2FDD9E622A121E9D00A41FF7 /* FeedDetailView */,
+				2FDD74602A10AAE600A75AB9 /* AnalyzeView */,
+				2FDD745F2A10AADF00A75AB9 /* Feed */,
 				2FDD74512A10A46800A75AB9 /* CharacterDetailView */,
 				2FDD74502A10A44B00A75AB9 /* MainView */,
 			);
@@ -2750,39 +2752,29 @@
 		2FDD74512A10A46800A75AB9 /* CharacterDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				2FDD745C2A10AAAB00A75AB9 /* ViewController */,
-				2FDD74562A10A74000A75AB9 /* Cell */,
-				2FDD74522A10A4C300A75AB9 /* CharacterDetailView.swift */,
-				2FDD74542A10A4DA00A75AB9 /* CharacterDetailViewController.swift */,
-				2FDD74572A10A75A00A75AB9 /* DetailHeaderView.swift */,
+				2FEC15E82A77DBA6009CF59D /* ViewModel */,
+				2FDD745C2A10AAAB00A75AB9 /* View */,
 			);
 			path = CharacterDetailView;
 			sourceTree = "<group>";
 		};
-		2FDD74562A10A74000A75AB9 /* Cell */ = {
+		2FDD745C2A10AAAB00A75AB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FDD74522A10A4C300A75AB9 /* CharacterDetailView.swift */,
+				2FDD74542A10A4DA00A75AB9 /* CharacterDetailViewController.swift */,
+				2FDD74572A10A75A00A75AB9 /* DetailHeaderView.swift */,
 			);
-			path = Cell;
+			path = View;
 			sourceTree = "<group>";
 		};
-		2FDD745C2A10AAAB00A75AB9 /* ViewController */ = {
+		2FDD745F2A10AADF00A75AB9 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				2FDD74602A10AAE600A75AB9 /* AnalyzeView */,
-				2FDD745F2A10AADF00A75AB9 /* FeedView */,
+				2FEC15E72A77DB6D009CF59D /* View */,
+				2FEC15E62A77DB47009CF59D /* ViewModel */,
 			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		2FDD745F2A10AADF00A75AB9 /* FeedView */ = {
-			isa = PBXGroup;
-			children = (
-				2FDD745D2A10AADA00A75AB9 /* FeedViewController.swift */,
-				2F1AB9C22A10B7F7001178EA /* FeedView.swift */,
-				2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */,
-			);
-			path = FeedView;
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		2FDD74602A10AAE600A75AB9 /* AnalyzeView */ = {
@@ -2910,6 +2902,33 @@
 		2FEC15DB2A77A8EF009CF59D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEC15E62A77DB47009CF59D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F1AB9C82A10BA39001178EA /* FeedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEC15E72A77DB6D009CF59D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FDD745D2A10AADA00A75AB9 /* FeedViewController.swift */,
+				2F1AB9C22A10B7F7001178EA /* FeedView.swift */,
+				2F1AB9C62A10B876001178EA /* FeedReviewCollectionViewCell.swift */,
+				2FEC15E92A77DE0F009CF59D /* ReviewExceptionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEC15E82A77DBA6009CF59D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FDD74632A10ABEC00A75AB9 /* CharacterDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3301,6 +3320,7 @@
 				2F124AE52A4FCBBF00A452F1 /* FeedDetailDeleteView.swift in Sources */,
 				2F1AB9D22A10C2A2001178EA /* SettingViewModel.swift in Sources */,
 				2FBFF83F2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift in Sources */,
+				2FEC15EA2A77DE0F009CF59D /* ReviewExceptionView.swift in Sources */,
 				2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */,
 				2F124AE12A4FCBB000A452F1 /* FeedDetailDeleteViewModel.swift in Sources */,
 				2FD82DAC2A774FA800372D24 /* ResponseSameWorkCharacterListDTO.swift in Sources */,

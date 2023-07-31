@@ -13,9 +13,11 @@ final class TabmanCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tabman
+    var character: Characters
     
-    init(_ navigationController: UINavigationController) {
+    init(_ navigationController: UINavigationController, character: Characters) {
         self.navigationController = navigationController
+        self.character = character
     }
     
     func start() {
