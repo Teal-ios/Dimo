@@ -22,7 +22,10 @@ final class VoteCoordinator: Coordinator {
     }
     
     func showVoteViewController() {
-        let viewModel = VoteViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+        let viewModel = VoteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
         let vc = VoteViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
@@ -38,9 +41,9 @@ final class VoteCoordinator: Coordinator {
     
     func showRecommendViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
-        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
-        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = RecommendViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+        let viewModel = RecommendViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
         let vc = RecommendViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

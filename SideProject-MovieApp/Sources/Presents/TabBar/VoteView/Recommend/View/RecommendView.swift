@@ -41,6 +41,18 @@ final class RecommendView: BaseView {
         button.layer.borderColor = UIColor.black80.cgColor
         return button
     }()
+    
+    let categoryContainView: CategoryView = {
+        let view = CategoryView()
+        view.backgroundColor = .clear
+        view.titleLabel.text = "정렬"
+        view.animationLabel.text = "랜덤순"
+        view.movieLabel.text = "인기순"
+        view.animationLabel.textColor = .black5
+        view.movieLabel.textColor = .black60
+        view.isHidden = true
+        return view
+    }()
 
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
@@ -51,6 +63,7 @@ final class RecommendView: BaseView {
         self.addSubview(categoryInsetLabel)
         self.addSubview(arrowBottomLabel)
         self.addSubview(collectionView)
+        self.addSubview(categoryContainView)
     }
     
     override func setupLayout() {
@@ -86,6 +99,9 @@ final class RecommendView: BaseView {
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
+        categoryContainView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
     }
     
     private let itemRatio = 1.0
@@ -116,11 +132,11 @@ extension RecommendView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 9)
+            heightDimension: .absolute(66)
         )
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
@@ -128,5 +144,25 @@ extension RecommendView {
         let section = NSCollectionLayoutSection(group: group)
         
         return section
+    }
+}
+
+extension RecommendView {
+    func appearCategory(appear: Bool) {
+        self.categoryContainView.isHidden = !appear
+    }
+    
+    func updateCategory(popularCategoryChoice: Bool) {
+        switch popularCategoryChoice {
+            
+        case true:
+            self.categoryContainView.animationLabel.textColor = .black60
+            self.categoryContainView.movieLabel.textColor = .black5
+            self.categoryInsetLabel.text = "인기순"
+        case false:
+            self.categoryContainView.animationLabel.textColor = .black5
+            self.categoryContainView.movieLabel.textColor = .black60
+            self.categoryInsetLabel.text = "랜덤순"
+        }
     }
 }

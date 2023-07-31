@@ -28,38 +28,73 @@ final class RecommendViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    private var dataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, CharacterInfo>!
     
     let searchNavigationButtonTap = PublishSubject<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewDidLoadTrigger.accept(())
         self.selfView.collectionView.delegate = self
         searchNavigationItemSet()
         setDataSource()
+        self.viewDidLoadTrigger.accept(())
     }
     
     override func setupBinding() {
-        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap)
         
         let output = self.viewModel.transform(input: input)
-        output.animationData
+        output.randomCharacterRecommend
+            .withUnretained(self)
             .observe(on: MainScheduler.instance)
-            .bind { [weak self] data in
-                guard let self = self else { return }
-                print(data.count, "data 개수")
-                var snapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                snapshot.appendSections([0, 1])
-                var section1Arr: [AnimationData] = []
-                
-                section1Arr.append(contentsOf: [data[0], data[1], data[2], data[3], data[4], data[5], data[11], data[12]])
-
-                
-                snapshot.appendItems(section1Arr, toSection: 0)
-
-                self.dataSource.apply(snapshot)
+            .bind { vc, randomCharacterRecommend in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, CharacterInfo>()
+                snapshot.appendSections([0])
+                var sectionArr: [CharacterInfo] = []
+                for i in randomCharacterRecommend.character_info {
+                    sectionArr.append(i)
+                }
+                snapshot.appendItems(sectionArr, toSection: 0)
+                vc.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.popularCharacterRecommend
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, popularCharacterRecommend in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, CharacterInfo>()
+                snapshot.appendSections([0])
+                var sectionArr: [CharacterInfo] = []
+                for i in popularCharacterRecommend.character_info {
+                    sectionArr.append(i)
+                }
+                snapshot.appendItems(sectionArr, toSection: 0)
+                vc.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
+        
+        output.categoryButtonTap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.selfView.appearCategory(appear: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.popularButtonTap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.selfView.appearCategory(appear: false)
+                vc.selfView.updateCategory(popularCategoryChoice: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.randomButtonTap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.selfView.appearCategory(appear: false)
+                vc.selfView.updateCategory(popularCategoryChoice: false)
             }
             .disposed(by: disposeBag)
     }
@@ -68,8 +103,8 @@ final class RecommendViewController: BaseViewController {
 extension RecommendViewController {
     func setDataSource() {
         let cellCharacterRegistration =
-        UICollectionView.CellRegistration<VoteCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
-            cell.configureAttribute(with: itemIdentifier)
+        UICollectionView.CellRegistration<VoteCollectionViewCell, CharacterInfo> { cell, indexPath, itemIdentifier in
+            cell.configureAttributeWithCharacterInfo(with: itemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView) { collectionView, indexPath, itemIdentifier in

@@ -54,7 +54,7 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
         
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(imgView.snp.trailing).offset(8)
-            make.top.equalTo(imgView.snp.top).offset(8)
+            make.top.equalTo(imgView.snp.top).offset(4)
             make.trailing.equalToSuperview()
             make.height.equalTo(24)
         }
@@ -75,5 +75,15 @@ extension VoteCollectionViewCell {
         imgView.contentMode = .scaleToFill
         movieTitleLabel.text = item.title
         nameLabel.text = item.characters[0].characterName
+    }
+}
+
+extension VoteCollectionViewCell {
+    func configureAttributeWithCharacterInfo(with item: CharacterInfo) {
+        let imageUrl = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.character_mbti ?? "미정"
     }
 }
