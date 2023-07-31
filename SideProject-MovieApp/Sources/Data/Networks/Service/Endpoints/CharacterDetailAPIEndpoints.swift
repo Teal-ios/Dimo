@@ -1,5 +1,5 @@
 //
-//  CharacterDetailEndpoints.swift
+//  CharacterDetailAPIEndpoints.swift
 //  SideProject-MovieApp
 //
 //  Created by 이병현 on 2023/07/31.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterDetailEndpoints {
+struct CharacterDetailAPIEndpoints {
     static func postReview(with requestDTO: RequestPostReviewDTO) -> CharacterDetailRouter<ResponsePostReviewDTO> {
         return CharacterDetailRouter<ResponsePostReviewDTO>.postReview(parameters: PostReviewQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, review_content: requestDTO.review_content, review_spoiler: requestDTO.review_spoiler))
     }

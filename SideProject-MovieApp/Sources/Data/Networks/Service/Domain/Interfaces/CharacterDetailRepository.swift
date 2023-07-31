@@ -11,7 +11,7 @@ protocol CharacterDetailRepository {
  
     func requestPostReview(query: PostReviewQuery) async throws -> PostReview
     
-    func fetchGetRevoew(query: GetReviewQuery) async throws -> GetReview
+    func fetchGetReview(query: GetReviewQuery) async throws -> GetReview
     
     func requestLikeReviewChoice(query: LikeReviewChoiceQuery) async throws -> LikeReviewChoice
     
