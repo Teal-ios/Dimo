@@ -163,5 +163,7 @@ extension FeedReviewCollectionViewCell {
         }
         nameNameLabel.text = item.user_id
         reviewLabel.text = item.review_content
+        mbtiLabel.text = item.mbti
+        likeAndReviewAndInquireLabel.text = "좋아요 \(item.review_hits)  |  댓글 \(item.comment_count ?? 0)  |  조회 \( item.comment_content ?? 0)"
     }
 }

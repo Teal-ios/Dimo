@@ -20,14 +20,19 @@ final class CharacterDetailViewModel: ViewModelType {
     }
     
     struct Output{
+        let character: BehaviorRelay<Characters?>
+
     }
     
-    init(coordinator: TabmanCoordinator? = nil) {
+    init(coordinator: TabmanCoordinator? = nil, character: Characters?) {
         self.coordinator = coordinator
+        self.character = BehaviorRelay<Characters?>(value: character)
     }
     
+    var character = BehaviorRelay<Characters?>(value: nil)
+
     func transform(input: Input) -> Output {
 
-        return Output()
+        return Output(character: self.character)
     }
 }

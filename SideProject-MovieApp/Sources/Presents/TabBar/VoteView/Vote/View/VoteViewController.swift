@@ -54,8 +54,8 @@ final class VoteViewController: BaseViewController {
                 snapshot.appendSections([0, 1])
                 var section1Arr: [CharacterInfo] = []
                 var section2Arr: [CharacterInfo] = []
-                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil))
-                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil))
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil, title: nil))
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil, title: nil))
                 for i in popularCharacterRecommendData.character_info {
                     section2Arr.append(i)
                 }
@@ -108,15 +108,15 @@ extension VoteViewController {
             }
         })
         
-        snapshot.appendSections([0, 1])
-        var section1Arr: [CharacterInfo] = []
-        var section2Arr: [CharacterInfo] = []
-        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil))
-        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil))
-        
-        snapshot.appendItems(section1Arr, toSection: 0)
-        snapshot.appendItems(section2Arr, toSection: 1)
-        dataSource.apply(snapshot)
+//        snapshot.appendSections([0, 1])
+//        var section1Arr: [CharacterInfo] = []
+//        var section2Arr: [CharacterInfo] = []
+//        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil))
+//        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil))
+//        
+//        snapshot.appendItems(section1Arr, toSection: 0)
+//        snapshot.appendItems(section2Arr, toSection: 1)
+//        dataSource.apply(snapshot)
     }
 }
 

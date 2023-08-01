@@ -84,6 +84,6 @@ extension VoteCollectionViewCell {
         imgView.kf.setImage(with: imageUrl)
         imgView.contentMode = .scaleToFill
         nameLabel.text = item.character_name
-        movieTitleLabel.text = item.character_mbti ?? "미정"
+        movieTitleLabel.text = item.title ?? "미제공"
     }
 }

@@ -14,4 +14,5 @@ struct CharacterInfo: Hashable {
     let character_img: String
     let character_name: String
     let character_mbti: String?
+    let title: String?
 }

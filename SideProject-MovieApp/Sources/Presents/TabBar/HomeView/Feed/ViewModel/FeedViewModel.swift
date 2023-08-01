@@ -24,18 +24,22 @@ final class FeedViewModel: ViewModelType {
     
     struct Output{
         let getReivewList: PublishRelay<GetReview>
+        let character: BehaviorRelay<Characters?>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?, characterId: PublishRelay<Int>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.character = BehaviorRelay<Characters?>(value: character)
+        self.characterId = characterId
     }
     
     var character = BehaviorRelay<Characters?>(value: nil)
     let getReivewList = PublishRelay<GetReview>()
+    var characterId = PublishRelay<Int>()
     
     func transform(input: Input) -> Output {
+        
         input.reviewCellSelected.bind { [weak self] _ in
             self?.coordinator?.showFeedDetailViewController()
           
@@ -59,7 +63,16 @@ final class FeedViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(getReivewList: self.getReivewList)
+        characterId
+            .withUnretained(self)
+            .bind { vm, characterId in
+                guard let user_id = UserDefaultManager.userId else { return }
+                print(characterId, "캐릭터 아이디 들어옴")
+                self.getReviewList(user_id: user_id, character_id: characterId)
+        }
+            .disposed(by: disposeBag)
+                
+        return Output(getReivewList: self.getReivewList, character: self.character)
     }
 }
 
