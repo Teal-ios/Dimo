@@ -62,16 +62,30 @@ final class MovieDetailView: BaseView {
     
     let firstStarView: StarView = {
         let view = StarView()
+        view.star1ImageView.image = UIImage(named: "ic_rating_on")
+        view.star2ImageView.image = UIImage(named: "ic_rating_on")
+        view.star3ImageView.image = UIImage(named: "ic_rating_on")
+        view.star4ImageView.image = UIImage(named: "ic_rating_on")
+        view.star5ImageView.image = UIImage(named: "ic_rating_on")
+        view.mbtiLabel.text = "ENTP"
         return view
     }()
     
     let secondStarView: StarView = {
         let view = StarView()
+        view.star1ImageView.image = UIImage(named: "ic_rating_on")
+        view.star2ImageView.image = UIImage(named: "ic_rating_on")
+        view.star3ImageView.image = UIImage(named: "ic_rating_on")
+        view.star4ImageView.image = UIImage(named: "ic_rating_on")
+        view.mbtiLabel.text = "ISFP"
         return view
     }()
     
     let thirdStarView: StarView = {
         let view = StarView()
+        view.star1ImageView.image = UIImage(named: "ic_rating_on")
+        view.star2ImageView.image = UIImage(named: "ic_rating_on")
+        view.mbtiLabel.text = "ESTJ"
         return view
     }()
     

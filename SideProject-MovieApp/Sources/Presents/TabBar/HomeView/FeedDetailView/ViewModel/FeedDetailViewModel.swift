@@ -13,24 +13,36 @@ final class FeedDetailViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
+    private let characterDetailUseCase: CharacterDetailUseCase
+    var review: BehaviorRelay<ReviewList>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
         let spoilerButtonTapped: ControlEvent<Void>
         let commentText: ControlProperty<String?>
+        let viewDidLoad: PublishRelay<Void>
+        let commentRegisterButtonTap: ControlEvent<Void>
     }
     
     struct Output{
         let spoilerValid: BehaviorRelay<Bool>
         let textValid: BehaviorRelay<Bool>
+        let review: BehaviorRelay<ReviewList>
+        let commentList: PublishRelay<[CommentList?]>
+        let postCommentSuccess: PublishRelay<PostComment>
     }
     
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList) {
+        self.coordinator = coordinator
+        self.characterDetailUseCase = characterDetailUseCase
+        self.review = BehaviorRelay(value: review)
+    }
+    
+    let getCommentList = PublishRelay<[CommentList?]>()
+    let postComment = PublishRelay<PostComment>()
     let spoilerValid = BehaviorRelay(value: false)
     let textValid = BehaviorRelay(value: false)
-    
-    init(coordinator: TabmanCoordinator? = nil) {
-        self.coordinator = coordinator
-    }
+    let commentText = BehaviorRelay(value: "")
     
     func transform(input: Input) -> Output {
         input.plusNavigationButtonTapped.bind { [weak self] _ in
@@ -59,6 +71,71 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid)
+        input.commentText
+            .bind { [weak self] text in
+                guard let self else { return }
+                guard let text else { return }
+                self.commentText.accept(text)
+            }
+            .disposed(by: disposeBag)
+        
+        input.viewDidLoad
+            .withLatestFrom(self.review)
+            .bind { [weak self] review in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getCommentList(user_id: user_id, review_id: review.review_id)
+            }
+            .disposed(by: disposeBag)
+
+        let postCommentQueryData = Observable.combineLatest(self.review, self.spoilerValid, self.textValid, self.commentText)
+        
+        input.commentRegisterButtonTap
+            .withLatestFrom(postCommentQueryData)
+            .bind { [weak self] review, spoilerValid, textValid, text in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                if textValid {
+                    switch spoilerValid {
+                    case true:
+                        self.postCommentList(user_id: user_id, character_id: review.character_id, review_id: review.review_id, comment_content: text, comment_spoiler: 1)
+                    case false:
+                        self.postCommentList(user_id: user_id, character_id: review.character_id, review_id: review.review_id, comment_content: text, comment_spoiler: 0)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.postComment
+            .withLatestFrom(self.review)
+            .bind { [weak self] review in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getCommentList(user_id: user_id, review_id: review.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment)
+    }
+}
+
+extension FeedDetailViewModel {
+    private func getCommentList(user_id: String, review_id: Int) {
+        Task {
+            let getCommentList = try await characterDetailUseCase.excuteGetComment(query: GetCommentQuery(user_id: user_id, review_id: review_id))
+            print(getCommentList, "댓글 조회")
+            self.getCommentList.accept(getCommentList.comment_list)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func postCommentList(user_id: String, character_id: Int, review_id: Int, comment_content: String, comment_spoiler: Int) {
+        Task {
+            let query = PostCommentQuery(user_id: user_id, character_id: character_id, review_id: review_id, comment_content: comment_content, comment_spoiler: comment_spoiler)
+            let postComment = try await characterDetailUseCase.excutePostComment(query: query)
+            print(postComment, "댓글 작성 성공")
+            self.postComment.accept(postComment)
+        }
     }
 }

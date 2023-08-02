@@ -78,9 +78,9 @@ final class MyMomentumViewController: BaseViewController {
                 if likeAnimationContent != nil &&
                     likeAnimationContent?.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
                     self.myMomentumView.configureReviewUpdateUI(dataExist: false)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
+                    self.myMomentumView.configureCommentUpdateUI(dataExist: false)
                 } else {
                     guard let likeAnimationContent else { return }
                     
@@ -97,7 +97,7 @@ final class MyMomentumViewController: BaseViewController {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: true)
                     self.myMomentumView.configureDigUpdateUI(dataExist: false)
                     self.myMomentumView.configureCommentUpdateUI(dataExist: false)
-                    self.myMomentumView.configureReviewUpdateUI(dataExist: true)
+                    self.myMomentumView.configureReviewUpdateUI(dataExist: false)
                 }
             }
             .disposed(by: disposeBag)

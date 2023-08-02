@@ -25,7 +25,7 @@ final class FeedViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, ReviewList>!
     
-    let reviewCellSelected = PublishSubject<Void>()
+    let reviewCellSelected = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func loadView() {
@@ -94,6 +94,13 @@ extension FeedViewController {
 
 extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.reviewCellSelected.onNext(())
+        self.dataFetchingToReviewCell(indexPath: indexPath)
+    }
+}
+
+extension FeedViewController {
+    func dataFetchingToReviewCell(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.reviewCellSelected.accept(selectedItem)
     }
 }

@@ -51,7 +51,7 @@ class MovieDetailHeaderView: BaseView {
         label.font = Font.caption
         label.textColor = .black60
         label.textAlignment = .center
-        label.text = "5.0"
+        label.text = ""
         return label
     }()
     

@@ -124,3 +124,10 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension DetailReviewCollectionViewCell {
+    func configureCommentAttribute(with item: CommentList) {
+        reviewLabel.text = item.comment_content
+        characterNameLabel.text = item.user_id
+    }
+}

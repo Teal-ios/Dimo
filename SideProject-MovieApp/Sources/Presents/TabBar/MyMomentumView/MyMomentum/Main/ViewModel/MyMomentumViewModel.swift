@@ -147,3 +147,10 @@ extension MyMomentumViewModel {
         self.likeButtonTapToNotificationEventTrigger.accept(())
     }
 }
+
+extension MyMomentumViewModel {
+    private func getMyReview(user_id: String) {
+        Task {
+        }
+    }
+}
