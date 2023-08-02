@@ -91,7 +91,7 @@ final class EditNicknameViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.nicknameChangeButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showAlertEditUserNameViewController(with: self?.nickname, toast: self?.toast)
+            self?.coordinator?.showAlertEditUserNameViewController(with: self?.nickname, completion: self?.toast)
         }.disposed(by: disposeBag)
         
         return Output(isTextFieldEditingDidBegin: isTextFielEditingDidBegin,

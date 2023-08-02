@@ -47,13 +47,13 @@ final class SettingCoordinator: Coordinator {
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = ChangeNicknameAlertViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
-        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, toast: completion)
+        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, completion: completion)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         navigationController.present(vc, animated: true)
     }
     
-    func showAlertWithdrawViewController(with )
+//    func showAlertWithdrawViewController(with )
     
     func showEditPasswordViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())

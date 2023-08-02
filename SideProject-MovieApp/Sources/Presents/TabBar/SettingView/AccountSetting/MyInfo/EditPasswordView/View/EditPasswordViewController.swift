@@ -58,6 +58,23 @@ final class EditPasswordViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.isEmptyNewPasswordCheckTextField
+            .withUnretained(self)
+            .bind { (vc, isEmpty) in
+                if isEmpty {
+                    self.editPasswordView.showPasswordValidationTextFieldState(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.newPasswordIsSameWithCurrentPassword
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { (vc, isSame) in
+                self.editPasswordView.showPasswordValidationTextFieldState(isSame: isSame)
+            }
+            .disposed(by: disposeBag)
+        
         output.isSameWithCurrentPassword
             .observe(on: MainScheduler.instance)
             .bind { [weak self] isSame in

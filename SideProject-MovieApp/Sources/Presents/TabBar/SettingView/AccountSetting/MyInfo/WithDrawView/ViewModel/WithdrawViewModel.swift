@@ -139,7 +139,7 @@ class WithdrawViewModel: ViewModelType {
         input.didTappedWithdrawButton
             .withUnretained(self)
             .bind { (vm, _) in
-                vm.coordinator.showAlert
+//                vm.coordinator.showAlert
             }
             .disposed(by: disposeBag)
                     
@@ -157,15 +157,15 @@ extension WithdrawViewModel {
               let withdrawReason = self.dissatisfactionReason.value?.withdrawReason else { return }
         let query = WithdrawQuery(userId: userId, withdrawReason: withdrawReason)
         
-        Task {
-            let withdraw = try await settingUseCase.executeWithdraw(query: query)
-            
-            if withdraw.code == 200 {
-                
-            } else {
-                
-            }
-        }
+//        Task {
+//            let withdraw = try await settingUseCase.executeWithdraw(query: query)
+//
+//            if withdraw.code == 200 {
+//
+//            } else {
+//
+//            }
+//        }
     }
     
 }
