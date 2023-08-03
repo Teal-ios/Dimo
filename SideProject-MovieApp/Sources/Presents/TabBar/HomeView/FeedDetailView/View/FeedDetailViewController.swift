@@ -30,6 +30,7 @@ class FeedDetailViewController: BaseViewController {
     let spoilerValid = PublishRelay<Bool>()
     let review = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,7 @@ class FeedDetailViewController: BaseViewController {
                     }
                     commentSnapshot.appendItems(sectionArr, toSection: 0)
                     self.dataSource.apply(commentSnapshot)
+                    self.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
                 }
             }
             .disposed(by: disposeBag)
@@ -100,6 +102,14 @@ class FeedDetailViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { vc, _ in
                 vc.feedDetailView.initCommentSetting()
+            }
+            .disposed(by: disposeBag)
+        
+        self.setDataSourceApplySnapshotAfter
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, cellCount in
+                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount)
             }
             .disposed(by: disposeBag)
     }

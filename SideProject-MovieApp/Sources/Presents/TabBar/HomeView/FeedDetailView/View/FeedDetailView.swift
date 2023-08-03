@@ -336,3 +336,16 @@ extension FeedDetailView {
         updateCommentTextField(textValid: false)
     }
 }
+
+extension FeedDetailView {
+    func updateCollectionViewHeight(cellCount: Int) {
+        collectionView.snp.removeConstraints()
+        collectionView.snp.remakeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.greaterThanOrEqualTo(cellCount * 216)
+            make.bottom.equalTo(containScrollView.snp.bottom)
+        }
+        collectionView.layoutIfNeeded()
+    }
+}
