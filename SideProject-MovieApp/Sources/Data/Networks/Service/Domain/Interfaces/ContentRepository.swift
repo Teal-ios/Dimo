@@ -9,7 +9,7 @@ import Foundation
 
 protocol ContentRepository: AnyObject {
     
-    func fetchAnimationData() async throws -> [AnimationData]
+    func fetchAnimationData(query: GetAnimationQuery) async throws -> AnimationData
     
     func fetchDetailAnimatonData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData
     

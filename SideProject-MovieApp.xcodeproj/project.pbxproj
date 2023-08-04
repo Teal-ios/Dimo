@@ -402,6 +402,13 @@
 		2FE111322A76684E0013A49E /* SearchCharacterListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE111312A76684E0013A49E /* SearchCharacterListQuery.swift */; };
 		2FE111342A76687B0013A49E /* VoteCharacterQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE111332A76687B0013A49E /* VoteCharacterQuery.swift */; };
 		2FE111362A76688A0013A49E /* SameWorkCharacterListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */; };
+		2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE9681A2A7BA2AB000E705E /* GetAnimationQuery.swift */; };
+		2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE9681C2A7BCA6D000E705E /* Content.swift */; };
+		2FE9681F2A7BCAD2000E705E /* Hit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE9681E2A7BCAD2000E705E /* Hit.swift */; };
+		2FE968212A7BCC1B000E705E /* ResponseHitDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE968202A7BCC1B000E705E /* ResponseHitDTO.swift */; };
+		2FE968232A7BCC28000E705E /* ResponseContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE968222A7BCC28000E705E /* ResponseContentDTO.swift */; };
+		2FE968252A7BD50F000E705E /* SameMbtiCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE968242A7BD50F000E705E /* SameMbtiCharacter.swift */; };
+		2FE968272A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE968262A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift */; };
 		2FEC15D62A7788DB009CF59D /* VoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15D52A7788DB009CF59D /* VoteUseCase.swift */; };
 		2FEC15D82A7788FB009CF59D /* CharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15D72A7788FB009CF59D /* CharacterDetailUseCase.swift */; };
 		2FEC15EA2A77DE0F009CF59D /* ReviewExceptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15E92A77DE0F009CF59D /* ReviewExceptionView.swift */; };
@@ -888,6 +895,13 @@
 		2FE111312A76684E0013A49E /* SearchCharacterListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterListQuery.swift; sourceTree = "<group>"; };
 		2FE111332A76687B0013A49E /* VoteCharacterQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCharacterQuery.swift; sourceTree = "<group>"; };
 		2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameWorkCharacterListQuery.swift; sourceTree = "<group>"; };
+		2FE9681A2A7BA2AB000E705E /* GetAnimationQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAnimationQuery.swift; sourceTree = "<group>"; };
+		2FE9681C2A7BCA6D000E705E /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		2FE9681E2A7BCAD2000E705E /* Hit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hit.swift; sourceTree = "<group>"; };
+		2FE968202A7BCC1B000E705E /* ResponseHitDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHitDTO.swift; sourceTree = "<group>"; };
+		2FE968222A7BCC28000E705E /* ResponseContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseContentDTO.swift; sourceTree = "<group>"; };
+		2FE968242A7BD50F000E705E /* SameMbtiCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameMbtiCharacter.swift; sourceTree = "<group>"; };
+		2FE968262A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSameMbtiCharacterDTO.swift; sourceTree = "<group>"; };
 		2FEC15D52A7788DB009CF59D /* VoteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteUseCase.swift; sourceTree = "<group>"; };
 		2FEC15D72A7788FB009CF59D /* CharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailUseCase.swift; sourceTree = "<group>"; };
 		2FEC15E92A77DE0F009CF59D /* ReviewExceptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewExceptionView.swift; sourceTree = "<group>"; };
@@ -1164,6 +1178,9 @@
 			children = (
 				2F437C0F2A4C0D19000B7A61 /* MockData */,
 				2F437C092A4BED61000B7A61 /* Character.swift */,
+				2FE9681C2A7BCA6D000E705E /* Content.swift */,
+				2FE968242A7BD50F000E705E /* SameMbtiCharacter.swift */,
+				2FE9681E2A7BCAD2000E705E /* Hit.swift */,
 				2FD4D9362A6E45A700E7972B /* Characters.swift */,
 				2F437C0D2A4BFE47000B7A61 /* AnimationData.swift */,
 				2FD4D9342A6E453400E7972B /* DetailAnimationData.swift */,
@@ -1179,6 +1196,8 @@
 			isa = PBXGroup;
 			children = (
 				2F437BFF2A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift */,
+				2FE968202A7BCC1B000E705E /* ResponseHitDTO.swift */,
+				2FE968222A7BCC28000E705E /* ResponseContentDTO.swift */,
 				2F437C012A4BE617000B7A61 /* ResponseCharacterDTO.swift */,
 				2FD4D93B2A6E46DD00E7972B /* ResponseCharactersDTO.swift */,
 				2FD4D9392A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift */,
@@ -1186,6 +1205,7 @@
 				2FBFF83A2A6F5987007914A1 /* ResponseLikeCancelDTO.swift */,
 				2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */,
 				2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */,
+				2FE968262A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -2589,6 +2609,7 @@
 				2FBFF82B2A6F54EE007914A1 /* LikeCancelQuery.swift */,
 				2FBFF82D2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift */,
 				2FBFF82F2A6F5505007914A1 /* LikeContentCheckQuery.swift */,
+				2FE9681A2A7BA2AB000E705E /* GetAnimationQuery.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -3389,6 +3410,7 @@
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
+				2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D9092A6BBFDA00E7972B /* ModifyMyProfileQuery.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
@@ -3406,10 +3428,12 @@
 				2FD82D782A77471E00372D24 /* DeleteReviewQuery.swift in Sources */,
 				2FE111362A76688A0013A49E /* SameWorkCharacterListQuery.swift in Sources */,
 				2FD87A372A58420F003C276B /* DropQuery.swift in Sources */,
+				2FE968252A7BD50F000E705E /* SameMbtiCharacter.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2FE111242A7664E10013A49E /* SameWorkCharacterList.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
+				2FE9681F2A7BCAD2000E705E /* Hit.swift in Sources */,
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
 				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
 				2FE1112E2A7668170013A49E /* RandomCharacterRecommendQuery.swift in Sources */,
@@ -3432,6 +3456,7 @@
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
+				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2FD82D7C2A77474100372D24 /* GetCommentQuery.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
@@ -3579,6 +3604,7 @@
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
 				2FE111342A76687B0013A49E /* VoteCharacterQuery.swift in Sources */,
 				2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */,
+				2FE968272A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift in Sources */,
 				2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */,
 				2FD82DC22A77609200372D24 /* VoteRouter.swift in Sources */,
 				2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */,
@@ -3671,6 +3697,7 @@
 				2FEC15F82A78B484009CF59D /* ResponseMyReviewDTO.swift in Sources */,
 				2FBFF8332A6F5938007914A1 /* RequestLikeChoiceDTO.swift in Sources */,
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
+				2FE968212A7BCC1B000E705E /* ResponseHitDTO.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
 				4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */,
@@ -3692,6 +3719,7 @@
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
 				2F9793A42A52A4450098939B /* SearchView.swift in Sources */,
 				2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */,
+				2FE968232A7BCC28000E705E /* ResponseContentDTO.swift in Sources */,
 				2F979F302A0CB3ED00A1CD53 /* NotificationIDViewModel.swift in Sources */,
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,

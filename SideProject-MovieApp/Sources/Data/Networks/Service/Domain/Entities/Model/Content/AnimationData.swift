@@ -8,10 +8,16 @@
 import Foundation
 
 // MARK: - AnimationData
+//struct AnimationData: Hashable {
+//    let contentId: String
+//    let poster: String
+//    let title, plot, genre, director: String
+//    let release, rate: String
+//    let characters: [Character]
+//}
+
 struct AnimationData: Hashable {
-    let contentId: String
-    let poster: String
-    let title, plot, genre, director: String
-    let release, rate: String
-    let characters: [Character]
+    let code: Int
+    let message: String
+    let contents: [Content]
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 enum ContentRouter<R> {
-    case inquireAnimationData
+    case inquireAnimationData(parameters: GetAnimationQuery)
     case inquireDetailAnimationData(parameters: String)
     case likeChoice(parameters: LikeChoiceQuery)
     case likeCancel(parameters: LikeCancelQuery)
@@ -42,7 +42,7 @@ extension ContentRouter: TargetType2 {
     var path: String {
         switch self {
         case .inquireAnimationData:
-            return "/crawling/animedata"
+            return "/home/anime"
         case .inquireDetailAnimationData(let parameters):
             return "/detail/animedata/\(parameters)"
         case .likeChoice:
@@ -58,6 +58,8 @@ extension ContentRouter: TargetType2 {
     
     var queryItems: [URLQueryItem]? {
         switch self {
+        case .inquireAnimationData(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .likeContentCheck(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "contentId", value: parameters.contentId)]
         default:

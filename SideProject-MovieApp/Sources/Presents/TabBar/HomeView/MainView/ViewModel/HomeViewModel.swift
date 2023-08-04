@@ -34,7 +34,7 @@ final class HomeViewModel: ViewModelType {
     }
     
     struct Output {
-        let animationData: PublishRelay<[AnimationData]>
+        let animationData: PublishRelay<AnimationData>
         let category: BehaviorRelay<String>
 //        let categoryButtonTapped: PublishRelay<String>
         let characterPlusButtonTapped: ControlEvent<Void>
@@ -42,7 +42,7 @@ final class HomeViewModel: ViewModelType {
         let okAlertButtonTapped: ControlEvent<Void>
     }
     
-    let animationData = PublishRelay<[AnimationData]>()
+    let animationData = PublishRelay<AnimationData>()
 
     init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, category: String) {
         self.coordinator = coordinator
@@ -105,12 +105,8 @@ final class HomeViewModel: ViewModelType {
             .bind { [weak self] _ in
                 print("viewDidLoad 실행")
                 guard let self else { return }
-                let animationDataObservable = self.contentUseCase.excuteFetchAnimationData()
-                
-                animationDataObservable.bind(onNext: { data in
-                    self.animationData.accept(data)
-                })
-                .disposed(by: self.disposeBag)
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getAnimationDataList(user_id: user_id)
             }
             .disposed(by: disposeBag)
         
@@ -125,3 +121,12 @@ final class HomeViewModel: ViewModelType {
     }
 }
 
+extension HomeViewModel {
+    private func getAnimationDataList(user_id: String) {
+        Task {
+            let animationData = try await contentUseCase.excuteFetchAnimationData(query: GetAnimationQuery(user_id: user_id))
+            print(animationData, "애니메이션 데이터 들어옴")
+            self.animationData.accept(animationData)
+        }
+    }
+}

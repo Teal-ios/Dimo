@@ -69,6 +69,6 @@ class RecentSearchCollectionViewCell: BaseCollectionViewCell {
 
 extension RecentSearchCollectionViewCell {
     func configureAttribute(with item: AnimationData) {
-        categoryLabel.text = item.characters[0].characterName
+//        categoryLabel.text = item.characters[0].characterName
     }
 }

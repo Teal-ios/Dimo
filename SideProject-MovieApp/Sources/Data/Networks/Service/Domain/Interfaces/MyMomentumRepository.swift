@@ -16,4 +16,8 @@ protocol MyMomentumRepository: AnyObject {
     func fetchLikeAnimationContent(query: LikeAnimationContentQuery) async throws -> LikeAnimationContent
     
     func fetchLikeMovieContent(query: LikeMovieContentQuery) async throws -> LikeMovieContent
+    
+    func fetchMyReview(query: GetMyReviewQuery) async throws -> GetMyReview
+    
+    func fetchMyComment(query: GetMyCommentQuery) async throws -> GetMyComment
 }

@@ -60,3 +60,11 @@ extension CircleCollectionViewCell {
         imgView.contentMode = .scaleToFill
     }
 }
+
+extension CircleCollectionViewCell {
+    func configureAttributeToSameMbtiCharacter(with item: SameMbtiCharacter) {
+        let imageURL = URL(string: item.character_img ?? "")
+        imgView.kf.setImage(with: imageURL)
+        imgView.contentMode = .scaleToFill
+    }
+}

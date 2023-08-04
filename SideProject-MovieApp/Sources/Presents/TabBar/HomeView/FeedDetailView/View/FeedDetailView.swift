@@ -152,7 +152,7 @@ final class FeedDetailView: BaseView {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.greaterThanOrEqualTo(3000)
+            make.height.equalTo(0)
             make.bottom.equalTo(containScrollView.snp.bottom)
         }
         
@@ -339,13 +339,26 @@ extension FeedDetailView {
 
 extension FeedDetailView {
     func updateCollectionViewHeight(cellCount: Int) {
-        collectionView.snp.removeConstraints()
-        collectionView.snp.remakeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom)
-            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.greaterThanOrEqualTo(cellCount * 216)
-            make.bottom.equalTo(containScrollView.snp.bottom)
+        if cellCount != 0 {
+            collectionView.snp.removeConstraints()
+            collectionView.snp.remakeConstraints { make in
+                make.top.equalTo(headerView.snp.bottom)
+                make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+                make.height.greaterThanOrEqualTo(cellCount * 216)
+                make.bottom.equalTo(containScrollView.snp.bottom)
+            }
+            collectionView.layoutIfNeeded()
+        } else {
+            collectionView.snp.removeConstraints()
+            headerView.snp.removeConstraints()
+            headerView.snp.remakeConstraints { make in
+                make.top.equalTo(containScrollView.snp.top)
+                make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+                make.height.lessThanOrEqualTo(500)
+                make.bottom.equalTo(containScrollView.snp.bottom)
+            }
+            collectionView.layoutIfNeeded()
+            headerView.layoutIfNeeded()
         }
-        collectionView.layoutIfNeeded()
     }
 }

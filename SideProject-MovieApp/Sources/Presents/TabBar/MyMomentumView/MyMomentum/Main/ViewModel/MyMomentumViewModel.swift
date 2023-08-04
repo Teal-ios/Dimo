@@ -35,6 +35,8 @@ final class MyMomentumViewModel: ViewModelType {
         let likeAnimationContentData: BehaviorRelay<LikeAnimationContent?>
         let likeMovieContentData: PublishRelay<LikeMovieContent>
         let likeButtonTapToNotificaiton: PublishRelay<Void>
+        let myReviewList: PublishRelay<GetMyReview>
+        let myCommentList: PublishRelay<GetMyComment>
     }
     
     let myProfile = PublishRelay<MyProfile>()
@@ -42,6 +44,8 @@ final class MyMomentumViewModel: ViewModelType {
     let likeMoviewContent = PublishRelay<LikeMovieContent>()
     let likeButtonTapToNotificationEventTrigger = PublishRelay<Void>()
     let likeButtonTapToHomeViewController = PublishRelay<Void>()
+    let myReviewList = PublishRelay<GetMyReview>()
+    let myCommentList = PublishRelay<GetMyComment>()
     
     func transform(input: Input) -> Output {
         
@@ -54,6 +58,8 @@ final class MyMomentumViewModel: ViewModelType {
                 self.getMyProfile(user_id: user_id)
                 self.getLikeMoviewContent(user_id: user_id)
                 self.getLikeAnimationwContent(user_id: user_id)
+                self.getMyReview(user_id: user_id)
+                self.getMyComment(user_id: user_id)
             }
             .disposed(by: disposeBag)
         
@@ -107,7 +113,7 @@ final class MyMomentumViewModel: ViewModelType {
         
         NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
         
-        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger)
+        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myCommentList: self.myCommentList)
     }
 }
 
@@ -151,6 +157,19 @@ extension MyMomentumViewModel {
 extension MyMomentumViewModel {
     private func getMyReview(user_id: String) {
         Task {
+            let myReview = try await myMomentumUseCase.excuteMyReview(query: GetMyReviewQuery(user_id: user_id))
+            print(myReview, "내리뷰 조회")
+            self.myReviewList.accept(myReview)
+        }
+    }
+}
+
+extension MyMomentumViewModel {
+    private func getMyComment(user_id: String) {
+        Task {
+            let myComment = try await myMomentumUseCase.excuteMyComment(query: GetMyCommentQuery(user_id: user_id))
+            print(myComment, "내댓글 조회")
+            self.myCommentList.accept(myComment)
         }
     }
 }
