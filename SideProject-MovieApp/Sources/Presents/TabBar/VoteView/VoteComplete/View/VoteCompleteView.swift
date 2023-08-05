@@ -1,0 +1,240 @@
+//
+//  VoteCompleteView.swift
+//  SideProject-MovieApp
+//
+//  Created by 이병현 on 2023/08/05.
+//
+
+import UIKit
+import SnapKit
+
+final class VoteCompleteView: BaseView {
+    
+    lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.addSubview(characterImageView)
+        view.addSubview(characterNicknameLabel)
+        view.addSubview(subtitleLabel)
+        view.addSubview(voteChartContainView)
+        view.addSubview(mbtiChartStackView)
+        view.addSubview(manyPersonThinkingMbtiContainView)
+        view.addSubview(choiceMbtiExplainContainView)
+        view.addSubview(characterMoreCollectionView)
+        return view
+    }()
+    
+    lazy var characterMoreCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCharacterLayout())
+
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white100
+        label.font = Font.title1
+        label.text = "투표 결과"
+        return label
+    }()
+
+    let characterImageView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .white100
+        return view
+    }()
+    
+    let characterNicknameLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.subtitle2
+        label.textColor = .black5
+        label.textAlignment = .center
+        label.text = "정대만"
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.caption
+        label.textColor = Color.caption
+        label.textAlignment = .center
+        label.text = "더 퍼스트 슬램덩크"
+        return label
+    }()
+    
+    let voteChartContainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black90
+        return view
+    }()
+    
+    lazy var mbtiChartStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [eiChartView, nsChartView, tfChartView, jpChartView])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16
+        stackView.backgroundColor = .black90
+        return stackView
+    }()
+    
+    let manyPersonThinkingMbtiContainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black90
+        return view
+    }()
+    
+    let choiceMbtiExplainContainView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black90
+        return view
+    }()
+    
+    let eiChartView: WidthChartView = {
+        let view = WidthChartView(mbtiPercent: 40, leftMbtiText: "E", rightMbtiText: "I")
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    let nsChartView: WidthChartView = {
+        let view = WidthChartView(mbtiPercent: 10, leftMbtiText: "N", rightMbtiText: "S")
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    let tfChartView: WidthChartView = {
+        let view = WidthChartView(mbtiPercent: 80, leftMbtiText: "T", rightMbtiText: "F")
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    let jpChartView: WidthChartView = {
+        let view = WidthChartView(mbtiPercent: 60, leftMbtiText: "J", rightMbtiText: "P")
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        characterImageView.clipsToBounds = true
+        characterImageView.layer.cornerRadius = 109 / 2
+        voteChartContainView.layer.cornerRadius = 8
+        manyPersonThinkingMbtiContainView.layer.cornerRadius = 8
+        choiceMbtiExplainContainView.layer.cornerRadius = 8
+    }
+    
+    override func setHierarchy() {
+        self.addSubview(titleLabel)
+        self.addSubview(scrollView)
+    }
+    
+    override func setupAttributes() {
+        self.characterMoreCollectionView.isScrollEnabled = false
+
+    }
+    override func setupLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(45)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top).offset(36)
+            make.centerX.equalTo(scrollView)
+            make.width.height.equalTo(109)
+        }
+        
+        characterNicknameLabel.snp.makeConstraints { make in
+            make.top.equalTo(characterImageView.snp.bottom).offset(16)
+            make.centerX.equalTo(characterImageView)
+            make.height.equalTo(19)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+        }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(characterNicknameLabel.snp.bottom).offset(4)
+            make.centerX.equalTo(characterImageView)
+            make.height.equalTo(16)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+        }
+        
+        voteChartContainView.snp.makeConstraints { make in
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(36)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+            make.height.equalTo(288)
+        }
+        
+        mbtiChartStackView.snp.makeConstraints { make in
+            make.edges.equalTo(voteChartContainView).inset(24)
+        }
+        
+        manyPersonThinkingMbtiContainView.snp.makeConstraints { make in
+            make.top.equalTo(voteChartContainView.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+            make.height.equalTo(56)
+        }
+        
+        choiceMbtiExplainContainView.snp.makeConstraints { make in
+            make.top.equalTo(manyPersonThinkingMbtiContainView.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+            make.height.equalTo(56)
+        }
+        
+        characterMoreCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(choiceMbtiExplainContainView.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(scrollView)
+            make.height.equalTo(280)
+            make.bottom.equalTo(scrollView.snp.bottom)
+        }
+    }
+    
+    private let itemRatio = 1.0
+    private let groupRatio = 0.93
+    private let headerRatio = 1.0
+    private let headerAbsolute = 40.0
+}
+
+extension VoteCompleteView {
+    private func createCharacterLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, layoutEnvironment in
+            switch sectionIndex {
+            default: return self.characterLayout()
+            }
+        }, configuration: configuration)
+        return collectionViewLayout
+    }
+    
+    private func characterLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemRatio / 3),
+            heightDimension: .fractionalHeight(itemRatio)
+
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(groupRatio),
+            heightDimension: .fractionalHeight(groupRatio)
+        )
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(headerRatio),
+            heightDimension: .absolute(headerAbsolute)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: MyMomentumHeaderView.identifier, alignment: .top
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
+        return section
+    }
+}

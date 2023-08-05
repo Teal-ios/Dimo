@@ -241,10 +241,3 @@ final class DigView: BaseView {
         }
     }
 }
-
-//extension DigView {
-//    func updateLayoutViewAfter() {
-//        characterImageView.clipsToBounds = true
-//        characterImageView.layer.cornerRadius = 109 / 2
-//    }
-//}
