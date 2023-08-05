@@ -133,7 +133,12 @@ class EditPasswordView: BaseView {
 extension EditPasswordView {
     
     func showExistingPasswordTextFieldState(_ isSame: Bool?) {
-        guard let isSame = isSame else { return }
+        guard let isSame = isSame else {
+            existingPasswordCheckLabel.isHidden = false
+            existingPasswordCheckLabel.text = "기존과 동일한 비밀번호로 변경할 수 없습니다."
+            existingPasswordCheckLabel.textColor = UIColor.error
+            return
+        }
         
         if isSame {
             existingPasswordCheckLabel.isHidden = true
@@ -155,12 +160,18 @@ extension EditPasswordView {
         passwordChangeButton.configuration?.baseBackgroundColor = .purple100
     }
     
-    func showPasswordValidationTextFieldState(_ isValid: Bool?) {
-        guard let isValid = isValid else { return }
+    func showPasswordValidationTextFieldState(_ isValid: Bool = true, isSame: Bool = false) {
+        guard isSame == false else {
+            passwordValidationCheckLabel.text = "기존과 동일한 비밀번호로 변경할 수 없습니다"
+            passwordValidationCheckLabel.textColor = .error
+            return
+        }
         
         if isValid {
+            passwordValidationCheckLabel.text = "숫자, 문자, 특수문자 포함 총 8글자 이상"
             passwordValidationCheckLabel.textColor = .black60
         } else {
+            passwordValidationCheckLabel.text = "숫자, 문자, 특수문자 포함 총 8글자 이상"
             passwordValidationCheckLabel.textColor = .error
         }
     }

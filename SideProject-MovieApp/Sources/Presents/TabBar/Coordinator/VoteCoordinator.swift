@@ -8,7 +8,9 @@
 import UIKit
 
 final class VoteCoordinator: Coordinator {
+    
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab

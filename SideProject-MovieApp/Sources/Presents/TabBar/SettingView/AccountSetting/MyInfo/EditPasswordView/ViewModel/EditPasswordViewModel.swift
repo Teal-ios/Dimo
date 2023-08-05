@@ -16,21 +16,36 @@ class EditPasswordViewModel {
     private weak var coordinator: SettingCoordinator?
     private var settingUseCase: SettingUseCase
     
+    enum PasswordFormatState {
+        case newPasswordIsSameWithCurrentPassword
+        case isUnvalidFormat
+        case isValidFormat
+    }
+    
     struct Input {
+        let currentPasswordTextFieldBenginEditing: ControlEvent<Void>
         let currentPassWordTextFieldText: ControlProperty<String?>
+        let newPasswordTextFieldTextBeginEditing: ControlEvent<Void>
         let newPasswordTextFieldText: ControlProperty<String?>
+        let newPasswordCheckTextFieldTextBeginEditing: ControlEvent<Void>
         let newPasswordCheckTextFieldText: ControlProperty<String?>
         let passwordChangeButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
         let isChanged: BehaviorRelay<Bool>
-        let isSameWithCurrentPassword: BehaviorRelay<Bool?>
+        let isSameWithCurrentPassword: BehaviorRelay<Bool>
+        let isEmptyNewPasswordCheckTextField: Observable<Bool>
+        let newPasswordIsSameWithCurrentPassword: BehaviorRelay<Bool>
         let passwordChageButtonTappedOutput: PublishRelay<(Bool, Bool)>
+        let currentPasswordTextFieldText: BehaviorRelay<String?>
+        let newPasswordTextFieldText: BehaviorRelay<String?>
+        let newPasswordCheckTextFieldText: BehaviorRelay<String?>
     }
     
     private var currentPasswordTextFieldText = BehaviorRelay<String?>(value: nil)
-    private var isSameWithCurrentPassword = BehaviorRelay<Bool?>(value: nil)
+    private var newPasswordIsSameWithCurrentPassword = BehaviorRelay<Bool>(value: false)
+    private var isSameWithCurrentPassword = BehaviorRelay<Bool>(value: true)
     private var newPasswordTextFieldText = BehaviorRelay<String?>(value: nil)
     private var isValidPasswordFormat = BehaviorRelay<Bool?>(value: nil)
     private var isSameWithNewPassword = BehaviorRelay<Bool?>(value: nil)
@@ -49,6 +64,31 @@ class EditPasswordViewModel {
             .orEmpty
             .map {  NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: $0) }
         
+        let currentPasswordTextFieldText = BehaviorRelay<String?>(value: "")
+        let newPasswordTextFieldText = BehaviorRelay<String?>(value: "")
+        let newPasswordCheckTextFieldText = BehaviorRelay<String?>(value: "")
+        
+        input.currentPasswordTextFieldBenginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                currentPasswordTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
+        
+        input.newPasswordTextFieldTextBeginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                newPasswordTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
+        
+        input.newPasswordCheckTextFieldTextBeginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                newPasswordCheckTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
+        
         input.currentPassWordTextFieldText
             .bind { [weak self] text in
                 guard let self else { return }
@@ -64,6 +104,10 @@ class EditPasswordViewModel {
         
         let isSameWithNewPassword = Observable.combineLatest(input.newPasswordTextFieldText.orEmpty, input.newPasswordCheckTextFieldText.orEmpty)
                                     .map { $0 == $1}
+        
+        let isEmptyNewPasswordCheckTextField = input.newPasswordTextFieldText
+            .orEmpty
+            .map { $0.count == 0 }
         
         input.passwordChangeButtonTapped
             .bind { [weak self] in
@@ -85,15 +129,14 @@ class EditPasswordViewModel {
             }
             .disposed(by: disposeBag)
         
-//        isSameWithCurrentPassword.bind { bool in
-//            if bool == true {
-//                self.isChanged.accept(true)
-//            }
-//        }
-//        .disposed(by: disposeBag)
-        
         return Output(isChanged: isChanged,
-                      isSameWithCurrentPassword: self.isSameWithCurrentPassword, passwordChageButtonTappedOutput: self.changeButtonTapped)
+                      isSameWithCurrentPassword: self.isSameWithCurrentPassword,
+                      isEmptyNewPasswordCheckTextField: isEmptyNewPasswordCheckTextField,
+                      newPasswordIsSameWithCurrentPassword: self.newPasswordIsSameWithCurrentPassword,
+                      passwordChageButtonTappedOutput: self.changeButtonTapped,
+                      currentPasswordTextFieldText: currentPasswordTextFieldText,
+                      newPasswordTextFieldText: newPasswordTextFieldText,
+                      newPasswordCheckTextFieldText: newPasswordCheckTextFieldText)
     }
 }
 
@@ -115,9 +158,9 @@ extension EditPasswordViewModel {
                 UserDefaultManager.password = newPassword
             } else if passwordChange.code == 401 {
                 isSameWithCurrentPassword.accept(false)
-                isChanged.accept(false)
-            } else {
-                isChanged.accept(false)
+            } else if passwordChange.code == 402 {
+                isSameWithCurrentPassword.accept(true)
+                newPasswordIsSameWithCurrentPassword.accept(true)
             }
         }
     }

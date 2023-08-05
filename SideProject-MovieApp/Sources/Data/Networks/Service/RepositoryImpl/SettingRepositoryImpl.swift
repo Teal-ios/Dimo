@@ -78,3 +78,20 @@ extension SettingRepositoryImpl {
         }
     }
 }
+
+//MARK: 회원탈퇴
+extension SettingRepositoryImpl {
+    
+    func fetchWithdraw(query: WithdrawQuery) async throws -> Withdraw {
+        let requestDTO = RequestWithdrawDTO(userId: query.userId,
+                                            withdrawReason: query.withdrawReason)
+        let target = APIEndpoints.postWithdraw(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
+        }
+    }
+}

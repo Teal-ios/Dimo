@@ -17,8 +17,11 @@ final class EditPasswordViewController: BaseViewController {
     private var viewModel: EditPasswordViewModel
     
     private lazy var input = EditPasswordViewModel.Input(
+        currentPasswordTextFieldBenginEditing: editPasswordView.currentPasswordView.tf.rx.controlEvent(.editingDidBegin),
         currentPassWordTextFieldText: editPasswordView.currentPasswordView.tf.rx.text,
+        newPasswordTextFieldTextBeginEditing: editPasswordView.newPasswordView.tf.rx.controlEvent(.editingDidBegin) ,
         newPasswordTextFieldText: editPasswordView.newPasswordView.tf.rx.text,
+        newPasswordCheckTextFieldTextBeginEditing: editPasswordView.newPasswordCheckView.tf.rx.controlEvent(.editingDidBegin),
         newPasswordCheckTextFieldText: editPasswordView.newPasswordCheckView.tf.rx.text,
         passwordChangeButtonTapped: editPasswordView.passwordChangeButton.rx.tap
     )
@@ -58,11 +61,49 @@ final class EditPasswordViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.isEmptyNewPasswordCheckTextField
+            .withUnretained(self)
+            .bind { (vc, isEmpty) in
+                if isEmpty {
+                    self.editPasswordView.showPasswordValidationTextFieldState(true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.newPasswordIsSameWithCurrentPassword
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { (vc, isSame) in
+                self.editPasswordView.showPasswordValidationTextFieldState(isSame: isSame)
+            }
+            .disposed(by: disposeBag)
+        
         output.isSameWithCurrentPassword
             .observe(on: MainScheduler.instance)
             .bind { [weak self] isSame in
                 guard let self else { return }
                 self.editPasswordView.showExistingPasswordTextFieldState(isSame)
+            }
+            .disposed(by: disposeBag)
+        
+        output.currentPasswordTextFieldText
+            .withUnretained(self)
+            .bind { (vc, emptyValue) in
+                vc.editPasswordView.currentPasswordView.tf.text = emptyValue
+            }
+            .disposed(by: disposeBag)
+        
+        output.newPasswordTextFieldText
+            .withUnretained(self)
+            .bind { (vc, emptyValue) in
+                vc.editPasswordView.newPasswordView.tf.text = emptyValue
+            }
+            .disposed(by: disposeBag)
+        
+        output.newPasswordCheckTextFieldText
+            .withUnretained(self)
+            .bind { (vc, emptyValue) in
+                vc.editPasswordView.newPasswordCheckView.tf.text = emptyValue
             }
             .disposed(by: disposeBag)
     }

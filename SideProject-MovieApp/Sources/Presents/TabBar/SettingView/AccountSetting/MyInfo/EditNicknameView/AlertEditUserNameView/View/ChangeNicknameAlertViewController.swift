@@ -13,11 +13,11 @@ final class ChangeNicknameAlertViewController: BaseViewController {
     
     private let selfView = CustomAlertView(title: "닉네임을 변경할까요?", subtitle: "한 번 설정한 닉네임은 한 달 동안 변경할 수 없습니다.", okButtonTitle: "변경하기", cancelTitle: "아니요")
     private var viewModel: ChangeNicknameAlertViewModel
-    private var toast: ( () -> Void )?
+    private var completion: ( () -> Void )?
     
-    init(viewModel: ChangeNicknameAlertViewModel, toast: ( () -> Void)? ) {
+    init(viewModel: ChangeNicknameAlertViewModel, completion: ( () -> Void)? ) {
         self.viewModel = viewModel
-        self.toast = toast
+        self.completion = completion
         super.init()
     }
     
@@ -49,7 +49,7 @@ final class ChangeNicknameAlertViewController: BaseViewController {
             .bind { [weak self] isChanged in
                 if isChanged {
                     self?.dismiss(animated: true)
-                    self?.toast?()
+                    self?.completion?()
                     print("🔥 Nickname Changed")
                 } else {
                     self?.dismiss(animated: true)   

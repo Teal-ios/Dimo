@@ -8,7 +8,9 @@
 import UIKit
 
 final class AuthCoordinator: Coordinator {
+    
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .auth
@@ -115,6 +117,7 @@ final class AuthCoordinator: Coordinator {
     
     func connectHomeTabBarCoordinator() {
         let tabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
+        tabBarCoordinator.parentCoordinator = self
         tabBarCoordinator.start()
         childCoordinators.append(tabBarCoordinator)
     }

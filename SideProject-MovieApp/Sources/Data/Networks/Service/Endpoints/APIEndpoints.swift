@@ -24,4 +24,8 @@ struct APIEndpoints {
     static func getPasswordChange(with requestDTO: RequestPasswordChangeDTO) -> SettingRouter<ResponsePasswordChangeDTO> {
         return SettingRouter<ResponsePasswordChangeDTO>.passwordChange(parameters: PasswordChangeQuery(user_id: requestDTO.user_id, currentPassword: requestDTO.password, newPassword: requestDTO.new_password))
     }
+    
+    static func postWithdraw(with requestDTO: RequestWithdrawDTO) -> SettingRouter<ResponseWithdrawDTO> {
+        return SettingRouter<ResponseWithdrawDTO>.withdraw(paramters: WithdrawQuery(userId: requestDTO.userId, withdrawReason: requestDTO.withdrawReason))
+    }
 }

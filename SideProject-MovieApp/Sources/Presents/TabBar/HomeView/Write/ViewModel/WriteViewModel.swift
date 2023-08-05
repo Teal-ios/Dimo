@@ -59,7 +59,7 @@ final class WriteViewModel: ViewModelType {
             .bind { [weak self] reviewText in
                 guard let self = self else { return }
 
-                guard let spoilerValid = try? spoilerValidSubject.value() else { return }
+                guard let spoilerValid = try? self.spoilerValidSubject.value() else { return }
 
                 let characterId = self.characterId.value
 
@@ -78,13 +78,13 @@ final class WriteViewModel: ViewModelType {
         
         input.spoilerButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
-            guard var spoilerValid = try? spoilerValidSubject.value() else { return }
+            guard var spoilerValid = try? self.spoilerValidSubject.value() else { return }
             if spoilerValid == true {
                 spoilerValid = false
             } else {
                 spoilerValid = true
             }
-            spoilerValidSubject.onNext(spoilerValid)
+            self.spoilerValidSubject.onNext(spoilerValid)
         }
         .disposed(by: disposeBag)
         
