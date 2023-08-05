@@ -6,32 +6,31 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import SnapKit
 
 final class WithdrawViewController: BaseViewController {
-    
+
     let selfView = WithdrawView()
-    
+
     private var viewModel: WithdrawViewModel
-    
+
     init(viewModel: WithdrawViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("WithDrawViewController: fatal error")
     }
-    
+
     override func loadView() {
         view = selfView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func setupBinding() {
         let input = WithdrawViewModel.Input(didTappedContentsDissatisfactionButton: selfView.contentsDissatisfactionView.checkButton.rx.isTapped,
                                             didTappedServiceDissatisfactionButton: selfView.serviceDissatisfactionView.checkButton.rx.isTapped,
@@ -42,9 +41,9 @@ final class WithdrawViewController: BaseViewController {
                                             didBeginEditingTextView: selfView.withdrawalReasonTextView.rx.didBeginEditing,
                                             textViewInput: selfView.withdrawalReasonTextView.rx.text,
                                             didTappedWithdrawButton: selfView.withdrawButton.rx.tap)
-        
+
         let output = viewModel.transform(input: input)
-        
+
         output.dissatisfcationReason
             .withUnretained(self)
             .bind { (vc, reason) in
@@ -66,14 +65,14 @@ final class WithdrawViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
+
         output.didBeginEditingTextView
             .withUnretained(self)
             .bind { (vc, isEditing) in
                 vc.selfView.setupTextView(isEditing)
             }
             .disposed(by: disposeBag)
-        
+
         output.textViewTextCountLimit
             .withUnretained(self)
             .bind { (vc, isUnderLimit) in
@@ -83,7 +82,7 @@ final class WithdrawViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
+
         output.isWithdrawable
             .withUnretained(self)
             .bind { (vc, isWithdrawable) in
