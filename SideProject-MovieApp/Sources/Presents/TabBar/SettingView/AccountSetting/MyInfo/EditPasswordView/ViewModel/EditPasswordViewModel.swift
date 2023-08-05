@@ -23,8 +23,11 @@ class EditPasswordViewModel {
     }
     
     struct Input {
+        let currentPasswordTextFieldBenginEditing: ControlEvent<Void>
         let currentPassWordTextFieldText: ControlProperty<String?>
+        let newPasswordTextFieldTextBeginEditing: ControlEvent<Void>
         let newPasswordTextFieldText: ControlProperty<String?>
+        let newPasswordCheckTextFieldTextBeginEditing: ControlEvent<Void>
         let newPasswordCheckTextFieldText: ControlProperty<String?>
         let passwordChangeButtonTapped: ControlEvent<Void>
     }
@@ -35,6 +38,9 @@ class EditPasswordViewModel {
         let isEmptyNewPasswordCheckTextField: Observable<Bool>
         let newPasswordIsSameWithCurrentPassword: BehaviorRelay<Bool>
         let passwordChageButtonTappedOutput: PublishRelay<(Bool, Bool)>
+        let currentPasswordTextFieldText: BehaviorRelay<String?>
+        let newPasswordTextFieldText: BehaviorRelay<String?>
+        let newPasswordCheckTextFieldText: BehaviorRelay<String?>
     }
     
     private var currentPasswordTextFieldText = BehaviorRelay<String?>(value: nil)
@@ -57,6 +63,31 @@ class EditPasswordViewModel {
         let isValidPasswordFormat = input.newPasswordTextFieldText
             .orEmpty
             .map {  NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: $0) }
+        
+        let currentPasswordTextFieldText = BehaviorRelay<String?>(value: "")
+        let newPasswordTextFieldText = BehaviorRelay<String?>(value: "")
+        let newPasswordCheckTextFieldText = BehaviorRelay<String?>(value: "")
+        
+        input.currentPasswordTextFieldBenginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                currentPasswordTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
+        
+        input.newPasswordTextFieldTextBeginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                newPasswordTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
+        
+        input.newPasswordCheckTextFieldTextBeginEditing
+            .withUnretained(self)
+            .bind { (vm, _) in
+                newPasswordCheckTextFieldText.accept("")
+            }
+            .disposed(by: disposeBag)
         
         input.currentPassWordTextFieldText
             .bind { [weak self] text in
@@ -102,7 +133,10 @@ class EditPasswordViewModel {
                       isSameWithCurrentPassword: self.isSameWithCurrentPassword,
                       isEmptyNewPasswordCheckTextField: isEmptyNewPasswordCheckTextField,
                       newPasswordIsSameWithCurrentPassword: self.newPasswordIsSameWithCurrentPassword,
-                      passwordChageButtonTappedOutput: self.changeButtonTapped)
+                      passwordChageButtonTappedOutput: self.changeButtonTapped,
+                      currentPasswordTextFieldText: currentPasswordTextFieldText,
+                      newPasswordTextFieldText: newPasswordTextFieldText,
+                      newPasswordCheckTextFieldText: newPasswordCheckTextFieldText)
     }
 }
 
