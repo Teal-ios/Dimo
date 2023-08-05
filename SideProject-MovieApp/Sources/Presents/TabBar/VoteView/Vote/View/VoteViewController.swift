@@ -29,6 +29,8 @@ final class VoteViewController: BaseViewController {
     let characterRandomRecommandCellSelected = PublishSubject<Void>()
     let characterSearchCellSelected = PublishSubject<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let characterCellTapped = PublishRelay<CharacterInfo>()
+    
     
     override func loadView() {
         view = voteView
@@ -42,7 +44,7 @@ final class VoteViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger)
+        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger, characterCellTapped: self.characterCellTapped)
         
         let output = viewModel.transform(input: input)
         
@@ -130,6 +132,15 @@ extension VoteViewController: UICollectionViewDelegate {
             } else {
                 self.characterSearchCellSelected.onNext(())
             }
+        } else if indexPath.section == 1 {
+            self.dataFetchingToCharacterCell(indexPath: indexPath)
         }
+    }
+}
+
+extension VoteViewController {
+    func dataFetchingToCharacterCell(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.characterCellTapped.accept(selectedItem)
     }
 }

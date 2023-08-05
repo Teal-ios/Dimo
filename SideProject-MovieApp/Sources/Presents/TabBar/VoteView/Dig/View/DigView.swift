@@ -1,32 +1,56 @@
 //
-//  JoinMbtiView.swift
+//  DigView.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/05/06.
+//  Created by 이병현 on 2023/08/04.
 //
 
 import UIKit
 import SnapKit
 
-class JoinMbtiView: BaseView {
+final class DigView: BaseView {
     
-    let headerLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white100
         label.font = Font.title1
-        label.text = "당신의 MBTI는 무엇인가요?"
+        label.text = "Let's DIG!"
         return label
     }()
     
-    let findMbtiButton: WordLabelButton = {
-        let button = WordLabelButton(text: "나의 MBTI를 잘 모르겠어요")
-        button.contentHorizontalAlignment = .center
-        return button
+    let buttonContainView: UIView = {
+        let view = UIView()
+        return view
     }()
     
     let nextButton: OnboardingButton = {
         let button = OnboardingButton(title: "다음", ofSize: 14)
         button.configuration?.baseBackgroundColor = .black80
         return button
+    }()
+    
+    let characterImageView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .white100
+        return view
+    }()
+    
+    let characterNicknameLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.subtitle2
+        label.textColor = .black5
+        label.textAlignment = .center
+        label.text = "정대만"
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.caption
+        label.textColor = Color.caption
+        label.textAlignment = .center
+        label.text = "더 퍼스트 슬램덩크"
+        return label
     }()
     
     let eView: MbtiAlphabetView = {
@@ -82,6 +106,15 @@ class JoinMbtiView: BaseView {
         let view = MbtiAlphabetView(image: UIImage(named: "P_Gray"), title: "인식형")
         view.isUserInteractionEnabled = true
         view.tag = 7
+        return view
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.addSubview(characterImageView)
+        view.addSubview(characterNicknameLabel)
+        view.addSubview(subtitleLabel)
+        view.addSubview(totalStackView)
         return view
     }()
     
@@ -145,48 +178,73 @@ class JoinMbtiView: BaseView {
         return stackView
     }()
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hierarchy()
-        snapkit()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        characterImageView.clipsToBounds = true
+        characterImageView.layer.cornerRadius = 109 / 2
     }
     
-    func hierarchy() {
-        
-        addSubview(headerLabel)
-        addSubview(totalStackView)
-        addSubview(findMbtiButton)
-        addSubview(nextButton)
-
-        
+    override func setHierarchy() {
+        self.addSubview(titleLabel)
+        self.addSubview(buttonContainView)
+        self.addSubview(nextButton)
+        self.addSubview(scrollView)
     }
     
-    func snapkit() {
-        headerLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(29)
+    override func setupLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(45)
         }
         
-        totalStackView.snp.makeConstraints { make in
-            make.top.equalTo(headerLabel.snp.bottom).offset(36)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(140)
-        }
-        
-        findMbtiButton.snp.makeConstraints { make in
-            make.top.equalTo(totalStackView.snp.bottom).offset(24)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(16)
+        buttonContainView.snp.makeConstraints { make in
+            make.bottom.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(108)
         }
         
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(findMbtiButton.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(36)
+            make.top.equalTo(buttonContainView.snp.top).offset(24)
+            make.horizontalEdges.equalTo(buttonContainView)
+            make.height.equalTo(48)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.bottom.equalTo(buttonContainView.snp.top)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top).offset(36)
+            make.centerX.equalTo(scrollView)
+            make.width.height.equalTo(109)
+        }
+        
+        characterNicknameLabel.snp.makeConstraints { make in
+            make.top.equalTo(characterImageView.snp.bottom).offset(16)
+            make.centerX.equalTo(characterImageView)
+            make.height.equalTo(19)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+        }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(characterNicknameLabel.snp.bottom).offset(4)
+            make.centerX.equalTo(characterImageView)
+            make.height.equalTo(16)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+        }
+        
+        totalStackView.snp.makeConstraints { make in
+            make.height.equalTo(432)
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(36)
+            make.horizontalEdges.bottom.equalTo(scrollView)
         }
     }
 }
 
-
+//extension DigView {
+//    func updateLayoutViewAfter() {
+//        characterImageView.clipsToBounds = true
+//        characterImageView.layer.cornerRadius = 109 / 2
+//    }
+//}

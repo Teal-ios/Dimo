@@ -202,6 +202,9 @@
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
 		2FCDD20729E7E379000B6CD7 /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */; };
 		2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */; };
+		2FCF0F6C2A7D2D9D00C164C4 /* DigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF0F6B2A7D2D9D00C164C4 /* DigViewModel.swift */; };
+		2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF0F6D2A7D2DA200C164C4 /* DigView.swift */; };
+		2FCF0F702A7D2DA700C164C4 /* DigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF0F6F2A7D2DA700C164C4 /* DigViewController.swift */; };
 		2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */; };
 		2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */; };
 		2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */; };
@@ -700,6 +703,9 @@
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLabelButton.swift; sourceTree = "<group>"; };
+		2FCF0F6B2A7D2D9D00C164C4 /* DigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigViewModel.swift; sourceTree = "<group>"; };
+		2FCF0F6D2A7D2DA200C164C4 /* DigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigView.swift; sourceTree = "<group>"; };
+		2FCF0F6F2A7D2DA700C164C4 /* DigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigViewController.swift; sourceTree = "<group>"; };
 		2FCF86282A4823E500759F71 /* MovieDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailHeaderView.swift; sourceTree = "<group>"; };
 		2FCF862B2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FCF862D2A4843BF00759F71 /* UITextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension.swift"; sourceTree = "<group>"; };
@@ -2946,6 +2952,8 @@
 		2FEC15DA2A77A8ED009CF59D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FCF0F6D2A7D2DA200C164C4 /* DigView.swift */,
+				2FCF0F6F2A7D2DA700C164C4 /* DigViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2953,6 +2961,7 @@
 		2FEC15DB2A77A8EF009CF59D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2FCF0F6B2A7D2D9D00C164C4 /* DigViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3486,6 +3495,7 @@
 				93C48B3F29D175F700644F6A /* OnboardingButton.swift in Sources */,
 				497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */,
 				2FBF64B62A71FE7D0036401F /* MyContentMoreViewModel.swift in Sources */,
+				2FCF0F6C2A7D2D9D00C164C4 /* DigViewModel.swift in Sources */,
 				2FD87A4D2A584959003C276B /* ResponseKakaoLoginDTO.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
@@ -3597,6 +3607,7 @@
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */,
 				2FD82D5D2A77439300372D24 /* LikeReviewChoice.swift in Sources */,
+				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
@@ -3626,6 +3637,7 @@
 				2FD073592A25BF71003F7E56 /* NicknameDuplication.swift in Sources */,
 				2FD87A4F2A584962003C276B /* ResponseGoogleLoginDTO.swift in Sources */,
 				2FD82DC02A775AFE00372D24 /* ResponseCommentListDTO.swift in Sources */,
+				2FCF0F702A7D2DA700C164C4 /* DigViewController.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
 				2FD4D9282A6CCF9400E7972B /* ResponseLikeContentDTO.swift in Sources */,
 				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
