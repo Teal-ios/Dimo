@@ -89,6 +89,13 @@ final class HomeView: BaseView {
         return button
     }()
     
+    let alertView: CustomAlertView = {
+        let view = CustomAlertView(title: "스포 주의", subtitle: "아직 투표하지 않은 캐릭터의 \n MBTI가 노출될 수 있습니다.", okButtonTitle: "확인하기", cancelTitle: "뒤로가기")
+        view.backgroundColor = .clear
+        view.isHidden = true
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -100,6 +107,7 @@ final class HomeView: BaseView {
         self.addSubview(characterMoreButton)
         self.addSubview(recommendMoreButton)
         self.addSubview(nowHotMoreButton)
+        self.addSubview(alertView)
     }
     
     override func setupAttributes() {
@@ -180,6 +188,10 @@ final class HomeView: BaseView {
             make.top.equalTo(nowHotStackView)
             make.height.equalTo(40)
             make.width.equalTo(58)
+        }
+        
+        alertView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
         }
     }
     
@@ -346,5 +358,11 @@ extension HomeView {
                 },
             configuration: configuration)
         return collectionViewLayout
+    }
+}
+
+extension HomeView {
+    func updateSpoilerAlert(alertAppear: Bool) {
+        alertView.isHidden = !alertAppear
     }
 }

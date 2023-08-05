@@ -32,11 +32,11 @@ final class HomeViewController: BaseViewController {
     private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
     
 //    let categoryButtonTap = PublishSubject<String>()
-    let posterCellSelected = PublishSubject<Void>()
-    let mbtiMovieCellSelected = PublishSubject<Void>()
-    let mbtiCharacterCellSelected = PublishSubject<Void>()
-    let mbtiRecommendCellSeleted = PublishSubject<Void>()
-    let hotMovieCellSelected = PublishSubject<Void>()
+    let posterCellSelected = PublishRelay<String>()
+    let mbtiHeroCellSelected = PublishRelay<String>()
+//    let mbtiCharacterCellSelected = PublishSubject<Void>()
+    let mbtiRecommendCellSeleted = PublishRelay<String>()
+    let hotMovieCellSelected = PublishRelay<String>()
     let categoryTitle = PublishRelay<String>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
@@ -62,7 +62,7 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = HomeViewModel.Input(categoryButtonTapped: self.homeView.categoryButton.rx.tap.withLatestFrom(self.categoryTitle).asSignal(onErrorJustReturn: "영화"), heroPlusButtonTapped: self.homeView.mbtiHeroMoreButton.rx.tap, characterPlusButtonTapped: self.homeView.characterMoreButton.rx.tap, mbtiRecommendPlusButtonTapped: self.homeView.recommendMoreButton.rx.tap, hotMoviePlusButtonTapped: self.homeView.nowHotMoreButton.rx.tap, posterCellSelected: posterCellSelected, mbtiMovieCellSelected: self.mbtiMovieCellSelected, mbtiCharacterCellSelected: self.mbtiCharacterCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger)
+        let input = HomeViewModel.Input(categoryButtonTapped: self.homeView.categoryButton.rx.tap.withLatestFrom(self.categoryTitle).asSignal(onErrorJustReturn: "영화"), heroPlusButtonTapped: self.homeView.mbtiHeroMoreButton.rx.tap, characterPlusButtonTapped: self.homeView.characterMoreButton.rx.tap, mbtiRecommendPlusButtonTapped: self.homeView.recommendMoreButton.rx.tap, hotMoviePlusButtonTapped: self.homeView.nowHotMoreButton.rx.tap, posterCellSelected: posterCellSelected, mbtiHeroCellSelected: self.mbtiHeroCellSelected, mbtiRecommendCellSeleted: self.mbtiRecommendCellSeleted, hotMovieCellSelected: self.hotMovieCellSelected, viewDidLoad: self.viewDidLoadTrigger, okAlertButtonTapped: self.homeView.alertView.okButton.rx.tap, cancelAlertButtonTapped: self.homeView.alertView.cancelButton.rx.tap)
         
         let output = self.viewModel.transform(input: input)
         
@@ -112,6 +112,27 @@ final class HomeViewController: BaseViewController {
                 self.categoryTitle.accept(category)
             }
             .disposed(by: self.disposeBag)
+        
+        output.characterPlusButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.homeView.updateSpoilerAlert(alertAppear: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.cancelAlertButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.homeView.updateSpoilerAlert(alertAppear: false)
+            }
+            .disposed(by: disposeBag)
+        
+        output.okAlertButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.homeView.updateSpoilerAlert(alertAppear: false)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -205,7 +226,7 @@ extension HomeViewController {
         }
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            supplementaryView.titleLabel.text = "ISFJ가 추천한 영화"
+            supplementaryView.titleLabel.text = "ISFJ가 관심있는 영화/애니"
         }
         
         recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -244,15 +265,15 @@ extension HomeViewController: UICollectionViewDelegate {
 
         switch collectionView {
         case self.homeView.posterCollectionView:
-                self.posterCellSelected.onNext(())
+                self.posterCellDataFetching(indexPath: indexPath)
         case self.homeView.mbtiHeroCharacterCollectionView:
-            self.mbtiMovieCellSelected.onNext(())
-        case self.homeView.characterCollectionView:
-            self.mbtiCharacterCellSelected.onNext(())
+            self.mbtiHeroCellDataFetching(indexPath: indexPath)
+//        case self.homeView.characterCollectionView:
+//            self.mbtiCharacterCellSelected.onNext(())
         case self.homeView.recommendCollectionView:
-            self.mbtiRecommendCellSeleted.onNext(())
+            self.mbtiRecommendCellDataFetching(indexPath: indexPath)
         case self.homeView.nowHotCollectionView:
-            self.hotMovieCellSelected.onNext(())
+            self.nowHotCellDataFetching(indexPath: indexPath)
         default:
             print("다른컬렉션뷰클릭함")
         }
@@ -273,4 +294,32 @@ extension HomeViewController {
 
 extension HomeViewController: UITabBarDelegate {
     
+}
+
+extension HomeViewController {
+    func posterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = posterDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.posterCellSelected.accept(selectedItem.contentId)
+    }
+}
+
+extension HomeViewController {
+    func mbtiHeroCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = mbtiHeroDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.mbtiHeroCellSelected.accept(selectedItem.contentId)
+    }
+}
+
+extension HomeViewController {
+    func mbtiRecommendCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = recommendDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.mbtiRecommendCellSeleted.accept(selectedItem.contentId)
+    }
+}
+
+extension HomeViewController {
+    func nowHotCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = nowHotDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.hotMovieCellSelected.accept(selectedItem.contentId)
+    }
 }

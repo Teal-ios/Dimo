@@ -23,18 +23,23 @@ final class HomeViewModel: ViewModelType {
         let characterPlusButtonTapped: ControlEvent<Void>
         let mbtiRecommendPlusButtonTapped: ControlEvent<Void>
         let hotMoviePlusButtonTapped: ControlEvent<Void>
-        let posterCellSelected: PublishSubject<Void>
-        let mbtiMovieCellSelected: PublishSubject<Void>
-        let mbtiCharacterCellSelected: PublishSubject<Void>
-        let mbtiRecommendCellSeleted: PublishSubject<Void>
-        let hotMovieCellSelected: PublishSubject<Void>
+        let posterCellSelected: PublishRelay<String>
+        let mbtiHeroCellSelected: PublishRelay<String>
+//        let mbtiCharacterCellSelected: PublishRelay<String>
+        let mbtiRecommendCellSeleted: PublishRelay<String>
+        let hotMovieCellSelected: PublishRelay<String>
         let viewDidLoad: PublishRelay<Void>
+        let okAlertButtonTapped: ControlEvent<Void>
+        let cancelAlertButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
         let animationData: PublishRelay<[AnimationData]>
         let category: BehaviorRelay<String>
 //        let categoryButtonTapped: PublishRelay<String>
+        let characterPlusButtonTapped: ControlEvent<Void>
+        let cancelAlertButtonTapped: ControlEvent<Void>
+        let okAlertButtonTapped: ControlEvent<Void>
     }
     
     let animationData = PublishRelay<[AnimationData]>()
@@ -55,22 +60,18 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.posterCellSelected
-            .bind { [weak self] _ in
-                guard let self else { return }
-            self.coordinator?.showMovieDetailViewController(content_id: "3371")
+            .withUnretained(self)
+            .bind { vm, contentId in
+            vm.coordinator?.showMovieDetailViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
         
-        input.mbtiMovieCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showMovieDetailViewController(content_id: "3371")
+        input.mbtiHeroCellSelected
+            .withUnretained(self)
+            .bind { vm, contentId in
+            vm.coordinator?.showMovieDetailViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
-        
-        input.mbtiCharacterCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showTabmanCoordinator()
-        }
-        .disposed(by: disposeBag)
-        
         
         input.heroPlusButtonTapped
             .bind { [weak self] _ in
@@ -79,20 +80,24 @@ final class HomeViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
         
-        input.characterPlusButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showCharacterMoreViewController()
+//        input.characterPlusButtonTapped
+//            .withUnretained(self)
+//            .bind { vm, _ in
+//            vm.coordinator?.showSpoilerAlertViewController()
+//        }
+//        .disposed(by: disposeBag)
+        
+        input.mbtiRecommendCellSeleted
+            .withUnretained(self)
+            .bind { vm, contentId in
+            vm.coordinator?.showMovieDetailViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
         
-        input.mbtiRecommendPlusButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showContentMoreViewController(title: "추천한 영화")
-
-        }
-        .disposed(by: disposeBag)
-        
-        input.hotMoviePlusButtonTapped.bind { [weak self] _ in
-
-            self?.coordinator?.showContentMoreViewController(title: "핫한 영화")
+        input.hotMovieCellSelected
+            .withUnretained(self)
+            .bind { vm, contentId in
+            vm.coordinator?.showMovieDetailViewController(content_id: contentId)
         }
         .disposed(by: disposeBag)
         
@@ -108,8 +113,15 @@ final class HomeViewModel: ViewModelType {
                 .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
+        
+        input.okAlertButtonTapped
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.showCharacterMoreViewController()
+            }
+            .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData, category: self.category)
+        return Output(animationData: self.animationData, category: self.category, characterPlusButtonTapped: input.characterPlusButtonTapped, cancelAlertButtonTapped: input.cancelAlertButtonTapped, okAlertButtonTapped: input.okAlertButtonTapped)
     }
 }
 

@@ -13,19 +13,24 @@ final class VoteViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: VoteCoordinator?
+    private let voteUseCase: VoteUseCase
 
-    init(coordinator: VoteCoordinator?) {
+    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase) {
         self.coordinator = coordinator
+        self.voteUseCase = voteUseCase
     }
     
     struct Input{
         let characterRandomRecommandCellTapped: PublishSubject<Void>
         let characterSearchCellTapped: PublishSubject<Void>
+        let viewDidLoad: PublishRelay<Void>
     }
     
     struct Output{
+        let popularCharacterRecommend: PublishRelay<PopularCharacterRecommendList>
     }
     
+    let popularCharacterRecommend = PublishRelay<PopularCharacterRecommendList>()
     
     func transform(input: Input) -> Output {
         input.characterRandomRecommandCellTapped.bind { [weak self] _ in
@@ -42,6 +47,25 @@ final class VoteViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
         
-        return Output()
+        input.viewDidLoad
+            .withUnretained(self)
+            .bind { vm, _ in
+                guard let user_id = UserDefaultManager.userId else { return }
+                vm.getPopularCharacterRecommend(user_id: user_id)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(popularCharacterRecommend: self.popularCharacterRecommend)
+    }
+}
+
+extension VoteViewModel {
+    private func getPopularCharacterRecommend(user_id: String) {
+        Task {
+            let query = PopularCharacterRecommendListQuery(user_id: user_id)
+            let popularCharacterRecommend = try await voteUseCase.excutePopularCharacterRecommendList(query: query)
+            print(popularCharacterRecommend, "인기순 추천")
+            self.popularCharacterRecommend.accept(popularCharacterRecommend)
+        }
     }
 }

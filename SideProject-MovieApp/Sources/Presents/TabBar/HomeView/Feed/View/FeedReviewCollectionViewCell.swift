@@ -153,3 +153,15 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension FeedReviewCollectionViewCell {
+    func configureUI(with item: ReviewList) {
+        if item.review_spoiler == 1 {
+            spoilerContainView.isHidden = false
+        } else {
+            spoilerContainView.isHidden = true
+        }
+        nameNameLabel.text = item.user_id
+        reviewLabel.text = item.review_content
+    }
+}

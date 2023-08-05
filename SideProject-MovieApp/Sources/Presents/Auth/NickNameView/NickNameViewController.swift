@@ -35,7 +35,7 @@ class NickNameViewController: BaseViewController {
                 vc.nickNameView.duplicateCheckButton.configuration?.baseForegroundColor = bool ? .white : .black80
                 vc.nickNameView.duplicateCheckButton.isEnabled = bool
                 vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
-                vc.nickNameView.policyLabel.text = bool ? "" : "두글자 이상 입력해 주세요."
+                vc.nickNameView.policyLabel.text = bool ? "" : "두 글자 이상 입력해 주세요."
             }
             .disposed(by: disposeBag)
         

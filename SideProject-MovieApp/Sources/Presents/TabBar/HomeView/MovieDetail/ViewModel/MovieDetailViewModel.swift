@@ -27,6 +27,7 @@ final class MovieDetailViewModel: ViewModelType {
         let evaluateButtonTapped: ControlEvent<Void>
         let likeButtonTapped: ControlEvent<Void>
         let likeContentCheckValid: PublishRelay<Bool>
+        let characterCellSelected: PublishRelay<Characters>
     }
     
     struct Output{
@@ -79,6 +80,13 @@ final class MovieDetailViewModel: ViewModelType {
             }
         }
         .disposed(by: disposeBag)
+        
+        input.characterCellSelected
+            .withUnretained(self)
+            .bind { vm, character in
+                vm.coordinator?.showTabmanCoordinator(character: character)
+            }
+            .disposed(by: disposeBag)
         
         return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck)
     }

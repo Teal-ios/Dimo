@@ -56,7 +56,7 @@ class CustomAlertView: BaseView {
         super.init(frame: frame)
     }
     
-    convenience init(title: String, subtitle: String, okButtonTitle: String) {
+    convenience init(title: String, subtitle: String, okButtonTitle: String, cancelTitle: String) {
         self.init()
         self.titleLabel.text = title
         self.subtitleLabel.text = subtitle
@@ -69,7 +69,7 @@ class CustomAlertView: BaseView {
         configuration.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
         self.okButton.configuration = configuration
         
-        var cancelAttrStr = AttributedString("아니요")
+        var cancelAttrStr = AttributedString(cancelTitle)
         cancelAttrStr.font = .suitFont(ofSize: 16, weight: .Medium)
         var cancelConfiguration = UIButton.Configuration.gray()
         cancelConfiguration.attributedTitle = cancelAttrStr

@@ -23,11 +23,12 @@ final class VoteViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, VoteModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, VoteModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Int, CharacterInfo>!
+    var snapshot = NSDiffableDataSourceSnapshot<Int, CharacterInfo>()
     
     let characterRandomRecommandCellSelected = PublishSubject<Void>()
     let characterSearchCellSelected = PublishSubject<Void>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
     
     override func loadView() {
         view = voteView
@@ -37,21 +38,43 @@ final class VoteViewController: BaseViewController {
         super.viewDidLoad()
         self.voteView.collectionView.delegate = self
         setDataSource()
+        self.viewDidLoadTrigger.accept(())
     }
     
     override func setupBinding() {
-        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected)
+        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger)
         
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+        
+        output.popularCharacterRecommend
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, popularCharacterRecommendData in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, CharacterInfo>()
+                snapshot.appendSections([0, 1])
+                var section1Arr: [CharacterInfo] = []
+                var section2Arr: [CharacterInfo] = []
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil))
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil))
+                for i in popularCharacterRecommendData.character_info {
+                    section2Arr.append(i)
+                }
+                snapshot.appendItems(section1Arr, toSection: 0)
+                snapshot.appendItems(section2Arr, toSection: 1)
+                vc.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
     }
-    
-    func setDataSource() {
-        let cellCharacterRegistration = UICollectionView.CellRegistration<CharacterRecommandAndSearchCollectionViewCell, VoteModel> { cell, indexPath, itemIdentifier in
-            cell.imgView.image = itemIdentifier.image
+}
+
+extension VoteViewController {
+    private func setDataSource() {
+        let cellCharacterRegistration = UICollectionView.CellRegistration<CharacterRecommandAndSearchCollectionViewCell, CharacterInfo> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(with: itemIdentifier)
         }
         
-        let cellVoteRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, VoteModel> { cell, indexPath, itemIdentifier in
-            
+        let cellVoteRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, CharacterInfo> { cell, indexPath, itemIdentifier in
+            cell.configureAttributeWithCharacterInfo(with: itemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: voteView.collectionView) { collectionView, indexPath, itemIdentifier in
@@ -86,15 +109,10 @@ final class VoteViewController: BaseViewController {
         })
         
         snapshot.appendSections([0, 1])
-        var section1Arr: [VoteModel] = []
-        var section2Arr: [VoteModel] = []
-        
-        section1Arr.append(VoteModel(image: UIImage(named: "CharacterRandom")))
-        section1Arr.append(VoteModel(image: UIImage(named: "CharacterSearch")))
-        
-        for _ in 1..<100 {
-            section2Arr.append(VoteModel(image: nil))
-        }
+        var section1Arr: [CharacterInfo] = []
+        var section2Arr: [CharacterInfo] = []
+        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil))
+        section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil))
         
         snapshot.appendItems(section1Arr, toSection: 0)
         snapshot.appendItems(section2Arr, toSection: 1)

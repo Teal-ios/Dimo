@@ -15,7 +15,7 @@ final class MyMomentumViewModel: ViewModelType {
     private let myMomentumUseCase: MyMomentumUseCase
     
     var disposeBag: DisposeBag = DisposeBag()
-
+    
     init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase) {
         self.coordinator = coordinator
         self.myMomentumUseCase = myMomentumUseCase
@@ -41,6 +41,7 @@ final class MyMomentumViewModel: ViewModelType {
     let likeAnimationContent = BehaviorRelay<LikeAnimationContent?>(value: nil)
     let likeMoviewContent = PublishRelay<LikeMovieContent>()
     let likeButtonTapToNotificationEventTrigger = PublishRelay<Void>()
+    let likeButtonTapToHomeViewController = PublishRelay<Void>()
     
     func transform(input: Input) -> Output {
         
@@ -65,13 +66,25 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        //        input.likeContentMoreButtonTap
+        //            .withUnretained(self)
+        //            .debug()
+        //            .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
+        //                return self.likeAnimationContent
+        //            })
+        //            .observe(on: MainScheduler.instance)
+        //            .bind { [weak self] likeAnimation in
+        //                guard let self else { return }
+        //                guard let likeAnimation else { return }
+        //                self.coordinator?.showMyContentMoreViewController(likeContentList: likeAnimation.like_content_info)
+        //            }
+        //            .disposed(by: disposeBag)
+        
+        
         input.likeContentMoreButtonTap
-            .withUnretained(self)
             .debug()
-            .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
-                return self.likeAnimationContent
-            })
-            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .withLatestFrom(self.likeAnimationContent)
             .bind { [weak self] likeAnimation in
                 guard let self else { return }
                 guard let likeAnimation else { return }
@@ -84,16 +97,16 @@ final class MyMomentumViewModel: ViewModelType {
             .debug()
             .observe(on: MainScheduler.instance)
             .bind { [weak self] _ in
-            guard let self else { return }
-            guard let user_id = UserDefaultManager.userId else { return }
-            self.getMyProfile(user_id: user_id)
-            self.getLikeMoviewContent(user_id: user_id)
-            self.getLikeAnimationwContent(user_id: user_id)
-        }
-        .disposed(by: disposeBag)
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getMyProfile(user_id: user_id)
+                self.getLikeMoviewContent(user_id: user_id)
+                self.getLikeAnimationwContent(user_id: user_id)
+            }
+            .disposed(by: disposeBag)
         
         NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
-
+        
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger)
     }
 }
