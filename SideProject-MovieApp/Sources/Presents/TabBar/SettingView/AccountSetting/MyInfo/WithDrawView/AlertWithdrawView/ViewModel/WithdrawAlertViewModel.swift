@@ -59,8 +59,10 @@ extension WithdrawAlertViewModel {
             let withdraw = try await settingUseCase.executeWithdraw(query: query)
             print("🔥 WITHDRAW: \(withdraw)")
             if withdraw.code == 200 {
-                self.coordinator?.connectAuthFlow()
-                self.isWithdrawn.accept(true)
+                DispatchQueue.main.async {
+                    self.coordinator?.connectAuthFlow()
+                    self.isWithdrawn.accept(true)
+                }
             }
         }
     }

@@ -76,9 +76,8 @@ extension SettingRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
                     URLQueryItem(name: "password", value: parameters.currentPassword),
                     URLQueryItem(name: "new_password", value: parameters.newPassword)]
-        case .withdraw(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.userId),
-                    URLQueryItem(name: "drop_reason", value: parameters.withdrawReason)]
+        default:
+            return nil
         }
     }
     
@@ -94,7 +93,15 @@ extension SettingRouter: TargetType2 {
     }
     
     var body: Data? {
-        return nil
+        switch self {
+        case .withdraw(let parameters):
+            let requestWithdrawDTO = RequestWithdrawDTO(userId: parameters.userId,
+                         withdrawReason: parameters.withdrawReason)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestWithdrawDTO)
+        default:
+            return nil
+        }
     }
     
     var httpMethod: HTTPMethod {

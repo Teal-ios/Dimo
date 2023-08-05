@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestWithdrawDTO {
+struct RequestWithdrawDTO: Encodable {
     let userId: String
     let withdrawReason: String
     
