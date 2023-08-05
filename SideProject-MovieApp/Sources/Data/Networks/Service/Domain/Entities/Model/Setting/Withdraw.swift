@@ -8,6 +8,6 @@
 import Foundation
 
 struct Withdraw: Hashable {
-    let code: String
+    let code: Int
     let message: String
 }

@@ -8,8 +8,9 @@
 import UIKit
 
 final class AppCoordinator: Coordinator {
-
+    
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .app
@@ -22,11 +23,11 @@ final class AppCoordinator: Coordinator {
         /// 조건에 따른 분기처리 필요
 //        connectTabBarFlow()
         connectAuthFlow()
-//        connectSettingFlow()
     }
 
     private func connectAuthFlow() {
         let authCoordinator = AuthCoordinator(self.navigationController)
+        authCoordinator.parentCoordinator = self
         authCoordinator.delegate = self
         authCoordinator.start()
         childCoordinators.append(authCoordinator)
@@ -34,16 +35,10 @@ final class AppCoordinator: Coordinator {
     
     private func connectTabBarFlow() {
         let homeTabBarCoordinator = HomeTabBarCoordinator(self.navigationController)
+        homeTabBarCoordinator.parentCoordinator = self
         homeTabBarCoordinator.delegate = self
         homeTabBarCoordinator.start()
         childCoordinators.append(homeTabBarCoordinator)
-    }
-    
-    private func connectSettingFlow() {
-        let settingCoordinator = SettingCoordinator(self.navigationController)
-        settingCoordinator.delegate = self
-        settingCoordinator.start()
-        childCoordinators.append(settingCoordinator)
     }
 }
 

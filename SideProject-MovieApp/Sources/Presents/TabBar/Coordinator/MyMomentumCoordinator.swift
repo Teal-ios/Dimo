@@ -9,6 +9,7 @@ import UIKit
 
 final class MyMomentumCoordinator: Coordinator {
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab

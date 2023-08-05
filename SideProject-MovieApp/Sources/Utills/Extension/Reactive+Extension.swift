@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: UIButton {
+    
     var isTapped: ControlProperty<Bool> {
         return controlProperty(editingEvents: .touchUpInside) { button in
             return button.isSelected

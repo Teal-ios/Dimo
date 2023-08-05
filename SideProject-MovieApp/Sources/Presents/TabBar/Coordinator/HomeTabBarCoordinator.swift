@@ -10,6 +10,7 @@ import UIKit
 final class HomeTabBarCoordinator: Coordinator {
     
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
@@ -73,21 +74,25 @@ final class HomeTabBarCoordinator: Coordinator {
         switch page {
         case .home:
             let homeCoordinator = HomeCoordinator(tabNavigationController)
+            homeCoordinator.parentCoordinator = self
             homeCoordinator.delegate = self
             self.childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
         case .check:
             let voteCoordinator = VoteCoordinator(tabNavigationController)
+            voteCoordinator.parentCoordinator = self
             voteCoordinator.delegate = self
             self.childCoordinators.append(voteCoordinator)
             voteCoordinator.start()
         case .profile:
             let myMomentumCoordinator = MyMomentumCoordinator(tabNavigationController)
+            myMomentumCoordinator.parentCoordinator = self
             myMomentumCoordinator.delegate = self
             self.childCoordinators.append(myMomentumCoordinator)
             myMomentumCoordinator.start()
         case .setting:
             let settingCoordinator = SettingCoordinator(tabNavigationController)
+            settingCoordinator.parentCoordinator = self
             settingCoordinator.delegate = self
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()

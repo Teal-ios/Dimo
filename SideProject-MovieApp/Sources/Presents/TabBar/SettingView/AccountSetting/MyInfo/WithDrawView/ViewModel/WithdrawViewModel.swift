@@ -31,7 +31,7 @@ class WithdrawViewModel: ViewModelType {
             case .appDissatisfaction: return "앱 불만족"
             case .lowFrequency: return "사용 빈도 낮음"
             case .losingInterest: return "단순 흥미 하락"
-            case .etc: return "기타: "
+            case .etc: return "기타"
             }
         }
     }
@@ -139,7 +139,9 @@ class WithdrawViewModel: ViewModelType {
         input.didTappedWithdrawButton
             .withUnretained(self)
             .bind { (vm, _) in
-//                vm.coordinator.showAlert
+                guard let withdrawReason = vm.dissatisfactionReason.value?.withdrawReason else { return }
+                let withdrawReasonTextViewText = "\n 탈퇴사유: \(vm.withdrawReasonTextView.value ?? "")"
+                vm.coordinator?.showAlertWithdrawViewController(with: withdrawReason + withdrawReasonTextViewText)
             }
             .disposed(by: disposeBag)
                     
@@ -167,5 +169,4 @@ extension WithdrawViewModel {
 //            }
 //        }
     }
-    
 }

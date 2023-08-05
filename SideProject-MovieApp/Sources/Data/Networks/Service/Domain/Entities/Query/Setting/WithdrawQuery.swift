@@ -10,4 +10,9 @@ import Foundation
 struct WithdrawQuery {
     let userId: String
     let withdrawReason: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case withdrawReason = "drop_reason"
+    }
 }

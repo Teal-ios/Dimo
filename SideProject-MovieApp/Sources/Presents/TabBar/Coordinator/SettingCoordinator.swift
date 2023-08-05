@@ -9,6 +9,7 @@ import UIKit
 
 final class SettingCoordinator: Coordinator {
     weak var delegate: CoordinatorDelegate?
+    var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
@@ -53,7 +54,18 @@ final class SettingCoordinator: Coordinator {
         navigationController.present(vc, animated: true)
     }
     
-//    func showAlertWithdrawViewController(with )
+    func showAlertWithdrawViewController(with withdrawReason: String) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = WithdrawAlertViewModel(coordinator: self,
+                                               settingUseCase: settingUseCaseImpl,
+                                               withdrawReason: withdrawReason)
+        let vc = WithdrawAlertViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        navigationController.present(vc, animated: true)
+    }
     
     func showEditPasswordViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
@@ -77,5 +89,9 @@ final class SettingCoordinator: Coordinator {
         let viewModel = WithdrawViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = WithdrawViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func connectAuthFlow() {
+        self.parentCoordinator?.parentCoordinator?.start()
     }
 }

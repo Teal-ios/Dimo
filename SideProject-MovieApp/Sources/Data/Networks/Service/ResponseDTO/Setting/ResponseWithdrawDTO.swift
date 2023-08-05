@@ -8,8 +8,8 @@
 import Foundation
 
 struct ResponseWithdrawDTO: Decodable {
-    let code: String
     let message: String
+    let code: Int
 }
 
 extension ResponseWithdrawDTO {

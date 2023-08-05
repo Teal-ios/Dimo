@@ -5,7 +5,7 @@
 //  Created by 이동기 on 2023/07/30.
 //
 
-import Foundation
+import UIKit
 import RxCocoa
 import RxSwift
 
@@ -15,9 +15,8 @@ final class WithdrawAlertViewController: BaseViewController {
     private var viewModel: WithdrawAlertViewModel
     private var completion: ( () -> Void )?
     
-    init(viewModel: WithdrawAlertViewModel, completion: ( () -> Void)? ) {
+    init(viewModel: WithdrawAlertViewModel) {
         self.viewModel = viewModel
-        self.completion = completion
         super.init()
     }
     
@@ -48,13 +47,32 @@ final class WithdrawAlertViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] isChanged in
                 if isChanged {
-                    self?.dismiss(animated: true)
-                    self?.completion?()
-                    print("🔥 Withdraw Complete")
+   
                 } else {
-                    self?.dismiss(animated: true)
+                    
                 }
+                self?.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
     }
+    
+//    func connectAuthFlow() {
+//        let scene = UIApplication.shared.connectedScenes.first
+//        let windowScene = scene as? UIWindowScene
+//        let window = windowScene?.windows.last
+//
+//        let dataTransferService = DataTransferService(networkService: NetworkService())
+//        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+//        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+//        let nav = UINavigationController(rootViewController: self)
+//        let coordinator = AuthCoordinator(nav)
+//        let viewModel = LoginStartViewModel(coordinator: coordinator, authUseCase: authUseCaseImpl)
+//        let vc = LoginStartViewController(viewModel: viewModel)
+//        let nav = UINavigationController(rootViewController: vc)
+//
+//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.coordinator.
+//
+//        coordinator = AppCoordinator(nav)
+//        coordinator?.start()
+//    }
 }

@@ -83,12 +83,15 @@ class CustomAlertView: BaseView {
         self.addSubview(bgView)
         self.addSubview(containView)
         self.addSubview(titleLabel)
+        self.addSubview(subtitleLabel)
         self.addSubview(cancelButton)
         self.addSubview(okButton)
-        self.addSubview(subtitleLabel)
+        
     }
     
     override func setupLayout() {
+        let subtitleWithButtonMargin = 24.0
+        
         bgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -96,7 +99,7 @@ class CustomAlertView: BaseView {
         containView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(187)
+            make.bottom.equalTo(subtitleLabel.snp.bottom).offset(52 + subtitleWithButtonMargin)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -121,7 +124,6 @@ class CustomAlertView: BaseView {
         
         subtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.bottom.equalTo(okButton.snp.top)
             make.horizontalEdges.equalTo(containView).inset(4)
         }
     }
