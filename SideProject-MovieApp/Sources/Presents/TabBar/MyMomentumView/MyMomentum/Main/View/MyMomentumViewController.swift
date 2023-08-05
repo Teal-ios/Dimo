@@ -28,12 +28,12 @@ final class MyMomentumViewController: BaseViewController {
     
     private var likeContentDataSource: UICollectionViewDiffableDataSource<Int, LikeContent>!
     private var digFinishDataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
-    private var reviewDataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
-    private var commentDataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
+    private var reviewDataSource: UICollectionViewDiffableDataSource<Int, MyReview>!
+    private var commentDataSource: UICollectionViewDiffableDataSource<Int, MyComment>!
     private var likeContentSnapshot = NSDiffableDataSourceSnapshot<Int, LikeContent>()
     private var digFinishSnapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
-    private var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
-    private var commentSnapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
+//    private var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyReview>()
+//    private var commentSnapshot = NSDiffableDataSourceSnapshot<Int, MyComment>()
     
     override func loadView() {
         view = myMomentumView
@@ -78,9 +78,7 @@ final class MyMomentumViewController: BaseViewController {
                 if likeAnimationContent != nil &&
                     likeAnimationContent?.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: true)
-                    self.myMomentumView.configureReviewUpdateUI(dataExist: false)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: true)
+                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
                 } else {
                     guard let likeAnimationContent else { return }
                     
@@ -96,9 +94,51 @@ final class MyMomentumViewController: BaseViewController {
                     
                     self.myMomentumView.configureProfileUpdateUI(dataExist: true)
                     self.myMomentumView.configureDigUpdateUI(dataExist: false)
-                    self.myMomentumView.configureCommentUpdateUI(dataExist: false)
-                    self.myMomentumView.configureReviewUpdateUI(dataExist: true)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        output.myReviewList
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, myReview in
+                var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyReview>()
+                reviewSnapshot.appendSections([0])
+                var reviewArr: [MyReview] = []
+                if myReview.review == [] {
+                    vc.myMomentumView.configureReviewUpdateUI(dataExist: false)
+                } else {
+                    for review in myReview.review {
+                        guard let review else { return }
+                        reviewArr.append(review)
+                    }
+                }
+                reviewSnapshot.appendItems(reviewArr, toSection: 0)
+                print(reviewArr, "댓글 배열")
+                vc.reviewDataSource.apply(reviewSnapshot)
+                vc.myMomentumView.configureReviewUpdateUI(dataExist: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.myCommentList
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, myComment in
+                var commentSnapshot = NSDiffableDataSourceSnapshot<Int, MyComment>()
+                commentSnapshot.appendSections([0])
+                var commentArr: [MyComment] = []
+                if myComment.comment == [] {
+                    vc.myMomentumView.configureCommentUpdateUI(dataExist: false)
+                } else {
+                    for comment in myComment.comment {
+                        guard let comment else { return }
+                        commentArr.append(comment)
+                    }
+                }
+                commentSnapshot.appendItems(commentArr, toSection: 0)
+                print(commentArr, "댓글 배열")
+                vc.commentDataSource.apply(commentSnapshot)
+                vc.myMomentumView.configureCommentUpdateUI(dataExist: true)
             }
             .disposed(by: disposeBag)
     }
@@ -170,8 +210,8 @@ extension MyMomentumViewController {
 
 extension MyMomentumViewController {
     private func setReviewDataSource() {
-        let cellReviewRegistration = UICollectionView.CellRegistration<ReviewCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
-            
+        let cellReviewRegistration = UICollectionView.CellRegistration<ReviewCollectionViewCell, MyReview> { cell, indexPath, itemIdentifier in
+            cell.configureUpdateReviewDate(review: itemIdentifier)
         }
         
         reviewDataSource = UICollectionViewDiffableDataSource(collectionView: myMomentumView.reviewCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -188,23 +228,13 @@ extension MyMomentumViewController {
             header.titleLabel.text = "내가 쓴 리뷰"
             return header
         })
-        
-        reviewSnapshot.appendSections([0])
-        var sectionArr: [MyMomentumModel] = []
-        
-        for _ in 1...10 {
-            sectionArr.append(MyMomentumModel(image: nil))
-        }
-        
-        reviewSnapshot.appendItems(sectionArr, toSection: 0)
-        reviewDataSource.apply(reviewSnapshot)
     }
 }
 
 extension MyMomentumViewController {
     private func setCommentDataSource() {
-        let cellCommentRegistration = UICollectionView.CellRegistration<ReviewCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
-            
+        let cellCommentRegistration = UICollectionView.CellRegistration<ReviewCollectionViewCell, MyComment> { cell, indexPath, itemIdentifier in
+            cell.configureUpdateCommentDate(comment: itemIdentifier)
         }
         
         commentDataSource = UICollectionViewDiffableDataSource(collectionView: myMomentumView.commentCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -222,15 +252,15 @@ extension MyMomentumViewController {
             return header
         })
         
-        commentSnapshot.appendSections([0])
-        var sectionArr: [MyMomentumModel] = []
-        
-        for _ in 1...10 {
-            sectionArr.append(MyMomentumModel(image: nil))
-        }
-        
-        commentSnapshot.appendItems(sectionArr, toSection: 0)
-        commentDataSource.apply(commentSnapshot)
+//        commentSnapshot.appendSections([0])
+//        var sectionArr: [MyMomentumModel] = []
+//
+//        for _ in 1...10 {
+//            sectionArr.append(MyMomentumModel(image: nil))
+//        }
+//
+//        commentSnapshot.appendItems(sectionArr, toSection: 0)
+//        commentDataSource.apply(commentSnapshot)
     }
 }
 

@@ -16,7 +16,7 @@ final class FeedViewModel: ViewModelType {
     private let characterDetailUseCase: CharacterDetailUseCase
     
     struct Input{
-        let reviewCellSelected: PublishSubject<Void>
+        let reviewCellSelected: PublishRelay<ReviewList>
         let writeButtonTapped: ControlEvent<Void>
         let viewDidLoad: PublishRelay<Void>
 
@@ -40,11 +40,12 @@ final class FeedViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        input.reviewCellSelected.bind { [weak self] _ in
-            self?.coordinator?.showFeedDetailViewController()
-          
-        }
-        .disposed(by: disposeBag)
+        input.reviewCellSelected
+            .withUnretained(self)
+            .bind { vm, review in
+                vm.coordinator?.showFeedDetailViewController(review: review)
+            }
+            .disposed(by: disposeBag)
         
         input.writeButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }

@@ -10,12 +10,19 @@ import SnapKit
 
 final class FeedDetailView: BaseView {
     
+    lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryLayout())
+    
     lazy var containScrollView: UIScrollView = {
         let view = UIScrollView()
+        view.addSubview(headerView)
+        view.addSubview(collectionView)
         return view
     }()
-    
-    lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryLayout())
+        
+    let headerView: FeedDetailHeaderView = {
+        let view = FeedDetailHeaderView()
+        return view
+    }()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
@@ -105,7 +112,7 @@ final class FeedDetailView: BaseView {
     override func setHierarchy() {
 
         self.addSubview(categoryCollectionView)
-        self.addSubview(collectionView)
+        self.addSubview(containScrollView)
         self.addSubview(commentTotalView)
         self.addSubview(commentContainView)
         self.addSubview(spoilerView)
@@ -119,6 +126,10 @@ final class FeedDetailView: BaseView {
         self.addSubview(lineView)
     }
     
+    override func setupAttributes() {
+        self.collectionView.isScrollEnabled = false
+    }
+    
     override func setupLayout() {
         
         categoryCollectionView.snp.makeConstraints { make in
@@ -126,10 +137,23 @@ final class FeedDetailView: BaseView {
             make.height.equalTo(44)
         }
         
-        collectionView.snp.makeConstraints { make in
+        containScrollView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(categoryCollectionView.snp.bottom)
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-84)
+        }
+        
+        headerView.snp.makeConstraints { make in
+            make.top.equalTo(containScrollView.snp.top)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.lessThanOrEqualTo(500)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(0)
+            make.bottom.equalTo(containScrollView.snp.bottom)
         }
         
         commentTotalView.snp.makeConstraints { make in
@@ -172,7 +196,7 @@ final class FeedDetailView: BaseView {
         }
         
         registrationButton.snp.makeConstraints { make in
-            make.edges.equalTo(registrationButton)
+            make.edges.equalTo(registrationView)
         }
         
         commentTextField.snp.makeConstraints { make in
@@ -233,18 +257,18 @@ extension FeedDetailView {
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: FeedDetailHeaderView.identifier, alignment: .top
-        )
+//        let headerSize = NSCollectionLayoutSize(
+//            widthDimension: .fractionalWidth(headerRatio),
+//            heightDimension: .estimated(headerAbsolute)
+//        )
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: FeedDetailHeaderView.identifier, alignment: .top
+//        )
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.boundarySupplementaryItems = [header]
+//        section.boundarySupplementaryItems = [header]
         return section
     }
 }
@@ -301,6 +325,40 @@ extension FeedDetailView {
         case false:
             commentTextField.textColor = .black80
             registrationLabel.textColor = .black80
+        }
+    }
+}
+
+extension FeedDetailView {
+    func initCommentSetting() {
+        commentTextField.text = nil
+        updateSpoilerButtonUI(spoiler: false)
+        updateCommentTextField(textValid: false)
+    }
+}
+
+extension FeedDetailView {
+    func updateCollectionViewHeight(cellCount: Int) {
+        if cellCount != 0 {
+            collectionView.snp.removeConstraints()
+            collectionView.snp.remakeConstraints { make in
+                make.top.equalTo(headerView.snp.bottom)
+                make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+                make.height.greaterThanOrEqualTo(cellCount * 216)
+                make.bottom.equalTo(containScrollView.snp.bottom)
+            }
+            collectionView.layoutIfNeeded()
+        } else {
+            collectionView.snp.removeConstraints()
+            headerView.snp.removeConstraints()
+            headerView.snp.remakeConstraints { make in
+                make.top.equalTo(containScrollView.snp.top)
+                make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+                make.height.lessThanOrEqualTo(500)
+                make.bottom.equalTo(containScrollView.snp.bottom)
+            }
+            collectionView.layoutIfNeeded()
+            headerView.layoutIfNeeded()
         }
     }
 }

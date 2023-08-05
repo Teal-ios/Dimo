@@ -22,12 +22,12 @@ final class ContentRepositoryImpl: ContentRepository {
 }
 
 extension ContentRepositoryImpl {
-    func fetchAnimationData() async throws -> [AnimationData] {
+    func fetchAnimationData(query: GetAnimationQuery) async throws -> AnimationData {
+        let target = ContentAPIEndpoints.getAnimationData(with: query)
+        
         do {
-            guard let data = MockParser.load() else {
-                throw ContentRepositoryError.request
-            }
-            return data
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
         } catch {
             throw ContentRepositoryError.request
         }
@@ -49,7 +49,7 @@ extension ContentRepositoryImpl {
 
 extension ContentRepositoryImpl {
     func fetchLikeContentCheck(query: LikeContentCheckQuery) async throws -> LikeContentCheck {
-        let target = ContentAPIEndpoints.getLikeContentCheckk(user_id: query.user_id, content_type: query.content_type, contentId: query.contentId)
+        let target = ContentAPIEndpoints.getLikeContentCheck(user_id: query.user_id, content_type: query.content_type, contentId: query.contentId)
         
         do {
             let data = try await dataTransferService.request(with: target)

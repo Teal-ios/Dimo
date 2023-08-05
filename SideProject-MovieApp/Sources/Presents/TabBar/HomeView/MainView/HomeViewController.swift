@@ -10,6 +10,14 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
+enum Category: String {
+    case poster = "represent"
+    case hot = "hits"
+    case mbtiChar = "same_mbti_char"
+    case mbtiAnime = "same_mbti_anime"
+    case recommend = "recommend"
+}
+
 final class HomeViewController: BaseViewController {
     
     let homeView = HomeView()
@@ -25,16 +33,16 @@ final class HomeViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    private var posterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
-    private var characterDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
-    private var mbtiHeroDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
-    private var recommendDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
-    private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, AnimationData>!
+    private var posterDataSource: UICollectionViewDiffableDataSource<Int, Hit>!
+    private var characterDataSource: UICollectionViewDiffableDataSource<Int, SameMbtiCharacter>!
+    private var mbtiHeroDataSource: UICollectionViewDiffableDataSource<Int, Hit>!
+    private var recommendDataSource: UICollectionViewDiffableDataSource<Int, Hit>!
+    private var nowHotDataSource: UICollectionViewDiffableDataSource<Int, Hit>!
     
-//    let categoryButtonTap = PublishSubject<String>()
+    //    let categoryButtonTap = PublishSubject<String>()
     let posterCellSelected = PublishRelay<String>()
     let mbtiHeroCellSelected = PublishRelay<String>()
-//    let mbtiCharacterCellSelected = PublishSubject<Void>()
+    //    let mbtiCharacterCellSelected = PublishSubject<Void>()
     let mbtiRecommendCellSeleted = PublishRelay<String>()
     let hotMovieCellSelected = PublishRelay<String>()
     let categoryTitle = PublishRelay<String>()
@@ -68,43 +76,57 @@ final class HomeViewController: BaseViewController {
         
         output.animationData
             .observe(on: MainScheduler.instance)
-            .bind { [weak self] data in
-                guard let self = self else { return }
-                print(data.count, "data 개수")
-                var posterSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                var mbtiHeroSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                var characterSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                var recommendSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
-                var nowHotSnapshot = NSDiffableDataSourceSnapshot<Int, AnimationData>()
+            .bind { animation in
+                var posterSnapshot = NSDiffableDataSourceSnapshot<Int, Hit>()
+                var mbtiHeroSnapshot = NSDiffableDataSourceSnapshot<Int, Hit>()
+                var characterSnapshot = NSDiffableDataSourceSnapshot<Int, SameMbtiCharacter>()
+                var recommendSnapshot = NSDiffableDataSourceSnapshot<Int, Hit>()
+                var nowHotSnapshot = NSDiffableDataSourceSnapshot<Int, Hit>()
                 posterSnapshot.appendSections([0])
                 mbtiHeroSnapshot.appendSections([0])
                 characterSnapshot.appendSections([0])
                 recommendSnapshot.appendSections([0])
                 nowHotSnapshot.appendSections([0])
-                var section1Arr: [AnimationData] = []
-                var section2Arr: [AnimationData] = []
-                var section3Arr: [AnimationData] = []
-                var section4Arr: [AnimationData] = []
-                var section5Arr: [AnimationData] = []
+                var posterArr: [Hit] = []
+                var mbtiHeroArr: [Hit] = []
+                var mbtiCharArr: [SameMbtiCharacter] = []
+                var hotArr: [Hit] = []
+                var recommendArr: [Hit] = []
                 
-                section1Arr.append(contentsOf: [data[0], data[1], data[2], data[3], data[4], data[5]])
-                section2Arr.append(contentsOf: [data[6], data[7], data[8], data[9], data[10]])
-                section3Arr.append(contentsOf: [data[11], data[12], data[13], data[14], data[15], data[16]])
-                section4Arr.append(contentsOf: [data[17], data[18], data[19], data[20], data[21], data[22]])
-                section5Arr.append(contentsOf: [data[23], data[24], data[25], data[26], data[27], data[28]])
-                
-                posterSnapshot.appendItems(section1Arr, toSection: 0)
-                mbtiHeroSnapshot.appendItems(section2Arr, toSection: 0)
-                characterSnapshot.appendItems(section3Arr, toSection: 0)
-                recommendSnapshot.appendItems(section4Arr, toSection: 0)
-                nowHotSnapshot.appendItems(section5Arr, toSection: 0)
+                for content in animation.contents {
+                    if content.category == Category.recommend.rawValue {
+                        guard let recommend = content.recommend else { return }
+                        recommendArr = recommend
+                    }
+                    if content.category == Category.mbtiAnime.rawValue {
+                        guard let hero = content.same_mbti_anime else { return }
+                        mbtiHeroArr = hero
+                    }
+                    if content.category == Category.mbtiChar.rawValue {
+                        guard let char = content.same_mbti_char else { return }
+                        mbtiCharArr = char
+                    }
+                    if content.category == Category.hot.rawValue {
+                        guard let hit = content.hit else { return }
+                        hotArr = hit
+                    }
+                    if content.category == Category.poster.rawValue {
+                        guard let represent = content.represent else { return }
+                        posterArr = represent
+                    }
+                }
+                posterSnapshot.appendItems(posterArr, toSection: 0)
+                mbtiHeroSnapshot.appendItems(mbtiHeroArr, toSection: 0)
+                characterSnapshot.appendItems(mbtiCharArr, toSection: 0)
+                recommendSnapshot.appendItems(recommendArr, toSection: 0)
+                nowHotSnapshot.appendItems(hotArr, toSection: 0)
                 self.posterDataSource.apply(posterSnapshot)
                 self.mbtiHeroDataSource.apply(mbtiHeroSnapshot)
                 self.characterDataSource.apply(characterSnapshot)
                 self.recommendDataSource.apply(recommendSnapshot)
                 self.nowHotDataSource.apply(nowHotSnapshot)
             }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         output.category
             .bind { [weak self] category in
@@ -139,7 +161,7 @@ final class HomeViewController: BaseViewController {
 //MARK: PosterDataSource 설정
 extension HomeViewController {
     func setPosterDataSource() {
-        let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+        let cellPosterRegistration = UICollectionView.CellRegistration<PosterCollectionViewCell, Hit> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
@@ -152,10 +174,10 @@ extension HomeViewController {
             self.categoryTitle
                 .debug()
                 .bind { [weak self] title in
-                guard let self else { return }
-                supplementaryView.categoryInsetLabel.text = title
-            }
-            .disposed(by: self.disposeBag)
+                    guard let self else { return }
+                    supplementaryView.categoryInsetLabel.text = title
+                }
+                .disposed(by: self.disposeBag)
         }
         
         posterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -168,7 +190,7 @@ extension HomeViewController {
 //MARK: MbtiHeroDataSource 설정
 extension HomeViewController {
     func setMbtiHeroDataSource() {
-        let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+        let cellHeroCharacterRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, Hit> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
@@ -192,8 +214,8 @@ extension HomeViewController {
 //MARK: CharacterDataSource 설정
 extension HomeViewController {
     func setCharacterDataSource() {
-        let cellCharacterRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
-            cell.configureAttribute(with: itemIdentifier.characters[0])
+        let cellCharacterRegistration = UICollectionView.CellRegistration<CircleCollectionViewCell, SameMbtiCharacter> { cell, indexPath, itemIdentifier in
+            cell.configureAttributeToSameMbtiCharacter(with: itemIdentifier)
         }
         
         characterDataSource = UICollectionViewDiffableDataSource(collectionView: homeView.characterCollectionView) { collectionView, indexPath, itemIdentifier in
@@ -216,7 +238,7 @@ extension HomeViewController {
 //MARK: RecommendDataSource 설정
 extension HomeViewController {
     func setRecommendDataSource() {
-        let cellRecommendRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+        let cellRecommendRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, Hit> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
@@ -240,7 +262,7 @@ extension HomeViewController {
 //MARK: NowHotDataSource 설정
 extension HomeViewController {
     func setNowHotDataSource() {
-        let cellNowHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, AnimationData> { cell, indexPath, itemIdentifier in
+        let cellNowHotRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, Hit> { cell, indexPath, itemIdentifier in
             cell.configureAttribute(with: itemIdentifier)
         }
         
@@ -262,14 +284,14 @@ extension HomeViewController {
 }
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         switch collectionView {
         case self.homeView.posterCollectionView:
-                self.posterCellDataFetching(indexPath: indexPath)
+            self.posterCellDataFetching(indexPath: indexPath)
         case self.homeView.mbtiHeroCharacterCollectionView:
             self.mbtiHeroCellDataFetching(indexPath: indexPath)
-//        case self.homeView.characterCollectionView:
-//            self.mbtiCharacterCellSelected.onNext(())
+            //        case self.homeView.characterCollectionView:
+            //            self.mbtiCharacterCellSelected.onNext(())
         case self.homeView.recommendCollectionView:
             self.mbtiRecommendCellDataFetching(indexPath: indexPath)
         case self.homeView.nowHotCollectionView:
@@ -299,27 +321,27 @@ extension HomeViewController: UITabBarDelegate {
 extension HomeViewController {
     func posterCellDataFetching(indexPath: IndexPath) {
         let selectedItem = posterDataSource.snapshot().itemIdentifiers[indexPath.row]
-        self.posterCellSelected.accept(selectedItem.contentId)
+        self.posterCellSelected.accept(String(selectedItem.anime_id))
     }
 }
 
 extension HomeViewController {
     func mbtiHeroCellDataFetching(indexPath: IndexPath) {
         let selectedItem = mbtiHeroDataSource.snapshot().itemIdentifiers[indexPath.row]
-        self.mbtiHeroCellSelected.accept(selectedItem.contentId)
+        self.mbtiHeroCellSelected.accept(String(selectedItem.anime_id))
     }
 }
 
 extension HomeViewController {
     func mbtiRecommendCellDataFetching(indexPath: IndexPath) {
         let selectedItem = recommendDataSource.snapshot().itemIdentifiers[indexPath.row]
-        self.mbtiRecommendCellSeleted.accept(selectedItem.contentId)
+        self.mbtiRecommendCellSeleted.accept(String(selectedItem.anime_id))
     }
 }
 
 extension HomeViewController {
     func nowHotCellDataFetching(indexPath: IndexPath) {
         let selectedItem = nowHotDataSource.snapshot().itemIdentifiers[indexPath.row]
-        self.hotMovieCellSelected.accept(selectedItem.contentId)
+        self.hotMovieCellSelected.accept(String(selectedItem.anime_id))
     }
 }

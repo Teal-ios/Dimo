@@ -70,11 +70,11 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
 
 extension VoteCollectionViewCell {
     func configureAttribute(with item: AnimationData) {
-        let imageUrl = URL(string: item.poster)
-        imgView.kf.setImage(with: imageUrl)
-        imgView.contentMode = .scaleToFill
-        movieTitleLabel.text = item.title
-        nameLabel.text = item.characters[0].characterName
+//        let imageUrl = URL(string: item.poster)
+//        imgView.kf.setImage(with: imageUrl)
+//        imgView.contentMode = .scaleToFill
+//        movieTitleLabel.text = item.title
+//        nameLabel.text = item.characters[0].characterName
     }
 }
 

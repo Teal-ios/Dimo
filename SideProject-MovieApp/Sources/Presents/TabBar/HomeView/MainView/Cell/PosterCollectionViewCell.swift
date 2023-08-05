@@ -80,8 +80,8 @@ class PosterCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configureAttribute(with item: AnimationData) {
-        let imageUrl = URL(string: item.poster)
+    func configureAttribute(with item: Hit) {
+        let imageUrl = URL(string: item.poster_img)
         imgView.kf.setImage(with: imageUrl)
         imgView.contentMode = .scaleToFill
         titleLabel.text = item.title

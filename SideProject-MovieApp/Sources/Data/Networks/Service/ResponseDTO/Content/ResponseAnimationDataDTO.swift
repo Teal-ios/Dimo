@@ -7,20 +7,36 @@
 
 import Foundation
 
-struct ResponseAnimationDataDTO: Codable {
-    let contentId: String
-    let poster: String
-    let title, plot, genre, director: String
-    let release, rate: String
-    let characters: [ResponseCharacterDTO]
+//struct ResponseAnimationDataDTO: Codable {
+//    let contentId: String
+//    let poster: String
+//    let title, plot, genre, director: String
+//    let release, rate: String
+//    let characters: [ResponseCharacterDTO]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case contentId, poster, title, plot, genre, director, release, rate, characters
+//    }
+//}
+//
+//extension ResponseAnimationDataDTO {
+//    var toDomain: AnimationData {
+//        return .init(contentId: contentId, poster: poster, title: title, plot: plot, genre: genre, director: director, release: release, rate: rate, characters: characters.map{ $0.toDomain })
+//    }
+//}
+
+struct ResponseAnimationDataDTO: Decodable {
+    let code: Int
+    let message: String
+    let contents: [ResponseContentDTO]
     
-    enum CodingKeys: String, CodingKey {
-        case contentId, poster, title, plot, genre, director, release, rate, characters
+        enum CodingKeys: String, CodingKey {
+            case code, message, contents
     }
 }
 
 extension ResponseAnimationDataDTO {
     var toDomain: AnimationData {
-        return .init(contentId: contentId, poster: poster, title: title, plot: plot, genre: genre, director: director, release: release, rate: rate, characters: characters.map{ $0.toDomain })
+        return .init(code: code, message: message, contents: contents.map { $0.toDomain })
     }
 }

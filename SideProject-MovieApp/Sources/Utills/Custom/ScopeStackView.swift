@@ -20,7 +20,7 @@ final class ScopeStackView: UIStackView {
         return stackView
       }()
     
-    private var starImageViews: [UIImageView] = []
+    var starImageViews: [UIImageView] = []
     
     lazy var ratingSlider: TapUISlider = {
         let slider = TapUISlider()

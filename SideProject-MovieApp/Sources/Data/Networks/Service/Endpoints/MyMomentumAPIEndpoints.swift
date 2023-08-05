@@ -23,4 +23,12 @@ struct MyMomentumAPIEndpoints {
     static func getLikeMovieContent(with user_id: String) -> MyMomentumRouter<ResponseLikeMovieContentDTO> {
         return MyMomentumRouter<ResponseLikeMovieContentDTO>.likeMovieContent(parameters: LikeMovieContentQuery(user_id: user_id))
     }
+    
+    static func getMyReview(with user_id: String) -> MyMomentumRouter<ResponseGetMyReviewDTO> {
+        return MyMomentumRouter<ResponseGetMyReviewDTO>.getMyReview(parameters: GetMyReviewQuery(user_id: user_id))
+    }
+    
+    static func getMyComment(with user_id: String) -> MyMomentumRouter<ResponseGetMyCommentDTO> {
+        return MyMomentumRouter<ResponseGetMyCommentDTO>.getMyComment(parameters: GetMyCommentQuery(user_id: user_id))
+    }
 }

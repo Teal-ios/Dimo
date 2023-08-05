@@ -66,4 +66,26 @@ extension MyMomentumRepositoryImpl {
             throw MyMomentumRepositoryError.request
         }
     }
+    
+    func fetchMyReview(query: GetMyReviewQuery) async throws -> GetMyReview {
+        let target = MyMomentumAPIEndpoints.getMyReview(with: query.user_id)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw MyMomentumRepositoryError.request
+        }
+    }
+    
+    func fetchMyComment(query: GetMyCommentQuery) async throws -> GetMyComment {
+        let target = MyMomentumAPIEndpoints.getMyComment(with: query.user_id)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw MyMomentumRepositoryError.request
+        }
+    }
 }

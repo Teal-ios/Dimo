@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FeedDetailHeaderView: UICollectionReusableView {
+class FeedDetailHeaderView: BaseView {
     static let identifier = "FeedDetailHeaderView"
     
     let profileImgView: UIImageView = {
@@ -19,7 +19,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
     
     let nicknameLabel: UILabel = {
         let label = UILabel()
-        label.text = "디모최고"
+        label.text = "id12"
         label.textColor = .black5
         label.font = Font.body2
         return label
@@ -29,13 +29,13 @@ class FeedDetailHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.font = Font.caption
         label.textColor = Color.caption
-        label.text = "ISFJ"
+        label.text = "ENTP"
         return label
     }()
     
     let mainTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다. 않은 것은 사랑과 너무나 지나가는 써 묻힌 같이 듯합니다. 이름과, 하나 멀리 있습니다. 벌레는 봄이 지나고 나의 벌써 까닭입니다. 이름과, 쉬이 별에도 어머님, 노새, 이름과 봅니다. 가슴속에 무덤 어머니 그러나 잔디가 별 거외다. 이름과, 둘 위에도 아침이 어머님, 별 지나고 언덕 까닭입니다. 이름자를 어머님, 하나의 않은 청춘이 버리었습니다. 불러 계절이 하나에 하나에 까닭입니다. 멀리 시인의 이름자를 소학교 마리아 추억과 슬퍼하는 하늘에는 버리었습니다."
+        label.text = "루피가 와노쿠니 가서 카이도쿠랑 싸울 때 작화 보셨나요. 저는 진짜 보고 원피스 지금까지 잘 참고 왔다를 새삼 느꼈습니다. 너무재밌어요... 그리고 그 누구야 빅맘이랑 그 전에 편은 너무 재미없었다가 이제 진짜 본격적으로 재밌어지기 시작하는것 같네요...! 앞으로가 기대가 됩니다. 루피가 와노쿠니 가서 카이도쿠랑 싸울 때 작화 보셨나요. 저는 진짜 보고 원피스 지금까지 잘 참고 왔다를 새삼 느꼈습니다. 너무재밌어요... 그리"
         label.numberOfLines = 0
         label.font = Font.body3
         label.textColor = .black5
@@ -169,7 +169,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
         mainTextLabel.snp.makeConstraints { make in
             make.top.equalTo(mbtiLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeArea)
-            make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.top)
+            make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.top).offset(-16)
         }
     }
 }
@@ -205,4 +205,22 @@ extension FeedDetailHeaderView {
             
             return layout
         }
+}
+
+extension FeedDetailHeaderView {
+    func configureFeedDetailHeaderView(with item: ReviewList) {
+        print(item, "들어오는 리뷰")
+        mainTextLabel.text = item.review_content
+        nicknameLabel.text = item.nickname
+        mbtiLabel.text = item.mbti
+        self.updateProfileImage(with: item.profile_img)
+        let  commentCnt = item.comment_content ?? 0
+        likeAndReviewAndViewsLabel.text = "좋아요 \(item.review_like)  |  댓글 \(commentCnt)  |  조회 \(item.review_hits)"
+    }
+    
+    func updateProfileImage(with url: String?) {
+        guard let url else { return }
+        guard let imageURL = URL(string: url) else { return }
+        profileImgView.kf.setImage(with: imageURL)
+    }
 }

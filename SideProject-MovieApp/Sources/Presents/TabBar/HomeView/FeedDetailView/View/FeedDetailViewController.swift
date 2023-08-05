@@ -18,24 +18,19 @@ class FeedDetailViewController: BaseViewController {
         view = feedDetailView
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("FeedDetailViewController: fatal error")
-        
-    }
-    
     init(viewModel: FeedDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     var categoryDataSource: UICollectionViewDiffableDataSource<Int, CategoryModel>!
     var categorySnapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
-
-    
-    var dataSource: UICollectionViewDiffableDataSource<Int, FeedDetailModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, FeedDetailModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Int, CommentList>!
     
     let plusNavigationButtonTap = PublishSubject<Void>()
     let spoilerValid = PublishRelay<Bool>()
+    let review = PublishRelay<ReviewList>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
+    let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +38,7 @@ class FeedDetailViewController: BaseViewController {
         plusNavigationItemSet()
         setCategoryDataSource()
         setDataSource()
+        self.viewDidLoadTrigger.accept(())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +50,8 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap)
+        
         let output = viewModel.transform(input: input)
         
         output.spoilerValid
@@ -71,6 +68,48 @@ class FeedDetailViewController: BaseViewController {
             .bind { [weak self] valid in
                 guard let self else { return }
                 self.feedDetailView.updateCommentTextField(textValid: valid)
+            }
+            .disposed(by: disposeBag)
+        
+        output.review
+            .withUnretained(self)
+            .bind { vc, review in
+                print(review, "여기는 잘 들어가")
+                vc.feedDetailView.headerView.configureFeedDetailHeaderView(with: review)
+            }
+            .disposed(by: disposeBag)
+        
+        output.commentList
+            .withUnretained(self)
+            .bind { vc, commentList in
+                if commentList != [] {
+                    var commentSnapshot = NSDiffableDataSourceSnapshot<Int, CommentList>()
+                    commentSnapshot.appendSections([0])
+                    var sectionArr: [CommentList] = []
+                    for comment in commentList {
+                        guard let comment else { return }
+                        sectionArr.append(comment)
+                    }
+                    commentSnapshot.appendItems(sectionArr, toSection: 0)
+                    self.dataSource.apply(commentSnapshot)
+                    self.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.commentList
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, _ in
+                vc.feedDetailView.initCommentSetting()
+            }
+            .disposed(by: disposeBag)
+        
+        self.setDataSourceApplySnapshotAfter
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, cellCount in
+                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount)
             }
             .disposed(by: disposeBag)
     }
@@ -94,9 +133,9 @@ extension FeedDetailViewController {
         var categoryArr: [CategoryModel] = []
         
         categoryArr.append(CategoryModel(category: "스포주의", spoil: true))
-        categoryArr.append(CategoryModel(category: "정대만", spoil: false))
-        categoryArr.append(CategoryModel(category: "ENTP", spoil: false))
-        categoryArr.append(CategoryModel(category: "더퍼스트슬램덩크", spoil: false))
+        categoryArr.append(CategoryModel(category: "몽키 D 루피", spoil: false))
+        categoryArr.append(CategoryModel(category: "미정", spoil: false))
+        categoryArr.append(CategoryModel(category: "원피스", spoil: false))
 
 
         categorySnapshot.appendItems(categoryArr, toSection: 0)
@@ -106,33 +145,14 @@ extension FeedDetailViewController {
 
 extension FeedDetailViewController {
     func setDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<DetailReviewCollectionViewCell, FeedDetailModel> {  cell, indexPath, itemIdentifier in
-            
+        let cellRegistration = UICollectionView.CellRegistration<DetailReviewCollectionViewCell, CommentList> {  cell, indexPath, itemIdentifier in
+            cell.configureCommentAttribute(with: itemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: feedDetailView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
-        let header = UICollectionView.SupplementaryRegistration<FeedDetailHeaderView>(elementKind: FeedDetailHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-            
-        }
-        
-        dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
-            let header = collectionView.dequeueConfiguredReusableSupplementary(using: header, for: indexPath)
-            return header
-        })
-        
-        snapshot.appendSections([0])
-        var reviewArr: [FeedDetailModel] = []
-        
-        for _ in 1..<20 {
-            reviewArr.append(FeedDetailModel(image: nil))
-        }
-        snapshot.appendItems(reviewArr, toSection: 0)
-        dataSource.apply(snapshot)
-        
     }
 }
 

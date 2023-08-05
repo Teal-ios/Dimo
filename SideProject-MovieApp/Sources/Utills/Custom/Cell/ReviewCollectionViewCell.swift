@@ -110,3 +110,15 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension ReviewCollectionViewCell {
+    func configureUpdateReviewDate(review: MyReview) {
+        reviewLabel.text = review.review_content
+    }
+}
+
+extension ReviewCollectionViewCell {
+    func configureUpdateCommentDate(comment: MyComment) {
+        reviewLabel.text = comment.comment_content
+    }
+}

@@ -15,6 +15,10 @@ protocol MyMomentumUseCase {
     func excuteLikeAnimationContent(query: LikeAnimationContentQuery) async throws -> LikeAnimationContent
 
     func excuteLikeMovieContent(query: LikeMovieContentQuery) async throws -> LikeMovieContent
+    
+    func excuteMyReview(query: GetMyReviewQuery) async throws -> GetMyReview
+    
+    func excuteMyComment(query: GetMyCommentQuery) async throws -> GetMyComment
 
 }
 
@@ -69,6 +73,26 @@ extension MyMomentumUseCaseImpl {
     func excuteLikeMovieContent(query: LikeMovieContentQuery) async throws -> LikeMovieContent {
         do {
             return try await myMomentumRepository.fetchLikeMovieContent(query: query)
+        } catch {
+            throw MyMomentumUseCaseError.excute
+        }
+    }
+}
+
+extension MyMomentumUseCaseImpl {
+    func excuteMyReview(query: GetMyReviewQuery) async throws -> GetMyReview {
+        do {
+            return try await myMomentumRepository.fetchMyReview(query: query)
+        } catch {
+            throw MyMomentumUseCaseError.excute
+        }
+    }
+}
+
+extension MyMomentumUseCaseImpl {
+    func excuteMyComment(query: GetMyCommentQuery) async throws -> GetMyComment {
+        do {
+            return try await myMomentumRepository.fetchMyComment(query: query)
         } catch {
             throw MyMomentumUseCaseError.excute
         }

@@ -30,8 +30,11 @@ final class TabmanCoordinator: Coordinator {
     }
     
     
-    func showFeedDetailViewController() {
-        let viewModel = FeedDetailViewModel(coordinator: self)
+    func showFeedDetailViewController(review: ReviewList) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review)
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

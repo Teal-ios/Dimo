@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 protocol ContentUseCase {
-    func excuteFetchAnimationData() -> Observable<[AnimationData]>
-    
+    func excuteFetchAnimationData(query: GetAnimationQuery) async throws -> AnimationData
+        
     func excuteFetchDetailAnimationData(query: DetailAnimationDataQuery) async throws -> DetailAnimationData
     
     func excuteGradeChoiceAndModify(query: GradeChoiceAndModifyQuery) async throws -> GradeChoiceAndModify
@@ -27,6 +27,7 @@ enum ContentUseCaseError: String, Error {
 }
 
 final class ContentUseCaseImpl: ContentUseCase {
+    
     private let contentRepository: ContentRepository
 
     init(contentRepository: ContentRepository) {
@@ -35,20 +36,12 @@ final class ContentUseCaseImpl: ContentUseCase {
 }
 
 extension ContentUseCaseImpl {
-    func excuteFetchAnimationData() -> Observable<[AnimationData]> {
-        let animationDataObservable: Observable<[AnimationData]> = Observable.create { observer in
-            let task = Task {
-                let animationData = try await self.contentRepository.fetchAnimationData()
-                observer.on(.next(animationData))
-                observer.on(.completed)
-            }
-            
-            return Disposables.create {
-                task.cancel()
-            }
+    func excuteFetchAnimationData(query: GetAnimationQuery) async throws -> AnimationData {
+        do {
+            return try await contentRepository.fetchAnimationData(query: query)
+        } catch {
+            throw ContentUseCaseError.excute
         }
-        
-        return animationDataObservable
     }
 }
 

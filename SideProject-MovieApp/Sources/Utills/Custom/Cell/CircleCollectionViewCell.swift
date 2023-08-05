@@ -19,14 +19,22 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
         view.clipsToBounds = true
         return view
     }()
+    
+    let blurView: UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        view.clipsToBounds = true
+        view.alpha = 0.5
+        return view
+    }()
 
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.frame.width / 2
+        blurView.layer.cornerRadius = blurView.frame.width / 2
     }
         
     override func configure() {
-        [imgView].forEach { self.addSubview($0) }
+        [imgView, blurView].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -34,6 +42,10 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
         imgView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(imgView.snp.width)
+        }
+        
+        blurView.snp.makeConstraints { make in
+            make.edges.equalTo(imgView)
         }
     }
 }
@@ -45,6 +57,14 @@ extension CircleCollectionViewCell {
         print(data, "인코딩된 이미지")
         guard let image = UIImage(data: data) else { return }
         imgView.image = image
+        imgView.contentMode = .scaleToFill
+    }
+}
+
+extension CircleCollectionViewCell {
+    func configureAttributeToSameMbtiCharacter(with item: SameMbtiCharacter) {
+        let imageURL = URL(string: item.character_img ?? "")
+        imgView.kf.setImage(with: imageURL)
         imgView.contentMode = .scaleToFill
     }
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 struct ContentAPIEndpoints {
-    static func getAnimationData() -> ContentRouter<[ResponseAnimationDataDTO]> {
-        return ContentRouter<[ResponseAnimationDataDTO]>.inquireAnimationData
+    static func getAnimationData(with query: GetAnimationQuery) -> ContentRouter<ResponseAnimationDataDTO> {
+        return ContentRouter<ResponseAnimationDataDTO>.inquireAnimationData(parameters: query)
     }
     
     static func getDetailAnimationData(with content_id: String) -> ContentRouter<ResponseDetailAnimationDataDTO> {
@@ -28,7 +28,7 @@ struct ContentAPIEndpoints {
         return ContentRouter<ResponseGradeChoiceAndModifyDTO>.gradeChoiceAndModify(parameters: GradeChoiceAndModifyQuery(user_id: requestDTO.user_id, contentId: requestDTO.contentId, content_type: requestDTO.content_type, grade: requestDTO.grade))
     }
     
-    static func getLikeContentCheckk(user_id: String, content_type: String, contentId: String) -> ContentRouter<ResponseLikeContentCheckDTO> {
+    static func getLikeContentCheck(user_id: String, content_type: String, contentId: String) -> ContentRouter<ResponseLikeContentCheckDTO> {
         return ContentRouter<ResponseLikeContentCheckDTO>.likeContentCheck(parameters: LikeContentCheckQuery(user_id: user_id, content_type: content_type, contentId: contentId))
-    }
+    }    
 }
