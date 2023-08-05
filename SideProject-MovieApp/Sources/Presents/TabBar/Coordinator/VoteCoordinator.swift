@@ -47,4 +47,13 @@ final class VoteCoordinator: Coordinator {
         let vc = RecommendViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showDigViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+        let viewModel = DigViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
+        let vc = DigViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

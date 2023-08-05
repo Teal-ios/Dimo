@@ -24,6 +24,7 @@ final class VoteViewModel: ViewModelType {
         let characterRandomRecommandCellTapped: PublishSubject<Void>
         let characterSearchCellTapped: PublishSubject<Void>
         let viewDidLoad: PublishRelay<Void>
+        let characterCellTapped: PublishRelay<CharacterInfo>
     }
     
     struct Output{
@@ -52,6 +53,13 @@ final class VoteViewModel: ViewModelType {
             .bind { vm, _ in
                 guard let user_id = UserDefaultManager.userId else { return }
                 vm.getPopularCharacterRecommend(user_id: user_id)
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterCellTapped
+            .withUnretained(self)
+            .bind { vc, characterInfo in
+                vc.coordinator?.showDigViewController()
             }
             .disposed(by: disposeBag)
         
