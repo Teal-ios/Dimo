@@ -18,7 +18,11 @@ final class VoteCompleteView: BaseView {
         view.addSubview(voteChartContainView)
         view.addSubview(mbtiChartStackView)
         view.addSubview(manyPersonThinkingMbtiContainView)
+        view.addSubview(manyPersonThinkingMbtiImageView)
+        view.addSubview(manyPersonThinkingMbtiLabel)
         view.addSubview(choiceMbtiExplainContainView)
+        view.addSubview(choiceMbtiExplainImageView)
+        view.addSubview(choiceMbtiExplainLabel)
         view.addSubview(characterMoreCollectionView)
         return view
     }()
@@ -79,10 +83,38 @@ final class VoteCompleteView: BaseView {
         return view
     }()
     
+    let manyPersonThinkingMbtiImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Badge")
+        return view
+    }()
+    
+    let manyPersonThinkingMbtiLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.body3
+        label.textColor = .black60
+        label.text = "많은 사람들이 ENTP라고 답변했어요"
+        return label
+    }()
+    
     let choiceMbtiExplainContainView: UIView = {
         let view = UIView()
         view.backgroundColor = .black90
         return view
+    }()
+    
+    let choiceMbtiExplainImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "spoilerCheckOn")
+        return view
+    }()
+    
+    let choiceMbtiExplainLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.body3
+        label.textColor = .black60
+        label.text = "나를 비롯한 00%가 ESFP를 골랐어요"
+        return label
     }()
     
     let eiChartView: WidthChartView = {
@@ -175,11 +207,36 @@ final class VoteCompleteView: BaseView {
             make.height.equalTo(56)
         }
         
+        manyPersonThinkingMbtiImageView.snp.makeConstraints { make in
+            make.top.bottom.leading.equalTo(manyPersonThinkingMbtiContainView).inset(16)
+            make.width.equalTo(24)
+        }
+        
+        manyPersonThinkingMbtiLabel.snp.makeConstraints { make in
+            make.leading.equalTo(manyPersonThinkingMbtiImageView.snp.trailing).offset(8)
+            make.centerY.equalTo(manyPersonThinkingMbtiContainView)
+            make.height.equalTo(24)
+            make.trailing.equalTo(manyPersonThinkingMbtiContainView.snp.trailing).offset(-16)
+        }
+        
         choiceMbtiExplainContainView.snp.makeConstraints { make in
             make.top.equalTo(manyPersonThinkingMbtiContainView.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(scrollView).inset(16)
             make.height.equalTo(56)
         }
+        
+        choiceMbtiExplainImageView.snp.makeConstraints { make in
+            make.top.bottom.leading.equalTo(choiceMbtiExplainContainView).inset(16)
+            make.width.equalTo(24)
+        }
+        
+        choiceMbtiExplainLabel.snp.makeConstraints { make in
+            make.leading.equalTo(choiceMbtiExplainImageView.snp.trailing).offset(8)
+            make.centerY.equalTo(choiceMbtiExplainImageView)
+            make.height.equalTo(24)
+            make.trailing.equalTo(choiceMbtiExplainContainView.snp.trailing).offset(-16)
+        }
+        
         
         characterMoreCollectionView.snp.makeConstraints { make in
             make.top.equalTo(choiceMbtiExplainContainView.snp.bottom).offset(16)
