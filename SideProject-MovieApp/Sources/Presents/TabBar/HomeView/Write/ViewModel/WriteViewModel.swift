@@ -9,10 +9,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol sendPostReviewDelegate {
+    func sendPostReview(character_id: Int)
+}
+
 final class WriteViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
+    private let characterDetailUseCase: CharacterDetailUseCase
     
     struct Input{
         let cancelButtonTapped: ControlEvent<Void>
@@ -26,8 +31,15 @@ final class WriteViewModel: ViewModelType {
         let textValid: BehaviorSubject<Bool>
     }
     
-    init(coordinator: TabmanCoordinator? = nil) {
+    let postReview = PublishRelay<PostReview>()
+    var characterId = BehaviorRelay(value: 0)
+    let spoilerValidSubject = BehaviorSubject<Bool>(value: false)
+    var delegate: sendPostReviewDelegate?
+    
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, characterId: Int) {
         self.coordinator = coordinator
+        self.characterDetailUseCase = characterDetailUseCase
+        self.characterId = BehaviorRelay(value: characterId)
     }
     
     func transform(input: Input) -> Output {
@@ -36,14 +48,33 @@ final class WriteViewModel: ViewModelType {
             self.coordinator?.dismissViewController()
         }
         .disposed(by: disposeBag)
+
+        input.registerButtonTapped
+            .debug()
+            .flatMapLatest { [weak self] _ -> Observable<String?> in
+                guard let self else { return Observable.empty() }
+                return input.reviewText.asObservable()
+            }
+            .compactMap { $0 }
+            .bind { [weak self] reviewText in
+                guard let self = self else { return }
+
+                guard let spoilerValid = try? spoilerValidSubject.value() else { return }
+
+                let characterId = self.characterId.value
+
+                self.postReviewWrite(user_id: UserDefaultManager.userId ?? "", character_id: characterId, review_content: reviewText, review_spoiler: spoilerValid ? 1 : 0)
+            }
+            .disposed(by: disposeBag)
         
-        input.registerButtonTapped.bind { [weak self] _ in
-            guard let self = self else { return }
-            self.coordinator?.dismissViewController()
-        }
-        .disposed(by: disposeBag)
-        
-        let spoilerValidSubject = BehaviorSubject<Bool>(value: false)
+        self.postReview
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vm, postReview in
+                vm.delegate?.sendPostReview(character_id: postReview.character_id)
+                vm.coordinator?.dismissViewController()
+            }
+            .disposed(by: disposeBag)
         
         input.spoilerButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
@@ -75,5 +106,18 @@ final class WriteViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         return Output(spoilerValid: spoilerValidSubject, textValid: textValidSubject)
+    }
+}
+
+extension WriteViewModel {
+    private func postReviewWrite(user_id: String, character_id: Int, review_content: String, review_spoiler: Int) {
+        Task {
+            
+            let query = PostReviewQuery(user_id: user_id, character_id: character_id, review_content: review_content, review_spoiler: review_spoiler)
+            print(query, "글쓸때 보내는 쿼리")
+            let postReview = try await characterDetailUseCase.excutePostReview(query: query)
+            print(postReview, "리뷰를 작성했습니다")
+            self.postReview.accept(postReview)
+        }
     }
 }

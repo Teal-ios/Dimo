@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 import Tabman
 import Pageboy
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 final class CharacterDetailViewController: TabmanViewController {
   
@@ -33,7 +36,7 @@ final class CharacterDetailViewController: TabmanViewController {
       let dataTransferService = DataTransferService(networkService: NetworkService())
       let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
       let characterDetailUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-      let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character )
+      let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character, characterId: viewModel.coordinator?.characterId ?? PublishRelay<Int>())
     
     vc1 = .init(viewModel: feedViewModel)
     vc2 = .init()
@@ -50,6 +53,9 @@ final class CharacterDetailViewController: TabmanViewController {
   required init?(coder aDecoder: NSCoder) {
     fatalError("CharacterDetailViewController: fatal error")
   }
+  
+  var disposeBag = DisposeBag()
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -73,9 +79,8 @@ final class CharacterDetailViewController: TabmanViewController {
     bar.layout.transitionStyle = .snap
     
     addBar(bar, dataSource: self, at: .custom(view: customContainer, layout: nil))
+      setupBinding()
   }
-  
-  
 }
 
 extension CharacterDetailViewController: PageboyViewControllerDataSource, TMBarDataSource {
@@ -143,4 +148,25 @@ extension CharacterDetailViewController {
     self.navigationController?.navigationBar.shadowImage = UIImage()
     
   }
+}
+
+extension CharacterDetailViewController {
+    func setupBinding() {
+        let input = CharacterDetailViewModel.Input()
+        let output = self.viewModel.transform(input: input)
+        
+        output.character
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, character in
+                guard let character else { return }
+                self.detailHeaderView.titleLabel.text = character.character_name
+                self.detailHeaderView.subTitleLabel.text = character.character_mbti ?? "미정"
+                guard let image = character.character_img else { return }
+                let imageURL = URL(string: image)
+                self.detailHeaderView.moviePosterView.kf.setImage(with: imageURL)
+                
+            }
+            .disposed(by: disposeBag)
+    }
 }

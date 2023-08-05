@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class TabmanCoordinator: Coordinator {
     
@@ -14,6 +15,7 @@ final class TabmanCoordinator: Coordinator {
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tabman
     var character: Characters
+    var characterId = PublishRelay<Int>()
     
     init(_ navigationController: UINavigationController, character: Characters) {
         self.navigationController = navigationController
@@ -21,7 +23,7 @@ final class TabmanCoordinator: Coordinator {
     }
     
     func start() {
-        let tabmanViewModel = CharacterDetailViewModel(coordinator: self)
+        let tabmanViewModel = CharacterDetailViewModel(coordinator: self, character: character)
         let tabmanviewController = CharacterDetailViewController(viewModel: tabmanViewModel)
         tabmanviewController.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(tabmanviewController, animated: true)
@@ -46,7 +48,11 @@ final class TabmanCoordinator: Coordinator {
     }
     
     func showWriteViewController() {
-        let viewModel = WriteViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = WriteViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, characterId: character.character_id)
+        viewModel.delegate = self
         let vc = WriteViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
@@ -57,5 +63,11 @@ final class TabmanCoordinator: Coordinator {
         let vc = FeedDetailDeleteViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
+    }
+}
+
+extension TabmanCoordinator: sendPostReviewDelegate {
+    func sendPostReview(character_id: Int) {
+        self.characterId.accept(character_id)
     }
 }
