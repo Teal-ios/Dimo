@@ -21,6 +21,7 @@ final class DigViewModel: ViewModelType {
     }
     
     struct Input{
+        let nextButtonTap: ControlEvent<Void>
     }
     
     struct Output{
@@ -29,7 +30,12 @@ final class DigViewModel: ViewModelType {
 
     
     func transform(input: Input) -> Output {
-
+        input.nextButtonTap
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.showVoteCompleteViewController()
+            }
+            .disposed(by: disposeBag)
         
         return Output()
     }

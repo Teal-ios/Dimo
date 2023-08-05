@@ -27,4 +27,9 @@ final class DigViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func setupBinding() {
+        let input = DigViewModel.Input(nextButtonTap: self.selfView.nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+    }
 }

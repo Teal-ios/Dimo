@@ -49,3 +49,12 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
+
+extension DigFinishCharacterCollectionViewCell {
+    func configureUIToResultData(with item: Result) {
+        let imageURL = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageURL)
+        imgView.contentMode = .scaleToFill
+        characterNameLabel.text = item.character_name
+    }
+}

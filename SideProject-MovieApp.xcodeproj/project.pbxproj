@@ -196,6 +196,10 @@
 		2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECB29C038000097E696 /* OnBoardingView.swift */; };
 		2FC94ECE29C039620097E696 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECD29C039620097E696 /* AuthCoordinator.swift */; };
 		2FC94ED029C03C3D0097E696 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94ECF29C03C3D0097E696 /* Font.swift */; };
+		2FCB16822A7DEB6A00AE48A8 /* VoteCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16812A7DEB6A00AE48A8 /* VoteCompleteView.swift */; };
+		2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16832A7DEB7300AE48A8 /* VoteCompleteViewController.swift */; };
+		2FCB16862A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */; };
+		2FCB16882A7DED7200AE48A8 /* WidthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16872A7DED7200AE48A8 /* WidthChartView.swift */; };
 		2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
@@ -697,6 +701,10 @@
 		2FC94ECB29C038000097E696 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		2FC94ECD29C039620097E696 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		2FC94ECF29C03C3D0097E696 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		2FCB16812A7DEB6A00AE48A8 /* VoteCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCompleteView.swift; sourceTree = "<group>"; };
+		2FCB16832A7DEB7300AE48A8 /* VoteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCompleteViewController.swift; sourceTree = "<group>"; };
+		2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCompleteViewModel.swift; sourceTree = "<group>"; };
+		2FCB16872A7DED7200AE48A8 /* WidthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidthChartView.swift; sourceTree = "<group>"; };
 		2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiAlphabetView.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
@@ -1748,6 +1756,7 @@
 		2FBD19C829FF65570005B1FA /* VoteView */ = {
 			isa = PBXGroup;
 			children = (
+				2FCB167E2A7DEB2700AE48A8 /* VoteComplete */,
 				2FEC15D92A77A8CF009CF59D /* Dig */,
 				2F9793A92A53EE1F0098939B /* Vote */,
 				2F97939E2A52A42D0098939B /* Search */,
@@ -2132,6 +2141,7 @@
 				2FDD9E742A12622F00A41FF7 /* DynamicCollectionView.swift */,
 				2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */,
 				2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */,
+				2FCB16872A7DED7200AE48A8 /* WidthChartView.swift */,
 				2F149DC92A4978C40098AF64 /* StarView.swift */,
 				2F9793AD2A54102A0098939B /* CustomSearchBar.swift */,
 				2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */,
@@ -2232,6 +2242,32 @@
 				2F979F312A0CFE0A00A1CD53 /* FindingPWView */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		2FCB167E2A7DEB2700AE48A8 /* VoteComplete */ = {
+			isa = PBXGroup;
+			children = (
+				2FCB16802A7DEB3E00AE48A8 /* ViewModel */,
+				2FCB167F2A7DEB3C00AE48A8 /* View */,
+			);
+			path = VoteComplete;
+			sourceTree = "<group>";
+		};
+		2FCB167F2A7DEB3C00AE48A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCB16812A7DEB6A00AE48A8 /* VoteCompleteView.swift */,
+				2FCB16832A7DEB7300AE48A8 /* VoteCompleteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FCB16802A7DEB3E00AE48A8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */ = {
@@ -3434,6 +3470,7 @@
 				2FD87A412A584627003C276B /* RequestLoginDTO.swift in Sources */,
 				2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */,
 				2FD4D9022A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift in Sources */,
+				2FCB16822A7DEB6A00AE48A8 /* VoteCompleteView.swift in Sources */,
 				2FD82D782A77471E00372D24 /* DeleteReviewQuery.swift in Sources */,
 				2FE111362A76688A0013A49E /* SameWorkCharacterListQuery.swift in Sources */,
 				2FD87A372A58420F003C276B /* DropQuery.swift in Sources */,
@@ -3463,6 +3500,7 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
+				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
@@ -3656,6 +3694,7 @@
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
 				2FD87A2F2A58409A003C276B /* Login.swift in Sources */,
+				2FCB16882A7DED7200AE48A8 /* WidthChartView.swift in Sources */,
 				2F437C022A4BE617000B7A61 /* ResponseCharacterDTO.swift in Sources */,
 				2FD4D9142A6CC42200E7972B /* MyProfile.swift in Sources */,
 				2FD84E9C29FC2C3800A42F0F /* PopupViewModel.swift in Sources */,
@@ -3727,6 +3766,7 @@
 				2FD82D592A77435F00372D24 /* PostReview.swift in Sources */,
 				2F1AB9C72A10B876001178EA /* FeedReviewCollectionViewCell.swift in Sources */,
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
+				2FCB16862A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
 				2F9793A42A52A4450098939B /* SearchView.swift in Sources */,
