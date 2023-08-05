@@ -74,10 +74,12 @@ final class EditNicknameView: BaseView {
         let insidePadding: CGFloat = 8
         let buttonHeight = 48
         let textFieldHeight = 52
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(topLeading)
             make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)
         }
+        
         explainLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)

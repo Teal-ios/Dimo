@@ -15,6 +15,7 @@ enum SettingRouter<R> {
     case mbtiChange(parameters: MbtiChangeQuery)
     case mbtiChangeDateCheck(parameters: MbtiChangeDateQuery)
     case passwordChange(parameters: PasswordChangeQuery)
+    case withdraw(paramters: WithdrawQuery)
 }
 
 extension SettingRouter: TargetType2 {
@@ -49,6 +50,8 @@ extension SettingRouter: TargetType2 {
             return "/user_info/confirm_mbti_modify"
         case .passwordChange:
             return "/user_info/change_pw"
+        case .withdraw:
+            return "/drop"
         }
     }
     
@@ -73,6 +76,9 @@ extension SettingRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
                     URLQueryItem(name: "password", value: parameters.currentPassword),
                     URLQueryItem(name: "new_password", value: parameters.newPassword)]
+        case .withdraw(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.userId),
+                    URLQueryItem(name: "drop_reason", value: parameters.withdrawReason)]
         }
     }
     
@@ -82,7 +88,7 @@ extension SettingRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .userInfoInquiry, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange:
+        case .userInfoInquiry, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange, .withdraw:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -92,6 +98,11 @@ extension SettingRouter: TargetType2 {
     }
     
     var httpMethod: HTTPMethod {
-        return .get
+        switch self {
+        case .userInfoInquiry, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange:
+            return .get
+        case .withdraw:
+            return .post
+        }
     }
 }

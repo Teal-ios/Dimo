@@ -42,16 +42,18 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showAlertEditUserNameViewController(with newNickname: String?, toast: ( () -> Void )? ) {
+    func showAlertEditUserNameViewController(with newNickname: String?, completion: ( () -> Void )? ) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = ChangeNicknameAlertViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
-        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, toast: toast)
+        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, toast: completion)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         navigationController.present(vc, animated: true)
     }
+    
+    func showAlertWithdrawViewController(with )
     
     func showEditPasswordViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
@@ -69,8 +71,11 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showWithDrawViewController() {
-        let viewModel = WithDrawViewModel(coordinator: self)
-        let vc = WithDrawViewController(viewModel: viewModel)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = WithdrawViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = WithdrawViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
 }

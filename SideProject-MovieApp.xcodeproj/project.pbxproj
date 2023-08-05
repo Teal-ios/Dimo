@@ -85,9 +85,9 @@
 		2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */; };
 		2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */; };
 		2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */; };
-		2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */; };
-		2F53D0D22A1F7C0D00898DCD /* WithDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */; };
-		2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */; };
+		2F53D0D02A1F7C0300898DCD /* WithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0CF2A1F7C0300898DCD /* WithdrawViewModel.swift */; };
+		2F53D0D22A1F7C0D00898DCD /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D12A1F7C0D00898DCD /* WithdrawView.swift */; };
+		2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D32A1F7C1400898DCD /* WithdrawViewController.swift */; };
 		2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */; };
 		2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */; };
 		2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */; };
@@ -437,6 +437,13 @@
 		493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */; };
 		493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */; };
 		493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */; };
+		493C5C772A7642CA00AF1F63 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C762A7642CA00AF1F63 /* Reactive+Extension.swift */; };
+		493C5C792A768E7100AF1F63 /* WithdrawQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C782A768E7100AF1F63 /* WithdrawQuery.swift */; };
+		493C5C7B2A7690F100AF1F63 /* Withdraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C7A2A7690F100AF1F63 /* Withdraw.swift */; };
+		493C5C7D2A76925000AF1F63 /* RequestWithdrawDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */; };
+		493C5C7F2A769E6200AF1F63 /* ResponseWithdrawDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */; };
+		493C5C812A76A50700AF1F63 /* WithdrawAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C802A76A50700AF1F63 /* WithdrawAlertViewController.swift */; };
+		493C5C862A76A65C00AF1F63 /* WithdrawAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493C5C852A76A65C00AF1F63 /* WithdrawAlertViewModel.swift */; };
 		497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E12A3A1D3A0043D67E /* NetworkService.swift */; };
 		497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E32A3D7A130043D67E /* DataTransferService.swift */; };
 		497454E72A3DD5210043D67E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E62A3DD5210043D67E /* APIKey.swift */; };
@@ -580,9 +587,9 @@
 		2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiView.swift; sourceTree = "<group>"; };
 		2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewController.swift; sourceTree = "<group>"; };
 		2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMbtiViewModel.swift; sourceTree = "<group>"; };
-		2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawViewModel.swift; sourceTree = "<group>"; };
-		2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawView.swift; sourceTree = "<group>"; };
-		2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawViewController.swift; sourceTree = "<group>"; };
+		2F53D0CF2A1F7C0300898DCD /* WithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewModel.swift; sourceTree = "<group>"; };
+		2F53D0D12A1F7C0D00898DCD /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
+		2F53D0D32A1F7C1400898DCD /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		2F53D0D72A1F7E3500898DCD /* DrawButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawButtonLabel.swift; sourceTree = "<group>"; };
 		2F6D7D062A14A4EB00FA457D /* ContentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreViewController.swift; sourceTree = "<group>"; };
 		2F6D7D082A14A4F200FA457D /* ContentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMoreView.swift; sourceTree = "<group>"; };
@@ -937,6 +944,13 @@
 		493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChange.swift; sourceTree = "<group>"; };
 		493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordChangeDTO.swift; sourceTree = "<group>"; };
 		493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePasswordChangeDTO.swift; sourceTree = "<group>"; };
+		493C5C762A7642CA00AF1F63 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
+		493C5C782A768E7100AF1F63 /* WithdrawQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawQuery.swift; sourceTree = "<group>"; };
+		493C5C7A2A7690F100AF1F63 /* Withdraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Withdraw.swift; sourceTree = "<group>"; };
+		493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestWithdrawDTO.swift; sourceTree = "<group>"; };
+		493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWithdrawDTO.swift; sourceTree = "<group>"; };
+		493C5C802A76A50700AF1F63 /* WithdrawAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAlertViewController.swift; sourceTree = "<group>"; };
+		493C5C852A76A65C00AF1F63 /* WithdrawAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAlertViewModel.swift; sourceTree = "<group>"; };
 		497454E12A3A1D3A0043D67E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		497454E32A3D7A130043D67E /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		497454E62A3DD5210043D67E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -1140,7 +1154,6 @@
 			children = (
 				2FD4D0C22A2CB0C100B9AF61 /* NotificationSetting */,
 				2FD4D0C12A2CB06700B9AF61 /* AccountSetting */,
-				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
 				2F53D0982A1F364F00898DCD /* SettingView */,
 			);
 			path = SettingView;
@@ -1471,6 +1484,7 @@
 		2F53D0A62A1F4A2100898DCD /* EditNicknameView */ = {
 			isa = PBXGroup;
 			children = (
+				2F53D0B12A1F61BF00898DCD /* AlertEditUserNameView */,
 				2F53D0A82A1F4A3E00898DCD /* ViewModel */,
 				2F53D0A72A1F4A3C00898DCD /* View */,
 			);
@@ -1574,6 +1588,7 @@
 		2F53D0CC2A1F7BE500898DCD /* WithDrawView */ = {
 			isa = PBXGroup;
 			children = (
+				493C5C822A76A63000AF1F63 /* AlertWithdrawView */,
 				2F53D0CE2A1F7BFB00898DCD /* ViewModel */,
 				2F53D0CD2A1F7BF900898DCD /* View */,
 			);
@@ -1583,8 +1598,8 @@
 		2F53D0CD2A1F7BF900898DCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0D12A1F7C0D00898DCD /* WithDrawView.swift */,
-				2F53D0D32A1F7C1400898DCD /* WithDrawViewController.swift */,
+				2F53D0D12A1F7C0D00898DCD /* WithdrawView.swift */,
+				2F53D0D32A1F7C1400898DCD /* WithdrawViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1592,7 +1607,7 @@
 		2F53D0CE2A1F7BFB00898DCD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0CF2A1F7C0300898DCD /* WithDrawViewModel.swift */,
+				2F53D0CF2A1F7C0300898DCD /* WithdrawViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2109,6 +2124,7 @@
 				49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */,
 				4926773B2A5714E20003C882 /* Toast+Extension.swift */,
 				2FD2DD022A70E3F7000C5EB7 /* UIImage+Extension.swift */,
+				493C5C762A7642CA00AF1F63 /* Reactive+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3037,6 +3053,31 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		493C5C822A76A63000AF1F63 /* AlertWithdrawView */ = {
+			isa = PBXGroup;
+			children = (
+				493C5C832A76A63D00AF1F63 /* ViewModel */,
+				493C5C842A76A64000AF1F63 /* View */,
+			);
+			path = AlertWithdrawView;
+			sourceTree = "<group>";
+		};
+		493C5C832A76A63D00AF1F63 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				493C5C852A76A65C00AF1F63 /* WithdrawAlertViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		493C5C842A76A64000AF1F63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				493C5C802A76A50700AF1F63 /* WithdrawAlertViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		497454EB2A3F66200043D67E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -3047,6 +3088,7 @@
 				497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */,
 				497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */,
 				497454F42A3F69050043D67E /* PasswordChangeQuery.swift */,
+				493C5C782A768E7100AF1F63 /* WithdrawQuery.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3058,6 +3100,7 @@
 				49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */,
 				4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */,
 				493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */,
+				493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3069,6 +3112,7 @@
 				2FBFE11B2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift */,
 				4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */,
 				493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */,
+				493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3098,6 +3142,7 @@
 				2FBFE1192A262735001D5425 /* NicknameChange.swift */,
 				4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */,
 				493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */,
+				493C5C7A2A7690F100AF1F63 /* Withdraw.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3363,6 +3408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
+				493C5C792A768E7100AF1F63 /* WithdrawQuery.swift in Sources */,
 				2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				2FD82DBC2A775AE800372D24 /* ResponseGetCommentDTO.swift in Sources */,
@@ -3550,6 +3596,7 @@
 				2FD87A352A584114003C276B /* Social.swift in Sources */,
 				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
 				2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */,
+				493C5C7B2A7690F100AF1F63 /* Withdraw.swift in Sources */,
 				2F979F252A0C9A8E00A1CD53 /* FindIDViewController.swift in Sources */,
 				2FD4D9052A6BB1DB00E7972B /* MyMomentumUseCase.swift in Sources */,
 				2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */,
@@ -3579,6 +3626,7 @@
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2F437C232A4C57AF000B7A61 /* FeedDetailMoreMyViewController.swift in Sources */,
 				2FCF86292A4823E500759F71 /* MovieDetailHeaderView.swift in Sources */,
+				493C5C812A76A50700AF1F63 /* WithdrawAlertViewController.swift in Sources */,
 				2FD4D9262A6CCAE100E7972B /* ResponseLikeMovieContentDTO.swift in Sources */,
 				2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */,
 				2FBF64B42A71FE6B0036401F /* MyContentMoreViewController.swift in Sources */,
@@ -3587,6 +3635,7 @@
 				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
 				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
+				493C5C772A7642CA00AF1F63 /* Reactive+Extension.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
@@ -3621,7 +3670,7 @@
 				2FD4D91A2A6CC5B600E7972B /* LikeContent.swift in Sources */,
 				2FD4D8FE2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift in Sources */,
 				2FD4D9122A6CC3D300E7972B /* LikeMovieContentQuery.swift in Sources */,
-				2F53D0D02A1F7C0300898DCD /* WithDrawViewModel.swift in Sources */,
+				2F53D0D02A1F7C0300898DCD /* WithdrawViewModel.swift in Sources */,
 				2FD4D9352A6E453400E7972B /* DetailAnimationData.swift in Sources */,
 				93C48BB129D9299F00644F6A /* PasswordViewController.swift in Sources */,
 				2FD4D90E2A6CC35E00E7972B /* MyProfileQuery.swift in Sources */,
@@ -3757,10 +3806,11 @@
 				2FD82DD22A777DA200372D24 /* VoteRepositoyImpl.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */,
-				2F53D0D42A1F7C1400898DCD /* WithDrawViewController.swift in Sources */,
+				2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				2FD82D652A7743D600372D24 /* PostComment.swift in Sources */,
 				2FD4D9222A6CCAAB00E7972B /* ResponseModifyMyProfileDTO.swift in Sources */,
+				493C5C7D2A76925000AF1F63 /* RequestWithdrawDTO.swift in Sources */,
 				2F979F202A0C928100A1CD53 /* JoinCompleteViewController.swift in Sources */,
 				2F149DD12A4995FC0098AF64 /* MovieDetailRankViewController.swift in Sources */,
 				2FD82D592A77435F00372D24 /* PostReview.swift in Sources */,
@@ -3776,7 +3826,9 @@
 				93C48B4A29D17F1000644F6A /* ViewModelType.swift in Sources */,
 				93C48BAA29D6ADE000644F6A /* NickNameViewController.swift in Sources */,
 				2F53D0742A1F114900898DCD /* TargetType.swift in Sources */,
+				493C5C7F2A769E6200AF1F63 /* ResponseWithdrawDTO.swift in Sources */,
 				2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */,
+				493C5C862A76A65C00AF1F63 /* WithdrawAlertViewModel.swift in Sources */,
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,
