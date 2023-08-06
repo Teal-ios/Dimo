@@ -41,6 +41,7 @@ final class FeedViewController: BaseViewController {
     
     override func setupBinding() {
         let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap, viewDidLoad: self.viewDidLoadTrigger)
+        
         let output = self.viewModel.transform(input: input)
         
         output.getReivewList
@@ -59,8 +60,8 @@ final class FeedViewController: BaseViewController {
                     }
                     reviewSnapshot.appendItems(sectionArr, toSection: 0)
                     self.dataSource.apply(reviewSnapshot)
+                    vc.selfView.reviewException(data: true)
                 }
-                
             }
             .disposed(by: disposeBag)
     }
