@@ -12,7 +12,7 @@ final class MyContentMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.text = "관심있는 컨텐츠"
+        label.text = "내가 찜한 콘텐츠"
         return label
     }()
     

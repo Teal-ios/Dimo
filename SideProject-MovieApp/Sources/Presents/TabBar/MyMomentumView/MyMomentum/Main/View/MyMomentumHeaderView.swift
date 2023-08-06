@@ -16,7 +16,7 @@ class MyMomentumHeaderView: UICollectionReusableView {
         label.font = Font.title3
         label.textColor = .black5
         label.textAlignment = .left
-        label.text = "좋아하는 컨텐츠"
+        label.text = "내가 찜한 콘텐츠"
        return label
     }()
     

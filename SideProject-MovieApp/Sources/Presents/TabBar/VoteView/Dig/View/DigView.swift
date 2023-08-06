@@ -193,7 +193,8 @@ final class DigView: BaseView {
     
     override func setupLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(45)
         }
         
@@ -204,7 +205,7 @@ final class DigView: BaseView {
         
         nextButton.snp.makeConstraints { make in
             make.top.equalTo(buttonContainView.snp.top).offset(24)
-            make.horizontalEdges.equalTo(buttonContainView)
+            make.horizontalEdges.equalTo(buttonContainView).inset(16)
             make.height.equalTo(48)
         }
         
@@ -237,7 +238,8 @@ final class DigView: BaseView {
         totalStackView.snp.makeConstraints { make in
             make.height.equalTo(432)
             make.top.equalTo(subtitleLabel.snp.bottom).offset(36)
-            make.horizontalEdges.bottom.equalTo(scrollView)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+            make.bottom.equalTo(scrollView)
         }
     }
 }
