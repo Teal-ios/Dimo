@@ -274,11 +274,11 @@ final class MovieDetailView: BaseView {
     override func setupLayout() {
         
         scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
         
         headerView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.snp.top)
+            make.top.equalToSuperview()
             make.width.equalTo(scrollView.snp.width)
             make.height.greaterThanOrEqualTo(480)
         }

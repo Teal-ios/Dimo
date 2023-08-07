@@ -89,7 +89,7 @@ class MovieDetailHeaderView: BaseView {
     
     override func setupLayout() {
         detailHeaderView.snp.makeConstraints { make in
-            make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.top.equalToSuperview()
             make.height.equalTo(280)
         }
         

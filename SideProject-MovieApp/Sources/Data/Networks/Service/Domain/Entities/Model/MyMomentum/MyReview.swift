@@ -15,4 +15,8 @@ struct MyReview: Hashable {
     let review_like: Int
     let review_hits: Int
     let review_spoiler: Int
+    let anime_id: Int
+    let character_img: String
+    let character_name: String
+    let character_mbti: String?
 }

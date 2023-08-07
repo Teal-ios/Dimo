@@ -288,7 +288,7 @@ class JoinMbtiViewController: BaseViewController {
                 self.joinMbtiView.jView.layer.borderColor = UIColor.black80.cgColor
                 self.joinMbtiView.jView.mbtiLabel.textColor = .black80
                 self.joinMbtiView.jView.backgroundColor = .black100
-                self.joinMbtiView.pView.imgView.image = UIImage(named: "P_Gray")
+                self.joinMbtiView.jView.imgView.image = UIImage(named: "J_Gray")
                 
                 self.joinMbtiView.pView.layer.borderColor = UIColor.purple80.cgColor
                 self.joinMbtiView.pView.mbtiLabel.textColor = .black5

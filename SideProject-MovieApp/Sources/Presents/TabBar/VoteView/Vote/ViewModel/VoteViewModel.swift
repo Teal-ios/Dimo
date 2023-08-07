@@ -59,7 +59,7 @@ final class VoteViewModel: ViewModelType {
         input.characterCellTapped
             .withUnretained(self)
             .bind { vc, characterInfo in
-                vc.coordinator?.showDigViewController()
+                vc.coordinator?.showDigViewController(characterInfo: characterInfo)
             }
             .disposed(by: disposeBag)
         

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ReviewCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "ReviewCollectionViewCell"
@@ -114,11 +115,19 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
 extension ReviewCollectionViewCell {
     func configureUpdateReviewDate(review: MyReview) {
         reviewLabel.text = review.review_content
+        characterNameLabel.text = review.character_name
+        mbtiLabel.text = review.character_mbti ?? "미정"
+        let imageURL = URL(string: review.character_img)
+        imgView.kf.setImage(with: imageURL)
     }
 }
 
 extension ReviewCollectionViewCell {
     func configureUpdateCommentDate(comment: MyComment) {
+        let imageURL = URL(string: comment.character_img)
         reviewLabel.text = comment.comment_content
+        characterNameLabel.text = comment.character_name
+        mbtiLabel.text = comment.character_mbti ?? "미정"
+        imgView.kf.setImage(with: imageURL)
     }
 }
