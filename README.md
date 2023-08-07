@@ -70,10 +70,6 @@ func setNavigationBar() {
 
 그래서 기존엔 회원가입 및 로그인 하는 부분의 BackButton만 변경이 됐었는데…
 
-![Simulator Screen Shot - iPhone 14 Pro - 2023-07-26 at 00.44.58.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0dc95bdd-8ce9-42d8-9f4d-7fffc11461e1/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2023-07-26_at_00.44.58.png)
-
-![Simulator Screen Shot - iPhone 14 Pro - 2023-07-26 at 00.45.02.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4d971dce-1da6-4c7e-bf1a-771a1eeb28ea/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2023-07-26_at_00.45.02.png)
-
 내 정보 쪽에서도 적용이 된 걸 확인했습니다!!!
 
 추가적으로 위 링크 들어가셔서 확인해보면 백버튼의 크기를 개발자가 조정하는게 아닌 것 으로 보입니다. 디자이너가 Asset Image 자체에 왼쪽 여백 값을 주면 여백만큼 백버튼의 너비가 조정되는 것으로 보이네요 🙂
@@ -268,8 +264,6 @@ extension HomeViewController: UICollectionViewDelegate {
 ## 3. 데이터에 따른 화면 분기처리
 
 # 
-
-![스크린샷 2023-07-26 오전 10.34.20.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/abc2af92-d2f8-426f-80bb-cc92a8fb27d6/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-07-26_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.34.20.png)
 
 각각의 섹션마다 데이터가 존재할 때에는 왼쪽처럼, 데이터가 없을때는 오른쪽 처럼 구현해야하는 디자인이었습니다.
 
