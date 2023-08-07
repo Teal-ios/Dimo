@@ -52,10 +52,12 @@ final class DigViewModel: ViewModelType {
     let mbtiValid = PublishRelay<Bool>()
     
     func transform(input: Input) -> Output {
+        
         input.nextButtonTap
-            .withUnretained(self)
-            .bind { vm, _ in
-                vm.coordinator?.showVoteCompleteViewController()
+            .withLatestFrom(self.characterInfo)
+            .bind { [weak self] characterInfo in
+                guard let self else { return }
+                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
             }
             .disposed(by: disposeBag)
         

@@ -59,11 +59,11 @@ final class VoteCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showVoteCompleteViewController() {
+    func showVoteCompleteViewController(characterInfo: CharacterInfo) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
         let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
+        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
         let vc = VoteCompleteViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

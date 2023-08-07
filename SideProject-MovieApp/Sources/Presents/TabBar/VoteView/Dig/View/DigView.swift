@@ -248,7 +248,7 @@ final class DigView: BaseView {
 extension DigView {
     func configureUpdateCharacterInfo(with item: CharacterInfo) {
         self.characterNicknameLabel.text = item.character_name
-        guard let title = item.title else { return }
+        guard item.title != nil else { return }
         self.subtitleLabel.text = item.title
         let imageURL = URL(string: item.character_img)
         self.characterImageView.kf.setImage(with: imageURL)

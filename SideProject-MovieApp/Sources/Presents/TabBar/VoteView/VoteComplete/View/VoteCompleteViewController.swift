@@ -56,6 +56,14 @@ final class VoteCompleteViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.characterInfo
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, characterInfo in
+                vc.selfView.configureUpdateCharacterInfo(with: characterInfo)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

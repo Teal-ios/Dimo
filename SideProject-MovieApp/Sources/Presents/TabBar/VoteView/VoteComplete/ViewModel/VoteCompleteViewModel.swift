@@ -14,10 +14,12 @@ final class VoteCompleteViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: VoteCoordinator?
     private var voteUseCase: VoteUseCase
+    private let characterInfo: BehaviorRelay<CharacterInfo>
 
-    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase) {
+    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
         self.coordinator = coordinator
         self.voteUseCase = voteUseCase
+        self.characterInfo = BehaviorRelay(value: characterInfo)
     }
     
     struct Input{
@@ -26,6 +28,7 @@ final class VoteCompleteViewModel: ViewModelType {
     
     struct Output{
         let sameWorkAnotherCharacterList: PublishRelay<SameWorkCharacterList>
+        let characterInfo: BehaviorRelay<CharacterInfo>
     }
     
     let sameWorkAnotherCharacterList =  PublishRelay<SameWorkCharacterList>()
@@ -41,7 +44,7 @@ final class VoteCompleteViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         
-        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList)
+        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList, characterInfo: self.characterInfo)
     }
 }
 
