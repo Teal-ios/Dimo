@@ -59,8 +59,8 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         tabmanCoordinator.start()
     }
     
-    func showContentMoreViewController(title: String) {
-        let viewModel = ContentMoreViewModel(coordinator: self)
+    func showContentMoreViewController(title: String, content: [Hit]) {
+        let viewModel = ContentMoreViewModel(coordinator: self, content: content)
         let vc = ContentMoreViewController(viewModel: viewModel, title: title)
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)

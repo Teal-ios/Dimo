@@ -74,11 +74,49 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.heroPlusButtonTapped
-            .bind { [weak self] _ in
-                guard let self else { return }
-            self.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화")
-        }
-        .disposed(by: disposeBag)
+            .withLatestFrom(self.animationData)
+            .withUnretained(self)
+            .bind { vm, data in
+                var contentSuccessData: [Hit] = []
+                for i in 0...4 {
+                    if data.contents[i].same_mbti_anime != nil {
+                        guard let success = data.contents[i].same_mbti_anime else { return }
+                        contentSuccessData = success
+                    }
+                }
+                vm.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화", content: contentSuccessData)
+            }
+            .disposed(by: disposeBag)
+        
+        input.hotMoviePlusButtonTapped
+            .withLatestFrom(self.animationData)
+            .withUnretained(self)
+            .bind { vm, data in
+                var contentSuccessData: [Hit] = []
+                for i in 0...4 {
+                    if data.contents[i].hit != nil {
+                        guard let success = data.contents[i].hit else { return }
+                        contentSuccessData = success
+                    }
+                }
+                vm.coordinator?.showContentMoreViewController(title: "지금 핫한 영화", content: contentSuccessData)
+            }
+            .disposed(by: disposeBag)
+        
+        input.mbtiRecommendPlusButtonTapped
+            .withLatestFrom(self.animationData)
+            .withUnretained(self)
+            .bind { vm, data in
+                var contentSuccessData: [Hit] = []
+                for i in 0...4 {
+                    if data.contents[i].recommend != nil {
+                        guard let success = data.contents[i].recommend else { return }
+                        contentSuccessData = success
+                    }
+                }
+                vm.coordinator?.showContentMoreViewController(title: "ISFJ가 관심있는 영화/애니", content: contentSuccessData)
+            }
+            .disposed(by: disposeBag)
         
 //        input.characterPlusButtonTapped
 //            .withUnretained(self)

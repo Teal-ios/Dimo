@@ -20,10 +20,10 @@ final class ContentMoreViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Int, Hit>!
     
     let cardCellSelected = PublishSubject<Void>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
         view = contentMoreView
@@ -31,33 +31,48 @@ final class ContentMoreViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.contentMoreView.collectionView.delegate = self
         setDataSource()
+        self.viewDidLoadTrigger.accept(())
     }
     
-    func setDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
-        }
+    override func setupBinding() {
+        let input = ContentMoreViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
         
-        dataSource = UICollectionViewDiffableDataSource(collectionView: contentMoreView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            return cell
-        })
-     
-        snapshot.appendSections([0])
-        var movieArr: [HomeModel] = []
-        for _ in 1..<50 {
-            movieArr.append(HomeModel(image: nil))
-        }
+        let output = self.viewModel.transform(input: input)
         
-        snapshot.appendItems(movieArr, toSection: 0)
-        dataSource.apply(snapshot)
+        Observable
+            .zip(output.contentData, self.viewDidLoadTrigger)
+            .bind { [weak self] content, _ in
+                guard let self else { return }
+                var snapshot = NSDiffableDataSourceSnapshot<Int, Hit>()
+                snapshot.appendSections([0])
+                var contentArr: [Hit] = []
+                for ele in content {
+                    contentArr.append(ele)
+                }
+                snapshot.appendItems(contentArr, toSection: 0)
+                self.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension ContentMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.cardCellSelected.onNext(())
+    }
+}
+
+extension ContentMoreViewController {
+    func setDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<CardCollectionViewCell, Hit> { cell, indexPath, itemIdentifier in
+            cell.configureAttribute(hit: itemIdentifier)
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: contentMoreView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        })
     }
 }

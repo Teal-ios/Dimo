@@ -46,4 +46,10 @@ extension CardCollectionViewCell {
         imgView.kf.setImage(with: imageURL)
         imgView.contentMode = .scaleToFill
     }
+    
+    func configureAttribute(hit: Hit) {
+        let imageURL = URL(string: hit.poster_img)
+        imgView.kf.setImage(with: imageURL)
+        imgView.contentMode = .scaleToFill
+    }
 }
