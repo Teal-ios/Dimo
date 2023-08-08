@@ -58,7 +58,7 @@ extension VoteRouter: TargetType2 {
         case .voteCharacter:
             return nil
         case .sameWorkCharacterList(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "search_content", value: parameters.search_content)]
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
         }
     }
     

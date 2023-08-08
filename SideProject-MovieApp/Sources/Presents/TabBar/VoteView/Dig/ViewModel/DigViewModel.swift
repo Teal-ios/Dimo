@@ -50,16 +50,17 @@ final class DigViewModel: ViewModelType {
     
     var mbtiString = ""
     let mbtiValid = PublishRelay<Bool>()
+    let voteCharacterResponse = PublishRelay<VoteCharacter>()
     
     func transform(input: Input) -> Output {
         
-        input.nextButtonTap
-            .withLatestFrom(self.characterInfo)
-            .bind { [weak self] characterInfo in
-                guard let self else { return }
-                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
-            }
-            .disposed(by: disposeBag)
+//        input.nextButtonTap
+//            .withLatestFrom(self.characterInfo)
+//            .bind { [weak self] characterInfo in
+//                guard let self else { return }
+//                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
+//            }
+//            .disposed(by: disposeBag)
         
         input.mbtiInfo.bind { [weak self] mbti in
             guard let self = self else { return }
@@ -75,6 +76,33 @@ final class DigViewModel: ViewModelType {
             }
         }
         .disposed(by: disposeBag)
+        
+        input.nextButtonTap
+            .withLatestFrom(self.characterInfo)
+            .bind { [weak self] characterInfo in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                let mbtiArray = self.mbtiStringToArray(mbti: self.mbtiString)
+                guard let contentId = characterInfo.content_id else { return }
+                
+                 let ei = String(mbtiArray[0])
+                 let sn = String(mbtiArray[1])
+                 let tf = String(mbtiArray[2])
+                 let jp = String(mbtiArray[3])
+
+                self.postVoteCharacter(user_id: user_id, content_id: String(contentId), character_id: String(characterInfo.character_id), ei: ei, sn: sn, tf: tf, jp: jp)
+            }
+            .disposed(by: disposeBag)
+        
+        let voteComplete = Observable.zip(self.characterInfo, self.voteCharacterResponse)
+        
+        voteComplete
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] characterInfo, voteCharacterResponse in
+                guard let self else { return }
+                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo, voteCharacter: voteCharacterResponse)
+            }
+            .disposed(by: disposeBag)
         
         return Output(characterInfo: self.characterInfo, eButtonTapped: input.eButtonTapped, iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped, mbtiValid: self.mbtiValid)
     }
@@ -108,6 +136,25 @@ extension DigViewModel {
             }
         }
         self.mbtiValid.accept(true)
-        print(mbtiString)
+    }
+}
+
+extension DigViewModel {
+    func mbtiStringToArray(mbti: String) -> [String.Element] {
+        return Array(mbti)
+    }
+}
+
+extension DigViewModel {
+    private func postVoteCharacter(user_id: String, content_id: String, character_id: String, ei: String, sn: String, tf: String, jp: String) {
+        Task {
+            let query = VoteCharacterQuery(user_id: user_id, content_id: content_id, character_id: character_id, ei: ei, sn: sn, tf: tf, jp: jp)
+            
+            print(query, "투표할때 보낸 쿼리")
+            
+            let voteCharacterResponse = try await voteUseCase.excuteVoteCharacter(query: query)
+            print(voteCharacterResponse, "투표 완료")
+            self.voteCharacterResponse.accept(voteCharacterResponse)
+        }
     }
 }

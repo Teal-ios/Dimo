@@ -13,7 +13,7 @@ struct ResponseResultDTO: Decodable {
     let character_img: String
     let character_name: String
     let character_mbti: String?
-    let is_vote: Int
+    let is_vote: Int?
 
     enum CodingKeys: String, CodingKey {
         case character_id, anime_id, character_img, character_name, character_mbti, is_vote

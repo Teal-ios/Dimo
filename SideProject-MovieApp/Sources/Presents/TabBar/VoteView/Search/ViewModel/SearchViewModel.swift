@@ -36,11 +36,7 @@ final class SearchViewModel: ViewModelType {
         input.viewDidLoad
             .bind { [weak self] _ in
                 print("viewDidLoad 실행")
-//                let animationDataObservable = self?.contentUseCase.excuteFetchAnimationData(query: <#T##GetAnimationQuery#>)
-//                
-//                animationDataObservable?.bind(onNext: { data in
-//                    self?.animationData.accept(data)
-//                })
+
             }
             .disposed(by: disposeBag)
         
