@@ -45,11 +45,19 @@ final class FeedDetailViewModel: ViewModelType {
     let commentText = BehaviorRelay(value: "")
     
     func transform(input: Input) -> Output {
-        input.plusNavigationButtonTapped.bind { [weak self] _ in
-            guard let self else { return }
-            self.coordinator?.showFeedDetailMoreMyViewMController()
-        }
-        .disposed(by: disposeBag)
+        //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
+        input.plusNavigationButtonTapped
+            .withLatestFrom(self.review)
+            .withUnretained(self)
+            .bind { vm, review in
+                guard let user_id = UserDefaultManager.userId else { return }
+                if review.user_id == user_id {
+                    vm.coordinator?.showFeedDetailMoreMyViewMController()
+                } else {
+                    vm.coordinator?.showFeedDetailMoreAnotherViewMController()
+                }
+            }
+            .disposed(by: disposeBag)
         
         input.spoilerButtonTapped
             .withUnretained(self)

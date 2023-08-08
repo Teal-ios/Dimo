@@ -70,11 +70,11 @@ class CategoryView: BaseView {
         [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, animationLabel, animationButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
         
         baseCategoryView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalTo(168)
         }
         
