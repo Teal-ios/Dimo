@@ -14,6 +14,7 @@ enum MyMomentumRouter<R> {
     case likeMovieContent(parameters: LikeMovieContentQuery)
     case getMyReview(parameters: GetMyReviewQuery)
     case getMyComment(parameters: GetMyCommentQuery)
+    case getMyVotedCharacter(parameters: GetMyVotedCharacterQuery)
 }
 
 extension MyMomentumRouter: TargetType2 {
@@ -46,6 +47,8 @@ extension MyMomentumRouter: TargetType2 {
             return "/my_momentum/review"
         case .getMyComment:
             return "/my_momentum/comment"
+        case .getMyVotedCharacter:
+            return "/my_momentum/voted_character"
         }
     }
     
@@ -64,6 +67,8 @@ extension MyMomentumRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .getMyReview(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        case .getMyVotedCharacter(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         }
     }
     
@@ -73,7 +78,7 @@ extension MyMomentumRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .myProfile, .modifyMyProfile, .likeAnimationContent, .likeMovieContent, .getMyComment, .getMyReview:
+        case .myProfile, .modifyMyProfile, .likeAnimationContent, .likeMovieContent, .getMyComment, .getMyReview, .getMyVotedCharacter:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -93,7 +98,7 @@ extension MyMomentumRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .myProfile, .likeAnimationContent, .likeMovieContent, .getMyReview, .getMyComment:
+        case .myProfile, .likeAnimationContent, .likeMovieContent, .getMyReview, .getMyComment, .getMyVotedCharacter:
             return .get
         case .modifyMyProfile:
             return .post

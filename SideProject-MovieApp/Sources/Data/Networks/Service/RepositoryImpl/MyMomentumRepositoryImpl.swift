@@ -88,4 +88,14 @@ extension MyMomentumRepositoryImpl {
             throw MyMomentumRepositoryError.request
         }
     }
+    
+    func fetchMyVotedCharacter(query: GetMyVotedCharacterQuery) async throws -> GetMyVotedCharacter {
+        let target = MyMomentumAPIEndpoints.getMyVotedCharacter(with: query.user_id)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw MyMomentumRepositoryError.request
+        }
+    }
 }

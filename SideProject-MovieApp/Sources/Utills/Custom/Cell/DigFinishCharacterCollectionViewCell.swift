@@ -15,6 +15,7 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
         let view = UIImageView()
         view.image = UIImage(named: "finishSignUp")
         view.backgroundColor = .black5
+        view.clipsToBounds = true
         return view
     }()
     
@@ -52,6 +53,15 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
 
 extension DigFinishCharacterCollectionViewCell {
     func configureUIToResultData(with item: Result) {
+        let imageURL = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageURL)
+        imgView.contentMode = .scaleToFill
+        characterNameLabel.text = item.character_name
+    }
+}
+
+extension DigFinishCharacterCollectionViewCell {
+    func configureUIToVotedCharacterData(with item: MyVotedCharacter) {
         let imageURL = URL(string: item.character_img)
         imgView.kf.setImage(with: imageURL)
         imgView.contentMode = .scaleToFill

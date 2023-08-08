@@ -8,6 +8,7 @@
 import Foundation
 
 struct MyReview: Hashable {
+    let title: String
     let review_id: Int
     let user_id: String
     let character_id: Int

@@ -8,6 +8,7 @@
 import Foundation
 
 struct MyComment: Hashable {
+    let title: String
     let comment_id: Int
     let review_id: Int
     let user_id: String
