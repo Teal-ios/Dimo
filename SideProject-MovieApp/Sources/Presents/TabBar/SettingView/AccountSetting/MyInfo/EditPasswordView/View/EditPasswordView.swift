@@ -83,13 +83,14 @@ class EditPasswordView: BaseView {
     
     let passwordChangeButton: OnboardingButton = {
         let button = OnboardingButton(title: "변경하기", ofSize: 14)
-        button.configuration?.baseBackgroundColor = .purple100
+        button.isEnabled = false
+        button.configuration?.baseForegroundColor = .white100
+        button.configuration?.baseBackgroundColor = .black80
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.passwordChangeButton.configuration?.baseBackgroundColor = UIColor.purple100
         self.configureTestField()
     }
     
