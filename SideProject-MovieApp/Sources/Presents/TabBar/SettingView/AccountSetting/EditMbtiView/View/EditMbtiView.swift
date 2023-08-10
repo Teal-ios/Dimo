@@ -48,9 +48,10 @@ class EditMbtiView: BaseView {
         return button
     }()
     
-    let nextButton: OnboardingButton = {
+    let mbtiChangeButton: OnboardingButton = {
         let button = OnboardingButton(title: "변경하기", ofSize: 14)
         button.configuration?.baseBackgroundColor = .black80
+        button.isEnabled = false
         return button
     }()
     
@@ -177,11 +178,21 @@ class EditMbtiView: BaseView {
         setLayoutConstraints()
     }
     
+    func checkMbtiChangeButtonValidation(_ isEnabled: Bool) {
+        if isEnabled {
+            mbtiChangeButton.isEnabled = true
+            mbtiChangeButton.configuration?.baseBackgroundColor = UIColor.purple100
+        } else {
+            mbtiChangeButton.isEnabled = false
+            mbtiChangeButton.configuration?.baseBackgroundColor = UIColor.black80
+        }
+    }
+    
     override func setHierarchy() {
         self.addSubview(headerLabel)
         self.addSubview(scrollView)
         self.addSubview(findMbtiButton)
-        self.addSubview(nextButton)
+        self.addSubview(mbtiChangeButton)
     }
     
     private func setLayoutConstraints() {
@@ -224,7 +235,7 @@ class EditMbtiView: BaseView {
             make.height.equalTo(16)
         }
         
-        nextButton.snp.makeConstraints { make in
+        mbtiChangeButton.snp.makeConstraints { make in
             make.top.equalTo(findMbtiButton.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(36)

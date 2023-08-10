@@ -15,11 +15,19 @@ final class EditMbtiViewController: BaseViewController {
     private var viewModel: EditMbtiViewModel
     
     //MARK: Input
-    private lazy var input = EditMbtiViewModel.Input(eButtonTapped: selfView.eView.mbtiButton.rx.tap, iButtonTapped: selfView.iView.mbtiButton.rx.tap, nButtonTapped: selfView.nView.mbtiButton.rx.tap, sButtonTapped: selfView.sView.mbtiButton.rx.tap, tButtonTapped: selfView.tView.mbtiButton.rx.tap, fButtonTapped: selfView.fView.mbtiButton.rx.tap, jButtonTapped: selfView.jView.mbtiButton.rx.tap, pButtonTapped: selfView.pView.mbtiButton.rx.tap)
+    private lazy var input = EditMbtiViewModel.Input(eButtonTapped: selfView.eView.mbtiButton.rx.tap,
+                                                     iButtonTapped: selfView.iView.mbtiButton.rx.tap,
+                                                     nButtonTapped: selfView.nView.mbtiButton.rx.tap,
+                                                     sButtonTapped: selfView.sView.mbtiButton.rx.tap,
+                                                     tButtonTapped: selfView.tView.mbtiButton.rx.tap,
+                                                     fButtonTapped: selfView.fView.mbtiButton.rx.tap,
+                                                     jButtonTapped: selfView.jView.mbtiButton.rx.tap,
+                                                     pButtonTapped: selfView.pView.mbtiButton.rx.tap)
     
     override func loadView() {
-        view = selfView
+        self.view = selfView
     }
+    
     init(viewModel: EditMbtiViewModel) {
         self.viewModel = viewModel
         super.init()
@@ -28,6 +36,7 @@ final class EditMbtiViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func setupBinding() {
         let output = viewModel.transform(input: input)
                
@@ -243,5 +252,28 @@ final class EditMbtiViewController: BaseViewController {
             }
         }
         .disposed(by: disposeBag)
+        
+        output.isValidMbti
+            .bind { [weak self] mbti in
+                guard let self else { return }
+                guard let EisSelected = mbti["E"],
+                      let IisSelected = mbti["I"],
+                      let NisSelected = mbti["N"],
+                      let SisSelected = mbti["S"],
+                      let TisSelected = mbti["T"],
+                      let FisSelected = mbti["F"],
+                      let JisSelected = mbti["J"],
+                      let PisSelected = mbti["P"] else { return }
+                
+                if (EisSelected || IisSelected) && (NisSelected || SisSelected) && (TisSelected || FisSelected) && (JisSelected || PisSelected) == true {
+                    self.selfView.checkMbtiChangeButtonValidation(true)
+                } else {
+                    self.selfView.checkMbtiChangeButtonValidation(false)
+                }
+                
+                print(mbti)
+                
+            }
+            .disposed(by: disposeBag)
     }
 }
