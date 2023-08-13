@@ -13,6 +13,7 @@ final class EditMbtiViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
+    private let settingUseCase: SettingUseCase
     
     
     struct Input{
@@ -24,6 +25,7 @@ final class EditMbtiViewModel: ViewModelType {
         let fButtonTapped: ControlEvent<Void>
         let jButtonTapped: ControlEvent<Void>
         let pButtonTapped: ControlEvent<Void>
+        let changeButtonTapped: ControlEvent<Void>
     }
     
     private var isEButtonTapped = BehaviorRelay<Bool>(value: false)
@@ -35,6 +37,8 @@ final class EditMbtiViewModel: ViewModelType {
     private var isJButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isPButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isValidMbti = BehaviorRelay<[String: Bool]>(value: ["E": false, "I": false, "N": false, "S": false, "T": false, "F": false, "J": false, "P": false])
+    private let mbtiString = BehaviorRelay<String>(value: "")
+    private let isChanged = BehaviorRelay<Bool>(value: false)
     
     struct Output{
         let eButtonTapped: ControlEvent<Void>
@@ -46,10 +50,12 @@ final class EditMbtiViewModel: ViewModelType {
         let jButtonTapped: ControlEvent<Void>
         let pButtonTapped: ControlEvent<Void>
         let isValidMbti: BehaviorRelay<[String:Bool]>
+        let isChanged: BehaviorRelay<Bool>
     }
     
-    init(coordinator: SettingCoordinator? = nil) {
+    init(coordinator: SettingCoordinator? = nil, settingUseCase: SettingUseCase) {
         self.coordinator = coordinator
+        self.settingUseCase = settingUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -70,7 +76,7 @@ final class EditMbtiViewModel: ViewModelType {
                     vm.isIButtonTapped.accept(false)
                 } else {
                     vm.isValidMbti.accept(["E": false,
-                                           "I": true,
+                                           "I": false,
                                            "N": vm.isNButtonTapped.value,
                                            "S": vm.isSButtonTapped.value,
                                            "T": vm.isTButtonTapped.value,
@@ -97,7 +103,7 @@ final class EditMbtiViewModel: ViewModelType {
                     vm.isIButtonTapped.accept(true)
                     vm.isEButtonTapped.accept(false)
                 } else {
-                    vm.isValidMbti.accept(["E": true,
+                    vm.isValidMbti.accept(["E": false,
                                            "I": false,
                                            "N": vm.isNButtonTapped.value,
                                            "S": vm.isSButtonTapped.value,
@@ -128,7 +134,7 @@ final class EditMbtiViewModel: ViewModelType {
                     vm.isValidMbti.accept(["E": vm.isEButtonTapped.value,
                                            "I": vm.isIButtonTapped.value,
                                            "N": false,
-                                           "S": true,
+                                           "S": false,
                                            "T": vm.isTButtonTapped.value,
                                            "F": vm.isFButtonTapped.value,
                                            "J": vm.isJButtonTapped.value,
@@ -155,7 +161,7 @@ final class EditMbtiViewModel: ViewModelType {
                 } else {
                     vm.isValidMbti.accept(["E": vm.isEButtonTapped.value,
                                            "I": vm.isIButtonTapped.value,
-                                           "N": true,
+                                           "N": false,
                                            "S": false,
                                            "T": vm.isTButtonTapped.value,
                                            "F": vm.isFButtonTapped.value,
@@ -186,7 +192,7 @@ final class EditMbtiViewModel: ViewModelType {
                                            "N": vm.isNButtonTapped.value,
                                            "S": vm.isSButtonTapped.value,
                                            "T": false,
-                                           "F": true,
+                                           "F": false,
                                            "J": vm.isJButtonTapped.value,
                                            "P": vm.isPButtonTapped.value])
                     vm.isTButtonTapped.accept(false)
@@ -213,7 +219,7 @@ final class EditMbtiViewModel: ViewModelType {
                                            "I": vm.isIButtonTapped.value,
                                            "N": vm.isNButtonTapped.value,
                                            "S": vm.isSButtonTapped.value,
-                                           "T": true,
+                                           "T": false,
                                            "F": false,
                                            "J": vm.isJButtonTapped.value,
                                            "P": vm.isPButtonTapped.value])
@@ -244,7 +250,7 @@ final class EditMbtiViewModel: ViewModelType {
                                            "T": vm.isTButtonTapped.value,
                                            "F": vm.isFButtonTapped.value,
                                            "J": false,
-                                           "P": true])
+                                           "P": false])
                     vm.isJButtonTapped.accept(false)
                 }
             }
@@ -271,28 +277,33 @@ final class EditMbtiViewModel: ViewModelType {
                                            "S": vm.isSButtonTapped.value,
                                            "T": vm.isTButtonTapped.value,
                                            "F": vm.isFButtonTapped.value,
-                                           "J": true,
+                                           "J": false,
                                            "P": false])
                     vm.isPButtonTapped.accept(false)
                 }
             }
             .disposed(by: disposeBag)
     
-//        input.isValidMbti
-//            .withUnretained(self)
-//            .bind { (vm, mbti) in
-//                var count = 0
-//                
-//                for i in mbti {
-//                    if i == true {
-//                        count += 1
-//                    }
-//                    if count == 4 {
-//                        self.checkMbitiValidation(mbti: mbti)
-//                    }
-//                }
-//            }
-//            .disposed(by: disposeBag)
+        self.isValidMbti
+            .withUnretained(self)
+            .bind { (vm, mbti) in
+                var mbtiString = ""
+                for (key, value) in mbti {
+                    if value == true {
+                        mbtiString += key
+                    }
+                }
+                let sortedMbtiString = vm.sortMbti(mbtiString)
+                vm.mbtiString.accept(sortedMbtiString)
+            }
+            .disposed(by: disposeBag)
+        
+        input.changeButtonTapped
+            .withUnretained(self)
+            .bind { (vm, _) in
+                vm.loadMbtiChange(to: vm.mbtiString.value)
+            }
+            .disposed(by: disposeBag)
         
         return Output(eButtonTapped: input.eButtonTapped,
                       iButtonTapped: input.iButtonTapped,
@@ -302,39 +313,35 @@ final class EditMbtiViewModel: ViewModelType {
                       fButtonTapped: input.fButtonTapped,
                       jButtonTapped: input.jButtonTapped,
                       pButtonTapped: input.pButtonTapped,
-                      isValidMbti: self.isValidMbti)
+                      isValidMbti: self.isValidMbti,
+                      isChanged: self.isChanged)
     }
 }
 
 extension EditMbtiViewModel {
-    private func checkMbitiValidation(mbti: [Bool]) {
-        var mbtiString = ""
+    private func sortMbti(_ mbti: String) -> String {
+        let energy = mbti.filter { $0 == "E" || $0 == "I" }
+        let information = mbti.filter { $0 == "N" || $0 == "S" }
+        let decision = mbti.filter { $0 == "F" || $0 == "T" }
+        let lifeStyle = mbti.filter { $0 == "J" || $0 == "P" }
+        return energy + information + decision + lifeStyle
+    }
+}
+
+extension EditMbtiViewModel {
+    
+    private func loadMbtiChange(to mbti: String) {
+        guard let userId = UserDefaultManager.userId else { return }
+        let query = MbtiChangeQuery(user_id: userId, mbti: mbti)
         
-        for i in 0..<mbti.count {
-            if mbti[i] == true {
-                switch i {
-                case 0:
-                    mbtiString += "E"
-                case 1:
-                    mbtiString += "I"
-                case 2:
-                    mbtiString += "N"
-                case 3:
-                    mbtiString += "S"
-                case 4:
-                    mbtiString += "T"
-                case 5:
-                    mbtiString += "F"
-                case 6:
-                    mbtiString += "J"
-                case 7:
-                    mbtiString += "P"
-                default:
-                    break
-                }
-            }
+        Task {
+            let mbtiChange = try await self.settingUseCase.executeMbtiChange(query: query)
+        
+            if mbtiChange.code == 200 {
+                self.isChanged.accept(true)
+                guard let changedMbti = mbtiChange.mbti else { return }
+                UserDefaultManager.mbti = changedMbti
+            } 
         }
-//        self.isValidMbti.accept(true)
-        print("🔥 MBTI STRING: \(mbtiString)")
     }
 }

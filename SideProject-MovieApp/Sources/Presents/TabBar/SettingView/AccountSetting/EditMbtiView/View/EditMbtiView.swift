@@ -57,6 +57,7 @@ class EditMbtiView: BaseView {
     
     let eView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "E_Gray"), title: "외향형")
+        view.mbtiButton.setImage(UIImage(named: "E_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 0
         
@@ -65,6 +66,7 @@ class EditMbtiView: BaseView {
     
     let iView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "I_Gray"), title: "내향형")
+        view.mbtiButton.setImage(UIImage(named: "I_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 1
         return view
@@ -72,6 +74,7 @@ class EditMbtiView: BaseView {
     
     let nView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "N_Gray"), title: "직관형")
+        view.mbtiButton.setImage(UIImage(named: "N_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 2
         return view
@@ -79,6 +82,7 @@ class EditMbtiView: BaseView {
     
     let sView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "S_Gray"), title: "감각형")
+        view.mbtiButton.setImage(UIImage(named: "S_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 3
         return view
@@ -86,6 +90,7 @@ class EditMbtiView: BaseView {
     
     let tView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "T_Gray"), title: "사고형")
+        view.mbtiButton.setImage(UIImage(named: "T_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 4
         return view
@@ -93,6 +98,7 @@ class EditMbtiView: BaseView {
     
     let fView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "F_Gray"), title: "감정형")
+        view.mbtiButton.setImage(UIImage(named: "F_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 5
         return view
@@ -100,6 +106,7 @@ class EditMbtiView: BaseView {
     
     let jView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "J_Gray"), title: "판단형")
+        view.mbtiButton.setImage(UIImage(named: "J_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 6
         return view
@@ -107,6 +114,7 @@ class EditMbtiView: BaseView {
     
     let pView: MbtiAlphabetView = {
         let view = MbtiAlphabetView(image: UIImage(named: "P_Gray"), title: "인식형")
+        view.mbtiButton.setImage(UIImage(named: "P_White"), for: .selected)
         view.isUserInteractionEnabled = true
         view.tag = 7
         return view
@@ -186,6 +194,11 @@ class EditMbtiView: BaseView {
             mbtiChangeButton.isEnabled = false
             mbtiChangeButton.configuration?.baseBackgroundColor = UIColor.black80
         }
+    }
+    
+    func disableChangeButton() {
+        mbtiChangeButton.isEnabled = false
+        mbtiChangeButton.configuration?.baseBackgroundColor = UIColor.black80
     }
     
     override func setHierarchy() {

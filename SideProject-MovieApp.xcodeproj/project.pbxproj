@@ -477,6 +477,9 @@
 		497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F72A42025D0043D67E /* APIEndpoints.swift */; };
 		49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */; };
 		49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */; };
+		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
+		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
+		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
 		933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C529CB46AF00165B1E /* UIColor+Extension.swift */; };
@@ -1005,6 +1008,9 @@
 		497454F72A42025D0043D67E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDTO.swift; sourceTree = "<group>"; };
+		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
+		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
+		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
 		933028C529CB46AF00165B1E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -3276,6 +3282,7 @@
 				4932D77C2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift */,
 				493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */,
 				493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */,
+				49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3288,6 +3295,7 @@
 				4932D77E2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift */,
 				493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */,
 				493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */,
+				49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3318,6 +3326,7 @@
 				4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */,
 				493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */,
 				493C5C7A2A7690F100AF1F63 /* Withdraw.swift */,
+				49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3701,6 +3710,7 @@
 				2FD82D782A77471E00372D24 /* DeleteReviewQuery.swift in Sources */,
 				2FE111362A76688A0013A49E /* SameWorkCharacterListQuery.swift in Sources */,
 				2FD87A372A58420F003C276B /* DropQuery.swift in Sources */,
+				49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */,
 				2FE968252A7BD50F000E705E /* SameMbtiCharacter.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
 				2FCD8CA32A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift in Sources */,
@@ -3979,6 +3989,7 @@
 				2FD82D762A77470D00372D24 /* ModifyReviewQuery.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
+				49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */,
 				2FBF64B22A71FE5C0036401F /* MyContentMoreView.swift in Sources */,
 				2FC94EA929C0145F0097E696 /* BaseView.swift in Sources */,
 				49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */,
@@ -4042,6 +4053,7 @@
 				497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
+				49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */,
 				2FD82D912A774D6B00372D24 /* RequestLikeReviewCancelDTO.swift in Sources */,
 				2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */,
 				2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */,
