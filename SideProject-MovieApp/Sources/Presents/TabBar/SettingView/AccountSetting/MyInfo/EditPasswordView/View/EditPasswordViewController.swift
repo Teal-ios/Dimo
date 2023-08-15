@@ -105,22 +105,22 @@ final class EditPasswordViewController: BaseViewController {
         
         output.currentPasswordTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.currentPasswordView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.currentPasswordView.tf.text = text
             }
             .disposed(by: disposeBag)
         
         output.newPasswordTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.newPasswordView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.newPasswordView.tf.text = text
             }
             .disposed(by: disposeBag)
         
         output.newPasswordCheckTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.newPasswordCheckView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.newPasswordCheckView.tf.text = text
             }
             .disposed(by: disposeBag)
     }

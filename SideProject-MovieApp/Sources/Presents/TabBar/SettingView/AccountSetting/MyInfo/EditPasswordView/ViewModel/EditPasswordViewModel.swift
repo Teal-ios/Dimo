@@ -16,12 +16,6 @@ class EditPasswordViewModel {
     private weak var coordinator: SettingCoordinator?
     private var settingUseCase: SettingUseCase
     
-    enum PasswordFormatState {
-        case newPasswordIsSameWithCurrentPassword
-        case isUnvalidFormat
-        case isValidFormat
-    }
-    
     struct Input {
         let currentPasswordTextFieldBenginEditing: ControlEvent<Void>
         let currentPassWordTextFieldText: ControlProperty<String?>

@@ -180,12 +180,14 @@ extension EditPasswordView {
     func showNewPasswordTextFieldState(_ isSame: Bool?) {
         guard let isSame = isSame else { return }
         
-        if isSame {
+        if isSame || newPasswordCheckView.tf.text?.count == 0 {
             newPasswordCheckLabel.isHidden = true
         } else {
-            newPasswordCheckLabel.isHidden = false
-            newPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
-            newPasswordCheckLabel.textColor = UIColor.error
+            if newPasswordCheckView.tf.text?.count ?? 0 >= 1 {
+                newPasswordCheckLabel.isHidden = false
+                newPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
+                newPasswordCheckLabel.textColor = UIColor.error
+            }
         }
     }
 }
