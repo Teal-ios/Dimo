@@ -83,13 +83,14 @@ class EditPasswordView: BaseView {
     
     let passwordChangeButton: OnboardingButton = {
         let button = OnboardingButton(title: "변경하기", ofSize: 14)
-        button.configuration?.baseBackgroundColor = .purple100
+        button.isEnabled = false
+        button.configuration?.baseForegroundColor = .white100
+        button.configuration?.baseBackgroundColor = .black80
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.passwordChangeButton.configuration?.baseBackgroundColor = UIColor.purple100
         self.configureTestField()
     }
     
@@ -179,12 +180,14 @@ extension EditPasswordView {
     func showNewPasswordTextFieldState(_ isSame: Bool?) {
         guard let isSame = isSame else { return }
         
-        if isSame {
+        if isSame || newPasswordCheckView.tf.text?.count == 0 {
             newPasswordCheckLabel.isHidden = true
         } else {
-            newPasswordCheckLabel.isHidden = false
-            newPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
-            newPasswordCheckLabel.textColor = UIColor.error
+            if newPasswordCheckView.tf.text?.count ?? 0 >= 1 {
+                newPasswordCheckLabel.isHidden = false
+                newPasswordCheckLabel.text = "비밀번호가 일치하지 않습니다."
+                newPasswordCheckLabel.textColor = UIColor.error
+            }
         }
     }
 }

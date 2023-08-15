@@ -44,7 +44,6 @@ final class EditPasswordViewController: BaseViewController {
                 guard let self else { return }
                 if isChanged {
                     self.editPasswordView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
-                    self.editPasswordView.disableChangeButton()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -52,12 +51,30 @@ final class EditPasswordViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.passwordChageButtonTappedOutput
-            .observe(on: MainScheduler.instance)
+        output.isChangeable
             .bind { [weak self] (isValidPasswordFormat, isSameWithNewPassword) in
                 guard let self else { return }
-                self.editPasswordView.showPasswordValidationTextFieldState(isValidPasswordFormat)
-                self.editPasswordView.showNewPasswordTextFieldState(isSameWithNewPassword)
+                guard let isValidPasswordFormat = isValidPasswordFormat,
+                      let isSameWithNewPassword = isSameWithNewPassword else { return }
+                if isValidPasswordFormat && isSameWithNewPassword {
+                    self.editPasswordView.enableChangeButton()
+                } else {
+                    self.editPasswordView.disableChangeButton()
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.isSameWithNewPassword
+            .withUnretained(self)
+            .bind { (vc, isSame) in
+                vc.editPasswordView.showNewPasswordTextFieldState(isSame)
+            }
+            .disposed(by: disposeBag)
+
+        output.isValidPasswordFormat
+            .withUnretained(self)
+            .bind { (vc, isValid) in
+                self.editPasswordView.showPasswordValidationTextFieldState(isValid)
             }
             .disposed(by: disposeBag)
         
@@ -88,22 +105,22 @@ final class EditPasswordViewController: BaseViewController {
         
         output.currentPasswordTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.currentPasswordView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.currentPasswordView.tf.text = text
             }
             .disposed(by: disposeBag)
         
         output.newPasswordTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.newPasswordView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.newPasswordView.tf.text = text
             }
             .disposed(by: disposeBag)
         
         output.newPasswordCheckTextFieldText
             .withUnretained(self)
-            .bind { (vc, emptyValue) in
-                vc.editPasswordView.newPasswordCheckView.tf.text = emptyValue
+            .bind { (vc, text) in
+                vc.editPasswordView.newPasswordCheckView.tf.text = text
             }
             .disposed(by: disposeBag)
     }
