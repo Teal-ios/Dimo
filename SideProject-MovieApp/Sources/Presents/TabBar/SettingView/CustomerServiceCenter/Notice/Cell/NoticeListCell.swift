@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class ExpandableListCell: BaseCollectionViewCell {
+final class NoticeListCell: BaseCollectionViewCell {
     
     private let containerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -26,7 +26,6 @@ final class ExpandableListCell: BaseCollectionViewCell {
         
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "제목입니다"
         label.textColor = .black5
         label.font = .suitFont(ofSize: 16, weight: .Medium)
         return label
@@ -34,7 +33,6 @@ final class ExpandableListCell: BaseCollectionViewCell {
     
     let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020.10.10"
         label.textColor = .black60
         label.font = .suitFont(ofSize: 12, weight: .Medium)
         return label
@@ -67,12 +65,7 @@ final class ExpandableListCell: BaseCollectionViewCell {
         }
     }
     
-    convenience init(isHiddenSubTitleLabel: Bool) {
-        self.init()
-        subTitleLabel.isHidden = isHiddenSubTitleLabel
-    }
-    
-    func configure(_ viewModel: ExpandableListCellViewModel) {
+    func configure(_ viewModel: NoticeListCellViewModel) {
         titleLabel.text = viewModel.title
         subTitleLabel.text = viewModel.subTitle
         noticeMessageLabel.text = viewModel.message
@@ -115,7 +108,7 @@ final class ExpandableListCell: BaseCollectionViewCell {
     }
 }
 
-extension ExpandableListCell {
+extension NoticeListCell {
     
     func changeConstraint() {
         if isSelected {
@@ -131,11 +124,14 @@ extension ExpandableListCell {
             self.expansionButton.transform = self.isSelected ? upsideDown : .identity
         }
     }
+    
+    func hideSubtitleLabel() {
+        subTitleLabel.isHidden = true
+    }
 }
 
-struct ExpandableListCellViewModel {
+struct NoticeListCellViewModel {
     let title: String
-    let subTitle: String?
+    var subTitle: String? = nil
     let message: String
-    var isExpanded: Bool = false
 }

@@ -483,10 +483,15 @@
 		49EEDEE12A88DDA6008C5D21 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE02A88DDA6008C5D21 /* NoticeViewController.swift */; };
 		49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE22A88DDC0008C5D21 /* NoticeView.swift */; };
 		49EEDEE52A88DDDE008C5D21 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE42A88DDDE008C5D21 /* NoticeViewModel.swift */; };
-		49EEDEE82A88E113008C5D21 /* ExpandableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE72A88E113008C5D21 /* ExpandableListCell.swift */; };
+		49EEDEE82A88E113008C5D21 /* NoticeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE72A88E113008C5D21 /* NoticeListCell.swift */; };
 		49EEDEEA2A88EB4C008C5D21 /* NoticeContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEE92A88EB4C008C5D21 /* NoticeContents.swift */; };
 		49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF0B2A8A7950008C5D21 /* BasePaddingLabel.swift */; };
 		49EEDF0E2A8A8324008C5D21 /* DiffableDataSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF0D2A8A8324008C5D21 /* DiffableDataSource+Extension.swift */; };
+		49EEDF132A8B5BF7008C5D21 /* FrequentQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF122A8B5BF7008C5D21 /* FrequentQuestionView.swift */; };
+		49EEDF152A8B5C01008C5D21 /* FrequentQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF142A8B5C01008C5D21 /* FrequentQuestionViewController.swift */; };
+		49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */; };
+		49EEDF192A8B5EBA008C5D21 /* FrequentQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */; };
+		49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */; };
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
 		933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C529CB46AF00165B1E /* UIColor+Extension.swift */; };
@@ -1021,10 +1026,15 @@
 		49EEDEE02A88DDA6008C5D21 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		49EEDEE22A88DDC0008C5D21 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		49EEDEE42A88DDDE008C5D21 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
-		49EEDEE72A88E113008C5D21 /* ExpandableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListCell.swift; sourceTree = "<group>"; };
+		49EEDEE72A88E113008C5D21 /* NoticeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListCell.swift; sourceTree = "<group>"; };
 		49EEDEE92A88EB4C008C5D21 /* NoticeContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeContents.swift; sourceTree = "<group>"; };
 		49EEDF0B2A8A7950008C5D21 /* BasePaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePaddingLabel.swift; sourceTree = "<group>"; };
 		49EEDF0D2A8A8324008C5D21 /* DiffableDataSource+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiffableDataSource+Extension.swift"; sourceTree = "<group>"; };
+		49EEDF122A8B5BF7008C5D21 /* FrequentQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestionView.swift; sourceTree = "<group>"; };
+		49EEDF142A8B5C01008C5D21 /* FrequentQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestionViewController.swift; sourceTree = "<group>"; };
+		49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestionViewModel.swift; sourceTree = "<group>"; };
+		49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestion.swift; sourceTree = "<group>"; };
+		49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListCell.swift; sourceTree = "<group>"; };
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
 		933028C529CB46AF00165B1E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -3345,6 +3355,7 @@
 				493C5C7A2A7690F100AF1F63 /* Withdraw.swift */,
 				49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */,
 				49EEDEE92A88EB4C008C5D21 /* NoticeContents.swift */,
+				49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3352,8 +3363,8 @@
 		49EEDEDC2A88DD35008C5D21 /* CustomerServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
-				49EEDEE62A88E0DA008C5D21 /* Cell */,
 				49EEDEDD2A88DD96008C5D21 /* Notice */,
+				49EEDF0F2A8B5BB6008C5D21 /* FrequentQuestion */,
 			);
 			path = CustomerServiceCenter;
 			sourceTree = "<group>";
@@ -3361,6 +3372,7 @@
 		49EEDEDD2A88DD96008C5D21 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
+				49EEDEE62A88E0DA008C5D21 /* Cell */,
 				49EEDEDF2A88DD9C008C5D21 /* ViewModel */,
 				49EEDEDE2A88DD9A008C5D21 /* View */,
 			);
@@ -3387,7 +3399,42 @@
 		49EEDEE62A88E0DA008C5D21 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				49EEDEE72A88E113008C5D21 /* ExpandableListCell.swift */,
+				49EEDEE72A88E113008C5D21 /* NoticeListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		49EEDF0F2A8B5BB6008C5D21 /* FrequentQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				49EEDF1A2A8B7243008C5D21 /* Cell */,
+				49EEDF112A8B5BD0008C5D21 /* ViewModel */,
+				49EEDF102A8B5BC1008C5D21 /* View */,
+			);
+			path = FrequentQuestion;
+			sourceTree = "<group>";
+		};
+		49EEDF102A8B5BC1008C5D21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49EEDF122A8B5BF7008C5D21 /* FrequentQuestionView.swift */,
+				49EEDF142A8B5C01008C5D21 /* FrequentQuestionViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49EEDF112A8B5BD0008C5D21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		49EEDF1A2A8B7243008C5D21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3694,6 +3741,7 @@
 				2FD87A492A58472F003C276B /* RequestDropDTO.swift in Sources */,
 				2F53D0B72A1F629D00898DCD /* ChangeNicknameAlertViewController.swift in Sources */,
 				2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */,
+				49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */,
 				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
 				2FD82D5F2A77439C00372D24 /* LikeReviewCancel.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
@@ -3701,6 +3749,7 @@
 				2FC367532A7F943F00635CBB /* LengthChartView.swift in Sources */,
 				2FBFF8392A6F5980007914A1 /* ResponseLikeChoiceDTO.swift in Sources */,
 				2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */,
+				49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
 				933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */,
@@ -3738,7 +3787,7 @@
 				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
 				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
 				2F9793AC2A53FFC30098939B /* RecentSearchCollectionViewCell.swift in Sources */,
-				49EEDEE82A88E113008C5D21 /* ExpandableListCell.swift in Sources */,
+				49EEDEE82A88E113008C5D21 /* NoticeListCell.swift in Sources */,
 				2FD82D672A7743DC00372D24 /* GetComment.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
@@ -3753,8 +3802,10 @@
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
+				49EEDF152A8B5C01008C5D21 /* FrequentQuestionViewController.swift in Sources */,
 				2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */,
 				2FCD8C8F2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift in Sources */,
+				49EEDF192A8B5EBA008C5D21 /* FrequentQuestion.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D9092A6BBFDA00E7972B /* ModifyMyProfileQuery.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
@@ -3884,6 +3935,7 @@
 				2FEC15F42A78B3F3009CF59D /* GetMyReview.swift in Sources */,
 				2F437C082A4BE912000B7A61 /* ContentRepository.swift in Sources */,
 				2FD82DC62A7771D500372D24 /* VoteAPIEndpoints.swift in Sources */,
+				49EEDF132A8B5BF7008C5D21 /* FrequentQuestionView.swift in Sources */,
 				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
 				2F437C232A4C57AF000B7A61 /* FeedDetailMoreMyViewController.swift in Sources */,
