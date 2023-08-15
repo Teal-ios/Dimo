@@ -8,7 +8,7 @@
 import Foundation
 
 struct VoteCharacter: Hashable {
-    let code: String
+    let code: Int
     let message: String
     let contentId: String?
     let content_title: String?

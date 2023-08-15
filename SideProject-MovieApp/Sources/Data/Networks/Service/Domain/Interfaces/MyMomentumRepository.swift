@@ -20,4 +20,6 @@ protocol MyMomentumRepository: AnyObject {
     func fetchMyReview(query: GetMyReviewQuery) async throws -> GetMyReview
     
     func fetchMyComment(query: GetMyCommentQuery) async throws -> GetMyComment
+    
+    func fetchMyVotedCharacter(query: GetMyVotedCharacterQuery) async throws -> GetMyVotedCharacter
 }

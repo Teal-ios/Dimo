@@ -117,6 +117,7 @@ extension ReviewCollectionViewCell {
         reviewLabel.text = review.review_content
         characterNameLabel.text = review.character_name
         mbtiLabel.text = review.character_mbti ?? "미정"
+        titleLabel.text = review.title
         let imageURL = URL(string: review.character_img)
         imgView.kf.setImage(with: imageURL)
     }
@@ -128,6 +129,7 @@ extension ReviewCollectionViewCell {
         reviewLabel.text = comment.comment_content
         characterNameLabel.text = comment.character_name
         mbtiLabel.text = comment.character_mbti ?? "미정"
+        titleLabel.text = comment.title
         imgView.kf.setImage(with: imageURL)
     }
 }

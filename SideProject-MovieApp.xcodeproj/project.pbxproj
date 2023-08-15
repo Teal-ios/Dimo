@@ -203,6 +203,11 @@
 		2FCB16862A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */; };
 		2FCB16882A7DED7200AE48A8 /* WidthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB16872A7DED7200AE48A8 /* WidthChartView.swift */; };
 		2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */; };
+		2FCD8C752A81BED7002A39B0 /* MyVotedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C742A81BED6002A39B0 /* MyVotedCharacter.swift */; };
+		2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C762A81BEE2002A39B0 /* GetMyVotedCharacter.swift */; };
+		2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C782A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift */; };
+		2FCD8C7B2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C7A2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift */; };
+		2FCD8C7D2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C7C2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
@@ -717,6 +722,11 @@
 		2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCompleteViewModel.swift; sourceTree = "<group>"; };
 		2FCB16872A7DED7200AE48A8 /* WidthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidthChartView.swift; sourceTree = "<group>"; };
 		2FCC96572A0A665A0031F1CF /* MbtiAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiAlphabetView.swift; sourceTree = "<group>"; };
+		2FCD8C742A81BED6002A39B0 /* MyVotedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVotedCharacter.swift; sourceTree = "<group>"; };
+		2FCD8C762A81BEE2002A39B0 /* GetMyVotedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyVotedCharacter.swift; sourceTree = "<group>"; };
+		2FCD8C782A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMyVotedCharacterDTO.swift; sourceTree = "<group>"; };
+		2FCD8C7A2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetMyVotedCharacterDTO.swift; sourceTree = "<group>"; };
+		2FCD8C7C2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyVotedCharacterQuery.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
@@ -2606,6 +2616,7 @@
 				2FD4D9082A6BBFDA00E7972B /* ModifyMyProfileQuery.swift */,
 				2FD4D90D2A6CC35E00E7972B /* MyProfileQuery.swift */,
 				2FD4D90F2A6CC3C800E7972B /* LikeAnimationContentQuery.swift */,
+				2FCD8C7C2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift */,
 				2FD4D9112A6CC3D300E7972B /* LikeMovieContentQuery.swift */,
 				2FEC15EB2A78B1CF009CF59D /* GetMyReviewQuery.swift */,
 				2FEC15ED2A78B1D5009CF59D /* GetMyCommentQuery.swift */,
@@ -2617,6 +2628,8 @@
 			isa = PBXGroup;
 			children = (
 				2FD4D90B2A6BC09700E7972B /* ModifyMyProfile.swift */,
+				2FCD8C742A81BED6002A39B0 /* MyVotedCharacter.swift */,
+				2FCD8C762A81BEE2002A39B0 /* GetMyVotedCharacter.swift */,
 				2FD4D9132A6CC42200E7972B /* MyProfile.swift */,
 				2FD4D9152A6CC52B00E7972B /* LikeAnimationContent.swift */,
 				2FD4D9172A6CC59500E7972B /* LikeMovieContent.swift */,
@@ -2643,6 +2656,8 @@
 				2FD4D91F2A6CCA6000E7972B /* ResponseMyProfileDTO.swift */,
 				2FEC15F72A78B484009CF59D /* ResponseMyReviewDTO.swift */,
 				2FEC15F92A78B48A009CF59D /* ResponseMyCommentDTO.swift */,
+				2FCD8C782A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift */,
+				2FCD8C7A2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift */,
 				2FEC15FB2A78B5CA009CF59D /* ResponseGetMyReviewDTO.swift */,
 				2FEC15FD2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift */,
 				2FD4D9212A6CCAAB00E7972B /* ResponseModifyMyProfileDTO.swift */,
@@ -3435,6 +3450,7 @@
 				2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				2FD82DBC2A775AE800372D24 /* ResponseGetCommentDTO.swift in Sources */,
+				2FCD8C752A81BED7002A39B0 /* MyVotedCharacter.swift in Sources */,
 				2FE111182A7663BB0013A49E /* CharacterDetailRepository.swift in Sources */,
 				2FD82DB42A775AA300372D24 /* ResponseLikeReviewCancelDTO.swift in Sources */,
 				2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */,
@@ -3520,6 +3536,7 @@
 				2FE111302A76682D0013A49E /* PopularCharacterRecommendListQuery.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
 				2FD82DA62A774F7A00372D24 /* ResponsePopularCharacterRecommendListDTO.swift in Sources */,
+				2FCD8C7D2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift in Sources */,
 				2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */,
 				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
@@ -3569,6 +3586,7 @@
 				2F53D0932A1F1CEE00898DCD /* PhoneNumberCheck.swift in Sources */,
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
+				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
@@ -3706,6 +3724,7 @@
 				2F437C0A2A4BED61000B7A61 /* Character.swift in Sources */,
 				2F437C152A4C176C000B7A61 /* MockParser.swift in Sources */,
 				2F1890062A4592170097D38E /* CharacterMoreViewController.swift in Sources */,
+				2FCD8C7B2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift in Sources */,
 				2F124AD82A4EBFF700A452F1 /* WriteViewModel.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
 				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
@@ -3721,6 +3740,7 @@
 				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
+				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,

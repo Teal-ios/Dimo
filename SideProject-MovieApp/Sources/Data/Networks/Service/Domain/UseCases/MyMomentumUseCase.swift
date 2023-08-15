@@ -19,7 +19,8 @@ protocol MyMomentumUseCase {
     func excuteMyReview(query: GetMyReviewQuery) async throws -> GetMyReview
     
     func excuteMyComment(query: GetMyCommentQuery) async throws -> GetMyComment
-
+    
+    func excuteMyVotedCharacter(query: GetMyVotedCharacterQuery) async throws -> GetMyVotedCharacter
 }
 
 enum MyMomentumUseCaseError: String, Error {
@@ -93,6 +94,16 @@ extension MyMomentumUseCaseImpl {
     func excuteMyComment(query: GetMyCommentQuery) async throws -> GetMyComment {
         do {
             return try await myMomentumRepository.fetchMyComment(query: query)
+        } catch {
+            throw MyMomentumUseCaseError.excute
+        }
+    }
+}
+
+extension MyMomentumUseCaseImpl {
+    func excuteMyVotedCharacter(query: GetMyVotedCharacterQuery) async throws -> GetMyVotedCharacter {
+        do {
+            return try await myMomentumRepository.fetchMyVotedCharacter(query: query)
         } catch {
             throw MyMomentumUseCaseError.excute
         }

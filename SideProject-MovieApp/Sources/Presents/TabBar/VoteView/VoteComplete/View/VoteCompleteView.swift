@@ -295,3 +295,23 @@ extension VoteCompleteView {
         return section
     }
 }
+
+extension VoteCompleteView {
+    func configureUpdateCharacterInfo(with item: CharacterInfo) {
+        self.characterNicknameLabel.text = item.character_name
+        guard item.title != nil else { return }
+        self.subtitleLabel.text = item.title
+        let imageURL = URL(string: item.character_img)
+        self.characterImageView.kf.setImage(with: imageURL)
+    }
+}
+
+extension VoteCompleteView {
+    func configureUpdateVoteCharacter(with item: VoteCharacter) {
+        self.eiChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.ei ?? 50))
+        self.nsChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.sn ?? 50))
+        self.tfChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.tf ?? 50))
+        self.jpChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.jp ?? 50))
+
+    }
+}

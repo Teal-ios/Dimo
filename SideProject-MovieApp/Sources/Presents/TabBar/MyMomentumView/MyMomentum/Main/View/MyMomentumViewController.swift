@@ -27,11 +27,11 @@ final class MyMomentumViewController: BaseViewController {
     let myProfileData = PublishRelay<MyProfile>()
     
     private var likeContentDataSource: UICollectionViewDiffableDataSource<Int, LikeContent>!
-    private var digFinishDataSource: UICollectionViewDiffableDataSource<Int, MyMomentumModel>!
+    private var digFinishDataSource: UICollectionViewDiffableDataSource<Int, MyVotedCharacter>!
     private var reviewDataSource: UICollectionViewDiffableDataSource<Int, MyReview>!
     private var commentDataSource: UICollectionViewDiffableDataSource<Int, MyComment>!
     private var likeContentSnapshot = NSDiffableDataSourceSnapshot<Int, LikeContent>()
-    private var digFinishSnapshot = NSDiffableDataSourceSnapshot<Int, MyMomentumModel>()
+//    private var digFinishSnapshot = NSDiffableDataSourceSnapshot<Int, MyVotedCharacter>()
 //    private var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyReview>()
 //    private var commentSnapshot = NSDiffableDataSourceSnapshot<Int, MyComment>()
     
@@ -78,7 +78,6 @@ final class MyMomentumViewController: BaseViewController {
                 if likeAnimationContent != nil &&
                     likeAnimationContent?.like_content_info == [] {
                     self.myMomentumView.configureProfileUpdateUI(dataExist: false)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
                 } else {
                     guard let likeAnimationContent else { return }
                     
@@ -93,7 +92,6 @@ final class MyMomentumViewController: BaseViewController {
                     self.likeContentDataSource.apply(likeContentSnapshot)
                     
                     self.myMomentumView.configureProfileUpdateUI(dataExist: true)
-                    self.myMomentumView.configureDigUpdateUI(dataExist: false)
                 }
             }
             .disposed(by: disposeBag)
@@ -112,11 +110,11 @@ final class MyMomentumViewController: BaseViewController {
                         guard let review else { return }
                         reviewArr.append(review)
                     }
+                    reviewSnapshot.appendItems(reviewArr, toSection: 0)
+                    print(reviewArr, "댓글 배열")
+                    vc.reviewDataSource.apply(reviewSnapshot)
+                    vc.myMomentumView.configureReviewUpdateUI(dataExist: true)
                 }
-                reviewSnapshot.appendItems(reviewArr, toSection: 0)
-                print(reviewArr, "댓글 배열")
-                vc.reviewDataSource.apply(reviewSnapshot)
-                vc.myMomentumView.configureReviewUpdateUI(dataExist: true)
             }
             .disposed(by: disposeBag)
         
@@ -134,11 +132,34 @@ final class MyMomentumViewController: BaseViewController {
                         guard let comment else { return }
                         commentArr.append(comment)
                     }
+                    commentSnapshot.appendItems(commentArr, toSection: 0)
+                    print(commentArr, "댓글 배열")
+                    vc.commentDataSource.apply(commentSnapshot)
+                    vc.myMomentumView.configureCommentUpdateUI(dataExist: true)
                 }
-                commentSnapshot.appendItems(commentArr, toSection: 0)
-                print(commentArr, "댓글 배열")
-                vc.commentDataSource.apply(commentSnapshot)
-                vc.myMomentumView.configureCommentUpdateUI(dataExist: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.myVotedCharacterList
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, myVotedCharacter in
+                var votedCharacterSnapshot = NSDiffableDataSourceSnapshot<Int, MyVotedCharacter>()
+                votedCharacterSnapshot.appendSections([0])
+                var votedCharacterArr: [MyVotedCharacter] = []
+                if myVotedCharacter.voted_character == [] {
+                    vc.myMomentumView.configureDigUpdateUI(dataExist: false)
+                } else {
+                    for votedCharacter in myVotedCharacter.voted_character {
+                        guard let votedCharacter else { return }
+                        votedCharacterArr.append(votedCharacter)
+                    }
+                    votedCharacterSnapshot.appendItems(votedCharacterArr, toSection: 0)
+                    print(votedCharacterArr, "투표한 캐릭터 배열")
+
+                    vc.digFinishDataSource.apply(votedCharacterSnapshot)
+                    vc.myMomentumView.configureDigUpdateUI(dataExist: true)
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -179,7 +200,8 @@ extension MyMomentumViewController {
 
 extension MyMomentumViewController {
     private func setDigFinishCharacterDataSource() {
-        let cellDigFinishCharacterRegistration = UICollectionView.CellRegistration<DigFinishCharacterCollectionViewCell, MyMomentumModel> { cell, indexPath, itemIdentifier in
+        let cellDigFinishCharacterRegistration = UICollectionView.CellRegistration<DigFinishCharacterCollectionViewCell, MyVotedCharacter> { cell, indexPath, itemIdentifier in
+            cell.configureUIToVotedCharacterData(with: itemIdentifier)
         }
         
         digFinishDataSource = UICollectionViewDiffableDataSource(collectionView: myMomentumView.digFinishCharacherCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -196,15 +218,15 @@ extension MyMomentumViewController {
             return header
         })
         
-        digFinishSnapshot.appendSections([0])
-        var sectionArr: [MyMomentumModel] = []
-        
-        for _ in 1...10 {
-            sectionArr.append(MyMomentumModel(image: nil))
-        }
-        
-        digFinishSnapshot.appendItems(sectionArr, toSection: 0)
-        digFinishDataSource.apply(digFinishSnapshot)
+//        digFinishSnapshot.appendSections([0])
+//        var sectionArr: [MyMomentumModel] = []
+//
+//        for _ in 1...10 {
+//            sectionArr.append(MyMomentumModel(image: nil))
+//        }
+//
+//        digFinishSnapshot.appendItems(sectionArr, toSection: 0)
+//        digFinishDataSource.apply(digFinishSnapshot)
     }
 }
 

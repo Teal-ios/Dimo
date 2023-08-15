@@ -8,6 +8,7 @@
 import Foundation
 
 struct ResponseMyCommentDTO: Decodable {
+    let title: String
     let comment_id: Int
     let review_id: Int
     let user_id: String
@@ -21,12 +22,12 @@ struct ResponseMyCommentDTO: Decodable {
     let character_mbti: String?
     
     enum CodingKeys: String, CodingKey {
-        case comment_id, review_id, user_id, comment_like, comment_content, comment_spoiler, character_id, anime_id, character_img, character_name, character_mbti
+        case title, comment_id, review_id, user_id, comment_like, comment_content, comment_spoiler, character_id, anime_id, character_img, character_name, character_mbti
     }
 }
 
 extension ResponseMyCommentDTO {
     var toDomain: MyComment {
-        return .init(comment_id: comment_id, review_id: review_id, user_id: user_id, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id, anime_id: anime_id, character_img: character_img, character_name: character_name, character_mbti: character_mbti)
+        return .init(title: title, comment_id: comment_id, review_id: review_id, user_id: user_id, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id, anime_id: anime_id, character_img: character_img, character_name: character_name, character_mbti: character_mbti)
     }
 }
