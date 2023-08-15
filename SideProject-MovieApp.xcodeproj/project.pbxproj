@@ -208,6 +208,10 @@
 		2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C782A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift */; };
 		2FCD8C7B2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C7A2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift */; };
 		2FCD8C7D2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C7C2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift */; };
+		2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C812A820438002A39B0 /* MovieDetailEvaluateView.swift */; };
+		2FCD8C842A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C832A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift */; };
+		2FCD8C862A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C852A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift */; };
+		2FCD8C882A8214C2002A39B0 /* MbtiInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C872A8214C2002A39B0 /* MbtiInfoView.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
@@ -727,6 +731,10 @@
 		2FCD8C782A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMyVotedCharacterDTO.swift; sourceTree = "<group>"; };
 		2FCD8C7A2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetMyVotedCharacterDTO.swift; sourceTree = "<group>"; };
 		2FCD8C7C2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyVotedCharacterQuery.swift; sourceTree = "<group>"; };
+		2FCD8C812A820438002A39B0 /* MovieDetailEvaluateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailEvaluateView.swift; sourceTree = "<group>"; };
+		2FCD8C832A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailEvaluateViewController.swift; sourceTree = "<group>"; };
+		2FCD8C852A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailEvaluateViewModel.swift; sourceTree = "<group>"; };
+		2FCD8C872A8214C2002A39B0 /* MbtiInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiInfoView.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
@@ -2182,6 +2190,7 @@
 				93C48B4F29D2ADCC00644F6A /* TelecomButton.swift */,
 				93C48BB529D9377900644F6A /* TelecomSelectView.swift */,
 				2F124AE62A4FCD2C00A452F1 /* AlertButtonSecondView.swift */,
+				2FCD8C872A8214C2002A39B0 /* MbtiInfoView.swift */,
 				2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */,
 				2FCDD20629E7E379000B6CD7 /* BasicLoginView.swift */,
 				2FCDD20A29EA72B9000B6CD7 /* WordLabelButton.swift */,
@@ -2316,6 +2325,32 @@
 				2FCB16852A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FCD8C7E2A8203E7002A39B0 /* MovieDetailEvaluate */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C802A82040E002A39B0 /* View */,
+				2FCD8C7F2A82040B002A39B0 /* ViewModel */,
+			);
+			path = MovieDetailEvaluate;
+			sourceTree = "<group>";
+		};
+		2FCD8C7F2A82040B002A39B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C852A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FCD8C802A82040E002A39B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C812A820438002A39B0 /* MovieDetailEvaluateView.swift */,
+				2FCD8C832A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */ = {
@@ -2725,6 +2760,7 @@
 				2F437C192A4C5773000B7A61 /* FeedDetailMoreMy */,
 				2F1890002A4591F60097D38E /* CharacterMore */,
 				2F6D7D0F2A14B27000FA457D /* MovieDetail */,
+				2FCD8C7E2A8203E7002A39B0 /* MovieDetailEvaluate */,
 				2F149DCB2A4994EF0098AF64 /* MovieDetailRank */,
 				2F6D7D052A14A4C200FA457D /* ContentMoreView */,
 				2FDD9E622A121E9D00A41FF7 /* FeedDetailView */,
@@ -3587,6 +3623,7 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
+				2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
@@ -3764,12 +3801,14 @@
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
 				2FE111202A7664AB0013A49E /* SearchCharacterList.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
+				2FCD8C862A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift in Sources */,
 				2FBFF8242A6F4F01007914A1 /* LikeCancel.swift in Sources */,
 				2FD073592A25BF71003F7E56 /* NicknameDuplication.swift in Sources */,
 				2FD87A4F2A584962003C276B /* ResponseGoogleLoginDTO.swift in Sources */,
 				2FD82DC02A775AFE00372D24 /* ResponseCommentListDTO.swift in Sources */,
 				2FCF0F702A7D2DA700C164C4 /* DigViewController.swift in Sources */,
 				93DD35C529C303E700BBB213 /* HTTPHeaderContentType.swift in Sources */,
+				2FCD8C842A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift in Sources */,
 				2FD4D9282A6CCF9400E7972B /* ResponseLikeContentDTO.swift in Sources */,
 				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
 				2FEC15D82A7788FB009CF59D /* CharacterDetailUseCase.swift in Sources */,
@@ -3801,6 +3840,7 @@
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
+				2FCD8C882A8214C2002A39B0 /* MbtiInfoView.swift in Sources */,
 				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
 				2FD87A332A5840F0003C276B /* GoogleLogin.swift in Sources */,
 				493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */,

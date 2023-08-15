@@ -33,15 +33,4 @@ class MovieDetailRankViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = true
         selfView.backgroundColor = .clear
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        var count = 0
-        for starView in selfView.scopeStarView.starImageViews {
-            if starView.image == UIImage(named: "ic_rating_on_white") {
-                count += 1
-            }
-        }
-        NotificationCenter.default.post(name: NSNotification.Name("star"), object: (count))
-
-    }
 }

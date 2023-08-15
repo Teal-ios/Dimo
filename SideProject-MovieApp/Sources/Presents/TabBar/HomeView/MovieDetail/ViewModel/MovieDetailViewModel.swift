@@ -54,7 +54,7 @@ final class MovieDetailViewModel: ViewModelType {
         
         input.evaluateButtonTapped.bind { [weak self] _ in
             guard let self else { return }
-            self.coordinator?.showMovieDetailRankViewController()
+            self.coordinator?.showMovieDetailEvaluateViewController()
         }
         .disposed(by: disposeBag)
         

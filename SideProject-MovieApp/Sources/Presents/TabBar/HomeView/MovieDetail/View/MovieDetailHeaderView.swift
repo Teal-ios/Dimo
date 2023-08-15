@@ -27,13 +27,13 @@ class MovieDetailHeaderView: BaseView {
         label.textColor = .black60
         label.font = Font.caption
         label.textAlignment = .center
-        label.text = "좋아요"
+        label.text = "찜하기"
         return label
     }()
     
     let evaluateButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "ic_rating_off_clear"), for: .normal)
+        button.setImage(UIImage(named: "Good_Nonselect"), for: .normal)
         return button
     }()
     
@@ -53,6 +53,32 @@ class MovieDetailHeaderView: BaseView {
         label.textAlignment = .center
         label.text = ""
         return label
+    }()
+    
+    lazy var mbtiInfoStackView: UIStackView = {
+        let view = UIStackView()
+        view.distribution = .fillEqually
+        view.axis = .vertical
+        view.spacing = 16
+        view.addArrangedSubview(firstMbtiView)
+        view.addArrangedSubview(secondMbtiView)
+        view.addArrangedSubview(thirdMbtiView)
+        return view
+    }()
+    
+    let firstMbtiView: MbtiInfoView = {
+        let view = MbtiInfoView(mbti: "ESTJ", explainText: "가 가장 많이 찜했어요", image: UIImage(named: "Heart_Red"))
+        return view
+    }()
+    
+    let secondMbtiView: MbtiInfoView = {
+        let view = MbtiInfoView(mbti: "ESTJ", explainText: "가 가장 맘에 든다고 평가했어요", image: UIImage(named: "Good_Select"))
+        return view
+    }()
+    
+    let thirdMbtiView: MbtiInfoView = {
+        let view = MbtiInfoView(mbti: "ESTJ", explainText: "이 가장 별로라고 평가했어요", image: UIImage(named: "Bad_Select"))
+        return view
     }()
     
     let summarytitleLabel: UILabel = {
@@ -82,7 +108,8 @@ class MovieDetailHeaderView: BaseView {
         self.addSubview(likeLabel)
         self.addSubview(evaluateButton)
         self.addSubview(evaluateLabel)
-        self.addSubview(evaluateNumberLabel)
+        self.addSubview(mbtiInfoStackView)
+//        self.addSubview(evaluateNumberLabel)
         self.addSubview(summarytitleLabel)
         self.addSubview(summaryExplainLabel)
     }
@@ -119,14 +146,14 @@ class MovieDetailHeaderView: BaseView {
             make.width.equalTo(48)
         }
         
-        evaluateNumberLabel.snp.makeConstraints { make in
-            make.top.equalTo(evaluateLabel.snp.bottom)
-            make.horizontalEdges.equalTo(evaluateLabel.snp.horizontalEdges)
-            make.height.equalTo(16)
+        mbtiInfoStackView.snp.makeConstraints { make in
+            make.top.equalTo(evaluateLabel.snp.bottom).offset(36)
+            make.height.equalTo(200)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
         }
         
         summarytitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(likeLabel.snp.bottom).offset(36)
+            make.top.equalTo(mbtiInfoStackView.snp.bottom).offset(36)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(20)
         }

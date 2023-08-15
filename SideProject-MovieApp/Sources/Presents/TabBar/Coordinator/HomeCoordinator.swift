@@ -83,9 +83,9 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showMovieDetailRankViewController() {
-        let viewModel = MovieDetailRankViewModel(coordinator: self)
-        let vc = MovieDetailRankViewController(viewModel: viewModel)
+    func showMovieDetailEvaluateViewController() {
+        let viewModel = MovieDetailEvaluateViewModel(coordinator: self)
+        let vc = MovieDetailEvaluateViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }

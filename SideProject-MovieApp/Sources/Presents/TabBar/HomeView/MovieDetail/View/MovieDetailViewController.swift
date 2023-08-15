@@ -118,9 +118,7 @@ final class MovieDetailViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(starUpdate(_:)), name: NSNotification.Name("star"), object: nil)
-    }
+        }
     
     func setDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<CharacterMbtiCollectionViewCell, Characters> { cell, indexPath, itemIdentifier in
@@ -153,15 +151,5 @@ extension MovieDetailViewController {
     func characterCellDataFetching(indexPath: IndexPath) {
         let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
         self.characterCellSelected.accept(selectedItem)
-    }
-}
-
-extension MovieDetailViewController {
-    @objc
-    func starUpdate(_ notification: Notification) {
-        if let cnt = notification.object as? Int {
-            self.selfView.headerView.evaluateLabel.text = "\(cnt).0"
-            self.selfView.headerView.evaluateButton.setImage(UIImage(named: "Icon_star"), for: .normal)
-        }
     }
 }
