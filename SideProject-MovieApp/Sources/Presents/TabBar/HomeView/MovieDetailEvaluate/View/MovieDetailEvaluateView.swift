@@ -192,8 +192,10 @@ extension MovieDetailEvaluateView {
             
         case true:
             self.goodChoiceImageView.image = UIImage(named: "Good_Select")
+            self.goodChoiceLabel.textColor = .black5
         case false:
             self.goodChoiceImageView.image = UIImage(named: "Good_Nonselect")
+            self.goodChoiceLabel.textColor = .black60
         }
     }
 }
@@ -204,8 +206,10 @@ extension MovieDetailEvaluateView {
             
         case true:
             self.badChoiceImageView.image = UIImage(named: "Bad_Select")
+            self.badChoiceLabel.textColor = .black5
         case false:
             self.badChoiceImageView.image = UIImage(named: "Bad_Nonselect")
+            self.badChoiceLabel.textColor = .black60
         }
     }
 }
