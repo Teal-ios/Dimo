@@ -116,8 +116,8 @@ class WithdrawView: BaseView {
         subtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(headerLabel.snp.bottom).offset(24)
             make.leading.equalTo(safeAreaLayoutGuide).inset(16)
-            make.trailing.equalTo(safeAreaLayoutGuide).inset(8)
-            make.height.equalTo(42)
+            make.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+//            make.height.equalTo(42)
         }
         
         contentsDissatisfactionView.snp.makeConstraints { make in

@@ -77,7 +77,10 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showEditMbtiViewController() {
-        let viewModel = EditMbtiViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = EditMbtiViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

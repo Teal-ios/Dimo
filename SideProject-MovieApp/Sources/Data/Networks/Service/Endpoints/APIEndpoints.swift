@@ -28,4 +28,8 @@ struct APIEndpoints {
     static func postWithdraw(with requestDTO: RequestWithdrawDTO) -> SettingRouter<ResponseWithdrawDTO> {
         return SettingRouter<ResponseWithdrawDTO>.withdraw(paramters: WithdrawQuery(userId: requestDTO.userId, withdrawReason: requestDTO.withdrawReason))
     }
+    
+    static func getMbtiChange(with requestDTO: RequestMbtiChangeDTO) -> SettingRouter<ResponseMbtiChangeDTO> {
+        return SettingRouter<ResponseMbtiChangeDTO>.mbtiChange(parameters: MbtiChangeQuery(user_id: requestDTO.userId, mbti: requestDTO.mbti))
+    }
 }

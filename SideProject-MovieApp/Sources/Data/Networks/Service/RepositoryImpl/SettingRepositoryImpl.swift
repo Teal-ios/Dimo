@@ -95,3 +95,20 @@ extension SettingRepositoryImpl {
         }
     }
 }
+
+//MARK: Mbti 변경
+extension SettingRepositoryImpl {
+    
+    func fetchMbtiChange(query: MbtiChangeQuery) async throws -> MbtiChange {
+        let requestDTO = RequestMbtiChangeDTO(userId: query.user_id,
+                                              mbti: query.mbti)
+        let target = APIEndpoints.getMbtiChange(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
+        }
+    }
+}
