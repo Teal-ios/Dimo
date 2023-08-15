@@ -94,6 +94,15 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showNoticeViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = NoticeViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = NoticeViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func connectAuthFlow() {
         self.parentCoordinator?.parentCoordinator?.start()
     }

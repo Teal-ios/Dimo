@@ -33,6 +33,8 @@ final class SettingViewModel: ViewModelType {
                 self.coordinator?.showEditMyInfoViewController()
             case [0, 1]:
                 self.coordinator?.showEditMbtiViewController()
+            case [2, 0]:
+                self.coordinator?.showNoticeViewController()
             default:
                 print("미설정")
             }

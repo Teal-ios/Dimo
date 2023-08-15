@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
-        "revision" : "71cde449f13d453227e687458144bde372d30fc7",
-        "version" : "1.6.2"
+        "revision" : "0eadcdec4ddb121865f3d66917549194afce1f2b",
+        "version" : "1.6.1"
       }
     },
     {
@@ -194,8 +194,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/uias/Tabman.git",
       "state" : {
-        "revision" : "e32c0d821b03566ed966753f941113883f268da0",
-        "version" : "3.0.2"
+        "revision" : "6a87a2825939f5da06cf52a6582d67a646488cff",
+        "version" : "3.0.1"
       }
     },
     {
