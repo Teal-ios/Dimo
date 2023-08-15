@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class DigView: BaseView {
     
@@ -193,7 +194,8 @@ final class DigView: BaseView {
     
     override func setupLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(45)
         }
         
@@ -204,7 +206,7 @@ final class DigView: BaseView {
         
         nextButton.snp.makeConstraints { make in
             make.top.equalTo(buttonContainView.snp.top).offset(24)
-            make.horizontalEdges.equalTo(buttonContainView)
+            make.horizontalEdges.equalTo(buttonContainView).inset(16)
             make.height.equalTo(48)
         }
         
@@ -237,7 +239,153 @@ final class DigView: BaseView {
         totalStackView.snp.makeConstraints { make in
             make.height.equalTo(432)
             make.top.equalTo(subtitleLabel.snp.bottom).offset(36)
-            make.horizontalEdges.bottom.equalTo(scrollView)
+            make.horizontalEdges.equalTo(scrollView).inset(16)
+            make.bottom.equalTo(scrollView)
+        }
+    }
+}
+
+extension DigView {
+    func configureUpdateCharacterInfo(with item: CharacterInfo) {
+        self.characterNicknameLabel.text = item.character_name
+        guard let title = item.title else { return }
+        self.subtitleLabel.text = item.title
+        let imageURL = URL(string: item.character_img)
+        self.characterImageView.kf.setImage(with: imageURL)
+    }
+}
+
+extension DigView {
+    func updateEView(select: Bool) {
+        switch select {
+        case true:
+            self.eView.layer.borderColor = UIColor.purple80.cgColor
+            self.eView.mbtiLabel.textColor = .black5
+            self.eView.backgroundColor = .black90
+            self.eView.imgView.image = UIImage(named: "E_White")
+        case false:
+            self.eView.layer.borderColor = UIColor.black80.cgColor
+            self.eView.mbtiLabel.textColor = .black80
+            self.eView.backgroundColor = .black100
+            self.eView.imgView.image = UIImage(named: "E_Gray")
+        }
+    }
+    
+    func updateIView(select: Bool) {
+        switch select {
+        case true:
+            self.iView.layer.borderColor = UIColor.purple80.cgColor
+            self.iView.mbtiLabel.textColor = .black5
+            self.iView.backgroundColor = .black90
+            self.iView.imgView.image = UIImage(named: "I_White")
+        case false:
+            self.iView.layer.borderColor = UIColor.black80.cgColor
+            self.iView.mbtiLabel.textColor = .black80
+            self.iView.backgroundColor = .black100
+            self.iView.imgView.image = UIImage(named: "I_Gray")
+        }
+    }
+}
+
+extension DigView {
+    func updateNView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.nView.layer.borderColor = UIColor.purple80.cgColor
+            self.nView.mbtiLabel.textColor = .black5
+            self.nView.backgroundColor = .black90
+            self.nView.imgView.image = UIImage(named: "N_White")
+        case false:
+            self.nView.layer.borderColor = UIColor.black80.cgColor
+            self.nView.mbtiLabel.textColor = .black80
+            self.nView.backgroundColor = .black100
+            self.nView.imgView.image = UIImage(named: "N_Gray")
+        }
+    }
+    
+    func updateSView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.sView.layer.borderColor = UIColor.purple80.cgColor
+            self.sView.mbtiLabel.textColor = .black5
+            self.sView.backgroundColor = .black90
+            self.sView.imgView.image = UIImage(named: "S_White")
+        case false:
+            self.sView.layer.borderColor = UIColor.black80.cgColor
+            self.sView.mbtiLabel.textColor = .black80
+            self.sView.backgroundColor = .black100
+            self.sView.imgView.image = UIImage(named: "S_Gray")
+        }
+    }
+}
+
+extension DigView {
+    func updateTView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.tView.layer.borderColor = UIColor.purple80.cgColor
+            self.tView.mbtiLabel.textColor = .black5
+            self.tView.backgroundColor = .black90
+            self.tView.imgView.image = UIImage(named: "T_White")
+            
+        case false:
+            self.tView.layer.borderColor = UIColor.black80.cgColor
+            self.tView.mbtiLabel.textColor = .black80
+            self.tView.backgroundColor = .black100
+            self.tView.imgView.image = UIImage(named: "T_Gray")
+        }
+    }
+    
+    func updateFView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.fView.layer.borderColor = UIColor.purple80.cgColor
+            self.fView.mbtiLabel.textColor = .black5
+            self.fView.backgroundColor = .black90
+            self.fView.imgView.image = UIImage(named: "F_White")
+        case false:
+            self.fView.layer.borderColor = UIColor.black80.cgColor
+            self.fView.mbtiLabel.textColor = .black80
+            self.fView.backgroundColor = .black100
+            self.fView.imgView.image = UIImage(named: "F_Gray")
+        }
+    }
+}
+
+extension DigView {
+    func updateJView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.jView.layer.borderColor = UIColor.purple80.cgColor
+            self.jView.mbtiLabel.textColor = .black5
+            self.jView.backgroundColor = .black90
+            self.jView.imgView.image = UIImage(named: "J_White")
+        case false:
+            self.jView.layer.borderColor = UIColor.black80.cgColor
+            self.jView.mbtiLabel.textColor = .black80
+            self.jView.backgroundColor = .black100
+            self.jView.imgView.image = UIImage(named: "J_Gray")
+        }
+    }
+    
+    func updatePView(select: Bool) {
+        switch select {
+            
+        case true:
+            self.pView.layer.borderColor = UIColor.purple80.cgColor
+            self.pView.mbtiLabel.textColor = .black5
+            self.pView.backgroundColor = .black90
+            self.pView.imgView.image = UIImage(named: "P_White")
+        case false:
+            self.pView.layer.borderColor = UIColor.black80.cgColor
+            self.pView.mbtiLabel.textColor = .black80
+            self.pView.backgroundColor = .black100
+            self.pView.imgView.image = UIImage(named: "P_Gray")
         }
     }
 }

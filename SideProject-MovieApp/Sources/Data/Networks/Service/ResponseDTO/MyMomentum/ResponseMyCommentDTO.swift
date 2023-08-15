@@ -15,14 +15,18 @@ struct ResponseMyCommentDTO: Decodable {
     let comment_content: String
     let comment_spoiler: Int
     let character_id: Int
+    let anime_id: Int
+    let character_img: String
+    let character_name: String
+    let character_mbti: String?
     
     enum CodingKeys: String, CodingKey {
-        case comment_id, review_id, user_id, comment_like, comment_content, comment_spoiler, character_id
+        case comment_id, review_id, user_id, comment_like, comment_content, comment_spoiler, character_id, anime_id, character_img, character_name, character_mbti
     }
 }
 
 extension ResponseMyCommentDTO {
     var toDomain: MyComment {
-        return .init(comment_id: comment_id, review_id: review_id, user_id: user_id, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id)
+        return .init(comment_id: comment_id, review_id: review_id, user_id: user_id, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id, anime_id: anime_id, character_img: character_img, character_name: character_name, character_mbti: character_mbti)
     }
 }

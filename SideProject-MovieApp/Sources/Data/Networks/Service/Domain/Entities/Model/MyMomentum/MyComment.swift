@@ -15,4 +15,8 @@ struct MyComment: Hashable {
     let comment_content: String
     let comment_spoiler: Int
     let character_id: Int
+    let anime_id: Int
+    let character_img: String
+    let character_name: String
+    let character_mbti: String?
 }

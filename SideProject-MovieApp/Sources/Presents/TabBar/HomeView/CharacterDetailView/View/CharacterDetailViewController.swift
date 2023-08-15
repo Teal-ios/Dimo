@@ -37,9 +37,10 @@ final class CharacterDetailViewController: TabmanViewController {
       let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
       let characterDetailUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
       let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character, characterId: viewModel.coordinator?.characterId ?? PublishRelay<Int>())
+      let analyeViewModel = AnalyzeViewModel(coordinator: viewModel.coordinator)
     
     vc1 = .init(viewModel: feedViewModel)
-    vc2 = .init()
+      vc2 = .init(viewModel: analyeViewModel)
     
     vcs = .init([vc1, vc2])
     
