@@ -212,6 +212,16 @@
 		2FCD8C842A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C832A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift */; };
 		2FCD8C862A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C852A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift */; };
 		2FCD8C882A8214C2002A39B0 /* MbtiInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C872A8214C2002A39B0 /* MbtiInfoView.swift */; };
+		2FCD8C8A2A82343B002A39B0 /* GetReviewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */; };
+		2FCD8C8F2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C8E2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift */; };
+		2FCD8C912A8247F0002A39B0 /* FeedDetailMoreAnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C902A8247F0002A39B0 /* FeedDetailMoreAnotherViewController.swift */; };
+		2FCD8C932A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C922A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift */; };
+		2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C9A2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift */; };
+		2FCD8C9D2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C9C2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift */; };
+		2FCD8C9F2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8C9E2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift */; };
+		2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA02A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift */; };
+		2FCD8CA32A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA22A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift */; };
+		2FCD8CA52A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA42A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
@@ -735,6 +745,16 @@
 		2FCD8C832A8209BF002A39B0 /* MovieDetailEvaluateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailEvaluateViewController.swift; sourceTree = "<group>"; };
 		2FCD8C852A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailEvaluateViewModel.swift; sourceTree = "<group>"; };
 		2FCD8C872A8214C2002A39B0 /* MbtiInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiInfoView.swift; sourceTree = "<group>"; };
+		2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewDetail.swift; sourceTree = "<group>"; };
+		2FCD8C8E2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailMoreAnotherView.swift; sourceTree = "<group>"; };
+		2FCD8C902A8247F0002A39B0 /* FeedDetailMoreAnotherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailMoreAnotherViewController.swift; sourceTree = "<group>"; };
+		2FCD8C922A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailMoreAnotherViewModel.swift; sourceTree = "<group>"; };
+		2FCD8C9A2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideReviewAlertView.swift; sourceTree = "<group>"; };
+		2FCD8C9C2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideReviewAlertViewController.swift; sourceTree = "<group>"; };
+		2FCD8C9E2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideReviewAlertViewModel.swift; sourceTree = "<group>"; };
+		2FCD8CA02A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertView.swift; sourceTree = "<group>"; };
+		2FCD8CA22A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertViewController.swift; sourceTree = "<group>"; };
+		2FCD8CA42A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertViewModel.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
@@ -2353,6 +2373,84 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2FCD8C8B2A824795002A39B0 /* FeedDetailMoreAnother */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C8D2A8247C7002A39B0 /* ViewModel */,
+				2FCD8C8C2A8247C4002A39B0 /* View */,
+			);
+			path = FeedDetailMoreAnother;
+			sourceTree = "<group>";
+		};
+		2FCD8C8C2A8247C4002A39B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C8E2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift */,
+				2FCD8C902A8247F0002A39B0 /* FeedDetailMoreAnotherViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FCD8C8D2A8247C7002A39B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C922A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FCD8C942A824BEE002A39B0 /* FeedDetailHideReviewAlert */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C992A82504B002A39B0 /* ViewModel */,
+				2FCD8C982A825049002A39B0 /* View */,
+			);
+			path = FeedDetailHideReviewAlert;
+			sourceTree = "<group>";
+		};
+		2FCD8C952A824BF7002A39B0 /* FeedDetailHideUserAlert */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C972A825045002A39B0 /* ViewModel */,
+				2FCD8C962A825041002A39B0 /* View */,
+			);
+			path = FeedDetailHideUserAlert;
+			sourceTree = "<group>";
+		};
+		2FCD8C962A825041002A39B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8CA02A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift */,
+				2FCD8CA22A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FCD8C972A825045002A39B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8CA42A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FCD8C982A825049002A39B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C9A2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift */,
+				2FCD8C9C2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FCD8C992A82504B002A39B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8C9E2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2755,8 +2853,11 @@
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				2FCD8C952A824BF7002A39B0 /* FeedDetailHideUserAlert */,
+				2FCD8C942A824BEE002A39B0 /* FeedDetailHideReviewAlert */,
 				2F124ADD2A4FCB9B00A452F1 /* FeedDetailDelete */,
 				2F124AD42A4EBFE100A452F1 /* Write */,
+				2FCD8C8B2A824795002A39B0 /* FeedDetailMoreAnother */,
 				2F437C192A4C5773000B7A61 /* FeedDetailMoreMy */,
 				2F1890002A4591F60097D38E /* CharacterMore */,
 				2F6D7D0F2A14B27000FA457D /* MovieDetail */,
@@ -3034,6 +3135,7 @@
 				2FD82D662A7743DC00372D24 /* GetComment.swift */,
 				2FD82D682A77443100372D24 /* ReviewList.swift */,
 				2FD82D6A2A77457C00372D24 /* CommentList.swift */,
+				2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3483,6 +3585,7 @@
 				93DD35C329C303D500BBB213 /* HTTPMethod.swift in Sources */,
 				2FC367512A7F88AC00635CBB /* AnalyzeViewModel.swift in Sources */,
 				493C5C792A768E7100AF1F63 /* WithdrawQuery.swift in Sources */,
+				2FCD8C912A8247F0002A39B0 /* FeedDetailMoreAnotherViewController.swift in Sources */,
 				2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */,
 				2FBD19D229FF73C80005B1FA /* VoteHeaderView.swift in Sources */,
 				2FD82DBC2A775AE800372D24 /* ResponseGetCommentDTO.swift in Sources */,
@@ -3579,6 +3682,7 @@
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */,
+				2FCD8C8F2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D9092A6BBFDA00E7972B /* ModifyMyProfileQuery.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
@@ -3599,6 +3703,7 @@
 				2FD87A372A58420F003C276B /* DropQuery.swift in Sources */,
 				2FE968252A7BD50F000E705E /* SameMbtiCharacter.swift in Sources */,
 				2FD69EB92A03A8CF00AA5A6E /* CategoryView.swift in Sources */,
+				2FCD8CA32A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift in Sources */,
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
 				2FE111242A7664E10013A49E /* SameWorkCharacterList.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
@@ -3623,11 +3728,13 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
+				2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */,
 				2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
+				2FCD8C932A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift in Sources */,
 				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2FD82D7C2A77474100372D24 /* GetCommentQuery.swift in Sources */,
@@ -3682,6 +3789,7 @@
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
 				2FD82DB62A775AB800372D24 /* ResponseModifyReviewDTO.swift in Sources */,
 				2FDD9E652A121EB300A41FF7 /* FeedDetailView.swift in Sources */,
+				2FCD8CA52A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				2FD2DD032A70E3F7000C5EB7 /* UIImage+Extension.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
@@ -3713,6 +3821,7 @@
 				2FE1111C2A76645C0013A49E /* RandomCharacterRecommendList.swift in Sources */,
 				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
 				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
+				2FCD8C9D2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				493C5C772A7642CA00AF1F63 /* Reactive+Extension.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
@@ -3735,6 +3844,7 @@
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
 				2FBFF8282A6F4F60007914A1 /* LikeContentCheck.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
+				2FCD8C8A2A82343B002A39B0 /* GetReviewDetail.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
 				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
@@ -3745,6 +3855,7 @@
 				2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
 				2FD4D9072A6BB1E600E7972B /* MyMomentumRepository.swift in Sources */,
+				2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2FD4D91A2A6CC5B600E7972B /* LikeContent.swift in Sources */,
 				2FD4D8FE2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift in Sources */,
@@ -3770,6 +3881,7 @@
 				2FD87A3B2A5842BB003C276B /* Drop.swift in Sources */,
 				2FD4D9182A6CC59500E7972B /* LikeMovieContent.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
+				2FCD8C9F2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */,
