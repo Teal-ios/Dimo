@@ -1,13 +1,13 @@
 //
-//  NoticeView.swift
+//  FrequentQuestionView.swift
 //  SideProject-MovieApp
 //
-//  Created by 이동기 on 2023/08/13.
+//  Created by 이동기 on 2023/08/15.
 //
 
 import UIKit
 
-final class NoticeView: BaseView {
+final class FrequentQuestionView: BaseView {
     
     private let containerView: UIView = {
         let view = UIView()
@@ -16,7 +16,7 @@ final class NoticeView: BaseView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "공지사항"
+        label.text = "자주 묻는 질문"
         label.font = .suitFont(ofSize: 24, weight: .Bold)
         return label
     }()
@@ -50,18 +50,17 @@ final class NoticeView: BaseView {
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalTo(self.snp.leading)
-            make.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
 
-extension NoticeView {
+extension FrequentQuestionView {
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let layoutSize = NSCollectionLayoutSize.init(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(72.0)
+            heightDimension: .estimated(40.0)
         )
 
         let section = NSCollectionLayoutSection(group:
@@ -75,3 +74,4 @@ extension NoticeView {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
+

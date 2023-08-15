@@ -103,6 +103,15 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showFrequentQuestionViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = FrequentQuestionViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = FrequentQuestionViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func connectAuthFlow() {
         self.parentCoordinator?.parentCoordinator?.start()
     }
