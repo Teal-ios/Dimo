@@ -142,8 +142,6 @@ class EditMbtiView: BaseView {
     }()
     
     lazy var section2StackView: UIStackView = {
-        
-        
         let stackView = UIStackView(arrangedSubviews: [
             nView, sView
         ])
@@ -157,8 +155,6 @@ class EditMbtiView: BaseView {
     }()
     
     lazy var section3StackView: UIStackView = {
-        
-        
         let stackView = UIStackView(arrangedSubviews: [
             tView, fView
         ])
@@ -253,6 +249,121 @@ class EditMbtiView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).inset(36)
             make.height.equalTo(48)
+        }
+    }
+}
+
+extension EditMbtiView {
+    
+    func showEButtonState(isSelected: Bool) {
+        if isSelected {
+            eView.layer.borderColor = UIColor.purple80.cgColor
+            eView.imgView.image = UIImage(named: "E_White")
+            eView.mbtiLabel.textColor = .black5
+            eView.backgroundColor = .black90
+        } else {
+            eView.layer.borderColor = UIColor.black80.cgColor
+            eView.imgView.image = UIImage(named: "E_Gray")
+            eView.mbtiLabel.textColor = .black80
+            eView.backgroundColor = .black100
+        }
+    }
+    
+    func showIButtonState(isSelected: Bool) {
+        if isSelected {
+            iView.layer.borderColor = UIColor.purple80.cgColor
+            iView.imgView.image = UIImage(named: "I_White")
+            iView.mbtiLabel.textColor = .black5
+            iView.backgroundColor = .black90
+        } else {
+            iView.layer.borderColor = UIColor.black80.cgColor
+            iView.imgView.image = UIImage(named: "I_Gray")
+            iView.mbtiLabel.textColor = .black80
+            iView.backgroundColor = .black100
+        }
+    }
+    
+    func showNButtonState(isSelected: Bool) {
+        if isSelected {
+            nView.layer.borderColor = UIColor.purple80.cgColor
+            nView.imgView.image = UIImage(named: "N_White")
+            nView.mbtiLabel.textColor = .black5
+            nView.backgroundColor = .black90
+        } else {
+            nView.layer.borderColor = UIColor.black80.cgColor
+            nView.imgView.image = UIImage(named: "N_Gray")
+            nView.mbtiLabel.textColor = .black80
+            nView.backgroundColor = .black100
+        }
+    }
+    
+    func showSButtonState(isSelected: Bool) {
+        if isSelected {
+            sView.layer.borderColor = UIColor.purple80.cgColor
+            sView.imgView.image = UIImage(named: "S_White")
+            sView.mbtiLabel.textColor = .black5
+            sView.backgroundColor = .black90
+        } else {
+            sView.layer.borderColor = UIColor.black80.cgColor
+            sView.imgView.image = UIImage(named: "S_Gray")
+            sView.mbtiLabel.textColor = .black80
+            sView.backgroundColor = .black100
+        }
+    }
+    
+    func showTButtonState(isSelected: Bool) {
+        if isSelected {
+            tView.layer.borderColor = UIColor.purple80.cgColor
+            tView.imgView.image = UIImage(named: "T_White")
+            tView.mbtiLabel.textColor = .black5
+            tView.backgroundColor = .black90
+        } else {
+            tView.layer.borderColor = UIColor.black80.cgColor
+            tView.imgView.image = UIImage(named: "T_Gray")
+            tView.mbtiLabel.textColor = .black80
+            tView.backgroundColor = .black100
+        }
+    }
+    
+    func showFButtonState(isSelected: Bool) {
+        if isSelected {
+            fView.layer.borderColor = UIColor.purple80.cgColor
+            fView.imgView.image = UIImage(named: "F_White")
+            fView.mbtiLabel.textColor = .black5
+            fView.backgroundColor = .black90
+        } else {
+            fView.layer.borderColor = UIColor.black80.cgColor
+            fView.imgView.image = UIImage(named: "F_Gray")
+            fView.mbtiLabel.textColor = .black80
+            fView.backgroundColor = .black100
+        }
+    }
+    
+    func showJButtonState(isSelected: Bool) {
+        if isSelected {
+            jView.layer.borderColor = UIColor.purple80.cgColor
+            jView.imgView.image = UIImage(named: "J_White")
+            jView.mbtiLabel.textColor = .black5
+            jView.backgroundColor = .black90
+        } else {
+            jView.layer.borderColor = UIColor.black80.cgColor
+            jView.mbtiLabel.textColor = .black80
+            jView.backgroundColor = .black100
+            jView.imgView.image = UIImage(named: "J_Gray")
+        }
+    }
+    
+    func showPButtonState(isSelected: Bool) {
+        if isSelected {
+            pView.layer.borderColor = UIColor.purple80.cgColor
+            pView.imgView.image = UIImage(named: "P_White")
+            pView.mbtiLabel.textColor = .black5
+            pView.backgroundColor = .black90
+        } else {
+            pView.layer.borderColor = UIColor.black80.cgColor
+            pView.imgView.image = UIImage(named: "P_Gray")
+            pView.mbtiLabel.textColor = .black80
+            pView.backgroundColor = .black100
         }
     }
 }
