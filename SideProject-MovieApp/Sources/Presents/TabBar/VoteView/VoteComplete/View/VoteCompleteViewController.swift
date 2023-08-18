@@ -69,7 +69,16 @@ final class VoteCompleteViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vc, voteCharacter in
-                vc.selfView.configureUpdateVoteCharacter(with: voteCharacter)
+//                vc.selfView.configureUpdateVoteCharacter(with: voteCharacter)
+            }
+            .disposed(by: disposeBag)
+        
+        output.inquireVoteResult
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, voteResult in
+                vc.selfView.configureUpdateChart(with: voteResult)
+                vc.selfView.configureUpdateMbtiContent(with: voteResult)
             }
             .disposed(by: disposeBag)
     }

@@ -32,9 +32,11 @@ final class VoteCompleteViewModel: ViewModelType {
         let sameWorkAnotherCharacterList: PublishRelay<SameWorkCharacterList>
         let characterInfo: BehaviorRelay<CharacterInfo>
         let voteCharacter: BehaviorRelay<VoteCharacter>
+        let inquireVoteResult: PublishRelay<InquireVoteResult>
     }
     
     let sameWorkAnotherCharacterList =  PublishRelay<SameWorkCharacterList>()
+    let inquireVoteResult = PublishRelay<InquireVoteResult>()
     
     func transform(input: Input) -> Output {
 
@@ -48,7 +50,7 @@ final class VoteCompleteViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList, characterInfo: self.characterInfo, voteCharacter: self.voteCharacter)
+        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList, characterInfo: self.characterInfo, voteCharacter: self.voteCharacter, inquireVoteResult: self.inquireVoteResult)
     }
 }
 
@@ -67,6 +69,7 @@ extension VoteCompleteViewModel {
         Task {
             let inquireVoteResult = try await voteUseCase.excuteInquireVoteResult(query: InquireVoteResultQuery(user_id: user_id, character_id: character_id))
             print("투표 결과 확인", inquireVoteResult)
+            self.inquireVoteResult.accept(inquireVoteResult)
         }
     }
 }
