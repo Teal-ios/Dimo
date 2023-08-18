@@ -84,3 +84,29 @@ extension VoteRepositoyImpl {
         }
     }
 }
+
+extension VoteRepositoyImpl {
+    func fetchInquireVoteResult(query: InquireVoteResultQuery) async throws -> InquireVoteResult {
+        let target = VoteAPIEndpoints.getInquireVoteResult(with: query)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw VoteRepositoryError.request
+        }
+    }
+}
+
+extension VoteRepositoyImpl {
+    func fetchInquireCharacterAnalyze(query: InquireCharacterAnalyzeQuery) async throws -> InquireCharacterAnalyze {
+        let target = VoteAPIEndpoints.getInquireCharacterAnalyze(with: query)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw VoteRepositoryError.request
+        }
+    }
+}

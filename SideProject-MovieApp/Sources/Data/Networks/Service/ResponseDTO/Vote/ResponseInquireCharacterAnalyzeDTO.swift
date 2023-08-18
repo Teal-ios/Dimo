@@ -22,7 +22,7 @@ struct ResponseInquireCharacterAnalyzeDTO: Decodable {
 }
 
 extension ResponseInquireCharacterAnalyzeDTO {
-    var toDOmain: InquireCharacterAnalyze {
+    var toDomain: InquireCharacterAnalyze {
         return .init(code: code, message: message, character_info: character_info.map { $0.toDomain }, mbti_percent: mbti_percent.map { $0.toDomain }, my_vote_mbti: my_vote_mbti, my_vote_mbti_percent: my_vote_mbti_percent, top3_mbti: top3_mbti.toDomain)
     }
 }

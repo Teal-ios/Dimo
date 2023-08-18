@@ -18,4 +18,8 @@ protocol VoteRepository {
     func requestVoteCharacter(query: VoteCharacterQuery) async throws -> VoteCharacter
     
     func fetchSameWorkCharacterList(query: SameWorkCharacterListQuery) async throws -> SameWorkCharacterList
+    
+    func fetchInquireVoteResult(query: InquireVoteResultQuery) async throws -> InquireVoteResult
+    
+    func fetchInquireCharacterAnalyze(query: InquireCharacterAnalyzeQuery) async throws -> InquireCharacterAnalyze
 }

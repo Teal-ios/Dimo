@@ -37,14 +37,6 @@ final class VoteCompleteViewModel: ViewModelType {
     let sameWorkAnotherCharacterList =  PublishRelay<SameWorkCharacterList>()
     
     func transform(input: Input) -> Output {
-        
-//        input.viewDidLoad
-//            .withUnretained(self)
-//            .bind { vm, _ in
-//                guard let user_id = UserDefaultManager.userId else { return }
-//                vm.getSameWorkAnotherChacracter(user_id: user_id, search_content: "히타치")
-//            }
-//            .disposed(by: disposeBag)
 
         input.viewDidLoad
             .withLatestFrom(self.characterInfo)
@@ -52,6 +44,7 @@ final class VoteCompleteViewModel: ViewModelType {
                 guard let self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
                 self.getSameWorkAnotherChacracter(user_id: user_id, character_id: characterInfo.character_id)
+                self.getInquireVoteResult(user_id: user_id, character_id: characterInfo.character_id)
             }
             .disposed(by: disposeBag)
         
@@ -65,6 +58,15 @@ extension VoteCompleteViewModel {
             let sameWorkAnotherCharacter = try await voteUseCase.excuteSameWorkCharacterList(query: SameWorkCharacterListQuery(user_id: user_id, character_id: character_id))
             print("같은 작품 내 캐릭터 조회 완료", sameWorkAnotherCharacter)
             self.sameWorkAnotherCharacterList.accept(sameWorkAnotherCharacter)
+        }
+    }
+}
+
+extension VoteCompleteViewModel {
+    private func getInquireVoteResult(user_id: String, character_id: Int) {
+        Task {
+            let inquireVoteResult = try await voteUseCase.excuteInquireVoteResult(query: InquireVoteResultQuery(user_id: user_id, character_id: character_id))
+            print("투표 결과 확인", inquireVoteResult)
         }
     }
 }

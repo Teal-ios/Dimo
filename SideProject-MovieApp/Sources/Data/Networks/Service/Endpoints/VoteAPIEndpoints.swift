@@ -27,4 +27,12 @@ struct VoteAPIEndpoints {
     static func getSameCharacterList(with query: SameWorkCharacterListQuery) -> VoteRouter<ResponseSameWorkCharacterListDTO> {
         return VoteRouter<ResponseSameWorkCharacterListDTO>.sameWorkCharacterList(parameters: query)
     }
+    
+    static func getInquireVoteResult(with query: InquireVoteResultQuery) -> VoteRouter<ResponseInquireVoteResultDTO> {
+        return VoteRouter<ResponseInquireVoteResultDTO>.inquireVoteResult(parameters: query)
+    }
+    
+    static func getInquireCharacterAnalyze(with query: InquireCharacterAnalyzeQuery) -> VoteRouter<ResponseInquireCharacterAnalyzeDTO> {
+        return VoteRouter<ResponseInquireCharacterAnalyzeDTO>.inquireCharacterAnalyze(parameters: query)
+    }
 }

@@ -10,8 +10,8 @@ import Foundation
 struct InquireVoteResult: Hashable {
     let code: Int
     let message: String
-    let content_info: [ContentInfo]
-    let character_id: Int
+    let content_info: ContentInfo
+    let character_id: String
     let mbti_percent: [MbtiPercentDetail]
     let same_vote_percent: Int?
     let my_vote_mbti: String?

@@ -10,8 +10,8 @@ import Foundation
 struct ResponseInquireVoteResultDTO: Decodable {
     let code: Int
     let message: String
-    let content_info: [ResponseContentInfoDTO]
-    let character_id: Int
+    let content_info: ResponseContentInfoDTO
+    let character_id: String
     let mbti_percent: [ResponseMbtiPercentDetailDTO]
     let same_vote_percent: Int?
     let my_vote_mbti: String?
@@ -24,6 +24,6 @@ struct ResponseInquireVoteResultDTO: Decodable {
 
 extension ResponseInquireVoteResultDTO {
     var toDomain: InquireVoteResult {
-        return .init(code: code, message: message, content_info: content_info.map{ $0.toDomain }, character_id: character_id, mbti_percent: mbti_percent.map { $0.toDomain }, same_vote_percent: same_vote_percent, my_vote_mbti: my_vote_mbti, most_vote_mbti: most_vote_mbti)
+        return .init(code: code, message: message, content_info: content_info.toDomain, character_id: character_id, mbti_percent: mbti_percent.map { $0.toDomain }, same_vote_percent: same_vote_percent, my_vote_mbti: my_vote_mbti, most_vote_mbti: most_vote_mbti)
     }
 }
