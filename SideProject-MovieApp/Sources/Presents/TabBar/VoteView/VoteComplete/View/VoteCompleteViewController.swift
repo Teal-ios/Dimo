@@ -88,6 +88,7 @@ extension VoteCompleteViewController {
     private func setCharacterDataSource() {
         let cellCharacterRegistration = UICollectionView.CellRegistration<DigFinishCharacterCollectionViewCell, Result> { cell, indexPath, itemIdentifier in
             cell.configureUIToResultData(with: itemIdentifier)
+            cell.configureIsVoted(vote: itemIdentifier.is_vote ?? 0)
         }
         
         characterDataSource = UICollectionViewDiffableDataSource(collectionView: selfView.characterMoreCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

@@ -56,8 +56,8 @@ final class VoteViewController: BaseViewController {
                 snapshot.appendSections([0, 1])
                 var section1Arr: [CharacterInfo] = []
                 var section2Arr: [CharacterInfo] = []
-                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil, title: nil))
-                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil, title: nil))
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil, title: nil, is_vote: 0))
+                section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil, title: nil, is_vote: 0))
                 for i in popularCharacterRecommendData.character_info {
                     section2Arr.append(i)
                 }
@@ -77,6 +77,7 @@ extension VoteViewController {
         
         let cellVoteRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, CharacterInfo> { cell, indexPath, itemIdentifier in
             cell.configureAttributeWithCharacterInfo(with: itemIdentifier)
+            cell.configureIsVoted(vote: itemIdentifier.is_vote)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: voteView.collectionView) { collectionView, indexPath, itemIdentifier in
