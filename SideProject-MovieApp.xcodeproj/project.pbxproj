@@ -222,6 +222,9 @@
 		2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA02A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift */; };
 		2FCD8CA32A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA22A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift */; };
 		2FCD8CA52A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA42A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift */; };
+		2FCD8CAA2A8260F1002A39B0 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CA92A8260F1002A39B0 /* ReportView.swift */; };
+		2FCD8CAC2A8260F9002A39B0 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CAB2A8260F9002A39B0 /* ReportViewModel.swift */; };
+		2FCD8CAE2A826104002A39B0 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD8CAD2A826104002A39B0 /* ReportViewController.swift */; };
 		2FCDD20129E6A5F6000B6CD7 /* DimoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */; };
 		2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */; };
 		2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */; };
@@ -770,6 +773,9 @@
 		2FCD8CA02A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertView.swift; sourceTree = "<group>"; };
 		2FCD8CA22A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertViewController.swift; sourceTree = "<group>"; };
 		2FCD8CA42A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHideUserAlertViewModel.swift; sourceTree = "<group>"; };
+		2FCD8CA92A8260F1002A39B0 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		2FCD8CAB2A8260F9002A39B0 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
+		2FCD8CAD2A826104002A39B0 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2FCDD20029E6A5F6000B6CD7 /* DimoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginView.swift; sourceTree = "<group>"; };
 		2FCDD20229E6A709000B6CD7 /* DimoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewController.swift; sourceTree = "<group>"; };
 		2FCDD20429E7A9EB000B6CD7 /* DimoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimoLoginViewModel.swift; sourceTree = "<group>"; };
@@ -2484,6 +2490,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2FCD8CA62A825DA8002A39B0 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8CA82A8260E9002A39B0 /* ViewModel */,
+				2FCD8CA72A8260E4002A39B0 /* View */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		2FCD8CA72A8260E4002A39B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8CA92A8260F1002A39B0 /* ReportView.swift */,
+				2FCD8CAD2A826104002A39B0 /* ReportViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FCD8CA82A8260E9002A39B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD8CAB2A8260F9002A39B0 /* ReportViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FCDD1FF29E6A582000B6CD7 /* DimoLoginView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2886,6 +2918,7 @@
 		2FD69EA32A03741800AA5A6E /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				2FCD8CA62A825DA8002A39B0 /* Report */,
 				2FCD8C952A824BF7002A39B0 /* FeedDetailHideUserAlert */,
 				2FCD8C942A824BEE002A39B0 /* FeedDetailHideReviewAlert */,
 				2F124ADD2A4FCB9B00A452F1 /* FeedDetailDelete */,
@@ -3955,6 +3988,7 @@
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FD82D952A774D9400372D24 /* RequestDeleteReviewDTO.swift in Sources */,
+				2FCD8CAE2A826104002A39B0 /* ReportViewController.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
 				2FD82DB02A7757A700372D24 /* ResponseGetReviewDTO.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
@@ -4021,6 +4055,7 @@
 				49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */,
 				2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
+				2FCD8CAA2A8260F1002A39B0 /* ReportView.swift in Sources */,
 				2FE111342A76687B0013A49E /* VoteCharacterQuery.swift in Sources */,
 				2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */,
 				2FE968272A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift in Sources */,
@@ -4054,6 +4089,7 @@
 				497454E92A3F62B70043D67E /* TargetType2.swift in Sources */,
 				2FEC15D82A7788FB009CF59D /* CharacterDetailUseCase.swift in Sources */,
 				2FD82D8F2A774D5800372D24 /* RequestLikeReviewChoiceDTO.swift in Sources */,
+				2FCD8CAC2A8260F9002A39B0 /* ReportViewModel.swift in Sources */,
 				493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				2F18900A2A4592270097D38E /* CharacterMoreView.swift in Sources */,
