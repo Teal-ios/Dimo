@@ -60,31 +60,103 @@ final class EditMbtiViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
+        let currentMbti = UserDefaultManager.mbti
+        
+        for mbti in currentMbti ?? "" {
+            if mbti == "E" {
+                self.isValidMbti.accept(["E": true,
+                                         "I": false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isEButtonTapped.accept(true)
+            } else if mbti == "I" {
+                self.isValidMbti.accept(["E": true,
+                                         "I": false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isIButtonTapped.accept(true)
+            } else if mbti == "N" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": true,
+                                         "S": false,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isNButtonTapped.accept(true)
+            } else if mbti == "S" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": false,
+                                         "S": true,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isSButtonTapped.accept(true)
+            } else if mbti == "T" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": true,
+                                         "F": false,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isTButtonTapped.accept(true)
+            } else if mbti == "F" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": false,
+                                         "F": true,
+                                         "J": isValidMbti.value["J"] ?? false,
+                                         "P": isValidMbti.value["P"] ?? false])
+                self.isFButtonTapped.accept(true)
+            } else if mbti == "J" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": true,
+                                         "P": false])
+                self.isJButtonTapped.accept(true)
+            } else if mbti == "P" {
+                self.isValidMbti.accept(["E": isValidMbti.value["E"] ?? false,
+                                         "I": isValidMbti.value["I"] ?? false,
+                                         "N": isValidMbti.value["N"] ?? false,
+                                         "S": isValidMbti.value["S"] ?? false,
+                                         "T": isValidMbti.value["T"] ?? false,
+                                         "F": isValidMbti.value["F"] ?? false,
+                                         "J": false,
+                                         "P": true])
+                self.isPButtonTapped.accept(true)
+            }
+        }
+        
         input.eButtonTapped
             .withUnretained(self)
             .bind { (vm, _) in
-                if vm.isEButtonTapped.value == false {
-                    vm.isValidMbti.accept(["E": true,
-                                           "I": false,
-                                           "N": vm.isNButtonTapped.value,
-                                           "S": vm.isSButtonTapped.value,
-                                           "T": vm.isTButtonTapped.value,
-                                           "F": vm.isFButtonTapped.value,
-                                           "J": vm.isJButtonTapped.value,
-                                           "P": vm.isPButtonTapped.value])
-                    vm.isEButtonTapped.accept(true)
-                    vm.isIButtonTapped.accept(false)
-                } else {
-                    vm.isValidMbti.accept(["E": false,
-                                           "I": false,
-                                           "N": vm.isNButtonTapped.value,
-                                           "S": vm.isSButtonTapped.value,
-                                           "T": vm.isTButtonTapped.value,
-                                           "F": vm.isFButtonTapped.value,
-                                           "J": vm.isJButtonTapped.value,
-                                           "P": vm.isPButtonTapped.value])
-                    vm.isEButtonTapped.accept(false)
-                }
+                vm.isValidMbti.accept(["E": true,
+                                       "I": false,
+                                       "N": vm.isValidMbti.value["N"] ?? false,
+                                       "S": vm.isValidMbti.value["S"] ?? false,
+                                       "T": vm.isValidMbti.value["T"] ?? false,
+                                       "F": vm.isValidMbti.value["F"] ?? false,
+                                       "J": vm.isValidMbti.value["J"] ?? false,
+                                       "P": vm.isValidMbti.value["P"] ?? false])
             }
             .disposed(by: disposeBag)
         
