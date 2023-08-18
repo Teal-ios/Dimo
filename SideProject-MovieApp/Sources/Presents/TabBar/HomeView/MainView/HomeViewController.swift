@@ -13,7 +13,7 @@ import Kingfisher
 enum Category: String {
     case poster = "represent"
     case hot = "hits"
-    case mbtiChar = "same_mbti_char"
+    case mbtiChar = "same_mbti_character"
     case mbtiAnime = "same_mbti_anime"
     case recommend = "recommend"
 }
@@ -104,6 +104,7 @@ final class HomeViewController: BaseViewController {
                     }
                     if content.category == Category.mbtiChar.rawValue {
                         guard let char = content.same_mbti_char else { return }
+                        print(char, "♻️♻️♻️")
                         mbtiCharArr = char
                     }
                     if content.category == Category.hot.rawValue {

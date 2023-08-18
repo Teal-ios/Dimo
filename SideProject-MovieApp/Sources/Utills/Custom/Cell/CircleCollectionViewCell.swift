@@ -23,7 +23,7 @@ class CircleCollectionViewCell: BaseCollectionViewCell {
     let blurView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         view.clipsToBounds = true
-        view.alpha = 0.5
+        view.alpha = 1.0
         return view
     }()
 
