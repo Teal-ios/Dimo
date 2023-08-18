@@ -20,4 +20,7 @@ struct ReviewList: Hashable {
     let profile_img: String?
     let comment_count: Int?
     let comment_content: Int?
+    let character_name: String?
+    let title: String?
+    let character_mbti: String?
 }

@@ -39,4 +39,8 @@ struct CharacterDetailAPIEndpoints {
     static func getComment(with query: GetCommentQuery) -> CharacterDetailRouter<ResponseGetCommentDTO> {
         return CharacterDetailRouter<ResponseGetCommentDTO>.getComment(parameters: query)
     }
+    
+    static func getReviewDetail(with query: GetReviewDetailQuery) -> CharacterDetailRouter<ResponseGetReviewDetailDTO> {
+        return CharacterDetailRouter<ResponseGetReviewDetailDTO>.getReviewDetail(parameters: query)
+    }
 }

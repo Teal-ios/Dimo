@@ -30,6 +30,7 @@ final class FeedDetailViewModel: ViewModelType {
         let review: BehaviorRelay<ReviewList>
         let commentList: PublishRelay<[CommentList?]>
         let postCommentSuccess: PublishRelay<PostComment>
+        let reviewDetail: PublishRelay<GetReviewDetail>
     }
     
     init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList) {
@@ -43,6 +44,7 @@ final class FeedDetailViewModel: ViewModelType {
     let spoilerValid = BehaviorRelay(value: false)
     let textValid = BehaviorRelay(value: false)
     let commentText = BehaviorRelay(value: "")
+    let getReviewDetail = PublishRelay<GetReviewDetail>()
     
     func transform(input: Input) -> Output {
         //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
@@ -93,6 +95,7 @@ final class FeedDetailViewModel: ViewModelType {
                 guard let self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
                 self.getCommentList(user_id: user_id, review_id: review.review_id)
+                self.getReviewDetail(user_id: user_id, character_id: review.character_id, review_id: review.review_id)
             }
             .disposed(by: disposeBag)
 
@@ -123,7 +126,7 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment)
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail)
     }
 }
 
@@ -144,6 +147,17 @@ extension FeedDetailViewModel {
             let postComment = try await characterDetailUseCase.excutePostComment(query: query)
             print(postComment, "댓글 작성 성공")
             self.postComment.accept(postComment)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func getReviewDetail(user_id: String, character_id: Int, review_id: Int) {
+        Task {
+            let query = GetReviewDetailQuery(user_id: user_id, character_id: character_id, review_id: review_id)
+            let getReviewDetail = try await characterDetailUseCase.excuteGetReviewDetail(query: query)
+            print(getReviewDetail,"상세 조회 성공")
+            self.getReviewDetail.accept(getReviewDetail)
         }
     }
 }

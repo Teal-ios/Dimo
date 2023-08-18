@@ -24,4 +24,6 @@ protocol CharacterDetailRepository {
     func requestPostComment(query: PostCommentQuery) async throws -> PostComment
     
     func fetchGetComment(query: GetCommentQuery) async throws -> GetComment
+    
+    func fetchGetReviewDetail(query: GetReviewDetailQuery) async throws -> GetReviewDetail
 }

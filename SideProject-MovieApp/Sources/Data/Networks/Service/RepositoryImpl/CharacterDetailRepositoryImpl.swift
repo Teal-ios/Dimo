@@ -122,3 +122,15 @@ extension CharacterDetailRepositoryImpl {
         }
     }
 }
+
+extension CharacterDetailRepositoryImpl {
+    func fetchGetReviewDetail(query: GetReviewDetailQuery) async throws -> GetReviewDetail {
+        let target = CharacterDetailAPIEndpoints.getReviewDetail(with: query)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}
