@@ -93,7 +93,7 @@ extension LengthChartView {
         self.chartView.snp.removeConstraints()
         chartView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(chartContainView)
-            make.height.equalTo(chartContainView.snp.height).multipliedBy(mbtiPercent / 100)
+            make.height.equalTo(chartContainView.snp.height).multipliedBy(percent / 100)
             make.bottom.equalTo(chartContainView.snp.bottom).offset(-24)
         }
         self.layoutIfNeeded()

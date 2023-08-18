@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class AnalyzeViewController: BaseViewController {
     
@@ -22,11 +24,29 @@ final class AnalyzeViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    let viewDidLoadTrigger = PublishRelay<Void>()
+    
     override func loadView() {
         view = selfView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewDidLoadTrigger.accept(())
+    }
+    
+    override func setupBinding() {
+        let input = AnalyzeViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.inquireCharacterAnalyze
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, inquireCharacterAnalyze in
+                vc.selfView.configureUpdateChart(with: inquireCharacterAnalyze)
+                vc.selfView.configureUpdateMbtiContent(with: inquireCharacterAnalyze)
+            }
+            .disposed(by: disposeBag)
     }
 }

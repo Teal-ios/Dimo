@@ -197,3 +197,34 @@ final class AnalyzeView: BaseView {
         }
     }
 }
+
+extension AnalyzeView {
+    func configureUpdateChart(with item: InquireCharacterAnalyze) {
+
+        
+        self.firstChartView.updateLayoutToMbtiPercent(percent: Double(item.top3_mbti.first[0].percent ?? 50))
+        self.secondChartView.updateLayoutToMbtiPercent(percent: Double(item.top3_mbti.second[0].percent ?? 50))
+        self.thirdChartView.updateLayoutToMbtiPercent(percent: Double(item.top3_mbti.third[0].percent ?? 50))
+
+    }
+    
+    func configureUpdateMbtiContent(with item: InquireCharacterAnalyze) {
+        if item.my_vote_mbti != nil {
+            let mbti = item.top3_mbti.first[0].mbti
+            let mainText = "가장 많은 사람들이 \(mbti)라고 답변했어요"
+            let attributeMbtiText = NSMutableAttributedString(string: mainText)
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.black5,
+            ]
+            let mbtiRange = (mainText as NSString).range(of: mbti)
+            attributeMbtiText.addAttributes(attributes, range: mbtiRange)
+            self.manyPersonThinkingMbtiLabel.attributedText = attributeMbtiText
+            
+            guard let percent = item.my_vote_mbti_percent else { return }
+            guard let myChoiceMbti = item.my_vote_mbti else { return }
+
+            self.choiceMbtiExplainLabel.text = "나를 비롯한 \(String(percent))%가 \(myChoiceMbti)를 골랐어요"
+        }
+
+    }
+}

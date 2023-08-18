@@ -36,8 +36,10 @@ final class CharacterDetailViewController: TabmanViewController {
       let dataTransferService = DataTransferService(networkService: NetworkService())
       let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
       let characterDetailUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+      let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+      let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
       let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character, characterId: viewModel.coordinator?.characterId ?? PublishRelay<Int>())
-      let analyeViewModel = AnalyzeViewModel(coordinator: viewModel.coordinator)
+      let analyeViewModel = AnalyzeViewModel(coordinator: viewModel.coordinator, voteUseCase: voteUseCaseImpl, characterId: viewModel.coordinator?.character.character_id)
     
     vc1 = .init(viewModel: feedViewModel)
     vc2 = .init(viewModel: analyeViewModel)
