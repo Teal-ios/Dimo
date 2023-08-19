@@ -15,7 +15,7 @@ final class CharacterDetailViewModel: ViewModelType {
     weak var coordinator: TabmanCoordinator?
     
     struct Input{
-
+        let backButtonTap: ControlEvent<Void>
 
     }
     
@@ -32,7 +32,13 @@ final class CharacterDetailViewModel: ViewModelType {
     var character = BehaviorRelay<Characters?>(value: nil)
 
     func transform(input: Input) -> Output {
-
+        
+        input.backButtonTap
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.popViewController()
+            }
+            .disposed(by: disposeBag)
         return Output(character: self.character)
     }
 }

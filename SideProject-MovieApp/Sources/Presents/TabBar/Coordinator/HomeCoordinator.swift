@@ -52,6 +52,10 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.dismiss(animated: true)
     }
     
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+    
     func showTabmanCoordinator(character: Characters) {
         let tabmanCoordinator = TabmanCoordinator(navigationController, character: character)
         tabmanCoordinator.delegate = self

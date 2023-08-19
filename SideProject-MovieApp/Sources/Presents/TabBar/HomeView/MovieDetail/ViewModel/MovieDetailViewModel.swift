@@ -28,6 +28,7 @@ final class MovieDetailViewModel: ViewModelType {
         let likeButtonTapped: ControlEvent<Void>
         let likeContentCheckValid: PublishRelay<Bool>
         let characterCellSelected: PublishRelay<Characters>
+        let backButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -85,6 +86,13 @@ final class MovieDetailViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, character in
                 vm.coordinator?.showTabmanCoordinator(character: character)
+            }
+            .disposed(by: disposeBag)
+        
+        input.backButtonTapped
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.popViewController()
             }
             .disposed(by: disposeBag)
         
