@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct UserInfoInquiry: Hashable {
+struct UserInfoQuery: Hashable {
     let user_id: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+    }
 }

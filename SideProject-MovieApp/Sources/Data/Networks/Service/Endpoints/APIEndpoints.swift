@@ -32,4 +32,8 @@ struct APIEndpoints {
     static func getMbtiChange(with requestDTO: RequestMbtiChangeDTO) -> SettingRouter<ResponseMbtiChangeDTO> {
         return SettingRouter<ResponseMbtiChangeDTO>.mbtiChange(parameters: MbtiChangeQuery(user_id: requestDTO.userId, mbti: requestDTO.mbti))
     }
+    
+    static func getUserInfo(with requestDTO: RequestUserInfoDTO) -> SettingRouter<ResponseUserInfoDTO> {
+        return SettingRouter<ResponseUserInfoDTO>.userInfo(parameters: UserInfoQuery(user_id: requestDTO.userId))
+    }
 }

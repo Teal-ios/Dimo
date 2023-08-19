@@ -112,3 +112,17 @@ extension SettingRepositoryImpl {
         }
     }
 }
+
+extension SettingRepositoryImpl {
+    func fetchUserInfo(query: UserInfoQuery) async throws -> UserInfo {
+        let requestDTO = RequestUserInfoDTO(userId: query.user_id)
+        let target = APIEndpoints.getUserInfo(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw SettingRepositoryError.request
+        }
+    }
+}

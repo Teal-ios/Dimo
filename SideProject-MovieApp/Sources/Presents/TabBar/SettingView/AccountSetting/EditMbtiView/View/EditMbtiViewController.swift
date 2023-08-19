@@ -16,8 +16,6 @@ final class EditMbtiViewController: BaseViewController {
     
     private var viewModel: EditMbtiViewModel
     
-    private var isFirstTime: Bool = true
-    
     //MARK: Input
     private lazy var input = EditMbtiViewModel.Input(eButtonTapped: editMbtiView.eView.mbtiButton.rx.tap,
                                                      iButtonTapped: editMbtiView.iView.mbtiButton.rx.tap,
@@ -40,59 +38,6 @@ final class EditMbtiViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-    }
-    
-    private func setCurrentMbti() {
-        guard let currentMbti = UserDefaultManager.mbti else { return }
-        
-        for mbti in currentMbti {
-            switch mbti.uppercased() {
-            case "E":
-                editMbtiView.eView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.eView.imgView.image = UIImage(named: "E_White")
-                editMbtiView.eView.mbtiLabel.textColor = .black5
-                editMbtiView.eView.backgroundColor = .black90
-            case "I":
-                editMbtiView.iView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.iView.imgView.image = UIImage(named: "I_White")
-                editMbtiView.iView.mbtiLabel.textColor = .black5
-                editMbtiView.iView.backgroundColor = .black90
-            case "N":
-                editMbtiView.nView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.nView.imgView.image = UIImage(named: "N_White")
-                editMbtiView.nView.mbtiLabel.textColor = .black5
-                editMbtiView.nView.backgroundColor = .black90
-            case "S":
-                editMbtiView.sView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.sView.imgView.image = UIImage(named: "S_White")
-                editMbtiView.sView.mbtiLabel.textColor = .black5
-                editMbtiView.sView.backgroundColor = .black90
-            case "T":
-                editMbtiView.tView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.tView.imgView.image = UIImage(named: "T_White")
-                editMbtiView.tView.mbtiLabel.textColor = .black5
-                editMbtiView.tView.backgroundColor = .black90
-            case "F":
-                editMbtiView.fView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.fView.imgView.image = UIImage(named: "F_White")
-                editMbtiView.fView.mbtiLabel.textColor = .black5
-                editMbtiView.fView.backgroundColor = .black90
-            case "J":
-                editMbtiView.jView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.jView.imgView.image = UIImage(named: "J_White")
-                editMbtiView.jView.mbtiLabel.textColor = .black5
-                editMbtiView.jView.backgroundColor = .black90
-            case "P":
-                editMbtiView.pView.layer.borderColor = UIColor.purple80.cgColor
-                editMbtiView.pView.imgView.image = UIImage(named: "P_White")
-                editMbtiView.pView.mbtiLabel.textColor = .black5
-                editMbtiView.pView.backgroundColor = .black90
-            default:
-                break
-            }
-        }
     }
     
     override func setupBinding() {
@@ -100,7 +45,7 @@ final class EditMbtiViewController: BaseViewController {
                
         var cellSelectArr: [Bool] = [false, false, false, false, false, false, false, false] //E I N S T F J P 순서
         
-        guard let currentMbti = UserDefaultManager.mbti else { return }
+        guard let currentMbti = viewModel.userMbti.value else { return }
         
         for mbti in currentMbti {
             switch mbti.uppercased() {
@@ -267,6 +212,19 @@ final class EditMbtiViewController: BaseViewController {
         }
         .disposed(by: disposeBag)
         
+        output.mbtiChangedDate
+            .withUnretained(self)
+            .bind { (vc, mbtiChangedDate) in
+                let mbtiChangedDate = Date.dateToString(from: mbtiChangedDate)
+                guard let mbtiChangedDate = mbtiChangedDate else {
+                    vc.editMbtiView.lastChangeDayLabel.text = "마지막 변경일: 변경 기록이 없어요"
+                    return
+                }
+                
+                vc.editMbtiView.lastChangeDayLabel.text = "마지막 변경일: \(mbtiChangedDate)"
+            }
+            .disposed(by: disposeBag)
+        
         output.isValidMbti
             .bind { [weak self] mbti in
                 guard let self else { return }
@@ -279,13 +237,27 @@ final class EditMbtiViewController: BaseViewController {
                       let JisSelected = mbti["J"],
                       let PisSelected = mbti["P"] else { return }
                 
-                if (EisSelected || IisSelected) && (NisSelected || SisSelected) && (TisSelected || FisSelected) && (JisSelected || PisSelected) == true && self.isFirstTime == false {
+                if (EisSelected || IisSelected) && (NisSelected || SisSelected) && (TisSelected || FisSelected) && (JisSelected || PisSelected) == true && !(currentMbti == self.viewModel.selectedMbti.value) {
                     self.editMbtiView.checkMbtiChangeButtonValidation(true)
                 } else {
                     self.editMbtiView.checkMbtiChangeButtonValidation(false)
                 }
-                self.isFirstTime = false
                 print(mbti)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isMbtiChangedOverOneMonth
+            .withUnretained(self)
+            .bind { (vc, isMbtiChangedOverOneMonth) in
+                guard let isOverOneMonth = isMbtiChangedOverOneMonth else { return }
+                if isOverOneMonth {
+                    vc.editMbtiView.mbtiChangeButton.isHidden = false
+                    vc.editMbtiView.findMbtiButton.isHidden = false
+                } else {
+                    vc.editMbtiView.findMbtiButton.isHidden = true
+                    vc.editMbtiView.mbtiChangeButton.isHidden = true
+                    vc.editMbtiView.disableMbtiButton()
+                }
             }
             .disposed(by: disposeBag)
         

@@ -8,7 +8,7 @@
 import Foundation
 
 enum SettingRouter<R> {
-    case userInfoInquiry(parameters: UserInfoInquiry)
+    case userInfo(parameters: UserInfoQuery)
     case nicknameDuplicationCheck(parameters: NicknameDuplicationQuery)
     case nicknameChange(parameters: NicknameChangeQuery)
     case nicknameChangeDateCheck(parameters: NicknameChangeDateQuery)
@@ -36,7 +36,7 @@ extension SettingRouter: TargetType2 {
     
     var path: String {
         switch self {
-        case .userInfoInquiry:
+        case .userInfo:
             return "/user_info"
         case .nicknameDuplicationCheck:
             return "/user_info/confirm_nickname"
@@ -57,7 +57,7 @@ extension SettingRouter: TargetType2 {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .userInfoInquiry(let parameters):
+        case .userInfo(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .nicknameDuplicationCheck(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
@@ -71,7 +71,7 @@ extension SettingRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
                     URLQueryItem(name: "mbti", value: parameters.mbti)]
         case .mbtiChangeDateCheck(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+            return [URLQueryItem(name: "user_id", value: parameters.userId)]
         case .passwordChange(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id),
                     URLQueryItem(name: "password", value: parameters.currentPassword),
@@ -87,7 +87,7 @@ extension SettingRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .userInfoInquiry, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange, .withdraw:
+        case .userInfo, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange, .withdraw:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -106,7 +106,7 @@ extension SettingRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .userInfoInquiry, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange:
+        case .userInfo, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange:
             return .get
         case .withdraw:
             return .post
