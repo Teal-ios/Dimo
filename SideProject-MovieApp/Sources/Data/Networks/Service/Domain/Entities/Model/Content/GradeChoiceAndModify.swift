@@ -10,8 +10,5 @@ import Foundation
 struct GradeChoiceAndModify: Hashable {
     let code: Int
     let message: String
-    let grade_message: String?
     let user_id: String
-    let content_type: String
-    let contentId: String
 }
