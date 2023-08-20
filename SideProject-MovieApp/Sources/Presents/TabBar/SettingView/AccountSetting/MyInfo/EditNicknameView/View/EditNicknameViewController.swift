@@ -16,6 +16,8 @@ final class EditNicknameViewController: BaseViewController {
 
     private var viewModel: EditNicknameViewModel
 
+    let viewDidLoadTrigger = PublishRelay<Void>()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("GenderViewController: fatal error")
     }
@@ -33,22 +35,33 @@ final class EditNicknameViewController: BaseViewController {
         super.viewDidLoad()
         self.hideKeyboard()
         self.configureToast()
+        self.setNicknameLastChangeDate()
+        self.viewDidLoadTrigger.accept(())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.editNicknameView.showLastNicknameChangedDate()
         self.editNicknameView.showCurrentNickname()
     }
     
     private func configureToast() {
         self.viewModel.toast = {
             self.editNicknameView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
-            self.editNicknameView.enableDuplicationCheckButton(isEnabled: false)
             self.editNicknameView.checkNicknameChangeButton(isValid: false)
+            let lastNicknameChangeDate = Date.dateToString(from: self.viewModel.nicknameChangeDate)
+            UserDefaultManager.lastNicknameChangeDate = lastNicknameChangeDate ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
                 self.navigationController?.popViewController(animated: true)
             }
+        }
+    }
+    
+    private func setNicknameLastChangeDate() {
+        if let lastNicknameChangeDate = UserDefaultManager.lastNicknameChangeDate {
+            editNicknameView.showLastNicknameChangeDate(date: lastNicknameChangeDate)
+        } else {
+            let date = Date.dateToString(from: viewModel.nicknameChangeDate)
+            editNicknameView.showLastNicknameChangeDate(date: date ?? "")
         }
     }
     
@@ -58,9 +71,8 @@ final class EditNicknameViewController: BaseViewController {
             textFieldEditingChanged: editNicknameView.idTextFieldView.tf.rx.controlEvent(.editingChanged),
             textFieldEditingDidEnd: editNicknameView.idTextFieldView.tf.rx.controlEvent(.editingDidEnd),
             textFieldInput: editNicknameView.idTextFieldView.tf.rx.text,
-            nicknameDuplicationButtonTapped: editNicknameView.duplicationCheckButton.rx.tap,
             nicknameChangeButtonTapped: editNicknameView.nicknameChangeButton.rx.tap,
-            viewDidLoad: self.rx.viewDidLoad.asSignal()
+            viewDidLoad: self.viewDidLoadTrigger
         )
         
         let output = viewModel.transform(input: input)
@@ -83,10 +95,8 @@ final class EditNicknameViewController: BaseViewController {
             .bind { [weak self] isValidFormat in
                 if isValidFormat == false {
                     self?.editNicknameView.showUnvalidNicknameFormatMessage()
-                    self?.editNicknameView.enableDuplicationCheckButton(isEnabled: false)
                 } else {
                     self?.editNicknameView.showEmptyMessage()
-                    self?.editNicknameView.enableDuplicationCheckButton(isEnabled: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -94,7 +104,8 @@ final class EditNicknameViewController: BaseViewController {
         output.isTextFieldEditingDidEnd
             .bind { [weak self] isEditingEnd in
                 if isEditingEnd {
-                    self?.editNicknameView.showLastNicknameChangedDate()
+                    let date = Date.dateToString(from: self?.viewModel.nicknameChangeDate)
+                    self?.editNicknameView.showLastNicknameChangeDate(date: date ?? "")
                 }
             }
             .disposed(by: disposeBag)

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ChangeNicknameAlertViewModel: ViewModelType {
+final class EditNicknameAlertViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     
     private weak var coordinator: SettingCoordinator?

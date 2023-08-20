@@ -85,8 +85,8 @@
 		2F53D0AC2A1F4A6100898DCD /* EditNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AB2A1F4A6100898DCD /* EditNicknameViewController.swift */; };
 		2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AD2A1F4A6A00898DCD /* EditNicknameViewModel.swift */; };
 		2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0AF2A1F4DF900898DCD /* CustomAlertView.swift */; };
-		2F53D0B52A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B42A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift */; };
-		2F53D0B72A1F629D00898DCD /* ChangeNicknameAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B62A1F629D00898DCD /* ChangeNicknameAlertViewController.swift */; };
+		2F53D0B52A1F61FB00898DCD /* EditNicknameAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B42A1F61FB00898DCD /* EditNicknameAlertViewModel.swift */; };
+		2F53D0B72A1F629D00898DCD /* EditNicknameAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0B62A1F629D00898DCD /* EditNicknameAlertViewController.swift */; };
 		2F53D0BE2A1F67F600898DCD /* EditPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0BD2A1F67F600898DCD /* EditPasswordViewModel.swift */; };
 		2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0BF2A1F67FE00898DCD /* EditPasswordView.swift */; };
 		2F53D0C22A1F680600898DCD /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F53D0C12A1F680600898DCD /* EditPasswordViewController.swift */; };
@@ -658,8 +658,8 @@
 		2F53D0AB2A1F4A6100898DCD /* EditNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewController.swift; sourceTree = "<group>"; };
 		2F53D0AD2A1F4A6A00898DCD /* EditNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameViewModel.swift; sourceTree = "<group>"; };
 		2F53D0AF2A1F4DF900898DCD /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
-		2F53D0B42A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameAlertViewModel.swift; sourceTree = "<group>"; };
-		2F53D0B62A1F629D00898DCD /* ChangeNicknameAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameAlertViewController.swift; sourceTree = "<group>"; };
+		2F53D0B42A1F61FB00898DCD /* EditNicknameAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameAlertViewModel.swift; sourceTree = "<group>"; };
+		2F53D0B62A1F629D00898DCD /* EditNicknameAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameAlertViewController.swift; sourceTree = "<group>"; };
 		2F53D0BD2A1F67F600898DCD /* EditPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewModel.swift; sourceTree = "<group>"; };
 		2F53D0BF2A1F67FE00898DCD /* EditPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordView.swift; sourceTree = "<group>"; };
 		2F53D0C12A1F680600898DCD /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
@@ -1669,7 +1669,7 @@
 		2F53D0B22A1F61E200898DCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0B62A1F629D00898DCD /* ChangeNicknameAlertViewController.swift */,
+				2F53D0B62A1F629D00898DCD /* EditNicknameAlertViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1677,7 +1677,7 @@
 		2F53D0B32A1F61E700898DCD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2F53D0B42A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift */,
+				2F53D0B42A1F61FB00898DCD /* EditNicknameAlertViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3870,7 +3870,7 @@
 				49EEDEE12A88DDA6008C5D21 /* NoticeViewController.swift in Sources */,
 				2FD4D9202A6CCA6000E7972B /* ResponseMyProfileDTO.swift in Sources */,
 				2FD87A492A58472F003C276B /* RequestDropDTO.swift in Sources */,
-				2F53D0B72A1F629D00898DCD /* ChangeNicknameAlertViewController.swift in Sources */,
+				2F53D0B72A1F629D00898DCD /* EditNicknameAlertViewController.swift in Sources */,
 				2F4D9CA829FE825B007B89E8 /* HomeTabBarCoordinator.swift in Sources */,
 				49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */,
 				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
@@ -4233,7 +4233,7 @@
 				4926773C2A5714E20003C882 /* Toast+Extension.swift in Sources */,
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */,
-				2F53D0B52A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift in Sources */,
+				2F53D0B52A1F61FB00898DCD /* EditNicknameAlertViewModel.swift in Sources */,
 				49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				49A7A1D62A90A5F60011EDC4 /* ResponseUserInfoDTO.swift in Sources */,

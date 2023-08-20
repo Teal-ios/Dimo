@@ -49,4 +49,7 @@ struct UserDefaultManager {
     @UserDefault(key: "phoneNumber", defaultValue: nil)
     static var phoneNumber: String?
     
+    @UserDefault(key: "lastNicknameChangeDate", defaultValue: nil)
+    static var lastNicknameChangeDate: String?
+    
 }
