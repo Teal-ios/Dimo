@@ -8,5 +8,10 @@
 import Foundation
 
 struct GetReviewDetail {
-    
+    let code: Int
+    let message: String
+    let user_id: String
+    let character_id: String
+    let review_list: [ReviewList]
+    let is_liked: String?
 }

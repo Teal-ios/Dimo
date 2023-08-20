@@ -16,6 +16,7 @@ enum CharacterDetailRouter<R> {
     case deleteReview(parameters: DeleteReviewQuery)
     case postComment(parameters: PostCommentQuery)
     case getComment(parameters: GetCommentQuery)
+    case getReviewDetail(parameters: GetReviewDetailQuery)
 }
 
 extension CharacterDetailRouter: TargetType2 {
@@ -52,6 +53,8 @@ extension CharacterDetailRouter: TargetType2 {
             return "/character/write_comment"
         case .getComment:
             return "/character/comment"
+        case .getReviewDetail:
+            return "/character/review_detail"
         }
     }
     
@@ -61,6 +64,8 @@ extension CharacterDetailRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
         case .getComment(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "review_id", value: String(parameters.review_id))]
+        case .getReviewDetail(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "review_id", value: String(parameters.review_id)), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
         default:
             return nil
         }
@@ -110,7 +115,7 @@ extension CharacterDetailRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getReview, .getComment:
+        case .getReview, .getComment, .getReviewDetail:
             return .get
         case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment:
             return .post

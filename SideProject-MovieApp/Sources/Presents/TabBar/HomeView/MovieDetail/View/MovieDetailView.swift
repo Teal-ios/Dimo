@@ -9,6 +9,13 @@ import UIKit
 import SnapKit
 
 final class MovieDetailView: BaseView {
+    
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Icon_arrow_left"), for: .normal)
+        return button
+    }()
+    
     let headerView: MovieDetailHeaderView = {
         let view = MovieDetailHeaderView()
         return view
@@ -180,6 +187,7 @@ final class MovieDetailView: BaseView {
     
     override func setHierarchy() {
         self.addSubview(scrollView)
+        self.addSubview(backButton)
     }
     
     override func setupAttributes() {
@@ -187,6 +195,11 @@ final class MovieDetailView: BaseView {
     }
     
     override func setupLayout() {
+        
+        backButton.snp.makeConstraints { make in
+            make.top.leading.equalTo(safeAreaLayoutGuide).inset(8)
+            make.height.width.equalTo(24)
+        }
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

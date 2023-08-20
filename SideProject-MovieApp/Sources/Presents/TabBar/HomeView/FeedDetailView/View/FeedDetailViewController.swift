@@ -23,7 +23,6 @@ class FeedDetailViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     var categoryDataSource: UICollectionViewDiffableDataSource<Int, CategoryModel>!
-    var categorySnapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
     var dataSource: UICollectionViewDiffableDataSource<Int, CommentList>!
     
     let plusNavigationButtonTap = PublishSubject<Void>()
@@ -112,6 +111,28 @@ class FeedDetailViewController: BaseViewController {
                 vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount)
             }
             .disposed(by: disposeBag)
+        
+        output.reviewDetail
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, reviewDetail in
+                var categorySnapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
+
+                categorySnapshot.appendSections([0])
+                var categoryArr: [CategoryModel] = []
+                let category = reviewDetail.review_list[0]
+                if category.review_spoiler == 1 {
+                    categoryArr.append(CategoryModel(category: "스포주의", spoil: true))
+                }
+                categoryArr.append(CategoryModel(category: category.character_name ?? "정대만", spoil: false))
+                categoryArr.append(CategoryModel(category: category.mbti ?? "미정", spoil: false))
+                categoryArr.append(CategoryModel(category: category.title ?? "더퍼스트슬램덩크", spoil: false))
+
+
+                categorySnapshot.appendItems(categoryArr, toSection: 0)
+                vc.categoryDataSource.apply(categorySnapshot)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -129,17 +150,6 @@ extension FeedDetailViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        categorySnapshot.appendSections([0])
-        var categoryArr: [CategoryModel] = []
-        
-        categoryArr.append(CategoryModel(category: "스포주의", spoil: true))
-        categoryArr.append(CategoryModel(category: "몽키 D 루피", spoil: false))
-        categoryArr.append(CategoryModel(category: "미정", spoil: false))
-        categoryArr.append(CategoryModel(category: "원피스", spoil: false))
-
-
-        categorySnapshot.appendItems(categoryArr, toSection: 0)
-        categoryDataSource.apply(categorySnapshot)
     }
 }
 

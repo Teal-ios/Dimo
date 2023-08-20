@@ -20,14 +20,17 @@ struct ResponseReviewListDTO: Decodable {
     let profile_img: String?
     let comment_count: Int?
     let comment_content: Int?
+    let character_name: String?
+    let title: String?
+    let character_mbti: String?
     
     enum CodingKeys: String, CodingKey {
-        case review_id, user_id, character_id, review_content, review_like, review_hits, review_spoiler, nickname, mbti, profile_img, comment_count, comment_content
+        case review_id, user_id, character_id, review_content, review_like, review_hits, review_spoiler, nickname, mbti, profile_img, comment_count, comment_content, character_name, title, character_mbti
     }
 }
 
 extension ResponseReviewListDTO {
     var toDomain: ReviewList {
-        return .init(review_id: review_id, user_id: user_id, character_id: character_id, review_content: review_content, review_like: review_like, review_hits: review_hits, review_spoiler: review_spoiler, nickname: nickname, mbti: mbti, profile_img: profile_img, comment_count: comment_count, comment_content: comment_content)
+        return .init(review_id: review_id, user_id: user_id, character_id: character_id, review_content: review_content, review_like: review_like, review_hits: review_hits, review_spoiler: review_spoiler, nickname: nickname, mbti: mbti, profile_img: profile_img, comment_count: comment_count, comment_content: comment_content, character_name: character_name, title: title, character_mbti: character_mbti)
     }
 }

@@ -58,6 +58,10 @@ final class TabmanCoordinator: Coordinator {
         navigationController.dismiss(animated: true)
     }
     
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+    
     func showWriteViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)

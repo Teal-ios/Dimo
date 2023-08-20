@@ -28,13 +28,34 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    let blurView: UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        view.clipsToBounds = true
+        view.alpha = 0.5
+        view.isHidden = true
+        return view
+    }()
+    
+    let checkImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Check")
+        view.tintColor = .black5
+        view.contentMode = .scaleToFill
+        view.isHidden = true
+        return view
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.frame.width / 2
+        blurView.layer.cornerRadius = blurView.frame.width / 2
+
     }
         
     override func configure() {
         [imgView, characterNameLabel].forEach { self.addSubview($0) }
+        addSubview(blurView)
+        addSubview(checkImageView)
     }
     
     override func setConstraints() {
@@ -47,6 +68,15 @@ class DigFinishCharacterCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(imgView.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(imgView)
             make.height.equalTo(24)
+        }
+        
+        blurView.snp.makeConstraints { make in
+            make.edges.equalTo(imgView)
+        }
+        
+        checkImageView.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(imgView)
+            make.width.height.equalTo(52)
         }
     }
 }
@@ -66,5 +96,17 @@ extension DigFinishCharacterCollectionViewCell {
         imgView.kf.setImage(with: imageURL)
         imgView.contentMode = .scaleToFill
         characterNameLabel.text = item.character_name
+    }
+}
+
+extension DigFinishCharacterCollectionViewCell {
+    func configureIsVoted(vote: Int) {
+        if vote == 1 {
+            self.blurView.isHidden = false
+            self.checkImageView.isHidden = false
+        } else {
+            self.blurView.isHidden = true
+            self.checkImageView.isHidden = true
+        }
     }
 }

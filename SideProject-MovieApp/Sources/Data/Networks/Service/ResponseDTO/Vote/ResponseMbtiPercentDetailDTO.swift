@@ -8,7 +8,7 @@
 import Foundation
 
 struct ResponseMbtiPercentDetailDTO: Decodable {
-    let mbti: String
+    let mbti: String?
     let ei: Int?
     let sn: Int?
     let tf: Int?

@@ -283,7 +283,7 @@ extension FeedDetailView {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             //group
             let groupSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
+                widthDimension: .estimated(200),
                 heightDimension: .absolute(32)
             )
             let group = NSCollectionLayoutGroup.horizontal(
@@ -293,9 +293,10 @@ extension FeedDetailView {
             group.interItemSpacing = .fixed(8)
             //sections
             let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 0
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 0)
-            
+            section.interGroupSpacing = 8
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+            section.orthogonalScrollingBehavior = .groupPaging
+
             return section
         }
 }
