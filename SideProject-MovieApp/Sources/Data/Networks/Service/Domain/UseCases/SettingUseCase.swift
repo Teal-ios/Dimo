@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 protocol SettingUseCase {
+    func executeUserInfo(query: UserInfoQuery) async throws -> UserInfo
     func executeNicknameDuplication(query: NicknameDuplicationQuery) async throws -> NicknameDuplication
     func executeNicknameChangeDate(query: NicknameChangeDateQuery) async throws -> NicknameChangeDate
     func executeNicknameChange(query: NicknameChangeQuery) async throws -> NicknameChange
@@ -32,7 +33,6 @@ final class SettingUseCaseImpl: SettingUseCase {
 
 // MARK: Nickname Change
 extension SettingUseCaseImpl {
-    
     func executeNicknameChangeDate(query: NicknameChangeDateQuery) async  throws -> NicknameChangeDate {
         do {
             return try await settingRepository.fetchNicknameChangeDate(query: query)
@@ -60,7 +60,6 @@ extension SettingUseCaseImpl {
 
 // MARK: Password Change
 extension SettingUseCaseImpl {
-    
     func executePasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange {
         do {
             return try await settingRepository.fetchPasswordChange(query: query)
@@ -72,7 +71,6 @@ extension SettingUseCaseImpl {
 
 // MARK: Withdraw
 extension SettingUseCaseImpl {
-    
     func executeWithdraw(query: WithdrawQuery) async throws -> Withdraw {
         do {
             return try await settingRepository.fetchWithdraw(query: query)
@@ -82,11 +80,30 @@ extension SettingUseCaseImpl {
     }
 }
 
+// MARK: MBTI Change
 extension SettingUseCaseImpl {
-    
     func executeMbtiChange(query: MbtiChangeQuery) async throws -> MbtiChange {
         do {
             return try await settingRepository.fetchMbtiChange(query: query)
+        } catch {
+            throw SettingUseCaseError.execute
+        }
+    }
+    
+//    func executeMbtiChangeDate(query: MbtiChangeDateQuery) async throws -> MbtiChangeDate {
+//        do {
+//
+//        } catch {
+//
+//        }
+//    }
+}
+
+// MARK: Request UserInfo
+extension SettingUseCaseImpl {
+    func executeUserInfo(query: UserInfoQuery) async throws -> UserInfo {
+        do {
+            return try await settingRepository.fetchUserInfo(query: query)
         } catch {
             throw SettingUseCaseError.execute
         }

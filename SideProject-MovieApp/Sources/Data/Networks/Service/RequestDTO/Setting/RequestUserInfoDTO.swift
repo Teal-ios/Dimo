@@ -1,13 +1,13 @@
 //
-//  MbtiChangeDateQuery.swift
+//  RequestUserInfoDTO.swift
 //  SideProject-MovieApp
 //
-//  Created by 이동기 on 2023/06/19.
+//  Created by 이동기 on 2023/08/19.
 //
 
 import Foundation
 
-struct MbtiChangeDateQuery: Hashable {
+struct RequestUserInfoDTO: Encodable {
     let userId: String
     
     enum CodingKeys: String, CodingKey {

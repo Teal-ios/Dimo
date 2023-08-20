@@ -27,6 +27,7 @@ final class SettingViewController: BaseViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Int, SettingModel>()
     
     let cellSelected = PublishSubject<IndexPath>()
+    private var viewWillAppear = PublishRelay<Void>()
     
     override func loadView() {
         view = settingView
@@ -36,6 +37,11 @@ final class SettingViewController: BaseViewController {
         super.viewDidLoad()
         self.settingView.collectionView.delegate = self
         self.setDataSource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.loadUserInfo()
     }
     
     override func setupBinding() {

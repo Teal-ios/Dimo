@@ -488,7 +488,7 @@
 		497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E32A3D7A130043D67E /* DataTransferService.swift */; };
 		497454E72A3DD5210043D67E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E62A3DD5210043D67E /* APIKey.swift */; };
 		497454E92A3F62B70043D67E /* TargetType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454E82A3F62B70043D67E /* TargetType2.swift */; };
-		497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */; };
+		497454ED2A3F67C30043D67E /* UserInfoQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454EC2A3F67C30043D67E /* UserInfoQuery.swift */; };
 		497454EF2A3F68C70043D67E /* NicknameChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */; };
 		497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */; };
 		497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */; };
@@ -496,6 +496,14 @@
 		497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F72A42025D0043D67E /* APIEndpoints.swift */; };
 		49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */; };
 		49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */; };
+		49A7A1D22A90A4A40011EDC4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */; };
+		49A7A1D42A90A5C50011EDC4 /* RequestUserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D32A90A5C50011EDC4 /* RequestUserInfoDTO.swift */; };
+		49A7A1D62A90A5F60011EDC4 /* ResponseUserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */; };
+		49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D72A90B1FF0011EDC4 /* Date+Extension.swift */; };
+		49A7A1DA2A90D6880011EDC4 /* MbtiChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D92A90D6880011EDC4 /* MbtiChangeDate.swift */; };
+		49A7A1DC2A91E1A70011EDC4 /* UserMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */; };
+		49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */; };
+		49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */; };
 		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
 		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
 		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
@@ -1050,7 +1058,7 @@
 		497454E32A3D7A130043D67E /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		497454E62A3DD5210043D67E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		497454E82A3F62B70043D67E /* TargetType2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType2.swift; sourceTree = "<group>"; };
-		497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInquiryQuery.swift; sourceTree = "<group>"; };
+		497454EC2A3F67C30043D67E /* UserInfoQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoQuery.swift; sourceTree = "<group>"; };
 		497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDateQuery.swift; sourceTree = "<group>"; };
 		497454F02A3F68ED0043D67E /* MbtiChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeQuery.swift; sourceTree = "<group>"; };
 		497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDateQuery.swift; sourceTree = "<group>"; };
@@ -1058,6 +1066,14 @@
 		497454F72A42025D0043D67E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDTO.swift; sourceTree = "<group>"; };
+		49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		49A7A1D32A90A5C50011EDC4 /* RequestUserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserInfoDTO.swift; sourceTree = "<group>"; };
+		49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUserInfoDTO.swift; sourceTree = "<group>"; };
+		49A7A1D72A90B1FF0011EDC4 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		49A7A1D92A90D6880011EDC4 /* MbtiChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDate.swift; sourceTree = "<group>"; };
+		49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiView.swift; sourceTree = "<group>"; };
+		49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiViewModel.swift; sourceTree = "<group>"; };
+		49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiViewModelType.swift; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -1541,6 +1557,8 @@
 		2F53D0982A1F364F00898DCD /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				2F1AB9D52A10C6D1001178EA /* Cell */,
+				2F1AB9D82A10C709001178EA /* Model */,
 				2F53D09A2A1F368800898DCD /* View */,
 				2F53D0992A1F368300898DCD /* ViewModel */,
 			);
@@ -1558,8 +1576,6 @@
 		2F53D09A2A1F368800898DCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2F1AB9D82A10C709001178EA /* Model */,
-				2F1AB9D52A10C6D1001178EA /* Cell */,
 				2F1AB9CD2A10C28B001178EA /* SettingViewController.swift */,
 				2F1AB9CF2A10C28F001178EA /* SettingView.swift */,
 			);
@@ -1682,7 +1698,9 @@
 		2F53D0C42A1F6E2C00898DCD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */,
 				2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */,
+				49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1690,6 +1708,7 @@
 		2F53D0C52A1F6E3000898DCD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */,
 				2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */,
 				2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */,
 			);
@@ -2255,6 +2274,7 @@
 				2FD2DD022A70E3F7000C5EB7 /* UIImage+Extension.swift */,
 				493C5C762A7642CA00AF1F63 /* Reactive+Extension.swift */,
 				49EEDF0D2A8A8324008C5D21 /* DiffableDataSource+Extension.swift */,
+				49A7A1D72A90B1FF0011EDC4 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3370,7 +3390,7 @@
 		497454EB2A3F66200043D67E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				497454EC2A3F67C30043D67E /* UserInfoInquiryQuery.swift */,
+				497454EC2A3F67C30043D67E /* UserInfoQuery.swift */,
 				2FD073562A25BF49003F7E56 /* NicknameDuplicationQuery.swift */,
 				2FBFE1172A262708001D5425 /* NicknameChangeQuery.swift */,
 				497454EE2A3F68C70043D67E /* NicknameChangeDateQuery.swift */,
@@ -3391,6 +3411,7 @@
 				493C5C722A5D992300AF1F63 /* RequestPasswordChangeDTO.swift */,
 				493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */,
 				49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */,
+				49A7A1D32A90A5C50011EDC4 /* RequestUserInfoDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3404,6 +3425,7 @@
 				493C5C742A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift */,
 				493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */,
 				49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */,
+				49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3435,8 +3457,10 @@
 				493C5C702A5D94FA00AF1F63 /* PasswordChange.swift */,
 				493C5C7A2A7690F100AF1F63 /* Withdraw.swift */,
 				49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */,
+				49A7A1D92A90D6880011EDC4 /* MbtiChangeDate.swift */,
 				49EEDEE92A88EB4C008C5D21 /* NoticeContents.swift */,
 				49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */,
+				49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3872,6 +3896,7 @@
 				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
 				2F9793AC2A53FFC30098939B /* RecentSearchCollectionViewCell.swift in Sources */,
 				49EEDEE82A88E113008C5D21 /* NoticeListCell.swift in Sources */,
+				49A7A1D42A90A5C50011EDC4 /* RequestUserInfoDTO.swift in Sources */,
 				2FD82D672A7743DC00372D24 /* GetComment.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
@@ -3889,6 +3914,7 @@
 				49EEDF152A8B5C01008C5D21 /* FrequentQuestionViewController.swift in Sources */,
 				2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */,
 				2FCD8C8F2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift in Sources */,
+				49A7A1D22A90A4A40011EDC4 /* UserInfo.swift in Sources */,
 				49EEDF192A8B5EBA008C5D21 /* FrequentQuestion.swift in Sources */,
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D9092A6BBFDA00E7972B /* ModifyMyProfileQuery.swift in Sources */,
@@ -3939,6 +3965,7 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
+				49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */,
 				2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */,
 				2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
@@ -4047,7 +4074,9 @@
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FD82D952A774D9400372D24 /* RequestDeleteReviewDTO.swift in Sources */,
 				2FCD8CAE2A826104002A39B0 /* ReportViewController.swift in Sources */,
+				49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
+				49A7A1DC2A91E1A70011EDC4 /* UserMbtiView.swift in Sources */,
 				2FD82DB02A7757A700372D24 /* ResponseGetReviewDTO.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
 				2FD87A552A584999003C276B /* ResponseDropDTO.swift in Sources */,
@@ -4131,6 +4160,7 @@
 				2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */,
+				49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */,
@@ -4177,6 +4207,7 @@
 				2F53D0B52A1F61FB00898DCD /* ChangeNicknameAlertViewModel.swift in Sources */,
 				49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
+				49A7A1D62A90A5F60011EDC4 /* ResponseUserInfoDTO.swift in Sources */,
 				2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */,
 				93C48B2F29D16D1000644F6A /* LoginvIew.swift in Sources */,
 				2FCD8C882A8214C2002A39B0 /* MbtiInfoView.swift in Sources */,
@@ -4233,6 +4264,7 @@
 				2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */,
 				2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
+				49A7A1DA2A90D6880011EDC4 /* MbtiChangeDate.swift in Sources */,
 				2FD82D652A7743D600372D24 /* PostComment.swift in Sources */,
 				2FD4D9222A6CCAAB00E7972B /* ResponseModifyMyProfileDTO.swift in Sources */,
 				493C5C7D2A76925000AF1F63 /* RequestWithdrawDTO.swift in Sources */,
@@ -4270,7 +4302,7 @@
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
 				2F437C002A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift in Sources */,
 				2FD82DAA2A774F9900372D24 /* ResponseVoteCharacterDTO.swift in Sources */,
-				497454ED2A3F67C30043D67E /* UserInfoInquiryQuery.swift in Sources */,
+				497454ED2A3F67C30043D67E /* UserInfoQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
 				49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */,

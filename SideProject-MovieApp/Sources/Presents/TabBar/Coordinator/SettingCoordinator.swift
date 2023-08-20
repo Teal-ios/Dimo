@@ -23,7 +23,10 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showSettingViewController() {
-        let viewModel = SettingViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = SettingViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
         let vc = SettingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
@@ -76,13 +79,22 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showEditMbtiViewController() {
+    func showEditMbtiViewController(mbti: String?, mbtiChangeDate: Date?) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase)
-        let vc = EditMbtiViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        
+        let isOverOneMonth = Date.checkOverOneMonth(from: mbtiChangeDate)
+        
+        if isOverOneMonth {
+            let editMbtiViewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase, mbti: mbti, mbtiChangeDate: mbtiChangeDate)
+            let vc = EditMbtiViewController(viewModel: editMbtiViewModel)
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            let userMbtiViewModel = UserMbtiViewModel(mbti: mbti, mbtiChangeDate: mbtiChangeDate)
+            let vc = EditMbtiViewController(viewModel: userMbtiViewModel)
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
     
     func showWithDrawViewController() {

@@ -366,5 +366,15 @@ extension EditMbtiView {
             pView.backgroundColor = .black100
         }
     }
+    
+    func disableMbtiButton() {
+        eView.mbtiButton.isEnabled = false
+        iView.mbtiButton.isEnabled = false
+        nView.mbtiButton.isEnabled = false
+        sView.mbtiButton.isEnabled = false
+        tView.mbtiButton.isEnabled = false
+        fView.mbtiButton.isEnabled = false
+        jView.mbtiButton.isEnabled = false
+        pView.mbtiButton.isEnabled = false
+    }
 }
-

@@ -9,25 +9,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class EditMbtiViewModel: ViewModelType {
-    
+final class EditMbtiViewModel: MbtiViewModelType {
+
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
     private let settingUseCase: SettingUseCase
-    
     
     struct Input{
         let eButtonTapped: ControlEvent<Void>
         let iButtonTapped: ControlEvent<Void>
         let nButtonTapped: ControlEvent<Void>
         let sButtonTapped: ControlEvent<Void>
-        let tButtonTapped: ControlEvent<Void>
+        let tButtonTapped: ControlEvent<Void> 
         let fButtonTapped: ControlEvent<Void>
         let jButtonTapped: ControlEvent<Void>
         let pButtonTapped: ControlEvent<Void>
         let changeButtonTapped: ControlEvent<Void>
     }
     
+    private var isMbtiChangedOverOneMonth = BehaviorRelay<Bool?>(value: nil)
     private var isEButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isIButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isNButtonTapped = BehaviorRelay<Bool>(value: false)
@@ -37,8 +37,10 @@ final class EditMbtiViewModel: ViewModelType {
     private var isJButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isPButtonTapped = BehaviorRelay<Bool>(value: false)
     private var isValidMbti = BehaviorRelay<[String: Bool]>(value: ["E": false, "I": false, "N": false, "S": false, "T": false, "F": false, "J": false, "P": false])
-    private let mbtiString = BehaviorRelay<String>(value: "")
+    private(set) var selectedMbti = BehaviorRelay<String>(value: "")
     private let isChanged = BehaviorRelay<Bool>(value: false)
+    private(set) var userMbti = BehaviorRelay<String?>(value: nil)
+    private(set) var mbtiChangedDate = BehaviorRelay<Date?>(value: nil)
     
     struct Output{
         let eButtonTapped: ControlEvent<Void>
@@ -51,16 +53,20 @@ final class EditMbtiViewModel: ViewModelType {
         let pButtonTapped: ControlEvent<Void>
         let isValidMbti: BehaviorRelay<[String:Bool]>
         let isChanged: BehaviorRelay<Bool>
+        let selectedMbti: BehaviorRelay<String>
+        let mbtiChangedDate: BehaviorRelay<Date?>
     }
     
-    init(coordinator: SettingCoordinator? = nil, settingUseCase: SettingUseCase) {
+    init(coordinator: SettingCoordinator? = nil, settingUseCase: SettingUseCase, mbti: String?, mbtiChangeDate: Date?) {
         self.coordinator = coordinator
         self.settingUseCase = settingUseCase
+        self.userMbti.accept(mbti)
+        self.mbtiChangedDate.accept(mbtiChangeDate)
     }
     
     func transform(input: Input) -> Output {
-        
-        let currentMbti = UserDefaultManager.mbti
+
+        let currentMbti = self.userMbti.value
         
         for mbti in currentMbti ?? "" {
             if mbti == "E" {
@@ -74,8 +80,8 @@ final class EditMbtiViewModel: ViewModelType {
                                          "P": isValidMbti.value["P"] ?? false])
                 self.isEButtonTapped.accept(true)
             } else if mbti == "I" {
-                self.isValidMbti.accept(["E": true,
-                                         "I": false,
+                self.isValidMbti.accept(["E": false,
+                                         "I": true,
                                          "N": isValidMbti.value["N"] ?? false,
                                          "S": isValidMbti.value["S"] ?? false,
                                          "T": isValidMbti.value["T"] ?? false,
@@ -149,14 +155,28 @@ final class EditMbtiViewModel: ViewModelType {
         input.eButtonTapped
             .withUnretained(self)
             .bind { (vm, _) in
-                vm.isValidMbti.accept(["E": true,
-                                       "I": false,
-                                       "N": vm.isValidMbti.value["N"] ?? false,
-                                       "S": vm.isValidMbti.value["S"] ?? false,
-                                       "T": vm.isValidMbti.value["T"] ?? false,
-                                       "F": vm.isValidMbti.value["F"] ?? false,
-                                       "J": vm.isValidMbti.value["J"] ?? false,
-                                       "P": vm.isValidMbti.value["P"] ?? false])
+                if vm.isEButtonTapped.value == false {
+                    vm.isValidMbti.accept(["E": true,
+                                           "I": false,
+                                           "N": vm.isValidMbti.value["N"] ?? false,
+                                           "S": vm.isValidMbti.value["S"] ?? false,
+                                           "T": vm.isValidMbti.value["T"] ?? false,
+                                           "F": vm.isValidMbti.value["F"] ?? false,
+                                           "J": vm.isValidMbti.value["J"] ?? false,
+                                           "P": vm.isValidMbti.value["P"] ?? false])
+                    vm.isEButtonTapped.accept(true)
+                    vm.isIButtonTapped.accept(false)
+                } else {
+                    vm.isValidMbti.accept(["E": false,
+                                           "I": false,
+                                           "N": vm.isValidMbti.value["N"] ?? false,
+                                           "S": vm.isValidMbti.value["S"] ?? false,
+                                           "T": vm.isValidMbti.value["T"] ?? false,
+                                           "F": vm.isValidMbti.value["F"] ?? false,
+                                           "J": vm.isValidMbti.value["J"] ?? false,
+                                           "P": vm.isValidMbti.value["P"] ?? false])
+                    vm.isEButtonTapped.accept(false)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -366,14 +386,14 @@ final class EditMbtiViewModel: ViewModelType {
                     }
                 }
                 let sortedMbtiString = vm.sortMbti(mbtiString)
-                vm.mbtiString.accept(sortedMbtiString)
+                vm.selectedMbti.accept(sortedMbtiString)
             }
             .disposed(by: disposeBag)
         
         input.changeButtonTapped
             .withUnretained(self)
             .bind { (vm, _) in
-                vm.loadMbtiChange(to: vm.mbtiString.value)
+                vm.loadMbtiChange(to: vm.selectedMbti.value)
             }
             .disposed(by: disposeBag)
         
@@ -386,7 +406,9 @@ final class EditMbtiViewModel: ViewModelType {
                       jButtonTapped: input.jButtonTapped,
                       pButtonTapped: input.pButtonTapped,
                       isValidMbti: self.isValidMbti,
-                      isChanged: self.isChanged)
+                      isChanged: self.isChanged,
+                      selectedMbti: self.selectedMbti,
+                      mbtiChangedDate: self.mbtiChangedDate)
     }
 }
 
