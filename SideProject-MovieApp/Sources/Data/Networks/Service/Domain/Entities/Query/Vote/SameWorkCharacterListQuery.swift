@@ -9,5 +9,5 @@ import Foundation
 
 struct SameWorkCharacterListQuery: Hashable {
     let user_id: String
-    let search_content: String
+    let character_id: Int
 }

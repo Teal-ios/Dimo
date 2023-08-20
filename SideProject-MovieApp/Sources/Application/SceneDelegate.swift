@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let nav = UINavigationController()
         self.configureNavigationAppearance()
+        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav.navigationBar.shadowImage = UIImage()
         coordinator = AppCoordinator(nav)
         coordinator?.start()
         window?.rootViewController = nav

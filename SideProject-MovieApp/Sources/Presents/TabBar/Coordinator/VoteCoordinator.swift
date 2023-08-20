@@ -50,20 +50,20 @@ final class VoteCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showDigViewController() {
+    func showDigViewController(characterInfo: CharacterInfo) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
         let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = DigViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
+        let viewModel = DigViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
         let vc = DigViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showVoteCompleteViewController() {
+    func showVoteCompleteViewController(characterInfo: CharacterInfo, voteCharacter: VoteCharacter) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
         let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
+        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo, voteCharacter: voteCharacter)
         let vc = VoteCompleteViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

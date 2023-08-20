@@ -31,4 +31,8 @@ struct MyMomentumAPIEndpoints {
     static func getMyComment(with user_id: String) -> MyMomentumRouter<ResponseGetMyCommentDTO> {
         return MyMomentumRouter<ResponseGetMyCommentDTO>.getMyComment(parameters: GetMyCommentQuery(user_id: user_id))
     }
+    
+    static func getMyVotedCharacter(with user_id: String) -> MyMomentumRouter<ResponseGetMyVotedCharacterDTO> {
+        return MyMomentumRouter<ResponseGetMyVotedCharacterDTO>.getMyVotedCharacter(parameters: GetMyVotedCharacterQuery(user_id: user_id))
+    }
 }

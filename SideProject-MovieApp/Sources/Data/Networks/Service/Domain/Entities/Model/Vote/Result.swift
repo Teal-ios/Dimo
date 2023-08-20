@@ -13,5 +13,5 @@ struct Result: Hashable {
     let character_img: String
     let character_name: String
     let character_mbti: String?
-    let is_vote: Int
+    let is_vote: Int?
 }

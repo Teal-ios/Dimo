@@ -68,11 +68,11 @@ final class DetailHeaderView: BaseView {
         let safeArea = self.safeAreaLayoutGuide
         
         moviePosterView.snp.makeConstraints { make in
-            make.edges.equalTo(safeArea)
+            make.edges.equalToSuperview()
         }
         
         gradientView.snp.makeConstraints { make in
-            make.edges.equalTo(safeArea)
+            make.edges.equalToSuperview()
         }
         
         subTitleLabel.snp.makeConstraints { make in

@@ -62,7 +62,7 @@ class MyMomentumView: BaseView {
     }()
     
     let exceptionHandlingLikeContentView: MyMomentumBaseExceptionHandlingView = {
-        let view = MyMomentumBaseExceptionHandlingView(title: "관심있는 컨텐츠", subtitle: "관심있는 컨텐츠가 없어요")
+        let view = MyMomentumBaseExceptionHandlingView(title: "내가 찜한 콘텐츠", subtitle: "내가 찜한 콘텐츠가 없어요")
         return view
     }()
     
@@ -413,7 +413,7 @@ extension MyMomentumView {
         digStackView.snp.makeConstraints { make in
             make.top.equalTo(profileStackView.snp.bottom)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(216)
+            make.height.equalTo(160)
         }
         self.digFinishMoreButton.isEnabled = false
         self.layoutIfNeeded()

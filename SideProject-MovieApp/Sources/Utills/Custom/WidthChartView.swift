@@ -137,37 +137,44 @@ class WidthChartView: BaseView {
 
 extension WidthChartView {
     func leftChartViewHidden() {
+        self.rightChartView.backgroundColor = .purple100
         self.leftChartView.backgroundColor = .black80
-        self.leftChartMbtiLabel.text = ""
-        self.leftChartPercentLabel.text = ""
+        self.leftChartMbtiLabel.isHidden = true
+        self.leftChartPercentLabel.isHidden = true
+        self.rightChartMbtiLabel.isHidden = false
+        self.rightChartPercentLabel.isHidden = false
     }
     
     func rightCharViewHidden() {
         self.rightChartView.backgroundColor = .black80
-        self.rightChartMbtiLabel.text = ""
-        self.rightChartPercentLabel.text = ""
+        self.leftChartView.backgroundColor = .purple100
+        self.rightChartMbtiLabel.isHidden = true
+        self.rightChartPercentLabel.isHidden = true
+        self.leftChartMbtiLabel.isHidden = false
+        self.leftChartPercentLabel.isHidden = false
     }
     
     func updateLayoutToMbtiPercent(percent: Double) {
-        self.leftChartPercentLabel.text = String(Int(mbtiPercent)) + "%"
-        self.rightChartPercentLabel.text = String(Int(100 - mbtiPercent)) + "%"
+        self.leftChartPercentLabel.text = String(Int(percent)) + "%"
+        self.rightChartPercentLabel.text = String(Int(100 - percent)) + "%"
         self.leftChartView.snp.removeConstraints()
         self.leftChartView.snp.remakeConstraints { make in
             make.leading.verticalEdges.equalTo(chartContainView)
-            make.width.equalTo(chartContainView.snp.width).multipliedBy(mbtiPercent / 100)
+            make.width.equalTo(chartContainView.snp.width).multipliedBy(percent / 100)
         }
         self.rightChartView.snp.removeConstraints()
         self.rightChartView.snp.remakeConstraints { make in
             make.leading.equalTo(leftChartView.snp.trailing)
             make.verticalEdges.equalTo(chartContainView)
-            make.width.equalTo(chartContainView.snp.width).multipliedBy((100 - mbtiPercent) / 100)
+            make.width.equalTo(chartContainView.snp.width).multipliedBy((100 - percent) / 100)
         }
         
-        if mbtiPercent > 50 {
+        if percent > 50 {
             self.rightCharViewHidden()
         } else {
             self.leftChartViewHidden()
         }
         self.layoutIfNeeded()
+        self.setNeedsDisplay()
     }
 }

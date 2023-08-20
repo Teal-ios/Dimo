@@ -77,7 +77,10 @@ final class SettingCoordinator: Coordinator {
     }
     
     func showEditMbtiViewController() {
-        let viewModel = EditMbtiViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = EditMbtiViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -88,6 +91,24 @@ final class SettingCoordinator: Coordinator {
         let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = WithdrawViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = WithdrawViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showNoticeViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = NoticeViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = NoticeViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showFrequentQuestionViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = FrequentQuestionViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = FrequentQuestionViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     

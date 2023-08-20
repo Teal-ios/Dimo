@@ -14,20 +14,24 @@ final class ContentMoreViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     
+    init(coordinator: HomeCoordinator? = nil, content: [Hit]) {
+        self.coordinator = coordinator
+        self.contentData = BehaviorRelay(value: content)
+    }
+    
     struct Input{
-
+        let viewDidLoad: PublishRelay<Void>
 
     }
     
     struct Output{
+        let contentData: BehaviorRelay<[Hit]>
     }
     
-    init(coordinator: HomeCoordinator? = nil) {
-        self.coordinator = coordinator
-    }
+    var contentData = BehaviorRelay<[Hit]>(value: [])
     
     func transform(input: Input) -> Output {
 
-        return Output()
+        return Output(contentData: self.contentData)
     }
 }

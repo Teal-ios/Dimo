@@ -18,4 +18,6 @@ protocol SettingRepository: AnyObject {
     func fetchPasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange
     
     func fetchWithdraw(query: WithdrawQuery) async throws -> Withdraw
+    
+    func fetchMbtiChange(query: MbtiChangeQuery) async throws -> MbtiChange
 }

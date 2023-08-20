@@ -13,6 +13,8 @@ enum VoteRouter<R> {
     case searchCharacterList(parameters: SearchCharacterListQuery)
     case voteCharacter(parameters: VoteCharacterQuery)
     case sameWorkCharacterList(parameters: SameWorkCharacterListQuery)
+    case inquireVoteResult(parameters: InquireVoteResultQuery)
+    case inquireCharacterAnalyze(parameters: InquireCharacterAnalyzeQuery)
 }
 
 extension VoteRouter: TargetType2 {
@@ -43,6 +45,10 @@ extension VoteRouter: TargetType2 {
             return "/vote"
         case .sameWorkCharacterList:
             return "/vote/another_character"
+        case .inquireVoteResult:
+            return "/vote"
+        case .inquireCharacterAnalyze:
+            return "/vote/view_result"
         }
     }
     
@@ -58,7 +64,11 @@ extension VoteRouter: TargetType2 {
         case .voteCharacter:
             return nil
         case .sameWorkCharacterList(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "search_content", value: parameters.search_content)]
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
+        case .inquireVoteResult(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
+        case .inquireCharacterAnalyze(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
         }
     }
     
@@ -68,7 +78,7 @@ extension VoteRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .randomCharacterRecommend, .popularCharacterRecommendList, .searchCharacterList, .voteCharacter, .sameWorkCharacterList:
+        case .randomCharacterRecommend, .popularCharacterRecommendList, .searchCharacterList, .voteCharacter, .sameWorkCharacterList, .inquireCharacterAnalyze, .inquireVoteResult:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -87,7 +97,7 @@ extension VoteRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList:
+        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList, .inquireCharacterAnalyze, .inquireVoteResult:
             return .get
         case .voteCharacter:
             return .post

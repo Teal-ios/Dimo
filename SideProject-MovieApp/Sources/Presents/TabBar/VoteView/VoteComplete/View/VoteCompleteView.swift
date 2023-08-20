@@ -28,7 +28,7 @@ final class VoteCompleteView: BaseView {
     }()
     
     lazy var characterMoreCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCharacterLayout())
-
+    
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -37,7 +37,7 @@ final class VoteCompleteView: BaseView {
         label.text = "투표 결과"
         return label
     }()
-
+    
     let characterImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .white100
@@ -93,7 +93,7 @@ final class VoteCompleteView: BaseView {
         let label = UILabel()
         label.font = Font.body3
         label.textColor = .black60
-        label.text = "많은 사람들이 ENTP라고 답변했어요"
+//        label.text = "많은 사람들이 ENTP라고 답변했어요"
         return label
     }()
     
@@ -113,7 +113,7 @@ final class VoteCompleteView: BaseView {
         let label = UILabel()
         label.font = Font.body3
         label.textColor = .black60
-        label.text = "나를 비롯한 00%가 ESFP를 골랐어요"
+//        label.text = "나를 비롯한 00%가 ESFP를 골랐어요"
         return label
     }()
     
@@ -157,7 +157,7 @@ final class VoteCompleteView: BaseView {
     
     override func setupAttributes() {
         self.characterMoreCollectionView.isScrollEnabled = false
-
+        
     }
     override func setupLayout() {
         titleLabel.snp.makeConstraints { make in
@@ -267,7 +267,7 @@ extension VoteCompleteView {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemRatio / 3),
             heightDimension: .fractionalHeight(itemRatio)
-
+            
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
@@ -293,5 +293,67 @@ extension VoteCompleteView {
         section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .groupPagingCentered /// Set Scroll Direction
         return section
+    }
+}
+
+extension VoteCompleteView {
+    func configureUpdateCharacterInfo(with item: CharacterInfo) {
+        self.characterNicknameLabel.text = item.character_name
+        guard item.title != nil else { return }
+        self.subtitleLabel.text = item.title
+        let imageURL = URL(string: item.character_img)
+        self.characterImageView.kf.setImage(with: imageURL)
+    }
+}
+
+extension VoteCompleteView {
+    func configureUpdateVoteCharacter(with item: VoteCharacter) {
+        self.eiChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.ei ?? 50))
+        self.nsChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.sn ?? 50))
+        self.tfChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.tf ?? 50))
+        self.jpChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.jp ?? 50))
+        
+    }
+}
+
+extension VoteCompleteView {
+    func configureUpdateChart(with item: InquireVoteResult) {
+        for ele in item.mbti_percent {
+            switch ele.mbti {
+            case "E":
+                print(ele.ei ?? 0, "ei")
+                eiChartView.updateLayoutToMbtiPercent(percent: Double(ele.ei ?? 50))
+            case "N":
+                print(ele.sn ?? 0, "ns")
+                nsChartView.updateLayoutToMbtiPercent(percent: Double(ele.sn ?? 50))
+            case "T":
+                print(ele.tf ?? 0, "tf")
+                tfChartView.updateLayoutToMbtiPercent(percent: Double(ele.tf ?? 50))
+            case "P":
+                print(ele.jp ?? 0, "jp")
+                jpChartView.updateLayoutToMbtiPercent(percent: Double(ele.jp ?? 50))
+            default:
+                print("이건뭐징")
+            }
+        }
+    }
+    
+    func configureUpdateMbtiContent(with item: InquireVoteResult) {
+        if item.most_vote_mbti == nil {
+            guard let percent = item.same_vote_percent else { return }
+            guard let mbti = item.content_info.character_mbti else { return }
+            guard let myChoiceMbti = item.my_vote_mbti else { return }
+            
+            let mainText = "많은 사람들이 \(mbti)라고 답변했어요"
+            let attributeMbtiText = NSMutableAttributedString(string: mainText)
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.black5,
+            ]
+            let mbtiRange = (mainText as NSString).range(of: mbti)
+            attributeMbtiText.addAttributes(attributes, range: mbtiRange)
+
+            self.manyPersonThinkingMbtiLabel.attributedText = attributeMbtiText
+            self.choiceMbtiExplainLabel.text = "나를 비롯한 \(String(percent))%가 \(myChoiceMbti)를 골랐어요"
+        }
     }
 }

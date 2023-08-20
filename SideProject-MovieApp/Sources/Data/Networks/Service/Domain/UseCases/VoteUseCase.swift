@@ -17,7 +17,10 @@ protocol VoteUseCase {
     func excuteVoteCharacter(query: VoteCharacterQuery) async throws -> VoteCharacter
     
     func excuteSameWorkCharacterList(query: SameWorkCharacterListQuery) async throws -> SameWorkCharacterList
-}
+    
+    func excuteInquireVoteResult(query: InquireVoteResultQuery) async throws -> InquireVoteResult
+    
+    func excuteInquireCharacterAnalyze(query: InquireCharacterAnalyzeQuery) async throws -> InquireCharacterAnalyze}
 
 enum VoteUseCaseError: String, Error {
     case excute
@@ -75,6 +78,26 @@ extension VoteUseCaseImpl {
     func excuteSameWorkCharacterList(query: SameWorkCharacterListQuery) async throws -> SameWorkCharacterList {
         do {
             return try await voteRepository.fetchSameWorkCharacterList(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension VoteUseCaseImpl {
+    func excuteInquireVoteResult(query: InquireVoteResultQuery) async throws -> InquireVoteResult {
+        do {
+            return try await voteRepository.fetchInquireVoteResult(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension VoteUseCaseImpl {
+    func excuteInquireCharacterAnalyze(query: InquireCharacterAnalyzeQuery) async throws -> InquireCharacterAnalyze {
+        do {
+            return try await voteRepository.fetchInquireCharacterAnalyze(query: query)
         } catch {
             throw VoteUseCaseError.excute
         }

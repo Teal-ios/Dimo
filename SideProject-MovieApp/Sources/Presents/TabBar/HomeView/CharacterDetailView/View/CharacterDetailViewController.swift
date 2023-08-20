@@ -37,9 +37,10 @@ final class CharacterDetailViewController: TabmanViewController {
       let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
       let characterDetailUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
       let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character, characterId: viewModel.coordinator?.characterId ?? PublishRelay<Int>())
+      let analyeViewModel = AnalyzeViewModel(coordinator: viewModel.coordinator)
     
     vc1 = .init(viewModel: feedViewModel)
-    vc2 = .init()
+    vc2 = .init(viewModel: analyeViewModel)
     
     vcs = .init([vc1, vc2])
     
@@ -60,7 +61,6 @@ final class CharacterDetailViewController: TabmanViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.dataSource = self
-    navigation()
     setHierachy()
     setupLayout()
     let bar = TMBar.ButtonBar()
@@ -126,27 +126,6 @@ extension CharacterDetailViewController {
       make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
       make.height.equalTo(54)
     }
-  }
-  
-  func navigation() {
-    
-    let navigationBarAppearance = UINavigationBarAppearance()
-    navigationBarAppearance.backgroundColor = .black
-    
-    let backImage = UIImage(named: "arrow")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0))
-    
-    navigationBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-    
-    UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-    UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-    
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    navigationController?.navigationBar.tintColor = .black60
-    navigationController?.view.backgroundColor = .black              /// Navagation 배경 색상을 지정
-    self.navigationItem.largeTitleDisplayMode = .never
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    self.navigationController?.navigationBar.shadowImage = UIImage()
-    
   }
 }
 
