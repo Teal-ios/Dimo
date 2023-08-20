@@ -30,5 +30,13 @@ struct ContentAPIEndpoints {
     
     static func getLikeContentCheck(user_id: String, content_type: String, contentId: String) -> ContentRouter<ResponseLikeContentCheckDTO> {
         return ContentRouter<ResponseLikeContentCheckDTO>.likeContentCheck(parameters: LikeContentCheckQuery(user_id: user_id, content_type: content_type, contentId: contentId))
-    }    
+    }
+    
+    static func getEvaluateMbti(contentId: String, content_type: String) -> ContentRouter<ResponseGetEvaluateMbtiDTO> {
+        return ContentRouter<ResponseGetEvaluateMbtiDTO>.getEvalateMbti(parameters: GetEvaluateMbtiQuery(contentId: contentId, content_type: content_type))
+    }
+    
+    static func getGradeEvaluateResult(user_id: String, contentId: String, content_type: String) -> ContentRouter<ResponseGetGradeEvaluateResultDTO> {
+        return ContentRouter<ResponseGetGradeEvaluateResultDTO>.getGradeEvaluate(parameters: GetGradeEvaluateResultQuery(user_id: user_id, contentId: contentId, content_type: content_type))
+    }
 }

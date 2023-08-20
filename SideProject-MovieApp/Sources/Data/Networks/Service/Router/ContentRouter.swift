@@ -14,6 +14,8 @@ enum ContentRouter<R> {
     case likeCancel(parameters: LikeCancelQuery)
     case gradeChoiceAndModify(parameters: GradeChoiceAndModifyQuery)
     case likeContentCheck(parameters: LikeContentCheckQuery)
+    case getEvalateMbti(parameters: GetEvaluateMbtiQuery)
+    case getGradeEvaluate(parameters: GetGradeEvaluateResultQuery)
 }
 
 extension ContentRouter: TargetType2 {
@@ -22,7 +24,7 @@ extension ContentRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify:
+        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify, .getEvalateMbti, .getGradeEvaluate:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -53,6 +55,10 @@ extension ContentRouter: TargetType2 {
             return "/detail/grade"
         case .likeContentCheck:
             return "/detail/is_like"
+        case .getEvalateMbti:
+            return "/detail/mbti_result"
+        case .getGradeEvaluate:
+            return "/detail/is_grade"
         }
     }
     
@@ -62,6 +68,10 @@ extension ContentRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .likeContentCheck(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "contentId", value: parameters.contentId)]
+        case .getEvalateMbti(let parameters):
+            return [URLQueryItem(name: "contentId", value: parameters.contentId), URLQueryItem(name: "content_type", value: parameters.content_type)]
+        case .getGradeEvaluate(let parameters):
+            return [URLQueryItem(name: "contentId", value: parameters.contentId), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "user_id", value: parameters.user_id)]
         default:
             return nil
         }
@@ -69,7 +79,7 @@ extension ContentRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck:
+        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck, .getEvalateMbti, .getGradeEvaluate:
             return .get
         case .likeCancel, .likeChoice, .gradeChoiceAndModify:
             return .post
