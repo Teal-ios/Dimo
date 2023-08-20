@@ -83,9 +83,18 @@ final class SettingCoordinator: Coordinator {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase, mbti: mbti, mbtiChangeDate: mbtiChangeDate)
-        let vc = EditMbtiViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        
+        let isOverOneMonth = Date.checkOverOneMonth(from: mbtiChangeDate)
+        
+        if isOverOneMonth {
+            let editMbtiViewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase, mbti: mbti, mbtiChangeDate: mbtiChangeDate)
+            let vc = EditMbtiViewController(viewModel: editMbtiViewModel)
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            let userMbtiViewModel = UserMbtiViewModel(mbti: mbti, mbtiChangeDate: mbtiChangeDate)
+            let vc = EditMbtiViewController(viewModel: userMbtiViewModel)
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
     
     func showWithDrawViewController() {

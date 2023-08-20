@@ -378,4 +378,3 @@ extension EditMbtiView {
         pView.mbtiButton.isEnabled = false
     }
 }
-

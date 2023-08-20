@@ -501,6 +501,9 @@
 		49A7A1D62A90A5F60011EDC4 /* ResponseUserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */; };
 		49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D72A90B1FF0011EDC4 /* Date+Extension.swift */; };
 		49A7A1DA2A90D6880011EDC4 /* MbtiChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D92A90D6880011EDC4 /* MbtiChangeDate.swift */; };
+		49A7A1DC2A91E1A70011EDC4 /* UserMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */; };
+		49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */; };
+		49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */; };
 		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
 		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
 		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
@@ -1068,6 +1071,9 @@
 		49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUserInfoDTO.swift; sourceTree = "<group>"; };
 		49A7A1D72A90B1FF0011EDC4 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		49A7A1D92A90D6880011EDC4 /* MbtiChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDate.swift; sourceTree = "<group>"; };
+		49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiView.swift; sourceTree = "<group>"; };
+		49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiViewModel.swift; sourceTree = "<group>"; };
+		49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiViewModelType.swift; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -1692,7 +1698,9 @@
 		2F53D0C42A1F6E2C00898DCD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */,
 				2F53D0CA2A1F700F00898DCD /* EditMbtiViewModel.swift */,
+				49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1700,6 +1708,7 @@
 		2F53D0C52A1F6E3000898DCD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */,
 				2F53D0C62A1F6E3E00898DCD /* EditMbtiView.swift */,
 				2F53D0C82A1F6E4D00898DCD /* EditMbtiViewController.swift */,
 			);
@@ -3956,6 +3965,7 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
+				49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */,
 				2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */,
 				2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
@@ -4064,7 +4074,9 @@
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FD82D952A774D9400372D24 /* RequestDeleteReviewDTO.swift in Sources */,
 				2FCD8CAE2A826104002A39B0 /* ReportViewController.swift in Sources */,
+				49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
+				49A7A1DC2A91E1A70011EDC4 /* UserMbtiView.swift in Sources */,
 				2FD82DB02A7757A700372D24 /* ResponseGetReviewDTO.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
 				2FD87A552A584999003C276B /* ResponseDropDTO.swift in Sources */,

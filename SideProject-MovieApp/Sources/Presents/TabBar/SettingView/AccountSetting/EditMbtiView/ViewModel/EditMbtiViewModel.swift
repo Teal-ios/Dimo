@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class EditMbtiViewModel: ViewModelType {
-    
+final class EditMbtiViewModel: MbtiViewModelType {
+
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
     private let settingUseCase: SettingUseCase
@@ -40,7 +40,7 @@ final class EditMbtiViewModel: ViewModelType {
     private(set) var selectedMbti = BehaviorRelay<String>(value: "")
     private let isChanged = BehaviorRelay<Bool>(value: false)
     private(set) var userMbti = BehaviorRelay<String?>(value: nil)
-    private var mbtiChangedDate = BehaviorRelay<Date?>(value: nil)
+    private(set) var mbtiChangedDate = BehaviorRelay<Date?>(value: nil)
     
     struct Output{
         let eButtonTapped: ControlEvent<Void>
@@ -54,7 +54,6 @@ final class EditMbtiViewModel: ViewModelType {
         let isValidMbti: BehaviorRelay<[String:Bool]>
         let isChanged: BehaviorRelay<Bool>
         let selectedMbti: BehaviorRelay<String>
-        let isMbtiChangedOverOneMonth: BehaviorRelay<Bool?>
         let mbtiChangedDate: BehaviorRelay<Date?>
     }
     
@@ -66,16 +65,7 @@ final class EditMbtiViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
-        self.mbtiChangedDate
-            .withUnretained(self)
-            .bind { (vm, changedDate) in
-                guard let changedDate = changedDate else { return }
-                let isMbtiChangedOverOneMonth = Date.checkOverOneMonth(from: changedDate)
-                vm.isMbtiChangedOverOneMonth.accept(isMbtiChangedOverOneMonth)
-            }
-            .disposed(by: disposeBag)
-        
+
         let currentMbti = self.userMbti.value
         
         for mbti in currentMbti ?? "" {
@@ -418,7 +408,6 @@ final class EditMbtiViewModel: ViewModelType {
                       isValidMbti: self.isValidMbti,
                       isChanged: self.isChanged,
                       selectedMbti: self.selectedMbti,
-                      isMbtiChangedOverOneMonth: self.isMbtiChangedOverOneMonth,
                       mbtiChangedDate: self.mbtiChangedDate)
     }
 }
