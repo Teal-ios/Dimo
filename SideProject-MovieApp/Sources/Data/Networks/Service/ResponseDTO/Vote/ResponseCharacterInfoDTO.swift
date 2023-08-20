@@ -15,7 +15,7 @@ struct ResponseCharacterInfoDTO: Decodable {
     let character_name: String
     let character_mbti: String?
     let title: String?
-    let is_vote: Int
+    let is_vote: Int?
 
     enum CodingKeys: String, CodingKey {
         case character_id, content_id, anime_id, character_img, character_name, character_mbti, title, is_vote

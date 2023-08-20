@@ -105,7 +105,7 @@ extension RecommendViewController {
         let cellCharacterRegistration =
         UICollectionView.CellRegistration<VoteCollectionViewCell, CharacterInfo> { cell, indexPath, itemIdentifier in
             cell.configureAttributeWithCharacterInfo(with: itemIdentifier)
-            cell.configureIsVoted(vote: itemIdentifier.is_vote)
+            cell.configureIsVoted(vote: itemIdentifier.is_vote ?? 0)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView) { collectionView, indexPath, itemIdentifier in

@@ -123,6 +123,14 @@ final class MovieDetailViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.gradeFinish
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, grade in
+                vc.selfView.headerView.updateGradeButtonUI(grade: grade)
+            }
+            .disposed(by: disposeBag)
         }
     
     func setDataSource() {

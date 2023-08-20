@@ -182,8 +182,25 @@ extension MovieDetailHeaderView {
         switch like {
         case true:
             self.likeButton.setImage(UIImage(named: "LikeSelect"), for: .normal)
+            self.likeLabel.textColor = .black5
         case false:
             self.likeButton.setImage(UIImage(named: "LikeNonSelect"), for: .normal)
+            self.likeLabel.textColor = .black60
+        }
+    }
+}
+
+extension MovieDetailHeaderView {
+    func updateGradeButtonUI(grade: Int) {
+        switch grade {
+        case 1:
+            self.evaluateButton.setImage(UIImage(named: "Good_Select"), for: .normal)
+            self.evaluateLabel.textColor = .black5
+        case -1:
+            self.evaluateButton.setImage(UIImage(named: "Good_Nonselect"), for: .normal)
+            self.evaluateLabel.textColor = .black60
+        default:
+            break
         }
     }
 }

@@ -33,7 +33,7 @@ class MovieDetailEvaluateViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vc, bool in
-                guard let bool else { return }
+//                guard let bool else { return }
                 switch bool {
                     
                 case true:

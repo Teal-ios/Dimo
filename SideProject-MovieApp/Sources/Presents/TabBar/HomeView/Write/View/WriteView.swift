@@ -119,7 +119,7 @@ final class WriteView: BaseView {
         }
         
         totalSpoilerView.snp.makeConstraints { make in
-            make.top.equalTo(navigationContainView.snp.bottom).offset(52)
+            make.top.equalTo(navigationContainView.snp.bottom).offset(32)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(48)
         }

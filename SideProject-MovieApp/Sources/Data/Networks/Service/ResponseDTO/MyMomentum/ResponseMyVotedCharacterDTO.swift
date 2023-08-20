@@ -11,24 +11,24 @@ struct ResponseMyVotedCharacterDTO: Decodable {
     let vote_id: Int
     let character_id: Int
     let user_mbti: String
+    let title: String
     let user_id: String
     let energy: String
     let recognization: String
     let prediction: String
     let reaction: String
     let content_id: Int
-    let anime_id: Int
     let character_img: String
     let character_name: String
     let character_mbti: String
     
     enum CodingKeys: String, CodingKey {
-        case vote_id, character_id, user_mbti, user_id, energy, recognization, prediction, reaction, content_id, anime_id, character_img, character_name, character_mbti
+        case vote_id, character_id, user_mbti, title, user_id, energy, recognization, prediction, reaction, content_id, character_img, character_name, character_mbti
     }
 }
 
 extension ResponseMyVotedCharacterDTO {
     var toDomain: MyVotedCharacter {
-        return .init(vote_id: vote_id, character_id: character_id, user_mbti: user_mbti, user_id: user_id, energy: energy, recognization: recognization, prediction: prediction, reaction: reaction, content_id: content_id, anime_id: anime_id, character_img: character_img, character_name: character_name, character_mbti: character_mbti)
+        return .init(vote_id: vote_id, character_id: character_id, user_mbti: user_mbti, title: title, user_id: user_id, energy: energy, recognization: recognization, prediction: prediction, reaction: reaction, content_id: content_id, character_img: character_img, character_name: character_name, character_mbti: character_mbti)
     }
 }

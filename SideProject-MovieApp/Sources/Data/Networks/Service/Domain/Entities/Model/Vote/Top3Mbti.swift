@@ -8,7 +8,7 @@
 import Foundation
 
 struct Top3Mbti: Hashable {
-    let first: [MbtiContainPercent]
-    let second: [MbtiContainPercent]
-    let third: [MbtiContainPercent]
+    let first: MbtiContainPercent
+    let second: MbtiContainPercent
+    let third: MbtiContainPercent
 }

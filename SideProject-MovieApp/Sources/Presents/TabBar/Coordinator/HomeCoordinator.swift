@@ -28,6 +28,8 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         self.navigationController = navigationController
     }
     
+    var gradeFinish = PublishRelay<Int>()
+    
     func start() {
         showHomeViewController(category: "애니")
     }
@@ -74,7 +76,7 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
         let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = MovieDetailViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id)
+        let viewModel = MovieDetailViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id, gradeFinish: gradeFinish)
         let vc = MovieDetailViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
@@ -87,10 +89,20 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showMovieDetailEvaluateViewController() {
-        let viewModel = MovieDetailEvaluateViewModel(coordinator: self)
+    func showMovieDetailEvaluateViewController(content_id: String) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
+        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
+        let viewModel = MovieDetailEvaluateViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id)
+        viewModel.delegate = self
         let vc = MovieDetailEvaluateViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
+    }
+}
+
+extension HomeCoordinator: sendEvaluateFinishDelegate {
+    func sendEvaluateFinishAfter(grade: Int) {
+        self.gradeFinish.accept(grade)
     }
 }

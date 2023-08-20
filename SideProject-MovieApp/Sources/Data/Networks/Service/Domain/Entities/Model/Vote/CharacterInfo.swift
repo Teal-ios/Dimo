@@ -15,5 +15,5 @@ struct CharacterInfo: Hashable {
     let character_name: String
     let character_mbti: String?
     let title: String?
-    let is_vote: Int
+    let is_vote: Int?
 }

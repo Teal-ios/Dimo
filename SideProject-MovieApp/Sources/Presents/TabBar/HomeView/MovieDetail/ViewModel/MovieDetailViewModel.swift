@@ -16,10 +16,11 @@ final class MovieDetailViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    init(coordinator: HomeCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String) {
+    init(coordinator: HomeCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String, gradeFinish: PublishRelay<Int>) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
         self.contentId = BehaviorRelay(value: content_id)
+        self.gradeFinish = gradeFinish
     }
     
     struct Input{
@@ -39,6 +40,7 @@ final class MovieDetailViewModel: ViewModelType {
         let likeChoice: PublishRelay<LikeChoice>
         let likeCancel: PublishRelay<LikeCancel>
         let likeContentCheck: PublishRelay<LikeContentCheck>
+        let gradeFinish: PublishRelay<Int>
     }
     
     var contentId = BehaviorRelay(value: "")
@@ -47,17 +49,19 @@ final class MovieDetailViewModel: ViewModelType {
     let likeChoice = PublishRelay<LikeChoice>()
     let likeCancel = PublishRelay<LikeCancel>()
     let likeContentCheck = PublishRelay<LikeContentCheck>()
-    
+    var gradeFinish = PublishRelay<Int>()
     
     func transform(input: Input) -> Output {
         
         var nextContentId: String = ""
         
-        input.evaluateButtonTapped.bind { [weak self] _ in
-            guard let self else { return }
-            self.coordinator?.showMovieDetailEvaluateViewController()
-        }
-        .disposed(by: disposeBag)
+        input.evaluateButtonTapped
+            .withLatestFrom(self.contentId)
+            .withUnretained(self)
+            .bind { vm, contentId in
+                vm.coordinator?.showMovieDetailEvaluateViewController(content_id: contentId)
+            }
+            .disposed(by: disposeBag)
         
         self.contentId.bind { [weak self] contentId in
             guard let self else { return }
@@ -96,7 +100,7 @@ final class MovieDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck)
+        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck, gradeFinish: self.gradeFinish)
     }
 }
 
