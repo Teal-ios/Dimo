@@ -95,7 +95,7 @@ class FeedDetailHeaderView: BaseView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
+        stackView.spacing = -12
         return stackView
     }()
     
@@ -104,7 +104,7 @@ class FeedDetailHeaderView: BaseView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
+        stackView.spacing = -12
         return stackView
     }()
     
@@ -161,7 +161,7 @@ class FeedDetailHeaderView: BaseView {
         }
         
         likeAndReviewAndViewsLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(totalStackView.snp.top).offset(8)
+            make.bottom.equalTo(totalStackView.snp.top).offset(0)
             make.horizontalEdges.equalTo(safeArea)
             make.height.equalTo(16)
         }

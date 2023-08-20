@@ -8,9 +8,9 @@
 import Foundation
 
 struct ResponseTop3MbtiDTO: Decodable {
-    let first: [ResponseMbtiContainPercentDTO]
-    let second: [ResponseMbtiContainPercentDTO]
-    let third: [ResponseMbtiContainPercentDTO]
+    let first: ResponseMbtiContainPercentDTO
+    let second: ResponseMbtiContainPercentDTO
+    let third: ResponseMbtiContainPercentDTO
     
     enum CodingKeys: String, CodingKey {
         case first, second, third
@@ -19,6 +19,6 @@ struct ResponseTop3MbtiDTO: Decodable {
 
 extension ResponseTop3MbtiDTO {
     var toDomain: Top3Mbti {
-        return .init(first: first.map{ $0.toDomain }, second: second.map{ $0.toDomain }, third: third.map{ $0.toDomain })
+        return .init(first: first.toDomain, second: second.toDomain, third: third.toDomain)
     }
 }
