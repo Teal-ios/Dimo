@@ -76,3 +76,17 @@ final class MbtiInfoView: BaseView {
         }
     }
 }
+
+extension MbtiInfoView {
+    func updateLabelText(mbti: String, explainText: String) {
+        let attributeText = NSMutableAttributedString(string: mbti + explainText)
+        let mbtiFont = Font.subtitle3
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: mbtiFont,
+            .foregroundColor: UIColor.black5,
+        ]
+        attributeText.addAttributes(attributes, range: (mbti as NSString).range(of: mbti))
+        self.explainLabel.attributedText = attributeText
+    }
+}
+

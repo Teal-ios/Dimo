@@ -41,6 +41,8 @@ final class MovieDetailViewModel: ViewModelType {
         let likeCancel: PublishRelay<LikeCancel>
         let likeContentCheck: PublishRelay<LikeContentCheck>
         let gradeFinish: PublishRelay<Int>
+        let evaluateMbti: PublishRelay<GetEvaluateMbti>
+        let gradeEvaluateResult: PublishRelay<GetGradeEvaluateResult>
     }
     
     var contentId = BehaviorRelay(value: "")
@@ -50,6 +52,8 @@ final class MovieDetailViewModel: ViewModelType {
     let likeCancel = PublishRelay<LikeCancel>()
     let likeContentCheck = PublishRelay<LikeContentCheck>()
     var gradeFinish = PublishRelay<Int>()
+    let evaluateMbti = PublishRelay<GetEvaluateMbti>()
+    let gradeEvaluateResult = PublishRelay<GetGradeEvaluateResult>()
     
     func transform(input: Input) -> Output {
         
@@ -66,9 +70,11 @@ final class MovieDetailViewModel: ViewModelType {
         self.contentId.bind { [weak self] contentId in
             guard let self else { return }
             guard let user_id = UserDefaultManager.userId else { return }
-            
+            let contentType = "anime"
             self.getDetailAnimationViewController(content_id: contentId)
-            self.getLikeContentCheck(user_id: user_id, content_type: "anime", contentId: contentId)
+            self.getLikeContentCheck(user_id: user_id, content_type: contentType, contentId: contentId)
+            self.getEvaluateMbti(contentId: contentId, content_type: contentType)
+            self.getGradeEvaluateResult(user_id: user_id, contentId: contentId, content_type: contentType)
             nextContentId = contentId
         }
         .disposed(by: disposeBag)
@@ -100,7 +106,7 @@ final class MovieDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck, gradeFinish: self.gradeFinish)
+        return Output(plusButtonTapped: input.plusButtonTapped, animationData: self.detailAnimationData, characterData: self.characterData, likeButtonTapped: input.likeButtonTapped, likeChoice: self.likeChoice, likeCancel: self.likeCancel, likeContentCheck: self.likeContentCheck, gradeFinish: self.gradeFinish, evaluateMbti: self.evaluateMbti, gradeEvaluateResult: self.gradeEvaluateResult)
     }
 }
 
@@ -143,6 +149,26 @@ extension MovieDetailViewModel {
             let likeContentCheck = try await contentUseCase.excuteLikeContentCheck(query: LikeContentCheckQuery(user_id: user_id, content_type: content_type, contentId: contentId))
             print(likeContentCheck, "좋아요를 누른 컨텐츠인지 확인")
             self.likeContentCheck.accept(likeContentCheck)
+        }
+    }
+}
+
+extension MovieDetailViewModel {
+    private func getEvaluateMbti(contentId: String, content_type: String) {
+        Task {
+            let evalateMbti = try await contentUseCase.excuteGetEvaluateMbti(query: GetEvaluateMbtiQuery(contentId: contentId, content_type: content_type))
+            print(evalateMbti, "엠비티아이 평가 조회 완료")
+            self.evaluateMbti.accept(evalateMbti)
+        }
+    }
+}
+
+extension MovieDetailViewModel {
+    private func getGradeEvaluateResult(user_id: String, contentId: String, content_type: String) {
+        Task {
+            let gradeEvaluateResult = try await contentUseCase.excuteGetGradeEvaluateResult(query: GetGradeEvaluateResultQuery(user_id: user_id, contentId: contentId, content_type: content_type))
+            print(gradeEvaluateResult, "평가여부 평가 조회 완료")
+            self.gradeEvaluateResult.accept(gradeEvaluateResult)
         }
     }
 }

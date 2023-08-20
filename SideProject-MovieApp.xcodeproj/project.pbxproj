@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */; };
+		2F0328B42A91EDC500639BAC /* GetEvaluateMbtiQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */; };
+		2F0328B62A91EE2F00639BAC /* GetEvaluateMbti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */; };
+		2F0328B82A91EE4000639BAC /* GetGradeEvaluateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B72A91EE4000639BAC /* GetGradeEvaluateResult.swift */; };
+		2F0328BA2A91F24600639BAC /* IsGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B92A91F24600639BAC /* IsGrade.swift */; };
+		2F0328BC2A91F2AC00639BAC /* ResponseIsGradeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328BB2A91F2AC00639BAC /* ResponseIsGradeDTO.swift */; };
+		2F0328BE2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328BD2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift */; };
+		2F0328C02A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328BF2A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift */; };
 		2F1046A72A32FF7000B22B29 /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */; };
 		2F124ACD2A4EA04600A452F1 /* Dimo_splash_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */; };
 		2F124AD02A4EA0CD00A452F1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2F124ACF2A4EA0CD00A452F1 /* Lottie */; };
@@ -575,6 +583,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGradeEvaluateResultQuery.swift; sourceTree = "<group>"; };
+		2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvaluateMbtiQuery.swift; sourceTree = "<group>"; };
+		2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvaluateMbti.swift; sourceTree = "<group>"; };
+		2F0328B72A91EE4000639BAC /* GetGradeEvaluateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGradeEvaluateResult.swift; sourceTree = "<group>"; };
+		2F0328B92A91F24600639BAC /* IsGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsGrade.swift; sourceTree = "<group>"; };
+		2F0328BB2A91F2AC00639BAC /* ResponseIsGradeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseIsGradeDTO.swift; sourceTree = "<group>"; };
+		2F0328BD2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetGradeEvaluateResultDTO.swift; sourceTree = "<group>"; };
+		2F0328BF2A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetEvaluateMbtiDTO.swift; sourceTree = "<group>"; };
 		2F1046A62A32FF7000B22B29 /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
 		2F124ACC2A4EA04600A452F1 /* Dimo_splash_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dimo_splash_animation.json; sourceTree = "<group>"; };
 		2F124AD72A4EBFF700A452F1 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
@@ -1342,6 +1358,9 @@
 				2FBFF8232A6F4F01007914A1 /* LikeCancel.swift */,
 				2FBFF8252A6F4F3B007914A1 /* GradeChoiceAndModify.swift */,
 				2FBFF8272A6F4F60007914A1 /* LikeContentCheck.swift */,
+				2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */,
+				2F0328B72A91EE4000639BAC /* GetGradeEvaluateResult.swift */,
+				2F0328B92A91F24600639BAC /* IsGrade.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1360,6 +1379,9 @@
 				2FBFF83C2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift */,
 				2FBFF83E2A6F59D7007914A1 /* ResponseLikeContentCheckDTO.swift */,
 				2FE968262A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift */,
+				2F0328BB2A91F2AC00639BAC /* ResponseIsGradeDTO.swift */,
+				2F0328BD2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift */,
+				2F0328BF2A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -2955,6 +2977,8 @@
 				2FBFF82D2A6F54F7007914A1 /* GradeChoiceAndModifyQuery.swift */,
 				2FBFF82F2A6F5505007914A1 /* LikeContentCheckQuery.swift */,
 				2FE9681A2A7BA2AB000E705E /* GetAnimationQuery.swift */,
+				2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */,
+				2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -3814,6 +3838,7 @@
 				2FCD8C752A81BED7002A39B0 /* MyVotedCharacter.swift in Sources */,
 				2FE111182A7663BB0013A49E /* CharacterDetailRepository.swift in Sources */,
 				2FD82DB42A775AA300372D24 /* ResponseLikeReviewCancelDTO.swift in Sources */,
+				2F0328B62A91EE2F00639BAC /* GetEvaluateMbti.swift in Sources */,
 				2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */,
 				2FD4D90C2A6BC09700E7972B /* ModifyMyProfile.swift in Sources */,
 				2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */,
@@ -4073,6 +4098,7 @@
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
 				2FD82D952A774D9400372D24 /* RequestDeleteReviewDTO.swift in Sources */,
+				2F0328B42A91EDC500639BAC /* GetEvaluateMbtiQuery.swift in Sources */,
 				2FCD8CAE2A826104002A39B0 /* ReportViewController.swift in Sources */,
 				49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */,
 				2FC2EB4829E3BC6800ECE2ED /* LoginStartViewModel.swift in Sources */,
@@ -4094,6 +4120,7 @@
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				2FCD8C8A2A82343B002A39B0 /* GetReviewDetail.swift in Sources */,
 				2FFB4BC32A8F0759001D1D60 /* Top3Mbti.swift in Sources */,
+				2F0328B82A91EE4000639BAC /* GetGradeEvaluateResult.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
 				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
@@ -4102,6 +4129,7 @@
 				2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */,
 				2F53D0862A1F194B00898DCD /* AuthUseCase.swift in Sources */,
 				2FD87A312A5840CF003C276B /* KakaoLogin.swift in Sources */,
+				2F0328C02A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
 				2FD4D9072A6BB1E600E7972B /* MyMomentumRepository.swift in Sources */,
 				2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */,
@@ -4138,6 +4166,7 @@
 				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
+				2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */,
 				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */,
@@ -4223,6 +4252,7 @@
 				2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */,
 				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
 				2FD87A3F2A58431D003C276B /* Logout.swift in Sources */,
+				2F0328BE2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift in Sources */,
 				2FC94E9F29C013880097E696 /* AuthRouter.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */,
@@ -4253,6 +4283,7 @@
 				2FEC15F82A78B484009CF59D /* ResponseMyReviewDTO.swift in Sources */,
 				2FBFF8332A6F5938007914A1 /* RequestLikeChoiceDTO.swift in Sources */,
 				2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */,
+				2F0328BA2A91F24600639BAC /* IsGrade.swift in Sources */,
 				2FE968212A7BCC1B000E705E /* ResponseHitDTO.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
@@ -4305,6 +4336,7 @@
 				497454ED2A3F67C30043D67E /* UserInfoQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,
+				2F0328BC2A91F2AC00639BAC /* ResponseIsGradeDTO.swift in Sources */,
 				49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */,
 				2FD82D912A774D6B00372D24 /* RequestLikeReviewCancelDTO.swift in Sources */,
 				2FDFB18B2A0DD80600732788 /* SendMessageViewController.swift in Sources */,

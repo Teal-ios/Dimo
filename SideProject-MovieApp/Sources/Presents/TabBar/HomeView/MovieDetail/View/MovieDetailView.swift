@@ -349,3 +349,42 @@ extension MovieDetailView {
         self.runningTimeExplainLabel.isHidden = true
     }
 }
+
+extension MovieDetailView {
+    func configureEvalateMbti(with item: GetEvaluateMbti) {
+        switch item.code {
+        case 202:
+            headerView.secondMbtiView.isHidden = true
+            headerView.thirdMbtiView.isHidden = true
+            self.headerView.mbtiInfoStackView.snp.updateConstraints { make in
+                make.height.equalTo(200 / 3)
+            }
+            self.headerView.snp.updateConstraints { make in
+                make.top.equalToSuperview()
+                make.width.equalTo(scrollView.snp.width)
+                make.height.greaterThanOrEqualTo(680 - 200 / 3)
+            }
+        case 201:
+            if item.grade_best.count == 4 {
+                self.headerView.thirdMbtiView.isHidden = true
+                self.headerView.secondMbtiView.updateLabelText(mbti: item.grade_best, explainText: "가 가장 맘에 든다고 평가했어요")
+            } else {
+                self.headerView.secondMbtiView.isHidden = true
+                self.headerView.thirdMbtiView.updateLabelText(mbti: item.grade_worst, explainText: "이 가장 별로라고 평가했어요")
+            }
+            self.headerView.mbtiInfoStackView.snp.updateConstraints { make in
+                make.height.equalTo(400 / 3)
+            }
+            self.headerView.snp.updateConstraints { make in
+                make.top.equalToSuperview()
+                make.width.equalTo(scrollView.snp.width)
+                make.height.greaterThanOrEqualTo(680 - 400 / 3)
+            }
+        case 200:
+            self.headerView.secondMbtiView.updateLabelText(mbti: item.grade_best, explainText: "가 가장 맘에 든다고 평가했어요")
+            self.headerView.thirdMbtiView.updateLabelText(mbti: item.grade_worst, explainText: "이 가장 별로라고 평가했어요")
+        default:
+            break
+        }
+    }
+}

@@ -20,4 +20,8 @@ protocol ContentRepository: AnyObject {
     func requestGradeChoiceAndModify(query: GradeChoiceAndModifyQuery) async throws -> GradeChoiceAndModify
     
     func fetchLikeContentCheck(query: LikeContentCheckQuery) async throws -> LikeContentCheck
+    
+    func fetchEvaluateMbti(query: GetEvaluateMbtiQuery) async throws -> GetEvaluateMbti
+    
+    func fetchGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult
 }

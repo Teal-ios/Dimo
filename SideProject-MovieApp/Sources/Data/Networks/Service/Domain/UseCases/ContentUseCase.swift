@@ -20,6 +20,10 @@ protocol ContentUseCase {
     func excuteLikeCancel(query: LikeCancelQuery) async throws -> LikeCancel
     
     func excuteLikeContentCheck(query: LikeContentCheckQuery) async throws -> LikeContentCheck
+    
+    func excuteGetEvaluateMbti(query: GetEvaluateMbtiQuery) async throws -> GetEvaluateMbti
+    
+    func excuteGetGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult
 }
 
 enum ContentUseCaseError: String, Error {
@@ -89,6 +93,26 @@ extension ContentUseCaseImpl {
     func excuteLikeCancel(query: LikeCancelQuery) async throws -> LikeCancel {
         do {
             return try await contentRepository.requestLikeCancel(query: query)
+        } catch {
+            throw ContentUseCaseError.excute
+        }
+    }
+}
+
+extension ContentUseCaseImpl {
+    func excuteGetEvaluateMbti(query: GetEvaluateMbtiQuery) async throws -> GetEvaluateMbti {
+        do {
+            return try await contentRepository.fetchEvaluateMbti(query: query)
+        } catch {
+            throw ContentUseCaseError.excute
+        }
+    }
+}
+
+extension ContentUseCaseImpl {
+    func excuteGetGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult {
+        do {
+            return try await contentRepository.fetchGradeEvaluateResult(query: query)
         } catch {
             throw ContentUseCaseError.excute
         }
