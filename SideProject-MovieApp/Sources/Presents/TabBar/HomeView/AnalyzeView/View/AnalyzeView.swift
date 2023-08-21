@@ -21,6 +21,7 @@ final class AnalyzeView: BaseView {
         view.addSubview(choiceMbtiExplainContainView)
         view.addSubview(choiceMbtiExplainImageView)
         view.addSubview(choiceMbtiExplainLabel)
+        view.addSubview(voteButton)
         view.addSubview(revoteButton)
         return view
     }()
@@ -109,6 +110,7 @@ final class AnalyzeView: BaseView {
     
     let voteButton: OnboardingButton = {
         let button = OnboardingButton(title: "투표하기")
+//        button.isHidden = true
         return button
     }()
     
@@ -188,6 +190,11 @@ final class AnalyzeView: BaseView {
             make.trailing.equalTo(choiceMbtiExplainContainView.snp.trailing).offset(-16)
         }
         
+        voteButton.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(choiceMbtiExplainContainView)
+            make.verticalEdges.equalTo(choiceMbtiExplainContainView).inset(4)
+        }
+        
         revoteButton.snp.makeConstraints { make in
             make.top.equalTo(choiceMbtiExplainContainView.snp.bottom).offset(24)
             make.centerX.equalTo(scrollView)
@@ -225,6 +232,33 @@ extension AnalyzeView {
 
             self.choiceMbtiExplainLabel.text = "나를 비롯한 \(String(percent))%가 \(myChoiceMbti)를 골랐어요"
         }
+    }
+}
 
+extension AnalyzeView {
+    func updateUserIsVotedToCharacter(isVote: Bool) {
+        switch isVote {
+        case true:
+            self.voteButton.isHidden = isVote
+        case false:
+            self.voteButton.isHidden = isVote
+            self.choiceMbtiExplainContainView.backgroundColor = .clear
+            self.revoteButton.isHidden = true
+            updateRevoteButtonLayoutUpdate()
+        }
+    }
+}
+
+extension AnalyzeView {
+    func updateRevoteButtonLayoutUpdate() {
+        revoteButton.snp.removeConstraints()
+        revoteButton.snp.remakeConstraints { make in
+            make.top.equalTo(choiceMbtiExplainContainView.snp.bottom).offset(24)
+            make.centerX.equalTo(scrollView)
+            make.width.equalTo(92)
+            make.height.equalTo(0)
+            make.bottom.equalTo(scrollView.snp.bottom)
+        }
+        scrollView.layoutIfNeeded()
     }
 }

@@ -47,8 +47,8 @@ final class VoteCompleteViewController: BaseViewController {
                     var characterSnapshot = NSDiffableDataSourceSnapshot<Int, Result>()
                     characterSnapshot.appendSections([0])
                     var characterArr: [Result] = []
-                    for character in sameWorkCharacter.result {
-                        guard let character else { return }
+                    for i in 0...2 {
+                        guard let character = sameWorkCharacter.result[i] else { return }
                         characterArr.append(character)
                     }
                     characterSnapshot.appendItems(characterArr, toSection: 0)

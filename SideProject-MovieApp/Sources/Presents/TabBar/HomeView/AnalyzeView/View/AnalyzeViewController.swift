@@ -46,6 +46,11 @@ final class AnalyzeViewController: BaseViewController {
             .bind { vc, inquireCharacterAnalyze in
                 vc.selfView.configureUpdateChart(with: inquireCharacterAnalyze)
                 vc.selfView.configureUpdateMbtiContent(with: inquireCharacterAnalyze)
+                if inquireCharacterAnalyze.my_vote_mbti == nil {
+                    vc.selfView.updateUserIsVotedToCharacter(isVote: false)
+                } else {
+                    vc.selfView.updateUserIsVotedToCharacter(isVote: true)
+                }
             }
             .disposed(by: disposeBag)
     }

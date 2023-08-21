@@ -139,6 +139,18 @@ final class MovieDetailViewController: BaseViewController {
                 vc.selfView.configureEvalateMbti(with: evaluateMbti)
             }
             .disposed(by: disposeBag)
+        
+        output.gradeEvaluateResult
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, gradeEvaluateResult in
+                if gradeEvaluateResult.is_grade == nil {
+                    vc.selfView.headerView.updateGradeButtonUI(grade: -1)
+                } else {
+                    vc.selfView.headerView.updateGradeButtonUI(grade: 1)
+                }
+            }
+            .disposed(by: disposeBag)
         }
     
     func setDataSource() {
