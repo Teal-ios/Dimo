@@ -108,7 +108,7 @@ extension EditNicknameView {
 extension EditNicknameView {
     
     func showCurrentNickname() {
-        let currentNickname = UserDefaults.standard.string(forKey: "userId")
+        let currentNickname = UserDefaultManager.nickname
         idTextFieldView.tf.text = currentNickname ?? ""
     }
 }
@@ -139,5 +139,11 @@ extension EditNicknameView {
     func showValidNicknameMessage() {
         policyLabel.text = "사용 가능한 닉네임입니다."
         policyLabel.textColor = .black60
+    }
+    
+    func showViewIfNotOverOneMonth() {
+        nicknameChangeButton.isHidden = true
+        idTextFieldView.tf.isEnabled = false
+        idTextFieldView.tf.textColor = .black80
     }
 }

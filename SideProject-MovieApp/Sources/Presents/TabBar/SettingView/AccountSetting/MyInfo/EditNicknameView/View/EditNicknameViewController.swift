@@ -49,6 +49,7 @@ final class EditNicknameViewController: BaseViewController {
             self.editNicknameView.makeToast("변경을 완료했어요", style: ToastStyle.dimo)
             self.editNicknameView.checkNicknameChangeButton(isValid: false)
             let lastNicknameChangeDate = Date.dateToString(from: self.viewModel.nicknameChangeDate)
+            UserDefaultManager.nickname = self.editNicknameView.idTextFieldView.tf.text ?? ""
             UserDefaultManager.lastNicknameChangeDate = lastNicknameChangeDate ?? ""
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
                 self.navigationController?.popViewController(animated: true)
@@ -122,10 +123,14 @@ final class EditNicknameViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.lastNicknameChangeDate
+        output.isOverOneMonth
             .observe(on: MainScheduler.instance)
-            .asDriver(onErrorJustReturn: "")
-            .drive(editNicknameView.idTextFieldView.tf.rx.text)
+            .withUnretained(self)
+            .bind(onNext: { (vc, isOverOneMonth) in
+                if !isOverOneMonth {
+                    vc.editNicknameView.showViewIfNotOverOneMonth()
+                }
+            })
             .disposed(by: disposeBag)
     }
 }

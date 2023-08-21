@@ -31,12 +31,12 @@ final class EditNicknameViewModel: ViewModelType {
         var isTextFieldEditingChanged: BehaviorRelay<Bool>
         var isDuplicatedNickname: BehaviorRelay<Bool>
         var isTextFieldChanged: BehaviorRelay<Bool>
-        var lastNicknameChangeDate: BehaviorRelay<String>
+        var isOverOneMonth: PublishRelay<Bool>
     }
     
     private var nickname: String?
     private(set) var nicknameChangeDate: Date?
-    private var lastNicknameChangeDate = BehaviorRelay<String>(value: "")
+    private var isOverOneMonth = PublishRelay<Bool>()
     private var isDuplicatedNickname = BehaviorRelay<Bool>(value: true)
     private var isTextFielEditingDidBegin = BehaviorRelay<Bool>(value: false)
     private var isTextFieldChanged = BehaviorRelay<Bool>(value: false)
@@ -90,7 +90,7 @@ final class EditNicknameViewModel: ViewModelType {
         input.viewDidLoad
             .withUnretained(self)
             .bind { (vm, _) in
-//                vm.loadNicknameChangeDate()
+                vm.loadNicknameChangeDate()
             }
             .disposed(by: disposeBag)
         
@@ -103,7 +103,7 @@ final class EditNicknameViewModel: ViewModelType {
                       isTextFieldEditingChanged: isTextFieldEditingChanged,
                       isDuplicatedNickname: isDuplicatedNickname,
                       isTextFieldChanged: isTextFieldChanged,
-                      lastNicknameChangeDate: lastNicknameChangeDate)
+                      isOverOneMonth: self.isOverOneMonth)
     }
 }
 
@@ -118,9 +118,9 @@ extension EditNicknameViewModel {
             let nicknameChangeDate = try await settingUseCase.executeNicknameChangeDate(query: query)
             print("🔥", nicknameChangeDate)
             if nicknameChangeDate.code == 200 {
-                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+                isOverOneMonth.accept(true)
             } else { // 401
-                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+                isOverOneMonth.accept(false)
             }
         }
     }
