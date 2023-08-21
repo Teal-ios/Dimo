@@ -193,14 +193,12 @@ extension MovieDetailHeaderView {
 extension MovieDetailHeaderView {
     func updateGradeButtonUI(grade: Int) {
         switch grade {
-        case 1:
+        case 1, -1:
             self.evaluateButton.setImage(UIImage(named: "Good_Select"), for: .normal)
             self.evaluateLabel.textColor = .black5
-        case -1:
+        default:
             self.evaluateButton.setImage(UIImage(named: "Good_Nonselect"), for: .normal)
             self.evaluateLabel.textColor = .black60
-        default:
-            break
         }
     }
 }

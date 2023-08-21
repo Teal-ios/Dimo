@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct MostLikeChoiceMbtiQuery: Hashable {
+    let user_id: String
+    let content_type: String
+    let contentId: String
+}

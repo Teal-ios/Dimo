@@ -16,6 +16,7 @@ enum ContentRouter<R> {
     case likeContentCheck(parameters: LikeContentCheckQuery)
     case getEvalateMbti(parameters: GetEvaluateMbtiQuery)
     case getGradeEvaluate(parameters: GetGradeEvaluateResultQuery)
+    case mostLikeChoiceMbti(parameters: MostLikeChoiceMbtiQuery)
 }
 
 extension ContentRouter: TargetType2 {
@@ -24,7 +25,7 @@ extension ContentRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify, .getEvalateMbti, .getGradeEvaluate:
+        case .inquireAnimationData, .likeCancel, .likeChoice, .inquireDetailAnimationData, .likeContentCheck, .gradeChoiceAndModify, .getEvalateMbti, .getGradeEvaluate, .mostLikeChoiceMbti:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -59,6 +60,8 @@ extension ContentRouter: TargetType2 {
             return "/detail/mbti_result"
         case .getGradeEvaluate:
             return "/detail/is_grade"
+        case .mostLikeChoiceMbti:
+            return "/detail/most_like"
         }
     }
     
@@ -72,6 +75,8 @@ extension ContentRouter: TargetType2 {
             return [URLQueryItem(name: "contentId", value: parameters.contentId), URLQueryItem(name: "content_type", value: parameters.content_type)]
         case .getGradeEvaluate(let parameters):
             return [URLQueryItem(name: "contentId", value: parameters.contentId), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "user_id", value: parameters.user_id)]
+        case .mostLikeChoiceMbti(let parameters):
+            return [URLQueryItem(name: "contentId", value: parameters.contentId), URLQueryItem(name: "content_type", value: parameters.content_type), URLQueryItem(name: "user_id", value: parameters.user_id)]
         default:
             return nil
         }
@@ -79,7 +84,7 @@ extension ContentRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck, .getEvalateMbti, .getGradeEvaluate:
+        case .inquireDetailAnimationData, .inquireAnimationData, .likeContentCheck, .getEvalateMbti, .getGradeEvaluate, .mostLikeChoiceMbti:
             return .get
         case .likeCancel, .likeChoice, .gradeChoiceAndModify:
             return .post

@@ -126,3 +126,15 @@ extension ContentRepositoryImpl {
         }
     }
 }
+
+extension ContentRepositoryImpl {
+    func fetchMostLikeChoiceMbti(query: MostLikeChoiceMbtiQuery) async throws -> MostLikeChoiceMbti {
+        let target = ContentAPIEndpoints.getMostLikeChoiceMbti(user_id: query.user_id, contentId: query.contentId, content_type: query.content_type)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw ContentRepositoryError.request
+        }
+    }
+}

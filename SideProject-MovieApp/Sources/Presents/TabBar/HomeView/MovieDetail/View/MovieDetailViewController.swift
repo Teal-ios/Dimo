@@ -151,6 +151,15 @@ final class MovieDetailViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.mostLikeChoiceMbti
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, mostLikeChoiceMbti in
+                guard let mbti = mostLikeChoiceMbti.most_mbti else { return }
+                vc.selfView.headerView.firstMbtiView.updateLabelText(mbti: mbti, explainText: "가 가장 많이 찜했어요")
+            }
+            .disposed(by: disposeBag)
         }
     
     func setDataSource() {
