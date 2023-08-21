@@ -82,8 +82,8 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showCharacterMoreViewController() {
-        let viewModel = CharacterMoreViewModel(coordinator: self)
+    func showCharacterMoreViewController(characterData: [SameMbtiCharacter]) {
+        let viewModel = CharacterMoreViewModel(coordinator: self, characters: characterData)
         let vc = CharacterMoreViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)

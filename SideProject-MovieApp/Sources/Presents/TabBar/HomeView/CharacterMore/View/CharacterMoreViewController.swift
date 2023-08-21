@@ -19,10 +19,10 @@ final class CharacterMoreViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var dataSource: UICollectionViewDiffableDataSource<Int, HomeModel>!
-    var snapshot = NSDiffableDataSourceSnapshot<Int, HomeModel>()
+    var dataSource: UICollectionViewDiffableDataSource<Int, SameMbtiCharacter>!
     
     let cardCellSelected = PublishSubject<Void>()
+    let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
         view = selfView
@@ -30,13 +30,48 @@ final class CharacterMoreViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.selfView.collectionView.delegate = self
         setDataSource()
+        self.viewDidLoadTrigger.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func setupBinding() {
+        let input = CharacterMoreViewModel.Input()
+        
+        let output = self.viewModel.transform(input: input)
+        
+        Observable
+            .zip(output.characters, self.viewDidLoadTrigger)
+            .bind { [weak self] characters, _ in
+                guard let self else { return }
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SameMbtiCharacter>()
+                snapshot.appendSections([0])
+                var characterArr: [SameMbtiCharacter] = []
+                for ele in characters {
+                    characterArr.append(ele)
+                }
+                snapshot.appendItems(characterArr, toSection: 0)
+                self.dataSource.apply(snapshot)
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension CharacterMoreViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.cardCellSelected.onNext(())
+    }
+}
+
+extension CharacterMoreViewController {
     func setDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, HomeModel> { cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<VoteCollectionViewCell, SameMbtiCharacter> { cell, indexPath, itemIdentifier in
+            cell.configureSameMbtiCharacter(with: itemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -44,20 +79,5 @@ final class CharacterMoreViewController: BaseViewController {
 
             return cell
         })
-     
-        snapshot.appendSections([0])
-        var movieArr: [HomeModel] = []
-        for _ in 1..<50 {
-            movieArr.append(HomeModel(image: nil))
-        }
-        
-        snapshot.appendItems(movieArr, toSection: 0)
-        dataSource.apply(snapshot)
-    }
-}
-
-extension CharacterMoreViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.onNext(())
     }
 }

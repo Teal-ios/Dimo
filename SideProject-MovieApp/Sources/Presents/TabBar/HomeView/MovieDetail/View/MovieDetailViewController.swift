@@ -145,7 +145,7 @@ final class MovieDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, gradeEvaluateResult in
                 if gradeEvaluateResult.is_grade == nil {
-                    vc.selfView.headerView.updateGradeButtonUI(grade: -1)
+                    vc.selfView.headerView.updateGradeButtonUI(grade: 0)
                 } else {
                     vc.selfView.headerView.updateGradeButtonUI(grade: 1)
                 }

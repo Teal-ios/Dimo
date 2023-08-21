@@ -20,14 +20,18 @@ final class CharacterMoreViewModel: ViewModelType {
     }
     
     struct Output{
+        let characters: BehaviorRelay<[SameMbtiCharacter]>
     }
     
-    init(coordinator: HomeCoordinator? = nil) {
+    init(coordinator: HomeCoordinator? = nil, characters: [SameMbtiCharacter]) {
         self.coordinator = coordinator
+        self.characters = BehaviorRelay(value: characters)
     }
+    
+    let characters: BehaviorRelay<[SameMbtiCharacter]>
     
     func transform(input: Input) -> Output {
 
-        return Output()
+        return Output(characters: self.characters)
     }
 }

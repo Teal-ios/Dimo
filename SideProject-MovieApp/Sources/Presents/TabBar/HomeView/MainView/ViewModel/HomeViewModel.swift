@@ -148,10 +148,23 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+//        input.okAlertButtonTapped
+//            .withUnretained(self)
+//            .bind { vm, _ in
+//                vm.coordinator?.showCharacterMoreViewController()
+//            }
+//            .disposed(by: disposeBag)
+//
         input.okAlertButtonTapped
+            .withLatestFrom(self.animationData)
             .withUnretained(self)
-            .bind { vm, _ in
-                vm.coordinator?.showCharacterMoreViewController()
+            .bind { vm, anime in
+                for content in anime.contents {
+                    if content.category == "same_mbti_character" {
+                        guard let character = content.same_mbti_char else { return }
+                        vm.coordinator?.showCharacterMoreViewController(characterData: character)
+                    }
+                }
             }
             .disposed(by: disposeBag)
 
