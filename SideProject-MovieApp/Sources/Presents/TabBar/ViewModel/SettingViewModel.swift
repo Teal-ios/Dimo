@@ -36,7 +36,7 @@ final class SettingViewModel: ViewModelType {
             switch indexPath {
             case [0, 0]:
                 print("내 정보 변경")
-                self.coordinator?.showEditMyInfoViewController()
+                self.coordinator?.showEditMyInfoViewController(nicknameChangeDate: self.nicknameChangeDate)
             case [0, 1]:
                 self.coordinator?.showEditMbtiViewController(mbti: self.mbti, mbtiChangeDate: self.mbtiChangeDate)
             case [2, 0]:

@@ -28,18 +28,6 @@ final class EditNicknameView: BaseView {
         return OnboardingTextFieldView()
     }()
     
-    let duplicationCheckButton: UIButton = {
-        let button = UIButton()
-        button.isEnabled = false
-        button.titleLabel?.font = .suitFont(ofSize: 12, weight: .Medium)
-        button.titleLabel?.textAlignment = .center
-        button.layer.cornerRadius = 8.0
-        button.backgroundColor = .black100
-        button.setTitle("중복확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    
     let policyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black60
@@ -67,7 +55,6 @@ final class EditNicknameView: BaseView {
     
     override func setupLayout() {
         [titleLabel, explainLabel, idTextFieldView, nicknameChangeButton, policyLabel].forEach { self.addSubview($0) }
-        idTextFieldView.addSubview(duplicationCheckButton)
         
         let topLeading: CGFloat = 16
         let betweenTerms: CGFloat = 36
@@ -85,21 +72,18 @@ final class EditNicknameView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.height.equalTo(18)
         }
+        
         idTextFieldView.snp.makeConstraints { make in
             make.top.equalTo(explainLabel.snp.bottom).offset(betweenTerms)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
             make.height.equalTo(textFieldHeight)
         }
-        duplicationCheckButton.snp.makeConstraints { make in
-            make.width.equalTo(72.0)
-            make.height.equalTo(36.0)
-            make.centerY.equalTo(idTextFieldView.snp.centerY)
-            make.trailing.equalTo(idTextFieldView.snp.trailing).inset(insidePadding)
-        }
+
         policyLabel.snp.makeConstraints { make in
             make.top.equalTo(idTextFieldView.snp.bottom).offset(insidePadding)
             make.leading.equalTo(idTextFieldView.snp.leading)
         }
+        
         nicknameChangeButton.snp.makeConstraints { make in
             make.height.equalTo(buttonHeight)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
@@ -109,16 +93,6 @@ final class EditNicknameView: BaseView {
 }
 
 extension EditNicknameView {
-    
-    func enableDuplicationCheckButton(isEnabled: Bool) {
-        if isEnabled {
-            duplicationCheckButton.isEnabled = true
-            duplicationCheckButton.setTitleColor(UIColor.white, for: .normal)
-        } else {
-            duplicationCheckButton.isEnabled = false
-            duplicationCheckButton.setTitleColor(UIColor.black80, for: .disabled)
-        }
-    }
     
     func checkNicknameChangeButton(isValid: Bool) {
         if isValid {
@@ -134,7 +108,7 @@ extension EditNicknameView {
 extension EditNicknameView {
     
     func showCurrentNickname() {
-        let currentNickname = UserDefaults.standard.string(forKey: "userId")
+        let currentNickname = UserDefaultManager.nickname
         idTextFieldView.tf.text = currentNickname ?? ""
     }
 }
@@ -142,8 +116,8 @@ extension EditNicknameView {
 // MARK: - Policy Label Text
 extension EditNicknameView {
     
-    func showLastNicknameChangedDate() {
-        policyLabel.text = "마지막 변경일 : 2023.05.25"
+    func showLastNicknameChangeDate(date: String) {
+        policyLabel.text = "마지막 변경일 : \(date)"
         policyLabel.textColor = .black60
     }
     
@@ -165,5 +139,11 @@ extension EditNicknameView {
     func showValidNicknameMessage() {
         policyLabel.text = "사용 가능한 닉네임입니다."
         policyLabel.textColor = .black60
+    }
+    
+    func showViewIfNotOverOneMonth() {
+        nicknameChangeButton.isHidden = true
+        idTextFieldView.tf.isEnabled = false
+        idTextFieldView.tf.textColor = .black80
     }
 }

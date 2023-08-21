@@ -21,9 +21,8 @@ final class EditNicknameViewModel: ViewModelType {
         var textFieldEditingChanged: ControlEvent<Void>
         var textFieldEditingDidEnd: ControlEvent<Void>
         var textFieldInput: ControlProperty<String?>
-        var nicknameDuplicationButtonTapped: ControlEvent<Void>
         var nicknameChangeButtonTapped: ControlEvent<Void>
-        var viewDidLoad: Signal<Void>
+        var viewDidLoad: PublishRelay<Void>
     }
     
     struct Output {
@@ -32,31 +31,40 @@ final class EditNicknameViewModel: ViewModelType {
         var isTextFieldEditingChanged: BehaviorRelay<Bool>
         var isDuplicatedNickname: BehaviorRelay<Bool>
         var isTextFieldChanged: BehaviorRelay<Bool>
-        var lastNicknameChangeDate: BehaviorRelay<String>
+        var isOverOneMonth: PublishRelay<Bool>
     }
     
     private var nickname: String?
-    private var lastNicknameChangeDate = BehaviorRelay<String>(value: "")
+    private(set) var nicknameChangeDate: Date?
+    private var isOverOneMonth = PublishRelay<Bool>()
     private var isDuplicatedNickname = BehaviorRelay<Bool>(value: true)
     private var isTextFielEditingDidBegin = BehaviorRelay<Bool>(value: false)
     private var isTextFieldChanged = BehaviorRelay<Bool>(value: false)
     private var isTextFieldEditingChanged = BehaviorRelay<Bool>(value: false)
     private var isTextFieldEiditinDidEnd = BehaviorRelay<Bool>(value: false)
     
-    init(coordinator: SettingCoordinator, settingUseCase: SettingUseCase) {
+    init(coordinator: SettingCoordinator, settingUseCase: SettingUseCase, nicknameChangeDate: Date?) {
         self.coordinator = coordinator
         self.settingUseCase = settingUseCase
+        self.nicknameChangeDate = nicknameChangeDate
     }
     
     func transform(input: Input) -> Output {
         input.textFieldInput
-            .bind { [weak self] text in
+            .do(onNext: { [weak self] text  in
                 guard let text = text else { return }
                 self?.nickname = text
                 if text.count < 2 {
                     self?.isTextFieldEditingChanged.accept(false)
                 } else {
                     self?.isTextFieldEditingChanged.accept(true)
+                }
+            })
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map { ($0?.count ?? 0) >= 2 }
+            .bind { [weak self] isOverTwoCharacter in
+                if isOverTwoCharacter {
+                    self?.loadNicknameDuplication()
                 }
             }
             .disposed(by: disposeBag)
@@ -79,15 +87,11 @@ final class EditNicknameViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        input.viewDidLoad.emit { [weak self] _ in
-            self?.loadNicknameChangeDate()
-        }
-        .disposed(by: disposeBag)
-        
-        input.nicknameDuplicationButtonTapped
-            .bind(onNext: { [weak self] in
-                self?.loadNicknameDuplication()
-            })
+        input.viewDidLoad
+            .withUnretained(self)
+            .bind { (vm, _) in
+                vm.loadNicknameChangeDate()
+            }
             .disposed(by: disposeBag)
         
         input.nicknameChangeButtonTapped.bind { [weak self] _ in
@@ -99,7 +103,7 @@ final class EditNicknameViewModel: ViewModelType {
                       isTextFieldEditingChanged: isTextFieldEditingChanged,
                       isDuplicatedNickname: isDuplicatedNickname,
                       isTextFieldChanged: isTextFieldChanged,
-                      lastNicknameChangeDate: lastNicknameChangeDate)
+                      isOverOneMonth: self.isOverOneMonth)
     }
 }
 
@@ -114,9 +118,9 @@ extension EditNicknameViewModel {
             let nicknameChangeDate = try await settingUseCase.executeNicknameChangeDate(query: query)
             print("🔥", nicknameChangeDate)
             if nicknameChangeDate.code == 200 {
-                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+                isOverOneMonth.accept(true)
             } else { // 401
-                lastNicknameChangeDate.accept(nicknameChangeDate.message)
+                isOverOneMonth.accept(false)
             }
         }
     }

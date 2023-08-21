@@ -31,17 +31,17 @@ final class SettingCoordinator: Coordinator {
         navigationController.viewControllers = [vc]
     }
     
-    func showEditMyInfoViewController() {
-        let viewModel = EditMyInfoViewModel(coordinator: self)
+    func showEditMyInfoViewController(nicknameChangeDate: Date?) {
+        let viewModel = EditMyInfoViewModel(coordinator: self, nicknameChangeDate: nicknameChangeDate)
         let vc = EditMyInfoViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showEditUserNameViewController() {
+    func showEditNicknameViewController(nicknameChangeDate: Date?) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = EditNicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
+        let viewModel = EditNicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, nicknameChangeDate: nicknameChangeDate)
         let vc = EditNicknameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -50,8 +50,8 @@ final class SettingCoordinator: Coordinator {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = ChangeNicknameAlertViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
-        let vc = ChangeNicknameAlertViewController(viewModel: viewModel, completion: completion)
+        let viewModel = EditNicknameAlertViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, newNickname: newNickname)
+        let vc = EditNicknameAlertViewController(viewModel: viewModel, completion: completion)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         navigationController.present(vc, animated: true)

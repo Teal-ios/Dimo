@@ -9,13 +9,13 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class ChangeNicknameAlertViewController: BaseViewController {
+final class EditNicknameAlertViewController: BaseViewController {
     
     private let selfView = CustomAlertView(title: "닉네임을 변경할까요?", subtitle: "한 번 설정한 닉네임은 한 달 동안 변경할 수 없습니다.", okButtonTitle: "변경하기", cancelTitle: "아니요")
-    private var viewModel: ChangeNicknameAlertViewModel
+    private var viewModel: EditNicknameAlertViewModel
     private var completion: ( () -> Void )?
     
-    init(viewModel: ChangeNicknameAlertViewModel, completion: ( () -> Void)? ) {
+    init(viewModel: EditNicknameAlertViewModel, completion: ( () -> Void)? ) {
         self.viewModel = viewModel
         self.completion = completion
         super.init()
@@ -39,7 +39,7 @@ final class ChangeNicknameAlertViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = ChangeNicknameAlertViewModel.Input(cancelButtonTapped: selfView.cancelButton.rx.tap,
+        let input = EditNicknameAlertViewModel.Input(cancelButtonTapped: selfView.cancelButton.rx.tap,
                                                      changeButtonTapped: selfView.okButton.rx.tap)
         
         let output = viewModel.transform(input: input)

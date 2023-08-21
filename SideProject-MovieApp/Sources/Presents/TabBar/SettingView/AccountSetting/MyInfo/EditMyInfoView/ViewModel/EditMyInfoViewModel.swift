@@ -13,6 +13,7 @@ final class EditMyInfoViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: SettingCoordinator?
+    private var nicknameChangeDate: Date?
     
     struct Input{
         let cellSelected: PublishSubject<IndexPath>
@@ -21,8 +22,9 @@ final class EditMyInfoViewModel: ViewModelType {
     struct Output{
     }
     
-    init(coordinator: SettingCoordinator? = nil) {
+    init(coordinator: SettingCoordinator? = nil, nicknameChangeDate: Date?) {
         self.coordinator = coordinator
+        self.nicknameChangeDate = nicknameChangeDate
     }
     
     func transform(input: Input) -> Output {
@@ -30,7 +32,7 @@ final class EditMyInfoViewModel: ViewModelType {
             switch indexPath {
             case [0, 0]:
                 print("닉네임 변경")
-                self.coordinator?.showEditUserNameViewController()
+                self.coordinator?.showEditNicknameViewController(nicknameChangeDate: self.nicknameChangeDate)
             case [0, 1]:
                 print("비밀번호 변경")
                 self.coordinator?.showEditPasswordViewController()
