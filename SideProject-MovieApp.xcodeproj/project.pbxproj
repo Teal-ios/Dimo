@@ -269,6 +269,8 @@
 		2FD1CC242A930DB000876DCB /* MostLikeChoiceMbti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC232A930DB000876DCB /* MostLikeChoiceMbti.swift */; };
 		2FD1CC262A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */; };
 		2FD1CC282A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC272A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift */; };
+		2FD1CC2A2A93386600876DCB /* CommentIsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC292A93386600876DCB /* CommentIsLiked.swift */; };
+		2FD1CC2C2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */; };
 		2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */; };
 		2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274112A5A8AEC003AA144 /* RecommendView.swift */; };
 		2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274132A5A8B38003AA144 /* RecommendViewController.swift */; };
@@ -856,6 +858,8 @@
 		2FD1CC232A930DB000876DCB /* MostLikeChoiceMbti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostLikeChoiceMbti.swift; sourceTree = "<group>"; };
 		2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostLikeChoiceMbtiQuery.swift; sourceTree = "<group>"; };
 		2FD1CC272A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMostLikeChoiceMbtiDTO.swift; sourceTree = "<group>"; };
+		2FD1CC292A93386600876DCB /* CommentIsLiked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIsLiked.swift; sourceTree = "<group>"; };
+		2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCommentIsLikedDTO.swift; sourceTree = "<group>"; };
 		2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		2FD274112A5A8AEC003AA144 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		2FD274132A5A8B38003AA144 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
@@ -3143,6 +3147,7 @@
 				2FD82DBD2A775AF500372D24 /* ResponseReviewListDTO.swift */,
 				2FD82DBF2A775AFE00372D24 /* ResponseCommentListDTO.swift */,
 				2FFB4BD62A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift */,
+				2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3300,6 +3305,7 @@
 				2FD82D682A77443100372D24 /* ReviewList.swift */,
 				2FD82D6A2A77457C00372D24 /* CommentList.swift */,
 				2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */,
+				2FD1CC292A93386600876DCB /* CommentIsLiked.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -4056,6 +4062,7 @@
 				2FD82D8B2A774D3500372D24 /* RequestPostReviewDTO.swift in Sources */,
 				2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */,
 				2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */,
+				2FD1CC2A2A93386600876DCB /* CommentIsLiked.swift in Sources */,
 				2FD87A352A584114003C276B /* Social.swift in Sources */,
 				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
 				2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */,
@@ -4180,6 +4187,7 @@
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */,
 				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
+				2FD1CC2C2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */,
 				2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */,
