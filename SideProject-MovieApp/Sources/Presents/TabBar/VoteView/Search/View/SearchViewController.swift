@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum SearchCategoryCase: String {
+    case character, work
+}
+
 final class SearchViewController: BaseViewController {
     let selfView = SearchView()
     
@@ -34,6 +38,7 @@ final class SearchViewController: BaseViewController {
         super.viewDidLoad()
         self.selfView.collectionView.delegate = self
         setDataSource()
+        self.selfView.configureCategoryUpdate(category: SearchCategoryCase.work.rawValue)
     }
     
     override func setupBinding() {

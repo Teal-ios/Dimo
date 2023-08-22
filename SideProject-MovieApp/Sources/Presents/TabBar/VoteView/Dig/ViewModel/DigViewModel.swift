@@ -54,14 +54,6 @@ final class DigViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-//        input.nextButtonTap
-//            .withLatestFrom(self.characterInfo)
-//            .bind { [weak self] characterInfo in
-//                guard let self else { return }
-//                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
-//            }
-//            .disposed(by: disposeBag)
-        
         input.mbtiInfo.bind { [weak self] mbti in
             guard let self = self else { return }
             print(mbti)
@@ -80,17 +72,23 @@ final class DigViewModel: ViewModelType {
         input.nextButtonTap
             .withLatestFrom(self.characterInfo)
             .bind { [weak self] characterInfo in
-                guard let self else { return }
+                guard let self = self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
                 let mbtiArray = self.mbtiStringToArray(mbti: self.mbtiString)
-                guard let contentId = characterInfo.content_id else { return }
-                
+                var id: Int? = 0
+                if characterInfo.content_id == nil {
+                    id = characterInfo.anime_id ?? 0
+                } else {
+                    id = characterInfo.content_id
+                }
+                guard let id = id else { return }
+
                  let ei = String(mbtiArray[0])
                  let sn = String(mbtiArray[1])
                  let tf = String(mbtiArray[2])
                  let jp = String(mbtiArray[3])
 
-                self.postVoteCharacter(user_id: user_id, content_id: String(contentId), character_id: String(characterInfo.character_id), ei: ei, sn: sn, tf: tf, jp: jp)
+                self.postVoteCharacter(user_id: user_id, content_id: String(id), character_id: String(characterInfo.character_id), ei: ei, sn: sn, tf: tf, jp: jp)
             }
             .disposed(by: disposeBag)
         
@@ -103,6 +101,7 @@ final class DigViewModel: ViewModelType {
                 self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
             }
             .disposed(by: disposeBag)
+        
         
         return Output(characterInfo: self.characterInfo, eButtonTapped: input.eButtonTapped, iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped, mbtiValid: self.mbtiValid)
     }

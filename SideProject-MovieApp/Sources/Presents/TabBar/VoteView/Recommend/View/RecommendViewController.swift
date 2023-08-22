@@ -32,6 +32,7 @@ final class RecommendViewController: BaseViewController {
     
     let searchNavigationButtonTap = PublishSubject<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let characterCellTapped = PublishRelay<CharacterInfo>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ final class RecommendViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap)
+        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped)
         
         let output = self.viewModel.transform(input: input)
         output.randomCharacterRecommend
@@ -120,19 +121,25 @@ extension RecommendViewController {
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView) { collectionView, indexPath, itemIdentifier in
-            
 
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellCharacterRegistration, for: indexPath, item: itemIdentifier)
                 return cell
-
-            
         }
     }
 }
 
 
 extension RecommendViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dataFetchingToCharacterCell(indexPath: indexPath)
+    }
+}
+
+extension RecommendViewController {
+    private func dataFetchingToCharacterCell(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers(inSection: 0)[indexPath.row]
+        self.characterCellTapped.accept(selectedItem)
+    }
 }
 
 extension RecommendViewController {
