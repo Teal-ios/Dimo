@@ -124,6 +124,15 @@ final class SettingCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showCharacterAskViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = CharacterAskViewModel(coordinator: self, settingUseCase: settingUsecase)
+        let vc = CharacterAskViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func connectAuthFlow() {
         self.parentCoordinator?.parentCoordinator?.start()
     }

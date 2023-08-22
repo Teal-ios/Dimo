@@ -16,6 +16,7 @@ enum SettingRouter<R> {
     case mbtiChangeDateCheck(parameters: MbtiChangeDateQuery)
     case passwordChange(parameters: PasswordChangeQuery)
     case withdraw(paramters: WithdrawQuery)
+    case characterAsk(parameters: CharacterAskQuery)
 }
 
 extension SettingRouter: TargetType2 {
@@ -52,6 +53,8 @@ extension SettingRouter: TargetType2 {
             return "/user_info/change_pw"
         case .withdraw:
             return "/drop"
+        case .characterAsk:
+            return "/admin/request_character"
         }
     }
     
@@ -87,7 +90,7 @@ extension SettingRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .userInfo, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange, .withdraw:
+        case .userInfo, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange, .withdraw, .characterAsk:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -99,6 +102,13 @@ extension SettingRouter: TargetType2 {
                          withdrawReason: parameters.withdrawReason)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestWithdrawDTO)
+        case .characterAsk(let parameters):
+            let requestCharacterAskDTO = RequestCharacterAskDTO(user_id: parameters.user_id,
+                                                                category: parameters.category,
+                                                                title: parameters.title,
+                                                                character_name: parameters.character_name)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestCharacterAskDTO)
         default:
             return nil
         }
@@ -108,7 +118,7 @@ extension SettingRouter: TargetType2 {
         switch self {
         case .userInfo, .nicknameDuplicationCheck, .nicknameChange, .nicknameChangeDateCheck, .mbtiChange, .mbtiChangeDateCheck, .passwordChange:
             return .get
-        case .withdraw:
+        case .withdraw, .characterAsk:
             return .post
         }
     }

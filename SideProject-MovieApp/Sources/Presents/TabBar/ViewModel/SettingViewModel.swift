@@ -43,6 +43,8 @@ final class SettingViewModel: ViewModelType {
                 self.coordinator?.showNoticeViewController()
             case [2, 1]:
                 self.coordinator?.showFrequentQuestionViewController()
+            case [2, 3]:
+                self.coordinator?.showCharacterAskViewController()
             default:
                 print("미설정")
             }

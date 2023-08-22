@@ -36,4 +36,8 @@ struct APIEndpoints {
     static func getUserInfo(with requestDTO: RequestUserInfoDTO) -> SettingRouter<ResponseUserInfoDTO> {
         return SettingRouter<ResponseUserInfoDTO>.userInfo(parameters: UserInfoQuery(user_id: requestDTO.userId))
     }
+    
+    static func postCharacterAsk(with requestDTO: RequestCharacterAskDTO) -> SettingRouter<ResponseCharacterAskDTO> {
+        return SettingRouter<ResponseCharacterAskDTO>.characterAsk(parameters: CharacterAskQuery(user_id: requestDTO.user_id, category: requestDTO.category, title: requestDTO.title, character_name: requestDTO.character_name))
+    }
 }

@@ -16,6 +16,7 @@ protocol SettingUseCase {
     func executePasswordChange(query: PasswordChangeQuery) async throws -> PasswordChange
     func executeWithdraw(query: WithdrawQuery) async throws -> Withdraw
     func executeMbtiChange(query: MbtiChangeQuery) async throws -> MbtiChange
+    func executeCharacterAsk(query: CharacterAskQuery) async throws -> CharacterAsk
 }
 
 enum SettingUseCaseError: String, Error {
@@ -89,14 +90,6 @@ extension SettingUseCaseImpl {
             throw SettingUseCaseError.execute
         }
     }
-    
-//    func executeMbtiChangeDate(query: MbtiChangeDateQuery) async throws -> MbtiChangeDate {
-//        do {
-//
-//        } catch {
-//
-//        }
-//    }
 }
 
 // MARK: Request UserInfo
@@ -104,6 +97,17 @@ extension SettingUseCaseImpl {
     func executeUserInfo(query: UserInfoQuery) async throws -> UserInfo {
         do {
             return try await settingRepository.fetchUserInfo(query: query)
+        } catch {
+            throw SettingUseCaseError.execute
+        }
+    }
+}
+
+// MARK: Request Character
+extension SettingUseCaseImpl {
+    func executeCharacterAsk(query: CharacterAskQuery) async throws -> CharacterAsk {
+        do {
+            return try await settingRepository.fetchCharacterName(query: query)
         } catch {
             throw SettingUseCaseError.execute
         }
