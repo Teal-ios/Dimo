@@ -36,6 +36,7 @@ final class VoteView: BaseView {
                 { sectionIndex, layoutEnvironment in
                     switch sectionIndex {
                     case 0: return self.characterLayout()
+                    case 2: return self.footerLayout()
                     default: return self.voteLayout()
                     }
                 },
@@ -62,6 +63,7 @@ final class VoteView: BaseView {
             widthDimension: .fractionalWidth(headerRatio),
             heightDimension: .absolute(headerAbsolute)
         )
+        
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: CharacterRecommandAndSearchHeaderView.identifier, alignment: .top
@@ -104,4 +106,23 @@ final class VoteView: BaseView {
         return section
     }
     
+    private func footerLayout() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemRatio),
+            heightDimension: .fractionalHeight(itemRatio)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(groupRatio),
+            heightDimension: .absolute(72)
+        )
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        return section
+    }
 }
