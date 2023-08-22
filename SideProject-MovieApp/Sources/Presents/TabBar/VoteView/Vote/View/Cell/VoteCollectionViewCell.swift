@@ -129,3 +129,13 @@ extension VoteCollectionViewCell {
         }
     }
 }
+
+extension VoteCollectionViewCell {
+    func configureSameMbtiCharacter(with item: SameMbtiCharacter) {
+        let imageUrl = URL(string: item.character_img ?? "")
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.character_name
+    }
+}

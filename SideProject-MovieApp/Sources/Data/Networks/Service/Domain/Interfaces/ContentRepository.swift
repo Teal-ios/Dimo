@@ -24,4 +24,6 @@ protocol ContentRepository: AnyObject {
     func fetchEvaluateMbti(query: GetEvaluateMbtiQuery) async throws -> GetEvaluateMbti
     
     func fetchGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult
+    
+    func fetchMostLikeChoiceMbti(query: MostLikeChoiceMbtiQuery) async throws -> MostLikeChoiceMbti
 }

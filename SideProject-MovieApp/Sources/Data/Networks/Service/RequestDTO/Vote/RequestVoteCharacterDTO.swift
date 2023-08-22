@@ -9,7 +9,7 @@ import Foundation
 
 struct RequestVoteCharacterDTO: Encodable {
     let user_id: String
-    let content_id: String
+    let contentId: String
     let character_id: String
     let ei: String
     let sn: String
@@ -17,6 +17,6 @@ struct RequestVoteCharacterDTO: Encodable {
     let jp: String
     
     enum CodingKeys: String, CodingKey {
-        case user_id, content_id, character_id, ei, sn, tf, jp
+        case user_id, contentId, character_id, ei, sn, tf, jp
     }
 }

@@ -308,10 +308,10 @@ extension VoteCompleteView {
 
 extension VoteCompleteView {
     func configureUpdateVoteCharacter(with item: VoteCharacter) {
-        self.eiChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.ei ?? 50))
-        self.nsChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.sn ?? 50))
-        self.tfChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.tf ?? 50))
-        self.jpChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?[0]?.jp ?? 50))
+        self.eiChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?.ei ?? 50))
+        self.nsChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?.sn ?? 50))
+        self.tfChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?.tf ?? 50))
+        self.jpChartView.updateLayoutToMbtiPercent(percent: Double(item.mbti_percent?.jp ?? 50))
         
     }
 }

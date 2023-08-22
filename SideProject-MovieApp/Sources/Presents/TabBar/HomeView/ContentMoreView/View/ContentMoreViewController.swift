@@ -36,6 +36,11 @@ final class ContentMoreViewController: BaseViewController {
         self.viewDidLoadTrigger.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func setupBinding() {
         let input = ContentMoreViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
         

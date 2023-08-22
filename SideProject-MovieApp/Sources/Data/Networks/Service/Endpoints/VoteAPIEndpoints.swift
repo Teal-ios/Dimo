@@ -21,7 +21,7 @@ struct VoteAPIEndpoints {
     }
     
     static func postVoteCharacter(with requestDTO: RequestVoteCharacterDTO) -> VoteRouter<ResponseVoteCharacterDTO> {
-        return VoteRouter<ResponseVoteCharacterDTO>.voteCharacter(parameters: VoteCharacterQuery(user_id: requestDTO.user_id, content_id: requestDTO.content_id, character_id: requestDTO.character_id, ei: requestDTO.ei, sn: requestDTO.sn, tf: requestDTO.tf, jp: requestDTO.jp))
+        return VoteRouter<ResponseVoteCharacterDTO>.voteCharacter(parameters: VoteCharacterQuery(user_id: requestDTO.user_id, content_id: requestDTO.contentId, character_id: requestDTO.character_id, ei: requestDTO.ei, sn: requestDTO.sn, tf: requestDTO.tf, jp: requestDTO.jp))
     }
     
     static func getSameCharacterList(with query: SameWorkCharacterListQuery) -> VoteRouter<ResponseSameWorkCharacterListDTO> {

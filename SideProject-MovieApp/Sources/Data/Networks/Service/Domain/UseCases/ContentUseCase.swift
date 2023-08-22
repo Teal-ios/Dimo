@@ -24,6 +24,8 @@ protocol ContentUseCase {
     func excuteGetEvaluateMbti(query: GetEvaluateMbtiQuery) async throws -> GetEvaluateMbti
     
     func excuteGetGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult
+    
+    func excuteMostLikeChoiceMbti(query: MostLikeChoiceMbtiQuery) async throws -> MostLikeChoiceMbti
 }
 
 enum ContentUseCaseError: String, Error {
@@ -113,6 +115,16 @@ extension ContentUseCaseImpl {
     func excuteGetGradeEvaluateResult(query: GetGradeEvaluateResultQuery) async throws -> GetGradeEvaluateResult {
         do {
             return try await contentRepository.fetchGradeEvaluateResult(query: query)
+        } catch {
+            throw ContentUseCaseError.excute
+        }
+    }
+}
+
+extension ContentUseCaseImpl {
+    func excuteMostLikeChoiceMbti(query: MostLikeChoiceMbtiQuery) async throws -> MostLikeChoiceMbti {
+        do {
+            return try await contentRepository.fetchMostLikeChoiceMbti(query: query)
         } catch {
             throw ContentUseCaseError.excute
         }

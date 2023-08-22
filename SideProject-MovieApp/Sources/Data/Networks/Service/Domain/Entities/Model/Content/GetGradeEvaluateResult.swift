@@ -11,5 +11,5 @@ struct GetGradeEvaluateResult: Hashable {
     let code: Int
     let message: String
     let user_id: String
-    let is_grade: IsGrade
+    let is_grade: IsGrade?
 }

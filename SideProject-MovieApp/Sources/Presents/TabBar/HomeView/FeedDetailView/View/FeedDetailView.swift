@@ -363,3 +363,14 @@ extension FeedDetailView {
         }
     }
 }
+
+extension FeedDetailView {
+    func configureReviewDetail(with item: GetReviewDetail) {
+        switch item.is_liked == "" {
+        case true:
+            self.headerView.likeImageView.image = UIImage(named: "LikeNonSelect")
+        case false:
+            self.headerView.likeImageView.image = UIImage(named: "LikeSelect")
+        }
+    }
+}

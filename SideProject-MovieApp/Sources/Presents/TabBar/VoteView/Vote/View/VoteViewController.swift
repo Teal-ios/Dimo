@@ -30,6 +30,7 @@ final class VoteViewController: BaseViewController {
     let characterSearchCellSelected = PublishSubject<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     let characterCellTapped = PublishRelay<CharacterInfo>()
+    let characterMoreButtonCellSelect = PublishRelay<Void>()
     
     
     override func loadView() {
@@ -44,7 +45,7 @@ final class VoteViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger, characterCellTapped: self.characterCellTapped)
+        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger, characterCellTapped: self.characterCellTapped, characterMoreButtonCellTapped: self.characterMoreButtonCellSelect)
         
         let output = viewModel.transform(input: input)
         
@@ -53,16 +54,20 @@ final class VoteViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind { vc, popularCharacterRecommendData in
                 var snapshot = NSDiffableDataSourceSnapshot<Int, CharacterInfo>()
-                snapshot.appendSections([0, 1])
+                snapshot.appendSections([0, 1, 2])
                 var section1Arr: [CharacterInfo] = []
                 var section2Arr: [CharacterInfo] = []
+                var section3Arr: [CharacterInfo] = []
+
                 section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterRandom", character_name: "", character_mbti: nil, title: nil, is_vote: 0))
                 section1Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "CharacterSearchNew", character_name: "", character_mbti: nil, title: nil, is_vote: 0))
-                for i in popularCharacterRecommendData.character_info {
-                    section2Arr.append(i)
+                for i in 0...9 {
+                    section2Arr.append(popularCharacterRecommendData.character_info[i])
                 }
+                section3Arr.append(CharacterInfo(character_id: 0, content_id: 0, anime_id: nil, character_img: "footer", character_name: "", character_mbti: nil, title: nil, is_vote: 0))
                 snapshot.appendItems(section1Arr, toSection: 0)
                 snapshot.appendItems(section2Arr, toSection: 1)
+                snapshot.appendItems(section3Arr, toSection: 2)
                 vc.dataSource.apply(snapshot)
             }
             .disposed(by: disposeBag)
@@ -80,11 +85,18 @@ extension VoteViewController {
             cell.configureIsVoted(vote: itemIdentifier.is_vote ?? 0)
         }
         
+        let cellFooterRegistration = UICollectionView.CellRegistration<VoteFooterCell, CharacterInfo> {cell, indexPath, itemIdentifier in
+        }
+            
+        
         dataSource = UICollectionViewDiffableDataSource(collectionView: voteView.collectionView) { collectionView, indexPath, itemIdentifier in
             
             switch indexPath.section {
             case 0:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellCharacterRegistration, for: indexPath, item: itemIdentifier)
+                return cell
+            case 2:
+                let cell = collectionView.dequeueConfiguredReusableCell(using: cellFooterRegistration, for: indexPath, item: itemIdentifier)
                 return cell
             default:
 
@@ -104,6 +116,8 @@ extension VoteViewController {
             case 0:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: characterHeader, for: indexPath)
                 return header
+            case 2:
+                return nil
             default:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: voteHeader, for: indexPath)
                 return header
@@ -125,6 +139,8 @@ extension VoteViewController: UICollectionViewDelegate {
             }
         } else if indexPath.section == 1 {
             self.dataFetchingToCharacterCell(indexPath: indexPath)
+        } else {
+            self.characterMoreButtonCellSelect.accept(())
         }
     }
 }

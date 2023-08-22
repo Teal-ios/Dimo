@@ -15,4 +15,5 @@ struct CommentList: Hashable {
     let comment_content: String
     let comment_spoiler: Int
     let character_id: Int
+    let is_liked: CommentIsLiked?
 }

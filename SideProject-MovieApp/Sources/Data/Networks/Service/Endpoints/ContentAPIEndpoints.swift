@@ -39,4 +39,8 @@ struct ContentAPIEndpoints {
     static func getGradeEvaluateResult(user_id: String, contentId: String, content_type: String) -> ContentRouter<ResponseGetGradeEvaluateResultDTO> {
         return ContentRouter<ResponseGetGradeEvaluateResultDTO>.getGradeEvaluate(parameters: GetGradeEvaluateResultQuery(user_id: user_id, contentId: contentId, content_type: content_type))
     }
+    
+    static func getMostLikeChoiceMbti(user_id: String, contentId: String, content_type: String) -> ContentRouter<ResponseMostLikeChoiceMbtiDTO> {
+        return ContentRouter<ResponseMostLikeChoiceMbtiDTO>.mostLikeChoiceMbti(parameters: MostLikeChoiceMbtiQuery(user_id: user_id, content_type: content_type, contentId: contentId))
+    }
 }

@@ -14,7 +14,7 @@ struct ResponseVoteCharacterDTO: Decodable {
     let content_title: String?
     let character_id: String?
     let character_mbti: String?
-    let mbti_percent: [ResponseMbtiPercentDTO?]?
+    let mbti_percent: ResponseMbtiPercentDTO?
 
     enum CodingKeys: String, CodingKey {
         case code, message, contentId, content_title, character_id, character_mbti, mbti_percent
@@ -23,6 +23,6 @@ struct ResponseVoteCharacterDTO: Decodable {
 
 extension ResponseVoteCharacterDTO {
     var toDomain: VoteCharacter {
-        .init(code: code, message: message, contentId: contentId, content_title: content_title, character_id: character_id, character_mbti: character_mbti, mbti_percent: mbti_percent?.map { $0?.toDomain })
+        .init(code: code, message: message, contentId: contentId, content_title: content_title, character_id: character_id, character_mbti: character_mbti, mbti_percent: mbti_percent?.toDomain)
     }
 }

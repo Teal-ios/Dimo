@@ -86,7 +86,7 @@ extension VoteRouter: TargetType2 {
     var body: Data? {
         switch self {
         case .voteCharacter(let parameters):
-            let requestDTO = RequestVoteCharacterDTO(user_id: parameters.user_id, content_id: parameters.content_id, character_id: parameters.character_id, ei: parameters.ei, sn: parameters.sn, tf: parameters.tf, jp: parameters.jp)
+            let requestDTO = RequestVoteCharacterDTO(user_id: parameters.user_id, contentId: parameters.content_id, character_id: parameters.character_id, ei: parameters.ei, sn: parameters.sn, tf: parameters.tf, jp: parameters.jp)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
 

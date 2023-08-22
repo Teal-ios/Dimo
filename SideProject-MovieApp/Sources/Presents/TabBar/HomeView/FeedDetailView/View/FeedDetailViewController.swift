@@ -131,6 +131,7 @@ class FeedDetailViewController: BaseViewController {
 
                 categorySnapshot.appendItems(categoryArr, toSection: 0)
                 vc.categoryDataSource.apply(categorySnapshot)
+                vc.feedDetailView.configureReviewDetail(with: reviewDetail)
             }
             .disposed(by: disposeBag)
     }

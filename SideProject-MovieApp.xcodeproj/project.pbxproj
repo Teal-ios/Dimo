@@ -266,6 +266,11 @@
 		2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DD92A01019E006796DD /* ProfileView.swift */; };
 		2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */; };
 		2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */; };
+		2FD1CC242A930DB000876DCB /* MostLikeChoiceMbti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC232A930DB000876DCB /* MostLikeChoiceMbti.swift */; };
+		2FD1CC262A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */; };
+		2FD1CC282A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC272A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift */; };
+		2FD1CC2A2A93386600876DCB /* CommentIsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC292A93386600876DCB /* CommentIsLiked.swift */; };
+		2FD1CC2C2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */; };
 		2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */; };
 		2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274112A5A8AEC003AA144 /* RecommendView.swift */; };
 		2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274132A5A8B38003AA144 /* RecommendViewController.swift */; };
@@ -477,6 +482,7 @@
 		2FFB4BD52A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BD42A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift */; };
 		2FFB4BD72A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BD62A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift */; };
 		2FFB4BD92A8F8D71001D1D60 /* GetReviewDetailQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BD82A8F8D71001D1D60 /* GetReviewDetailQuery.swift */; };
+		2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD1C822A9457E00079A0C9 /* VoteFooterCell.swift */; };
 		4926773C2A5714E20003C882 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773B2A5714E20003C882 /* Toast+Extension.swift */; };
 		4926773F2A5935510003C882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773E2A5935510003C882 /* UserDefault.swift */; };
 		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
@@ -850,6 +856,11 @@
 		2FD11DDB2A010430006796DD /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD11DDD2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigFinishCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieApp.entitlements"; sourceTree = "<group>"; };
+		2FD1CC232A930DB000876DCB /* MostLikeChoiceMbti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostLikeChoiceMbti.swift; sourceTree = "<group>"; };
+		2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostLikeChoiceMbtiQuery.swift; sourceTree = "<group>"; };
+		2FD1CC272A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMostLikeChoiceMbtiDTO.swift; sourceTree = "<group>"; };
+		2FD1CC292A93386600876DCB /* CommentIsLiked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIsLiked.swift; sourceTree = "<group>"; };
+		2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCommentIsLikedDTO.swift; sourceTree = "<group>"; };
 		2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		2FD274112A5A8AEC003AA144 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		2FD274132A5A8B38003AA144 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
@@ -1055,6 +1066,7 @@
 		2FFB4BD42A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiContainPercentDTO.swift; sourceTree = "<group>"; };
 		2FFB4BD62A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetReviewDetailDTO.swift; sourceTree = "<group>"; };
 		2FFB4BD82A8F8D71001D1D60 /* GetReviewDetailQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewDetailQuery.swift; sourceTree = "<group>"; };
+		2FFD1C822A9457E00079A0C9 /* VoteFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFooterCell.swift; sourceTree = "<group>"; };
 		4926773B2A5714E20003C882 /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
 		4926773E2A5935510003C882 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
@@ -1361,6 +1373,7 @@
 				2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */,
 				2F0328B72A91EE4000639BAC /* GetGradeEvaluateResult.swift */,
 				2F0328B92A91F24600639BAC /* IsGrade.swift */,
+				2FD1CC232A930DB000876DCB /* MostLikeChoiceMbti.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1382,6 +1395,7 @@
 				2F0328BB2A91F2AC00639BAC /* ResponseIsGradeDTO.swift */,
 				2F0328BD2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift */,
 				2F0328BF2A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift */,
+				2FD1CC272A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1827,6 +1841,7 @@
 				2FBD19CB29FF67330005B1FA /* VoteView.swift */,
 				2FBD19DE29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift */,
 				2FBD19D129FF73C80005B1FA /* VoteHeaderView.swift */,
+				2FFD1C822A9457E00079A0C9 /* VoteFooterCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2979,6 +2994,7 @@
 				2FE9681A2A7BA2AB000E705E /* GetAnimationQuery.swift */,
 				2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */,
 				2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */,
+				2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -3134,6 +3150,7 @@
 				2FD82DBD2A775AF500372D24 /* ResponseReviewListDTO.swift */,
 				2FD82DBF2A775AFE00372D24 /* ResponseCommentListDTO.swift */,
 				2FFB4BD62A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift */,
+				2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3291,6 +3308,7 @@
 				2FD82D682A77443100372D24 /* ReviewList.swift */,
 				2FD82D6A2A77457C00372D24 /* CommentList.swift */,
 				2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */,
+				2FD1CC292A93386600876DCB /* CommentIsLiked.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3861,6 +3879,7 @@
 				2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
+				2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */,
 				2FD82D692A77443100372D24 /* ReviewList.swift in Sources */,
 				2FD6C93A2A4D5B3E00EFB684 /* JoinTermsViewController.swift in Sources */,
 				2F149DD32A4996120098AF64 /* MovieDetailRankView.swift in Sources */,
@@ -3929,6 +3948,7 @@
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FE111302A76682D0013A49E /* PopularCharacterRecommendListQuery.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
+				2FD1CC262A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift in Sources */,
 				2FD82DA62A774F7A00372D24 /* ResponsePopularCharacterRecommendListDTO.swift in Sources */,
 				2FCD8C7D2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift in Sources */,
 				2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */,
@@ -3974,6 +3994,7 @@
 				2FE1112E2A7668170013A49E /* RandomCharacterRecommendQuery.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
+				2FD1CC242A930DB000876DCB /* MostLikeChoiceMbti.swift in Sources */,
 				2FD82DB22A775A9A00372D24 /* ResponseLikeReviewChoiceDTO.swift in Sources */,
 				2FFB4BD92A8F8D71001D1D60 /* GetReviewDetailQuery.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
@@ -4045,6 +4066,7 @@
 				2FD82D8B2A774D3500372D24 /* RequestPostReviewDTO.swift in Sources */,
 				2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */,
 				2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */,
+				2FD1CC2A2A93386600876DCB /* CommentIsLiked.swift in Sources */,
 				2FD87A352A584114003C276B /* Social.swift in Sources */,
 				4932D77D2A4EBB9A00D4E68F /* RequestNicknameChangeDateDTO.swift in Sources */,
 				2FD87A392A584268003C276B /* SocialLoginCheckQuery.swift in Sources */,
@@ -4094,6 +4116,7 @@
 				2FCD8C9D2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				493C5C772A7642CA00AF1F63 /* Reactive+Extension.swift in Sources */,
+				2FD1CC282A930ED600876DCB /* ResponseMostLikeChoiceMbtiDTO.swift in Sources */,
 				2FD11DCA2A00DEC3006796DD /* MyMomentumView.swift in Sources */,
 				2FC94EB929C0351D0097E696 /* Color.swift in Sources */,
 				933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */,
@@ -4168,6 +4191,7 @@
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */,
 				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
+				2FD1CC2C2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
 				49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */,
 				2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */,
