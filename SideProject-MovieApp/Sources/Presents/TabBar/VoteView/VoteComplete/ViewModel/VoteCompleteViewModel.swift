@@ -15,23 +15,24 @@ final class VoteCompleteViewModel: ViewModelType {
     private weak var coordinator: VoteCoordinator?
     private var voteUseCase: VoteUseCase
     private let characterInfo: BehaviorRelay<CharacterInfo>
-    private let voteCharacter: BehaviorRelay<VoteCharacter>
+//    private let voteCharacter: BehaviorRelay<VoteCharacter>
 
-    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo, voteCharacter: VoteCharacter) {
+    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
         self.coordinator = coordinator
         self.voteUseCase = voteUseCase
         self.characterInfo = BehaviorRelay(value: characterInfo)
-        self.voteCharacter = BehaviorRelay(value: voteCharacter)
+//        self.voteCharacter = BehaviorRelay(value: voteCharacter)
     }
     
     struct Input{
         let viewDidLoad: PublishRelay<Void>
+        let rightNavigationXButtonTapped: PublishRelay<Void>
     }
     
     struct Output{
         let sameWorkAnotherCharacterList: PublishRelay<SameWorkCharacterList>
         let characterInfo: BehaviorRelay<CharacterInfo>
-        let voteCharacter: BehaviorRelay<VoteCharacter>
+//        let voteCharacter: BehaviorRelay<VoteCharacter>
         let inquireVoteResult: PublishRelay<InquireVoteResult>
     }
     
@@ -50,7 +51,14 @@ final class VoteCompleteViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList, characterInfo: self.characterInfo, voteCharacter: self.voteCharacter, inquireVoteResult: self.inquireVoteResult)
+        input.rightNavigationXButtonTapped
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.start()
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(sameWorkAnotherCharacterList: self.sameWorkAnotherCharacterList, characterInfo: self.characterInfo, inquireVoteResult: self.inquireVoteResult)
     }
 }
 

@@ -100,7 +100,7 @@ final class DigViewModel: ViewModelType {
             .observe(on: MainScheduler.instance)
             .bind { [weak self] characterInfo, voteCharacterResponse in
                 guard let self else { return }
-                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo, voteCharacter: voteCharacterResponse)
+                self.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
             }
             .disposed(by: disposeBag)
         

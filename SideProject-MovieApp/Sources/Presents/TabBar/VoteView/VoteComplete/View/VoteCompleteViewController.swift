@@ -29,15 +29,17 @@ final class VoteCompleteViewController: BaseViewController {
     }
     
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let rightNavigationXButtonTapped = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigationAttribute()
         self.setCharacterDataSource()
         self.viewDidLoadTrigger.accept(())
     }
     
     override func setupBinding() {
-        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, rightNavigationXButtonTapped: self.rightNavigationXButtonTapped)
         let output = viewModel.transform(input: input)
         
         output.sameWorkAnotherCharacterList
@@ -65,13 +67,13 @@ final class VoteCompleteViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.voteCharacter
-            .observe(on: MainScheduler.instance)
-            .withUnretained(self)
-            .bind { vc, voteCharacter in
-//                vc.selfView.configureUpdateVoteCharacter(with: voteCharacter)
-            }
-            .disposed(by: disposeBag)
+//        output.voteCharacter
+//            .observe(on: MainScheduler.instance)
+//            .withUnretained(self)
+//            .bind { vc, voteCharacter in
+////                vc.selfView.configureUpdateVoteCharacter(with: voteCharacter)
+//            }
+//            .disposed(by: disposeBag)
         
         output.inquireVoteResult
             .observe(on: MainScheduler.instance)
@@ -104,5 +106,20 @@ extension VoteCompleteViewController {
             header.titleLabel.text = "같은 작품 속 캐릭터 투표하기"
             return header
         })
+    }
+}
+
+extension VoteCompleteViewController {
+    func setNavigationAttribute() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "Icon_close"), style: .plain, target: self, action: #selector(xButtonTapped))
+        self.navigationItem.setRightBarButton(barButtonItem, animated: true)
+    }
+}
+
+extension VoteCompleteViewController {
+    @objc
+    func xButtonTapped() {
+        self.rightNavigationXButtonTapped.accept(())
     }
 }
