@@ -14,5 +14,5 @@ struct VoteCharacter: Hashable {
     let content_title: String?
     let character_id: String?
     let character_mbti: String?
-    let mbti_percent: [MbtiPercent?]?
+    let mbti_percent: MbtiPercent?
 }

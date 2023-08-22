@@ -61,7 +61,7 @@ extension VoteRepositoyImpl {
 
 extension VoteRepositoyImpl {
     func requestVoteCharacter(query: VoteCharacterQuery) async throws -> VoteCharacter {
-        let requestDTO = RequestVoteCharacterDTO(user_id: query.user_id, content_id: query.content_id, character_id: query.character_id, ei: query.ei, sn: query.sn, tf: query.tf, jp: query.jp)
+        let requestDTO = RequestVoteCharacterDTO(user_id: query.user_id, contentId: query.content_id, character_id: query.character_id, ei: query.ei, sn: query.sn, tf: query.tf, jp: query.jp)
         let target = VoteAPIEndpoints.postVoteCharacter(with: requestDTO)
         
         do {
