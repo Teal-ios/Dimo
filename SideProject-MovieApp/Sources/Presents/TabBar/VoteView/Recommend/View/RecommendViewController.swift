@@ -97,6 +97,17 @@ final class RecommendViewController: BaseViewController {
                 vc.selfView.updateCategory(popularCategoryChoice: false)
             }
             .disposed(by: disposeBag)
+        
+        output.recommendCategory
+            .withUnretained(self)
+            .bind { vc, category in
+                if RecommendCategory.popular.rawValue == category {
+                    vc.selfView.updateCategory(popularCategoryChoice: true)
+                } else {
+                    vc.selfView.updateCategory(popularCategoryChoice: false)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
 

@@ -41,11 +41,11 @@ final class VoteCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showRecommendViewController() {
+    func showRecommendViewController(category: String) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
         let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = RecommendViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
+        let viewModel = RecommendViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, category: category)
         let vc = RecommendViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

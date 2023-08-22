@@ -9,15 +9,22 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum RecommendCategory: String {
+    case random
+    case popular
+}
+
 final class RecommendViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: VoteCoordinator?
     private var voteUseCase: VoteUseCase
+    var category = BehaviorRelay(value: RecommendCategory.random.rawValue)
 
-    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase) {
+    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, category: RecommendCategory.RawValue) {
         self.coordinator = coordinator
         self.voteUseCase = voteUseCase
+        self.category = BehaviorRelay(value: category)
     }
     
     struct Input{
@@ -33,17 +40,33 @@ final class RecommendViewModel: ViewModelType {
         let randomButtonTap: ControlEvent<Void>
         let popularButtonTap: ControlEvent<Void>
         let categoryButtonTap: ControlEvent<Void>
+        let recommendCategory: PublishRelay<String>
     }
     
     let popularCharacterRecommend = PublishRelay<PopularCharacterRecommendList>()
     let randomCharacterRecommend = PublishRelay<RandomCharacterRecommendList>()
+    let recommendCategory = PublishRelay<String>()
     func transform(input: Input) -> Output {
         
+//        input.viewDidLoad
+//            .withUnretained(self)
+//            .bind { vm, _ in
+//                guard let user_id = UserDefaultManager.userId else { return }
+//                vm.getRandomCharacterRecommend(user_id: user_id)
+//            }
+//            .disposed(by: disposeBag)
+        
         input.viewDidLoad
-            .withUnretained(self)
-            .bind { vm, _ in
+            .withLatestFrom(self.category)
+            .bind { [weak self] category in
+                guard let self = self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
-                vm.getRandomCharacterRecommend(user_id: user_id)
+                self.recommendCategory.accept(category)
+                if category == RecommendCategory.random.rawValue {
+                    self.getRandomCharacterRecommend(user_id: user_id)
+                } else {
+                    self.getPopularCharacterRecommend(user_id: user_id)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -63,7 +86,7 @@ final class RecommendViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(popularCharacterRecommend: self.popularCharacterRecommend, randomCharacterRecommend: self.randomCharacterRecommend, randomButtonTap: input.randomButtonTap, popularButtonTap: input.popularButtonTap, categoryButtonTap: input.categoryButtonTap)
+        return Output(popularCharacterRecommend: self.popularCharacterRecommend, randomCharacterRecommend: self.randomCharacterRecommend, randomButtonTap: input.randomButtonTap, popularButtonTap: input.popularButtonTap, categoryButtonTap: input.categoryButtonTap, recommendCategory: self.recommendCategory)
     }
 }
 

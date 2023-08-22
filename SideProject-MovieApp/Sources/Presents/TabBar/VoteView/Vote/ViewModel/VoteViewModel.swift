@@ -25,6 +25,7 @@ final class VoteViewModel: ViewModelType {
         let characterSearchCellTapped: PublishSubject<Void>
         let viewDidLoad: PublishRelay<Void>
         let characterCellTapped: PublishRelay<CharacterInfo>
+        let characterMoreButtonCellTapped: PublishRelay<Void>
     }
     
     struct Output{
@@ -37,7 +38,7 @@ final class VoteViewModel: ViewModelType {
         input.characterRandomRecommandCellTapped.bind { [weak self] _ in
             guard let self else { return }
             print("이건울리니")
-            self.coordinator?.showRecommendViewController()
+            self.coordinator?.showRecommendViewController(category: RecommendCategory.random.rawValue)
         }
         .disposed(by: disposeBag)
         
@@ -64,6 +65,13 @@ final class VoteViewModel: ViewModelType {
                 } else {
                     vc.coordinator?.showDigViewController(characterInfo: characterInfo)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterMoreButtonCellTapped
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.showRecommendViewController(category: RecommendCategory.popular.rawValue)
             }
             .disposed(by: disposeBag)
         
