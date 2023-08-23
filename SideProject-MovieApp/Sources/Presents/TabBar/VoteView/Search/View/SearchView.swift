@@ -39,6 +39,30 @@ final class SearchView: BaseView {
         return tf
     }()
     
+    let categoryContainView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    let categoryInsetLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black60
+        label.font = Font.body3
+        label.text = "캐릭터명"
+        return label
+    }()
+    
+    let arrowBottomLabel: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "arrow_bottom")
+        return view
+    }()
+    
+    let categoryButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
     override func setHierarchy() {
@@ -46,7 +70,19 @@ final class SearchView: BaseView {
         self.addSubview(searchContainView)
         self.addSubview(searchImageView)
         self.addSubview(searchTextField)
+        self.addSubview(categoryContainView)
+        self.addSubview(categoryButton)
+        self.addSubview(arrowBottomLabel)
+        self.addSubview(categoryInsetLabel)
         self.addSubview(collectionView)
+    }
+    
+    override func layoutSubviews() {
+        categoryButton.layer.cornerRadius = 8
+        categoryButton.layer.borderWidth = 1
+        categoryButton.backgroundColor = .black90
+        categoryButton.tintColor = Color.caption
+        categoryButton.layer.borderColor = UIColor.black80.cgColor
     }
     
     override func setupLayout() {
@@ -75,12 +111,37 @@ final class SearchView: BaseView {
             make.verticalEdges.equalTo(searchContainView)
         }
         
-        collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(searchContainView.snp.bottom).offset(16)
-            make.bottom.equalTo(safeAreaLayoutGuide)
+        categoryContainView.snp.makeConstraints { make in
+            make.top.equalTo(searchContainView.snp.bottom).offset(24)
+            make.height.equalTo(48)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
         
+        categoryButton.snp.makeConstraints { make in
+            make.top.equalTo(categoryContainView.snp.top)
+            make.height.equalTo(32)
+            make.width.equalTo(90)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+        
+        arrowBottomLabel.snp.makeConstraints { make in
+            make.height.width.equalTo(16)
+            make.centerY.equalTo(categoryButton)
+            make.trailing.equalTo(categoryButton.snp.trailing).inset(12)
+        }
+        
+        categoryInsetLabel.snp.makeConstraints { make in
+            make.leading.equalTo(categoryButton.snp.leading).offset(12)
+            make.height.equalTo(21)
+            make.trailing.equalTo(arrowBottomLabel.snp.leading).inset(4)
+            make.centerY.equalTo(categoryButton)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(categoryButton.snp.bottom).offset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
     
     private let itemRatio = 1.0
@@ -97,11 +158,7 @@ extension SearchView {
         let collectionViewLayout = UICollectionViewCompositionalLayout(
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
-                    switch sectionIndex {
-                    case 0: return self.dynamicCategoryLayout()
-                    case 1: return self.characterLayout()
-                    default: return self.dynamicCategoryLayout()
-                    }
+                    return self.characterLayout()
                 },
             configuration: configuration)
         return collectionViewLayout
@@ -153,26 +210,72 @@ extension SearchView {
             heightDimension: .fractionalHeight(itemRatio)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .fractionalHeight(groupRatio / 9)
+            heightDimension: .absolute(66)
         )
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(headerRatio),
-            heightDimension: .absolute(headerAbsolute)
-        )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: SearchHeaderView.identifier, alignment: .top)
-        
         let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
         
         return section
+    }
+}
+
+extension SearchView {
+    func configureCategoryUpdate(category: String) {
+        if category == SearchCategoryCase.character.rawValue {
+            categoryButtonToCharacter()
+        } else {
+            categoryButtonToWork()
+        }
+        self.layoutIfNeeded()
+    }
+}
+
+extension SearchView {
+    func categoryButtonToCharacter() {
+        categoryButton.snp.removeConstraints()
+        categoryButton.snp.remakeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(24)
+            make.height.equalTo(32)
+            make.width.equalTo(90)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+        self.categoryInsetLabel.text = "캐릭터명"
+    }
+    
+    func categoryButtonToWork() {
+        categoryButton.snp.removeConstraints()
+        categoryButton.snp.remakeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(24)
+            make.height.equalTo(32)
+            make.width.equalTo(82)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(16)
+        }
+        self.categoryInsetLabel.text = "작품명"
+    }
+}
+
+extension SearchView {
+    func updateCategoryView(categoryAppear: Bool) {
+        categoryContainView.isHidden = !categoryAppear
+        categoryButton.isHidden = !categoryAppear
+        categoryInsetLabel.isHidden = !categoryAppear
+        arrowBottomLabel.isHidden = !categoryAppear
+        categoryButton.isEnabled = categoryAppear
+    }
+}
+
+extension SearchView {
+    func updateSearchTextField(text: String?) {
+        if text == "" {
+            searchImageView.image = UIImage(named: "Search")
+        } else {
+            searchImageView.image = UIImage(named: "Search_On")
+        }
     }
 }

@@ -40,7 +40,7 @@ extension VoteRouter: TargetType2 {
         case .popularCharacterRecommendList:
             return "/vote/recommend"
         case .searchCharacterList:
-            return "/vote/search"
+            return "/vote/search_character"
         case .voteCharacter:
             return "/vote"
         case .sameWorkCharacterList:

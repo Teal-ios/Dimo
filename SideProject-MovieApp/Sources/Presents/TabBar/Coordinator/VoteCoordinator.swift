@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class VoteCoordinator: Coordinator {
     
@@ -14,6 +15,7 @@ final class VoteCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
+    var searchCategoryCase = PublishRelay<SearchCategoryCase>()
 
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -34,9 +36,9 @@ final class VoteCoordinator: Coordinator {
     
     func showSearchViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
-        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
-        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = SearchViewModel(coordinator: self, contentUseCase: contentUseCaseImpl)
+        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+        let viewModel = SearchViewModel(coordinator: self, voteUseCase: voteUseCaseImpl)
         let vc = SearchViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -66,5 +68,23 @@ final class VoteCoordinator: Coordinator {
         let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
         let vc = VoteCompleteViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
+    }
+    
+    func showSearchCategoryViewController(categoryCase: SearchCategoryCase) {
+        let viewModel = SearchCategoryViewModel(coordinator: self, categoryCase: categoryCase)
+        viewModel.delegate = self
+        let vc = SearchCategoryViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+}
+
+extension VoteCoordinator: searchCategoryChangeDelegate {
+    func sendCategoryChange(category: SearchCategoryCase) {
+        self.searchCategoryCase.accept(category)
     }
 }

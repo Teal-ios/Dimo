@@ -32,6 +32,7 @@ final class RecommendViewModel: ViewModelType {
         let randomButtonTap: ControlEvent<Void>
         let popularButtonTap: ControlEvent<Void>
         let categoryButtonTap: ControlEvent<Void>
+        let characterCellTapped: PublishRelay<CharacterInfo>
     }
     
     struct Output{
@@ -47,14 +48,6 @@ final class RecommendViewModel: ViewModelType {
     let randomCharacterRecommend = PublishRelay<RandomCharacterRecommendList>()
     let recommendCategory = PublishRelay<String>()
     func transform(input: Input) -> Output {
-        
-//        input.viewDidLoad
-//            .withUnretained(self)
-//            .bind { vm, _ in
-//                guard let user_id = UserDefaultManager.userId else { return }
-//                vm.getRandomCharacterRecommend(user_id: user_id)
-//            }
-//            .disposed(by: disposeBag)
         
         input.viewDidLoad
             .withLatestFrom(self.category)
@@ -83,6 +76,17 @@ final class RecommendViewModel: ViewModelType {
             .bind { vm, _ in
                 guard let user_id = UserDefaultManager.userId else { return }
                 vm.getPopularCharacterRecommend(user_id: user_id)
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterCellTapped
+            .withUnretained(self)
+            .bind { vc, characterInfo in
+                if characterInfo.is_vote == 1 {
+                    vc.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
+                } else {
+                    vc.coordinator?.showDigViewController(characterInfo: characterInfo)
+                }
             }
             .disposed(by: disposeBag)
         
