@@ -46,7 +46,7 @@ final class SearchViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = SearchViewModel.Input(viewDidLoad: Observable.just(()), searchText: self.selfView.searchTextField.rx.text, searchTextEditFinish: self.searchTextEditFinish)
+        let input = SearchViewModel.Input(viewDidLoad: Observable.just(()), searchText: self.selfView.searchTextField.rx.text, searchTextEditFinish: self.searchTextEditFinish, searchCategoryButtonTapped: self.selfView.categoryButton.rx.tap)
         
         let output = self.viewModel.transform(input: input)
         
@@ -73,6 +73,14 @@ final class SearchViewController: BaseViewController {
                 vc.dataSource.apply(snapshot)
                 vc.selfView.updateCategoryView(categoryAppear: true)
                 vc.selfView.configureCategoryUpdate(category: SearchCategoryCase.character.rawValue)
+            }
+            .disposed(by: disposeBag)
+        
+        output.currentCategory
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, categoryCase in
+                vc.selfView.configureCategoryUpdate(category: categoryCase.rawValue)
             }
             .disposed(by: disposeBag)
     }
