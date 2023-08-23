@@ -129,5 +129,21 @@ extension DetailReviewCollectionViewCell {
     func configureCommentAttribute(with item: CommentList) {
         reviewLabel.text = item.comment_content
         characterNameLabel.text = item.user_id
+        if item.is_liked == nil {
+            self.updateLikeImage(is_like: false)
+        } else {
+            self.updateLikeImage(is_like: true)
+        }
+    }
+}
+
+extension DetailReviewCollectionViewCell {
+    func updateLikeImage(is_like: Bool) {
+        switch is_like {
+        case true:
+            self.likeButton.setImage(UIImage(named: "LikeSelect"), for: .normal)
+        case false:
+            self.likeButton.setImage(UIImage(named: "LikeNonSelect"), for: .normal)
+        }
     }
 }

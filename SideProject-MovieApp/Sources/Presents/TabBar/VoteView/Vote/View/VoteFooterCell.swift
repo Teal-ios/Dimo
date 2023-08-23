@@ -14,6 +14,7 @@ class VoteFooterCell: BaseCollectionViewCell {
     let characterMoreTextButton: WordLabelButton = {
         let button = WordLabelButton(text: "더 많은 캐릭터 보러가기")
         button.titleLabel?.textAlignment = .center
+        button.isEnabled = false
         return button
     }()
     

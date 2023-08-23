@@ -1942,6 +1942,7 @@
 				2FEC15D92A77A8CF009CF59D /* Dig */,
 				2F9793A92A53EE1F0098939B /* Vote */,
 				2F97939E2A52A42D0098939B /* Search */,
+				2FDF324F2A95A24A00A9F3BC /* SearchCategory */,
 				2FD2740C2A5A8ABD003AA144 /* Recommend */,
 			);
 			path = VoteView;
@@ -3262,6 +3263,13 @@
 				2FC4BB0A2A133B450070B67A /* CategoryModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2FDF324F2A95A24A00A9F3BC /* SearchCategory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchCategory;
 			sourceTree = "<group>";
 		};
 		2FDFB1872A0DD7CB00732788 /* SendMessageView */ = {
