@@ -11,6 +11,7 @@ enum VoteRouter<R> {
     case randomCharacterRecommend(parameters: RandomCharacterRecommendQuery)
     case popularCharacterRecommendList(parameters: PopularCharacterRecommendListQuery)
     case searchCharacterList(parameters: SearchCharacterListQuery)
+    case searchWorkList(parameters: SearchWorkListQuery)
     case voteCharacter(parameters: VoteCharacterQuery)
     case sameWorkCharacterList(parameters: SameWorkCharacterListQuery)
     case inquireVoteResult(parameters: InquireVoteResultQuery)
@@ -41,6 +42,8 @@ extension VoteRouter: TargetType2 {
             return "/vote/recommend"
         case .searchCharacterList:
             return "/vote/search_character"
+        case .searchWorkList:
+            return "/vote/search_content"
         case .voteCharacter:
             return "/vote"
         case .sameWorkCharacterList:
@@ -61,6 +64,8 @@ extension VoteRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "category", value: "popular")]
         case .searchCharacterList(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "search_content", value: parameters.search_content)]
+        case .searchWorkList(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "search_content", value: parameters.search_content)]
         case .voteCharacter:
             return nil
         case .sameWorkCharacterList(let parameters):
@@ -78,7 +83,7 @@ extension VoteRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .randomCharacterRecommend, .popularCharacterRecommendList, .searchCharacterList, .voteCharacter, .sameWorkCharacterList, .inquireCharacterAnalyze, .inquireVoteResult:
+        case .randomCharacterRecommend, .popularCharacterRecommendList, .searchCharacterList, .voteCharacter, .sameWorkCharacterList, .inquireCharacterAnalyze, .inquireVoteResult, .searchWorkList:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -97,7 +102,7 @@ extension VoteRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList, .inquireCharacterAnalyze, .inquireVoteResult:
+        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList, .inquireCharacterAnalyze, .inquireVoteResult, .searchWorkList:
             return .get
         case .voteCharacter:
             return .post

@@ -105,6 +105,9 @@
 		2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D162A14B2A100FA457D /* MovieDetailViewModel.swift */; };
 		2F6D7D192A14B6D600FA457D /* TapUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D182A14B6D600FA457D /* TapUISlider.swift */; };
 		2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */; };
+		2F730BB12A971EF30072AB38 /* SearchWorkListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB02A971EF30072AB38 /* SearchWorkListQuery.swift */; };
+		2F730BB32A971F130072AB38 /* SearchWorkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB22A971F130072AB38 /* SearchWorkList.swift */; };
+		2F730BB52A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */; };
 		2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A12A52A43F0098939B /* SearchViewModel.swift */; };
 		2F9793A42A52A4450098939B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A32A52A4450098939B /* SearchView.swift */; };
 		2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A52A52A44B0098939B /* SearchViewController.swift */; };
@@ -687,6 +690,9 @@
 		2F6D7D162A14B2A100FA457D /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		2F6D7D182A14B6D600FA457D /* TapUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUISlider.swift; sourceTree = "<group>"; };
 		2F6D7D1A2A14B76B00FA457D /* ScopeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeStackView.swift; sourceTree = "<group>"; };
+		2F730BB02A971EF30072AB38 /* SearchWorkListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorkListQuery.swift; sourceTree = "<group>"; };
+		2F730BB22A971F130072AB38 /* SearchWorkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorkList.swift; sourceTree = "<group>"; };
+		2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSearchWorkListDTO.swift; sourceTree = "<group>"; };
 		2F9793A12A52A43F0098939B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		2F9793A32A52A4450098939B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2F9793A52A52A44B0098939B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -3131,6 +3137,7 @@
 				2FD82DA32A774F6500372D24 /* ResponseMbtiPercentDTO.swift */,
 				2FD82DA52A774F7A00372D24 /* ResponsePopularCharacterRecommendListDTO.swift */,
 				2FD82DA72A774F8B00372D24 /* ResponseSearchCharacterListDTO.swift */,
+				2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */,
 				2FD82DA92A774F9900372D24 /* ResponseVoteCharacterDTO.swift */,
 				2FD82DAB2A774FA800372D24 /* ResponseSameWorkCharacterListDTO.swift */,
 				2FFB4BC42A8F0A29001D1D60 /* ResponseInquireVoteResultDTO.swift */,
@@ -3315,6 +3322,7 @@
 				2FE111292A76656B0013A49E /* MbtiPercent.swift */,
 				2FE1111D2A7664850013A49E /* PopularCharacterRecommendList.swift */,
 				2FE1111F2A7664AB0013A49E /* SearchCharacterList.swift */,
+				2F730BB22A971F130072AB38 /* SearchWorkList.swift */,
 				2FE111212A7664BB0013A49E /* VoteCharacter.swift */,
 				2FE111232A7664E10013A49E /* SameWorkCharacterList.swift */,
 				2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */,
@@ -3352,6 +3360,7 @@
 				2FE1112D2A7668170013A49E /* RandomCharacterRecommendQuery.swift */,
 				2FE1112F2A76682D0013A49E /* PopularCharacterRecommendListQuery.swift */,
 				2FE111312A76684E0013A49E /* SearchCharacterListQuery.swift */,
+				2F730BB02A971EF30072AB38 /* SearchWorkListQuery.swift */,
 				2FE111332A76687B0013A49E /* VoteCharacterQuery.swift */,
 				2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */,
 				2FFB4BCE2A8F1463001D1D60 /* InquireVoteResultQuery.swift */,
@@ -3889,6 +3898,7 @@
 				2FCD8C752A81BED7002A39B0 /* MyVotedCharacter.swift in Sources */,
 				2FE111182A7663BB0013A49E /* CharacterDetailRepository.swift in Sources */,
 				2FD82DB42A775AA300372D24 /* ResponseLikeReviewCancelDTO.swift in Sources */,
+				2F730BB32A971F130072AB38 /* SearchWorkList.swift in Sources */,
 				2F0328B62A91EE2F00639BAC /* GetEvaluateMbti.swift in Sources */,
 				2FD87A5B2A585406003C276B /* AuthAPIEndpoints.swift in Sources */,
 				2FD4D90C2A6BC09700E7972B /* ModifyMyProfile.swift in Sources */,
@@ -3984,6 +3994,7 @@
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
 				2FD1CC262A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift in Sources */,
 				2FD82DA62A774F7A00372D24 /* ResponsePopularCharacterRecommendListDTO.swift in Sources */,
+				2F730BB12A971EF30072AB38 /* SearchWorkListQuery.swift in Sources */,
 				2FCD8C7D2A81C1C3002A39B0 /* GetMyVotedCharacterQuery.swift in Sources */,
 				2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */,
 				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
@@ -4086,6 +4097,7 @@
 				2FFB4BD12A8F1479001D1D60 /* InquireCharacterAnalyzeQuery.swift in Sources */,
 				2FBF64B62A71FE7D0036401F /* MyContentMoreViewModel.swift in Sources */,
 				2FCF0F6C2A7D2D9D00C164C4 /* DigViewModel.swift in Sources */,
+				2F730BB52A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift in Sources */,
 				2FD87A4D2A584959003C276B /* ResponseKakaoLoginDTO.swift in Sources */,
 				2F53D0912A1F1C7F00898DCD /* PhoneNumberVerify.swift in Sources */,
 				2FD0734D2A237E98003F7E56 /* DuplicationIdQuery.swift in Sources */,
