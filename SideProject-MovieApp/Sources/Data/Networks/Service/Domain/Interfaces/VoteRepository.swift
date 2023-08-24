@@ -15,6 +15,8 @@ protocol VoteRepository {
     
     func fetchSearchCharacterList(query: SearchCharacterListQuery) async throws -> SearchCharacterList
     
+    func fetchSearchWorkList(query: SearchWorkListQuery) async throws -> SearchWorkList
+    
     func requestVoteCharacter(query: VoteCharacterQuery) async throws -> VoteCharacter
     
     func fetchSameWorkCharacterList(query: SameWorkCharacterListQuery) async throws -> SameWorkCharacterList

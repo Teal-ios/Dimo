@@ -14,6 +14,8 @@ protocol VoteUseCase {
     
     func excuteSearchCharacterList(query: SearchCharacterListQuery) async throws -> SearchCharacterList
     
+    func excuteSearchWorkList(query: SearchWorkListQuery) async throws -> SearchWorkList
+    
     func excuteVoteCharacter(query: VoteCharacterQuery) async throws -> VoteCharacter
     
     func excuteSameWorkCharacterList(query: SameWorkCharacterListQuery) async throws -> SameWorkCharacterList
@@ -58,6 +60,16 @@ extension VoteUseCaseImpl {
     func excuteSearchCharacterList(query: SearchCharacterListQuery) async throws -> SearchCharacterList {
         do {
             return try await voteRepository.fetchSearchCharacterList(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension VoteUseCaseImpl {
+    func excuteSearchWorkList(query: SearchWorkListQuery) async throws -> SearchWorkList {
+        do {
+            return try await voteRepository.fetchSearchWorkList(query: query)
         } catch {
             throw VoteUseCaseError.excute
         }

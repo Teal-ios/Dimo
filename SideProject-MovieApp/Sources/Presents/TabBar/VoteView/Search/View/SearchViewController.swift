@@ -76,6 +76,24 @@ final class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.searchWorkList
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, searchWorkList in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, Result>()
+                snapshot.appendSections([0])
+                var characterArr: [Result] = []
+                for ele in searchWorkList.result {
+                    guard let ele = ele else { return }
+                    characterArr.append(ele)
+                }
+                snapshot.appendItems(characterArr, toSection: 0)
+                vc.dataSource.apply(snapshot)
+                vc.selfView.updateCategoryView(categoryAppear: true)
+                vc.selfView.configureCategoryUpdate(category: SearchCategoryCase.character.rawValue)
+            }
+            .disposed(by: disposeBag)
+        
         output.currentCategory
             .observe(on: MainScheduler.instance)
             .withUnretained(self)

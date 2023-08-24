@@ -33,12 +33,14 @@ final class SearchViewModel: ViewModelType {
         let animationData: PublishRelay<[AnimationData]>
         let searchText: ControlProperty<String?>
         let searchCharacterList: PublishRelay<SearchCharacterList>
+        let searchWorkList: PublishRelay<SearchWorkList>
         let searchTextNil: PublishRelay<Void>
         let currentCategory: PublishRelay<SearchCategoryCase>
     }
     
     var animationData = PublishRelay<[AnimationData]>()
     let searchCharacterList = PublishRelay<SearchCharacterList>()
+    let searchWorkList = PublishRelay<SearchWorkList>()
     let searchTextNil = PublishRelay<Void>()
     let thenCategoryChoiceForLastText = BehaviorRelay(value: "")
     
@@ -66,7 +68,7 @@ final class SearchViewModel: ViewModelType {
                     case .character:
                         vm.getSearchCharacterList(user_id: user_id, searchText: text)
                     case .work:
-                        print("미구현")
+                        vm.getSearchWorkList(user_id: user_id, searchText: text)
                     }
                 }
             }
@@ -102,15 +104,20 @@ final class SearchViewModel: ViewModelType {
                         self.searchTextNil.accept(())
                         print("이거찍혀야지")
                     } else {
-                        self.getSearchCharacterList(user_id: user_id, searchText: text)
+                        vm.getSearchCharacterList(user_id: user_id, searchText: text)
                     }
                 case .work:
-                    print("추후")
+                    if text == "" {
+                        self.searchTextNil.accept(())
+                        print("이거찍혀야지")
+                    } else {
+                        vm.getSearchWorkList(user_id: user_id, searchText: text)
+                    }
                 }
             }
             .disposed(by: disposeBag)
         
-        return Output(animationData: self.animationData, searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory)
+        return Output(animationData: self.animationData, searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchWorkList: self.searchWorkList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory)
     }
 }
 
@@ -122,6 +129,18 @@ extension SearchViewModel {
             
             print(searchCharacterList, "서치검색완료")
             self.searchCharacterList.accept(searchCharacterList)
+        }
+    }
+}
+
+extension SearchViewModel {
+    private func getSearchWorkList(user_id: String, searchText: String) {
+        Task {
+            let query = SearchWorkListQuery(user_id: user_id, search_content: searchText)
+            let searchWorkList = try await voteUseCase.excuteSearchWorkList(query: query)
+            
+            print(searchWorkList, "서치검색완료")
+            self.searchWorkList.accept(searchWorkList)
         }
     }
 }
