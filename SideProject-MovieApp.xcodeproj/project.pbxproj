@@ -181,6 +181,7 @@
 		2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4BB062A132CA50070B67A /* BaseScrollView.swift */; };
 		2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4BB082A1330940070B67A /* CategoryCollectionViewCell.swift */; };
 		2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4BB0A2A133B450070B67A /* CategoryModel.swift */; };
+		2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -775,6 +776,7 @@
 		2FC4BB062A132CA50070B67A /* BaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		2FC4BB082A1330940070B67A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FC4BB0A2A133B450070B67A /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTransform.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -2133,6 +2135,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2FC7745D2A98323B00C36024 /* DataTransform */ = {
+			isa = PBXGroup;
+			children = (
+				2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */,
+			);
+			path = DataTransform;
+			sourceTree = "<group>";
+		};
 		2FC863892A47329600131690 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2292,6 +2302,7 @@
 		2FC94E8B29C011500097E696 /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				2FC7745D2A98323B00C36024 /* DataTransform */,
 				2FC94E8A29C011470097E696 /* Bases */,
 				2FC94E9029C0118B0097E696 /* Custom */,
 				2FC94E8F29C011760097E696 /* Constants */,
@@ -4260,6 +4271,7 @@
 				2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */,
+				2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */,
 				49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,

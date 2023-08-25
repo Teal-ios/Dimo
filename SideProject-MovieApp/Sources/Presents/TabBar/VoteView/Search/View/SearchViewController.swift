@@ -28,6 +28,8 @@ final class SearchViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    let characterCellTapped = PublishRelay<Result>()
+    
     private var dataSource: UICollectionViewDiffableDataSource<Int, Result>!
     
     override func loadView() {
@@ -46,7 +48,7 @@ final class SearchViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = SearchViewModel.Input(viewDidLoad: Observable.just(()), searchText: self.selfView.searchTextField.rx.text, searchTextEditFinish: self.searchTextEditFinish, searchCategoryButtonTapped: self.selfView.categoryButton.rx.tap)
+        let input = SearchViewModel.Input(viewDidLoad: Observable.just(()), searchText: self.selfView.searchTextField.rx.text, searchTextEditFinish: self.searchTextEditFinish, searchCategoryButtonTapped: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped)
         
         let output = self.viewModel.transform(input: input)
         
@@ -69,10 +71,10 @@ final class SearchViewController: BaseViewController {
                     guard let ele = ele else { return }
                     characterArr.append(ele)
                 }
+                vc.selfView.updateSearchException(searchListExist: !characterArr.isEmpty)
                 snapshot.appendItems(characterArr, toSection: 0)
                 vc.dataSource.apply(snapshot)
                 vc.selfView.updateCategoryView(categoryAppear: true)
-                vc.selfView.configureCategoryUpdate(category: SearchCategoryCase.character.rawValue)
             }
             .disposed(by: disposeBag)
         
@@ -87,10 +89,10 @@ final class SearchViewController: BaseViewController {
                     guard let ele = ele else { return }
                     characterArr.append(ele)
                 }
+                vc.selfView.updateSearchException(searchListExist: !characterArr.isEmpty)
                 snapshot.appendItems(characterArr, toSection: 0)
                 vc.dataSource.apply(snapshot)
                 vc.selfView.updateCategoryView(categoryAppear: true)
-                vc.selfView.configureCategoryUpdate(category: SearchCategoryCase.character.rawValue)
             }
             .disposed(by: disposeBag)
         
@@ -121,12 +123,21 @@ extension SearchViewController {
 
 
 extension SearchViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dataFetchingToCharacterCell(indexPath: indexPath)
+    }
 }
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.searchTextEditFinish.accept(())
         return true
+    }
+}
+
+extension SearchViewController {
+    func dataFetchingToCharacterCell(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers(inSection: 0)[indexPath.row]
+        self.characterCellTapped.accept(selectedItem)
     }
 }

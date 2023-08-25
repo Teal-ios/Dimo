@@ -345,6 +345,7 @@ extension MovieDetailView {
         self.genreExplainLabel.text = animationData.genre
         self.creatorExplainLabel.text = animationData.director
         self.audienceExplainLabel.text = animationData.rate + "세 이상 관람가"
+        self.releaseExplainLabel.text = DateFormatterManager.shared.convertDateToYears(animationData.release ?? "")
         self.runningTimeLabel.isHidden = true
         self.runningTimeExplainLabel.isHidden = true
     }

@@ -65,6 +65,31 @@ final class SearchView: BaseView {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
+    let searchExceptionContainView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        return view
+    }()
+    
+    let searchExceptionImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "SearchException")
+        view.contentMode = .scaleAspectFill
+        view.isHidden = true
+        return view
+    }()
+    
+    let searchExceptionExplainLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.title3
+        label.textColor = .black5
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "검색 결과가 없어요\n다른 키워드로 검색해 보세요"
+        label.isHidden = true
+        return label
+    }()
+    
     override func setHierarchy() {
         self.addSubview(titleLabel)
         self.addSubview(searchContainView)
@@ -75,6 +100,9 @@ final class SearchView: BaseView {
         self.addSubview(arrowBottomLabel)
         self.addSubview(categoryInsetLabel)
         self.addSubview(collectionView)
+        self.addSubview(searchExceptionContainView)
+        self.addSubview(searchExceptionImageView)
+        self.addSubview(searchExceptionExplainLabel)
     }
     
     override func layoutSubviews() {
@@ -141,6 +169,23 @@ final class SearchView: BaseView {
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(categoryButton.snp.bottom).offset(16)
             make.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        searchExceptionContainView.snp.makeConstraints { make in
+            make.edges.equalTo(collectionView)
+        }
+        
+        searchExceptionImageView.snp.makeConstraints { make in
+            make.top.equalTo(searchExceptionContainView.snp.top).offset(64)
+            make.centerX.equalTo(searchExceptionContainView)
+            make.height.equalTo(210)
+            make.width.equalTo(224)
+        }
+        
+        searchExceptionExplainLabel.snp.makeConstraints { make in
+            make.top.equalTo(searchExceptionImageView.snp.bottom).offset(24)
+            make.horizontalEdges.equalTo(searchExceptionContainView).inset(16)
+            make.height.equalTo(42)
         }
     }
     
@@ -277,5 +322,13 @@ extension SearchView {
         } else {
             searchImageView.image = UIImage(named: "Search_On")
         }
+    }
+}
+
+extension SearchView {
+    func updateSearchException(searchListExist: Bool) {
+        self.searchExceptionContainView.isHidden = searchListExist
+        self.searchExceptionImageView.isHidden = searchListExist
+        self.searchExceptionExplainLabel.isHidden = searchListExist
     }
 }
