@@ -27,6 +27,7 @@ final class SearchViewModel: ViewModelType {
         let searchText: ControlProperty<String?>
         let searchTextEditFinish: PublishRelay<Void>
         let searchCategoryButtonTapped: ControlEvent<Void>
+        let characterCellTapped: PublishRelay<Result>
     }
     
     struct Output{
@@ -114,6 +115,15 @@ final class SearchViewModel: ViewModelType {
                         vm.getSearchWorkList(user_id: user_id, searchText: text)
                     }
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterCellTapped
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, result in
+                let characterInfoDTO = CharacterInfo(character_id: result.character_id, content_id: result.anime_id, anime_id: result.anime_id, character_img: result.character_img, character_name: result.character_name, character_mbti: result.character_mbti, title: result.title, is_vote: result.is_vote)
+                vm.coordinator?.showDigViewController(characterInfo: characterInfoDTO)
             }
             .disposed(by: disposeBag)
         

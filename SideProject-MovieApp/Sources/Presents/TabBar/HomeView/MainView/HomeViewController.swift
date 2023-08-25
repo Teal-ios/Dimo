@@ -173,7 +173,6 @@ extension HomeViewController {
         
         let todayDIMOHeader = UICollectionView.SupplementaryRegistration<TodayDIMOHeaderView>(elementKind: TodayDIMOHeaderView.identifier) { supplementaryView, elementKind, indexPath in
             self.categoryTitle
-                .debug()
                 .bind { [weak self] title in
                     guard let self else { return }
                     supplementaryView.categoryInsetLabel.text = title
