@@ -182,6 +182,8 @@
 		2FC4BB092A1330940070B67A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4BB082A1330940070B67A /* CategoryCollectionViewCell.swift */; };
 		2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4BB0A2A133B450070B67A /* CategoryModel.swift */; };
 		2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */; };
+		2FC774612A99865600C36024 /* ReviewIsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774602A99865600C36024 /* ReviewIsLiked.swift */; };
+		2FC774632A99868D00C36024 /* ResponseReviewIsLikeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -784,6 +786,8 @@
 		2FC4BB082A1330940070B67A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FC4BB0A2A133B450070B67A /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTransform.swift; sourceTree = "<group>"; };
+		2FC774602A99865600C36024 /* ReviewIsLiked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewIsLiked.swift; sourceTree = "<group>"; };
+		2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseReviewIsLikeDTO.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -3168,6 +3172,7 @@
 				2FD82DBF2A775AFE00372D24 /* ResponseCommentListDTO.swift */,
 				2FFB4BD62A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift */,
 				2FD1CC2B2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift */,
+				2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3353,6 +3358,7 @@
 				2FD82D6A2A77457C00372D24 /* CommentList.swift */,
 				2FCD8C892A82343B002A39B0 /* GetReviewDetail.swift */,
 				2FD1CC292A93386600876DCB /* CommentIsLiked.swift */,
+				2FC774602A99865600C36024 /* ReviewIsLiked.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -4354,6 +4360,7 @@
 				2FCD8C882A8214C2002A39B0 /* MbtiInfoView.swift in Sources */,
 				2FD073642A25C1DC003F7E56 /* NickNameViewModel.swift in Sources */,
 				2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */,
+				2FC774632A99868D00C36024 /* ResponseReviewIsLikeDTO.swift in Sources */,
 				2FD87A332A5840F0003C276B /* GoogleLogin.swift in Sources */,
 				493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */,
 				2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */,
@@ -4445,6 +4452,7 @@
 				2FD0735F2A25BFEB003F7E56 /* SettingRepository.swift in Sources */,
 				2F53D07B2A1F143A00898DCD /* SignUpQuery.swift in Sources */,
 				2F437C002A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift in Sources */,
+				2FC774612A99865600C36024 /* ReviewIsLiked.swift in Sources */,
 				2FD82DAA2A774F9900372D24 /* ResponseVoteCharacterDTO.swift in Sources */,
 				497454ED2A3F67C30043D67E /* UserInfoQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,

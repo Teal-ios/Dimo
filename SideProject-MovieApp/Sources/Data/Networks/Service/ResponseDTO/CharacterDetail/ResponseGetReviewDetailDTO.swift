@@ -13,7 +13,7 @@ struct ResponseGetReviewDetailDTO: Decodable {
     let user_id: String
     let character_id: String
     let review_list: [ResponseReviewListDTO]
-    let is_liked: String?
+    let is_liked: [ResponseReviewIsLikeDTO]?
     
     enum CodingKeys: String, CodingKey {
         case code, message, user_id, character_id, review_list, is_liked
@@ -22,6 +22,6 @@ struct ResponseGetReviewDetailDTO: Decodable {
 
 extension ResponseGetReviewDetailDTO {
     var toDomain: GetReviewDetail {
-        return .init(code: code, message: message, user_id: user_id, character_id: character_id, review_list: review_list.map { $0.toDomain }, is_liked: is_liked)
+        return .init(code: code, message: message, user_id: user_id, character_id: character_id, review_list: review_list.map { $0.toDomain }, is_liked: is_liked?.map{ $0.toDomain })
     }
 }

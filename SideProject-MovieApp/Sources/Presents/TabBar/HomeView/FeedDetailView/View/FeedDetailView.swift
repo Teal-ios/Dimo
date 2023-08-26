@@ -366,11 +366,20 @@ extension FeedDetailView {
 
 extension FeedDetailView {
     func configureReviewDetail(with item: GetReviewDetail) {
-        switch item.is_liked == "" {
+        switch item.is_liked == nil {
         case true:
             self.headerView.likeImageView.image = UIImage(named: "LikeNonSelect")
         case false:
             self.headerView.likeImageView.image = UIImage(named: "LikeSelect")
+        }
+    }
+    
+    func configureReviewLikeValid(with item: Bool) {
+        switch item {
+        case true:
+            self.headerView.likeImageView.image = UIImage(named: "LikeSelect")
+        case false:
+            self.headerView.likeImageView.image = UIImage(named: "LikeNonSelect")
         }
     }
 }

@@ -49,7 +49,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -132,6 +132,14 @@ class FeedDetailViewController: BaseViewController {
                 categorySnapshot.appendItems(categoryArr, toSection: 0)
                 vc.categoryDataSource.apply(categorySnapshot)
                 vc.feedDetailView.configureReviewDetail(with: reviewDetail)
+            }
+            .disposed(by: disposeBag)
+        
+        output.reviewLikeValid
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, valid in
+                vc.feedDetailView.configureReviewLikeValid(with: valid)
             }
             .disposed(by: disposeBag)
     }

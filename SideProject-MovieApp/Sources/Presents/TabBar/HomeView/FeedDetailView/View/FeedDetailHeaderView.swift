@@ -90,6 +90,11 @@ class FeedDetailHeaderView: BaseView {
         return button
     }()
     
+    let likeContainButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     lazy var likeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [likeImageView, likeLabel])
         stackView.axis = .horizontal
@@ -124,6 +129,7 @@ class FeedDetailHeaderView: BaseView {
         self.addSubview(likeAndReviewAndViewsLabel)
         self.addSubview(totalStackView)
         self.addSubview(mainTextLabel)
+        self.addSubview(likeContainButton)
         
         makeConstraints()
     }
@@ -170,6 +176,12 @@ class FeedDetailHeaderView: BaseView {
             make.top.equalTo(mbtiLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeArea)
             make.bottom.equalTo(likeAndReviewAndViewsLabel.snp.top).offset(-16)
+        }
+        
+        likeContainButton.snp.makeConstraints { make in
+            make.leading.equalTo(totalStackView.snp.leading)
+            make.width.equalTo(totalStackView.snp.width).multipliedBy(0.5)
+            make.verticalEdges.equalTo(totalStackView)
         }
     }
 }
