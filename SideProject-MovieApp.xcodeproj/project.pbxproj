@@ -540,6 +540,13 @@
 		49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */; };
 		49EEDF192A8B5EBA008C5D21 /* FrequentQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */; };
 		49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */; };
+		49F1480A2A9385050045E857 /* CharacterAskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F148092A9385050045E857 /* CharacterAskViewController.swift */; };
+		49F1480C2A9385170045E857 /* CharacterAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1480B2A9385170045E857 /* CharacterAskView.swift */; };
+		49F1480E2A9385290045E857 /* CharacterAskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1480D2A9385290045E857 /* CharacterAskViewModel.swift */; };
+		49F148102A94FDC80045E857 /* CharacterAskQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1480F2A94FDC80045E857 /* CharacterAskQuery.swift */; };
+		49F148122A9500A80045E857 /* CharacterAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F148112A9500A80045E857 /* CharacterAsk.swift */; };
+		49F148142A95014F0045E857 /* RequestCharacterAskDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F148132A95014F0045E857 /* RequestCharacterAskDTO.swift */; };
+		49F148162A9505A00045E857 /* ResponseCharacterAskDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F148152A9505A00045E857 /* ResponseCharacterAskDTO.swift */; };
 		933028C229CB44D500165B1E /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C129CB44D500165B1E /* UIFont+Extension.swift */; };
 		933028C429CB469200165B1E /* UIFont+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C329CB469200165B1E /* UIFont+Enum.swift */; };
 		933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933028C529CB46AF00165B1E /* UIColor+Extension.swift */; };
@@ -1131,6 +1138,13 @@
 		49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestionViewModel.swift; sourceTree = "<group>"; };
 		49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestion.swift; sourceTree = "<group>"; };
 		49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListCell.swift; sourceTree = "<group>"; };
+		49F148092A9385050045E857 /* CharacterAskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskViewController.swift; sourceTree = "<group>"; };
+		49F1480B2A9385170045E857 /* CharacterAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskView.swift; sourceTree = "<group>"; };
+		49F1480D2A9385290045E857 /* CharacterAskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskViewModel.swift; sourceTree = "<group>"; };
+		49F1480F2A94FDC80045E857 /* CharacterAskQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskQuery.swift; sourceTree = "<group>"; };
+		49F148112A9500A80045E857 /* CharacterAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAsk.swift; sourceTree = "<group>"; };
+		49F148132A95014F0045E857 /* RequestCharacterAskDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCharacterAskDTO.swift; sourceTree = "<group>"; };
+		49F148152A9505A00045E857 /* ResponseCharacterAskDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCharacterAskDTO.swift; sourceTree = "<group>"; };
 		933028C129CB44D500165B1E /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		933028C329CB469200165B1E /* UIFont+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Enum.swift"; sourceTree = "<group>"; };
 		933028C529CB46AF00165B1E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -3493,6 +3507,7 @@
 				497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */,
 				497454F42A3F69050043D67E /* PasswordChangeQuery.swift */,
 				493C5C782A768E7100AF1F63 /* WithdrawQuery.swift */,
+				49F1480F2A94FDC80045E857 /* CharacterAskQuery.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3507,6 +3522,7 @@
 				493C5C7C2A76925000AF1F63 /* RequestWithdrawDTO.swift */,
 				49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */,
 				49A7A1D32A90A5C50011EDC4 /* RequestUserInfoDTO.swift */,
+				49F148132A95014F0045E857 /* RequestCharacterAskDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3521,6 +3537,7 @@
 				493C5C7E2A769E6200AF1F63 /* ResponseWithdrawDTO.swift */,
 				49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */,
 				49A7A1D52A90A5F60011EDC4 /* ResponseUserInfoDTO.swift */,
+				49F148152A9505A00045E857 /* ResponseCharacterAskDTO.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3556,6 +3573,7 @@
 				49EEDEE92A88EB4C008C5D21 /* NoticeContents.swift */,
 				49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */,
 				49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */,
+				49F148112A9500A80045E857 /* CharacterAsk.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3563,6 +3581,7 @@
 		49EEDEDC2A88DD35008C5D21 /* CustomerServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
+				49F148062A9384970045E857 /* CharacterAsk */,
 				49EEDEDD2A88DD96008C5D21 /* Notice */,
 				49EEDF0F2A8B5BB6008C5D21 /* FrequentQuestion */,
 			);
@@ -3637,6 +3656,32 @@
 				49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		49F148062A9384970045E857 /* CharacterAsk */ = {
+			isa = PBXGroup;
+			children = (
+				49F148082A9384F90045E857 /* ViewModel */,
+				49F148072A9384F70045E857 /* View */,
+			);
+			path = CharacterAsk;
+			sourceTree = "<group>";
+		};
+		49F148072A9384F70045E857 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49F148092A9385050045E857 /* CharacterAskViewController.swift */,
+				49F1480B2A9385170045E857 /* CharacterAskView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49F148082A9384F90045E857 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49F1480D2A9385290045E857 /* CharacterAskViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		933028AD29CB413600165B1E /* NotoSans */ = {
@@ -3954,6 +3999,7 @@
 				2FC367532A7F943F00635CBB /* LengthChartView.swift in Sources */,
 				2FBFF8392A6F5980007914A1 /* ResponseLikeChoiceDTO.swift in Sources */,
 				2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */,
+				49F148102A94FDC80045E857 /* CharacterAskQuery.swift in Sources */,
 				49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */,
 				93C48BB629D9377900644F6A /* TelecomSelectView.swift in Sources */,
 				2FC94EC729C0376C0097E696 /* OnBoardingViewController.swift in Sources */,
@@ -3992,6 +4038,7 @@
 				2FD82D5B2A77436900372D24 /* GetReview.swift in Sources */,
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
 				2FD073532A237F06003F7E56 /* DuplicationId.swift in Sources */,
+				49F1480A2A9385050045E857 /* CharacterAskViewController.swift in Sources */,
 				497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */,
 				2F9793AC2A53FFC30098939B /* RecentSearchCollectionViewCell.swift in Sources */,
 				49EEDEE82A88E113008C5D21 /* NoticeListCell.swift in Sources */,
@@ -4045,6 +4092,7 @@
 				2FE111242A7664E10013A49E /* SameWorkCharacterList.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
 				2FE9681F2A7BCAD2000E705E /* Hit.swift in Sources */,
+				49F1480C2A9385170045E857 /* CharacterAskView.swift in Sources */,
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
 				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
 				2FE1112E2A7668170013A49E /* RandomCharacterRecommendQuery.swift in Sources */,
@@ -4092,6 +4140,7 @@
 				2FD82D702A77469000372D24 /* GetReviewQuery.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
+				49F148162A9505A00045E857 /* ResponseCharacterAskDTO.swift in Sources */,
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
@@ -4254,6 +4303,7 @@
 				49EEDEE32A88DDC0008C5D21 /* NoticeView.swift in Sources */,
 				2F53D0AE2A1F4A6A00898DCD /* EditNicknameViewModel.swift in Sources */,
 				2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */,
+				49F148142A95014F0045E857 /* RequestCharacterAskDTO.swift in Sources */,
 				2FCD8CAA2A8260F1002A39B0 /* ReportView.swift in Sources */,
 				2FE111342A76687B0013A49E /* VoteCharacterQuery.swift in Sources */,
 				2FFB4BD32A8F56F3001D1D60 /* MbtiContainPercent.swift in Sources */,
@@ -4270,6 +4320,7 @@
 				2FFB4BC92A8F0A4F001D1D60 /* ResponseContentInfoDTO.swift in Sources */,
 				2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
+				49F148122A9500A80045E857 /* CharacterAsk.swift in Sources */,
 				49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */,
 				2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */,
 				49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */,
@@ -4429,6 +4480,7 @@
 				2FE1111E2A7664850013A49E /* PopularCharacterRecommendList.swift in Sources */,
 				2F53D0702A1F0AC600898DCD /* NetworkError.swift in Sources */,
 				2F149DCA2A4978C40098AF64 /* StarView.swift in Sources */,
+				49F1480E2A9385290045E857 /* CharacterAskViewModel.swift in Sources */,
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
 				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,

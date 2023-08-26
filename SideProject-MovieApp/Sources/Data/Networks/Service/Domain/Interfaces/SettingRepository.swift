@@ -22,4 +22,6 @@ protocol SettingRepository: AnyObject {
     func fetchMbtiChange(query: MbtiChangeQuery) async throws -> MbtiChange
     
     func fetchUserInfo(query: UserInfoQuery) async throws -> UserInfo
+    
+    func fetchCharacterName(query: CharacterAskQuery) async throws -> CharacterAsk
 }
