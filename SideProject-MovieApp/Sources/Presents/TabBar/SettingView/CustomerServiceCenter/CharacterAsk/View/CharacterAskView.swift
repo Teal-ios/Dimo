@@ -12,7 +12,7 @@ final class CharacterAskView: BaseView {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.font = Font.title1
-        label.text = "정말 떠나시나요?"
+        label.text = "캐릭터 요청하기"
         return label
     }()
     
