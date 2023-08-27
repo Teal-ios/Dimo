@@ -286,9 +286,9 @@
 		2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */; };
 		2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */; };
 		2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */; };
-		2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */; };
-		2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */; };
-		2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */; };
+		2FD4D0CA2A2CB16900B9AF61 /* PushNotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0C92A2CB16900B9AF61 /* PushNotificationSettingView.swift */; };
+		2FD4D0CC2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CB2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift */; };
+		2FD4D0CE2A2CB17500B9AF61 /* PushNotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D0CD2A2CB17500B9AF61 /* PushNotificationSettingViewModel.swift */; };
 		2FD4D8FE2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D8FD2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift */; };
 		2FD4D9002A6BB16800E7972B /* MyMomentumRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D8FF2A6BB16800E7972B /* MyMomentumRouter.swift */; };
 		2FD4D9022A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9012A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift */; };
@@ -890,9 +890,9 @@
 		2FD4D0BA2A2CA9C900B9AF61 /* ErrorNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundView.swift; sourceTree = "<group>"; };
 		2FD4D0BC2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewController.swift; sourceTree = "<group>"; };
 		2FD4D0BE2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorNotFoundViewModel.swift; sourceTree = "<group>"; };
-		2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationView.swift; sourceTree = "<group>"; };
-		2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationViewController.swift; sourceTree = "<group>"; };
-		2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotificationViewModel.swift; sourceTree = "<group>"; };
+		2FD4D0C92A2CB16900B9AF61 /* PushNotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSettingView.swift; sourceTree = "<group>"; };
+		2FD4D0CB2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSettingViewController.swift; sourceTree = "<group>"; };
+		2FD4D0CD2A2CB17500B9AF61 /* PushNotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSettingViewModel.swift; sourceTree = "<group>"; };
 		2FD4D8FD2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumRepositoryImpl.swift; sourceTree = "<group>"; };
 		2FD4D8FF2A6BB16800E7972B /* MyMomentumRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumRouter.swift; sourceTree = "<group>"; };
 		2FD4D9012A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumAPIEndpoints.swift; sourceTree = "<group>"; };
@@ -1123,6 +1123,7 @@
 		49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiView.swift; sourceTree = "<group>"; };
 		49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiViewModel.swift; sourceTree = "<group>"; };
 		49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiViewModelType.swift; sourceTree = "<group>"; };
+		49C722112A9B32430062650F /* SideProject-MovieAppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieAppDebug.entitlements"; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -2199,6 +2200,7 @@
 		2FC94E5029C00F0B0097E696 /* SideProject-MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				49C722112A9B32430062650F /* SideProject-MovieAppDebug.entitlements */,
 				2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */,
 				2FC94E8129C00F3F0097E696 /* Sources */,
 				2FC94E8229C00F430097E696 /* Resources */,
@@ -2845,49 +2847,25 @@
 		2FD4D0C22A2CB0C100B9AF61 /* NotificationSetting */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D0C42A2CB10500B9AF61 /* EditKeyword */,
-				2FD4D0C32A2CB0FD00B9AF61 /* EditNotification */,
+				2FD4D0C32A2CB0FD00B9AF61 /* PushNotificationSetting */,
 			);
 			path = NotificationSetting;
 			sourceTree = "<group>";
 		};
-		2FD4D0C32A2CB0FD00B9AF61 /* EditNotification */ = {
+		2FD4D0C32A2CB0FD00B9AF61 /* PushNotificationSetting */ = {
 			isa = PBXGroup;
 			children = (
 				2FD4D0C82A2CB14600B9AF61 /* ViewModel */,
 				2FD4D0C72A2CB14400B9AF61 /* View */,
 			);
-			path = EditNotification;
-			sourceTree = "<group>";
-		};
-		2FD4D0C42A2CB10500B9AF61 /* EditKeyword */ = {
-			isa = PBXGroup;
-			children = (
-				2FD4D0C62A2CB12500B9AF61 /* ViewModel */,
-				2FD4D0C52A2CB12300B9AF61 /* View */,
-			);
-			path = EditKeyword;
-			sourceTree = "<group>";
-		};
-		2FD4D0C52A2CB12300B9AF61 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2FD4D0C62A2CB12500B9AF61 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
+			path = PushNotificationSetting;
 			sourceTree = "<group>";
 		};
 		2FD4D0C72A2CB14400B9AF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D0C92A2CB16900B9AF61 /* EditNotificationView.swift */,
-				2FD4D0CB2A2CB16F00B9AF61 /* EditNotificationViewController.swift */,
+				2FD4D0CB2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift */,
+				2FD4D0C92A2CB16900B9AF61 /* PushNotificationSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2895,7 +2873,7 @@
 		2FD4D0C82A2CB14600B9AF61 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D0CD2A2CB17500B9AF61 /* EditNotificationViewModel.swift */,
+				2FD4D0CD2A2CB17500B9AF61 /* PushNotificationSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -4253,7 +4231,7 @@
 				2F0328B82A91EE4000639BAC /* GetGradeEvaluateResult.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
 				2F9793A82A53E99C0098939B /* SearchHeaderView.swift in Sources */,
-				2FD4D0CE2A2CB17500B9AF61 /* EditNotificationViewModel.swift in Sources */,
+				2FD4D0CE2A2CB17500B9AF61 /* PushNotificationSettingViewModel.swift in Sources */,
 				2FD4D0A92A2B051E00B9AF61 /* NicknameView.swift in Sources */,
 				2FD4D0BB2A2CA9C900B9AF61 /* ErrorNotFoundView.swift in Sources */,
 				2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */,
@@ -4282,7 +4260,7 @@
 				2FCD8C7B2A81C09A002A39B0 /* ResponseGetMyVotedCharacterDTO.swift in Sources */,
 				2F124AD82A4EBFF700A452F1 /* WriteViewModel.swift in Sources */,
 				2F6D7D1B2A14B76B00FA457D /* ScopeStackView.swift in Sources */,
-				2FD4D0CC2A2CB16F00B9AF61 /* EditNotificationViewController.swift in Sources */,
+				2FD4D0CC2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift in Sources */,
 				2FBFF8352A6F5944007914A1 /* RequestLikeCancelDTO.swift in Sources */,
 				2F53D0CB2A1F700F00898DCD /* EditMbtiViewModel.swift in Sources */,
 				2FD87A3B2A5842BB003C276B /* Drop.swift in Sources */,
@@ -4411,7 +4389,7 @@
 				2FD82DC42A7760A400372D24 /* CharacterDetailRouter.swift in Sources */,
 				2FEC15F02A78B22F009CF59D /* MyReview.swift in Sources */,
 				493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */,
-				2FD4D0CA2A2CB16900B9AF61 /* EditNotificationView.swift in Sources */,
+				2FD4D0CA2A2CB16900B9AF61 /* PushNotificationSettingView.swift in Sources */,
 				2FEC15EC2A78B1CF009CF59D /* GetMyReviewQuery.swift in Sources */,
 				2FD4D9002A6BB16800E7972B /* MyMomentumRouter.swift in Sources */,
 				2FCDD20329E6A709000B6CD7 /* DimoLoginViewController.swift in Sources */,
@@ -4650,7 +4628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieApp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieAppDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;

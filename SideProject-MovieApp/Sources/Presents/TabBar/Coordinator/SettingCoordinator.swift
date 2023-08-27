@@ -57,6 +57,15 @@ final class SettingCoordinator: Coordinator {
         navigationController.present(vc, animated: true)
     }
     
+    func showPushNotificationSettingViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+        let viewModel = PushNotificationSettingViewModel(coordinator: self, networkUsecase: settingUseCaseImpl)
+        let vc = PushNotificationSettingViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func showAlertWithdrawViewController(with withdrawReason: String) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)

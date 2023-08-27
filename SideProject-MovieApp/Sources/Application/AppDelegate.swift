@@ -20,6 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.reduce("") {
+            $0 + String(format: "%02X", $1)
+        }
+        
+        print("✅DEVICE TOKEN: ", token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("❌ Remote Notification Error: ", error.localizedDescription)
+    }
+    
     
 
     // MARK: UISceneSession Lifecycle
