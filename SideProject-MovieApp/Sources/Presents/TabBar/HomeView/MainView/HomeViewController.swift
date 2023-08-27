@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import UserNotifications
 
 enum Category: String {
     case poster = "represent"
@@ -67,6 +68,7 @@ final class HomeViewController: BaseViewController {
         setCharacterDataSource()
         setRecommendDataSource()
         setNowHotDataSource()
+        checkUserNotificationAuthorization()
     }
     
     override func setupBinding() {
@@ -343,5 +345,18 @@ extension HomeViewController {
     func nowHotCellDataFetching(indexPath: IndexPath) {
         let selectedItem = nowHotDataSource.snapshot().itemIdentifiers[indexPath.row]
         self.hotMovieCellSelected.accept(String(selectedItem.anime_id))
+    }
+}
+
+extension HomeViewController {
+    
+    func checkUserNotificationAuthorization() {
+        let center = UNUserNotificationCenter.current()
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        
+        center.requestAuthorization(options: authOptions) { _, _ in
+            
+        }
+
     }
 }

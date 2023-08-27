@@ -1123,6 +1123,7 @@
 		49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiView.swift; sourceTree = "<group>"; };
 		49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiViewModel.swift; sourceTree = "<group>"; };
 		49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiViewModelType.swift; sourceTree = "<group>"; };
+		49C722112A9B32430062650F /* SideProject-MovieAppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieAppDebug.entitlements"; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -2199,6 +2200,7 @@
 		2FC94E5029C00F0B0097E696 /* SideProject-MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				49C722112A9B32430062650F /* SideProject-MovieAppDebug.entitlements */,
 				2FD1ADE129EE49B300FD7ED7 /* SideProject-MovieApp.entitlements */,
 				2FC94E8129C00F3F0097E696 /* Sources */,
 				2FC94E8229C00F430097E696 /* Resources */,
@@ -4626,7 +4628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieApp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "SideProject-MovieApp/SideProject-MovieAppDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
