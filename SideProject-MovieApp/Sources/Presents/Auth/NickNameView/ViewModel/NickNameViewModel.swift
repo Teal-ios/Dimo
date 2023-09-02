@@ -40,7 +40,7 @@ class NickNameViewModel: ViewModelType {
         }.disposed(by: disposeBag)
         // 닉네임 중복확인
         let isValidNickname = input.textFieldInput.orEmpty.map { str in
-            str.count > 2 || str.count == 0
+            str.count >= 2
         }
         
         input.textFieldInput.bind { [weak self] nickname in
@@ -73,6 +73,8 @@ extension NickNameViewModel {
             if duplicationNickname.code == 200 {
                 UserDefaultManager.nickname = query.user_nickname
                 duplicationValid.accept(true)
+            } else {
+                duplicationValid.accept(false)
             }
         }
     }

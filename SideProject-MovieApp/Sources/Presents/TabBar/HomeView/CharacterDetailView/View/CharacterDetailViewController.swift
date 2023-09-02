@@ -27,7 +27,8 @@ final class CharacterDetailViewController: TabmanViewController {
     }()
     
     let detailHeaderView : DetailHeaderView = {
-        let view = DetailHeaderView(title: "정대만", subTitle: "ISFJ | 더퍼스트슬램덩크")
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        let view = DetailHeaderView(title: "정대만", subTitle: "\(mbti) | 더퍼스트슬램덩크")
         return view
     }()
     

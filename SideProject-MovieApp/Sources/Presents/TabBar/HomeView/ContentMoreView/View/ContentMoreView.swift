@@ -14,7 +14,8 @@ final class ContentMoreView: BaseView {
         let label = UILabel()
         label.font = Font.title1
         label.textColor = .black5
-        label.text = "ISFJ가 주인공인 영화"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = "\(mbti)가 주인공인 영화"
         return label
     }()
     

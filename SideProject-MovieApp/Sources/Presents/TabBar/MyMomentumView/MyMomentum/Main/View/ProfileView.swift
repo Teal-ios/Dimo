@@ -46,7 +46,8 @@ class ProfileView: BaseView {
         label.font = Font.caption
         label.textColor = Color.caption
         label.textAlignment = .center
-        label.text = "ISFJ"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = mbti
         return label
     }()
     

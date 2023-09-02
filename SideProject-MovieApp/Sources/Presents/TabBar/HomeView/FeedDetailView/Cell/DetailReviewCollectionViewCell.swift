@@ -46,7 +46,8 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         label.font = Font.caption
         label.textColor = Color.caption
         label.textAlignment = .left
-        label.text = "ISFJ"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = mbti
         return label
     }()
     
