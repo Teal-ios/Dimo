@@ -38,8 +38,13 @@ final class VoteCompleteViewController: BaseViewController {
         self.viewDidLoadTrigger.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func setupBinding() {
-        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, rightNavigationXButtonTapped: self.rightNavigationXButtonTapped)
+        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, rightNavigationXButtonTapped: self.rightNavigationXButtonTapped, characterSelectButtonTapped: self.selfView.characterSelectButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         output.sameWorkAnotherCharacterList
