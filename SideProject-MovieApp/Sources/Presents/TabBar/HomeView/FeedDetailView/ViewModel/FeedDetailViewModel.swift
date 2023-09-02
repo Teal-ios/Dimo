@@ -23,6 +23,7 @@ final class FeedDetailViewModel: ViewModelType {
         let viewDidLoad: PublishRelay<Void>
         let commentRegisterButtonTap: ControlEvent<Void>
         let likeButtonTapped: ControlEvent<Void>
+        let commentCellSelected: PublishRelay<CommentList>
     }
     
     struct Output{

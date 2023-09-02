@@ -9,7 +9,7 @@ import Foundation
 
 struct AuthAPIEndpoints {
     static func postSignUp(with requestDTO: RequestSignUpDTO) -> AuthRouter<ResponseSignUpDTO> {
-        return AuthRouter<ResponseSignUpDTO>.signup(parameters: SignUpQuery(user_id: requestDTO.user_id, password: requestDTO.password, name: requestDTO.name, sns_type: requestDTO.sns_type, agency: requestDTO.agency, phone_number: requestDTO.phone_number, nickname: requestDTO.nickname, mbti: requestDTO.mbti))
+        return AuthRouter<ResponseSignUpDTO>.signup(parameters: SignUpQuery(user_id: requestDTO.user_id, password: requestDTO.password, name: requestDTO.name, sns_type: requestDTO.sns_type, agency: requestDTO.agency, phone_number: requestDTO.phone_number, nickname: requestDTO.nickname, mbti: requestDTO.mbti, push_check: requestDTO.push_check))
     }
     
     static func postPhoneNumberVerify(with requestDTO: RequestPhoneNumberVerifyDTO) -> AuthRouter<ResponsePhoneNumberVerifyDTO> {

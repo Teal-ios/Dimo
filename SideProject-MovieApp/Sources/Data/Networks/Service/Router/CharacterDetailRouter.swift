@@ -12,6 +12,8 @@ enum CharacterDetailRouter<R> {
     case getReview(parameters: GetReviewQuery)
     case likeReviewChoice(parameters: LikeReviewChoiceQuery)
     case likeReviewCancel(parameters: LikeReviewCancelQuery)
+    case likeCommentChoice(parameters: LikeCommentChoiceQuery)
+    case likeCommentCancel(parameters: LikeCommentCancelQuery)
     case modifyReview(parameters: ModifyReviewQuery)
     case deleteReview(parameters: DeleteReviewQuery)
     case postComment(parameters: PostCommentQuery)
@@ -45,6 +47,10 @@ extension CharacterDetailRouter: TargetType2 {
             return "/character/review_like"
         case .likeReviewCancel:
             return "/character/review_dislike"
+        case .likeCommentChoice:
+            return "/character/like_comment"
+        case .likeCommentCancel:
+            return "/character/dislike_comment"
         case .modifyReview:
             return "/character/modify_review"
         case .deleteReview:
@@ -96,6 +102,14 @@ extension CharacterDetailRouter: TargetType2 {
             let requestDTO = RequestLikeReviewCancelDTO(user_id: parameters.user_id, character_id: parameters.character_id, review_id: parameters.review_id)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
+        case .likeCommentChoice(let parameters):
+            let requestDTO = RequestLikeCommentChoiceDTO(user_id: parameters.user_id, character_id: parameters.character_id, comment_id: parameters.comment_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+        case .likeCommentCancel(let parameters):
+            let requestDTO = RequestLikeCommentCancelDTO(user_id: parameters.user_id, character_id: parameters.character_id, comment_id: parameters.comment_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         case .modifyReview(let parameters):
             let requestDTO = RequestModifyReviewDTO(user_id: parameters.user_id, character_id: parameters.character_id, review_content: parameters.review_content, review_spoiler: parameters.review_spoiler, review_id: parameters.review_id)
             let encoder = JSONEncoder()
@@ -117,7 +131,7 @@ extension CharacterDetailRouter: TargetType2 {
         switch self {
         case .getReview, .getComment, .getReviewDetail:
             return .get
-        case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment:
+        case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment, .likeCommentCancel, .likeCommentChoice:
             return .post
         case .deleteReview:
             return .delete

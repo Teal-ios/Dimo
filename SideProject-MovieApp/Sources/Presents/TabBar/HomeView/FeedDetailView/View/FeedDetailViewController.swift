@@ -30,9 +30,11 @@ class FeedDetailViewController: BaseViewController {
     let review = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
+    let commentCellSelected = PublishRelay<CommentList>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.feedDetailView.collectionView.delegate = self
         self.hideKeyboard()
         plusNavigationItemSet()
         setCategoryDataSource()
@@ -49,7 +51,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected)
         
         let output = viewModel.transform(input: input)
         
@@ -166,12 +168,26 @@ extension FeedDetailViewController {
     func setDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<DetailReviewCollectionViewCell, CommentList> {  cell, indexPath, itemIdentifier in
             cell.configureCommentAttribute(with: itemIdentifier)
+            cell.delegate = self
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: feedDetailView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
+    }
+}
+
+extension FeedDetailViewController: LikeCommentButtonDelegate {
+    func sendLikeCommentButtonTapEvent(_ collectionViewCell: UICollectionViewCell) {
+        if let cell = collectionViewCell as? DetailReviewCollectionViewCell {
+            cell.likeButton.rx.tap
+                .bind { [weak self] _ in
+                    guard let self = self else { return }
+                    print("버튼클릭")
+                }
+                .disposed(by: disposeBag)
+        }
     }
 }
 
@@ -223,5 +239,18 @@ extension FeedDetailViewController {
             let keyboardHeight = keyboardRectangle.height
             self.view.frame.origin.y += keyboardHeight
         }
+    }
+}
+
+extension FeedDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dataFetchingToCommentCell(indexPath: indexPath)
+    }
+}
+
+extension FeedDetailViewController {
+    func dataFetchingToCommentCell(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.commentCellSelected.accept(selectedItem)
     }
 }

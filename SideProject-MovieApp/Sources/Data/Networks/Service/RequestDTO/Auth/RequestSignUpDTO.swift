@@ -16,9 +16,10 @@ struct RequestSignUpDTO: Codable {
     let phone_number: String
     let nickname: String
     let mbti: String
+    let push_check: Int
     
     enum CodingKeys: String, CodingKey {
-        case user_id, password, name, sns_type, agency, phone_number, nickname, mbti
+        case user_id, password, name, sns_type, agency, phone_number, nickname, mbti, push_check
     }
 }
 

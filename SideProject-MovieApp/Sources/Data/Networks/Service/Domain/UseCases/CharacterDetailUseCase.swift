@@ -16,6 +16,10 @@ protocol CharacterDetailUseCase {
     
     func excuteLikeReviewCancel(query: LikeReviewCancelQuery) async throws -> LikeReviewCancel
     
+    func excuteLikeCommentChoice(query: LikeCommentChoiceQuery) async throws -> LikeCommentChoice
+    
+    func excuteLikeCommentCancel(query: LikeCommentCancelQuery) async throws -> LikeCommentCancel
+    
     func excuteModifyReview(query: ModifyReviewQuery) async throws -> ModifyReview
     
     func excuteDeleteReview(query: DeleteReviewQuery) async throws -> DeleteReview
@@ -76,6 +80,26 @@ extension CharacterDetailUseCaseImpl {
     func excuteLikeReviewCancel(query: LikeReviewCancelQuery) async throws -> LikeReviewCancel {
         do {
             return try await characterDetailRepository.requestLikeReviewCancel(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension CharacterDetailUseCaseImpl {
+    func excuteLikeCommentChoice(query: LikeCommentChoiceQuery) async throws -> LikeCommentChoice {
+        do {
+            return try await characterDetailRepository.requestLikeCommentChoice(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension CharacterDetailUseCaseImpl {
+    func excuteLikeCommentCancel(query: LikeCommentCancelQuery) async throws -> LikeCommentCancel {
+        do {
+            return try await characterDetailRepository.requestLikeCommentCancel(query: query)
         } catch {
             throw VoteUseCaseError.excute
         }

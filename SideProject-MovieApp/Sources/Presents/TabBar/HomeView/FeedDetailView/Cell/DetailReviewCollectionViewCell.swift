@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol LikeCommentButtonDelegate: AnyObject {
+    func sendLikeCommentButtonTapEvent(_ collectionViewCell: UICollectionViewCell)
+}
+
 class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "DetailReviewCollectionViewCell"
+    
+    weak var delegate: LikeCommentButtonDelegate?
 
     let bgView: UIView = {
         let view = UIView()

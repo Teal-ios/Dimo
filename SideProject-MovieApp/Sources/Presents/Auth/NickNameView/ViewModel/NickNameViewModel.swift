@@ -15,7 +15,7 @@ class NickNameViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     private var settingUseCase: SettingUseCase
     private var nickname: String?
-    private var duplicationValid = BehaviorRelay<Bool>(value: false)
+    private var duplicationValid = PublishRelay<Bool>()
     
     struct Input {
         var textFieldInput: ControlProperty<String?>
@@ -25,7 +25,7 @@ class NickNameViewModel: ViewModelType {
     
     struct Output {
         var nicknameValid: Observable<Bool>
-        var nextButtonValid: BehaviorRelay<Bool>
+        var nextButtonValid: PublishRelay<Bool>
         
     }
     
@@ -40,7 +40,7 @@ class NickNameViewModel: ViewModelType {
         }.disposed(by: disposeBag)
         // 닉네임 중복확인
         let isValidNickname = input.textFieldInput.orEmpty.map { str in
-            str.count > 2
+            str.count > 2 || str.count == 0
         }
         
         input.textFieldInput.bind { [weak self] nickname in

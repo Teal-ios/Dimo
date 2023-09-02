@@ -184,6 +184,14 @@
 		2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */; };
 		2FC774612A99865600C36024 /* ReviewIsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774602A99865600C36024 /* ReviewIsLiked.swift */; };
 		2FC774632A99868D00C36024 /* ResponseReviewIsLikeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */; };
+		2FC774652A998B8F00C36024 /* LikeCommentChoiceQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774642A998B8F00C36024 /* LikeCommentChoiceQuery.swift */; };
+		2FC774672A998B9700C36024 /* LikeCommentCancelQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774662A998B9700C36024 /* LikeCommentCancelQuery.swift */; };
+		2FC774692A998BD100C36024 /* LikeCommentChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774682A998BD100C36024 /* LikeCommentChoice.swift */; };
+		2FC7746B2A998BD600C36024 /* LikeCommentCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7746A2A998BD600C36024 /* LikeCommentCancel.swift */; };
+		2FC7746D2A998C1500C36024 /* ResponseLikeCommentChoiceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7746C2A998C1500C36024 /* ResponseLikeCommentChoiceDTO.swift */; };
+		2FC7746F2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7746E2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift */; };
+		2FC774712A998C8F00C36024 /* RequestLikeCommentChoiceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774702A998C8F00C36024 /* RequestLikeCommentChoiceDTO.swift */; };
+		2FC774732A998C9600C36024 /* RequestLikeCommentCancelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC774722A998C9600C36024 /* RequestLikeCommentCancelDTO.swift */; };
 		2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5129C00F0B0097E696 /* AppDelegate.swift */; };
 		2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */; };
 		2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FC94E5A29C00F0C0097E696 /* Assets.xcassets */; };
@@ -788,6 +796,14 @@
 		2FC7745E2A98326100C36024 /* DateFormatterTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterTransform.swift; sourceTree = "<group>"; };
 		2FC774602A99865600C36024 /* ReviewIsLiked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewIsLiked.swift; sourceTree = "<group>"; };
 		2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseReviewIsLikeDTO.swift; sourceTree = "<group>"; };
+		2FC774642A998B8F00C36024 /* LikeCommentChoiceQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentChoiceQuery.swift; sourceTree = "<group>"; };
+		2FC774662A998B9700C36024 /* LikeCommentCancelQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentCancelQuery.swift; sourceTree = "<group>"; };
+		2FC774682A998BD100C36024 /* LikeCommentChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentChoice.swift; sourceTree = "<group>"; };
+		2FC7746A2A998BD600C36024 /* LikeCommentCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCommentCancel.swift; sourceTree = "<group>"; };
+		2FC7746C2A998C1500C36024 /* ResponseLikeCommentChoiceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeCommentChoiceDTO.swift; sourceTree = "<group>"; };
+		2FC7746E2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLikeCommentCancelDTO.swift; sourceTree = "<group>"; };
+		2FC774702A998C8F00C36024 /* RequestLikeCommentChoiceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLikeCommentChoiceDTO.swift; sourceTree = "<group>"; };
+		2FC774722A998C9600C36024 /* RequestLikeCommentCancelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLikeCommentCancelDTO.swift; sourceTree = "<group>"; };
 		2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideProject-MovieApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC94E5129C00F0B0097E696 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC94E5329C00F0B0097E696 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -3120,6 +3136,8 @@
 				2FD82D8A2A774D3500372D24 /* RequestPostReviewDTO.swift */,
 				2FD82D8E2A774D5800372D24 /* RequestLikeReviewChoiceDTO.swift */,
 				2FD82D902A774D6B00372D24 /* RequestLikeReviewCancelDTO.swift */,
+				2FC774702A998C8F00C36024 /* RequestLikeCommentChoiceDTO.swift */,
+				2FC774722A998C9600C36024 /* RequestLikeCommentCancelDTO.swift */,
 				2FD82D922A774D7E00372D24 /* RequestModifyReviewDTO.swift */,
 				2FD82D942A774D9400372D24 /* RequestDeleteReviewDTO.swift */,
 				2FD82D962A774DA500372D24 /* RequestPostCommentDTO.swift */,
@@ -3164,6 +3182,8 @@
 				2FD82DAF2A7757A700372D24 /* ResponseGetReviewDTO.swift */,
 				2FD82DB12A775A9A00372D24 /* ResponseLikeReviewChoiceDTO.swift */,
 				2FD82DB32A775AA300372D24 /* ResponseLikeReviewCancelDTO.swift */,
+				2FC7746C2A998C1500C36024 /* ResponseLikeCommentChoiceDTO.swift */,
+				2FC7746E2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift */,
 				2FD82DB52A775AB800372D24 /* ResponseModifyReviewDTO.swift */,
 				2FD82DB72A775AC100372D24 /* ResponseDeleteReviewDTO.swift */,
 				2FD82DB92A775AD700372D24 /* ResponsePostCommentDTO.swift */,
@@ -3350,6 +3370,8 @@
 				2FD82D5A2A77436900372D24 /* GetReview.swift */,
 				2FD82D5C2A77439300372D24 /* LikeReviewChoice.swift */,
 				2FD82D5E2A77439C00372D24 /* LikeReviewCancel.swift */,
+				2FC774682A998BD100C36024 /* LikeCommentChoice.swift */,
+				2FC7746A2A998BD600C36024 /* LikeCommentCancel.swift */,
 				2FD82D602A7743B800372D24 /* ModifyReview.swift */,
 				2FD82D622A7743C200372D24 /* DeleteReview.swift */,
 				2FD82D642A7743D600372D24 /* PostComment.swift */,
@@ -3383,6 +3405,8 @@
 			children = (
 				2FD82D6D2A77465F00372D24 /* PostReviewQuery.swift */,
 				2FD82D6F2A77469000372D24 /* GetReviewQuery.swift */,
+				2FC774642A998B8F00C36024 /* LikeCommentChoiceQuery.swift */,
+				2FC774662A998B9700C36024 /* LikeCommentCancelQuery.swift */,
 				2FD82D712A7746AE00372D24 /* LikeReviewChoiceQuery.swift */,
 				2FD82D732A7746B600372D24 /* LikeReviewCancelQuery.swift */,
 				2FD82D752A77470D00372D24 /* ModifyReviewQuery.swift */,
@@ -3960,6 +3984,7 @@
 				2FD82D6B2A77457C00372D24 /* CommentList.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */,
+				2FC774652A998B8F00C36024 /* LikeCommentChoiceQuery.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */,
@@ -4079,6 +4104,7 @@
 				49F1480C2A9385170045E857 /* CharacterAskView.swift in Sources */,
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
 				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
+				2FC774732A998C9600C36024 /* RequestLikeCommentCancelDTO.swift in Sources */,
 				2FE1112E2A7668170013A49E /* RandomCharacterRecommendQuery.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
@@ -4086,6 +4112,7 @@
 				2FD82DB22A775A9A00372D24 /* ResponseLikeReviewChoiceDTO.swift in Sources */,
 				2FFB4BD92A8F8D71001D1D60 /* GetReviewDetailQuery.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
+				2FC774672A998B9700C36024 /* LikeCommentCancelQuery.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
@@ -4102,6 +4129,7 @@
 				49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */,
 				2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */,
 				2FCD8C822A820438002A39B0 /* MovieDetailEvaluateView.swift in Sources */,
+				2FC774692A998BD100C36024 /* LikeCommentChoice.swift in Sources */,
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
@@ -4121,6 +4149,7 @@
 				2FBFF8222A6F4EF5007914A1 /* LikeChoice.swift in Sources */,
 				2FEC15FE2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift in Sources */,
 				2FD82D722A7746AE00372D24 /* LikeReviewChoiceQuery.swift in Sources */,
+				2FC7746F2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift in Sources */,
 				2FD82D702A77469000372D24 /* GetReviewQuery.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
@@ -4220,8 +4249,10 @@
 				2FD82DB02A7757A700372D24 /* ResponseGetReviewDTO.swift in Sources */,
 				2F53D0A32A1F399800898DCD /* EditMyInfoViewModel.swift in Sources */,
 				2FD87A552A584999003C276B /* ResponseDropDTO.swift in Sources */,
+				2FC7746B2A998BD600C36024 /* LikeCommentCancel.swift in Sources */,
 				2FD87A252A583F28003C276B /* LoginQuery.swift in Sources */,
 				2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */,
+				2FC7746D2A998C1500C36024 /* ResponseLikeCommentChoiceDTO.swift in Sources */,
 				2F6D7D092A14A4F200FA457D /* ContentMoreView.swift in Sources */,
 				2FD4D0B52A2CA54D00B9AF61 /* ErrorCommonViewController.swift in Sources */,
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
@@ -4302,6 +4333,7 @@
 				2FD82D7A2A77473600372D24 /* PostCommentQuery.swift in Sources */,
 				2FD11DC82A00DEA1006796DD /* MyMomentumViewController.swift in Sources */,
 				2FFB4BC92A8F0A4F001D1D60 /* ResponseContentInfoDTO.swift in Sources */,
+				2FC774712A998C8F00C36024 /* RequestLikeCommentChoiceDTO.swift in Sources */,
 				2FBFF83D2A6F59A4007914A1 /* ResponseGradeChoiceAndModifyDTO.swift in Sources */,
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				49F148122A9500A80045E857 /* CharacterAsk.swift in Sources */,

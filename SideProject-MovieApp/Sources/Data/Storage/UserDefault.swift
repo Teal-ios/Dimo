@@ -52,4 +52,8 @@ struct UserDefaultManager {
     @UserDefault(key: "lastNicknameChangeDate", defaultValue: nil)
     static var lastNicknameChangeDate: String?
     
+    @UserDefault(key: "push_check", defaultValue: nil)
+    static var pushCheck: Int?
+
+    
 }

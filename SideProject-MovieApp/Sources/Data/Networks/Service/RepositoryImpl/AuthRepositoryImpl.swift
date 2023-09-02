@@ -22,7 +22,7 @@ final class AuthRepositoryImpl: AuthRepository {
 
 extension AuthRepositoryImpl {
     func requestSignUp(query: SignUpQuery) async throws -> SignUp {
-        let requestDTO = RequestSignUpDTO(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti)
+        let requestDTO = RequestSignUpDTO(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti, push_check: query.push_check)
         
         let target = AuthAPIEndpoints.postSignUp(with: requestDTO)
         
