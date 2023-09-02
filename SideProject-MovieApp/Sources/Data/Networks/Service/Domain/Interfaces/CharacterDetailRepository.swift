@@ -17,6 +17,10 @@ protocol CharacterDetailRepository {
     
     func requestLikeReviewCancel(query: LikeReviewCancelQuery) async throws -> LikeReviewCancel
     
+    func requestLikeCommentChoice(query: LikeCommentChoiceQuery) async throws -> LikeCommentChoice
+    
+    func requestLikeCommentCancel(query: LikeCommentCancelQuery) async throws -> LikeCommentCancel
+    
     func requestModifyReview(query: ModifyReviewQuery) async throws -> ModifyReview
     
     func deleteReview(query: DeleteReviewQuery) async throws -> DeleteReview

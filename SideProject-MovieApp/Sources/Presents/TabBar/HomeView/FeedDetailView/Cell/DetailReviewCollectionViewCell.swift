@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol LikeCommentButtonDelegate: AnyObject {
+    func sendLikeCommentButtonTapEvent(_ collectionViewCell: UICollectionViewCell)
+}
+
 class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "DetailReviewCollectionViewCell"
+    
+    weak var delegate: LikeCommentButtonDelegate?
 
     let bgView: UIView = {
         let view = UIView()
@@ -40,7 +46,8 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         label.font = Font.caption
         label.textColor = Color.caption
         label.textAlignment = .left
-        label.text = "ISFJ"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = mbti
         return label
     }()
     

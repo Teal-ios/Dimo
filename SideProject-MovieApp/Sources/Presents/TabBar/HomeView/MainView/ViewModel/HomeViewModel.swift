@@ -14,6 +14,7 @@ final class HomeViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: HomeCoordinator?
     private var contentUseCase: ContentUseCase
+    private let myMomentumUseCase: MyMomentumUseCase
     private var category: BehaviorRelay<String>
 
     struct Input {
@@ -40,13 +41,16 @@ final class HomeViewModel: ViewModelType {
         let characterPlusButtonTapped: ControlEvent<Void>
         let cancelAlertButtonTapped: ControlEvent<Void>
         let okAlertButtonTapped: ControlEvent<Void>
+        let mbtiUpdate: PublishRelay<Void>
     }
     
     let animationData = PublishRelay<AnimationData>()
+    let mbtiUpdate = PublishRelay<Void>()
 
-    init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, category: String) {
+    init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, myMomentumUseCase: MyMomentumUseCase, category: String) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
+        self.myMomentumUseCase = myMomentumUseCase
         self.category = BehaviorRelay(value: category)
     }
     
@@ -84,7 +88,8 @@ final class HomeViewModel: ViewModelType {
                         contentSuccessData = success
                     }
                 }
-                vm.coordinator?.showContentMoreViewController(title: "ISFJ가 주인공인 영화", content: contentSuccessData)
+                let mbti = UserDefaultManager.mbti ?? "ISFJ"
+                vm.coordinator?.showContentMoreViewController(title: "\(mbti)가 주인공인 영화", content: contentSuccessData)
             }
             .disposed(by: disposeBag)
         
@@ -114,7 +119,8 @@ final class HomeViewModel: ViewModelType {
                         contentSuccessData = success
                     }
                 }
-                vm.coordinator?.showContentMoreViewController(title: "ISFJ가 관심있는 영화/애니", content: contentSuccessData)
+                let mbti = UserDefaultManager.mbti ?? "ISFJ"
+                vm.coordinator?.showContentMoreViewController(title: "\(mbti)가 관심있는 영화/애니", content: contentSuccessData)
             }
             .disposed(by: disposeBag)
         
@@ -140,11 +146,19 @@ final class HomeViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.viewDidLoad
-            .bind { [weak self] _ in
+            .withUnretained(self)
+            .bind { vm, _ in
                 print("viewDidLoad 실행")
-                guard let self else { return }
                 guard let user_id = UserDefaultManager.userId else { return }
-                self.getAnimationDataList(user_id: user_id)
+                vm.getMyProfile(user_id: user_id)
+            }
+            .disposed(by: disposeBag)
+        
+        self.mbtiUpdate
+            .withUnretained(self)
+            .bind { vm, _ in
+                guard let user_id = UserDefaultManager.userId else { return }
+                vm.getAnimationDataList(user_id: user_id)
             }
             .disposed(by: disposeBag)
         
@@ -168,7 +182,7 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData, category: self.category, characterPlusButtonTapped: input.characterPlusButtonTapped, cancelAlertButtonTapped: input.cancelAlertButtonTapped, okAlertButtonTapped: input.okAlertButtonTapped)
+        return Output(animationData: self.animationData, category: self.category, characterPlusButtonTapped: input.characterPlusButtonTapped, cancelAlertButtonTapped: input.cancelAlertButtonTapped, okAlertButtonTapped: input.okAlertButtonTapped, mbtiUpdate: self.mbtiUpdate)
     }
 }
 
@@ -178,6 +192,18 @@ extension HomeViewModel {
             let animationData = try await contentUseCase.excuteFetchAnimationData(query: GetAnimationQuery(user_id: user_id))
             print(animationData, "애니메이션 데이터 들어옴")
             self.animationData.accept(animationData)
+        }
+    }
+}
+
+extension HomeViewModel {
+    private func getMyProfile(user_id: String) {
+        Task {
+            let myProfile = try await myMomentumUseCase.excuteMyProfile(query: MyProfileQuery(user_id: user_id))
+            print(myProfile, "내 프로필 조회")
+            UserDefaultManager.mbti = myProfile.mbti
+            print("\(UserDefaultManager.mbti ?? "mbti 저장이상") mbti 홈화면")
+            self.mbtiUpdate.accept(())
         }
     }
 }

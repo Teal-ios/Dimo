@@ -49,6 +49,8 @@ final class HomeViewController: BaseViewController {
     let categoryTitle = PublishRelay<String>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     
+    let mbti = UserDefaultManager.mbti ?? "ISFJ"
+    
     override func loadView() {
         view = homeView
     }
@@ -201,8 +203,9 @@ extension HomeViewController {
             return cell
         }
         
-        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            supplementaryView.titleLabel.text = "ISFJ가 주인공인 영화"
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { [weak self] supplementaryView, elementKind, indexPath in
+            guard let self = self else { return }
+            supplementaryView.titleLabel.text = "\(self.mbti)가 주인공인 영화"
         }
         
         mbtiHeroDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -225,8 +228,9 @@ extension HomeViewController {
             return cell
         }
         
-        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            supplementaryView.titleLabel.text = "스포주의! ISFJ 캐릭터 모아보기"
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  [weak self] supplementaryView, elementKind, indexPath in
+            guard let self = self else { return }
+            supplementaryView.titleLabel.text = "스포주의! \(self.mbti) 캐릭터 모아보기"
         }
         
         characterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -249,8 +253,9 @@ extension HomeViewController {
             return cell
         }
         
-        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) {  supplementaryView, elementKind, indexPath in
-            supplementaryView.titleLabel.text = "ISFJ가 관심있는 영화/애니"
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { [weak self] supplementaryView, elementKind, indexPath in
+            guard let self = self else { return }
+            supplementaryView.titleLabel.text = "\(self.mbti)가 관심있는 영화/애니"
         }
         
         recommendDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in

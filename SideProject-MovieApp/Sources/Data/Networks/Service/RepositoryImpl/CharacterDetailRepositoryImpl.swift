@@ -73,6 +73,32 @@ extension CharacterDetailRepositoryImpl {
 }
 
 extension CharacterDetailRepositoryImpl {
+    func requestLikeCommentChoice(query: LikeCommentChoiceQuery) async throws -> LikeCommentChoice {
+        let requestDTO = RequestLikeCommentChoiceDTO(user_id: query.user_id, character_id: query.character_id, comment_id: query.comment_id)
+        let target = CharacterDetailAPIEndpoints.postLikeCommentChoice(with: requestDTO)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}
+
+extension CharacterDetailRepositoryImpl {
+    func requestLikeCommentCancel(query: LikeCommentCancelQuery) async throws -> LikeCommentCancel {
+        let requestDTO = RequestLikeCommentCancelDTO(user_id: query.user_id, character_id: query.character_id, comment_id: query.comment_id)
+        let target = CharacterDetailAPIEndpoints.postLikeCommentCancel(with: requestDTO)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}
+
+extension CharacterDetailRepositoryImpl {
     func requestModifyReview(query: ModifyReviewQuery) async throws -> ModifyReview {
         let requestDTO = RequestModifyReviewDTO(user_id: query.user_id, character_id: query.character_id, review_content: query.review_content, review_spoiler: query.review_spoiler, review_id: query.review_id)
         let target = CharacterDetailAPIEndpoints.postModifyReview(with: requestDTO)

@@ -93,10 +93,21 @@ final class JoinTermsViewModel: ViewModelType {
             totalValidSubject.onNext(totalValid)
         }.disposed(by: disposeBag)
         
-        input.acceptButtonTapped.bind { [weak self] _ in
-            guard let self = self else { return }
-            self.coordinator?.showSignupIdentificationViewController()
-        }.disposed(by: disposeBag)
+        input.acceptButtonTapped
+            .withLatestFrom(totalValidSubject)
+            .withUnretained(self)
+            .bind { vm, totalValid in
+                let pushValid = totalValid[3]
+                switch pushValid {
+                    
+                case true:
+                    UserDefaultManager.pushCheck = 1
+                case false:
+                    UserDefaultManager.pushCheck = 0
+                }
+                vm.coordinator?.showSignupIdentificationViewController()
+            }
+            .disposed(by: disposeBag)
         
         return Output(totalValid: totalValidSubject)
     }

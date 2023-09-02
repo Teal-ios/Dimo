@@ -11,10 +11,11 @@ import SnapKit
 final class CharacterMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
         label.font = Font.title1
         label.textColor = .black5
         label.numberOfLines = 2
-        label.text = "스포주의!\nISFJ 캐릭터 모아보기"
+        label.text = "스포주의!\n\(mbti) 캐릭터 모아보기"
         return label
     }()
     

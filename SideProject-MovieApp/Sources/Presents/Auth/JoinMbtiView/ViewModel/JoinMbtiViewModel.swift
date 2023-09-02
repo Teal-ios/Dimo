@@ -66,7 +66,7 @@ final class JoinMbtiViewModel: ViewModelType {
                   let agency = UserDefaultManager.agency,
                   let phoneNumber = UserDefaultManager.phoneNumber else { return }
 
-            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString)
+            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString, push_check: UserDefaultManager.pushCheck ?? 0)
             self.signUp(query: query)
         }.disposed(by: disposeBag)
         
@@ -134,7 +134,7 @@ extension JoinMbtiViewModel {
     
     private func signUp(query: SignUpQuery) {
         
-        let query = SignUpQuery(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti)
+        let query = SignUpQuery(user_id: query.user_id, password: query.password, name: query.name, sns_type: query.sns_type, agency: query.agency, phone_number: query.phone_number, nickname: query.nickname, mbti: query.mbti, push_check: UserDefaultManager.pushCheck ?? 0)
         
         print("🔥", query)
         Task {

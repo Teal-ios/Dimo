@@ -13,5 +13,5 @@ struct GetReviewDetail {
     let user_id: String
     let character_id: String
     let review_list: [ReviewList]
-    let is_liked: String?
+    let is_liked: [ReviewIsLiked]?
 }

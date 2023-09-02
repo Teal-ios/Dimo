@@ -24,6 +24,14 @@ struct CharacterDetailAPIEndpoints {
         return CharacterDetailRouter<ResponseLikeReviewCancelDTO>.likeReviewCancel(parameters: LikeReviewCancelQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, review_id: requestDTO.review_id))
     }
     
+    static func postLikeCommentChoice(with requestDTO: RequestLikeCommentChoiceDTO) -> CharacterDetailRouter<ResponseLikeCommentChoiceDTO> {
+        return CharacterDetailRouter<ResponseLikeCommentChoiceDTO>.likeCommentChoice(parameters: LikeCommentChoiceQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, comment_id: requestDTO.comment_id))
+    }
+    
+    static func postLikeCommentCancel(with requestDTO: RequestLikeCommentCancelDTO) -> CharacterDetailRouter<ResponseLikeCommentCancelDTO> {
+        return CharacterDetailRouter<ResponseLikeCommentCancelDTO>.likeCommentCancel(parameters: LikeCommentCancelQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, comment_id: requestDTO.comment_id))
+    }
+    
     static func postModifyReview(with requestDTO: RequestModifyReviewDTO) -> CharacterDetailRouter<ResponseModifyReviewDTO> {
         return CharacterDetailRouter<ResponseModifyReviewDTO>.modifyReview(parameters: ModifyReviewQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, review_content: requestDTO.review_content, review_spoiler: requestDTO.review_spoiler, review_id: requestDTO.review_id))
     }

@@ -16,4 +16,5 @@ struct SignUpQuery: Hashable {
     let phone_number: String
     let nickname: String
     let mbti: String
+    let push_check: Int
 }

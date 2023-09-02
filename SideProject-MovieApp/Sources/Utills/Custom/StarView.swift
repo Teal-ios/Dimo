@@ -13,7 +13,8 @@ class StarView: BaseView {
         let label = UILabel()
         label.font = Font.subtitle3
         label.textColor = .black5
-        label.text = "ISFJ"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = mbti
         return label
     }()
     

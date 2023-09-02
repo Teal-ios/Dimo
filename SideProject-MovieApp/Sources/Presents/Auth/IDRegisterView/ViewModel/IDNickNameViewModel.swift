@@ -15,7 +15,7 @@ class IDNickNameViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     private var authUseCase: AuthUseCase
     var id: String? = ""
-    var duplicationValid = BehaviorRelay<Bool>(value: false)
+    var duplicationValid = PublishRelay<Bool>()
 
     struct Input {
         var textFieldInput: ControlProperty<String?>
@@ -24,7 +24,7 @@ class IDNickNameViewModel: ViewModelType {
     }
     struct Output {
         var idValid: Observable<Bool>
-        var nextButtonValid: BehaviorRelay<Bool>
+        var nextButtonValid: PublishRelay<Bool>
     }
     init(coordinator: AuthCoordinator, authUseCase: AuthUseCase) {
         self.coordinator = coordinator

@@ -40,7 +40,8 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
         label.font = Font.caption
         label.textColor = Color.caption
         label.textAlignment = .left
-        label.text = "ISFJ"
+        let mbti = UserDefaultManager.mbti ?? "ISFJ"
+        label.text = "\(mbti)"
         return label
     }()
     
@@ -161,9 +162,9 @@ extension FeedReviewCollectionViewCell {
         } else {
             spoilerContainView.isHidden = true
         }
-        nameNameLabel.text = item.user_id
+        nameNameLabel.text = item.nickname
         reviewLabel.text = item.review_content
         mbtiLabel.text = item.mbti
-        likeAndReviewAndInquireLabel.text = "좋아요 \(item.review_hits)  |  댓글 \(item.comment_count ?? 0)  |  조회 \( item.comment_content ?? 0)"
+        likeAndReviewAndInquireLabel.text = "좋아요 \(item.review_like)  |  댓글 \(item.comment_count ?? 0)  |  조회 \( item.review_hits)"
     }
 }

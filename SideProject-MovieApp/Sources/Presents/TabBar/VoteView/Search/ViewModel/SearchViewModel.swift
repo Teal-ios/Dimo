@@ -14,7 +14,7 @@ final class SearchViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: VoteCoordinator?
     private var voteUseCase: VoteUseCase
-    private var current: SearchCategoryCase = .character
+    private var current: SearchCategoryCase = .work
     private var currentCategory = PublishRelay<SearchCategoryCase>()
     
     init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase) {

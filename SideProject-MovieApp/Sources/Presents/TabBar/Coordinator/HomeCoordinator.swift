@@ -38,7 +38,9 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
         let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = HomeViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, category: category)
+        let myMomentumRepository = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
+        let myMomentumUseCase = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepository)
+        let viewModel = HomeViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, myMomentumUseCase: myMomentumUseCase, category: category)
         let vc = HomeViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }

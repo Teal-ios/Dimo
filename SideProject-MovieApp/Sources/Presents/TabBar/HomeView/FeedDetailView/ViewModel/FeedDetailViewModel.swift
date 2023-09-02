@@ -22,6 +22,8 @@ final class FeedDetailViewModel: ViewModelType {
         let commentText: ControlProperty<String?>
         let viewDidLoad: PublishRelay<Void>
         let commentRegisterButtonTap: ControlEvent<Void>
+        let likeButtonTapped: ControlEvent<Void>
+        let commentCellSelected: PublishRelay<CommentList>
     }
     
     struct Output{
@@ -31,6 +33,7 @@ final class FeedDetailViewModel: ViewModelType {
         let commentList: PublishRelay<[CommentList?]>
         let postCommentSuccess: PublishRelay<PostComment>
         let reviewDetail: PublishRelay<GetReviewDetail>
+        let reviewLikeValid: BehaviorRelay<Bool>
     }
     
     init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList) {
@@ -45,6 +48,7 @@ final class FeedDetailViewModel: ViewModelType {
     let textValid = BehaviorRelay(value: false)
     let commentText = BehaviorRelay(value: "")
     let getReviewDetail = PublishRelay<GetReviewDetail>()
+    let reviewLikeValid = BehaviorRelay(value: false)
     
     func transform(input: Input) -> Output {
         //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
@@ -126,7 +130,29 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail)
+        input.likeButtonTapped
+            .withLatestFrom(self.getReviewDetail)
+            .withUnretained(self)
+            .bind { vm, reviewDetail in
+                let reviewLikeValid = vm.reviewLikeValid.value
+                switch reviewLikeValid {
+
+                case true:
+                    vm.postReviewLikeCancel(user_id: reviewDetail.user_id, character_id: reviewDetail.review_list[0].character_id, review_id: reviewDetail.review_list[0].review_id)
+                case false:
+                    vm.postReviewLike(user_id: reviewDetail.user_id, character_id: reviewDetail.review_list[0].character_id, review_id: reviewDetail.review_list[0].review_id)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.getReviewDetail
+            .withUnretained(self)
+            .bind { vm, reviewDetail in
+                reviewDetail.is_liked == nil ? vm.reviewLikeValid.accept(false) : vm.reviewLikeValid.accept(true)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid)
     }
 }
 
@@ -158,6 +184,28 @@ extension FeedDetailViewModel {
             let getReviewDetail = try await characterDetailUseCase.excuteGetReviewDetail(query: query)
             print(getReviewDetail,"상세 조회 성공")
             self.getReviewDetail.accept(getReviewDetail)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func postReviewLike(user_id: String, character_id: Int, review_id: Int) {
+        Task {
+            let query = LikeReviewChoiceQuery(user_id: user_id, character_id: character_id, review_id: review_id)
+            let reviewLike = try await characterDetailUseCase.excuteLikeReviewChoice(query: query)
+            print(reviewLike, "리뷰 좋아요 누름")
+            self.reviewLikeValid.accept(true)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func postReviewLikeCancel(user_id: String, character_id: Int, review_id: Int) {
+        Task {
+            let query = LikeReviewCancelQuery(user_id: user_id, character_id: character_id, review_id: review_id)
+            let reviewLike = try await characterDetailUseCase.excuteLikeReviewCancel(query: query)
+            print(reviewLike, "리뷰 좋아요 취소 누름")
+            self.reviewLikeValid.accept(false)
         }
     }
 }
