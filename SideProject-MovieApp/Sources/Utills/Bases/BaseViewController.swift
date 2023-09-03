@@ -114,6 +114,9 @@ class BaseViewController: UIViewController {
 //        navigationController?.isNavigationBarHidden = true
 //        navigationController?.interactivePopGestureRecognizer?.delegate = nil   /// navigation bar를 hidden 처리 하더라도 swipe Gesture는 작동하도록!!
 //    }
+    deinit {
+        print("ViewController: \(self.className)")
+    }
 }
 
 extension BaseViewController {

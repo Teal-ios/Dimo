@@ -82,6 +82,7 @@ class FeedDetailViewController: BaseViewController {
         
         output.commentList
             .withUnretained(self)
+            .observe(on: MainScheduler.instance)
             .bind { vc, commentList in
                 if commentList != [] {
                     var commentSnapshot = NSDiffableDataSourceSnapshot<Int, CommentList>()
@@ -92,8 +93,8 @@ class FeedDetailViewController: BaseViewController {
                         sectionArr.append(comment)
                     }
                     commentSnapshot.appendItems(sectionArr, toSection: 0)
-                    self.dataSource.apply(commentSnapshot)
-                    self.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
+                    vc.dataSource.apply(commentSnapshot)
+                    vc.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
                 }
             }
             .disposed(by: disposeBag)
@@ -145,6 +146,11 @@ class FeedDetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.disposeBag = DisposeBag()
+    }
 }
 
 extension FeedDetailViewController {
@@ -168,26 +174,21 @@ extension FeedDetailViewController {
     func setDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<DetailReviewCollectionViewCell, CommentList> {  cell, indexPath, itemIdentifier in
             cell.configureCommentAttribute(with: itemIdentifier)
-            cell.delegate = self
+            cell.likeButton.rx
+                .tap
+                .debug()
+                .withUnretained(self)
+                .bind { vc, _ in
+                    vc.commentCellSelected.accept(itemIdentifier)
+                    cell.disposeBag = DisposeBag()
+                }
+                .disposed(by: cell.disposeBag)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: feedDetailView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-    }
-}
-
-extension FeedDetailViewController: LikeCommentButtonDelegate {
-    func sendLikeCommentButtonTapEvent(_ collectionViewCell: UICollectionViewCell) {
-        if let cell = collectionViewCell as? DetailReviewCollectionViewCell {
-            cell.likeButton.rx.tap
-                .bind { [weak self] _ in
-                    guard let self = self else { return }
-                    print("버튼클릭")
-                }
-                .disposed(by: disposeBag)
-        }
     }
 }
 

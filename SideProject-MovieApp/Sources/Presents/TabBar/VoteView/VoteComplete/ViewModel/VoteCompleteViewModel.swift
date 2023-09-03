@@ -27,6 +27,7 @@ final class VoteCompleteViewModel: ViewModelType {
     struct Input{
         let viewDidLoad: PublishRelay<Void>
         let rightNavigationXButtonTapped: PublishRelay<Void>
+        let characterSelectButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -55,6 +56,14 @@ final class VoteCompleteViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, _ in
                 vm.coordinator?.start()
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterSelectButtonTapped
+            .withLatestFrom(self.characterInfo)
+            .bind {[weak self] characterInfo in
+                guard let self = self else { return }
+                self.coordinator?.showTabmanCoordinator(character: Characters(character_id: characterInfo.character_id, character_name: characterInfo.character_name, character_img: characterInfo.character_img, character_mbti: characterInfo.character_mbti))
             }
             .disposed(by: disposeBag)
         

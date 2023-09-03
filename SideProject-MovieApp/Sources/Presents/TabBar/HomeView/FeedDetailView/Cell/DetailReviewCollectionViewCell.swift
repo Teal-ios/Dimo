@@ -7,16 +7,20 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
-protocol LikeCommentButtonDelegate: AnyObject {
-    func sendLikeCommentButtonTapEvent(_ collectionViewCell: UICollectionViewCell)
+protocol CommentLikeButtonTapDelegate: AnyObject {
+    func commentLikeButtonTapped(_ collectionViewCell: BaseCollectionViewCell)
 }
 
-class DetailReviewCollectionViewCell: BaseCollectionViewCell {
+final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
+    
+    var disposeBag = DisposeBag()
+        
     static let identifier = "DetailReviewCollectionViewCell"
     
-    weak var delegate: LikeCommentButtonDelegate?
-
+    weak var delegate: CommentLikeButtonTapDelegate?
+    
     let bgView: UIView = {
         let view = UIView()
         view.backgroundColor = .black90
@@ -135,7 +139,9 @@ class DetailReviewCollectionViewCell: BaseCollectionViewCell {
 extension DetailReviewCollectionViewCell {
     func configureCommentAttribute(with item: CommentList) {
         reviewLabel.text = item.comment_content
-        characterNameLabel.text = item.user_id
+        characterNameLabel.text = item.nickname
+        likeCountLabel.text = "\(item.comment_like)"
+        
         if item.is_liked == nil {
             self.updateLikeImage(is_like: false)
         } else {

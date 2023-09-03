@@ -15,6 +15,7 @@ final class VoteCompleteView: BaseView {
         view.addSubview(characterImageView)
         view.addSubview(characterNicknameLabel)
         view.addSubview(subtitleLabel)
+        view.addSubview(characterSelectButton)
         view.addSubview(voteChartContainView)
         view.addSubview(mbtiChartStackView)
         view.addSubview(manyPersonThinkingMbtiContainView)
@@ -60,6 +61,11 @@ final class VoteCompleteView: BaseView {
         label.textAlignment = .center
         label.text = "더 퍼스트 슬램덩크"
         return label
+    }()
+    
+    let characterSelectButton: UIButton = {
+        let button = UIButton()
+        return button
     }()
     
     let voteChartContainView: UIView = {
@@ -189,6 +195,11 @@ final class VoteCompleteView: BaseView {
             make.centerX.equalTo(characterImageView)
             make.height.equalTo(16)
             make.horizontalEdges.equalTo(scrollView).inset(16)
+        }
+        
+        characterSelectButton.snp.makeConstraints { make in
+            make.horizontalEdges.top.equalTo(characterImageView)
+            make.bottom.equalTo(subtitleLabel.snp.bottom)
         }
         
         voteChartContainView.snp.makeConstraints { make in
