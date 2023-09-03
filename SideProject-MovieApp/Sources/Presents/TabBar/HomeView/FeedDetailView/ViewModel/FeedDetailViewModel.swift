@@ -34,6 +34,7 @@ final class FeedDetailViewModel: ViewModelType {
         let postCommentSuccess: PublishRelay<PostComment>
         let reviewDetail: PublishRelay<GetReviewDetail>
         let reviewLikeValid: BehaviorRelay<Bool>
+        let commentLikeValid: BehaviorRelay<Bool>
     }
     
     init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList) {
@@ -49,6 +50,7 @@ final class FeedDetailViewModel: ViewModelType {
     let commentText = BehaviorRelay(value: "")
     let getReviewDetail = PublishRelay<GetReviewDetail>()
     let reviewLikeValid = BehaviorRelay(value: false)
+    let commentLikeValid = BehaviorRelay(value: false)
     
     func transform(input: Input) -> Output {
         //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
@@ -152,7 +154,27 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid)
+        input.commentCellSelected
+            .withUnretained(self)
+            .bind { vm, commentList in
+                guard let user_id = UserDefaultManager.userId else { return }
+                if commentList.is_liked == nil {
+                    vm.postCommentLike(user_id: user_id, character_id: commentList.character_id, comment_id: commentList.comment_id)
+                } else {
+                    vm.postCommentLikeCancel(user_id: user_id, character_id: commentList.character_id, comment_id: commentList.comment_id)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.commentLikeValid
+            .withLatestFrom(input.commentCellSelected)
+            .bind { [weak self] comment in
+                guard let self = self else { return }
+                self.getCommentList(user_id: comment.user_id, review_id: comment.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid)
     }
 }
 
@@ -206,6 +228,28 @@ extension FeedDetailViewModel {
             let reviewLike = try await characterDetailUseCase.excuteLikeReviewCancel(query: query)
             print(reviewLike, "리뷰 좋아요 취소 누름")
             self.reviewLikeValid.accept(false)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func postCommentLike(user_id: String, character_id: Int, comment_id: Int) {
+        Task {
+            let query = LikeCommentChoiceQuery(user_id: user_id, character_id: character_id, comment_id: comment_id)
+            let commentLike = try await characterDetailUseCase.excuteLikeCommentChoice(query: query)
+            print(commentLike, "댓글 좋아요 누름")
+            self.commentLikeValid.accept(true)
+        }
+    }
+}
+
+extension FeedDetailViewModel {
+    private func postCommentLikeCancel(user_id: String, character_id: Int, comment_id: Int) {
+        Task {
+            let query = LikeCommentCancelQuery(user_id: user_id, character_id: character_id, comment_id: comment_id)
+            let commentLikeCancel = try await characterDetailUseCase.excuteLikeCommentCancel(query: query)
+            print(commentLikeCancel, "댓글 좋아요 취소 누름")
+            self.commentLikeValid.accept(false)
         }
     }
 }
