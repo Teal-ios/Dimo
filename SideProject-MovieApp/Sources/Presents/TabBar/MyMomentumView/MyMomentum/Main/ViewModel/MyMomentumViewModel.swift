@@ -75,21 +75,6 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        //        input.likeContentMoreButtonTap
-        //            .withUnretained(self)
-        //            .debug()
-        //            .flatMap({ void -> BehaviorRelay<LikeAnimationContent?> in
-        //                return self.likeAnimationContent
-        //            })
-        //            .observe(on: MainScheduler.instance)
-        //            .bind { [weak self] likeAnimation in
-        //                guard let self else { return }
-        //                guard let likeAnimation else { return }
-        //                self.coordinator?.showMyContentMoreViewController(likeContentList: likeAnimation.like_content_info)
-        //            }
-        //            .disposed(by: disposeBag)
-        
-        
         input.likeContentMoreButtonTap
             .debug()
             .withUnretained(self)
@@ -98,6 +83,14 @@ final class MyMomentumViewModel: ViewModelType {
                 guard let self else { return }
                 guard let likeAnimation else { return }
                 self.coordinator?.showMyContentMoreViewController(likeContentList: likeAnimation.like_content_info)
+            }
+            .disposed(by: disposeBag)
+        
+        input.digFinishMoreButtonTap
+            .withLatestFrom(self.myVotedCharacterList)
+            .bind { [weak self] votedCharacterList in
+                guard let self = self else { return }
+                self.coordinator?.showMyCharacterMoreViewController(votedCharacterList: votedCharacterList.voted_character)
             }
             .disposed(by: disposeBag)
         

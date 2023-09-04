@@ -33,6 +33,7 @@ final class RecommendViewModel: ViewModelType {
         let popularButtonTap: ControlEvent<Void>
         let categoryButtonTap: ControlEvent<Void>
         let characterCellTapped: PublishRelay<CharacterInfo>
+        let searchNavigationButtonTapped: PublishRelay<Void>
     }
     
     struct Output{
@@ -87,6 +88,13 @@ final class RecommendViewModel: ViewModelType {
                 } else {
                     vc.coordinator?.showDigViewController(characterInfo: characterInfo)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.searchNavigationButtonTapped
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.showSearchViewController()
             }
             .disposed(by: disposeBag)
         

@@ -48,4 +48,10 @@ final class MyMomentumCoordinator: Coordinator {
         let vc = MyContentMoreViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showMyCharacterMoreViewController(votedCharacterList: [MyVotedCharacter?]) {
+        let viewModel = MyCharacterMoreViewModel(coordinator: self, characters: votedCharacterList)
+        let vc = MyCharacterMoreViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

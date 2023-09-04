@@ -18,11 +18,6 @@ final class RecommendViewController: BaseViewController {
         view = selfView
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("RecommendViewController: fatal error")
-        
-    }
-    
     init(viewModel: RecommendViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -30,7 +25,7 @@ final class RecommendViewController: BaseViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, CharacterInfo>!
     
-    let searchNavigationButtonTap = PublishSubject<Void>()
+    let searchNavigationButtonTap = PublishRelay<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
     let characterCellTapped = PublishRelay<CharacterInfo>()
     
@@ -43,7 +38,7 @@ final class RecommendViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped)
+        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped, searchNavigationButtonTapped: self.searchNavigationButtonTap)
         
         let output = self.viewModel.transform(input: input)
         output.randomCharacterRecommend
@@ -151,6 +146,6 @@ extension RecommendViewController {
     
     @objc
     func searchButtonClicked() {
-        self.searchNavigationButtonTap.onNext(())
+        self.searchNavigationButtonTap.accept(())
     }
 }
