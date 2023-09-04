@@ -492,6 +492,9 @@
 		2FEE5DB72AA569F30090B406 /* MyCommentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DB62AA569F30090B406 /* MyCommentMoreView.swift */; };
 		2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DB82AA569FB0090B406 /* MyCommentMoreViewController.swift */; };
 		2FEE5DBB2AA56A410090B406 /* MyCommentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */; };
+		2FEE5DC02AA56E570090B406 /* MovieCharacterMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DBF2AA56E570090B406 /* MovieCharacterMoreViewModel.swift */; };
+		2FEE5DC22AA56E630090B406 /* MovieCharacterMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */; };
+		2FEE5DC42AA56E6C0090B406 /* MovieCharacterMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */; };
 		2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */; };
 		2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */; };
 		2FFB4BBF2A8F0519001D1D60 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */; };
@@ -1109,6 +1112,9 @@
 		2FEE5DB62AA569F30090B406 /* MyCommentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreView.swift; sourceTree = "<group>"; };
 		2FEE5DB82AA569FB0090B406 /* MyCommentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreViewController.swift; sourceTree = "<group>"; };
 		2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreViewModel.swift; sourceTree = "<group>"; };
+		2FEE5DBF2AA56E570090B406 /* MovieCharacterMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreViewModel.swift; sourceTree = "<group>"; };
+		2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreView.swift; sourceTree = "<group>"; };
+		2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreViewController.swift; sourceTree = "<group>"; };
 		2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireVoteResult.swift; sourceTree = "<group>"; };
 		2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireCharacterAnalyze.swift; sourceTree = "<group>"; };
 		2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
@@ -3078,6 +3084,7 @@
 				2F6D7D0F2A14B27000FA457D /* MovieDetail */,
 				2FCD8C7E2A8203E7002A39B0 /* MovieDetailEvaluate */,
 				2F149DCB2A4994EF0098AF64 /* MovieDetailRank */,
+				2FEE5DBC2AA56E190090B406 /* MovieCharacterMore */,
 				2F6D7D052A14A4C200FA457D /* ContentMoreView */,
 				2FDD9E622A121E9D00A41FF7 /* FeedDetailView */,
 				2FDD74602A10AAE600A75AB9 /* AnalyzeView */,
@@ -3568,6 +3575,32 @@
 				2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEE5DBC2AA56E190090B406 /* MovieCharacterMore */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DBD2AA56E2F0090B406 /* ViewModel */,
+				2FEE5DBE2AA56E310090B406 /* View */,
+			);
+			path = MovieCharacterMore;
+			sourceTree = "<group>";
+		};
+		2FEE5DBD2AA56E2F0090B406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DBF2AA56E570090B406 /* MovieCharacterMoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEE5DBE2AA56E310090B406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */,
+				2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4926773D2A5935430003C882 /* Storage */ = {
@@ -4069,6 +4102,7 @@
 				2FBFF8262A6F4F3B007914A1 /* GradeChoiceAndModify.swift in Sources */,
 				2FDFB18D2A0DD80F00732788 /* SendMessageViewModel.swift in Sources */,
 				2FC4BB0B2A133B450070B67A /* CategoryModel.swift in Sources */,
+				2FEE5DC22AA56E630090B406 /* MovieCharacterMoreView.swift in Sources */,
 				4932D77F2A4EBBF700D4E68F /* ResponseNicknameChangeDateDTO.swift in Sources */,
 				2FBFF82A2A6F54D6007914A1 /* LikeChoiceQuery.swift in Sources */,
 				2F53D0A52A1F399F00898DCD /* EditMyInfoView.swift in Sources */,
@@ -4214,6 +4248,7 @@
 				2FFB4BD92A8F8D71001D1D60 /* GetReviewDetailQuery.swift in Sources */,
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FC774672A998B9700C36024 /* LikeCommentCancelQuery.swift in Sources */,
+				2FEE5DC42AA56E6C0090B406 /* MovieCharacterMoreViewController.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
 				2FEE5DAE2AA562930090B406 /* MyReviewMoreView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
@@ -4550,6 +4585,7 @@
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
 				2FD82D612A7743B800372D24 /* ModifyReview.swift in Sources */,
 				2FD82DD22A777DA200372D24 /* VoteRepositoyImpl.swift in Sources */,
+				2FEE5DC02AA56E570090B406 /* MovieCharacterMoreViewModel.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */,
 				2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */,

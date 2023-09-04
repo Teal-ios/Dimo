@@ -25,12 +25,18 @@ final class MovieDetailView: BaseView {
         let view = UIScrollView()
         view.addSubview(headerView)
         view.addSubview(characterCollectionView)
+        view.addSubview(characterMoreButton)
         view.addSubview(detailLabel)
         view.addSubview(unfoldButton)
         view.addSubview(arrowBottomLabel)
         view.addSubview(unfoldStackView)
         view.addSubview(unfoldExplainStackView)
         return view
+    }()
+    
+    let characterMoreButton: UIButton = {
+        let button = UIButton()
+        return button
     }()
     
     let detailLabel: UILabel = {
@@ -216,6 +222,12 @@ final class MovieDetailView: BaseView {
             make.width.equalTo(scrollView.snp.width)
             make.centerX.equalToSuperview()
             make.height.equalTo(240)
+        }
+        
+        characterMoreButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(characterCollectionView)
+            make.height.equalTo(40)
+            make.width.equalTo(52)
         }
         
         detailLabel.snp.makeConstraints { make in
