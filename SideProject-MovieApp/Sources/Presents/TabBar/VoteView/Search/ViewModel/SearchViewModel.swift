@@ -123,7 +123,7 @@ final class SearchViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, result in
                 let characterInfoDTO = CharacterInfo(character_id: result.character_id, content_id: result.anime_id, anime_id: result.anime_id, character_img: result.character_img, character_name: result.character_name, character_mbti: result.character_mbti, title: result.title, is_vote: result.is_vote)
-                vm.coordinator?.showDigViewController(characterInfo: characterInfoDTO)
+                vm.coordinator?.showVoteFlowCoordinator(characterInfo: characterInfoDTO, isVote: false)
             }
             .disposed(by: disposeBag)
         

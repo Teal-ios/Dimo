@@ -71,6 +71,7 @@ final class VoteViewController: BaseViewController {
                 vc.dataSource.apply(snapshot)
             }
             .disposed(by: disposeBag)
+        
     }
 }
 

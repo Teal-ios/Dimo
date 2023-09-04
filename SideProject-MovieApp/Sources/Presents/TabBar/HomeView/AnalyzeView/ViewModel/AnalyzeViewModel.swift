@@ -24,7 +24,8 @@ final class AnalyzeViewModel: ViewModelType {
     
     struct Input{
         let viewDidLoad: PublishRelay<Void>
-
+        let revoteButtonTapped: ControlEvent<Void>
+        let voteButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
