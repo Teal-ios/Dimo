@@ -1,21 +1,19 @@
 //
-//  CharacterMoreView.swift
+//  MyCommentMoreView.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/06/23.
+//  Created by 이병현 on 2023/09/04.
 //
 
 import UIKit
 import SnapKit
 
-final class CharacterMoreView: BaseView {
+final class MyCommentMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
-        let mbti = UserDefaultManager.mbti ?? "ISFJ"
         label.font = Font.title1
         label.textColor = .black5
-        label.numberOfLines = 2
-        label.text = "스포주의!\n\(mbti) 캐릭터 모아보기"
+        label.text = "내가 쓴 댓글"
         return label
     }()
     
@@ -32,7 +30,7 @@ final class CharacterMoreView: BaseView {
         titleLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(74)
+            make.height.equalTo(45)
         }
         
         collectionView.snp.makeConstraints { [weak self] make in
@@ -51,29 +49,30 @@ final class CharacterMoreView: BaseView {
         let collectionViewLayout = UICollectionViewCompositionalLayout(
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
-                    return self.characterLayout()
+                    return self.commentLayout()
                 },
             configuration: configuration)
         return collectionViewLayout
     }
     
-    private func characterLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(itemRatio),
-            heightDimension: .fractionalHeight(itemRatio)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .absolute(66)
-        )
-        
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
+    private func commentLayout() -> NSCollectionLayoutSection {
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(itemRatio),
+                heightDimension: .fractionalHeight(itemRatio)
+
+            )
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0)
+            
+            let groupSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(groupRatio),
+                heightDimension: .absolute(160)
+            )
+            
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
     }
 }

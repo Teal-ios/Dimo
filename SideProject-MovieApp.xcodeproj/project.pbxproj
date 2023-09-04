@@ -483,6 +483,15 @@
 		2FEC15FA2A78B48A009CF59D /* ResponseMyCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15F92A78B48A009CF59D /* ResponseMyCommentDTO.swift */; };
 		2FEC15FC2A78B5CA009CF59D /* ResponseGetMyReviewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15FB2A78B5CA009CF59D /* ResponseGetMyReviewDTO.swift */; };
 		2FEC15FE2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC15FD2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift */; };
+		2FEE5DA32AA559880090B406 /* MyCharacterMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DA22AA559880090B406 /* MyCharacterMoreView.swift */; };
+		2FEE5DA52AA559E30090B406 /* MyCharacterMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DA42AA559E30090B406 /* MyCharacterMoreViewController.swift */; };
+		2FEE5DA92AA55A350090B406 /* MyCharacterMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DA82AA55A350090B406 /* MyCharacterMoreViewModel.swift */; };
+		2FEE5DAE2AA562930090B406 /* MyReviewMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DAD2AA562930090B406 /* MyReviewMoreView.swift */; };
+		2FEE5DB02AA562AA0090B406 /* MyReviewMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DAF2AA562AA0090B406 /* MyReviewMoreViewController.swift */; };
+		2FEE5DB22AA563E60090B406 /* MyReviewMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DB12AA563E60090B406 /* MyReviewMoreViewModel.swift */; };
+		2FEE5DB72AA569F30090B406 /* MyCommentMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DB62AA569F30090B406 /* MyCommentMoreView.swift */; };
+		2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DB82AA569FB0090B406 /* MyCommentMoreViewController.swift */; };
+		2FEE5DBB2AA56A410090B406 /* MyCommentMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */; };
 		2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */; };
 		2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */; };
 		2FFB4BBF2A8F0519001D1D60 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */; };
@@ -1091,6 +1100,15 @@
 		2FEC15F92A78B48A009CF59D /* ResponseMyCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMyCommentDTO.swift; sourceTree = "<group>"; };
 		2FEC15FB2A78B5CA009CF59D /* ResponseGetMyReviewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetMyReviewDTO.swift; sourceTree = "<group>"; };
 		2FEC15FD2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetMyCommentDTO.swift; sourceTree = "<group>"; };
+		2FEE5DA22AA559880090B406 /* MyCharacterMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharacterMoreView.swift; sourceTree = "<group>"; };
+		2FEE5DA42AA559E30090B406 /* MyCharacterMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharacterMoreViewController.swift; sourceTree = "<group>"; };
+		2FEE5DA82AA55A350090B406 /* MyCharacterMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharacterMoreViewModel.swift; sourceTree = "<group>"; };
+		2FEE5DAD2AA562930090B406 /* MyReviewMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewMoreView.swift; sourceTree = "<group>"; };
+		2FEE5DAF2AA562AA0090B406 /* MyReviewMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewMoreViewController.swift; sourceTree = "<group>"; };
+		2FEE5DB12AA563E60090B406 /* MyReviewMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewMoreViewModel.swift; sourceTree = "<group>"; };
+		2FEE5DB62AA569F30090B406 /* MyCommentMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreView.swift; sourceTree = "<group>"; };
+		2FEE5DB82AA569FB0090B406 /* MyCommentMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreViewController.swift; sourceTree = "<group>"; };
+		2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentMoreViewModel.swift; sourceTree = "<group>"; };
 		2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireVoteResult.swift; sourceTree = "<group>"; };
 		2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireCharacterAnalyze.swift; sourceTree = "<group>"; };
 		2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
@@ -2711,6 +2729,9 @@
 		2FD11DC62A00DE58006796DD /* MyMomentumView */ = {
 			isa = PBXGroup;
 			children = (
+				2FEE5DAA2AA562510090B406 /* MyCommentMore */,
+				2FEE5DA12AA558C40090B406 /* MyReviewMore */,
+				2FEE5DA02AA558A80090B406 /* MyCharacterMore */,
 				2FBF64AB2A71FE0B0036401F /* MyContentMore */,
 				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
 				2FD4D9292A6CDB2C00E7972B /* MyMomentum */,
@@ -3471,6 +3492,84 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2FEE5DA02AA558A80090B406 /* MyCharacterMore */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DA72AA559EE0090B406 /* ViewModel */,
+				2FEE5DA62AA559E60090B406 /* View */,
+			);
+			path = MyCharacterMore;
+			sourceTree = "<group>";
+		};
+		2FEE5DA12AA558C40090B406 /* MyReviewMore */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DAC2AA562860090B406 /* ViewModel */,
+				2FEE5DAB2AA562830090B406 /* View */,
+			);
+			path = MyReviewMore;
+			sourceTree = "<group>";
+		};
+		2FEE5DA62AA559E60090B406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DA22AA559880090B406 /* MyCharacterMoreView.swift */,
+				2FEE5DA42AA559E30090B406 /* MyCharacterMoreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEE5DA72AA559EE0090B406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DA82AA55A350090B406 /* MyCharacterMoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEE5DAA2AA562510090B406 /* MyCommentMore */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DB52AA569EA0090B406 /* ViewModel */,
+				2FEE5DB42AA569E90090B406 /* View */,
+			);
+			path = MyCommentMore;
+			sourceTree = "<group>";
+		};
+		2FEE5DAB2AA562830090B406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DAD2AA562930090B406 /* MyReviewMoreView.swift */,
+				2FEE5DAF2AA562AA0090B406 /* MyReviewMoreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEE5DAC2AA562860090B406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DB12AA563E60090B406 /* MyReviewMoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FEE5DB42AA569E90090B406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DB62AA569F30090B406 /* MyCommentMoreView.swift */,
+				2FEE5DB82AA569FB0090B406 /* MyCommentMoreViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEE5DB52AA569EA0090B406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DBA2AA56A410090B406 /* MyCommentMoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4926773D2A5935430003C882 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -4003,6 +4102,7 @@
 				49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */,
 				2FD87A452A5846D0003C276B /* RequestGoogleLoginDTO.swift in Sources */,
 				2FD82D5F2A77439C00372D24 /* LikeReviewCancel.swift in Sources */,
+				2FEE5DA52AA559E30090B406 /* MyCharacterMoreViewController.swift in Sources */,
 				93C48B5029D2ADCC00644F6A /* TelecomButton.swift in Sources */,
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
 				2FC367532A7F943F00635CBB /* LengthChartView.swift in Sources */,
@@ -4087,6 +4187,7 @@
 				2FDD9E6F2A12235900A41FF7 /* FeedDetailModel.swift in Sources */,
 				2FD87A412A584627003C276B /* RequestLoginDTO.swift in Sources */,
 				2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */,
+				2FEE5DBB2AA56A410090B406 /* MyCommentMoreViewModel.swift in Sources */,
 				2FD4D9022A6BB17E00E7972B /* MyMomentumAPIEndpoints.swift in Sources */,
 				2FCB16822A7DEB6A00AE48A8 /* VoteCompleteView.swift in Sources */,
 				2FD82D782A77471E00372D24 /* DeleteReviewQuery.swift in Sources */,
@@ -4114,6 +4215,7 @@
 				2F979F372A0D016F00A1CD53 /* FindingPWViewModel.swift in Sources */,
 				2FC774672A998B9700C36024 /* LikeCommentCancelQuery.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
+				2FEE5DAE2AA562930090B406 /* MyReviewMoreView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
 				2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */,
@@ -4210,6 +4312,7 @@
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
 				2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */,
 				2F437C212A4C57AA000B7A61 /* FeedDetailMoreMyView.swift in Sources */,
+				2FEE5DB72AA569F30090B406 /* MyCommentMoreView.swift in Sources */,
 				2F6D7D072A14A4EB00FA457D /* ContentMoreViewController.swift in Sources */,
 				2FD4D9102A6CC3C800E7972B /* LikeAnimationContentQuery.swift in Sources */,
 				497454E22A3A1D3A0043D67E /* NetworkService.swift in Sources */,
@@ -4264,6 +4367,7 @@
 				2FBFF8282A6F4F60007914A1 /* LikeContentCheck.swift in Sources */,
 				2FC94EA529C013EA0097E696 /* AppCoordinator.swift in Sources */,
 				2FCD8C8A2A82343B002A39B0 /* GetReviewDetail.swift in Sources */,
+				2FEE5DB02AA562AA0090B406 /* MyReviewMoreViewController.swift in Sources */,
 				2FFB4BC32A8F0759001D1D60 /* Top3Mbti.swift in Sources */,
 				2F0328B82A91EE4000639BAC /* GetGradeEvaluateResult.swift in Sources */,
 				93C48BB429D929B100644F6A /* PasswordViewModel.swift in Sources */,
@@ -4306,6 +4410,7 @@
 				2FCD8C9F2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
+				2FEE5DB22AA563E60090B406 /* MyReviewMoreViewModel.swift in Sources */,
 				2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */,
 				2FD82D5D2A77439300372D24 /* LikeReviewChoice.swift in Sources */,
 				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
@@ -4397,6 +4502,8 @@
 				493C5C752A5D9DF300AF1F63 /* ResponsePasswordChangeDTO.swift in Sources */,
 				2FD0734F2A237EBF003F7E56 /* RequestNicknameDuplicationDTO.swift in Sources */,
 				2F6D7D172A14B2A100FA457D /* MovieDetailViewModel.swift in Sources */,
+				2FEE5DA92AA55A350090B406 /* MyCharacterMoreViewModel.swift in Sources */,
+				2FEE5DA32AA559880090B406 /* MyCharacterMoreView.swift in Sources */,
 				2FD69EBC2A03A9E400AA5A6E /* CategoryViewController.swift in Sources */,
 				2FD82D6E2A77465F00372D24 /* PostReviewQuery.swift in Sources */,
 				2FC33F722A06489900AD284B /* JoinMbtiViewController.swift in Sources */,
@@ -4502,6 +4609,7 @@
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
 				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
+				2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

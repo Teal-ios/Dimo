@@ -1,21 +1,19 @@
 //
-//  CharacterMoreView.swift
+//  MyCharacterMoreView.swift
 //  SideProject-MovieApp
 //
-//  Created by 이병현 on 2023/06/23.
+//  Created by 이병현 on 2023/09/04.
 //
 
 import UIKit
 import SnapKit
 
-final class CharacterMoreView: BaseView {
+final class MyCharacterMoreView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
-        let mbti = UserDefaultManager.mbti ?? "ISFJ"
         label.font = Font.title1
         label.textColor = .black5
-        label.numberOfLines = 2
-        label.text = "스포주의!\n\(mbti) 캐릭터 모아보기"
+        label.text = "Dig 완료한 캐릭터"
         return label
     }()
     
@@ -32,7 +30,7 @@ final class CharacterMoreView: BaseView {
         titleLabel.snp.makeConstraints { [weak self] make in
             guard let self else { return }
             make.horizontalEdges.top.equalTo(self.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(74)
+            make.height.equalTo(45)
         }
         
         collectionView.snp.makeConstraints { [weak self] make in

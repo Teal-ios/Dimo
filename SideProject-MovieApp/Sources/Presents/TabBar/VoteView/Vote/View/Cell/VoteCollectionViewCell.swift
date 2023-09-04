@@ -150,3 +150,13 @@ extension VoteCollectionViewCell {
         configureIsVoted(vote: item.is_vote ?? 0)
     }
 }
+
+extension VoteCollectionViewCell {
+    func configureAttributeWithVotedCharacter(with item: MyVotedCharacter) {
+        let imageUrl = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.title
+    }
+}
