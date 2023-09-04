@@ -86,6 +86,22 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.reviewMoreButtonTap
+            .withLatestFrom(self.myReviewList)
+            .bind { [weak self] myReviewList in
+                guard let self = self else { return }
+                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review)
+            }
+            .disposed(by: disposeBag)
+        
+        input.commentMoreButtonTap
+            .withLatestFrom(self.myCommentList)
+            .bind { [weak self] myCommentList in
+                guard let self = self else { return }
+                self.coordinator?.showMyCommentMoreViewController(myComment: myCommentList.comment)
+            }
+            .disposed(by: disposeBag)
+        
         input.digFinishMoreButtonTap
             .withLatestFrom(self.myVotedCharacterList)
             .bind { [weak self] votedCharacterList in
