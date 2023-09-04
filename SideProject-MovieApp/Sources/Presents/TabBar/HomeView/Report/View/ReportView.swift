@@ -174,3 +174,87 @@ final class ReportView: BaseView {
         }
     }
 }
+
+extension ReportView {
+    
+    func setupTextView(_ isEditing: Bool) {
+        if isEditing {
+            reportReasonTextView.text = ""
+            reportReasonTextView.textColor = .white100
+        } else {
+            reportReasonTextView.text = "안녕하세요 디모를 사랑하는 사람입니다."
+            reportReasonTextView.textColor = .black80
+        }
+    }
+    
+    func enablereportButton(_ isReportValid: Bool) {
+        reportButton.isEnabled = isReportValid
+        
+        if isReportValid {
+            reportButton.configuration?.baseBackgroundColor = .purple100
+        } else {
+            reportButton.configuration?.baseBackgroundColor = .black80
+        }
+    }
+    
+    func setupReportReasonButton(reason: ReportViewModel.ReportReason) {
+        switch reason {
+        case .slangUsing(let isSelected):
+            slangUsingView.checkButton.isSelected = isSelected
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = false
+        case .spoiler(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = isSelected
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = false
+        case .lewdnessOrViolence(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = isSelected
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = false
+        case .promotion(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = isSelected
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = false
+        case .politicsOrReligion(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = isSelected
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = false
+        case .lieInfo(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = isSelected
+            etcView.checkButton.isSelected = false
+        case .etc(let isSelected):
+            slangUsingView.checkButton.isSelected = false
+            spoilerView.checkButton.isSelected  = false
+            lewdnessOrViolenceView.checkButton.isSelected = false
+            promotionView.checkButton.isSelected = false
+            politicsOrReligionView.checkButton.isSelected = false
+            lieInfoView.checkButton.isSelected = false
+            etcView.checkButton.isSelected = isSelected
+        }
+    }
+}

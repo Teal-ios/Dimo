@@ -39,7 +39,7 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
         input.reportButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
             self.coordinator?.dismissViewController()
-            self.coordinator?.showFeedDetailDeleteViewController()
+            self.coordinator?.showReportViewController()
         }.disposed(by: disposeBag)
         
         input.allReviewBlindButtonTapped.bind { [weak self] _ in

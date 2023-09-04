@@ -104,6 +104,15 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(voteFlowCoordinator)
         voteFlowCoordinator.start()
     }
+    
+    func showReportViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = ReportViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl)
+        let vc = ReportViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 extension TabmanCoordinator: sendPostReviewDelegate {
