@@ -46,6 +46,22 @@ final class AnalyzeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.revoteButtonTapped
+            .withLatestFrom(self.inquireCharacterAnalyze)
+            .bind { [weak self] characterAnalyze in
+                guard let self = self else { return }
+                self.coordinator?.showVoteFlowCoordinator(characterInfo: characterAnalyze.character_info, isVote: false)
+            }
+            .disposed(by: disposeBag)
+        
+        input.voteButtonTapped
+            .withLatestFrom(self.inquireCharacterAnalyze)
+            .bind { [weak self] characterAnalyze in
+                guard let self = self else { return }
+                self.coordinator?.showVoteFlowCoordinator(characterInfo: characterAnalyze.character_info, isVote: false)
+            }
+            .disposed(by: disposeBag)
+        
         return Output(inquireCharacterAnalyze: self.inquireCharacterAnalyze)
     }
 }

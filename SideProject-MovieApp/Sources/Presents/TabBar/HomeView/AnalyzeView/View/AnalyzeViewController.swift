@@ -36,7 +36,7 @@ final class AnalyzeViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = AnalyzeViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        let input = AnalyzeViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, revoteButtonTapped: self.selfView.revoteButton.rx.tap, voteButtonTapped: self.selfView.voteButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
