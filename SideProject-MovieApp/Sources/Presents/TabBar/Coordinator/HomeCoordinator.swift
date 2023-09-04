@@ -101,6 +101,12 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
+    
+    func showMovieCharacterMoreViewController(characters: [Characters?]) {
+        let viewModel = MovieCharacterMoreViewModel(coordinator: self, characters: characters)
+        let vc = MovieCharacterMoreViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeCoordinator: sendEvaluateFinishDelegate {

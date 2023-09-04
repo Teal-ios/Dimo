@@ -160,3 +160,13 @@ extension VoteCollectionViewCell {
         movieTitleLabel.text = item.title
     }
 }
+
+extension VoteCollectionViewCell {
+    func configureAttributeWithCharacters(with item: Characters) {
+        let imageUrl = URL(string: item.character_img ?? "")
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.character_mbti ?? "미정"
+    }
+}

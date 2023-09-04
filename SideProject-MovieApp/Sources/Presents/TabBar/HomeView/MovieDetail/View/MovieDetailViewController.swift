@@ -44,7 +44,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap, likeButtonTapped: self.selfView.headerView.likeButton.rx.tap, likeContentCheckValid: self.likeContentCheckTrigger, characterCellSelected: self.characterCellSelected, backButtonTapped: self.selfView.backButton.rx.tap)
+        let input = MovieDetailViewModel.Input(plusButtonTapped: self.selfView.unfoldButton.rx.tap, evaluateButtonTapped: self.selfView.headerView.evaluateButton.rx.tap, likeButtonTapped: self.selfView.headerView.likeButton.rx.tap, likeContentCheckValid: self.likeContentCheckTrigger, characterCellSelected: self.characterCellSelected, backButtonTapped: self.selfView.backButton.rx.tap, characterMoreButtonTapped: self.selfView.characterMoreButton.rx.tap)
         let output = self.viewModel.transform(input: input)
         
         output.plusButtonTapped.bind { [weak self] _ in
