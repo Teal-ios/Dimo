@@ -8,7 +8,11 @@
 import UIKit
 import RxCocoa
 
-final class TabmanCoordinator: Coordinator {
+final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
+    
+    func didFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+    }
     
     weak var delegate: CoordinatorDelegate?
     var parentCoordinator: Coordinator?
@@ -92,6 +96,13 @@ final class TabmanCoordinator: Coordinator {
         let vc = FeedDetailHideUserAlertViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
+    }
+    
+    func showVoteFlowCoordinator(characterInfo: CharacterInfo, isVote: Bool) {
+        let voteFlowCoordinator = VoteFlowCoordinator(navigationController, characterInfo: characterInfo, isVote: isVote)
+        voteFlowCoordinator.delegate = self
+        self.childCoordinators.append(voteFlowCoordinator)
+        voteFlowCoordinator.start()
     }
 }
 

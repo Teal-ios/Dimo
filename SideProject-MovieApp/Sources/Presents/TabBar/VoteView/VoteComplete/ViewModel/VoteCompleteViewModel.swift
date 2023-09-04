@@ -12,12 +12,12 @@ import RxCocoa
 final class VoteCompleteViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
-    private weak var coordinator: VoteCoordinator?
+    private weak var coordinator: VoteFlowCoordinator?
     private var voteUseCase: VoteUseCase
     private let characterInfo: BehaviorRelay<CharacterInfo>
 //    private let voteCharacter: BehaviorRelay<VoteCharacter>
 
-    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
+    init(coordinator: VoteFlowCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
         self.coordinator = coordinator
         self.voteUseCase = voteUseCase
         self.characterInfo = BehaviorRelay(value: characterInfo)
@@ -55,7 +55,7 @@ final class VoteCompleteViewModel: ViewModelType {
         input.rightNavigationXButtonTapped
             .withUnretained(self)
             .bind { vm, _ in
-                vm.coordinator?.start()
+                vm.coordinator?.popViewController()
             }
             .disposed(by: disposeBag)
         

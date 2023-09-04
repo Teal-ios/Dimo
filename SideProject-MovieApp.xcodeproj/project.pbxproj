@@ -495,6 +495,7 @@
 		2FEE5DC02AA56E570090B406 /* MovieCharacterMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DBF2AA56E570090B406 /* MovieCharacterMoreViewModel.swift */; };
 		2FEE5DC22AA56E630090B406 /* MovieCharacterMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */; };
 		2FEE5DC42AA56E6C0090B406 /* MovieCharacterMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */; };
+		2FEE5DC62AA572FC0090B406 /* VoteFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC52AA572FC0090B406 /* VoteFlowCoordinator.swift */; };
 		2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */; };
 		2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */; };
 		2FFB4BBF2A8F0519001D1D60 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */; };
@@ -1115,6 +1116,7 @@
 		2FEE5DBF2AA56E570090B406 /* MovieCharacterMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreViewModel.swift; sourceTree = "<group>"; };
 		2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreView.swift; sourceTree = "<group>"; };
 		2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreViewController.swift; sourceTree = "<group>"; };
+		2FEE5DC52AA572FC0090B406 /* VoteFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFlowCoordinator.swift; sourceTree = "<group>"; };
 		2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireVoteResult.swift; sourceTree = "<group>"; };
 		2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireCharacterAnalyze.swift; sourceTree = "<group>"; };
 		2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
@@ -1546,6 +1548,7 @@
 				2F4D9CA729FE825B007B89E8 /* HomeTabBarCoordinator.swift */,
 				2F1AB9CA2A10C243001178EA /* SettingCoordinator.swift */,
 				2FBD19DA29FF8C6D0005B1FA /* VoteCoordinator.swift */,
+				2FEE5DC52AA572FC0090B406 /* VoteFlowCoordinator.swift */,
 				2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */,
 				2FD69EAB2A03848200AA5A6E /* HomeCoordinator.swift */,
 				2FDD9E702A122FFA00A41FF7 /* TabmanCoordinator.swift */,
@@ -4643,6 +4646,7 @@
 				2F149DCA2A4978C40098AF64 /* StarView.swift in Sources */,
 				49F1480E2A9385290045E857 /* CharacterAskViewModel.swift in Sources */,
 				2F979F392A0D1BAB00A1CD53 /* UIViewController+Rx.swift in Sources */,
+				2FEE5DC62AA572FC0090B406 /* VoteFlowCoordinator.swift in Sources */,
 				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 				2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */,

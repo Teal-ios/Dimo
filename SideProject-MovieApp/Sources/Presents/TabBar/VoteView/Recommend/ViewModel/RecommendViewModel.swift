@@ -84,9 +84,9 @@ final class RecommendViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vc, characterInfo in
                 if characterInfo.is_vote == 1 {
-                    vc.coordinator?.showVoteCompleteViewController(characterInfo: characterInfo)
+                    vc.coordinator?.showVoteFlowCoordinator(characterInfo: characterInfo, isVote: true)
                 } else {
-                    vc.coordinator?.showDigViewController(characterInfo: characterInfo)
+                    vc.coordinator?.showVoteFlowCoordinator(characterInfo: characterInfo, isVote: false)
                 }
             }
             .disposed(by: disposeBag)

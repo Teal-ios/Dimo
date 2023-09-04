@@ -12,16 +12,16 @@ import RxCocoa
 final class DigViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
-    private weak var coordinator: VoteCoordinator?
+    private weak var coordinator: VoteFlowCoordinator?
     private var voteUseCase: VoteUseCase
     private let characterInfo: BehaviorRelay<CharacterInfo>
 
-    init(coordinator: VoteCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
+    init(coordinator: VoteFlowCoordinator?, voteUseCase: VoteUseCase, characterInfo: CharacterInfo) {
         self.coordinator = coordinator
         self.voteUseCase = voteUseCase
         self.characterInfo = BehaviorRelay(value: characterInfo)
     }
-    
+        
     struct Input{
         let nextButtonTap: ControlEvent<Void>
         let eButtonTapped: ControlEvent<Void>

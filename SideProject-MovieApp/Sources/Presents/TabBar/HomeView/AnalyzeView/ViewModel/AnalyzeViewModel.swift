@@ -24,7 +24,8 @@ final class AnalyzeViewModel: ViewModelType {
     
     struct Input{
         let viewDidLoad: PublishRelay<Void>
-
+        let revoteButtonTapped: ControlEvent<Void>
+        let voteButtonTapped: ControlEvent<Void>
     }
     
     struct Output {
@@ -42,6 +43,22 @@ final class AnalyzeViewModel: ViewModelType {
                 guard let characterId = characterId else { return }
                 print("viewdidload")
                 self.getInquireCharacterAnalyze(user_id: user_id, character_id: characterId)
+            }
+            .disposed(by: disposeBag)
+        
+        input.revoteButtonTapped
+            .withLatestFrom(self.inquireCharacterAnalyze)
+            .bind { [weak self] characterAnalyze in
+                guard let self = self else { return }
+                self.coordinator?.showVoteFlowCoordinator(characterInfo: characterAnalyze.character_info, isVote: false)
+            }
+            .disposed(by: disposeBag)
+        
+        input.voteButtonTapped
+            .withLatestFrom(self.inquireCharacterAnalyze)
+            .bind { [weak self] characterAnalyze in
+                guard let self = self else { return }
+                self.coordinator?.showVoteFlowCoordinator(characterInfo: characterAnalyze.character_info, isVote: false)
             }
             .disposed(by: disposeBag)
         

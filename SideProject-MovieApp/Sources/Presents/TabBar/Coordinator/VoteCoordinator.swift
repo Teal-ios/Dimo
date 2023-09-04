@@ -20,11 +20,11 @@ final class VoteCoordinator: Coordinator, CoordinatorDelegate {
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
     var searchCategoryCase = PublishRelay<SearchCategoryCase>()
-
+    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         showVoteViewController()
     }
@@ -56,23 +56,23 @@ final class VoteCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showDigViewController(characterInfo: CharacterInfo) {
-        let dataTransferService = DataTransferService(networkService: NetworkService())
-        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
-        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = DigViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
-        let vc = DigViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
-    }
+//        func showDigViewController(characterInfo: CharacterInfo) {
+//            let dataTransferService = DataTransferService(networkService: NetworkService())
+//            let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+//            let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+//            let viewModel = DigViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
+//            let vc = DigViewController(viewModel: viewModel)
+//            navigationController.pushViewController(vc, animated: true)
+//        }
     
-    func showVoteCompleteViewController(characterInfo: CharacterInfo) {
-        let dataTransferService = DataTransferService(networkService: NetworkService())
-        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
-        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
-        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
-        let vc = VoteCompleteViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
-    }
+    //    func showVoteCompleteViewController(characterInfo: CharacterInfo) {
+    //        let dataTransferService = DataTransferService(networkService: NetworkService())
+    //        let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
+    //        let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+    //        let viewModel = VoteCompleteViewModel(coordinator: self, voteUseCase: voteUseCaseImpl, characterInfo: characterInfo)
+    //        let vc = VoteCompleteViewController(viewModel: viewModel)
+    //        navigationController.pushViewController(vc, animated: true)
+    //    }
     
     func dismissViewController() {
         navigationController.dismiss(animated: true)
@@ -86,11 +86,18 @@ final class VoteCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
-    func showTabmanCoordinator(character: Characters) {
-        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character)
-        tabmanCoordinator.delegate = self
-        self.childCoordinators.append(tabmanCoordinator)
-        tabmanCoordinator.start()
+    //    func showTabmanCoordinator(character: Characters) {
+    //        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character)
+    //        tabmanCoordinator.delegate = self
+    //        self.childCoordinators.append(tabmanCoordinator)
+    //        tabmanCoordinator.start()
+    //    }
+    
+    func showVoteFlowCoordinator(characterInfo: CharacterInfo, isVote: Bool) {
+        let voteFlowCoordinator = VoteFlowCoordinator(navigationController, characterInfo: characterInfo, isVote: isVote)
+        voteFlowCoordinator.delegate = self
+        self.childCoordinators.append(voteFlowCoordinator)
+        voteFlowCoordinator.start()
     }
 }
 
