@@ -62,7 +62,7 @@ final class FeedDetailViewModel: ViewModelType {
                 if review.user_id == user_id {
                     vm.coordinator?.showFeedDetailMoreMyViewMController()
                 } else {
-                    vm.coordinator?.showFeedDetailMoreAnotherViewMController()
+                    vm.coordinator?.showFeedDetailMoreAnotherViewMController(user_id: review.user_id, review_id: review.review_id)
                 }
             }
             .disposed(by: disposeBag)

@@ -51,8 +51,8 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
-    func showFeedDetailMoreAnotherViewMController() {
-        let viewModel = FeedDetailMoreAnotherViewModel(coordinator: self)
+    func showFeedDetailMoreAnotherViewMController(user_id: String, review_id: Int) {
+        let viewModel = FeedDetailMoreAnotherViewModel(coordinator: self, user_id: user_id, review_id: review_id)
         let vc = FeedDetailMoreAnotherViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
@@ -105,11 +105,11 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         voteFlowCoordinator.start()
     }
     
-    func showReportViewController() {
+    func showReportViewController(user_id: String, review_id: Int) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = ReportViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl)
+        let viewModel = ReportViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, user_id: user_id, review_id: review_id)
         let vc = ReportViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

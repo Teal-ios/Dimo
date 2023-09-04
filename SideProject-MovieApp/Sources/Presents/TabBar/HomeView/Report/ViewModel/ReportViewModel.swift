@@ -53,6 +53,8 @@ class ReportViewModel: ViewModelType {
     private var reportReason = BehaviorRelay<ReportReason?>(value: nil)
     private var reportReasonTextView = BehaviorRelay<String?>(value: nil)
     private var didBeginEditingTextView = BehaviorRelay(value: false)
+    private var user_id: String
+    private var review_id: Int
     
     struct Output {
         let reportReason: BehaviorRelay<ReportReason?>
@@ -61,9 +63,11 @@ class ReportViewModel: ViewModelType {
         let reportReasonValid: Observable<Bool>
     }
     
-    init(coordinator: TabmanCoordinator?, characterDetailUseCase: CharacterDetailUseCase) {
+    init(coordinator: TabmanCoordinator?, characterDetailUseCase: CharacterDetailUseCase, user_id: String, review_id: Int) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
+        self.user_id = user_id
+        self.review_id = review_id
     }
     
     func transform(input: Input) -> Output {
