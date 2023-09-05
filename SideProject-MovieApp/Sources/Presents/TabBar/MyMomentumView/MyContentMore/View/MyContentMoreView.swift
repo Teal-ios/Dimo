@@ -83,13 +83,13 @@ final class MyContentMoreView: BaseView {
         
         cardCollectionView.snp.makeConstraints { make in
             make.top.equalTo(categoryButton.snp.bottom).offset(8)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
     private let itemRatio = 1.0
-    private let groupRatio = 0.93
+    private let groupRatio = 1.0
 }
 
 extension MyContentMoreView {

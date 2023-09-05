@@ -13,12 +13,14 @@ final class MyMomentumViewModel: ViewModelType {
     
     private weak var coordinator: MyMomentumCoordinator?
     private let myMomentumUseCase: MyMomentumUseCase
+    private let characterDetailUseCase: CharacterDetailUseCase
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase) {
+    init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase, characterDetailUseCase: CharacterDetailUseCase) {
         self.coordinator = coordinator
         self.myMomentumUseCase = myMomentumUseCase
+        self.characterDetailUseCase = characterDetailUseCase
     }
     
     struct Input {
@@ -28,6 +30,8 @@ final class MyMomentumViewModel: ViewModelType {
         let digFinishMoreButtonTap: ControlEvent<Void>
         let reviewMoreButtonTap: ControlEvent<Void>
         let commentMoreButtonTap: ControlEvent<Void>
+        let myReviewCellSelected: PublishRelay<MyReview>
+        let myCommentCellSelected: PublishRelay<MyComment>
     }
     
     struct Output {
@@ -48,6 +52,8 @@ final class MyMomentumViewModel: ViewModelType {
     let myReviewList = PublishRelay<GetMyReview>()
     let myCommentList = PublishRelay<GetMyComment>()
     let myVotedCharacterList = PublishRelay<GetMyVotedCharacter>()
+    let getReivewDetail = PublishRelay<GetReviewDetail>()
+    let characters = PublishRelay<Characters>()
     
     func transform(input: Input) -> Output {
         
@@ -123,6 +129,31 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.myReviewCellSelected
+            .withUnretained(self)
+            .bind { vm, myReview in
+                vm.characters.accept(Characters(character_id: myReview.character_id, character_name: myReview.character_name, character_img: myReview.character_img, character_mbti: myReview.character_mbti))
+                vm.getReviewList(user_id: myReview.user_id, character_id: myReview.character_id, review_id: myReview.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        input.myCommentCellSelected
+            .withUnretained(self)
+            .bind { vm, myComment in
+                vm.characters.accept(Characters(character_id: myComment.character_id, character_name: myComment.character_name, character_img: myComment.character_img, character_mbti: myComment.character_mbti))
+                vm.getReviewList(user_id: myComment.user_id, character_id: myComment.character_id, review_id: myComment.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.zip(self.characters, self.getReivewDetail)
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] character, review in
+                guard let self = self else { return }
+                print(review.review_list[0], "🍋")
+                self.coordinator?.showTabmanCoordinator(character: character, review: review.review_list[0])
+            }
+            .disposed(by: disposeBag)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
         
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myCommentList: self.myCommentList, myVotedCharacterList: self.myVotedCharacterList)
@@ -192,6 +223,16 @@ extension MyMomentumViewModel {
             let myVotedCharacter = try await myMomentumUseCase.excuteMyVotedCharacter(query: GetMyVotedCharacterQuery(user_id: user_id))
             print(myVotedCharacter, "투표한 캐릭터 조회")
             self.myVotedCharacterList.accept(myVotedCharacter)
+        }
+    }
+}
+
+extension MyMomentumViewModel {
+    private func getReviewList(user_id: String, character_id: Int, review_id: Int) {
+        Task {
+            let getReivewDetail = try await characterDetailUseCase.excuteGetReviewDetail(query: GetReviewDetailQuery(user_id: user_id, character_id: character_id, review_id: review_id))
+            print(getReivewDetail, "리뷰 전체 조회")
+            self.getReivewDetail.accept(getReivewDetail)
         }
     }
 }
