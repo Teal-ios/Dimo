@@ -22,7 +22,8 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var character: Characters
     var characterId = PublishRelay<Int>()
     var modifyText = PublishRelay<String>()
-    
+    var deleteReview = PublishRelay<Void>()
+
     init(_ navigationController: UINavigationController, character: Characters) {
         self.navigationController = navigationController
         self.character = character
@@ -40,7 +41,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview)
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -89,8 +90,12 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
-    func showFeedDetailDeleteViewController() {
-        let viewModel = FeedDetailDeleteViewModel(coordinator: self)
+    func showFeedDetailDeleteViewController(review: ReviewList) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = FeedDetailDeleteViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review)
+        viewModel.delegate = self
         let vc = FeedDetailDeleteViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
@@ -138,5 +143,11 @@ extension TabmanCoordinator: sendModifyReviewDelegate {
     func sendModifyReview(text: String) {
         print("🍊")
         self.modifyText.accept(text)
+    }
+}
+
+extension TabmanCoordinator: sendDeleteReviewDelegate {
+    func sendDeleteReview() {
+        self.deleteReview.accept(())
     }
 }

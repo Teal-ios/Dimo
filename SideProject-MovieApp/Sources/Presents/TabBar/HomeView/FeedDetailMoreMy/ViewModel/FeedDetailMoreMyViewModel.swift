@@ -39,8 +39,9 @@ final class FeedDetailMoreMyViewModel: ViewModelType {
         input.deleteButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
             self.coordinator?.dismissViewController()
-            self.coordinator?.showFeedDetailDeleteViewController()
+            self.coordinator?.showFeedDetailDeleteViewController(review: self.review)
         }.disposed(by: disposeBag)
+        
         return Output()
     }
 }

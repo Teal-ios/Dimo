@@ -24,7 +24,7 @@ final class FeedDetailDeleteViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailDeleteViewModel.Input(okButtonTapped: self.selfView.alertView.okButton.rx.tap, cancelButtonTapped: self.selfView.alertView.cancelButton.rx.tap)
+        let input = FeedDetailDeleteViewModel.Input(okButtonTapped: self.selfView.alertView.cancelButton.rx.tap, cancelButtonTapped: self.selfView.alertView.okButton.rx.tap)
         let _ = viewModel.transform(input: input)
     }
     
