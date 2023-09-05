@@ -14,6 +14,7 @@ final class FeedViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
     private let characterDetailUseCase: CharacterDetailUseCase
+    var deleteReviewTrigger: PublishRelay<Void>
     
     struct Input{
         let reviewCellSelected: PublishRelay<ReviewList>
@@ -27,12 +28,13 @@ final class FeedViewModel: ViewModelType {
         let character: BehaviorRelay<Characters?>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?, characterId: PublishRelay<Int>, modifyReview: PublishRelay<String>) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?, characterId: PublishRelay<Int>, modifyReview: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.character = BehaviorRelay<Characters?>(value: character)
         self.characterId = characterId
         self.modifyReview = modifyReview
+        self.deleteReviewTrigger = deleteReviewEvent
     }
     
     var character = BehaviorRelay<Characters?>(value: nil)
@@ -71,7 +73,7 @@ final class FeedViewModel: ViewModelType {
             .bind { vm, characterId in
                 guard let user_id = UserDefaultManager.userId else { return }
                 print(characterId, "캐릭터 아이디 들어옴")
-                self.getReviewList(user_id: user_id, character_id: characterId)
+                vm.getReviewList(user_id: user_id, character_id: characterId)
         }
             .disposed(by: disposeBag)
         
@@ -83,6 +85,15 @@ final class FeedViewModel: ViewModelType {
                 guard let character else { return }
                 print(character, "캐릭터조회")
                 vm.getReviewList(user_id: user_id, character_id: character.character_id)
+            }
+            .disposed(by: disposeBag)
+        
+        self.deleteReviewTrigger
+            .withLatestFrom(self.characterId)
+            .withUnretained(self)
+            .bind { vm, character_id in
+                guard let user_id = UserDefaultManager.userId else { return }
+                vm.getReviewList(user_id: user_id, character_id: character_id)
             }
             .disposed(by: disposeBag)
         

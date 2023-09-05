@@ -16,6 +16,7 @@ final class FeedDetailViewModel: ViewModelType {
     private let characterDetailUseCase: CharacterDetailUseCase
     var review: BehaviorRelay<ReviewList>
     var modifyText: PublishRelay<String>
+    var deleteReviewTrigger: PublishRelay<Void>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -39,11 +40,12 @@ final class FeedDetailViewModel: ViewModelType {
         let modifyReviewTextAfter: PublishRelay<String>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.review = BehaviorRelay(value: review)
         self.modifyText = modifyText
+        self.deleteReviewTrigger = deleteReviewEvent
     }
     
     let getCommentList = PublishRelay<[CommentList?]>()
@@ -174,6 +176,17 @@ final class FeedDetailViewModel: ViewModelType {
             .bind { [weak self] comment in
                 guard let self = self else { return }
                 self.getCommentList(user_id: comment.user_id, review_id: comment.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        self.deleteReviewTrigger
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, _ in
+                print("🍊 뒤로가기")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    vm.coordinator?.popViewController()
+                }
             }
             .disposed(by: disposeBag)
         
