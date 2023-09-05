@@ -150,7 +150,6 @@ class FeedDetailViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vc, text in
-                print("🍊", text)
                 vc.feedDetailView.headerView.mainTextLabel.text = text
             }
             .disposed(by: disposeBag)

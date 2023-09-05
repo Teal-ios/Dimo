@@ -217,16 +217,6 @@ extension MyMomentumViewController {
             header.titleLabel.text = "Dig 완료한 캐릭터"
             return header
         })
-        
-//        digFinishSnapshot.appendSections([0])
-//        var sectionArr: [MyMomentumModel] = []
-//
-//        for _ in 1...10 {
-//            sectionArr.append(MyMomentumModel(image: nil))
-//        }
-//
-//        digFinishSnapshot.appendItems(sectionArr, toSection: 0)
-//        digFinishDataSource.apply(digFinishSnapshot)
     }
 }
 
@@ -273,16 +263,6 @@ extension MyMomentumViewController {
             
             return header
         })
-        
-//        commentSnapshot.appendSections([0])
-//        var sectionArr: [MyMomentumModel] = []
-//
-//        for _ in 1...10 {
-//            sectionArr.append(MyMomentumModel(image: nil))
-//        }
-//
-//        commentSnapshot.appendItems(sectionArr, toSection: 0)
-//        commentDataSource.apply(commentSnapshot)
     }
 }
 

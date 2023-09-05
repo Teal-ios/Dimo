@@ -8,6 +8,11 @@
 import UIKit
 import RxCocoa
 
+enum ConnetTabmanCoordinatorViewControllerCase {
+    case feed
+    case tabman
+}
+
 final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     
     func didFinish(childCoordinator: Coordinator) {
@@ -23,17 +28,26 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var characterId = PublishRelay<Int>()
     var modifyText = PublishRelay<String>()
     var deleteReview = PublishRelay<Void>()
+    var currentCase: ConnetTabmanCoordinatorViewControllerCase = .tabman
+    var review: ReviewList?
 
-    init(_ navigationController: UINavigationController, character: Characters) {
+    init(_ navigationController: UINavigationController, character: Characters, connectconnetTabmanCoordinatorViewController: ConnetTabmanCoordinatorViewControllerCase, review: ReviewList?) {
         self.navigationController = navigationController
         self.character = character
+        self.currentCase = connectconnetTabmanCoordinatorViewController
     }
     
     func start() {
-        let tabmanViewModel = CharacterDetailViewModel(coordinator: self, character: character)
-        let tabmanviewController = CharacterDetailViewController(viewModel: tabmanViewModel)
-        tabmanviewController.hidesBottomBarWhenPushed = true
-        navigationController.pushViewController(tabmanviewController, animated: true)
+        switch currentCase {
+        case .feed:
+            guard let review = review else { return }
+            showFeedDetailViewController(review: review)
+        case .tabman:
+            let tabmanViewModel = CharacterDetailViewModel(coordinator: self, character: character)
+            let tabmanviewController = CharacterDetailViewController(viewModel: tabmanViewModel)
+            tabmanviewController.hidesBottomBarWhenPushed = true
+            navigationController.pushViewController(tabmanviewController, animated: true)
+        }
     }
     
     
