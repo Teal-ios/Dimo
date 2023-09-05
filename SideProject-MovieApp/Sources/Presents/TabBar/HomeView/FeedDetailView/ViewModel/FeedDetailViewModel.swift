@@ -17,6 +17,7 @@ final class FeedDetailViewModel: ViewModelType {
     var review: BehaviorRelay<ReviewList>
     var modifyText: PublishRelay<String>
     var deleteReviewTrigger: PublishRelay<Void>
+    var review_id: BehaviorRelay<Int>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -46,6 +47,7 @@ final class FeedDetailViewModel: ViewModelType {
         self.review = BehaviorRelay(value: review)
         self.modifyText = modifyText
         self.deleteReviewTrigger = deleteReviewEvent
+        self.review_id = BehaviorRelay(value: review.review_id)
     }
     
     let getCommentList = PublishRelay<[CommentList?]>()
@@ -56,6 +58,8 @@ final class FeedDetailViewModel: ViewModelType {
     let getReviewDetail = PublishRelay<GetReviewDetail>()
     let reviewLikeValid = BehaviorRelay(value: false)
     let commentLikeValid = BehaviorRelay(value: false)
+    let commentLikeChoice = PublishRelay<LikeCommentChoice>()
+    let commentLikeCancel = PublishRelay<LikeCommentCancel>()
     
     func transform(input: Input) -> Output {
         //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
@@ -64,7 +68,8 @@ final class FeedDetailViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, review in
                 guard let user_id = UserDefaultManager.userId else { return }
-                if review.user_id == user_id {
+                let valid_Id = review.user_id.lowercased() == user_id.lowercased()
+                if valid_Id {
                     vm.coordinator?.showFeedDetailMoreMyViewController(review: review)
                 } else {
                     vm.coordinator?.showFeedDetailMoreAnotherViewMController(user_id: review.user_id, review_id: review.review_id)
@@ -171,11 +176,17 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        self.commentLikeValid
-            .withLatestFrom(input.commentCellSelected)
-            .bind { [weak self] comment in
-                guard let self = self else { return }
-                self.getCommentList(user_id: comment.user_id, review_id: comment.review_id)
+        self.commentLikeChoice
+            .withUnretained(self)
+            .bind { vm, comment in
+                vm.getCommentList(user_id: comment.user_id, review_id: vm.review_id.value)
+            }
+            .disposed(by: disposeBag)
+        
+        self.commentLikeCancel
+            .withUnretained(self)
+            .bind { vm, comment in
+                vm.getCommentList(user_id: comment.user_id, review_id: vm.review_id.value)
             }
             .disposed(by: disposeBag)
         
@@ -255,6 +266,7 @@ extension FeedDetailViewModel {
             let query = LikeCommentChoiceQuery(user_id: user_id, character_id: character_id, comment_id: comment_id)
             let commentLike = try await characterDetailUseCase.excuteLikeCommentChoice(query: query)
             print(commentLike, "댓글 좋아요 누름")
+            self.commentLikeChoice.accept(commentLike)
             self.commentLikeValid.accept(true)
         }
     }
@@ -266,6 +278,7 @@ extension FeedDetailViewModel {
             let query = LikeCommentCancelQuery(user_id: user_id, character_id: character_id, comment_id: comment_id)
             let commentLikeCancel = try await characterDetailUseCase.excuteLikeCommentCancel(query: query)
             print(commentLikeCancel, "댓글 좋아요 취소 누름")
+            self.commentLikeCancel.accept(commentLikeCancel)
             self.commentLikeValid.accept(false)
         }
     }

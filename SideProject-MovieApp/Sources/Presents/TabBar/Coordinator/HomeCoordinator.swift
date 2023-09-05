@@ -61,7 +61,7 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     }
     
     func showTabmanCoordinator(character: Characters) {
-        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character)
+        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character, connectconnetTabmanCoordinatorViewController: .tabman, review: nil)
         tabmanCoordinator.delegate = self
         self.childCoordinators.append(tabmanCoordinator)
         tabmanCoordinator.start()
