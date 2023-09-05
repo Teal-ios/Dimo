@@ -21,6 +21,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var type: CoordinatorStyleCase = .tabman
     var character: Characters
     var characterId = PublishRelay<Int>()
+    var modifyText = PublishRelay<String>()
     
     init(_ navigationController: UINavigationController, character: Characters) {
         self.navigationController = navigationController
@@ -39,20 +40,20 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText)
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showFeedDetailMoreMyViewMController() {
-        let viewModel = FeedDetailMoreMyViewModel(coordinator: self)
+    func showFeedDetailMoreMyViewController(review: ReviewList) {
+        let viewModel = FeedDetailMoreMyViewModel(coordinator: self, review: review)
         let vc = FeedDetailMoreMyViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
     
-    func showFeedDetailMoreAnotherViewMController() {
-        let viewModel = FeedDetailMoreAnotherViewModel(coordinator: self)
+    func showFeedDetailMoreAnotherViewMController(user_id: String, review_id: Int) {
+        let viewModel = FeedDetailMoreAnotherViewModel(coordinator: self, user_id: user_id, review_id: review_id)
         let vc = FeedDetailMoreAnotherViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
@@ -73,6 +74,17 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let viewModel = WriteViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, characterId: character.character_id)
         viewModel.delegate = self
         let vc = WriteViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    
+    func showModifyWriteViewController(review: ReviewList) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = ModifyWriteViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review)
+        viewModel.delegate = self
+        let vc = ModifyWriteViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
@@ -104,10 +116,27 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(voteFlowCoordinator)
         voteFlowCoordinator.start()
     }
+    
+    func showReportViewController(user_id: String, review_id: Int) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = ReportViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, user_id: user_id, review_id: review_id)
+        let vc = ReportViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 extension TabmanCoordinator: sendPostReviewDelegate {
     func sendPostReview(character_id: Int) {
+        print("🍊")
         self.characterId.accept(character_id)
+    }
+}
+
+extension TabmanCoordinator: sendModifyReviewDelegate {
+    func sendModifyReview(text: String) {
+        print("🍊")
+        self.modifyText.accept(text)
     }
 }

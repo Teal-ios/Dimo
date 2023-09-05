@@ -23,8 +23,13 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
     struct Output{
     }
     
-    init(coordinator: TabmanCoordinator? = nil) {
+    private var user_id: String
+    private var review_id: Int
+    
+    init(coordinator: TabmanCoordinator?, user_id: String, review_id: Int) {
         self.coordinator = coordinator
+        self.user_id = user_id
+        self.review_id = review_id
     }
     
     func transform(input: Input) -> Output {
@@ -39,7 +44,7 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
         input.reportButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
             self.coordinator?.dismissViewController()
-            self.coordinator?.showFeedDetailDeleteViewController()
+            self.coordinator?.showReportViewController(user_id: self.user_id, review_id: self.review_id)
         }.disposed(by: disposeBag)
         
         input.allReviewBlindButtonTapped.bind { [weak self] _ in
