@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class MyMomentumCoordinator: Coordinator {
+final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
+    
+    func didFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+    }
+    
     weak var delegate: CoordinatorDelegate?
     var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
@@ -26,7 +31,9 @@ final class MyMomentumCoordinator: Coordinator {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
         let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
-        let viewModel = MyMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl)
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = MyMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl, characterDetailUseCase: characterDetailUseCase)
         let vc = MyMomentumViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
@@ -65,5 +72,12 @@ final class MyMomentumCoordinator: Coordinator {
         let viewModel = MyCommentMoreViewModel(coordinator: self, myComment: myComment)
         let vc = MyCommentMoreViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showTabmanCoordinator(character: Characters, review: ReviewList) {
+        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character, connectconnetTabmanCoordinatorViewController: .feed, review: review)
+        tabmanCoordinator.delegate = self
+        self.childCoordinators.append(tabmanCoordinator)
+        tabmanCoordinator.start()
     }
 }

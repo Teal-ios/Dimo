@@ -14,6 +14,7 @@ final class DateFormatterManager {
     let inputFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd HH:mm (E)"
+        formatter.locale = Locale(identifier: "ko_KR")
         return formatter
     }()
     

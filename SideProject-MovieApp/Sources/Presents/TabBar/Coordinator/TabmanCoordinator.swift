@@ -35,6 +35,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         self.navigationController = navigationController
         self.character = character
         self.currentCase = connectconnetTabmanCoordinatorViewController
+        self.review = review
     }
     
     func start() {

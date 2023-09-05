@@ -35,12 +35,19 @@ final class MyMomentumViewController: BaseViewController {
 //    private var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyReview>()
 //    private var commentSnapshot = NSDiffableDataSourceSnapshot<Int, MyComment>()
     
+    let myReviewCellSelected = PublishRelay<MyReview>()
+    let myCommentCellSelected = PublishRelay<MyComment>()
+    
     override func loadView() {
         view = myMomentumView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.myMomentumView.reviewCollectionView.delegate = self
+        self.myMomentumView.commentCollectionView.delegate = self
+        self.myMomentumView.digFinishCharacherCollectionView.delegate = self
+        self.myMomentumView.profileCollectionView.delegate = self
         setNavigation()
         setLikeContentDataSource()
         setDigFinishCharacterDataSource()
@@ -51,7 +58,7 @@ final class MyMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap)
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap, myReviewCellSelected: self.myReviewCellSelected, myCommentCellSelected: self.myCommentCellSelected)
         
         let output = viewModel.transform(input: input)
         
@@ -275,5 +282,36 @@ extension MyMomentumViewController {
     @objc
     func bellButtonTapped() {
         
+    }
+}
+
+extension MyMomentumViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case self.myMomentumView.profileCollectionView:
+            print("내찜꽁")
+        case self.myMomentumView.digFinishCharacherCollectionView:
+            print("캐릭터")
+        case self.myMomentumView.reviewCollectionView:
+            self.myReviewCellDataFetching(indexPath: indexPath)
+        case self.myMomentumView.commentCollectionView:
+            self.myCommentCellDataFetching(indexPath: indexPath)
+        default:
+            print("이상한컬렉션뷰")
+        }
+    }
+}
+
+extension MyMomentumViewController {
+    private func myReviewCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = reviewDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myReviewCellSelected.accept(selectedItem)
+    }
+}
+
+extension MyMomentumViewController {
+    private func myCommentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = commentDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myCommentCellSelected.accept(selectedItem)
     }
 }
