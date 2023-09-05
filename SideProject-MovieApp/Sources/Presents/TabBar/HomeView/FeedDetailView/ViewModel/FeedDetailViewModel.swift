@@ -15,6 +15,7 @@ final class FeedDetailViewModel: ViewModelType {
     private weak var coordinator: TabmanCoordinator?
     private let characterDetailUseCase: CharacterDetailUseCase
     var review: BehaviorRelay<ReviewList>
+    var modifyText: PublishRelay<String>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -35,12 +36,14 @@ final class FeedDetailViewModel: ViewModelType {
         let reviewDetail: PublishRelay<GetReviewDetail>
         let reviewLikeValid: BehaviorRelay<Bool>
         let commentLikeValid: BehaviorRelay<Bool>
+        let modifyReviewTextAfter: PublishRelay<String>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.review = BehaviorRelay(value: review)
+        self.modifyText = modifyText
     }
     
     let getCommentList = PublishRelay<[CommentList?]>()
@@ -60,7 +63,7 @@ final class FeedDetailViewModel: ViewModelType {
             .bind { vm, review in
                 guard let user_id = UserDefaultManager.userId else { return }
                 if review.user_id == user_id {
-                    vm.coordinator?.showFeedDetailMoreMyViewMController()
+                    vm.coordinator?.showFeedDetailMoreMyViewController(review: review)
                 } else {
                     vm.coordinator?.showFeedDetailMoreAnotherViewMController(user_id: review.user_id, review_id: review.review_id)
                 }
@@ -174,7 +177,8 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid)
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText)
     }
 }
 

@@ -27,16 +27,18 @@ final class FeedViewModel: ViewModelType {
         let character: BehaviorRelay<Characters?>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?, characterId: PublishRelay<Int>) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, character: Characters?, characterId: PublishRelay<Int>, modifyReview: PublishRelay<String>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.character = BehaviorRelay<Characters?>(value: character)
         self.characterId = characterId
+        self.modifyReview = modifyReview
     }
     
     var character = BehaviorRelay<Characters?>(value: nil)
     let getReivewList = PublishRelay<GetReview>()
     var characterId = PublishRelay<Int>()
+    var modifyReview = PublishRelay<String>()
     
     func transform(input: Input) -> Output {
         
@@ -72,7 +74,18 @@ final class FeedViewModel: ViewModelType {
                 self.getReviewList(user_id: user_id, character_id: characterId)
         }
             .disposed(by: disposeBag)
-                
+        
+        self.modifyReview
+            .withLatestFrom(self.character)
+            .withUnretained(self)
+            .bind { vm, character in
+                guard let user_id = UserDefaultManager.userId else { return }
+                guard let character else { return }
+                print(character, "캐릭터조회")
+                vm.getReviewList(user_id: user_id, character_id: character.character_id)
+            }
+            .disposed(by: disposeBag)
+        
         return Output(getReivewList: self.getReivewList, character: self.character)
     }
 }

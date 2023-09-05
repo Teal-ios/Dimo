@@ -145,6 +145,15 @@ class FeedDetailViewController: BaseViewController {
                 vc.feedDetailView.configureReviewLikeValid(with: valid)
             }
             .disposed(by: disposeBag)
+        
+        output.modifyReviewTextAfter
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, text in
+                print("🍊", text)
+                vc.feedDetailView.headerView.mainTextLabel.text = text
+            }
+            .disposed(by: disposeBag)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

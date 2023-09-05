@@ -496,6 +496,9 @@
 		2FEE5DC22AA56E630090B406 /* MovieCharacterMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */; };
 		2FEE5DC42AA56E6C0090B406 /* MovieCharacterMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */; };
 		2FEE5DC62AA572FC0090B406 /* VoteFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DC52AA572FC0090B406 /* VoteFlowCoordinator.swift */; };
+		2FEE5DCB2AA5CF9F0090B406 /* ModifyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCA2AA5CF9F0090B406 /* ModifyWriteViewController.swift */; };
+		2FEE5DCD2AA5CFA50090B406 /* ModifyWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCC2AA5CFA50090B406 /* ModifyWriteView.swift */; };
+		2FEE5DCF2AA5CFB00090B406 /* ModifyWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCE2AA5CFB00090B406 /* ModifyWriteViewModel.swift */; };
 		2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */; };
 		2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */; };
 		2FFB4BBF2A8F0519001D1D60 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */; };
@@ -1117,6 +1120,9 @@
 		2FEE5DC12AA56E630090B406 /* MovieCharacterMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreView.swift; sourceTree = "<group>"; };
 		2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCharacterMoreViewController.swift; sourceTree = "<group>"; };
 		2FEE5DC52AA572FC0090B406 /* VoteFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFlowCoordinator.swift; sourceTree = "<group>"; };
+		2FEE5DCA2AA5CF9F0090B406 /* ModifyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteViewController.swift; sourceTree = "<group>"; };
+		2FEE5DCC2AA5CFA50090B406 /* ModifyWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteView.swift; sourceTree = "<group>"; };
+		2FEE5DCE2AA5CFB00090B406 /* ModifyWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteViewModel.swift; sourceTree = "<group>"; };
 		2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireVoteResult.swift; sourceTree = "<group>"; };
 		2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireCharacterAnalyze.swift; sourceTree = "<group>"; };
 		2FFB4BBE2A8F0519001D1D60 /* ContentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
@@ -3080,6 +3086,7 @@
 				2FCD8C952A824BF7002A39B0 /* FeedDetailHideUserAlert */,
 				2FCD8C942A824BEE002A39B0 /* FeedDetailHideReviewAlert */,
 				2F124ADD2A4FCB9B00A452F1 /* FeedDetailDelete */,
+				2FEE5DC72AA5CF500090B406 /* ModifyWrite */,
 				2F124AD42A4EBFE100A452F1 /* Write */,
 				2FCD8C8B2A824795002A39B0 /* FeedDetailMoreAnother */,
 				2F437C192A4C5773000B7A61 /* FeedDetailMoreMy */,
@@ -3604,6 +3611,32 @@
 				2FEE5DC32AA56E6C0090B406 /* MovieCharacterMoreViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2FEE5DC72AA5CF500090B406 /* ModifyWrite */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DC92AA5CF6E0090B406 /* ViewModel */,
+				2FEE5DC82AA5CF620090B406 /* View */,
+			);
+			path = ModifyWrite;
+			sourceTree = "<group>";
+		};
+		2FEE5DC82AA5CF620090B406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DCA2AA5CF9F0090B406 /* ModifyWriteViewController.swift */,
+				2FEE5DCC2AA5CFA50090B406 /* ModifyWriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEE5DC92AA5CF6E0090B406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE5DCE2AA5CFB00090B406 /* ModifyWriteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4926773D2A5935430003C882 /* Storage */ = {
@@ -4203,6 +4236,7 @@
 				2FD4D9332A6E452500E7972B /* DetailAnimationDataQuery.swift in Sources */,
 				2F53D08B2A1F1B7000898DCD /* PhoneNumberVerifyQuery.swift in Sources */,
 				93C48BAF29D9299400644F6A /* PasswordView.swift in Sources */,
+				2FEE5DCD2AA5CFA50090B406 /* ModifyWriteView.swift in Sources */,
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				49EEDF152A8B5C01008C5D21 /* FrequentQuestionViewController.swift in Sources */,
@@ -4236,6 +4270,7 @@
 				2FFB4BCD2A8F0A7D001D1D60 /* ResponseMbtiPercentDetailDTO.swift in Sources */,
 				2FCD8CA32A825605002A39B0 /* FeedDetailHideUserAlertViewController.swift in Sources */,
 				2FD6C9382A4D5B3100EFB684 /* JoinTermsViewModel.swift in Sources */,
+				2FEE5DCF2AA5CFB00090B406 /* ModifyWriteViewModel.swift in Sources */,
 				2FE111242A7664E10013A49E /* SameWorkCharacterList.swift in Sources */,
 				2F124AE32A4FCBB900A452F1 /* FeedDetailDeleteViewController.swift in Sources */,
 				2FE9681F2A7BCAD2000E705E /* Hit.swift in Sources */,
@@ -4399,6 +4434,7 @@
 				2FBD19DF29FF9A850005B1FA /* CharacterRecommandAndSearchHeaderView.swift in Sources */,
 				2FD073612A25C0B0003F7E56 /* SettingUseCase.swift in Sources */,
 				2FBFF82C2A6F54EE007914A1 /* LikeCancelQuery.swift in Sources */,
+				2FEE5DCB2AA5CF9F0090B406 /* ModifyWriteViewController.swift in Sources */,
 				2FDD9E672A121EB900A41FF7 /* FeedDetailViewController.swift in Sources */,
 				2F124AE72A4FCD2C00A452F1 /* AlertButtonSecondView.swift in Sources */,
 				2F979F292A0CA4E100A1CD53 /* FindIDViewModel.swift in Sources */,
