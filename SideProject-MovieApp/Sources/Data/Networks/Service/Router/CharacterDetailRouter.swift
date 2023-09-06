@@ -19,6 +19,8 @@ enum CharacterDetailRouter<R> {
     case postComment(parameters: PostCommentQuery)
     case getComment(parameters: GetCommentQuery)
     case getReviewDetail(parameters: GetReviewDetailQuery)
+    case postBlindReview(parameters: PostBlindReviewQuery)
+    case postReportUser(parameters: PostReportUserQuery)
 }
 
 extension CharacterDetailRouter: TargetType2 {
@@ -61,6 +63,10 @@ extension CharacterDetailRouter: TargetType2 {
             return "/character/comment"
         case .getReviewDetail:
             return "/character/review_detail"
+        case .postBlindReview:
+            return "/character/blind_review"
+        case .postReportUser:
+            return "/character/report_user"
         }
     }
     
@@ -122,6 +128,14 @@ extension CharacterDetailRouter: TargetType2 {
             let requestDTO = RequestDeleteReviewDTO(user_id: parameters.user_id, character_id: parameters.character_id, review_id: parameters.review_id)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
+        case .postBlindReview(let parameters):
+            let requestDTO = RequestPostBlindReviewDTO(user_id: parameters.user_id, review_id: parameters.review_id, blind_type: parameters.blind_type)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+        case .postReportUser(let parameters):
+            let requestDTO = RequestPostReportUserDTO(user_id: parameters.user_id, review_id: parameters.review_id, report_reason: parameters.report_reason)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         default:
             return nil
         }
@@ -131,7 +145,7 @@ extension CharacterDetailRouter: TargetType2 {
         switch self {
         case .getReview, .getComment, .getReviewDetail:
             return .get
-        case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment, .likeCommentCancel, .likeCommentChoice:
+        case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment, .likeCommentCancel, .likeCommentChoice, .postBlindReview, .postReportUser:
             return .post
         case .deleteReview:
             return .delete
