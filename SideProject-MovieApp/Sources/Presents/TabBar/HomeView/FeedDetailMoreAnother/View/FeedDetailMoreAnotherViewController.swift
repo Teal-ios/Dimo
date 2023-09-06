@@ -24,7 +24,7 @@ final class FeedDetailMoreAnotherViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = FeedDetailMoreAnotherViewModel.Input(reviewBlindButtonTapped: self.selfView.reviewBlindButton.rx.tap, reportButtonTapped: self.selfView.reportButton.rx.tap, allReviewBlindButtonTapped: self.selfView.allReviewBlindButton.rx.tap)
+        let input = FeedDetailMoreAnotherViewModel.Input(reviewBlindButtonTapped: self.selfView.reviewBlindButton.rx.tap, reportButtonTapped: self.selfView.reportButton.rx.tap, allReviewBlindButtonTapped: self.selfView.allReviewBlindButton.rx.tap, backgroundButtonTapped: self.selfView.backgroundButton.rx.tap)
         
         let output = viewModel.transform(input: input)
     }

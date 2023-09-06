@@ -75,6 +75,11 @@ class FeedDetailMoreAnotherView: BaseView {
         let button = UIButton()
         return button
     }()
+    
+    let backgroundButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -91,6 +96,7 @@ class FeedDetailMoreAnotherView: BaseView {
         self.addSubview(reviewBlindButton)
         self.addSubview(reportButton)
         self.addSubview(allReviewBlindButton)
+        self.addSubview(backgroundButton)
     }
     
     override func setupLayout() {
@@ -138,6 +144,11 @@ class FeedDetailMoreAnotherView: BaseView {
         
         allReviewBlindButton.snp.makeConstraints { make in
             make.edges.equalTo(allReviewBlindLabel)
+        }
+        
+        backgroundButton.snp.makeConstraints { make in
+            make.bottom.equalTo(baseCategoryView.snp.top)
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
     }
 }

@@ -18,6 +18,7 @@ final class FeedDetailMoreMyViewModel: ViewModelType {
     struct Input{
         let modifyButtonTapped: ControlEvent<Void>
         let deleteButtonTapped: ControlEvent<Void>
+        let backgroundButtonTapped: ControlEvent<Void>
 
     }
     
@@ -41,6 +42,14 @@ final class FeedDetailMoreMyViewModel: ViewModelType {
             self.coordinator?.dismissViewController()
             self.coordinator?.showFeedDetailDeleteViewController(review: self.review)
         }.disposed(by: disposeBag)
+        
+        input.backgroundButtonTapped
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.dismissViewController()
+            }
+            .disposed(by: disposeBag)
         
         return Output()
     }

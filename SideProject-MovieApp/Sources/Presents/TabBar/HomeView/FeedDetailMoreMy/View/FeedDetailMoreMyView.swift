@@ -26,7 +26,8 @@ final class FeedDetailMoreMyView: BaseView {
     
     override func setupLayout() {
         selfView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
 }

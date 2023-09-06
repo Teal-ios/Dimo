@@ -70,6 +70,11 @@ class AlertButtonSecondView: BaseView {
         return button
     }()
     
+    let backgroundButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -92,6 +97,7 @@ class AlertButtonSecondView: BaseView {
         self.addSubview(okButton)
         self.addSubview(cancelButtonLabel)
         self.addSubview(cancelButton)
+        self.addSubview(backgroundButton)
     }
     
     override func setupLayout() {
@@ -138,6 +144,11 @@ class AlertButtonSecondView: BaseView {
         
         cancelButton.snp.makeConstraints { make in
             make.edges.equalTo(cancelButtonLabel)
+        }
+        
+        backgroundButton.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(basePopupView.snp.top)
         }
     }
 }
