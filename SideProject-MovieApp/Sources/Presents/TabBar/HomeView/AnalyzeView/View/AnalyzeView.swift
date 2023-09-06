@@ -15,6 +15,7 @@ final class AnalyzeView: BaseView {
         view.addSubview(titleLabel)
         view.addSubview(chartContainView)
         view.addSubview(chartContainStackView)
+        view.addSubview(charctExceptionLabel)
         view.addSubview(manyPersonThinkingMbtiContainView)
         view.addSubview(manyPersonThinkingMbtiImageView)
         view.addSubview(manyPersonThinkingMbtiLabel)
@@ -47,6 +48,16 @@ final class AnalyzeView: BaseView {
         view.spacing = 16
         view.backgroundColor = .black90
         return view
+    }()
+    
+    let charctExceptionLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.font = Font.body3
+        label.textColor = .black60
+        label.numberOfLines = 2
+        label.text = "아직 MBTI를 나타낼 수 없어요\n첫 번째 투표를 진행해 보세요"
+        return label
     }()
     
     let firstChartView: LengthChartView = {
@@ -154,6 +165,9 @@ final class AnalyzeView: BaseView {
             make.verticalEdges.equalTo(chartContainView).inset(24)
         }
         
+        charctExceptionLabel.snp.makeConstraints { make in
+            make.edges.equalTo(chartContainView).inset(16)
+        }
         manyPersonThinkingMbtiContainView.snp.makeConstraints { make in
             make.top.equalTo(chartContainView.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
@@ -232,9 +246,28 @@ extension AnalyzeView {
 
             self.choiceMbtiExplainLabel.text = "나를 비롯한 \(String(percent))%가 \(myChoiceMbti)를 골랐어요"
         }
+        
+        if item.top3_mbti.first.percent == 0 && item.top3_mbti.second.percent == 0 && item.top3_mbti.third.percent == 0 {
+            voteIsNil()
+        }
     }
 }
 
+extension AnalyzeView {
+    func voteIsNil() {
+        chartContainStackView.isHidden = true
+        charctExceptionLabel.isHidden = false
+        chartContainView.snp.updateConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(74)
+        }
+        
+        manyPersonThinkingMbtiContainView.isHidden = true
+        manyPersonThinkingMbtiLabel.isHidden = true
+        manyPersonThinkingMbtiImageView.isHidden = true
+    }
+}
 extension AnalyzeView {
     func updateUserIsVotedToCharacter(isVote: Bool) {
         switch isVote {
