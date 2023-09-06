@@ -24,7 +24,7 @@ final class FeedDetailMoreMyViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = FeedDetailMoreMyViewModel.Input(modifyButtonTapped: selfView.selfView.movieButton.rx.tap, deleteButtonTapped: selfView.selfView.animationButton.rx.tap)
+        let input = FeedDetailMoreMyViewModel.Input(modifyButtonTapped: selfView.selfView.movieButton.rx.tap, deleteButtonTapped: selfView.selfView.animationButton.rx.tap, backgroundButtonTapped: selfView.selfView.backgroundButton.rx.tap)
         
         let output = viewModel.transform(input: input)
     }

@@ -61,13 +61,18 @@ class CategoryView: BaseView {
         return button
     }()
     
+    let backgroundButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         baseCategoryView.layer.cornerRadius = 8
     }
     
     override func setupLayout() {
-        [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, animationLabel, animationButton].forEach { self.addSubview($0) }
+        [bgView, baseCategoryView, titleLabel, movieLabel, movieButton, animationLabel, animationButton, backgroundButton].forEach { self.addSubview($0) }
         
         bgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -102,6 +107,11 @@ class CategoryView: BaseView {
         
         animationButton.snp.makeConstraints { make in
             make.edges.equalTo(animationLabel)
+        }
+        
+        backgroundButton.snp.makeConstraints { make in
+            make.bottom.equalTo(baseCategoryView.snp.top)
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
     }
 }

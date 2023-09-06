@@ -18,6 +18,7 @@ final class FeedDetailHideUserAlertViewModel: ViewModelType {
     struct Input{
         let okButtonTapped: ControlEvent<Void>
         let cancelButtonTapped: ControlEvent<Void>
+        let backgroundButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -42,6 +43,14 @@ final class FeedDetailHideUserAlertViewModel: ViewModelType {
             self.coordinator?.dismissViewController()
         }
         .disposed(by: disposeBag)
+        
+        input.backgroundButtonTapped
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.dismissViewController()
+            }
+            .disposed(by: disposeBag)
         
         return Output()
     }

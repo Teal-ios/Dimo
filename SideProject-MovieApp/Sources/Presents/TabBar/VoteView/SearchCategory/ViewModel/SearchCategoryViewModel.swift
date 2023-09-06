@@ -21,7 +21,7 @@ final class SearchCategoryViewModel: ViewModelType {
     struct Input{
         let workButtonTapped: ControlEvent<Void>
         let characterButtonTapped: ControlEvent<Void>
-        
+        let backgroundButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -50,6 +50,14 @@ final class SearchCategoryViewModel: ViewModelType {
                 vm.delegate?.sendCategoryChange(category: SearchCategoryCase.character)
                 vm.coordinator?.dismissViewController()
             }.disposed(by: disposeBag)
+        
+        input.backgroundButtonTapped
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, _ in
+                vm.coordinator?.dismissViewController()
+            }
+            .disposed(by: disposeBag)
         
         return Output(categoryCase: self.categoryCase)
     }

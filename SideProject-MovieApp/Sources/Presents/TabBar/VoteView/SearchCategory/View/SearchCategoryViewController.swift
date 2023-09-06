@@ -25,7 +25,7 @@ final class SearchCategoryViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = SearchCategoryViewModel.Input(workButtonTapped: selfView.selfView.movieButton.rx.tap, characterButtonTapped: selfView.selfView.animationButton.rx.tap)
+        let input = SearchCategoryViewModel.Input(workButtonTapped: selfView.selfView.movieButton.rx.tap, characterButtonTapped: selfView.selfView.animationButton.rx.tap, backgroundButtonTapped: selfView.selfView.backgroundButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
