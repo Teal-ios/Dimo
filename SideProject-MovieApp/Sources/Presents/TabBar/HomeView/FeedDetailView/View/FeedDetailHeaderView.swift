@@ -121,6 +121,31 @@ class FeedDetailHeaderView: BaseView {
         return stackView
     }()
     
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black90
+        return view
+    }()
+    
+    let spoilerCommentChoiceContainView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    let spoilerCommentChoiceButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "NotChoice"), for: .normal)
+        return button
+    }()
+    
+    let spoilerCommentExplainLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.body3
+        label.textColor = .black5
+        label.text = "스포일러 포함된 댓글 가리기"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(profileImgView)
@@ -130,7 +155,10 @@ class FeedDetailHeaderView: BaseView {
         self.addSubview(totalStackView)
         self.addSubview(mainTextLabel)
         self.addSubview(likeContainButton)
-        
+        self.addSubview(lineView)
+        self.addSubview(spoilerCommentChoiceContainView)
+        self.addSubview(spoilerCommentChoiceButton)
+        self.addSubview(spoilerCommentExplainLabel)
         makeConstraints()
     }
     
@@ -163,7 +191,6 @@ class FeedDetailHeaderView: BaseView {
         totalStackView.snp.makeConstraints { make in
             make.height.equalTo(56)
             make.horizontalEdges.equalTo(safeArea).inset(32)
-            make.bottom.equalTo(safeArea)
         }
         
         likeAndReviewAndViewsLabel.snp.makeConstraints { make in
@@ -182,6 +209,33 @@ class FeedDetailHeaderView: BaseView {
             make.leading.equalTo(totalStackView.snp.leading)
             make.width.equalTo(totalStackView.snp.width).multipliedBy(0.5)
             make.verticalEdges.equalTo(totalStackView)
+        }
+        
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(totalStackView.snp.bottom)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(1)
+        }
+        
+        spoilerCommentChoiceContainView.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(36)
+            make.bottom.equalTo(safeArea).offset(-16)
+        }
+        
+        spoilerCommentChoiceButton.snp.makeConstraints { make in
+            make.leading.equalTo(spoilerCommentChoiceContainView.snp.leading)
+            make.centerY.equalTo(spoilerCommentChoiceContainView)
+            make.height.width.equalTo(24)
+        }
+        
+        spoilerCommentExplainLabel.snp.makeConstraints { make in
+            make.leading.equalTo(spoilerCommentChoiceButton.snp.trailing).offset(8)
+            make.centerY.equalTo(spoilerCommentChoiceContainView)
+            make.trailing.equalTo(spoilerCommentChoiceContainView)
+            make.height.equalTo(21)
+            
         }
     }
 }
@@ -234,5 +288,20 @@ extension FeedDetailHeaderView {
         guard let url else { return }
         guard let imageURL = URL(string: url) else { return }
         profileImgView.kf.setImage(with: imageURL)
+    }
+}
+
+extension FeedDetailHeaderView {
+    func spoilerIsOn() {
+        spoilerCommentChoiceContainView.isHidden = true
+        spoilerCommentChoiceButton.isHidden = true
+        spoilerCommentExplainLabel.isHidden = true
+        
+        spoilerCommentChoiceContainView.snp.updateConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(1)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(0)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+        }
     }
 }

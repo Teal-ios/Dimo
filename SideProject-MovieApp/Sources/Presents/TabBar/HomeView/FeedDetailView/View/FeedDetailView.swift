@@ -372,6 +372,18 @@ extension FeedDetailView {
         case false:
             self.headerView.likeImageView.image = UIImage(named: "LikeSelect")
         }
+        
+        print(item.review_list[0].review_spoiler, "스포일러 여부 확인")
+        if item.review_list[0].review_spoiler == 1 {
+            headerView.spoilerIsOn()
+        } else {
+            headerView.snp.removeConstraints()
+            headerView.snp.makeConstraints { make in
+                make.top.equalTo(containScrollView.snp.top)
+                make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+                make.height.lessThanOrEqualTo(552)
+            }
+        }
     }
     
     func configureReviewLikeValid(with item: Bool) {
