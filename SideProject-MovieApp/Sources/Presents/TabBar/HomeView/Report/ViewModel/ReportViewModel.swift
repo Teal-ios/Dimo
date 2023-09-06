@@ -14,6 +14,8 @@ class ReportViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
     private var characterDetailUseCase: CharacterDetailUseCase
+    private var user_id: String
+    private var review_id: Int
     
     enum ReportReason: Equatable {
         case slangUsing(isSelected: Bool)
@@ -50,12 +52,6 @@ class ReportViewModel: ViewModelType {
         let didTappedReportButton: ControlEvent<Void>
     }
     
-    private var reportReason = BehaviorRelay<ReportReason?>(value: nil)
-    private var reportReasonTextView = BehaviorRelay<String?>(value: nil)
-    private var didBeginEditingTextView = BehaviorRelay(value: false)
-    private var user_id: String
-    private var review_id: Int
-    
     struct Output {
         let reportReason: BehaviorRelay<ReportReason?>
         let didBeginEditingTextView: BehaviorRelay<Bool>
@@ -69,6 +65,11 @@ class ReportViewModel: ViewModelType {
         self.user_id = user_id
         self.review_id = review_id
     }
+    
+    let reportUser = PublishRelay<ReportUser>()
+    private var reportReason = BehaviorRelay<ReportReason?>(value: nil)
+    private var reportReasonTextView = BehaviorRelay<String?>(value: nil)
+    private var didBeginEditingTextView = BehaviorRelay(value: false)
     
     func transform(input: Input) -> Output {
         
@@ -153,7 +154,14 @@ class ReportViewModel: ViewModelType {
         input.didTappedReportButton
             .withUnretained(self)
             .bind { (vm, _) in
-
+                guard let user_id = UserDefaultManager.userId else { return }
+                let reportReason = vm.reportReason.value?.withdrawReason
+                if reportReason == ReportReason.etc(isSelected: true).withdrawReason {
+                    vm.postReport(user_id: user_id, review_id: vm.review_id, report_reason: vm.reportReasonTextView.value ?? "")
+                } else {
+                    guard let reportReason = reportReason else { return }
+                    vm.postReport(user_id: user_id, review_id: vm.review_id, report_reason: reportReason)
+                }
             }
             .disposed(by: disposeBag)
                     
@@ -167,7 +175,10 @@ class ReportViewModel: ViewModelType {
 extension ReportViewModel {
     private func postReport(user_id: String, review_id: Int, report_reason: String) {
         Task {
-            
+            let query = PostReportUserQuery(user_id: user_id, review_id: review_id, report_reason: report_reason)
+            print(query, "신고 Query")
+            let reportUser = try await characterDetailUseCase.excuteReportUser(query: query)
+            self.reportUser.accept(reportUser)
         }
     }
 }

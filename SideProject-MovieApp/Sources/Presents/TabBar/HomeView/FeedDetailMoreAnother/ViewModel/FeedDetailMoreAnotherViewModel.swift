@@ -38,7 +38,7 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, _ in
                 vm.coordinator?.dismissViewController()
-                vm.coordinator?.showFeedDetailHideReviewAlertViewController()
+                vm.coordinator?.showFeedDetailHideReviewAlertViewController(review_id: vm.review_id)
             }
             .disposed(by: disposeBag)
         
@@ -51,7 +51,7 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
         input.allReviewBlindButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
             self.coordinator?.dismissViewController()
-            self.coordinator?.showFeedDetailHideUserAlertViewController()
+            self.coordinator?.showFeedDetailHideUserAlertViewController(review_id: self.review_id)
         }.disposed(by: disposeBag)
         
         input.backgroundButtonTapped
@@ -60,8 +60,8 @@ final class FeedDetailMoreAnotherViewModel: ViewModelType {
             .bind { vm, _ in
                 vm.coordinator?.dismissViewController()
             }
-            .disposed(by: disposeBag
-            )
+            .disposed(by: disposeBag)
+        
         return Output()
     }
 }
