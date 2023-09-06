@@ -9,6 +9,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum SpoilerComment {
+    case yes
+    case no
+}
+
 final class FeedDetailViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
@@ -18,6 +23,7 @@ final class FeedDetailViewModel: ViewModelType {
     var modifyText: PublishRelay<String>
     var deleteReviewTrigger: PublishRelay<Void>
     var review_id: BehaviorRelay<Int>
+    var totalCommentList: [CommentList?] = []
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -27,6 +33,7 @@ final class FeedDetailViewModel: ViewModelType {
         let commentRegisterButtonTap: ControlEvent<Void>
         let likeButtonTapped: ControlEvent<Void>
         let commentCellSelected: PublishRelay<CommentList>
+        let spoilerFilterButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -39,6 +46,7 @@ final class FeedDetailViewModel: ViewModelType {
         let reviewLikeValid: BehaviorRelay<Bool>
         let commentLikeValid: BehaviorRelay<Bool>
         let modifyReviewTextAfter: PublishRelay<String>
+        let currentSpoilerValid: BehaviorRelay<SpoilerComment>
     }
     
     init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>) {
@@ -60,6 +68,8 @@ final class FeedDetailViewModel: ViewModelType {
     let commentLikeValid = BehaviorRelay(value: false)
     let commentLikeChoice = PublishRelay<LikeCommentChoice>()
     let commentLikeCancel = PublishRelay<LikeCommentCancel>()
+    let currentSpoiler = BehaviorRelay<SpoilerComment>(value: .yes)
+
     
     func transform(input: Input) -> Output {
         //MARK: 여기까지함. 이제 다른 사람 리뷰이면 다른 창 뜨게 창만들어야함
@@ -201,8 +211,34 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.spoilerFilterButtonTapped
+            .withLatestFrom(self.getCommentList)
+            .withUnretained(self)
+            .bind { vm, commentList in
+                
+                let currentSpoiler = vm.currentSpoiler.value
+
+                switch currentSpoiler {
+                    
+                case .yes:
+                    var notSpoilerCommentArr: [CommentList?] = []
+                    for ele in commentList {
+                        guard let ele = ele else { return }
+                        if ele.comment_spoiler == 0 {
+                            notSpoilerCommentArr.append(ele)
+                        }
+                    }
+                    vm.getCommentList.accept(notSpoilerCommentArr)
+                    vm.currentSpoiler.accept(.no)
+                case .no:
+                    vm.getCommentList.accept(vm.totalCommentList)
+                    vm.currentSpoiler.accept(.yes)
+                }
+            }
+            .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText)
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText, currentSpoilerValid: self.currentSpoiler)
     }
 }
 
@@ -212,6 +248,7 @@ extension FeedDetailViewModel {
             let getCommentList = try await characterDetailUseCase.excuteGetComment(query: GetCommentQuery(user_id: user_id, review_id: review_id))
             print(getCommentList, "댓글 조회")
             self.getCommentList.accept(getCommentList.comment_list)
+            self.totalCommentList = getCommentList.comment_list
         }
     }
 }
@@ -223,6 +260,7 @@ extension FeedDetailViewModel {
             let postComment = try await characterDetailUseCase.excutePostComment(query: query)
             print(postComment, "댓글 작성 성공")
             self.postComment.accept(postComment)
+            self.spoilerValid.accept(false)
         }
     }
 }
