@@ -132,14 +132,6 @@ final class MovieDetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.evaluateMbti
-            .observe(on: MainScheduler.instance)
-            .withUnretained(self)
-            .bind { vc, evaluateMbti in
-                vc.selfView.configureEvalateMbti(with: evaluateMbti)
-            }
-            .disposed(by: disposeBag)
-        
         output.gradeEvaluateResult
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
@@ -152,12 +144,28 @@ final class MovieDetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.mostLikeChoiceMbti
+//        output.evaluateMbti
+//            .observe(on: MainScheduler.instance)
+//            .withUnretained(self)
+//            .bind { vc, evaluateMbti in
+//                vc.selfView.configureEvalateMbti(with: evaluateMbti)
+//            }
+//            .disposed(by: disposeBag)
+//        
+//        output.mostLikeChoiceMbti
+//            .observe(on: MainScheduler.instance)
+//            .withUnretained(self)
+//            .bind { vc, mostLikeChoiceMbti in
+//                guard let mbti = mostLikeChoiceMbti.most_mbti else { return }
+//                vc.selfView.headerView.firstMbtiView.updateLabelText(mbti: mbti, explainText: "가 가장 많이 찜했어요")
+//            }
+//            .disposed(by: disposeBag)
+        
+        Observable.zip(output.evaluateMbti, output.mostLikeChoiceMbti)
             .observe(on: MainScheduler.instance)
-            .withUnretained(self)
-            .bind { vc, mostLikeChoiceMbti in
-                guard let mbti = mostLikeChoiceMbti.most_mbti else { return }
-                vc.selfView.headerView.firstMbtiView.updateLabelText(mbti: mbti, explainText: "가 가장 많이 찜했어요")
+            .bind { [weak self] evaluateMbti, mostLikeChoiceMbti in
+                guard let self = self else { return }
+                self.selfView.configureEvalateMbtiAndMostLikeChoice(with: evaluateMbti, mostLikeMbti: mostLikeChoiceMbti.most_mbti)
             }
             .disposed(by: disposeBag)
         }

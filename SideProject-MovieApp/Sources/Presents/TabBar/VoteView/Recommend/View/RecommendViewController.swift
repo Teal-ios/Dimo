@@ -38,9 +38,10 @@ final class RecommendViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped, searchNavigationButtonTapped: self.searchNavigationButtonTap)
+        let input = RecommendViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, randomButtonTap: self.selfView.categoryContainView.animationButton.rx.tap, popularButtonTap: self.selfView.categoryContainView.movieButton.rx.tap, categoryButtonTap: self.selfView.categoryButton.rx.tap, characterCellTapped: self.characterCellTapped, searchNavigationButtonTapped: self.searchNavigationButtonTap, backgroundButtonTapped: self.selfView.categoryContainView.backgroundButton.rx.tap)
         
         let output = self.viewModel.transform(input: input)
+        
         output.randomCharacterRecommend
             .withUnretained(self)
             .observe(on: MainScheduler.instance)
@@ -102,6 +103,13 @@ final class RecommendViewController: BaseViewController {
                 } else {
                     vc.selfView.updateCategory(popularCategoryChoice: false)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        output.backgroundButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.selfView.appearCategory(appear: false)
             }
             .disposed(by: disposeBag)
     }

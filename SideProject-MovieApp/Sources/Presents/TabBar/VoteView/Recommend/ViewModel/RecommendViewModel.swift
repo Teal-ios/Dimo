@@ -34,6 +34,7 @@ final class RecommendViewModel: ViewModelType {
         let categoryButtonTap: ControlEvent<Void>
         let characterCellTapped: PublishRelay<CharacterInfo>
         let searchNavigationButtonTapped: PublishRelay<Void>
+        let backgroundButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -43,6 +44,7 @@ final class RecommendViewModel: ViewModelType {
         let popularButtonTap: ControlEvent<Void>
         let categoryButtonTap: ControlEvent<Void>
         let recommendCategory: PublishRelay<String>
+        let backgroundButtonTapped: ControlEvent<Void>
     }
     
     let popularCharacterRecommend = PublishRelay<PopularCharacterRecommendList>()
@@ -98,7 +100,7 @@ final class RecommendViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(popularCharacterRecommend: self.popularCharacterRecommend, randomCharacterRecommend: self.randomCharacterRecommend, randomButtonTap: input.randomButtonTap, popularButtonTap: input.popularButtonTap, categoryButtonTap: input.categoryButtonTap, recommendCategory: self.recommendCategory)
+        return Output(popularCharacterRecommend: self.popularCharacterRecommend, randomCharacterRecommend: self.randomCharacterRecommend, randomButtonTap: input.randomButtonTap, popularButtonTap: input.popularButtonTap, categoryButtonTap: input.categoryButtonTap, recommendCategory: self.recommendCategory, backgroundButtonTapped: input.backgroundButtonTapped)
     }
 }
 
