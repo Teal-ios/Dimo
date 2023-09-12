@@ -67,8 +67,6 @@ final class ProductNotificationView: BaseView {
         return button
     }()
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-    
     let searchExceptionContainView: UIView = {
         let view = UIView()
         view.isHidden = true
@@ -94,6 +92,12 @@ final class ProductNotificationView: BaseView {
         return label
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.allowsMultipleSelection = true
+        return collectionView
+    }()
+    
     override func setHierarchy() {
         self.addSubview(keywordSearchTextField)
         self.addSubview(categoryContainView)
@@ -104,6 +108,7 @@ final class ProductNotificationView: BaseView {
         self.addSubview(searchExceptionContainView)
         self.addSubview(searchExceptionImageView)
         self.addSubview(searchExceptionExplainLabel)
+        self.addSubview(collectionView)
     }
     
     override func layoutSubviews() {
@@ -149,7 +154,7 @@ final class ProductNotificationView: BaseView {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.top.equalTo(categoryButton.snp.bottom).offset(16)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
@@ -222,6 +227,71 @@ extension ProductNotificationView {
         
         return section
     }
+    
+    func createLayout() -> UICollectionViewLayout {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+
+            switch ProductNotificationViewController.Section(rawValue: sectionIndex) {
+            case .searchedKeyword:
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .estimated(100),
+                    heightDimension: .absolute(32)
+                )
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                //group
+                let groupSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(32)
+                )
+                let group = NSCollectionLayoutGroup.horizontal(
+                    layoutSize: groupSize,
+                    subitems: [item]
+                )
+                group.interItemSpacing = .fixed(8)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+                
+                return section
+            case .registeredKeyword:
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .estimated(100),
+                    heightDimension: .absolute(32)
+                )
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                //group
+                let groupSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(32)
+                )
+                let group = NSCollectionLayoutGroup.horizontal(
+                    layoutSize: groupSize,
+                    subitems: [item]
+                )
+                group.interItemSpacing = .fixed(8)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+                
+                
+                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                        heightDimension: .absolute(12.0))
+                let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                         elementKind: RegisteredKeywordHeaderView.reuseIdentifier,
+                                                                         alignment: .top)
+                section.boundarySupplementaryItems = [header]
+                return section
+            default:
+                return nil
+            }
+        }
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .vertical
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: configuration)
+        return layout
+    }
 }
 
 //MARK: Character Layout
@@ -248,17 +318,6 @@ extension ProductNotificationView {
 }
 
 extension ProductNotificationView {
-    func configureCategoryUpdate(category: String) {
-        if category == SearchCategoryCase.character.rawValue {
-            categoryButtonToCharacter()
-        } else {
-            categoryButtonToWork()
-        }
-        self.layoutIfNeeded()
-    }
-}
-
-extension ProductNotificationView {
     func categoryButtonToCharacter() {
         categoryButton.snp.removeConstraints()
         categoryButton.snp.remakeConstraints { make in
@@ -279,26 +338,6 @@ extension ProductNotificationView {
             make.leading.equalTo(safeAreaLayoutGuide).inset(16)
         }
         self.categoryInsetLabel.text = "작품명"
-    }
-}
-
-extension ProductNotificationView {
-    func updateCategoryView(categoryAppear: Bool) {
-        categoryContainView.isHidden = !categoryAppear
-        categoryButton.isHidden = !categoryAppear
-        categoryInsetLabel.isHidden = !categoryAppear
-        arrowBottomLabel.isHidden = !categoryAppear
-        categoryButton.isEnabled = categoryAppear
-    }
-}
-
-extension ProductNotificationView {
-    func updateSearchTextField(text: String?) {
-        if text == "" {
-            searchImageView.image = UIImage(named: "Search")
-        } else {
-            searchImageView.image = UIImage(named: "Search_On")
-        }
     }
 }
 

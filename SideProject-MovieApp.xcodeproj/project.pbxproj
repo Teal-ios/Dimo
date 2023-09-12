@@ -575,6 +575,7 @@
 		49E726BF2AAC9800001828CB /* AllMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */; };
 		49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */; };
 		49E726C32AAC9B49001828CB /* RegisteredKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */; };
+		49E726C52AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C42AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift */; };
 		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
 		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
 		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
@@ -1224,6 +1225,7 @@
 		49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordHeaderView.swift; sourceTree = "<group>"; };
+		49E726C42AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordCollectionViewCell.swift; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -3910,6 +3912,7 @@
 			children = (
 				49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */,
 				49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */,
+				49E726C42AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4404,6 +4407,7 @@
 				2FD0735D2A25BFC5003F7E56 /* SettingRepositoryImpl.swift in Sources */,
 				2F1AB9C32A10B7F7001178EA /* FeedView.swift in Sources */,
 				49EEDF152A8B5C01008C5D21 /* FrequentQuestionViewController.swift in Sources */,
+				49E726C52AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift in Sources */,
 				2FE9681D2A7BCA6D000E705E /* Content.swift in Sources */,
 				2FCD8C8F2A8247DB002A39B0 /* FeedDetailMoreAnotherView.swift in Sources */,
 				49A7A1D22A90A4A40011EDC4 /* UserInfo.swift in Sources */,

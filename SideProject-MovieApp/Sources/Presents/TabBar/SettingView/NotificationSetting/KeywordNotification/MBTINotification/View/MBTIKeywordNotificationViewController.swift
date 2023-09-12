@@ -59,8 +59,6 @@ final class MBTIKeywordNotificationViewController: BaseViewController {
                 vc.mbtiList[index].isSelected = item.isSelected
             }
             .disposed(by: disposeBag)
-        
-        
     }
     
     func configureDatasource() {

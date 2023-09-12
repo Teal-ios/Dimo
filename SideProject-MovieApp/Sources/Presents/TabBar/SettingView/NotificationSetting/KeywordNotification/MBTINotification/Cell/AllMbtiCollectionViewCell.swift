@@ -24,8 +24,13 @@ final class AllMbtiCollectionViewCell: BaseCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureContentView()
-        self.label.frame = contentView.frame
         self.contentView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading).offset(12)
+            make.top.equalTo(contentView.snp.top)
+            make.trailing.equalTo(contentView.snp.trailing).inset(12)
+            make.bottom.equalTo(contentView.snp.bottom)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +46,10 @@ final class AllMbtiCollectionViewCell: BaseCollectionViewCell {
     
     func configure(text: String) {
         self.label.text = text
+    }
+    
+    func configureLabelTextColor(_ color: UIColor) {
+        label.textColor = color
     }
     
     func configureUI(isSelected: Bool = false) {
