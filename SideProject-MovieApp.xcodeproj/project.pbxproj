@@ -576,6 +576,8 @@
 		49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */; };
 		49E726C32AAC9B49001828CB /* RegisteredKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */; };
 		49E726C52AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C42AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift */; };
+		49E726E72AB59360001828CB /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726E62AB59360001828CB /* CategoryButton.swift */; };
+		49E726E92AB5BF1A001828CB /* RegisteredMBTIHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726E82AB5BF1A001828CB /* RegisteredMBTIHeaderView.swift */; };
 		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
 		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
 		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
@@ -1226,6 +1228,8 @@
 		49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordHeaderView.swift; sourceTree = "<group>"; };
 		49E726C42AB0B829001828CB /* RegisteredKeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordCollectionViewCell.swift; sourceTree = "<group>"; };
+		49E726E62AB59360001828CB /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		49E726E82AB5BF1A001828CB /* RegisteredMBTIHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredMBTIHeaderView.swift; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -3847,6 +3851,8 @@
 			children = (
 				49C7221D2AA32A970062650F /* KeywordNotificationViewController.swift */,
 				49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */,
+				49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */,
+				49E726E82AB5BF1A001828CB /* RegisteredMBTIHeaderView.swift */,
 				49C722202AA32FB80062650F /* MBTINotification */,
 				49C7221F2AA32FA70062650F /* ProductNotification */,
 			);
@@ -3892,9 +3898,9 @@
 		49C722212AA32FDB0062650F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */,
 				49C722252AA330EB0062650F /* MBTIKeywordNotificationView.swift */,
 				49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */,
+				49E726E62AB59360001828CB /* CategoryButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4496,6 +4502,7 @@
 				2FCB527F2AA8410900D71A64 /* RequestPostBlindReviewDTO.swift in Sources */,
 				2FEC15FE2A78B5D3009CF59D /* ResponseGetMyCommentDTO.swift in Sources */,
 				2FD82D722A7746AE00372D24 /* LikeReviewChoiceQuery.swift in Sources */,
+				49E726E72AB59360001828CB /* CategoryButton.swift in Sources */,
 				2FC7746F2A998C1F00C36024 /* ResponseLikeCommentCancelDTO.swift in Sources */,
 				2FD82D702A77469000372D24 /* GetReviewQuery.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
@@ -4856,6 +4863,7 @@
 				2F437C002A4BE51E000B7A61 /* ResponseAnimationDataDTO.swift in Sources */,
 				2FC774612A99865600C36024 /* ReviewIsLiked.swift in Sources */,
 				2FD82DAA2A774F9900372D24 /* ResponseVoteCharacterDTO.swift in Sources */,
+				49E726E92AB5BF1A001828CB /* RegisteredMBTIHeaderView.swift in Sources */,
 				497454ED2A3F67C30043D67E /* UserInfoQuery.swift in Sources */,
 				2FD69EAE2A0384DC00AA5A6E /* HomeModel.swift in Sources */,
 				2FC94E5429C00F0B0097E696 /* SceneDelegate.swift in Sources */,

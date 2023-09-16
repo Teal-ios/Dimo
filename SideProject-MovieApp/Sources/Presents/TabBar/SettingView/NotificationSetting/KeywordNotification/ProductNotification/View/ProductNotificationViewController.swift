@@ -26,11 +26,15 @@ final class ProductNotificationViewController: BaseViewController {
     let viewModel: ProductNotificationViewModel
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Keyword>!
-    private var headerLabelText = BehaviorRelay<String>(value: "")
+    private var registeredKeywordCellSelected = PublishRelay<Keyword>()
+    private var isSearchedKeyword = PublishRelay<Bool>()
+    private var isEmptyRegisteredKeywordList = PublishRelay<Bool>()
     
-    private var searchedKeyword: [String] = ["8월", "8월의 크리스마스", "크리스마스 스위치"]
-    private lazy var searchedKeywordList: [Keyword] = searchedKeyword.map { Keyword(keyword: $0) }
-    private lazy var registeredKeywordList: [Keyword] = searchedKeyword.map { Keyword(keyword: $0) }
+    private var searchedKeyword: [String] = ["8월", "8월의 크리스마스", "크리스마스 스위치", "크리스마스의 악목", "배드 맘스 크리스마스"]
+    private var registeredKeyword: [String] = ["더글로리", "헤어질 결심", "슬램덩크"]
+    
+    private lazy var searchedKeywordList: [Keyword] = []
+    private lazy var registeredKeywordList: [Keyword] = registeredKeyword.map { Keyword(keyword: $0) }
     
     init(viewModel: ProductNotificationViewModel) {
         self.viewModel = viewModel
@@ -43,9 +47,46 @@ final class ProductNotificationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.productNotificationView.collectionView.delegate = self
+        self.productNotificationView.collectionView.delegate = self
         self.configureDatasource()
         self.applySnapshot()
+        self.bind()
+        
+        if registeredKeywordList.isEmpty {
+            isEmptyRegisteredKeywordList.accept(true)
+        } else {
+            isEmptyRegisteredKeywordList.accept(false)
+        }
+    }
+    
+    override func setupBinding() {
+        let input = ProductNotificationViewModel.Input(didTappedSearchButton: productNotificationView.keywordSearchTextField.searchTextField.rx.controlEvent(.editingDidEndOnExit)
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.isTappedSearchButton
+            .withUnretained(self)
+            .bind { (vc, isTapped) in
+                vc.productNotificationView.hideCategoryButton(!isTapped)
+                if isTapped {
+                    vc.productNotificationView.collectionView.setCollectionViewLayout(vc.productNotificationView.createLayout(sectionBottomInset: 48.0), animated: true)
+                    vc.searchedKeywordList = vc.searchedKeyword.map { Keyword(keyword: $0) }
+                    vc.isSearchedKeyword.accept(true)
+                    vc.applySnapshot()
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func bind() {
+        registeredKeywordCellSelected
+            .withUnretained(self)
+            .bind(onNext: { (vc, item) in
+                guard let index = vc.searchedKeywordList.map({ $0.keyword }).firstIndex(of: item.keyword) else { return }
+                vc.searchedKeywordList[index].isSelected = item.isSelected
+            })
+            .disposed(by: disposeBag)
     }
     
     func configureDatasource() {
@@ -76,10 +117,23 @@ final class ProductNotificationViewController: BaseViewController {
         self.dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             let header = collectionView.dequeueConfiguredReusableSupplementary(using: registeredKeywordHeaderView, for: indexPath)
             
-            self.headerLabelText
+            if self.registeredKeywordList.isEmpty {
+                header.isHidden = true
+            } else {
+                header.isHidden = false
+            }
+            
+            self.isSearchedKeyword
                 .withUnretained(self)
-                .bind { (vc, text) in
-                    header.headerLabel.text = text
+                .bind { (vc, isSearched) in
+                    header.borderView.isHidden = !isSearched
+                }
+                .disposed(by: self.disposeBag)
+            
+            self.isEmptyRegisteredKeywordList
+                .withUnretained(self)
+                .bind { (vc, isEmpty) in
+                    header.isHidden = isEmpty
                 }
                 .disposed(by: self.disposeBag)
             
@@ -94,6 +148,42 @@ final class ProductNotificationViewController: BaseViewController {
         snapshot.appendItems(registeredKeywordList, toSection: .registeredKeyword)
         dataSource.apply(snapshot)
     }
-    
+}
+
+extension ProductNotificationViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch Section(rawValue: indexPath.section) {
+        case .searchedKeyword:
+            let cellIsSelected = searchedKeywordList[indexPath.item].isSelected
+            guard !cellIsSelected else { return }
+            
+            let selectedKeyword = searchedKeywordList[indexPath.item].keyword
+            let isRegisteredKeyword = registeredKeywordList.contains { Keyword in
+                return Keyword.keyword == selectedKeyword
+            }
+  
+            guard !isRegisteredKeyword && registeredKeywordList.count < 5 else { return }
+            registeredKeywordList.append(Keyword(keyword: selectedKeyword))
+            searchedKeywordList[indexPath.item].isSelected = true
+            isEmptyRegisteredKeywordList.accept(false)
+            applySnapshot()
+        case .registeredKeyword:
+            fetchRegisteredKeywordCellData(indexPath: indexPath)
+            registeredKeywordList.remove(at: indexPath.item)
+            if registeredKeywordList.isEmpty {
+                isEmptyRegisteredKeywordList.accept(true)
+            }
+            applySnapshot()
+        default:
+            break
+        }
+    }
+}
+
+extension ProductNotificationViewController {
+    func fetchRegisteredKeywordCellData(indexPath: IndexPath) {
+        let selectedKeyword = dataSource.snapshot().itemIdentifiers(inSection: Section.registeredKeyword)[indexPath.item]
+        self.registeredKeywordCellSelected.accept(Keyword(keyword: selectedKeyword.keyword, isSelected: selectedKeyword.isSelected))
+    }
 }
 

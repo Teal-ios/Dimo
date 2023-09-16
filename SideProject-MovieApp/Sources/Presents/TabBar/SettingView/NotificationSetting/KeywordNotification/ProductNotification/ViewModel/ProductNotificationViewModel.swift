@@ -16,11 +16,13 @@ final class ProductNotificationViewModel: ViewModelType {
     let networkUsecase: SettingUseCase
     
     struct Input {
-        
+        let didTappedSearchButton: ControlEvent<Void>
     }
     
+    private var isTappedSearchButton = BehaviorRelay<Bool>(value: false)
+    
     struct Output {
-        
+        let isTappedSearchButton: BehaviorRelay<Bool>
     }
     
     init(coordinator: SettingCoordinator?, networkUsecase: SettingUseCase) {
@@ -29,8 +31,17 @@ final class ProductNotificationViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        input.didTappedSearchButton
+            .withUnretained(self)
+            .bind { (vm, _) in
+                vm.isTappedSearchButton.accept(true)
+            }
+            .disposed(by: disposeBag)
         
-        return Output()
+        
+        
+        
+        return Output(isTappedSearchButton: self.isTappedSearchButton)
     }
     
 }

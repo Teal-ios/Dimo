@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class KeywordSearchTextField: UITextField {
+final class KeywordSearchTextFieldView: UIView {
     
     let searchContainView: UIView = {
         let view = UIView()
@@ -73,7 +73,7 @@ final class KeywordSearchTextField: UITextField {
     }
 }
 
-extension KeywordSearchTextField {
+extension KeywordSearchTextFieldView {
     
     func addTextFieldAction() {
         searchTextField.addAction(UIAction(handler: { _ in

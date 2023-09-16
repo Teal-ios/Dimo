@@ -56,7 +56,6 @@ final class MBTIKeywordNotificationView: BaseView {
             
                     return section
                 }
-                
             case .registeredMbti:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -68,12 +67,12 @@ final class MBTIKeywordNotificationView: BaseView {
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 12.0, leading: 8.0, bottom: 0, trailing: 8.0)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 4.0, leading: 8.0, bottom: 0, trailing: 8.0)
                     
                     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                            heightDimension: .absolute(12.0))
+                                                            heightDimension: .absolute(32.0))
                     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                             elementKind: RegisteredKeywordHeaderView.reuseIdentifier,
+                                                                             elementKind: RegisteredMBTIHeaderView.reuseIdentifier,
                                                                              alignment: .top)
                     section.boundarySupplementaryItems = [header]
                     return section
@@ -82,12 +81,12 @@ final class MBTIKeywordNotificationView: BaseView {
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 12.0, leading: 8.0, bottom: 0, trailing: 8.0)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 4.0, leading: 8.0, bottom: 0, trailing: 8.0)
                     
                     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                            heightDimension: .absolute(12.0))
+                                                            heightDimension: .absolute(32.0))
                     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                             elementKind: RegisteredKeywordHeaderView.reuseIdentifier,
+                                                                             elementKind: RegisteredMBTIHeaderView.reuseIdentifier,
                                                                              alignment: .top)
                     section.boundarySupplementaryItems = [header]
                     return section

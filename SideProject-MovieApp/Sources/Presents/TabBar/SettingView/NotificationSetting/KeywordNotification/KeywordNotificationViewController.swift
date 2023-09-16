@@ -29,23 +29,10 @@ final class KeywordNotificationViewController: TabmanViewController {
     }()
     
     private let viewModel: KeywordNotificationViewModel
-//    private var productNotificationViewController: ProductNotificationViewController
-//    private var mbtiNotificationViewController: MBTINotificationViewController
     private var viewControllers: [BaseViewController]
     
     init(with viewModel: KeywordNotificationViewModel, _ viewControllers: [BaseViewController]) {
         self.viewModel = viewModel
-//        let dataTransferService = DataTransferService(networkService: NetworkService())
-//        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
-//        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-//
-//        let productNotificationViewModel = ProductNotificationViewModel(coordinator: viewModel.coordinator, networkUsecase: settingUseCaseImpl)
-//        let mbtiNotificationViewModel = MBTINotificationViewModel(coordinator: viewModel.coordinator, networkUsecase: settingUseCaseImpl)
-//
-//        self.productNotificationViewController = ProductNotificationViewController(viewModel: productNotificationViewModel)
-//        self.mbtiNotificationViewController = MBTINotificationViewController(viewModel: mbtiNotificationViewModel)
-//
-//        self.viewControllers = .init([productNotificationViewController, mbtiNotificationViewController])
         self.viewControllers = viewControllers
         super.init(nibName: nil, bundle: nil)
     }

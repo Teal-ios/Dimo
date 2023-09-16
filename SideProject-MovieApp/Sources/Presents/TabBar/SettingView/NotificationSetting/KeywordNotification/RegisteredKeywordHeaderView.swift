@@ -18,13 +18,29 @@ final class RegisteredKeywordHeaderView: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Font.subtitle3
         label.textColor = .black60
+        label.text = "등록한 키워드"
         return label
+    }()
+    
+    let borderView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black90
+        view.isHidden = true
+        return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(borderView)
         self.addSubview(headerLabel)
+        
         NSLayoutConstraint.activate([
+            borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16.0),
+            borderView.topAnchor.constraint(equalTo: self.topAnchor, constant: -16.0),
+            borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 16.0),
+            borderView.heightAnchor.constraint(equalToConstant: 1.0),
+            
             headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])

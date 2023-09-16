@@ -27,7 +27,7 @@ final class MBTIKeywordNotificationViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, MBTI>!
     private var registredMbtiCellSelected = PublishRelay<MBTI>()
-    private var headerLabelText = BehaviorRelay<String>(value: "")
+    private var isEmptyRegisteredMbtiList = PublishRelay<Bool>()
     
     private let mbtiArr: [String] = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"]
     
@@ -83,17 +83,22 @@ final class MBTIKeywordNotificationViewController: BaseViewController {
             }
         })
         
-        let registeredKeywordHeaderView = UICollectionView.SupplementaryRegistration<RegisteredKeywordHeaderView>(elementKind: RegisteredKeywordHeaderView.reuseIdentifier) { supplementaryView, elementKind, indexPath in
+        let registeredMBTIHeaderView = UICollectionView.SupplementaryRegistration<RegisteredMBTIHeaderView>(elementKind: RegisteredMBTIHeaderView.reuseIdentifier) { supplementaryView, elementKind, indexPath in
         
         }
         
         self.dataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
-            let header = collectionView.dequeueConfiguredReusableSupplementary(using: registeredKeywordHeaderView, for: indexPath)
-            
-            self.headerLabelText
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: registeredMBTIHeaderView, for: indexPath)
+            if self.registeredMbtiList.isEmpty {
+                header.isHidden = true
+            } else {
+                header.isHidden = false
+            }
+
+            self.isEmptyRegisteredMbtiList
                 .withUnretained(self)
-                .bind { (vc, text) in
-                    header.headerLabel.text = text
+                .bind { (vc, isEmpty) in
+                    header.isHidden = isEmpty
                 }
                 .disposed(by: self.disposeBag)
             
@@ -126,13 +131,13 @@ extension MBTIKeywordNotificationViewController: UICollectionViewDelegate {
             guard !isRegisteredMbti && registeredMbtiList.count < 5 else { return }
             registeredMbtiList.append(MBTI(mbti: selectedMbti))
             mbtiList[indexPath.item].isSelected = true
-            headerLabelText.accept("등록한 키워드")
+            isEmptyRegisteredMbtiList.accept(false)
             applySnapshot()
         case .registeredMbti:
             fetchRegisteredMbtiCellData(indexPath: indexPath)
             registeredMbtiList.remove(at: indexPath.item)
             if registeredMbtiList.isEmpty {
-                headerLabelText.accept("")
+                isEmptyRegisteredMbtiList.accept(true)
             }
             applySnapshot()
         default:
