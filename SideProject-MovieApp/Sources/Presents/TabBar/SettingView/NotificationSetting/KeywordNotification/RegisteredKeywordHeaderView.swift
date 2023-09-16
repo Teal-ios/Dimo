@@ -37,12 +37,12 @@ final class RegisteredKeywordHeaderView: UICollectionReusableView {
         
         NSLayoutConstraint.activate([
             borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -16.0),
-            borderView.topAnchor.constraint(equalTo: self.topAnchor, constant: -16.0),
+            borderView.topAnchor.constraint(equalTo: self.topAnchor),
             borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 16.0),
             borderView.heightAnchor.constraint(equalToConstant: 1.0),
             
             headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            headerLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     

@@ -15,6 +15,7 @@ final class CategoryButton: UIButton {
         stackView.distribution = .equalSpacing
         stackView.spacing = 4.0
         stackView.axis = .horizontal
+        stackView.isUserInteractionEnabled = false // 이걸 안 해주면 버튼 액션을 스택뷰가 받음
         return stackView
     }()
     
@@ -43,11 +44,12 @@ final class CategoryButton: UIButton {
         self.setLayoutConstraints()
     }
     
-    
     func addSubviews() {
         containerStackView.addArrangedSubview(buttonTitleLabel)
         containerStackView.addArrangedSubview(arrowImageView)
         self.addSubview(containerStackView)
+        
+        self.sendSubviewToBack(containerStackView)
     }
     
     func setLayoutConstraints() {

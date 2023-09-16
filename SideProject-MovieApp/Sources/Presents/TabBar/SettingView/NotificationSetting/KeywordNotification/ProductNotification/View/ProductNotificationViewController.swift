@@ -57,6 +57,20 @@ final class ProductNotificationViewController: BaseViewController {
         } else {
             isEmptyRegisteredKeywordList.accept(false)
         }
+        
+        self.addCategoryButtonAction()
+    }
+    
+    func addCategoryButtonAction() {
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            let vc = SortActionSheetController()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+        }
+        
+        productNotificationView.addCategoryButtonAction(action: action, event: .touchUpInside)
     }
     
     override func setupBinding() {
@@ -70,7 +84,7 @@ final class ProductNotificationViewController: BaseViewController {
             .bind { (vc, isTapped) in
                 vc.productNotificationView.hideCategoryButton(!isTapped)
                 if isTapped {
-                    vc.productNotificationView.collectionView.setCollectionViewLayout(vc.productNotificationView.createLayout(sectionBottomInset: 48.0), animated: true)
+                    vc.productNotificationView.collectionView.setCollectionViewLayout(vc.productNotificationView.createLayout(sectionBottomInset: 24.0), animated: true)
                     vc.searchedKeywordList = vc.searchedKeyword.map { Keyword(keyword: $0) }
                     vc.isSearchedKeyword.accept(true)
                     vc.applySnapshot()

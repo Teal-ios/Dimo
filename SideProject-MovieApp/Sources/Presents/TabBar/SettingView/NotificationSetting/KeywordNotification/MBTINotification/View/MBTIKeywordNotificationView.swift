@@ -44,15 +44,15 @@ final class MBTIKeywordNotificationView: BaseView {
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8.0, bottom: 36.0, trailing: 8.0)
-            
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16.0, bottom: 20.0, trailing: 16.0)
+        
                     return section
                 } else {
                     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8.0, bottom: 36.0, trailing: 8.0)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16.0, bottom: 20.0, trailing: 16.0)
             
                     return section
                 }
@@ -67,10 +67,10 @@ final class MBTIKeywordNotificationView: BaseView {
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 4.0, leading: 8.0, bottom: 0, trailing: 8.0)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 12.0, leading: 8.0, bottom: 0, trailing: 8.0)
                     
                     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                            heightDimension: .absolute(32.0))
+                                                            heightDimension: .absolute(40.0))
                     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                              elementKind: RegisteredMBTIHeaderView.reuseIdentifier,
                                                                              alignment: .top)
@@ -81,10 +81,10 @@ final class MBTIKeywordNotificationView: BaseView {
                     group.interItemSpacing = .fixed(space)
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 4.0, leading: 8.0, bottom: 0, trailing: 8.0)
+                    section.contentInsets = NSDirectionalEdgeInsets(top: 12.0, leading: 16.0, bottom: 0, trailing: 16.0)
                     
                     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                            heightDimension: .absolute(32.0))
+                                                            heightDimension: .absolute(40.0))
                     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                              elementKind: RegisteredMBTIHeaderView.reuseIdentifier,
                                                                              alignment: .top)

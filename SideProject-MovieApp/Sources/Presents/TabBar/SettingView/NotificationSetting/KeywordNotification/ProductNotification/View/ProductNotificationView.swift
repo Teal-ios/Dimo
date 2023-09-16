@@ -38,7 +38,7 @@ final class ProductNotificationView: BaseView {
     }()
 
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout(sectionBottomInset: 8.0))
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout(sectionBottomInset: -24.0))
         collectionView.allowsMultipleSelection = true
         return collectionView
     }()
@@ -126,11 +126,10 @@ extension ProductNotificationView {
                 
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 8
-                section.contentInsets = NSDirectionalEdgeInsets(top: 4.0, leading: 16.0, bottom: 0, trailing: 16.0)
-                
+                section.contentInsets = NSDirectionalEdgeInsets(top: 12.0, leading: 16.0, bottom: 0, trailing: 16.0)
                 
                 let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                        heightDimension: .absolute(32.0))
+                                                        heightDimension: .absolute(40.0))
                 let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
                                                                          elementKind: RegisteredKeywordHeaderView.reuseIdentifier,
                                                                          alignment: .top)
@@ -153,4 +152,11 @@ extension ProductNotificationView {
         categoryButton.isHidden = isHidden
     }
 
+}
+
+extension ProductNotificationView {
+    
+    func addCategoryButtonAction(action: UIAction, event: UIControl.Event) {
+        categoryButton.addAction(action, for: event)
+    }
 }

@@ -84,6 +84,7 @@ final class SettingCoordinator: Coordinator, CoordinatorDelegate {
         let viewModel = KeywordNotificationViewModel(coordinator: self)
         let viewControllers = [productNotificationViewController, mbtiNotificationViewController]
         let vc = KeywordNotificationViewController(with: viewModel, viewControllers)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
     
