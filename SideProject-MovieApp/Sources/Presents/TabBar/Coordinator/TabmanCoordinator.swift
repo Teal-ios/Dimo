@@ -116,15 +116,21 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
-    func showFeedDetailHideReviewAlertViewController() {
-        let viewModel = FeedDetailHideReviewAlertViewModel(coordinator: self)
+    func showFeedDetailHideReviewAlertViewController(review_id: Int) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = FeedDetailHideReviewAlertViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review_id: review_id)
         let vc = FeedDetailHideReviewAlertViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
     
-    func showFeedDetailHideUserAlertViewController() {
-        let viewModel = FeedDetailHideUserAlertViewModel(coordinator: self)
+    func showFeedDetailHideUserAlertViewController(review_id: Int) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = FeedDetailHideUserAlertViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review_id: review_id)
         let vc = FeedDetailHideUserAlertViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)

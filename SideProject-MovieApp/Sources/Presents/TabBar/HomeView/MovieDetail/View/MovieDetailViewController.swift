@@ -80,7 +80,6 @@ final class MovieDetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.likeButtonTapped
-            .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
                 if self.selfView.headerView.likeButton.image(for: .normal) == UIImage(named: "LikeNonSelect") {
@@ -143,23 +142,6 @@ final class MovieDetailViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
-//        output.evaluateMbti
-//            .observe(on: MainScheduler.instance)
-//            .withUnretained(self)
-//            .bind { vc, evaluateMbti in
-//                vc.selfView.configureEvalateMbti(with: evaluateMbti)
-//            }
-//            .disposed(by: disposeBag)
-//        
-//        output.mostLikeChoiceMbti
-//            .observe(on: MainScheduler.instance)
-//            .withUnretained(self)
-//            .bind { vc, mostLikeChoiceMbti in
-//                guard let mbti = mostLikeChoiceMbti.most_mbti else { return }
-//                vc.selfView.headerView.firstMbtiView.updateLabelText(mbti: mbti, explainText: "가 가장 많이 찜했어요")
-//            }
-//            .disposed(by: disposeBag)
         
         Observable.zip(output.evaluateMbti, output.mostLikeChoiceMbti)
             .observe(on: MainScheduler.instance)

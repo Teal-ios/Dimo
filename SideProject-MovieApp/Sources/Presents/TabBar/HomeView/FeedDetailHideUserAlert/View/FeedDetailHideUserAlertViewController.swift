@@ -24,7 +24,7 @@ final class FeedDetailHideUserAlertViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailHideUserAlertViewModel.Input(okButtonTapped: self.selfView.alertView.okButton.rx.tap, cancelButtonTapped: self.selfView.alertView.cancelButton.rx.tap, backgroundButtonTapped: self.selfView.alertView.backgroundButton.rx.tap)
+        let input = FeedDetailHideUserAlertViewModel.Input(okButtonTapped: self.selfView.alertView.cancelButton.rx.tap, cancelButtonTapped: self.selfView.alertView.okButton.rx.tap, backgroundButtonTapped: self.selfView.alertView.backgroundButton.rx.tap)
         let _ = viewModel.transform(input: input)
     }
     

@@ -51,4 +51,13 @@ struct CharacterDetailAPIEndpoints {
     static func getReviewDetail(with query: GetReviewDetailQuery) -> CharacterDetailRouter<ResponseGetReviewDetailDTO> {
         return CharacterDetailRouter<ResponseGetReviewDetailDTO>.getReviewDetail(parameters: query)
     }
+    
+    static func postBlindReview(with requestDTO: RequestPostBlindReviewDTO) -> CharacterDetailRouter<ResponseBlindReviewDTO> {
+        return CharacterDetailRouter<ResponseBlindReviewDTO>.postBlindReview(parameters: PostBlindReviewQuery(user_id: requestDTO.user_id, review_id: requestDTO.review_id, blind_type: requestDTO.blind_type))
+    }
+    
+    static func postReportUser(with requestDTO: RequestPostReportUserDTO) -> CharacterDetailRouter<ResponseReportUserDTO> {
+        return CharacterDetailRouter<ResponseReportUserDTO>
+            .postReportUser(parameters: PostReportUserQuery(user_id: requestDTO.user_id, review_id: requestDTO.review_id, report_reason: requestDTO.report_reason))
+    }
 }

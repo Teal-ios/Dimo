@@ -51,7 +51,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
@@ -151,6 +151,21 @@ class FeedDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, text in
                 vc.feedDetailView.headerView.mainTextLabel.text = text
+            }
+            .disposed(by: disposeBag)
+        
+        output.currentSpoilerValid
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vc, spoiler in
+                switch spoiler {
+                    
+                case .yes:
+                    vc.feedDetailView.headerView.spoilerCommentChoiceButton.setImage(UIImage(named: "NotChoice"), for: .normal)
+
+                case .no:
+                    vc.feedDetailView.headerView.spoilerCommentChoiceButton.setImage(UIImage(named: "Choice"), for: .normal)
+                }
             }
             .disposed(by: disposeBag)
     }

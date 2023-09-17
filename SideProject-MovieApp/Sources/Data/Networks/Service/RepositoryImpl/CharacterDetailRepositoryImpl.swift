@@ -160,3 +160,29 @@ extension CharacterDetailRepositoryImpl {
         }
     }
 }
+
+extension CharacterDetailRepositoryImpl {
+    func reqeustBlindReview(query: PostBlindReviewQuery) async throws -> BlindReview {
+        let requestDTO = RequestPostBlindReviewDTO(user_id: query.user_id, review_id: query.review_id, blind_type: query.blind_type)
+        let target = CharacterDetailAPIEndpoints.postBlindReview(with: requestDTO)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}
+
+extension CharacterDetailRepositoryImpl {
+    func reqeustReportUser(query: PostReportUserQuery) async throws -> ReportUser {
+        let requestDTO = RequestPostReportUserDTO(user_id: query.user_id, review_id: query.review_id, report_reason: query.report_reason)
+        let target = CharacterDetailAPIEndpoints.postReportUser(with: requestDTO)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}
