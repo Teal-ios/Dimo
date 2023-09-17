@@ -23,6 +23,7 @@ final class CharacterDetailViewController: TabmanViewController {
     
     let customContainer : UIView = {
         let view = UIView()
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -43,9 +44,12 @@ final class CharacterDetailViewController: TabmanViewController {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterDetailUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        
         let voteRepositoryImpl = VoteRepositoyImpl(dataTransferService: dataTransferService)
         let voteUseCaseImpl = VoteUseCaseImpl(voteRepository: voteRepositoryImpl)
+
         let feedViewModel = FeedViewModel(coordinator: viewModel.coordinator, characterDetailUseCase: characterDetailUseCaseImpl, character: viewModel.coordinator?.character, characterId: viewModel.coordinator?.characterId ?? PublishRelay<Int>(), modifyReview: viewModel.coordinator?.modifyText ?? PublishRelay<String>(), deleteReviewEvent: viewModel.coordinator?.deleteReview ?? PublishRelay<Void>())
+
         let analyeViewModel = AnalyzeViewModel(coordinator: viewModel.coordinator, voteUseCase: voteUseCaseImpl, characterId: viewModel.coordinator?.character.character_id)
         
         vc1 = .init(viewModel: feedViewModel)

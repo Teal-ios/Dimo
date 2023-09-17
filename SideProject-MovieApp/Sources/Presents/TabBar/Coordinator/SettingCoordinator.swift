@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class SettingCoordinator: Coordinator {
+final class SettingCoordinator: Coordinator, CoordinatorDelegate {
+    func didFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+    }
+    
     weak var delegate: CoordinatorDelegate?
     var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
@@ -63,6 +67,24 @@ final class SettingCoordinator: Coordinator {
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         let viewModel = PushNotificationSettingViewModel(coordinator: self, networkUsecase: settingUseCaseImpl)
         let vc = PushNotificationSettingViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showKeywordNotificationViewController() {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
+        let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
+
+        let productNotificationViewModel = ProductNotificationViewModel(coordinator: self, networkUsecase: settingUseCaseImpl)
+        let mbtiNotificationViewModel = MBTINotificationViewModel(coordinator: self, networkUsecase: settingUseCaseImpl)
+        
+        let productNotificationViewController = ProductNotificationViewController(viewModel: productNotificationViewModel)
+        let mbtiNotificationViewController = MBTIKeywordNotificationViewController(viewModel: mbtiNotificationViewModel)
+        
+        let viewModel = KeywordNotificationViewModel(coordinator: self)
+        let viewControllers = [productNotificationViewController, mbtiNotificationViewController]
+        let vc = KeywordNotificationViewController(with: viewModel, viewControllers)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -140,6 +162,14 @@ final class SettingCoordinator: Coordinator {
         let viewModel = CharacterAskViewModel(coordinator: self, settingUseCase: settingUsecase)
         let vc = CharacterAskViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showSortActionSheetController(_ characterNameSortButtonAction: UIAction,
+                                       _ productionTitleSortAction: UIAction) {
+        let vc = SortActionSheetViewController(characterNameSortButtonAction, productionTitleSortAction)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
     }
     
     func connectAuthFlow() {
