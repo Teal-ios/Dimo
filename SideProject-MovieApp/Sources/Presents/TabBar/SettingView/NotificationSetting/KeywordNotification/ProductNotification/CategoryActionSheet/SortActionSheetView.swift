@@ -44,6 +44,7 @@ final class SortActionSheetView: UIView {
         button.setTitleColor(.white100, for: .normal)
         button.setTitleColor(.black60, for: .selected)
         button.titleLabel?.font = Font.body2
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -54,6 +55,7 @@ final class SortActionSheetView: UIView {
         button.setTitleColor(.white100, for: .normal)
         button.setTitleColor(.black60, for: .selected)
         button.titleLabel?.font = Font.body2
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -77,10 +79,12 @@ final class SortActionSheetView: UIView {
         sortStackView.addArrangedSubview(characterNameButton)
         
         titleLabel.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+        
         productionTitleButton.heightAnchor.constraint(equalToConstant: 52.0).isActive = true
+
         characterNameButton.heightAnchor.constraint(equalToConstant: 52.0).isActive = true
         
-        backgroundView.addSubview(sortStackView)
+        self.addSubview(sortStackView)
         self.addSubview(backgroundView)
     }
     
@@ -91,17 +95,30 @@ final class SortActionSheetView: UIView {
             backgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: sortStackView.topAnchor),
             
+            sortStackView.topAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             sortStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             sortStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             sortStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            characterNameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             
             titleLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16.0),
             
             productionTitleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16.0),
             
-            characterNameButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16.0)
+            characterNameButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16.0),
+            
+            characterNameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+
+// buttonActions
+extension SortActionSheetView {
+    func addPproductionTitleButtonAction(action: UIAction, event: UIControl.Event) {
+        productionTitleButton.addAction(action, for: event)
+    }
+    
+    func addCharacterNameButtonAction(action: UIAction, event: UIControl.Event) {
+        characterNameButton.addAction(action, for: event)
     }
 }

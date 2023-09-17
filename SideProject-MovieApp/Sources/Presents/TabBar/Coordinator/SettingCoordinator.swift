@@ -164,6 +164,14 @@ final class SettingCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showSortActionSheetController(_ characterNameSortButtonAction: UIAction,
+                                       _ productionTitleSortAction: UIAction) {
+        let vc = SortActionSheetViewController(characterNameSortButtonAction, productionTitleSortAction)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    
     func connectAuthFlow() {
         self.parentCoordinator?.parentCoordinator?.start()
     }

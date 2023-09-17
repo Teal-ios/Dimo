@@ -62,12 +62,29 @@ final class ProductNotificationViewController: BaseViewController {
     }
     
     func addCategoryButtonAction() {
+        let characterNameSortButtonAction = UIAction { [weak self] _ in
+            let sortedKeywordList = self?.searchedKeywordList.sorted(by: { first, second in
+                return first.keyword.count > second.keyword.count
+            })
+            
+            self?.searchedKeywordList = sortedKeywordList ?? []
+            self?.applySnapshot()
+            self?.dismiss(animated: true)
+        }
+        
+        let productionTitleSortButtonAction = UIAction { [weak self] _ in
+            let sortedKeywordList = self?.searchedKeywordList.sorted(by: { first, second in
+                return first.keyword.count < second.keyword.count
+            })
+            
+            self?.searchedKeywordList = sortedKeywordList ?? []
+            self?.applySnapshot()
+            self?.dismiss(animated: true)
+        }
+        
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            let vc = SortActionSheetController()
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true)
+            self.viewModel.coordinator?.showSortActionSheetController(characterNameSortButtonAction, productionTitleSortButtonAction)
         }
         
         productNotificationView.addCategoryButtonAction(action: action, event: .touchUpInside)
