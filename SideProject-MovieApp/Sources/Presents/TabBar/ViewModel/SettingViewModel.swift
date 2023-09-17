@@ -41,6 +41,8 @@ final class SettingViewModel: ViewModelType {
                 self.coordinator?.showEditMbtiViewController(mbti: self.mbti, mbtiChangeDate: self.mbtiChangeDate)
             case [1, 0]:
                 self.coordinator?.showPushNotificationSettingViewController()
+            case [1, 1]:
+                self.coordinator?.showKeywordNotificationViewController()
             case [2, 0]:
                 self.coordinator?.showNoticeViewController()
             case [2, 1]:

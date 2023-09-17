@@ -563,6 +563,18 @@
 		49A7A1DC2A91E1A70011EDC4 /* UserMbtiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DB2A91E1A70011EDC4 /* UserMbtiView.swift */; };
 		49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */; };
 		49A7A1E02A91E9A70011EDC4 /* MbtiViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */; };
+		49C722162AA317FA0062650F /* ProductNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722152AA317FA0062650F /* ProductNotificationView.swift */; };
+		49C722182AA3183E0062650F /* ProductNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722172AA3183E0062650F /* ProductNotificationViewController.swift */; };
+		49C7221A2AA3185C0062650F /* ProductNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722192AA3185C0062650F /* ProductNotificationViewModel.swift */; };
+		49C7221C2AA321770062650F /* KeywordSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7221B2AA321770062650F /* KeywordSearchTextField.swift */; };
+		49C7221E2AA32A970062650F /* KeywordNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7221D2AA32A970062650F /* KeywordNotificationViewController.swift */; };
+		49C722242AA330AA0062650F /* MBTINotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722232AA330AA0062650F /* MBTINotificationViewModel.swift */; };
+		49C722262AA330EB0062650F /* MBTIKeywordNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722252AA330EB0062650F /* MBTIKeywordNotificationView.swift */; };
+		49C722282AA330F30062650F /* MBTIKeywordNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */; };
+		49C7222C2AA454EF0062650F /* KeywordNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */; };
+		49E726BF2AAC9800001828CB /* AllMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */; };
+		49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */; };
+		49E726C32AAC9B49001828CB /* RegisteredKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */; };
 		49EEDEC32A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */; };
 		49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */; };
 		49EEDEC72A88BA9D008C5D21 /* MbtiChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */; };
@@ -1200,6 +1212,18 @@
 		49A7A1DD2A91E9250011EDC4 /* UserMbtiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMbtiViewModel.swift; sourceTree = "<group>"; };
 		49A7A1DF2A91E9A70011EDC4 /* MbtiViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiViewModelType.swift; sourceTree = "<group>"; };
 		49C722112A9B32430062650F /* SideProject-MovieAppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SideProject-MovieAppDebug.entitlements"; sourceTree = "<group>"; };
+		49C722152AA317FA0062650F /* ProductNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNotificationView.swift; sourceTree = "<group>"; };
+		49C722172AA3183E0062650F /* ProductNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNotificationViewController.swift; sourceTree = "<group>"; };
+		49C722192AA3185C0062650F /* ProductNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNotificationViewModel.swift; sourceTree = "<group>"; };
+		49C7221B2AA321770062650F /* KeywordSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSearchTextField.swift; sourceTree = "<group>"; };
+		49C7221D2AA32A970062650F /* KeywordNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordNotificationViewController.swift; sourceTree = "<group>"; };
+		49C722232AA330AA0062650F /* MBTINotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTINotificationViewModel.swift; sourceTree = "<group>"; };
+		49C722252AA330EB0062650F /* MBTIKeywordNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIKeywordNotificationView.swift; sourceTree = "<group>"; };
+		49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIKeywordNotificationViewController.swift; sourceTree = "<group>"; };
+		49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordNotificationViewModel.swift; sourceTree = "<group>"; };
+		49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordHeaderView.swift; sourceTree = "<group>"; };
 		49EEDEC22A88B8FA008C5D21 /* RequestMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC42A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMbtiChangeDTO.swift; sourceTree = "<group>"; };
 		49EEDEC62A88BA9D008C5D21 /* MbtiChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChange.swift; sourceTree = "<group>"; };
@@ -2449,6 +2473,7 @@
 			children = (
 				2FD69EB52A03987000AA5A6E /* Cell */,
 				93C48B3E29D175F700644F6A /* OnboardingButton.swift */,
+				49C7221B2AA321770062650F /* KeywordSearchTextField.swift */,
 				2F6D7D182A14B6D600FA457D /* TapUISlider.swift */,
 				2F53D0AF2A1F4DF900898DCD /* CustomAlertView.swift */,
 				93C48B4D29D1863200644F6A /* OnboardingtextFieldView.swift */,
@@ -2928,6 +2953,7 @@
 		2FD4D0C22A2CB0C100B9AF61 /* NotificationSetting */ = {
 			isa = PBXGroup;
 			children = (
+				49C722122AA317D90062650F /* KeywordNotification */,
 				2FD4D0C32A2CB0FD00B9AF61 /* PushNotificationSetting */,
 			);
 			path = NotificationSetting;
@@ -2945,8 +2971,8 @@
 		2FD4D0C72A2CB14400B9AF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2FD4D0CB2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift */,
 				2FD4D0C92A2CB16900B9AF61 /* PushNotificationSettingView.swift */,
+				2FD4D0CB2A2CB16F00B9AF61 /* PushNotificationSettingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3814,6 +3840,80 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		49C722122AA317D90062650F /* KeywordNotification */ = {
+			isa = PBXGroup;
+			children = (
+				49C7221D2AA32A970062650F /* KeywordNotificationViewController.swift */,
+				49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */,
+				49C722202AA32FB80062650F /* MBTINotification */,
+				49C7221F2AA32FA70062650F /* ProductNotification */,
+			);
+			path = KeywordNotification;
+			sourceTree = "<group>";
+		};
+		49C722132AA317EB0062650F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49C722152AA317FA0062650F /* ProductNotificationView.swift */,
+				49C722172AA3183E0062650F /* ProductNotificationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49C722142AA317ED0062650F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49C722192AA3185C0062650F /* ProductNotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		49C7221F2AA32FA70062650F /* ProductNotification */ = {
+			isa = PBXGroup;
+			children = (
+				49C722142AA317ED0062650F /* ViewModel */,
+				49C722132AA317EB0062650F /* View */,
+			);
+			path = ProductNotification;
+			sourceTree = "<group>";
+		};
+		49C722202AA32FB80062650F /* MBTINotification */ = {
+			isa = PBXGroup;
+			children = (
+				49E726BD2AAC97EF001828CB /* Cell */,
+				49C722222AA32FDE0062650F /* ViewModel */,
+				49C722212AA32FDB0062650F /* View */,
+			);
+			path = MBTINotification;
+			sourceTree = "<group>";
+		};
+		49C722212AA32FDB0062650F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */,
+				49C722252AA330EB0062650F /* MBTIKeywordNotificationView.swift */,
+				49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49C722222AA32FDE0062650F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49C722232AA330AA0062650F /* MBTINotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		49E726BD2AAC97EF001828CB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */,
+				49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		49EEDEDC2A88DD35008C5D21 /* CustomerServiceCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -4261,7 +4361,9 @@
 				2FD54DF82AB6CF7A00C9216A /* OtherMomentumView.swift in Sources */,
 				2FD82DAC2A774FA800372D24 /* ResponseSameWorkCharacterListDTO.swift in Sources */,
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
+				49C7221A2AA3185C0062650F /* ProductNotificationViewModel.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
+				49C7221E2AA32A970062650F /* KeywordNotificationViewController.swift in Sources */,
 				2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */,
 				2FFB4BD52A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
@@ -4286,6 +4388,7 @@
 				2FD82D672A7743DC00372D24 /* GetComment.swift in Sources */,
 				2F979F332A0CFE3A00A1CD53 /* FindingPWView.swift in Sources */,
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
+				49C722262AA330EB0062650F /* MBTIKeywordNotificationView.swift in Sources */,
 				2FD82DBA2A775AD700372D24 /* ResponsePostCommentDTO.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FE111302A76682D0013A49E /* PopularCharacterRecommendListQuery.swift in Sources */,
@@ -4442,8 +4545,10 @@
 				2FDD9E652A121EB300A41FF7 /* FeedDetailView.swift in Sources */,
 				2FCD8CA52A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
+				49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */,
 				49EEDEEA2A88EB4C008C5D21 /* NoticeContents.swift in Sources */,
 				2FD2DD032A70E3F7000C5EB7 /* UIImage+Extension.swift in Sources */,
+				49C722242AA330AA0062650F /* MBTINotificationViewModel.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
 				2FD82DC82A7771E000372D24 /* CharacterDetailAPIEndpoints.swift in Sources */,
 				2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */,
@@ -4523,6 +4628,7 @@
 				2F0328C02A91F36600639BAC /* ResponseGetEvaluateMbtiDTO.swift in Sources */,
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
 				2FD4D9072A6BB1E600E7972B /* MyMomentumRepository.swift in Sources */,
+				49C722182AA3183E0062650F /* ProductNotificationViewController.swift in Sources */,
 				2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2FD4D91A2A6CC5B600E7972B /* LikeContent.swift in Sources */,
@@ -4560,6 +4666,7 @@
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
 				2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */,
+				49C722282AA330F30062650F /* MBTIKeywordNotificationViewController.swift in Sources */,
 				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
 				2FD1CC2C2A9338BB00876DCB /* ResponseCommentIsLikedDTO.swift in Sources */,
 				2FD11DD72A00FCF7006796DD /* MyMomentumModel.swift in Sources */,
@@ -4588,6 +4695,7 @@
 				49F148122A9500A80045E857 /* CharacterAsk.swift in Sources */,
 				49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */,
 				2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */,
+				49C7222C2AA454EF0062650F /* KeywordNotificationViewModel.swift in Sources */,
 				49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */,
 				2F53D0782A1F138100898DCD /* RequestSignUpDTO.swift in Sources */,
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
@@ -4617,6 +4725,7 @@
 				2FEC15FA2A78B48A009CF59D /* ResponseMyCommentDTO.swift in Sources */,
 				2FE1112A2A76656B0013A49E /* MbtiPercent.swift in Sources */,
 				2FD82DB82A775AC100372D24 /* ResponseDeleteReviewDTO.swift in Sources */,
+				49E726BF2AAC9800001828CB /* AllMbtiCollectionViewCell.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
 				2FEC15D62A7788DB009CF59D /* VoteUseCase.swift in Sources */,
 				2F124ADA2A4EBFFD00A452F1 /* WriteViewController.swift in Sources */,
@@ -4671,6 +4780,7 @@
 				2FD4D0AF2A2CA53000B9AF61 /* ErrorCommonView.swift in Sources */,
 				2FD82D762A77470D00372D24 /* ModifyReviewQuery.swift in Sources */,
 				2F979F2C2A0CABF700A1CD53 /* NotificationIDView.swift in Sources */,
+				49C722162AA317FA0062650F /* ProductNotificationView.swift in Sources */,
 				2FBF4CAD29CC979D00B65125 /* OnBoardingViewModel.swift in Sources */,
 				49EEDEC52A88B96F008C5D21 /* ResponseMbtiChangeDTO.swift in Sources */,
 				2FBF64B22A71FE5C0036401F /* MyContentMoreView.swift in Sources */,
@@ -4690,6 +4800,7 @@
 				2F0328BA2A91F24600639BAC /* IsGrade.swift in Sources */,
 				2FE968212A7BCC1B000E705E /* ResponseHitDTO.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
+				49C7221C2AA321770062650F /* KeywordSearchTextField.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
 				4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
@@ -4724,6 +4835,7 @@
 				493C5C7F2A769E6200AF1F63 /* ResponseWithdrawDTO.swift in Sources */,
 				2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */,
 				493C5C862A76A65C00AF1F63 /* WithdrawAlertViewModel.swift in Sources */,
+				49E726C32AAC9B49001828CB /* RegisteredKeywordHeaderView.swift in Sources */,
 				2F53D0C02A1F67FE00898DCD /* EditPasswordView.swift in Sources */,
 				2FD11DCF2A00DF21006796DD /* MyMomentumViewModel.swift in Sources */,
 				2F53D0802A1F178500898DCD /* AuthRepository.swift in Sources */,

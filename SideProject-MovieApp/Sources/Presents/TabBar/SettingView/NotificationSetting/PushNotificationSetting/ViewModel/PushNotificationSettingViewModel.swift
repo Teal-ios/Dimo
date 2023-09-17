@@ -14,8 +14,7 @@ final class PushNotificationSettingViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     weak var coordinator: SettingCoordinator?
     let networkUsecase: SettingUseCase
-    
-    
+
     struct Input {
         let didTappedAllNotificationSwitch: ControlProperty<Bool>
         let didTappedReplyNotificationSwitch: ControlProperty<Bool>
