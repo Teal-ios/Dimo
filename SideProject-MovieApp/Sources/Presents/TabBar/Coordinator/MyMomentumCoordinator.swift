@@ -38,6 +38,17 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.viewControllers = [vc]
     }
     
+    func showOtherMomentumViewController(other_id: String) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
+        let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = OtherMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl, characterDetailUseCase: characterDetailUseCase, other_id: other_id)
+        let vc = OtherMomentumViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func showEditProfileViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)

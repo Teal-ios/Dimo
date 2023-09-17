@@ -128,6 +128,7 @@ final class FeedDetailView: BaseView {
     
     override func setupAttributes() {
         self.collectionView.isScrollEnabled = false
+        self.categoryCollectionView.isScrollEnabled = true
     }
     
     override func setupLayout() {

@@ -335,6 +335,10 @@
 		2FD4D93E2A6E4B5700E7972B /* ContentAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */; };
 		2FD4D9402A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */; };
 		2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4D9412A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift */; };
+		2FD54DF42AB6CE7700C9216A /* OtherMomentumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD54DF32AB6CE7700C9216A /* OtherMomentumViewModel.swift */; };
+		2FD54DF62AB6CF7400C9216A /* OtherMomentumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD54DF52AB6CF7400C9216A /* OtherMomentumViewController.swift */; };
+		2FD54DF82AB6CF7A00C9216A /* OtherMomentumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD54DF72AB6CF7A00C9216A /* OtherMomentumView.swift */; };
+		2FD54DFA2AB6D5D000C9216A /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD54DF92AB6D5D000C9216A /* OtherProfileView.swift */; };
 		2FD69EA22A035BF300AA5A6E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */; };
 		2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */; };
 		2FD69EA82A0374AF00AA5A6E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EA72A0374AF00AA5A6E /* HomeView.swift */; };
@@ -973,6 +977,10 @@
 		2FD4D93D2A6E4B5700E7972B /* ContentAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPIEndpoints.swift; sourceTree = "<group>"; };
 		2FD4D93F2A6E998700E7972B /* MyMomentumBaseExceptionHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumBaseExceptionHandlingView.swift; sourceTree = "<group>"; };
 		2FD4D9412A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMomentumDigExceptionHandlingView.swift; sourceTree = "<group>"; };
+		2FD54DF32AB6CE7700C9216A /* OtherMomentumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMomentumViewModel.swift; sourceTree = "<group>"; };
+		2FD54DF52AB6CF7400C9216A /* OtherMomentumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMomentumViewController.swift; sourceTree = "<group>"; };
+		2FD54DF72AB6CF7A00C9216A /* OtherMomentumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMomentumView.swift; sourceTree = "<group>"; };
+		2FD54DF92AB6D5D000C9216A /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		2FD69EA12A035BF300AA5A6E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FD69EA42A03745D00AA5A6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FD69EA72A0374AF00AA5A6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -2766,6 +2774,7 @@
 				2FBF64AB2A71FE0B0036401F /* MyContentMore */,
 				2FBFF8412A6FA5AC007914A1 /* EditProfile */,
 				2FD4D9292A6CDB2C00E7972B /* MyMomentum */,
+				2FD54DF02AB6CE5100C9216A /* OtherMomentum */,
 			);
 			path = MyMomentumView;
 			sourceTree = "<group>";
@@ -3085,6 +3094,33 @@
 				2FD1CC252A930DE000876DCB /* MostLikeChoiceMbtiQuery.swift */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		2FD54DF02AB6CE5100C9216A /* OtherMomentum */ = {
+			isa = PBXGroup;
+			children = (
+				2FD54DF22AB6CE6400C9216A /* ViewModel */,
+				2FD54DF12AB6CE6100C9216A /* View */,
+			);
+			path = OtherMomentum;
+			sourceTree = "<group>";
+		};
+		2FD54DF12AB6CE6100C9216A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FD54DF52AB6CF7400C9216A /* OtherMomentumViewController.swift */,
+				2FD54DF72AB6CF7A00C9216A /* OtherMomentumView.swift */,
+				2FD54DF92AB6D5D000C9216A /* OtherProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FD54DF22AB6CE6400C9216A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FD54DF32AB6CE7700C9216A /* OtherMomentumViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2FD598892A36EA3E00614F34 /* ViewModel */ = {
@@ -4222,6 +4258,7 @@
 				2FBFE11C2A2627A8001D5425 /* ResponseChangeNicknameDTO.swift in Sources */,
 				2FEC15FC2A78B5CA009CF59D /* ResponseGetMyReviewDTO.swift in Sources */,
 				2F124AE12A4FCBB000A452F1 /* FeedDetailDeleteViewModel.swift in Sources */,
+				2FD54DF82AB6CF7A00C9216A /* OtherMomentumView.swift in Sources */,
 				2FD82DAC2A774FA800372D24 /* ResponseSameWorkCharacterListDTO.swift in Sources */,
 				2F53D0822A1F17FE00898DCD /* AuthRepositoryImpl.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
@@ -4334,6 +4371,7 @@
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
+				2FD54DFA2AB6D5D000C9216A /* OtherProfileView.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FCD8C932A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift in Sources */,
 				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
@@ -4573,6 +4611,7 @@
 				2FD82D8F2A774D5800372D24 /* RequestLikeReviewChoiceDTO.swift in Sources */,
 				2FCD8CAC2A8260F9002A39B0 /* ReportViewModel.swift in Sources */,
 				493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */,
+				2FD54DF62AB6CF7400C9216A /* OtherMomentumViewController.swift in Sources */,
 				93C48B3D29D1720700644F6A /* SignupTermsViewModel.swift in Sources */,
 				2F18900A2A4592270097D38E /* CharacterMoreView.swift in Sources */,
 				2FEC15FA2A78B48A009CF59D /* ResponseMyCommentDTO.swift in Sources */,
@@ -4673,6 +4712,7 @@
 				2FD11DDA2A01019E006796DD /* ProfileView.swift in Sources */,
 				2FCB16862A7DEB7C00AE48A8 /* VoteCompleteViewModel.swift in Sources */,
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
+				2FD54DF42AB6CE7700C9216A /* OtherMomentumViewModel.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
 				2F9793A42A52A4450098939B /* SearchView.swift in Sources */,
 				2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */,

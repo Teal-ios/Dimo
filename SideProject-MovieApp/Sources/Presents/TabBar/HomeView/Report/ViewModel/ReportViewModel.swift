@@ -178,6 +178,7 @@ extension ReportViewModel {
             let query = PostReportUserQuery(user_id: user_id, review_id: review_id, report_reason: report_reason)
             print(query, "신고 Query")
             let reportUser = try await characterDetailUseCase.excuteReportUser(query: query)
+            print(reportUser, "신고 성공")
             self.reportUser.accept(reportUser)
         }
     }
