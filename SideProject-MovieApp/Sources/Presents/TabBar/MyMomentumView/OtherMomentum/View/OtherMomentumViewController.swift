@@ -112,6 +112,7 @@ final class OtherMomentumViewController: BaseViewController {
         let reviewSetAndProfileSetObservable = Observable.zip(self.myProfileData, self.reviewDataSetAfter)
         
             reviewSetAndProfileSetObservable
+            .observe(on: MainScheduler.instance)
             .bind { [weak self] profile, reviewList in
                 
                 guard let self = self else { return }

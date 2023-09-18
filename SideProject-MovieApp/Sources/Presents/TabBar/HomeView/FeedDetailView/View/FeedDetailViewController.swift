@@ -29,8 +29,10 @@ class FeedDetailViewController: BaseViewController {
     let spoilerValid = PublishRelay<Bool>()
     let review = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let viewWillAppearTrigger = PublishRelay<Void>()
     let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     let commentCellSelected = PublishRelay<CommentList>()
+    let feedButtonCellSelected = PublishRelay<CommentList>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,7 @@ class FeedDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
+        self.viewWillAppearTrigger.accept(())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,7 +54,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap, otherFeedButtonTapped: self.feedDetailView.headerView.otherFeedButton.rx.tap)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, feedButtonCellSelected: self.feedButtonCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap, otherFeedButtonTapped: self.feedDetailView.headerView.otherFeedButton.rx.tap, viewWillAppear: self.viewWillAppearTrigger)
         
         let output = viewModel.transform(input: input)
         
@@ -203,6 +206,16 @@ extension FeedDetailViewController {
                 .withUnretained(self)
                 .bind { vc, _ in
                     vc.commentCellSelected.accept(itemIdentifier)
+                    cell.disposeBag = DisposeBag()
+                }
+                .disposed(by: cell.disposeBag)
+            
+            cell.feedButton.rx
+                .tap
+                .debug()
+                .withUnretained(self)
+                .bind { vc, _ in
+                    vc.feedButtonCellSelected.accept(itemIdentifier)
                     cell.disposeBag = DisposeBag()
                 }
                 .disposed(by: cell.disposeBag)

@@ -20,7 +20,8 @@ final class FeedViewModel: ViewModelType {
         let reviewCellSelected: PublishRelay<ReviewList>
         let writeButtonTapped: ControlEvent<Void>
         let viewDidLoad: PublishRelay<Void>
-
+        let viewWillAppear: PublishRelay<Void>
+        let feedButtonCellSelected: PublishRelay<ReviewList>
     }
     
     struct Output{
@@ -68,6 +69,17 @@ final class FeedViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.viewWillAppear
+            .withLatestFrom(self.character)
+            .bind { [weak self] character in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                guard let character else { return }
+                print(character, "캐릭터조회")
+                self.getReviewList(user_id: user_id, character_id: character.character_id)
+            }
+            .disposed(by: disposeBag)
+        
         characterId
             .withUnretained(self)
             .bind { vm, characterId in
@@ -94,6 +106,16 @@ final class FeedViewModel: ViewModelType {
             .bind { vm, character_id in
                 guard let user_id = UserDefaultManager.userId else { return }
                 vm.getReviewList(user_id: user_id, character_id: character_id)
+            }
+            .disposed(by: disposeBag)
+        
+        input.feedButtonCellSelected
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, review in
+                if review.user_id != UserDefaultManager.userId {
+                    vm.coordinator?.showOtherFeedViewController(other_id: review.user_id)
+                }
             }
             .disposed(by: disposeBag)
         
