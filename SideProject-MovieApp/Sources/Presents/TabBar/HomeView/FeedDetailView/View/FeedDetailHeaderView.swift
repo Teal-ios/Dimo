@@ -146,6 +146,11 @@ class FeedDetailHeaderView: BaseView {
         return label
     }()
     
+    let otherFeedButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(profileImgView)
@@ -159,6 +164,7 @@ class FeedDetailHeaderView: BaseView {
         self.addSubview(spoilerCommentChoiceContainView)
         self.addSubview(spoilerCommentChoiceButton)
         self.addSubview(spoilerCommentExplainLabel)
+        self.addSubview(otherFeedButton)
         makeConstraints()
     }
     
@@ -236,6 +242,11 @@ class FeedDetailHeaderView: BaseView {
             make.trailing.equalTo(spoilerCommentChoiceContainView)
             make.height.equalTo(21)
             
+        }
+        
+        otherFeedButton.snp.makeConstraints { make in
+            make.top.leading.equalTo(profileImgView)
+            make.bottom.trailing.equalTo(mbtiLabel)
         }
     }
 }

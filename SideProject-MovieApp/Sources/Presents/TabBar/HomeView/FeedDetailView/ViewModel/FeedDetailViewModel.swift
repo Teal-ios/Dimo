@@ -34,6 +34,7 @@ final class FeedDetailViewModel: ViewModelType {
         let likeButtonTapped: ControlEvent<Void>
         let commentCellSelected: PublishRelay<CommentList>
         let spoilerFilterButtonTapped: ControlEvent<Void>
+        let otherFeedButtonTapped: ControlEvent<Void>
     }
     
     struct Output{
@@ -233,6 +234,18 @@ final class FeedDetailViewModel: ViewModelType {
                 case .no:
                     vm.getCommentList.accept(vm.totalCommentList)
                     vm.currentSpoiler.accept(.yes)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.otherFeedButtonTapped
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(self.review)
+            .withUnretained(self)
+            .bind { vm, review in
+                guard let my_id = UserDefaultManager.userId else { return }
+                if review.user_id != my_id {
+                    vm.coordinator?.showOtherFeedViewController(other_id: review.user_id)
                 }
             }
             .disposed(by: disposeBag)

@@ -85,7 +85,7 @@ final class HomeTabBarCoordinator: Coordinator {
             self.childCoordinators.append(voteCoordinator)
             voteCoordinator.start()
         case .profile:
-            let myMomentumCoordinator = MyMomentumCoordinator(tabNavigationController)
+            let myMomentumCoordinator = MyMomentumCoordinator(tabNavigationController, feedCase: .my)
             myMomentumCoordinator.parentCoordinator = self
             myMomentumCoordinator.delegate = self
             self.childCoordinators.append(myMomentumCoordinator)

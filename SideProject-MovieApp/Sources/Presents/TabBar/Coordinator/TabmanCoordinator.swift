@@ -151,6 +151,13 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let vc = ReportViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showOtherFeedViewController(other_id: String) {
+        let myMomentumCoordinator = MyMomentumCoordinator(navigationController, feedCase: .other, other_id: other_id)
+        myMomentumCoordinator.delegate = self
+        self.childCoordinators.append(myMomentumCoordinator)
+        myMomentumCoordinator.start()
+    }
 }
 
 extension TabmanCoordinator: sendPostReviewDelegate {
