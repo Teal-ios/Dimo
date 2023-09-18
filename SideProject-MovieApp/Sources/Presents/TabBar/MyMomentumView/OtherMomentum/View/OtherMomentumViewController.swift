@@ -68,6 +68,9 @@ final class OtherMomentumViewController: BaseViewController {
             guard let self else { return }
                 self.otherMomentumView.profileView.configureProfileUpdate(profile: profile)
                 self.otherMomentumView.configureReviewTitleUpdate(user_name: profile.nickname)
+                if profile.intro == nil {
+                    self.otherMomentumView.configureProfileExplainRemoveUI()
+                }
                 let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
 
                 }

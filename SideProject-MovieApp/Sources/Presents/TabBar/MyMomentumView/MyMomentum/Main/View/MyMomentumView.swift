@@ -128,7 +128,7 @@ class MyMomentumView: BaseView {
         profileView.snp.makeConstraints { make in
             make.top.equalTo(containScrollView.snp.top)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(350)
+            make.height.equalTo(342)
         }
         
         profileStackView.snp.makeConstraints { make in
