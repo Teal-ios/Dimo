@@ -48,6 +48,15 @@ final class NetworkMonitor{
         }
     }
     
+    func startMonitoring(statusUpdateHandler: @escaping (NWPath.Status) -> Void) {
+        monitor.pathUpdateHandler = { path in
+            DispatchQueue.main.async {
+                statusUpdateHandler(path.status)
+            }
+        }
+        monitor.start(queue: queue)
+    }
+    
     public func stopMonitoring() {
         print("stopMonitoring 호출")
         monitor.cancel()

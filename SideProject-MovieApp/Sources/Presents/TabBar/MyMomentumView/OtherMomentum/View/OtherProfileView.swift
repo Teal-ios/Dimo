@@ -108,8 +108,10 @@ extension OtherProfileView {
         self.nicknameLabel.text = profile.nickname
         self.mbtiLabel.text = profile.mbti
         if profile.intro == nil {
-            self.introduceLabel.text = "자기소개를 추가해 보세요."
-            self.introduceLabel.textColor = .black60
+            self.introduceLabel.isHidden = true
+            self.introduceView.isHidden = true
+            introduceLabel.snp.removeConstraints()
+            introduceView.snp.removeConstraints()
         } else {
             self.introduceLabel.text = profile.intro
         }

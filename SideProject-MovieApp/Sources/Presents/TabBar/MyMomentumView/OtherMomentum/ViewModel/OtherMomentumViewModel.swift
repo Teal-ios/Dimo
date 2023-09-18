@@ -59,8 +59,6 @@ final class OtherMomentumViewModel: ViewModelType {
             .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
-                guard let user_id = UserDefaultManager.userId else { return }
-                
                 self.getMyProfile(user_id: self.other_id)
                 self.getLikeMoviewContent(user_id: self.other_id)
                 self.getLikeAnimationwContent(user_id: self.other_id)

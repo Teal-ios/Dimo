@@ -109,7 +109,7 @@ class OtherMomentumView: BaseView {
         profileView.snp.makeConstraints { make in
             make.top.equalTo(containScrollView.snp.top)
             make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-            make.height.equalTo(350)
+            make.height.equalTo(305)
         }
         
         profileStackView.snp.makeConstraints { make in
@@ -401,5 +401,14 @@ extension OtherMomentumView {
 extension OtherMomentumView {
     func configureReviewTitleUpdate(user_name: String) {
         exceptionHandlingReviewView.titleLabel.text = "\(user_name)님이 쓴 리뷰"
+    }
+    
+    func configureProfileExplainRemoveUI() {
+        profileView.snp.removeConstraints()
+        profileView.snp.makeConstraints { make in
+            make.top.equalTo(containScrollView.snp.top)
+            make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
+            make.height.equalTo(236)
+        }
     }
 }
