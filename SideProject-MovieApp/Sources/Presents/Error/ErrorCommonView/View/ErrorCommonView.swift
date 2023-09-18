@@ -37,7 +37,6 @@ final class ErrorCommonView: BaseView {
         return view
     }()
 
-    
     let retryButton: OnboardingButton = {
         let button = OnboardingButton(title: "다시 시도하기", ofSize: 14)
         return button
@@ -45,19 +44,14 @@ final class ErrorCommonView: BaseView {
     
     override func setHierarchy() {
         self.addSubview(retryButton)
+        self.addSubview(explainLabel)
         self.addSubview(imageLayoutView)
         self.addSubview(errorWarningImageView)
         self.addSubview(errorCharacterImageView)
-        self.addSubview(explainLabel)
 
     }
     
     override func setupLayout() {
-        imageLayoutView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(72)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(55)
-            make.height.equalTo(imageLayoutView.snp.width)
-        }
         
         retryButton.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
@@ -66,10 +60,17 @@ final class ErrorCommonView: BaseView {
         }
         
         explainLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageLayoutView.snp.bottom).offset(24)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(100)
+            make.bottom.equalTo(retryButton.snp.top).offset(-120)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             make.height.equalTo(44)
         }
+        
+        imageLayoutView.snp.makeConstraints { make in
+            make.bottom.equalTo(explainLabel.snp.top).offset(-24)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(55)
+            make.height.equalTo(imageLayoutView.snp.width)
+        }
+        
         
         errorWarningImageView.snp.makeConstraints { make in
             make.top.trailing.equalTo(imageLayoutView).inset(34)

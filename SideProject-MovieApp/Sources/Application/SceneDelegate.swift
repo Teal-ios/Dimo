@@ -14,10 +14,26 @@ import GoogleSignIn
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var errorWindow: UIWindow?
 
     var coordinator: AppCoordinator?
+    var networkMonitor: NetworkMonitor = NetworkMonitor.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        networkMonitor.startMonitoring(statusUpdateHandler: { [weak self] connectionStatus in
+            switch connectionStatus {
+            case .satisfied:
+                self?.removeNetworkErrorWindow()
+                print("dismiss networkError View if is present")
+            case .unsatisfied:
+                self?.loadNetworkErrorWindow(on: scene)
+                print("No Internet!! show network Error View")
+            default:
+                break
+            }
+        })
+        
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let nav = UINavigationController()
@@ -40,6 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        networkMonitor.stopMonitoring()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -72,4 +89,24 @@ extension SceneDelegate {
         appearance.setBackIndicatorImage(backButtonImage, transitionMaskImage: backButtonImage)
         UINavigationBar.appearance().standardAppearance = appearance
     }
+}
+
+extension SceneDelegate {
+    private func removeNetworkErrorWindow() {
+            errorWindow?.resignKey()
+            errorWindow?.isHidden = true
+            errorWindow = nil
+        }
+    
+    private func loadNetworkErrorWindow(on scene: UIScene) {
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.windowLevel = .statusBar
+                window.makeKeyAndVisible()
+                
+                let noNetworkView = ErrorCommonView(frame: window.bounds)
+                window.addSubview(noNetworkView)
+                self.errorWindow = window
+            }
+        }
 }
