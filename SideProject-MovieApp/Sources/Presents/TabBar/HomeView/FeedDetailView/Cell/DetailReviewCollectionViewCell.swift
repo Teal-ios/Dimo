@@ -123,7 +123,7 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         reviewLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(bgView).inset(16)
             make.top.equalTo(imgView.snp.bottom).offset(16)
-            make.bottom.equalTo(likeButton.snp.top)
+            make.bottom.equalTo(likeButton.snp.top).offset(-16)
         }
         
         likeButton.snp.makeConstraints { make in

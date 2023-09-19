@@ -33,6 +33,7 @@ class FeedDetailViewController: BaseViewController {
     let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     let commentCellSelected = PublishRelay<CommentList>()
     let feedButtonCellSelected = PublishRelay<CommentList>()
+    var commentTextCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +94,12 @@ class FeedDetailViewController: BaseViewController {
                     var sectionArr: [CommentList] = []
                     for comment in commentList {
                         guard let comment else { return }
+                        vc.commentTextCount += Int(comment.comment_content.count / 26)
                         sectionArr.append(comment)
                     }
                     commentSnapshot.appendItems(sectionArr, toSection: 0)
                     vc.dataSource.apply(commentSnapshot)
+
                     vc.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
                 }
             }
@@ -114,7 +117,7 @@ class FeedDetailViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vc, cellCount in
-                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount)
+                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount, textCount: vc.commentTextCount)
             }
             .disposed(by: disposeBag)
         

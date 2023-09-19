@@ -291,7 +291,7 @@ extension FeedDetailHeaderView {
         nicknameLabel.text = item.nickname
         mbtiLabel.text = item.mbti
         self.updateProfileImage(with: item.profile_img)
-        let  commentCnt = item.comment_content ?? 0
+        let  commentCnt = item.comment_count ?? 0
         likeAndReviewAndViewsLabel.text = "좋아요 \(item.review_like)  |  댓글 \(commentCnt)  |  조회 \(item.review_hits)"
     }
     
