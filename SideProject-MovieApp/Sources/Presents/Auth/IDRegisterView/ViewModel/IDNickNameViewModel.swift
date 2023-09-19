@@ -64,7 +64,7 @@ extension IDNickNameViewModel {
         let query = DuplicationIdQuery(user_id: user_Id)
         
         Task {
-            let duplicationId = try await authUseCase.excuteDuplicationId(user_id: query.user_id)
+            let duplicationId = try await authUseCase.executeDuplicationId(user_id: query.user_id)
             print("🔥", duplicationId)
             if duplicationId.code == 200 {
                 UserDefaultManager.userId = query.user_id

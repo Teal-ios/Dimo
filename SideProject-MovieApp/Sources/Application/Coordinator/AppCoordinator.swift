@@ -21,8 +21,8 @@ final class AppCoordinator: Coordinator {
 
     func start() {
         /// 조건에 따른 분기처리 필요
-        connectTabBarFlow()
-//        connectAuthFlow()
+//        connectTabBarFlow()
+        connectAuthFlow()
     }
 
     private func connectAuthFlow() {

@@ -8,25 +8,25 @@
 import Foundation
 
 protocol AuthUseCase {
-    func excuteSignUp(query: SignUpQuery) async throws -> SignUp
+    func executeSignUp(query: SignUpQuery) async throws -> SignUp
     
-    func excutePhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck
+    func executePhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck
     
-    func excutePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify
+    func executePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify
     
-    func excuteDuplicationId(user_id: String) async throws -> DuplicationId
+    func executeDuplicationId(user_id: String) async throws -> DuplicationId
     
     func excuteLogin(query: LoginQuery) async throws -> Login
     
-    func excuteKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin
+    func executeKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin
     
-    func excuteGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
+    func executeGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
     
-    func excuteSocial(query: SocialQuery) async throws -> Social
+    func executeSocial(query: SocialQuery) async throws -> Social
     
-    func excuteDrop(query: DropQuery) async throws -> Drop
+    func executeDrop(query: DropQuery) async throws -> Drop
 
-    func excuteLogout() async throws -> Logout
+    func executeLogout() async throws -> Logout
     
     func excuteSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
 }
@@ -95,7 +95,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin {
+    func executeKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin {
         do {
             return try await authRepository.requestKakaoLogin(query: query)
         } catch {
@@ -105,7 +105,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin {
+    func executeGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin {
         do {
             return try await authRepository.requestGoogleLogin(query: query)
         } catch {
@@ -115,7 +115,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteSocial(query: SocialQuery) async throws -> Social {
+    func executeSocial(query: SocialQuery) async throws -> Social {
         do {
             return try await authRepository.requestSocial(query: query)
         } catch {
@@ -125,7 +125,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteDrop(query: DropQuery) async throws -> Drop {
+    func executeDrop(query: DropQuery) async throws -> Drop {
         do {
             return try await authRepository.requestDrop(query: query)
         } catch {
@@ -135,7 +135,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteLogout() async throws -> Logout {
+    func executeLogout() async throws -> Logout {
         do {
             return try await authRepository.fetchLogout()
         } catch {

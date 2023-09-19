@@ -138,7 +138,7 @@ extension JoinMbtiViewModel {
         
         print("🔥", query)
         Task {
-            let signUp = try await authUseCase.excuteSignUp(query: query)
+            let signUp = try await authUseCase.executeSignUp(query: query)
             print("🔥", signUp)
             if signUp.code == 200 {
                 UserDefaultManager.mbti = mbtiString

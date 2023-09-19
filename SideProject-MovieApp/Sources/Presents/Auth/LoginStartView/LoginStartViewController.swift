@@ -20,7 +20,10 @@ class LoginStartViewController: BaseViewController {
     //MARK: Delegate
     private var viewModel: LoginStartViewModel
     
-    private lazy var input = LoginStartViewModel.Input(dimoLoginButtonTapped: self.loginStartView.dimoLoginButton.rx.tap, kakaoLoginButtonTapped: self.loginStartView.kakaoLoginButton.rx.tap, googleLoginButtonTapped: self.loginStartView.googleLoginButton.rx.tap, signupButtonTapped: self.loginStartView.signupButton.rx.tap)
+    private lazy var input = LoginStartViewModel.Input(didTappedDimoLoginButton: self.loginStartView.dimoLoginButton.rx.tap,
+                                                       didTappedKakaoLoginButton: self.loginStartView.kakaoLoginButton.rx.tap,
+                                                       didTappedGoogleLoginButton: self.loginStartView.googleLoginButton.rx.tap,
+                                                       didTappedSignupButton: self.loginStartView.signupButton.rx.tap)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("LoginStartViewController: fatal error")
@@ -49,7 +52,7 @@ class LoginStartViewController: BaseViewController {
         output.kakaoLoginButtonTapped
             .withUnretained(self)
             .bind { vc, _ in
-                vc.kakaoLogin()
+                vc.didTappedKakaoLoginButton()
             }
             .disposed(by: disposeBag)
         
@@ -141,45 +144,50 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
 
 
 extension LoginStartViewController {
-    func kakaoLoginButtonTouchUpInside() {
-        // 카카오톡 설치 여부 확인
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-                    
-                    //do something
-                    _ = oauthToken
-                }
-            }
+//    func kakaoLoginButtonTouchUpInside() {
+//        // 카카오톡 설치 여부 확인
+//        if (UserApi.isKakaoTalkLoginAvailable()) {
+//            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+//                if let error = error {
+//                    print(error)
+//                }
+//                else {
+//                    print("loginWithKakaoTalk() success.")
+//
+//                    //do something
+//                    _ = oauthToken
+//                }
+//            }
+//        }
+//    }
+    
+    private func presentKakaoOAuthFailedAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "카카오 로그인 실패", message: "카카오 로그인에 실패했습니다.", preferredStyle: UIAlertController.Style.alert)
+            let addAlertAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(addAlertAction)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func kakaoLogin() {
-        // 카카오 계정으로 로그인
-//        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-//            if let error = error {
-//                print(error)
-//            }
-//            else {
-//                print("카카오 로그인 성공")
-//
-//                _ = oauthToken
-//                /// 로그인 관련 메소드 추가
-//            }
-//        }
-        UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
-            if let error = error {
-                print(error)
+    func didTappedKakaoLoginButton() {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                    self?.presentKakaoOAuthFailedAlert()
+                } else {
+                    self?.viewModel.didTryLogin(with: .kakao(oauthToken?.accessToken ?? ""))
+                }
             }
-            else {
-                print("카카오 로그인 성공")
-
-                _ = oauthToken
-                /// 로그인 관련 메소드 추가
+        } else {
+            UserApi.shared.loginWithKakaoAccount { [weak self] (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                    self?.presentKakaoOAuthFailedAlert()
+                } else {
+                    self?.viewModel.didTryLogin(with: .kakao(oauthToken?.accessToken ?? ""))
+                }
             }
         }
     }

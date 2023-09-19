@@ -16,12 +16,12 @@ final class LoginStartViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
-        var dimoLoginButtonTapped: ControlEvent<Void>
+        var didTappedDimoLoginButton: ControlEvent<Void>
         
-        var kakaoLoginButtonTapped: ControlEvent<Void>
-        var googleLoginButtonTapped: ControlEvent<Void>
+        var didTappedKakaoLoginButton: ControlEvent<Void>
+        var didTappedGoogleLoginButton: ControlEvent<Void>
 //        var appleLoginButtonTapped: ControlEvent<Void>
-        var signupButtonTapped: ControlEvent<Void>
+        var didTappedSignupButton: ControlEvent<Void>
 // 추후 작업 예정
     }
     
@@ -38,33 +38,44 @@ final class LoginStartViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.dimoLoginButtonTapped.bind { [weak self] _ in
+        input.didTappedDimoLoginButton.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "none"
             self.coordinator?.showDimoLoginViewController()
         }.disposed(by: disposeBag)
         
-        input.signupButtonTapped.bind { [weak self] _ in
+        input.didTappedSignupButton.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "none"
             self.coordinator?.showJoinTermsViewController()
         }
         .disposed(by: disposeBag)
         
-        input.kakaoLoginButtonTapped.bind { [weak self] _ in
+        input.didTappedKakaoLoginButton.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "kakao"
 //            self.coordinator?.showErrorCommonViewController()
         }
         .disposed(by: disposeBag)
         
-        input.googleLoginButtonTapped.bind { [weak self] _ in
+        input.didTappedGoogleLoginButton.bind { [weak self] _ in
             guard let self else { return }
             UserDefaultManager.snsType = "google"
 //            self.coordinator?.showErrorNotFoundViewController()
         }
         .disposed(by: disposeBag)
         
-        return Output(dimoLoginButtonTapped: input.dimoLoginButtonTapped, kakaoLoginButtonTapped: input.kakaoLoginButtonTapped, googleLoginButtonTapped: input.googleLoginButtonTapped)
+        return Output(dimoLoginButtonTapped: input.didTappedDimoLoginButton, kakaoLoginButtonTapped: input.didTappedKakaoLoginButton, googleLoginButtonTapped: input.didTappedGoogleLoginButton)
     }
+}
+
+extension LoginStartViewModel {
+    
+    func didTryKaKaoLogin() {
+        Task {
+            self.authUseCase.executeKakaoLogin(query:)
+        }
+        
+    }
+    
 }
