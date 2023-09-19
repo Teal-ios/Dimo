@@ -55,11 +55,16 @@ final class HomeTabBarCoordinator: Coordinator {
     }
     
     private func configureTabBarItem(of page: TabBarPageCase) -> UITabBarItem {
-        return UITabBarItem(
+        let tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: page.tabIconName()),
             tag: page.pageOrderNumber
         )
+        
+        tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 10)
+        
+        return tabBarItem
     }
     
     private func createTabNavigationController(of page: TabBarPageCase) -> UINavigationController {
