@@ -25,6 +25,7 @@ final class OtherMomentumViewController: BaseViewController {
     
     let viewDidLoadTrigger = PublishRelay<Void>()
     let myProfileData = PublishRelay<MyProfile>()
+    let reviewDataSetAfter = PublishRelay<[MyReview?]>()
     
     private var likeContentDataSource: UICollectionViewDiffableDataSource<Int, LikeContent>!
     private var digFinishDataSource: UICollectionViewDiffableDataSource<Int, MyVotedCharacter>!
@@ -43,9 +44,9 @@ final class OtherMomentumViewController: BaseViewController {
         self.otherMomentumView.reviewCollectionView.delegate = self
         self.otherMomentumView.digFinishCharacherCollectionView.delegate = self
         self.otherMomentumView.profileCollectionView.delegate = self
+        setReviewDataSource()
         setLikeContentDataSource()
         setDigFinishCharacterDataSource()
-        setReviewDataSource()
         self.viewDidLoadTrigger.accept(())
     }
     
@@ -71,15 +72,6 @@ final class OtherMomentumViewController: BaseViewController {
                 if profile.intro == nil {
                     self.otherMomentumView.configureProfileExplainRemoveUI()
                 }
-                let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
-
-                }
-                
-                reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
-                    let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                    header.titleLabel.text = "\(profile.nickname)님이 쓴 리뷰"
-                    return header
-                })
         }
         .disposed(by: self.disposeBag)
         
@@ -113,20 +105,41 @@ final class OtherMomentumViewController: BaseViewController {
             .withUnretained(self)
             .observe(on: MainScheduler.instance)
             .bind { vc, myReview in
+                vc.reviewDataSetAfter.accept(myReview.review)
+            }
+            .disposed(by: disposeBag)
+        
+        let reviewSetAndProfileSetObservable = Observable.zip(self.myProfileData, self.reviewDataSetAfter)
+        
+            reviewSetAndProfileSetObservable
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] profile, reviewList in
+                
+                guard let self = self else { return }
+                let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+
+                }
+                
+                self.reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+                    let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
+                    header.titleLabel.text = "\(profile.nickname)님이 쓴 리뷰"
+                    return header
+                })
+                
                 var reviewSnapshot = NSDiffableDataSourceSnapshot<Int, MyReview>()
                 reviewSnapshot.appendSections([0])
                 var reviewArr: [MyReview] = []
-                if myReview.review == [] {
-                    vc.otherMomentumView.configureReviewUpdateUI(dataExist: false)
+                if reviewList == [] {
+                    self.otherMomentumView.configureReviewUpdateUI(dataExist: false)
                 } else {
-                    for review in myReview.review {
+                    for review in reviewList {
                         guard let review else { return }
                         reviewArr.append(review)
                     }
                     reviewSnapshot.appendItems(reviewArr, toSection: 0)
                     print(reviewArr, "댓글 배열")
-                    vc.reviewDataSource.apply(reviewSnapshot)
-                    vc.otherMomentumView.configureReviewUpdateUI(dataExist: true)
+                    self.reviewDataSource.apply(reviewSnapshot)
+                    self.otherMomentumView.configureReviewUpdateUI(dataExist: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -220,6 +233,15 @@ extension OtherMomentumViewController {
         reviewDataSource = UICollectionViewDiffableDataSource(collectionView: otherMomentumView.reviewCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellReviewRegistration, for: indexPath, item: itemIdentifier)
             return cell
+        })
+        
+        let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+
+        }
+        
+        reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
+            return header
         })
     }
 }

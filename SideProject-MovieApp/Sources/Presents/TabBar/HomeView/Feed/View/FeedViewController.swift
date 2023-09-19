@@ -27,6 +27,8 @@ final class FeedViewController: BaseViewController {
     
     let reviewCellSelected = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let viewWillAppearTrigger = PublishRelay<Void>()
+    let feedButtonCellSelected = PublishRelay<ReviewList>()
     
     override func loadView() {
         view = selfView
@@ -39,8 +41,13 @@ final class FeedViewController: BaseViewController {
         self.viewDidLoadTrigger.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewWillAppearTrigger.accept(())
+    }
+    
     override func setupBinding() {
-        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap, viewDidLoad: self.viewDidLoadTrigger)
+        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap, viewDidLoad: self.viewDidLoadTrigger, viewWillAppear: self.viewWillAppearTrigger, feedButtonCellSelected: self.feedButtonCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -72,6 +79,15 @@ extension FeedViewController {
         let cellRegistration = UICollectionView.CellRegistration<FeedReviewCollectionViewCell, ReviewList> { cell, indexPath, itemIdentifier in
             cell.configureUI(with: itemIdentifier)
             
+            cell.feedButton.rx
+                .tap
+                .debug()
+                .withUnretained(self)
+                .bind { vc, _ in
+                    vc.feedButtonCellSelected.accept(itemIdentifier)
+                    cell.disposeBag = DisposeBag()
+                }
+                .disposed(by: cell.disposeBag)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: selfView.collectionView) { collectionView, indexPath, itemIdentifier in

@@ -80,6 +80,11 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    let feedButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.frame.width / 2
@@ -87,7 +92,7 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     }
         
     override func configure() {
-        [bgView, imgView, characterNameLabel, mbtiLabel, reviewLabel, likeButton, likeCountLabel].forEach { self.addSubview($0) }
+        [bgView, imgView, characterNameLabel, mbtiLabel, reviewLabel, likeButton, likeCountLabel, feedButton].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -118,7 +123,7 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         reviewLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(bgView).inset(16)
             make.top.equalTo(imgView.snp.bottom).offset(16)
-            make.bottom.equalTo(likeButton.snp.top)
+            make.bottom.equalTo(likeButton.snp.top).offset(-16)
         }
         
         likeButton.snp.makeConstraints { make in
@@ -132,6 +137,12 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
             make.trailing.equalTo(safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(16)
+        }
+        
+        feedButton.snp.makeConstraints { make in
+            make.leading.top.equalTo(imgView)
+            make.height.equalTo(48)
+            make.width.equalTo(100)
         }
     }
 }

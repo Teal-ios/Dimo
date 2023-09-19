@@ -33,7 +33,10 @@ final class FeedDetailViewModel: ViewModelType {
         let commentRegisterButtonTap: ControlEvent<Void>
         let likeButtonTapped: ControlEvent<Void>
         let commentCellSelected: PublishRelay<CommentList>
+        let feedButtonCellSelected: PublishRelay<CommentList>
         let spoilerFilterButtonTapped: ControlEvent<Void>
+        let otherFeedButtonTapped: ControlEvent<Void>
+        let viewWillAppear: PublishRelay<Void>
     }
     
     struct Output{
@@ -124,6 +127,15 @@ final class FeedDetailViewModel: ViewModelType {
                 self.getReviewDetail(user_id: user_id, character_id: review.character_id, review_id: review.review_id)
             }
             .disposed(by: disposeBag)
+        
+        input.viewWillAppear
+            .withLatestFrom(self.review)
+            .bind { [weak self] review in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getCommentList(user_id: user_id, review_id: review.review_id)
+            }
+            .disposed(by: disposeBag)
 
         let postCommentQueryData = Observable.combineLatest(self.review, self.spoilerValid, self.textValid, self.commentText)
         
@@ -186,6 +198,16 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.feedButtonCellSelected
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, comment in
+                if comment.user_id != UserDefaultManager.userId {
+                    vm.coordinator?.showOtherFeedViewController(other_id: comment.user_id)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         self.commentLikeChoice
             .withUnretained(self)
             .bind { vm, comment in
@@ -233,6 +255,18 @@ final class FeedDetailViewModel: ViewModelType {
                 case .no:
                     vm.getCommentList.accept(vm.totalCommentList)
                     vm.currentSpoiler.accept(.yes)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.otherFeedButtonTapped
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(self.review)
+            .withUnretained(self)
+            .bind { vm, review in
+                guard let my_id = UserDefaultManager.userId else { return }
+                if review.user_id != my_id {
+                    vm.coordinator?.showOtherFeedViewController(other_id: review.user_id)
                 }
             }
             .disposed(by: disposeBag)

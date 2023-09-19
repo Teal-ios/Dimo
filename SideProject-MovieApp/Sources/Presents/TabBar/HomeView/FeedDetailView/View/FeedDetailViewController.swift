@@ -29,8 +29,11 @@ class FeedDetailViewController: BaseViewController {
     let spoilerValid = PublishRelay<Bool>()
     let review = PublishRelay<ReviewList>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let viewWillAppearTrigger = PublishRelay<Void>()
     let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     let commentCellSelected = PublishRelay<CommentList>()
+    let feedButtonCellSelected = PublishRelay<CommentList>()
+    var commentTextCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,7 @@ class FeedDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
+        self.viewWillAppearTrigger.accept(())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,7 +55,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, feedButtonCellSelected: self.feedButtonCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap, otherFeedButtonTapped: self.feedDetailView.headerView.otherFeedButton.rx.tap, viewWillAppear: self.viewWillAppearTrigger)
         
         let output = viewModel.transform(input: input)
         
@@ -90,10 +94,12 @@ class FeedDetailViewController: BaseViewController {
                     var sectionArr: [CommentList] = []
                     for comment in commentList {
                         guard let comment else { return }
+                        vc.commentTextCount += Int(comment.comment_content.count / 26)
                         sectionArr.append(comment)
                     }
                     commentSnapshot.appendItems(sectionArr, toSection: 0)
                     vc.dataSource.apply(commentSnapshot)
+
                     vc.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
                 }
             }
@@ -111,7 +117,7 @@ class FeedDetailViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vc, cellCount in
-                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount)
+                vc.feedDetailView.updateCollectionViewHeight(cellCount: cellCount, textCount: vc.commentTextCount)
             }
             .disposed(by: disposeBag)
         
@@ -203,6 +209,16 @@ extension FeedDetailViewController {
                 .withUnretained(self)
                 .bind { vc, _ in
                     vc.commentCellSelected.accept(itemIdentifier)
+                    cell.disposeBag = DisposeBag()
+                }
+                .disposed(by: cell.disposeBag)
+            
+            cell.feedButton.rx
+                .tap
+                .debug()
+                .withUnretained(self)
+                .bind { vc, _ in
+                    vc.feedButtonCellSelected.accept(itemIdentifier)
                     cell.disposeBag = DisposeBag()
                 }
                 .disposed(by: cell.disposeBag)

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum FeedCase {
+    case my
+    case other
+}
+
 final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
     
     func didFinish(childCoordinator: Coordinator) {
@@ -18,13 +23,23 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .tab
-
-    init(_ navigationController: UINavigationController) {
+    var feedCase: FeedCase
+    var other_id: String?
+    
+    init(_ navigationController: UINavigationController, feedCase: FeedCase, other_id: String? = nil) {
         self.navigationController = navigationController
+        self.feedCase = feedCase
+        self.other_id = other_id
     }
 
     func start() {
-        showMyMomentumViewController()
+        switch feedCase {
+        case .my:
+            showMyMomentumViewController()
+        case .other:
+            guard let other_id = other_id else { return }
+            showOtherMomentumViewController(other_id: other_id)
+        }
     }
     
     func showMyMomentumViewController() {

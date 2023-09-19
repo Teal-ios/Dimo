@@ -7,9 +7,13 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "FeedReviewCollectionViewCell"
+    
+    var disposeBag = DisposeBag()
+
 
     let bgView: UIView = {
         let view = UIView()
@@ -87,6 +91,11 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    let feedButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -95,7 +104,7 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
     }
         
     override func configure() {
-        [bgView, imgView, nameNameLabel, mbtiLabel, reviewLabel, likeAndReviewAndInquireLabel, spoilerContainView].forEach { self.addSubview($0) }
+        [bgView, imgView, nameNameLabel, mbtiLabel, reviewLabel, likeAndReviewAndInquireLabel, spoilerContainView, feedButton].forEach { self.addSubview($0) }
         spoilerContainView.addArrangedSubview(spoilerWarningImageView)
         spoilerContainView.addArrangedSubview(spoilerLabel)
     }
@@ -151,6 +160,12 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
             make.leading.equalTo(reviewLabel.snp.leading).offset(36)
             make.centerY.equalTo(reviewLabel)
             make.trailing.equalTo(reviewLabel.snp.trailing).offset(-4)
+        }
+        
+        feedButton.snp.makeConstraints { make in
+            make.leading.top.equalTo(imgView)
+            make.height.equalTo(48)
+            make.width.equalTo(100)
         }
     }
 }

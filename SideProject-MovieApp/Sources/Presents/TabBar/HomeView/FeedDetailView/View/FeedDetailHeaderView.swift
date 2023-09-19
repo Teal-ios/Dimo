@@ -146,6 +146,11 @@ class FeedDetailHeaderView: BaseView {
         return label
     }()
     
+    let otherFeedButton: UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(profileImgView)
@@ -159,6 +164,7 @@ class FeedDetailHeaderView: BaseView {
         self.addSubview(spoilerCommentChoiceContainView)
         self.addSubview(spoilerCommentChoiceButton)
         self.addSubview(spoilerCommentExplainLabel)
+        self.addSubview(otherFeedButton)
         makeConstraints()
     }
     
@@ -237,6 +243,11 @@ class FeedDetailHeaderView: BaseView {
             make.height.equalTo(21)
             
         }
+        
+        otherFeedButton.snp.makeConstraints { make in
+            make.top.leading.equalTo(profileImgView)
+            make.bottom.trailing.equalTo(mbtiLabel)
+        }
     }
 }
 
@@ -280,7 +291,7 @@ extension FeedDetailHeaderView {
         nicknameLabel.text = item.nickname
         mbtiLabel.text = item.mbti
         self.updateProfileImage(with: item.profile_img)
-        let  commentCnt = item.comment_content ?? 0
+        let  commentCnt = item.comment_count ?? 0
         likeAndReviewAndViewsLabel.text = "좋아요 \(item.review_like)  |  댓글 \(commentCnt)  |  조회 \(item.review_hits)"
     }
     

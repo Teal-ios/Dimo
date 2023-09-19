@@ -10,6 +10,8 @@ import SnapKit
 
 final class FeedDetailView: BaseView {
     
+    var totalCollectionViewHeight: CGFloat = 0
+    
     lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryLayout())
     
     lazy var containScrollView: UIScrollView = {
@@ -246,30 +248,23 @@ extension FeedDetailView {
     private func reviewLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(itemRatio),
-            heightDimension: .fractionalHeight(itemRatio)
+            heightDimension: .estimated(216)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(groupRatio),
-            heightDimension: .absolute(216)
+            heightDimension: .estimated(216)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-//        let headerSize = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(headerRatio),
-//            heightDimension: .estimated(headerAbsolute)
-//        )
-//        let header = NSCollectionLayoutBoundarySupplementaryItem(
-//            layoutSize: headerSize,
-//            elementKind: FeedDetailHeaderView.identifier, alignment: .top
-//        )
+
         
         let section = NSCollectionLayoutSection(group: group)
-        
-//        section.boundarySupplementaryItems = [header]
+        section.interGroupSpacing = 16
+        self.totalCollectionViewHeight = section.accessibilityFrame.height
         return section
     }
 }
@@ -340,13 +335,13 @@ extension FeedDetailView {
 }
 
 extension FeedDetailView {
-    func updateCollectionViewHeight(cellCount: Int) {
+    func updateCollectionViewHeight(cellCount: Int, textCount: Int) {
         if cellCount != 0 {
             collectionView.snp.removeConstraints()
             collectionView.snp.remakeConstraints { make in
                 make.top.equalTo(headerView.snp.bottom)
                 make.horizontalEdges.equalTo(containScrollView.safeAreaLayoutGuide)
-                make.height.greaterThanOrEqualTo(cellCount * 216)
+                make.height.lessThanOrEqualTo(cellCount * 160 + textCount * 5)
                 make.bottom.equalTo(containScrollView.snp.bottom)
             }
             collectionView.layoutIfNeeded()
