@@ -29,11 +29,11 @@
 | [Docs]   | Readme 수정작업                     |
 
 ### UI
-![스크린샷 2023-08-01 오후 8.34.28.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dadf1974-2769-4b6a-a369-cd9a1e6e0319/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-08-01_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.34.28.png)
+<img width="1082" alt="스크린샷 2023-08-01 오후 8 34 28" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/d72dda3d-4257-49c7-b848-fd0e6473b07f">
 
 ### Architecture 구성도
 
-![스크린샷 2023-09-14 오전 11.16.35.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/78aeacaa-f5d8-40b6-a121-e61b0967492b/9a6e7af7-1526-40b7-9f1c-846e43371572/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-14_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_11.16.35.png)
+<img width="1082" alt="스크린샷 2023-09-14 오전 11 16 35" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/44e37f9c-0a7b-40ce-a821-9d3ae86be726">
 
 ### 회고
 
