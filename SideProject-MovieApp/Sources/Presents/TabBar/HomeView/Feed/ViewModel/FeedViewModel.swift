@@ -22,6 +22,7 @@ final class FeedViewModel: ViewModelType {
         let viewDidLoad: PublishRelay<Void>
         let viewWillAppear: PublishRelay<Void>
         let feedButtonCellSelected: PublishRelay<ReviewList>
+        let pullToRefreshTrigger: PublishRelay<Void>
     }
     
     struct Output{
@@ -77,6 +78,17 @@ final class FeedViewModel: ViewModelType {
                 guard let character else { return }
                 print(character, "캐릭터조회")
                 self.getReviewList(user_id: user_id, character_id: character.character_id)
+            }
+            .disposed(by: disposeBag)
+        
+        input.pullToRefreshTrigger
+            .withLatestFrom(self.character)
+            .bind { [weak self] character in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                guard let character else { return }
+                self.getReviewList(user_id: user_id, character_id: character.character_id)
+                print("재갱신 완료")
             }
             .disposed(by: disposeBag)
         
