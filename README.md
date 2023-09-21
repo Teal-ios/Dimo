@@ -29,11 +29,13 @@
 | [Docs]   | Readme 수정작업                     |
 
 ### UI
-<img width="1082" alt="스크린샷 2023-08-01 오후 8 34 28" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/d72dda3d-4257-49c7-b848-fd0e6473b07f">
+
+<img width="1082" alt="스크린샷 2023-08-01 오후 8 34 28" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/e0610849-f5b7-4466-8c8e-ccc0e9cdc79b">
 
 ### Architecture 구성도
 
-<img width="1082" alt="스크린샷 2023-09-14 오전 11 16 35" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/44e37f9c-0a7b-40ce-a821-9d3ae86be726">
+<img width="1082" alt="스크린샷 2023-09-13 오전 10 50 10" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/2d541089-badb-4879-ac5f-888d9c45d2ed">
+
 
 ### 회고
 
