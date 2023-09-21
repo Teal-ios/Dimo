@@ -34,7 +34,7 @@
 
 ### Architecture 구성도
 
-<img width="1082" alt="스크린샷 2023-09-13 오전 10 50 10" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/2d541089-badb-4879-ac5f-888d9c45d2ed">
+<img width="1082" alt="스크린샷 2023-09-21 오전 9 57 18" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/c22a0e09-0f64-4e77-a531-31ef0da6372a">
 
 
 ### 회고
