@@ -12,10 +12,7 @@ import RxCocoa
 final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     func didFinish(childCoordinator: Coordinator) {
         self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
-        //        if childCoordinator.type == .myPage {
-        //            self.navigationController.viewControllers.removeAll()
-        //            self.delegate?.didFinish(childCoordinator: self)
-        //        }
+
     }
     
     weak var delegate: CoordinatorDelegate?
@@ -60,13 +57,6 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.popViewController(animated: true)
     }
     
-    func showTabmanCoordinator(character: Characters) {
-        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character, connectconnetTabmanCoordinatorViewController: .tabman, review: nil)
-        tabmanCoordinator.delegate = self
-        self.childCoordinators.append(tabmanCoordinator)
-        tabmanCoordinator.start()
-    }
-    
     func showContentMoreViewController(title: String, content: [Hit]) {
         let viewModel = ContentMoreViewModel(coordinator: self, content: content)
         let vc = ContentMoreViewController(viewModel: viewModel, title: title)
@@ -75,37 +65,17 @@ final class HomeCoordinator: Coordinator, CoordinatorDelegate {
     }
     
     func showMovieDetailViewController(content_id: String) {
-        let dataTransferService = DataTransferService(networkService: NetworkService())
-        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
-        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = MovieDetailViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id, gradeFinish: gradeFinish)
-        let vc = MovieDetailViewController(viewModel: viewModel)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController.pushViewController(vc, animated: true)
+        let movieDetailCoordinator = MovieDetailCoordinator(navigationController, content_id: content_id)
+        movieDetailCoordinator.delegate = self
+        self.childCoordinators.append(movieDetailCoordinator)
+        movieDetailCoordinator.start()
     }
     
     func showCharacterMoreViewController(characterData: [SameMbtiCharacter]) {
-        let viewModel = CharacterMoreViewModel(coordinator: self, characters: characterData)
-        let vc = CharacterMoreViewController(viewModel: viewModel)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func showMovieDetailEvaluateViewController(content_id: String) {
-        let dataTransferService = DataTransferService(networkService: NetworkService())
-        let contentRepositoryImpl = ContentRepositoryImpl(dataTransferService: dataTransferService)
-        let contentUseCaseImpl = ContentUseCaseImpl(contentRepository: contentRepositoryImpl)
-        let viewModel = MovieDetailEvaluateViewModel(coordinator: self, contentUseCase: contentUseCaseImpl, content_id: content_id)
-        viewModel.delegate = self
-        let vc = MovieDetailEvaluateViewController(viewModel: viewModel)
-        vc.modalPresentationStyle = .overFullScreen
-        navigationController.present(vc, animated: true)
-    }
-    
-    func showMovieCharacterMoreViewController(characters: [Characters?]) {
-        let viewModel = MovieCharacterMoreViewModel(coordinator: self, characters: characters)
-        let vc = MovieCharacterMoreViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
+        let characterMoreCoordinatpr = CharacterMoreCoordinator(navigationController, characterData: characterData)
+        characterMoreCoordinatpr.delegate = self
+        self.childCoordinators.append(characterMoreCoordinatpr)
+        characterMoreCoordinatpr.start()
     }
 }
 

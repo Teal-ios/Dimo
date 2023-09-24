@@ -165,6 +165,8 @@
 		2FBFF8452A6FA5D6007914A1 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */; };
 		2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */; };
 		2FBFF8492A6FA5E8007914A1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */; };
+		2FC12C572AC0139A00FF5145 /* MovieDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC12C562AC0139A00FF5145 /* MovieDetailCoordinator.swift */; };
+		2FC12C592AC015FC00FF5145 /* CharacterMoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC12C582AC015FC00FF5145 /* CharacterMoreCoordinator.swift */; };
 		2FC2EB3C29E2B63F00ECE2ED /* LoginSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */; };
 		2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */; };
 		2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */; };
@@ -822,6 +824,8 @@
 		2FBFF8442A6FA5D6007914A1 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		2FBFF8462A6FA5DD007914A1 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		2FBFF8482A6FA5E8007914A1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		2FC12C562AC0139A00FF5145 /* MovieDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailCoordinator.swift; sourceTree = "<group>"; };
+		2FC12C582AC015FC00FF5145 /* CharacterMoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMoreCoordinator.swift; sourceTree = "<group>"; };
 		2FC2EB3B29E2B63F00ECE2ED /* LoginSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashView.swift; sourceTree = "<group>"; };
 		2FC2EB3D29E2B64900ECE2ED /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		2FC2EB3F29E2B78200ECE2ED /* LoginCustomBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomBaseView.swift; sourceTree = "<group>"; };
@@ -1616,6 +1620,8 @@
 				2FD11DCC2A00DEF9006796DD /* MyMomentumCoordinator.swift */,
 				2FD69EAB2A03848200AA5A6E /* HomeCoordinator.swift */,
 				2FDD9E702A122FFA00A41FF7 /* TabmanCoordinator.swift */,
+				2FC12C562AC0139A00FF5145 /* MovieDetailCoordinator.swift */,
+				2FC12C582AC015FC00FF5145 /* CharacterMoreCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -4337,6 +4343,7 @@
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */,
 				2FC774652A998B8F00C36024 /* LikeCommentChoiceQuery.swift in Sources */,
+				2FC12C592AC015FC00FF5145 /* CharacterMoreCoordinator.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */,
@@ -4537,6 +4544,7 @@
 				2FDF32532A95A8DD00A9F3BC /* SearchCategoryView.swift in Sources */,
 				497454E42A3D7A130043D67E /* DataTransferService.swift in Sources */,
 				2FFB4BD12A8F1479001D1D60 /* InquireCharacterAnalyzeQuery.swift in Sources */,
+				2FC12C572AC0139A00FF5145 /* MovieDetailCoordinator.swift in Sources */,
 				49E726EE2AB5EB61001828CB /* SortActionSheetViewController.swift in Sources */,
 				2FBF64B62A71FE7D0036401F /* MyContentMoreViewModel.swift in Sources */,
 				2FCF0F6C2A7D2D9D00C164C4 /* DigViewModel.swift in Sources */,

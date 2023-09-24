@@ -38,6 +38,11 @@ final class MyContentMoreViewController: BaseViewController {
         self.viewDidLoadToSetDataSource.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func setupBinding() {
         let input = MyContentMoreViewModel.Input(viewDidLoadToSetDataSource: self.viewDidLoadToSetDataSource)
         let output = self.viewModel.transform(input: input)

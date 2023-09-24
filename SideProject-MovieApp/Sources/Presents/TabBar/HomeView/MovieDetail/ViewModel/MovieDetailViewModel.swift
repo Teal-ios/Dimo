@@ -11,12 +11,12 @@ import RxCocoa
 
 final class MovieDetailViewModel: ViewModelType {
     
-    private weak var coordinator: HomeCoordinator?
+    private weak var coordinator: MovieDetailCoordinator?
     private let contentUseCase: ContentUseCase
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    init(coordinator: HomeCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String, gradeFinish: PublishRelay<Int>) {
+    init(coordinator: MovieDetailCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String, gradeFinish: PublishRelay<Int>) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
         self.contentId = BehaviorRelay(value: content_id)
