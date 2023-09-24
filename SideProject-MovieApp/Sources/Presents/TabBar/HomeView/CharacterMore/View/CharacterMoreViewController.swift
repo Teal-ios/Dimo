@@ -21,7 +21,7 @@ final class CharacterMoreViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, SameMbtiCharacter>!
     
-    let cardCellSelected = PublishSubject<Void>()
+    let characterCellSelected = PublishRelay<SameMbtiCharacter>()
     let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
@@ -41,7 +41,7 @@ final class CharacterMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = CharacterMoreViewModel.Input()
+        let input = CharacterMoreViewModel.Input(characterCellSelected: self.characterCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -64,7 +64,7 @@ final class CharacterMoreViewController: BaseViewController {
 
 extension CharacterMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.onNext(())
+        self.characterCellDataFetching(indexPath: indexPath)
     }
 }
 
@@ -79,5 +79,12 @@ extension CharacterMoreViewController {
 
             return cell
         })
+    }
+}
+
+extension CharacterMoreViewController {
+    private func characterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.characterCellSelected.accept(selectedItem)
     }
 }

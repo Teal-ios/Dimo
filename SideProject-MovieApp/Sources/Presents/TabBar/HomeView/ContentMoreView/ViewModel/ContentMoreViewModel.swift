@@ -21,7 +21,7 @@ final class ContentMoreViewModel: ViewModelType {
     
     struct Input{
         let viewDidLoad: PublishRelay<Void>
-
+        let contentCellSelected: PublishRelay<Hit>
     }
     
     struct Output{
@@ -31,7 +31,13 @@ final class ContentMoreViewModel: ViewModelType {
     var contentData = BehaviorRelay<[Hit]>(value: [])
     
     func transform(input: Input) -> Output {
-
+        
+        input.contentCellSelected
+            .withUnretained(self)
+            .bind { vm, content in
+                vm.coordinator?.showMovieDetailViewController(content_id: String(content.anime_id))
+            }
+            .disposed(by: disposeBag)
         return Output(contentData: self.contentData)
     }
 }

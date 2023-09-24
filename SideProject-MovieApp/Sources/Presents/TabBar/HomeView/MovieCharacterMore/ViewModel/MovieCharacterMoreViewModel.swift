@@ -12,7 +12,7 @@ import RxCocoa
 final class MovieCharacterMoreViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
-    private weak var coordinator: HomeCoordinator?
+    private weak var coordinator: MovieDetailCoordinator?
     
     struct Input{
 
@@ -23,7 +23,7 @@ final class MovieCharacterMoreViewModel: ViewModelType {
         let characters: BehaviorRelay<[Characters?]>
     }
     
-    init(coordinator: HomeCoordinator, characters: [Characters?]) {
+    init(coordinator: MovieDetailCoordinator, characters: [Characters?]) {
         self.coordinator = coordinator
         self.characters = BehaviorRelay(value: characters)
     }

@@ -17,7 +17,7 @@ protocol sendEvaluateFinishDelegate {
 final class MovieDetailEvaluateViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
-    private weak var coordinator: HomeCoordinator?
+    private weak var coordinator: MovieDetailCoordinator?
     private let contentUseCase: ContentUseCase
     var delegate: sendEvaluateFinishDelegate?
     
@@ -31,7 +31,7 @@ final class MovieDetailEvaluateViewModel: ViewModelType {
         let evaluateValid: PublishRelay<Bool>
     }
     
-    init(coordinator: HomeCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String) {
+    init(coordinator: MovieDetailCoordinator? = nil, contentUseCase: ContentUseCase, content_id: String) {
         self.coordinator = coordinator
         self.contentUseCase = contentUseCase
         self.contentId = BehaviorRelay(value: content_id)

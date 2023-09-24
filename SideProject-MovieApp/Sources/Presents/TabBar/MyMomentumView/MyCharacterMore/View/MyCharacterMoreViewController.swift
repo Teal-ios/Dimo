@@ -23,6 +23,7 @@ final class MyCharacterMoreViewController: BaseViewController {
     
     let cardCellSelected = PublishRelay<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let myDigCharacterCellSelected = PublishRelay<MyVotedCharacter>()
 
     override func loadView() {
         view = selfView
@@ -41,7 +42,7 @@ final class MyCharacterMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MyCharacterMoreViewModel.Input()
+        let input = MyCharacterMoreViewModel.Input(myDigCharacterCellSelected: self.myDigCharacterCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -65,7 +66,7 @@ final class MyCharacterMoreViewController: BaseViewController {
 
 extension MyCharacterMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.accept(())
+        self.myDigCharacterCellDataFetching(indexPath: indexPath)
     }
 }
 
@@ -80,5 +81,12 @@ extension MyCharacterMoreViewController {
 
             return cell
         })
+    }
+}
+
+extension MyCharacterMoreViewController {
+    private func myDigCharacterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myDigCharacterCellSelected.accept(selectedItem)
     }
 }

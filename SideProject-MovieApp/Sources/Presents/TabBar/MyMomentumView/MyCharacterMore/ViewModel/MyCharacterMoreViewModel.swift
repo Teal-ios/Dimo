@@ -15,7 +15,7 @@ final class MyCharacterMoreViewModel: ViewModelType {
     private weak var coordinator: MyMomentumCoordinator?
     
     struct Input{
-
+        let myDigCharacterCellSelected: PublishRelay<MyVotedCharacter>
 
     }
     
@@ -31,7 +31,14 @@ final class MyCharacterMoreViewModel: ViewModelType {
     var characters: BehaviorRelay<[MyVotedCharacter?]> = BehaviorRelay(value: [])
     
     func transform(input: Input) -> Output {
-
+        
+        input.myDigCharacterCellSelected
+            .withUnretained(self)
+            .bind { vm, character in
+                vm.coordinator?.showTabmanCharacterCoordinator(character: Characters(character_id: character.character_id, character_name: character.character_name, character_img: character.character_img, character_mbti: character.character_mbti))
+            }
+            .disposed(by: disposeBag)
+        
         return Output(characters: self.characters)
     }
 }

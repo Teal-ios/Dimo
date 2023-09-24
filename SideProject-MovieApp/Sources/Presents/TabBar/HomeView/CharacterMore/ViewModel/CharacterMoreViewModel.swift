@@ -12,10 +12,10 @@ import RxCocoa
 final class CharacterMoreViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
-    private weak var coordinator: HomeCoordinator?
+    private weak var coordinator: CharacterMoreCoordinator?
     
     struct Input{
-
+        let characterCellSelected: PublishRelay<SameMbtiCharacter>
 
     }
     
@@ -23,7 +23,7 @@ final class CharacterMoreViewModel: ViewModelType {
         let characters: BehaviorRelay<[SameMbtiCharacter]>
     }
     
-    init(coordinator: HomeCoordinator? = nil, characters: [SameMbtiCharacter]) {
+    init(coordinator: CharacterMoreCoordinator? = nil, characters: [SameMbtiCharacter]) {
         self.coordinator = coordinator
         self.characters = BehaviorRelay(value: characters)
     }
@@ -32,6 +32,13 @@ final class CharacterMoreViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
 
+        input.characterCellSelected
+            .withUnretained(self)
+            .bind { vm, character in
+                vm.coordinator?.showTabmanCharacterCoordinator(character: Characters(character_id: character.character_id, character_name: character.character_name, character_img: character.character_img, character_mbti: character.character_mbti))
+            }
+            .disposed(by: disposeBag)
+        
         return Output(characters: self.characters)
     }
 }

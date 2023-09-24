@@ -106,4 +106,18 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(tabmanCoordinator)
         tabmanCoordinator.start()
     }
+    
+    func showTabmanCharacterCoordinator(character: Characters) {
+        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character, connectconnetTabmanCoordinatorViewController: .tabman, review: nil)
+        tabmanCoordinator.delegate = self
+        self.childCoordinators.append(tabmanCoordinator)
+        tabmanCoordinator.start()
+    }
+    
+    func showMovieDetailViewController(content_id: String) {
+        let movieDetailCoordinator = MovieDetailCoordinator(navigationController, content_id: content_id)
+        movieDetailCoordinator.delegate = self
+        self.childCoordinators.append(movieDetailCoordinator)
+        movieDetailCoordinator.start()
+    }
 }

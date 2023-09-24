@@ -32,6 +32,8 @@ final class MyMomentumViewModel: ViewModelType {
         let commentMoreButtonTap: ControlEvent<Void>
         let myReviewCellSelected: PublishRelay<MyReview>
         let myCommentCellSelected: PublishRelay<MyComment>
+        let myLikeContentCellSelected: PublishRelay<LikeContent>
+        let myDigCharacterCellSelected: PublishRelay<MyVotedCharacter>
     }
     
     struct Output {
@@ -152,6 +154,20 @@ final class MyMomentumViewModel: ViewModelType {
                 guard let self = self else { return }
                 print(review.review_list[0], "🍋")
                 self.coordinator?.showTabmanCoordinator(character: character, review: review.review_list[0])
+            }
+            .disposed(by: disposeBag)
+        
+        input.myLikeContentCellSelected
+            .withUnretained(self)
+            .bind { vm, content in
+                vm.coordinator?.showMovieDetailViewController(content_id: String(content.anime_id))
+            }
+            .disposed(by: disposeBag)
+        
+        input.myDigCharacterCellSelected
+            .withUnretained(self)
+            .bind { vm, character in
+                vm.coordinator?.showTabmanCharacterCoordinator(character: Characters(character_id: character.character_id, character_name: character.character_name, character_img: character.character_img, character_mbti: character.character_mbti))
             }
             .disposed(by: disposeBag)
         
