@@ -26,6 +26,7 @@ final class MyContentMoreViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadToSetDataSource: PublishRelay<Void>
+        let myLikeContentCellSelected: PublishRelay<LikeContent>
     }
     
     struct Output {
@@ -34,6 +35,13 @@ final class MyContentMoreViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        
+        input.myLikeContentCellSelected
+            .withUnretained(self)
+            .bind { vm, content in
+                vm.coordinator?.showMovieDetailViewController(content_id: String(content.anime_id))
+            }
+            .disposed(by: disposeBag)
         
         return Output(likeContent: self.likeContent, viewDidLoadToSetDataSource: input.viewDidLoadToSetDataSource)
     }

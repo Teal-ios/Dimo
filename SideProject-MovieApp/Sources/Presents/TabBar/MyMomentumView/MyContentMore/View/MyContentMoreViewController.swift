@@ -24,16 +24,19 @@ final class MyContentMoreViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    
     private var likeContentDataSource: UICollectionViewDiffableDataSource<Int, LikeContent>!
     
     override func loadView() {
         view = selfView
     }
     
+    let myLikeContentCellSelected = PublishRelay<LikeContent>()
     let viewDidLoadToSetDataSource = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selfView.cardCollectionView.delegate = self
         setLikeContentDataSource()
         self.viewDidLoadToSetDataSource.accept(())
     }
@@ -44,7 +47,8 @@ final class MyContentMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MyContentMoreViewModel.Input(viewDidLoadToSetDataSource: self.viewDidLoadToSetDataSource)
+        let input = MyContentMoreViewModel.Input(viewDidLoadToSetDataSource: self.viewDidLoadToSetDataSource, myLikeContentCellSelected: self.myLikeContentCellSelected)
+        
         let output = self.viewModel.transform(input: input)
         
         output.viewDidLoadToSetDataSource
@@ -79,5 +83,18 @@ extension MyContentMoreViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellLikeContentRegistration, for: indexPath, item: itemIdentifier)
             return cell
         }
+    }
+}
+
+extension MyContentMoreViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        myLikeContentCellDataFetching(indexPath: indexPath)
+    }
+}
+
+extension MyContentMoreViewController {
+    private func myLikeContentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = likeContentDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myLikeContentCellSelected.accept(selectedItem)
     }
 }

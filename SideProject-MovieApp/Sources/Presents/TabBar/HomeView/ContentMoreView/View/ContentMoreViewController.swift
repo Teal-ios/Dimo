@@ -22,8 +22,9 @@ final class ContentMoreViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, Hit>!
     
-    let cardCellSelected = PublishSubject<Void>()
     let viewDidLoadTrigger = PublishRelay<Void>()
+    let contentCellSelected = PublishRelay<Hit>()
+
 
     override func loadView() {
         view = contentMoreView
@@ -42,7 +43,7 @@ final class ContentMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = ContentMoreViewModel.Input(viewDidLoad: self.viewDidLoadTrigger)
+        let input = ContentMoreViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, contentCellSelected: self.contentCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -65,7 +66,7 @@ final class ContentMoreViewController: BaseViewController {
 
 extension ContentMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.onNext(())
+        self.myLikeContentCellDataFetching(indexPath: indexPath)
     }
 }
 
@@ -79,5 +80,12 @@ extension ContentMoreViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
+    }
+}
+
+extension ContentMoreViewController {
+    private func myLikeContentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.contentCellSelected.accept(selectedItem)
     }
 }

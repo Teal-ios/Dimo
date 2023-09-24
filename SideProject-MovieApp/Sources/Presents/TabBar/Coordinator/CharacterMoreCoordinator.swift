@@ -36,4 +36,11 @@ final class CharacterMoreCoordinator: Coordinator, CoordinatorDelegate {
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func showTabmanCharacterCoordinator(character: Characters) {
+        let tabmanCoordinator = TabmanCoordinator(navigationController, character: character, connectconnetTabmanCoordinatorViewController: .tabman, review: nil)
+        tabmanCoordinator.delegate = self
+        self.childCoordinators.append(tabmanCoordinator)
+        tabmanCoordinator.start()
+    }
 }
