@@ -43,7 +43,7 @@ class PasswordViewModel: ViewModelType {
                 guard let self = self else { return }
                 print("password", text)
                 UserDefaultManager.password = text
-                self.coordinator?.showJoinMbtiViewController()
+                self.coordinator?.showJoinMbtiViewController(isSnsLogin: false)
             }
             .disposed(by: disposeBag)
         

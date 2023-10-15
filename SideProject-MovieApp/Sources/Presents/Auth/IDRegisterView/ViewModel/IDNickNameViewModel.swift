@@ -33,7 +33,7 @@ class IDNickNameViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showNickNameViewController(coordinatorFlow: .authFlow)
+            self?.coordinator?.showNickNameViewController(isSnsLogin: false)
         }.disposed(by: disposeBag)
         
         // 닉네임 중복확인

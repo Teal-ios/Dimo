@@ -142,7 +142,7 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
     }
 }
 
-
+// MARK: Kakao 로그인
 extension LoginStartViewController {
 //    func kakaoLoginButtonTouchUpInside() {
 //        // 카카오톡 설치 여부 확인

@@ -14,6 +14,7 @@ final class JoinMbtiViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private var authUseCase: AuthUseCase
     private weak var coordinator: AuthCoordinator?
+    private var isSnsLogin: Bool
     
     struct Input{
         let findMbtiButtonTapped: ControlEvent<Void>
@@ -45,9 +46,10 @@ final class JoinMbtiViewModel: ViewModelType {
     let mbtiValid = PublishRelay<Bool>()
     let signUpSuccess = PublishRelay<Bool>()
     
-    init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase) {
+    init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase, isSnsLogin: Bool) {
         self.coordinator = coordinator
         self.authUseCase = authUseCase
+        self.isSnsLogin = isSnsLogin
     }
     
     func transform(input: Input) -> Output {
@@ -63,11 +65,17 @@ final class JoinMbtiViewModel: ViewModelType {
                   let name = UserDefaultManager.userName,
                   let nickname = UserDefaultManager.nickname,
                   let snsType = UserDefaultManager.snsType,
-                  let agency = UserDefaultManager.agency,
+                  let agency = UserDefaultManager.agency, // 통신사
                   let phoneNumber = UserDefaultManager.phoneNumber else { return }
 
             let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString, push_check: UserDefaultManager.pushCheck ?? 0)
-            self.signUp(query: query)
+            
+            if self.isSnsLogin {
+                let snsSignUpQuery = KakaoLoginQuery(userId: userId, name: name, snsType: snsType)
+                self.signUpWithSnsAccount(query: snsSignUpQuery)
+            } else {
+                self.signUp(query: query)
+            }
         }.disposed(by: disposeBag)
         
         input.mbtiInfo.bind { [weak self] mbti in
@@ -93,8 +101,15 @@ final class JoinMbtiViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
         
-        return Output(eButtonTapped: input.eButtonTapped
-                      , iButtonTapped: input.iButtonTapped, nButtonTapped: input.nButtonTapped, sButtonTapped: input.sButtonTapped, tButtonTapped: input.tButtonTapped, fButtonTapped: input.fButtonTapped, jButtonTapped: input.jButtonTapped, pButtonTapped: input.pButtonTapped, mbtiValid: self.mbtiValid)
+        return Output(eButtonTapped: input.eButtonTapped,
+                      iButtonTapped: input.iButtonTapped,
+                      nButtonTapped: input.nButtonTapped,
+                      sButtonTapped: input.sButtonTapped,
+                      tButtonTapped: input.tButtonTapped,
+                      fButtonTapped: input.fButtonTapped,
+                      jButtonTapped: input.jButtonTapped,
+                      pButtonTapped: input.pButtonTapped,
+                      mbtiValid: self.mbtiValid)
     }
 }
 
@@ -142,10 +157,24 @@ extension JoinMbtiViewModel {
             print("🔥", signUp)
             if signUp.code == 200 {
                 UserDefaultManager.mbti = mbtiString
-                
+                signUpSuccess.accept(true)
+            }
+        }
+    }
+    
+    private func signUpWithSnsAccount(query: KakaoLoginQuery) {
+        let query = KakaoLoginQuery(userId: query.userId, name: query.name, snsType: query.snsType)
+        
+        print("🔥 SnsSignUpQuery", query)
+        
+        Task {
+            let snsSignUp = try await authUseCase.executeKakaoLogin(query: query)
+            print("🔥 SNS SignUp: \(snsSignUp)")
+            
+            if snsSignUp.code == 200 {
+                UserDefaultManager.mbti = mbtiString
                 signUpSuccess.accept(true)
             }
         }
     }
 }
-

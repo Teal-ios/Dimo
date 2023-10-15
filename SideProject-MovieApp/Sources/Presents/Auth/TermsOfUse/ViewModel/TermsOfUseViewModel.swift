@@ -12,6 +12,7 @@ import RxCocoa
 final class TermsOfUseViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
+    private var isSnsLogin: Bool
     
     struct Input {
         let acceptButtonTapped: ControlEvent<Void>
@@ -25,8 +26,9 @@ final class TermsOfUseViewModel: ViewModelType {
         let totalValid: BehaviorSubject<[Bool]>
     }
     
-    init(coordinator: AuthCoordinator? = nil) {
+    init(coordinator: AuthCoordinator? = nil, isSnsLogin: Bool) {
         self.coordinator = coordinator
+        self.isSnsLogin = isSnsLogin
     }
     
     func transform(input: Input) -> Output {
@@ -105,7 +107,7 @@ final class TermsOfUseViewModel: ViewModelType {
                 case false:
                     UserDefaultManager.pushCheck = 0
                 }
-                vm.coordinator?.showNickNameViewController(coordinatorFlow: .socialLoginFlow)
+                vm.coordinator?.showNickNameViewController(isSnsLogin: vm.isSnsLogin)
             }
             .disposed(by: disposeBag)
         

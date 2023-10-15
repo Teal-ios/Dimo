@@ -58,19 +58,19 @@ final class LoginStartViewModel: ViewModelType {
         
         input.didTappedKakaoLoginButton.bind { [weak self] _ in
             guard let self else { return }
-            UserDefaultManager.snsType = "kakao"
 //            self.coordinator?.showErrorCommonViewController()
         }
         .disposed(by: disposeBag)
         
         input.didTappedGoogleLoginButton.bind { [weak self] _ in
             guard let self else { return }
-            UserDefaultManager.snsType = "google"
 //            self.coordinator?.showErrorNotFoundViewController()
         }
         .disposed(by: disposeBag)
         
-        return Output(dimoLoginButtonTapped: input.didTappedDimoLoginButton, kakaoLoginButtonTapped: input.didTappedKakaoLoginButton, googleLoginButtonTapped: input.didTappedGoogleLoginButton)
+        return Output(dimoLoginButtonTapped: input.didTappedDimoLoginButton,
+                      kakaoLoginButtonTapped: input.didTappedKakaoLoginButton,
+                      googleLoginButtonTapped: input.didTappedGoogleLoginButton)
     }
 }
 
@@ -85,7 +85,8 @@ extension LoginStartViewModel {
                 print("KAKO LOGIN: ", kakaoLogin)
                 if kakaoLogin.code == 200 {
                     await MainActor.run {
-                        self.coordinator?.showTermsOfUseViewController()
+                        self.saveUserInformation(userId: id, userName: name, snsType: snsType)
+                        self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
                     }
                 }
             }
@@ -94,5 +95,15 @@ extension LoginStartViewModel {
         case .apple:
             print("APPLE LOGIN")
         }
+    }
+}
+
+// MARK: UserDefaultManager
+extension LoginStartViewModel {
+    
+    private func saveUserInformation(userId: String, userName: String, snsType: String) {
+        UserDefaultManager.userId = userId
+        UserDefaultManager.userName = userName
+        UserDefaultManager.snsType = snsType
     }
 }
