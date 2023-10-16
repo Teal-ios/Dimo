@@ -224,6 +224,14 @@ extension FeedDetailViewController {
                     cell.disposeBag = DisposeBag()
                 }
                 .disposed(by: cell.disposeBag)
+            
+            cell.modifyButton.rx
+                .tap
+                .withUnretained(self)
+                .bind { vc, _ in
+                    cell.disposeBag = DisposeBag()
+                }
+                .disposed(by: cell.disposeBag)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: feedDetailView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
