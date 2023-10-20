@@ -33,6 +33,7 @@ class FeedDetailViewController: BaseViewController {
     let setDataSourceApplySnapshotAfter = PublishRelay<Int>()
     let commentCellSelected = PublishRelay<CommentList>()
     let feedButtonCellSelected = PublishRelay<CommentList>()
+    let modifyCommentButtonCellSelected = PublishRelay<CommentList>()
     var commentTextCount = 0
     
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class FeedDetailViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, feedButtonCellSelected: self.feedButtonCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap, otherFeedButtonTapped: self.feedDetailView.headerView.otherFeedButton.rx.tap, viewWillAppear: self.viewWillAppearTrigger)
+        let input = FeedDetailViewModel.Input(plusNavigationButtonTapped: self.plusNavigationButtonTap, spoilerButtonTapped: self.feedDetailView.spoilerButton.rx.tap, commentText: self.feedDetailView.commentTextField.rx.text, viewDidLoad: self.viewDidLoadTrigger, commentRegisterButtonTap: self.feedDetailView.registrationButton.rx.tap, likeButtonTapped: self.feedDetailView.headerView.likeContainButton.rx.tap, commentCellSelected: self.commentCellSelected, feedButtonCellSelected: self.feedButtonCellSelected, spoilerFilterButtonTapped: self.feedDetailView.headerView.spoilerCommentChoiceButton.rx.tap, otherFeedButtonTapped: self.feedDetailView.headerView.otherFeedButton.rx.tap, viewWillAppear: self.viewWillAppearTrigger, modifyCommentButtonCellSelected: self.modifyCommentButtonCellSelected)
         
         let output = viewModel.transform(input: input)
         
@@ -90,6 +91,29 @@ class FeedDetailViewController: BaseViewController {
             .withUnretained(self)
             .observe(on: MainScheduler.instance)
             .bind { vc, commentList in
+                if commentList != [] {
+                    var commentSnapshot = NSDiffableDataSourceSnapshot<Int, CommentList>()
+                    commentSnapshot.appendSections([0])
+                    var sectionArr: [CommentList] = []
+                    for comment in commentList {
+                        guard let comment else { return }
+                        vc.commentTextCount += Int(comment.comment_content.count / 26)
+                        sectionArr.append(comment)
+                    }
+                    commentSnapshot.appendItems(sectionArr, toSection: 0)
+                    vc.dataSource.apply(commentSnapshot)
+
+                    vc.setDataSourceApplySnapshotAfter.accept(sectionArr.count)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.modifyCommentButtonCellSelected
+            .withLatestFrom(output.commentList)
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { vc, commentList in
+                vc.setDataSource()
                 if commentList != [] {
                     var commentSnapshot = NSDiffableDataSourceSnapshot<Int, CommentList>()
                     commentSnapshot.appendSections([0])
@@ -229,6 +253,7 @@ extension FeedDetailViewController {
                 .tap
                 .withUnretained(self)
                 .bind { vc, _ in
+                    vc.modifyCommentButtonCellSelected.accept(itemIdentifier)
                     cell.disposeBag = DisposeBag()
                 }
                 .disposed(by: cell.disposeBag)

@@ -37,6 +37,7 @@ final class FeedDetailViewModel: ViewModelType {
         let spoilerFilterButtonTapped: ControlEvent<Void>
         let otherFeedButtonTapped: ControlEvent<Void>
         let viewWillAppear: PublishRelay<Void>
+        let modifyCommentButtonCellSelected: PublishRelay<CommentList>
     }
     
     struct Output{
@@ -268,6 +269,15 @@ final class FeedDetailViewModel: ViewModelType {
                 if review.user_id != my_id {
                     vm.coordinator?.showOtherFeedViewController(other_id: review.user_id)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.modifyCommentButtonCellSelected
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, commentList in
+                //여기서 화면전환
+                vm.coordinator?.showModifyCommentViewController(comment: commentList)
             }
             .disposed(by: disposeBag)
         

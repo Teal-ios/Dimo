@@ -158,6 +158,13 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(myMomentumCoordinator)
         myMomentumCoordinator.start()
     }
+    
+    func showModifyCommentViewController(comment: CommentList) {
+        let viewModel = ModifyCommentViewModel(coordinator: self, comment: comment)
+        let vc = ModifyCommentViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
 }
 
 extension TabmanCoordinator: sendPostReviewDelegate {

@@ -164,6 +164,8 @@ class ReportViewModel: ViewModelType {
                 }
             }
             .disposed(by: disposeBag)
+
+
                     
         return Output(reportReason: self.reportReason,
                       didBeginEditingTextView: self.didBeginEditingTextView,
