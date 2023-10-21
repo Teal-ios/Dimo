@@ -58,7 +58,8 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview, modifyCommentDismiss: self.modifyCommentDismiss)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview, modifyCommentDismiss: self.modifyCommentDismiss, deleteComment: self.deleteComment
+        )
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

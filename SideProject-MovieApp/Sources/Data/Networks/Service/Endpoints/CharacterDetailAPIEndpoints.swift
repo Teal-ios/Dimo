@@ -60,4 +60,8 @@ struct CharacterDetailAPIEndpoints {
         return CharacterDetailRouter<ResponseReportUserDTO>
             .postReportUser(parameters: PostReportUserQuery(user_id: requestDTO.user_id, review_id: requestDTO.review_id, report_reason: requestDTO.report_reason))
     }
+    
+    static func deleteComment(with requestDTO: RequestDeleteCommentDTO) -> CharacterDetailRouter<ResponseDeleteCommentDTO> {
+        return CharacterDetailRouter<ResponseDeleteCommentDTO>.deleteComment(parameters: DeleteCommentQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id, review_id: requestDTO.review_id, comment_id: requestDTO.comment_id))
+    }
 }

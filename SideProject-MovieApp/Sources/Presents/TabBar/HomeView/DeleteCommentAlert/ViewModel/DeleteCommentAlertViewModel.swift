@@ -29,22 +29,26 @@ final class DeleteCommentAlertViewModel: ViewModelType {
     struct Output{
         
     }
-    
-    let deleteReview = PublishRelay<DeleteReview>()
-    
+        
     init(coordinator: TabmanCoordinator?, characterDetailUseCase: CharacterDetailUseCase, comment: CommentList) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.comment = comment
     }
     
+    let deleteComment = PublishRelay<DeleteComment>()
+    
     func transform(input: Input) -> Output {
         input.okButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
+            deleteComment(user_id: comment.user_id,
+                          character_id: comment.character_id,
+                          review_id: comment.review_id,
+                          comment_id: comment.comment_id)
         }
         .disposed(by: disposeBag)
         
-        self.deleteReview
+        self.deleteComment
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vm, _ in
@@ -62,5 +66,15 @@ final class DeleteCommentAlertViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         return Output()
+    }
+}
+
+extension DeleteCommentAlertViewModel {
+    private func deleteComment(user_id: String, character_id: Int , review_id: Int, comment_id: Int) {
+        Task {
+            let deleteComment = try await characterDetailUseCase.excuteDeleteComment(query: DeleteCommentQuery(user_id: user_id, character_id: character_id, review_id: review_id, comment_id: comment_id))
+            print(deleteComment, "🍊 댓글 삭제")
+            self.deleteComment.accept(deleteComment)
+        }
     }
 }

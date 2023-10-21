@@ -298,6 +298,10 @@
 		2FD258962AE3709A0076A349 /* DeleteCommentAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD258952AE3709A0076A349 /* DeleteCommentAlertView.swift */; };
 		2FD258982AE370F30076A349 /* DeleteCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD258972AE370F30076A349 /* DeleteCommentViewController.swift */; };
 		2FD2589A2AE371280076A349 /* DeleteCommentAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD258992AE371280076A349 /* DeleteCommentAlertViewModel.swift */; };
+		2FD2589C2AE372DD0076A349 /* DeleteComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2589B2AE372DD0076A349 /* DeleteComment.swift */; };
+		2FD2589E2AE3730C0076A349 /* DeleteCommentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2589D2AE3730C0076A349 /* DeleteCommentQuery.swift */; };
+		2FD258A02AE373CE0076A349 /* RequestDeleteCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2589F2AE373CE0076A349 /* RequestDeleteCommentDTO.swift */; };
+		2FD258A22AE373FB0076A349 /* ResponseDeleteCommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD258A12AE373FB0076A349 /* ResponseDeleteCommentDTO.swift */; };
 		2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */; };
 		2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274112A5A8AEC003AA144 /* RecommendView.swift */; };
 		2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD274132A5A8B38003AA144 /* RecommendViewController.swift */; };
@@ -965,6 +969,10 @@
 		2FD258952AE3709A0076A349 /* DeleteCommentAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentAlertView.swift; sourceTree = "<group>"; };
 		2FD258972AE370F30076A349 /* DeleteCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentViewController.swift; sourceTree = "<group>"; };
 		2FD258992AE371280076A349 /* DeleteCommentAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentAlertViewModel.swift; sourceTree = "<group>"; };
+		2FD2589B2AE372DD0076A349 /* DeleteComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteComment.swift; sourceTree = "<group>"; };
+		2FD2589D2AE3730C0076A349 /* DeleteCommentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentQuery.swift; sourceTree = "<group>"; };
+		2FD2589F2AE373CE0076A349 /* RequestDeleteCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDeleteCommentDTO.swift; sourceTree = "<group>"; };
+		2FD258A12AE373FB0076A349 /* ResponseDeleteCommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDeleteCommentDTO.swift; sourceTree = "<group>"; };
 		2FD2740F2A5A8AE5003AA144 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		2FD274112A5A8AEC003AA144 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		2FD274132A5A8B38003AA144 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
@@ -3315,6 +3323,7 @@
 				2FD82D962A774DA500372D24 /* RequestPostCommentDTO.swift */,
 				2FCB527E2AA8410900D71A64 /* RequestPostBlindReviewDTO.swift */,
 				2FCB52802AA8411500D71A64 /* RequestPostReportUserDTO.swift */,
+				2FD2589F2AE373CE0076A349 /* RequestDeleteCommentDTO.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3369,6 +3378,7 @@
 				2FC774622A99868D00C36024 /* ResponseReviewIsLikeDTO.swift */,
 				2FCB52722AA83F5B00D71A64 /* ResponseBlindReviewDTO.swift */,
 				2FCB52742AA83F8800D71A64 /* ResponseReportUserDTO.swift */,
+				2FD258A12AE373FB0076A349 /* ResponseDeleteCommentDTO.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3559,6 +3569,7 @@
 				2FC774602A99865600C36024 /* ReviewIsLiked.swift */,
 				2FCB52762AA83F9B00D71A64 /* BlindReview.swift */,
 				2FCB52782AA83FAC00D71A64 /* ReportUser.swift */,
+				2FD2589B2AE372DD0076A349 /* DeleteComment.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -3594,6 +3605,7 @@
 				2FD82D7B2A77474100372D24 /* GetCommentQuery.swift */,
 				2FCB527A2AA8401400D71A64 /* PostBlindReviewQuery.swift */,
 				2FCB527C2AA8401D00D71A64 /* PostReportUserQuery.swift */,
+				2FD2589D2AE3730C0076A349 /* DeleteCommentQuery.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -4732,6 +4744,7 @@
 				497454E72A3DD5210043D67E /* APIKey.swift in Sources */,
 				2FD4D9072A6BB1E600E7972B /* MyMomentumRepository.swift in Sources */,
 				49C722182AA3183E0062650F /* ProductNotificationViewController.swift in Sources */,
+				2FD2589E2AE3730C0076A349 /* DeleteCommentQuery.swift in Sources */,
 				2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2FD4D91A2A6CC5B600E7972B /* LikeContent.swift in Sources */,
@@ -4835,6 +4848,8 @@
 				2F124ADA2A4EBFFD00A452F1 /* WriteViewController.swift in Sources */,
 				2F53D0842A1F189E00898DCD /* StatusCodeResponseDTO.swift in Sources */,
 				2FD69EB72A039F0800AA5A6E /* TodayDIMOHeaderView.swift in Sources */,
+				2FD2589C2AE372DD0076A349 /* DeleteComment.swift in Sources */,
+				2FD258A22AE373FB0076A349 /* ResponseDeleteCommentDTO.swift in Sources */,
 				2FD69EA52A03745D00AA5A6E /* HomeViewController.swift in Sources */,
 				2FD87A2F2A58409A003C276B /* Login.swift in Sources */,
 				2FCB16882A7DED7200AE48A8 /* WidthChartView.swift in Sources */,
@@ -4917,6 +4932,7 @@
 				2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				49A7A1DA2A90D6880011EDC4 /* MbtiChangeDate.swift in Sources */,
+				2FD258A02AE373CE0076A349 /* RequestDeleteCommentDTO.swift in Sources */,
 				2FD82D652A7743D600372D24 /* PostComment.swift in Sources */,
 				2FD4D9222A6CCAAB00E7972B /* ResponseModifyMyProfileDTO.swift in Sources */,
 				2FD8F1E72AE2743900E3D0EF /* ModifyCommentViewModel.swift in Sources */,
