@@ -28,6 +28,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var characterId = PublishRelay<Int>()
     var modifyText = PublishRelay<String>()
     var deleteReview = PublishRelay<Void>()
+    var deleteComment = PublishRelay<Void>()
     var currentCase: ConnetTabmanCoordinatorViewControllerCase = .tabman
     var review: ReviewList?
     var modifyCommentDismiss = PublishRelay<Void>()
@@ -117,6 +118,17 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
+    func showDeleteCommentAlertViewController(comment: CommentList) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = DeleteCommentAlertViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, comment: comment)
+        viewModel.delegate = self
+        let vc = DeleteCommentAlertViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    
     func showFeedDetailHideReviewAlertViewController(review_id: Int) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
@@ -186,6 +198,12 @@ extension TabmanCoordinator: sendModifyReviewDelegate {
 extension TabmanCoordinator: sendDeleteReviewDelegate {
     func sendDeleteReview() {
         self.deleteReview.accept(())
+    }
+}
+
+extension TabmanCoordinator: sendDeleteCommentDelegate {
+    func sendDeleteComment() {
+        self.deleteComment.accept(())
     }
 }
 

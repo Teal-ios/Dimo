@@ -40,7 +40,7 @@ final class ModifyCommentViewModel: ViewModelType {
         input.deleteButtonTapped.bind { [weak self] _ in
             guard let self = self else { return }
             self.coordinator?.dismissViewController()
-//            self.coordinator?.showFeedDetailDeleteViewController(review: self.review)
+            self.coordinator?.showDeleteCommentAlertViewController(comment: self.comment)
         }.disposed(by: disposeBag)
         
         input.backgroundButtonTapped
