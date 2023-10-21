@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class VoteCollectionViewCell: BaseCollectionViewCell {
-    static let voteCollectionViewIdentifier = "VoteCollectionViewCell"
+    static let identifier = "VoteCollectionViewCell"
 
     let nameLabel: UILabel = {
         let view = UILabel()

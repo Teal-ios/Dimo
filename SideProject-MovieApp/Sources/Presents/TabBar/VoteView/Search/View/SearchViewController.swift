@@ -13,6 +13,16 @@ enum SearchCategoryCase: String {
     case character, work
 }
 
+enum RecentSearchKeywordCase: Int {
+    case search
+    case character
+}
+
+enum RecentSearchKeywordItem: Hashable{
+    case searchItem(RecentSearchItem)
+    case characterItem(RecentCharacterItem)
+}
+
 final class SearchViewController: BaseViewController {
     let selfView = SearchView()
     
@@ -31,6 +41,7 @@ final class SearchViewController: BaseViewController {
     let characterCellTapped = PublishRelay<Result>()
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, Result>!
+    private var recentDataSource: UICollectionViewDiffableDataSource<RecentSearchKeywordCase, RecentSearchKeywordItem>!
     
     override func loadView() {
         view = selfView
@@ -43,8 +54,12 @@ final class SearchViewController: BaseViewController {
         self.selfView.collectionView.delegate = self
         self.selfView.searchTextField.delegate = self
         setDataSource()
+        setRecentCollectionView()
+        setRecentDataSource()
+        recentSnapshot()
         self.selfView.configureCategoryUpdate(category: SearchCategoryCase.work.rawValue)
         self.selfView.updateCategoryView(categoryAppear: false)
+        
     }
     
     override func setupBinding() {
@@ -120,6 +135,60 @@ extension SearchViewController {
         }
     }
 }
+
+extension SearchViewController {
+    
+    func setRecentCollectionView() {
+        selfView.currentSearchCollectionView.register(VoteCollectionViewCell.self, forCellWithReuseIdentifier: VoteCollectionViewCell.identifier)
+        selfView.currentSearchCollectionView.register(RecentSearchCollectionViewCell.self, forCellWithReuseIdentifier: RecentSearchCollectionViewCell.identifier)
+    }
+    
+    func setRecentDataSource() {
+        
+        recentDataSource = UICollectionViewDiffableDataSource(collectionView: selfView.currentSearchCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            
+            let section = RecentSearchKeywordCase(rawValue: indexPath.section)
+            
+            var value: Any
+            
+            switch itemIdentifier {
+                
+            case .searchItem(let item):
+                value = item
+            case .characterItem(let item):
+                value = item
+            }
+            
+            switch section {
+            case .search:
+                guard let cell = self.selfView.currentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as? RecentSearchCollectionViewCell else { return UICollectionViewCell() }
+                return cell
+            case .character:
+                guard let cell = self.selfView.currentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: VoteCollectionViewCell.identifier, for: indexPath) as? VoteCollectionViewCell else { return UICollectionViewCell() }
+                return cell
+            case .none:
+                return UICollectionViewCell()
+            }
+        })
+    }
+    
+    func recentSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<RecentSearchKeywordCase, RecentSearchKeywordItem>()
+        
+        snapshot.appendSections([.search, .character])
+        
+        let searchArr = [RecentSearchItem(search_id: 0, user_id: "ㄴ", content: "테스트"), RecentSearchItem(search_id: 2, user_id: "ㅇ", content: "테스트용도")]
+        
+        let characterArr = [ RecentCharacterItem(recent_chr_list_id: 0, user_id: "", character_id: "", character_img: "", character_name: "정대만", title: "슬램덩크"),
+                             RecentCharacterItem(recent_chr_list_id: 0, user_id: "", character_id: "", character_img: "", character_name: "탄지로", title: "귀멸의칼날")]
+        
+        searchArr.map { snapshot.appendItems([.searchItem($0)], toSection: .search)}
+        characterArr.map { snapshot.appendItems([.characterItem($0)], toSection: .character)}
+        
+        recentDataSource.apply(snapshot)
+    }
+}
+
 
 
 extension SearchViewController: UICollectionViewDelegate {

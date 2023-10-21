@@ -90,6 +90,8 @@ final class SearchView: BaseView {
         return label
     }()
     
+    lazy var currentSearchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewCurrentSearchLayout())
+    
     override func setHierarchy() {
         self.addSubview(titleLabel)
         self.addSubview(searchContainView)
@@ -103,6 +105,7 @@ final class SearchView: BaseView {
         self.addSubview(searchExceptionContainView)
         self.addSubview(searchExceptionImageView)
         self.addSubview(searchExceptionExplainLabel)
+        self.addSubview(currentSearchCollectionView)
     }
     
     override func layoutSubviews() {
@@ -187,6 +190,12 @@ final class SearchView: BaseView {
             make.horizontalEdges.equalTo(searchExceptionContainView).inset(16)
             make.height.equalTo(42)
         }
+        
+        currentSearchCollectionView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(searchContainView.snp.bottom).offset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
     
     private let itemRatio = 1.0
@@ -204,6 +213,23 @@ extension SearchView {
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
                     return self.characterLayout()
+                },
+            configuration: configuration)
+        return collectionViewLayout
+        
+    }
+    
+    private func collectionViewCurrentSearchLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let collectionViewLayout = UICollectionViewCompositionalLayout(
+            sectionProvider:
+                { sectionIndex, layoutEnvironment in
+                    switch sectionIndex {
+                    case 0:
+                        return self.dynamicLayout()
+                    default:
+                        return self.characterLayout()
+                    }
                 },
             configuration: configuration)
         return collectionViewLayout
@@ -330,5 +356,32 @@ extension SearchView {
         self.searchExceptionContainView.isHidden = searchListExist
         self.searchExceptionImageView.isHidden = searchListExist
         self.searchExceptionExplainLabel.isHidden = searchListExist
+    }
+}
+
+extension SearchView {
+    private func dynamicLayout() -> NSCollectionLayoutSection {
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(200),
+            heightDimension: .absolute(32)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(32)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(8)
+        //sections
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return section
     }
 }
