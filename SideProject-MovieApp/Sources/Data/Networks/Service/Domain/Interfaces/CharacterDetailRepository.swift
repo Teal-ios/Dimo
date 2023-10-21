@@ -34,4 +34,6 @@ protocol CharacterDetailRepository {
     func reqeustBlindReview(query: PostBlindReviewQuery) async throws -> BlindReview
     
     func reqeustReportUser(query: PostReportUserQuery) async throws -> ReportUser
+    
+    func deleteComment(query: DeleteCommentQuery) async throws -> DeleteComment
 }

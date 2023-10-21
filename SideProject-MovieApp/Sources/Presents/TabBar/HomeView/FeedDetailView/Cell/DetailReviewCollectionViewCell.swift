@@ -85,6 +85,12 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
         return button
     }()
     
+    let modifyButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "vertical_ellipsis"), for: .normal)
+        return button
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.frame.width / 2
@@ -92,7 +98,7 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
     }
         
     override func configure() {
-        [bgView, imgView, characterNameLabel, mbtiLabel, reviewLabel, likeButton, likeCountLabel, feedButton].forEach { self.addSubview($0) }
+        [bgView, imgView, characterNameLabel, mbtiLabel, reviewLabel, likeButton, likeCountLabel, feedButton, modifyButton].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -144,6 +150,12 @@ final class DetailReviewCollectionViewCell: BaseCollectionViewCell {
             make.height.equalTo(48)
             make.width.equalTo(100)
         }
+        
+        modifyButton.snp.makeConstraints { make in
+            make.height.width.equalTo(24)
+            make.centerY.equalTo(imgView)
+            make.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+        }
     }
 }
 
@@ -158,6 +170,8 @@ extension DetailReviewCollectionViewCell {
         } else {
             self.updateLikeImage(is_like: true)
         }
+        
+        updateModifyButton(user_id: item.user_id)
     }
 }
 
@@ -168,6 +182,17 @@ extension DetailReviewCollectionViewCell {
             self.likeButton.setImage(UIImage(named: "LikeSelect"), for: .normal)
         case false:
             self.likeButton.setImage(UIImage(named: "LikeNonSelect"), for: .normal)
+        }
+    }
+}
+
+extension DetailReviewCollectionViewCell {
+    func updateModifyButton(user_id: String) {
+        guard let myId = UserDefaultManager.userId else { return }
+        if myId == user_id {
+            self.modifyButton.isHidden = false
+        } else {
+            self.modifyButton.isHidden = true
         }
     }
 }
