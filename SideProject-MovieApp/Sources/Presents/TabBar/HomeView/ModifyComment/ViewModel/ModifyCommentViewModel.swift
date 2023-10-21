@@ -9,12 +9,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol modifyCommentDismissDelegate {
+    func dismiss()
+}
+
 final class ModifyCommentViewModel: ViewModelType {
     
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: TabmanCoordinator?
     private let comment: CommentList
-    
+
     struct Input{
         let deleteButtonTapped: ControlEvent<Void>
         let backgroundButtonTapped: ControlEvent<Void>
@@ -23,6 +27,8 @@ final class ModifyCommentViewModel: ViewModelType {
     
     struct Output{
     }
+    
+    var delegate: modifyCommentDismissDelegate?
     
     init(coordinator: TabmanCoordinator?, comment: CommentList) {
         self.coordinator = coordinator
@@ -41,6 +47,7 @@ final class ModifyCommentViewModel: ViewModelType {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .bind { vm, _ in
+                vm.delegate?.dismiss()
                 vm.coordinator?.dismissViewController()
             }
             .disposed(by: disposeBag)

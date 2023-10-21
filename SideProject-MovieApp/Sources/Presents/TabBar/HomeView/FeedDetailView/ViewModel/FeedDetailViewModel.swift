@@ -24,6 +24,7 @@ final class FeedDetailViewModel: ViewModelType {
     var deleteReviewTrigger: PublishRelay<Void>
     var review_id: BehaviorRelay<Int>
     var totalCommentList: [CommentList?] = []
+    private var modifyCommentDismiss: PublishRelay<Void>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -51,15 +52,17 @@ final class FeedDetailViewModel: ViewModelType {
         let commentLikeValid: BehaviorRelay<Bool>
         let modifyReviewTextAfter: PublishRelay<String>
         let currentSpoilerValid: BehaviorRelay<SpoilerComment>
+        let modifyCommentDismiss: PublishRelay<Void>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>, modifyCommentDismiss: PublishRelay<Void>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.review = BehaviorRelay(value: review)
         self.modifyText = modifyText
         self.deleteReviewTrigger = deleteReviewEvent
         self.review_id = BehaviorRelay(value: review.review_id)
+        self.modifyCommentDismiss = modifyCommentDismiss
     }
     
     let getCommentList = PublishRelay<[CommentList?]>()
@@ -282,7 +285,7 @@ final class FeedDetailViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText, currentSpoilerValid: self.currentSpoiler)
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText, currentSpoilerValid: self.currentSpoiler, modifyCommentDismiss: self.modifyCommentDismiss)
     }
 }
 

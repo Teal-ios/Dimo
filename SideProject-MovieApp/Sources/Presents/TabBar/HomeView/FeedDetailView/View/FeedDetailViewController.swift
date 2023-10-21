@@ -108,7 +108,7 @@ class FeedDetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        self.modifyCommentButtonCellSelected
+        output.modifyCommentDismiss
             .withLatestFrom(output.commentList)
             .withUnretained(self)
             .observe(on: MainScheduler.instance)

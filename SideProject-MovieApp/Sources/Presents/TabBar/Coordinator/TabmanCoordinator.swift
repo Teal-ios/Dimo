@@ -30,7 +30,8 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var deleteReview = PublishRelay<Void>()
     var currentCase: ConnetTabmanCoordinatorViewControllerCase = .tabman
     var review: ReviewList?
-
+    var modifyCommentDismiss = PublishRelay<Void>()
+    
     init(_ navigationController: UINavigationController, character: Characters, connectconnetTabmanCoordinatorViewController: ConnetTabmanCoordinatorViewControllerCase, review: ReviewList?) {
         self.navigationController = navigationController
         self.character = character
@@ -56,7 +57,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview, modifyCommentDismiss: self.modifyCommentDismiss)
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -161,6 +162,7 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     
     func showModifyCommentViewController(comment: CommentList) {
         let viewModel = ModifyCommentViewModel(coordinator: self, comment: comment)
+        viewModel.delegate = self
         let vc = ModifyCommentViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
@@ -184,5 +186,12 @@ extension TabmanCoordinator: sendModifyReviewDelegate {
 extension TabmanCoordinator: sendDeleteReviewDelegate {
     func sendDeleteReview() {
         self.deleteReview.accept(())
+    }
+}
+
+extension TabmanCoordinator: modifyCommentDismissDelegate {
+    func dismiss() {
+        print("🍊")
+        self.modifyCommentDismiss.accept(())
     }
 }
