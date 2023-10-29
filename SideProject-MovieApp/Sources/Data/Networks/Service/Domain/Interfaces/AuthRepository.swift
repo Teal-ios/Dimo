@@ -30,4 +30,6 @@ protocol AuthRepository: AnyObject {
     func fetchLogout() async throws -> Logout
     
     func fetchSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
+    
+    func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin
 }

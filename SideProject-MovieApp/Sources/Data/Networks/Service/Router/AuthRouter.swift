@@ -19,6 +19,7 @@ enum AuthRouter<R> {
     case logout
     case drop(parameters: DropQuery)
     case socialLoginCheck(parameters: SocialLoginCheckQuery)
+    case userInfoRegistration(parameters: UserInfoInSnsLoginQuery)
 }
 
 extension AuthRouter: TargetType2 {
@@ -27,7 +28,7 @@ extension AuthRouter: TargetType2 {
 
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -68,6 +69,8 @@ extension AuthRouter: TargetType2 {
             return "/drop"
         case .socialLoginCheck:
             return "/social/check"
+        case .userInfoRegistration:
+            return "/social"
         }
     }
     
@@ -84,7 +87,7 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop, .userInfoRegistration:
             return .post
         case .duplicationId, .logout, .socialLoginCheck:
             return .get
@@ -153,6 +156,11 @@ extension AuthRouter: TargetType2 {
             
         case .socialLoginCheck:
             return nil
+            
+        case .userInfoRegistration(let parameters):
+            let requestDTO = RequestUserInfoInSnsLoginDTO(userId: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti, pushCheck: parameters.push_check)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         }
     }
 }

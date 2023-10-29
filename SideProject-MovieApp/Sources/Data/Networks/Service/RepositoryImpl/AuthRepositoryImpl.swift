@@ -167,4 +167,16 @@ extension AuthRepositoryImpl {
             throw AuthRepositoryError.request
         }
     }
+    
+    func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin {
+        let requestDTO = RequestUserInfoInSnsLoginDTO(userId: query.user_id, nickname: query.nickname, mbti: query.mbti, pushCheck: query.push_check)
+        let target = AuthAPIEndpoints.postUserInfoInSnsLogin(with: requestDTO  )
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
 }

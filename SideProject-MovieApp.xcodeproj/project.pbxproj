@@ -620,6 +620,12 @@
 		49C722282AA330F30062650F /* MBTIKeywordNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */; };
 		49C7222C2AA454EF0062650F /* KeywordNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */; };
 		49CCF7D42AD2D70600B7DEB1 /* SnsLoginFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCF7D32AD2D70600B7DEB1 /* SnsLoginFlowCoordinator.swift */; };
+		49E31DFF2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31DFE2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift */; };
+		49E31E012AEE68DD003E245B /* UserInfoInSnsLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31E002AEE68DD003E245B /* UserInfoInSnsLogin.swift */; };
+		49E31E032AEE6C9C003E245B /* RequestUserInfoInSnsLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31E022AEE6C9C003E245B /* RequestUserInfoInSnsLoginDTO.swift */; };
+		49E31E052AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31E042AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift */; };
+		49E31E072AEE8A74003E245B /* SnsAccountCheckQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31E062AEE8A74003E245B /* SnsAccountCheckQuery.swift */; };
+		49E31E092AEE8A7F003E245B /* SnsAccountCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E31E082AEE8A7F003E245B /* SnsAccountCheck.swift */; };
 		49E726BF2AAC9800001828CB /* AllMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */; };
 		49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */; };
 		49E726C32AAC9B49001828CB /* RegisteredKeywordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */; };
@@ -1322,6 +1328,12 @@
 		49C722272AA330F30062650F /* MBTIKeywordNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIKeywordNotificationViewController.swift; sourceTree = "<group>"; };
 		49C7222B2AA454EF0062650F /* KeywordNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordNotificationViewModel.swift; sourceTree = "<group>"; };
 		49CCF7D32AD2D70600B7DEB1 /* SnsLoginFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsLoginFlowCoordinator.swift; sourceTree = "<group>"; };
+		49E31DFE2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInSnsLoginQuery.swift; sourceTree = "<group>"; };
+		49E31E002AEE68DD003E245B /* UserInfoInSnsLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoInSnsLogin.swift; sourceTree = "<group>"; };
+		49E31E022AEE6C9C003E245B /* RequestUserInfoInSnsLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserInfoInSnsLoginDTO.swift; sourceTree = "<group>"; };
+		49E31E042AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUserInfoRegistrationDTO.swift; sourceTree = "<group>"; };
+		49E31E062AEE8A74003E245B /* SnsAccountCheckQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsAccountCheckQuery.swift; sourceTree = "<group>"; };
+		49E31E082AEE8A7F003E245B /* SnsAccountCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsAccountCheck.swift; sourceTree = "<group>"; };
 		49E726BE2AAC9800001828CB /* AllMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E726C02AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		49E726C22AAC9B49001828CB /* RegisteredKeywordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredKeywordHeaderView.swift; sourceTree = "<group>"; };
@@ -1649,6 +1661,7 @@
 				2FD87A542A584999003C276B /* ResponseDropDTO.swift */,
 				2FD87A562A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift */,
 				2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */,
+				49E31E042AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1657,6 +1670,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0772A1F138100898DCD /* RequestSignUpDTO.swift */,
+				49E31E022AEE6C9C003E245B /* RequestUserInfoInSnsLoginDTO.swift */,
 				2F53D0942A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift */,
 				2F53D0962A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift */,
 				2FD87A402A584627003C276B /* RequestLoginDTO.swift */,
@@ -3485,6 +3499,8 @@
 				2FD87A2A2A583FCF003C276B /* SocialQuery.swift */,
 				2FD87A362A58420F003C276B /* DropQuery.swift */,
 				2FD87A382A584268003C276B /* SocialLoginkQuery.swift */,
+				49E31DFE2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift */,
+				49E31E062AEE8A74003E245B /* SnsAccountCheckQuery.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -4019,6 +4035,8 @@
 				2FD87A3A2A5842BB003C276B /* Drop.swift */,
 				2FD87A3C2A5842E0003C276B /* SocialLoginCheck.swift */,
 				2FD87A3E2A58431D003C276B /* Logout.swift */,
+				49E31E002AEE68DD003E245B /* UserInfoInSnsLogin.swift */,
+				49E31E082AEE8A7F003E245B /* SnsAccountCheck.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -4530,6 +4548,7 @@
 				2FBF01112A10DB1200A06DD9 /* TitleSettingHeaderView.swift in Sources */,
 				2FD82DBE2A775AF500372D24 /* ResponseReviewListDTO.swift in Sources */,
 				2FEC15F22A78B233009CF59D /* MyComment.swift in Sources */,
+				49E31DFF2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift in Sources */,
 				2FE111222A7664BB0013A49E /* VoteCharacter.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
 				2F7D6CED2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift in Sources */,
@@ -4687,6 +4706,7 @@
 				2FC774672A998B9700C36024 /* LikeCommentCancelQuery.swift in Sources */,
 				2FEE5DC42AA56E6C0090B406 /* MovieCharacterMoreViewController.swift in Sources */,
 				2FD274122A5A8AEC003AA144 /* RecommendView.swift in Sources */,
+				49E31E012AEE68DD003E245B /* UserInfoInSnsLogin.swift in Sources */,
 				2FEE5DAE2AA562930090B406 /* MyReviewMoreView.swift in Sources */,
 				2FD11DD22A00E39D006796DD /* MyMomentumHeaderView.swift in Sources */,
 				2FBFE11A2A262735001D5425 /* NicknameChange.swift in Sources */,
@@ -4738,6 +4758,7 @@
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
 				2F53D0D82A1F7E3500898DCD /* DrawButtonLabel.swift in Sources */,
+				49E31E052AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift in Sources */,
 				2FD87A2D2A584058003C276B /* SignUp.swift in Sources */,
 				2FCF862E2A4843BF00759F71 /* UITextField + Extension.swift in Sources */,
 				2FE111282A7665590013A49E /* Result.swift in Sources */,
@@ -4826,6 +4847,7 @@
 				2FE1111C2A76645C0013A49E /* RandomCharacterRecommendList.swift in Sources */,
 				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
 				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
+				49E31E072AEE8A74003E245B /* SnsAccountCheckQuery.swift in Sources */,
 				2FCD8C9D2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift in Sources */,
 				2FD073512A237EF5003F7E56 /* ResponseDuplicationIdDTO.swift in Sources */,
 				493C5C772A7642CA00AF1F63 /* Reactive+Extension.swift in Sources */,
@@ -4910,6 +4932,7 @@
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2FEE5DB22AA563E60090B406 /* MyReviewMoreViewModel.swift in Sources */,
+				49E31E032AEE6C9C003E245B /* RequestUserInfoInSnsLoginDTO.swift in Sources */,
 				2F124ADC2A4EC00300A452F1 /* WriteView.swift in Sources */,
 				2FD82D5D2A77439300372D24 /* LikeReviewChoice.swift in Sources */,
 				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
@@ -4976,6 +4999,7 @@
 				2FEC15D82A7788FB009CF59D /* CharacterDetailUseCase.swift in Sources */,
 				2FD82D8F2A774D5800372D24 /* RequestLikeReviewChoiceDTO.swift in Sources */,
 				2FCD8CAC2A8260F9002A39B0 /* ReportViewModel.swift in Sources */,
+				49E31E092AEE8A7F003E245B /* SnsAccountCheck.swift in Sources */,
 				493C5C712A5D94FA00AF1F63 /* PasswordChange.swift in Sources */,
 				2FD54DF62AB6CF7400C9216A /* OtherMomentumViewController.swift in Sources */,
 				93C48B3D29D1720700644F6A /* TermsOfUseViewModel.swift in Sources */,

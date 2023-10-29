@@ -51,5 +51,16 @@ struct AuthAPIEndpoints {
     static func getSocialLoginCheck(user_id: String, sns_type: String) -> AuthRouter<ResponseSocialLoginCheckDTO> {
         return AuthRouter<ResponseSocialLoginCheckDTO>.socialLoginCheck(parameters: SocialLoginCheckQuery(userId: user_id, snsType: sns_type))
     }
+    
+    static func postUserInfoInSnsLogin(with requestDTO: RequestUserInfoInSnsLoginDTO) -> AuthRouter<ResponseUserInfoRegistrationDTO> {
+        return AuthRouter<ResponseUserInfoRegistrationDTO>.userInfoRegistration(
+            parameters: UserInfoInSnsLoginQuery(
+                user_id: requestDTO.userId,
+                nickname: requestDTO.nickname,
+                mbti: requestDTO.mbti,
+                push_check: requestDTO.pushCheck
+            )
+        )
+    }
 }
 

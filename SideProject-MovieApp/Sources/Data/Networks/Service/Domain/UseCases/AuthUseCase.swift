@@ -29,6 +29,8 @@ protocol AuthUseCase {
     func executeLogout() async throws -> Logout
     
     func executeSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
+    
+    func executeUserInfoRegistration(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin
 }
 
 enum AuthUseCaseError: String, Error {
@@ -148,6 +150,14 @@ extension AuthUseCaseImpl {
     func executeSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck {
         do {
             return try await authRepository.fetchSocialLoginCheck(query: query)
+        } catch {
+            throw AuthUseCaseError.execute
+        }
+    }
+    
+    func executeUserInfoRegistration(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin {
+        do {
+            return try await authRepository.fetchUserInfoInSnsLogin(query: query)
         } catch {
             throw AuthUseCaseError.execute
         }

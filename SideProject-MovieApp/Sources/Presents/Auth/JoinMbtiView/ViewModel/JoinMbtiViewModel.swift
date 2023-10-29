@@ -71,8 +71,7 @@ final class JoinMbtiViewModel: ViewModelType {
             let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString, push_check: UserDefaultManager.pushCheck ?? 0)
             
             if self.isSnsLogin {
-                let snsSignUpQuery = KakaoLoginQuery(userId: userId, name: name, snsType: snsType)
-                self.signUpWithSnsAccount(query: snsSignUpQuery)
+                self.signUpWithSnsAccount(query: query)
             } else {
                 self.signUp(query: query)
             }
@@ -162,19 +161,36 @@ extension JoinMbtiViewModel {
         }
     }
     
-    private func signUpWithSnsAccount(query: KakaoLoginQuery) {
-        let query = KakaoLoginQuery(userId: query.userId, name: query.name, snsType: query.snsType)
-        
-        print("🔥 SnsSignUpQuery", query)
+    private func signUpWithSnsAccount(query: SignUpQuery) {
+        let kakaoLoginQuery = KakaoLoginQuery(userId: query.user_id, name: query.name, snsType: query.sns_type)
         
         Task {
-            let snsSignUp = try await authUseCase.executeKakaoLogin(query: query)
-            print("🔥 SNS SignUp: \(snsSignUp)")
+            let snsSignUp = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
             
             if snsSignUp.code == 200 {
                 UserDefaultManager.mbti = mbtiString
-                signUpSuccess.accept(true)
+                
+                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id, nickname: query.nickname, mbti: query.mbti, push_check: query.push_check)
+                let userInfoInSnsLogin = await registerUserInformationInSnsLogin(query: query)
+                
+                if userInfoInSnsLogin?.code == 200 {
+                    signUpSuccess.accept(true)
+                }
             }
+        }
+    }
+    
+    private func registerUserInformationInSnsLogin(query: UserInfoInSnsLoginQuery) async -> UserInfoInSnsLogin? {
+        let query = UserInfoInSnsLoginQuery(user_id: query.user_id,
+                                            nickname: query.nickname,
+                                            mbti: query.mbti,
+                                            push_check: query.push_check)
+        
+        do {
+            return try await authUseCase.executeUserInfoRegistration(query: query)
+        } catch let error {
+            print("ERROR: \(error)")
+            return nil
         }
     }
 }

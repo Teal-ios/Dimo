@@ -84,9 +84,17 @@ extension LoginStartViewModel {
                 let kakaoLogin = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
                 print("KAKO LOGIN: ", kakaoLogin)
                 if kakaoLogin.code == 200 {
-                    await MainActor.run {
-                        self.saveUserInformation(userId: id, userName: name, snsType: snsType)
-                        self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: "kakao")
+                    let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
+                    if socialLoginCheck?.code == 200 {
+                        self.coordinator?.connectHomeTabBarCoordinator()Y
+                    } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
+                        await MainActor.run {
+                            self.saveUserInformation(userId: id, userName: name, snsType: snsType)
+                            self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                        }
+                    } else {
+                        print("소셜 로그인 실패")
                     }
                 }
             }
@@ -94,6 +102,15 @@ extension LoginStartViewModel {
             print("GOOGLE LOGIN")
         case .apple:
             print("APPLE LOGIN")
+        }
+    }
+    
+    private func checkIsRegisteredAccount(query: SocialLoginCheckQuery) async -> SocialLoginCheck? {
+        do {
+            return try await authUseCase.executeSocialLoginCheck(query: query)
+        } catch let error {
+            print("ERROR: \(error)")
+            return nil
         }
     }
 }
