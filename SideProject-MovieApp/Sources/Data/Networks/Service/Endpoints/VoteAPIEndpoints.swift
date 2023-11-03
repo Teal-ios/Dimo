@@ -60,15 +60,15 @@ struct VoteAPIEndpoints {
         return VoteRouter<ResponseRecentSearchItemDeleteDTO>.recentSearchItemDelete(parameters: RecentSearchItemDeleteQuery(user_id: requestDTO.user_id, search_content: requestDTO.search_content))
     }
     
-    static func deleteRecentSearchListDelete(with requestDTO: RequestRecentSearchListDeleteDTO) -> VoteRouter<ResponseRecentSearchListDTO> {
-        return VoteRouter<ResponseRecentSearchListDTO>.recentSearchListDelete(parameters: RecentSearchItemListDeleteQuery(user_id: requestDTO.user_id))
+    static func deleteRecentSearchListDelete(with requestDTO: RequestRecentSearchListDeleteDTO) -> VoteRouter<ResponseRecentSearchListDeleteDTO> {
+        return VoteRouter<ResponseRecentSearchListDeleteDTO>.recentSearchListDelete(parameters: RecentSearchItemListDeleteQuery(user_id: requestDTO.user_id))
     }
     
     static func deleteRecentCharacterItemDelete(with requestDTO: RequestRecentCharacterItemDeleteDTO) -> VoteRouter<ResponseRecentCharacterItemDeleteDTO> {
         return VoteRouter<ResponseRecentCharacterItemDeleteDTO>.recentCharacterItemDelete(parameters: RecentCharacterItemDeleteQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id))
     }
     
-    static func deleteRecentCharacterListDelete(with requestDTO: RequestRecentCharacterListDeleteDTO) -> VoteRouter<ResponseRecentCharacterListDTO> {
-        return VoteRouter<ResponseRecentCharacterListDTO>.recentCharacterListDelete(parameters: RecentCharacterItemListDeleteQuery(user_id: requestDTO.user_id))
+    static func deleteRecentCharacterListDelete(with requestDTO: RequestRecentCharacterListDeleteDTO) -> VoteRouter<ResponseRecentCharacterListDeleteDTO> {
+        return VoteRouter<ResponseRecentCharacterListDeleteDTO>.recentCharacterListDelete(parameters: RecentCharacterItemListDeleteQuery(user_id: requestDTO.user_id))
     }
 }

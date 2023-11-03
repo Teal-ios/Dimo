@@ -24,4 +24,20 @@ protocol VoteRepository {
     func fetchInquireVoteResult(query: InquireVoteResultQuery) async throws -> InquireVoteResult
     
     func fetchInquireCharacterAnalyze(query: InquireCharacterAnalyzeQuery) async throws -> InquireCharacterAnalyze
+    
+    func fetchRecentSearchList(query: RecentSearchListQuery) async throws -> RecentSearchList
+    
+    func fetchRecentCharacterList(query: RecentCharacterListQuery) async throws -> RecentCharacterList
+    
+    func requestRecentSearchItemSave(query: RecentSearchItemSaveQuery) async throws -> RecentSearchItemSave
+    
+    func requestRecentCharacterItemSave(query: RecentCharacterItemSaveQuery) async throws -> RecentCharacterItemSave
+    
+    func deleteRecentSearchItemDelete(query: RecentSearchItemDeleteQuery) async throws -> RecentSearchItemDelete
+    
+    func deleteRecentSearchListDelete(query: RecentSearchItemListDeleteQuery) async throws -> RecentSearchItemListDelete
+    
+    func deleteRecentCharacterItemDelete(query: RecentCharacterItemDeleteQuery) async throws -> RecentCharacterItemDelete
+    
+    func deleteRecentCharacterListDelete(query: RecentCharacterItemListDeleteQuery) async throws -> RecentCharacterItemListDelete
 }

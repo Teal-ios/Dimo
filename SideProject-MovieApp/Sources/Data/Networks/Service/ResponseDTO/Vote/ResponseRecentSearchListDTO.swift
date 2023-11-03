@@ -20,7 +20,7 @@ struct ResponseRecentSearchListDTO: Decodable {
 
 
 extension ResponseRecentSearchListDTO {
-    var toDomain: RecentSearchItemList {
+    var toDomain: RecentSearchList {
         return .init(code: code, message: message, user_id: user_id, search_list: search_list.map { $0?.toDomain })
     }
 }

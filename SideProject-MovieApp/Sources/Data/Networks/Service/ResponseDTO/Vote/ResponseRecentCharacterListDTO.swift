@@ -19,7 +19,7 @@ struct ResponseRecentCharacterListDTO: Decodable {
 }
 
 extension ResponseRecentCharacterListDTO {
-    var toDomain: RecentCharacterItemList {
+    var toDomain: RecentCharacterList {
         return .init(code: code, message: message, user_id: user_id, seen_chr_list: seen_chr_list.map { $0?.toDomain })
     }
 }

@@ -110,8 +110,8 @@
 		2F730BB52A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */; };
 		2F79D2B02AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2AF2AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift */; };
 		2F79D2B22AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2B12AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift */; };
-		2F79D2B42AEA540000B9B06A /* RecentCharacterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */; };
-		2F7D6CD52AF47CCF00CC309B /* RecentSearchItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */; };
+		2F79D2B42AEA540000B9B06A /* RecentCharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2B32AEA540000B9B06A /* RecentCharacterList.swift */; };
+		2F7D6CD52AF47CCF00CC309B /* RecentSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD42AF47CCF00CC309B /* RecentSearchList.swift */; };
 		2F7D6CD72AF47D2D00CC309B /* RecentSearchItemSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */; };
 		2F7D6CD92AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD82AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift */; };
 		2F7D6CDB2AF47DAA00CC309B /* RecentSearchItemListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */; };
@@ -804,8 +804,8 @@
 		2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSearchWorkListDTO.swift; sourceTree = "<group>"; };
 		2F79D2AF2AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterListDTO.swift; sourceTree = "<group>"; };
 		2F79D2B12AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterItemDTO.swift; sourceTree = "<group>"; };
-		2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemList.swift; sourceTree = "<group>"; };
-		2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemList.swift; sourceTree = "<group>"; };
+		2F79D2B32AEA540000B9B06A /* RecentCharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterList.swift; sourceTree = "<group>"; };
+		2F7D6CD42AF47CCF00CC309B /* RecentSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchList.swift; sourceTree = "<group>"; };
 		2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemSave.swift; sourceTree = "<group>"; };
 		2F7D6CD82AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemSaveQuery.swift; sourceTree = "<group>"; };
 		2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemListDelete.swift; sourceTree = "<group>"; };
@@ -3630,12 +3630,12 @@
 				2FFB4BC02A8F05BF001D1D60 /* MbtiPercentDetail.swift */,
 				2FFB4BD22A8F56F3001D1D60 /* MbtiContainPercent.swift */,
 				2FD258A32AE39E9C0076A349 /* RecentSearchItem.swift */,
-				2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */,
+				2F7D6CD42AF47CCF00CC309B /* RecentSearchList.swift */,
 				2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */,
 				2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */,
 				2F7D6CDE2AF47E0D00CC309B /* RecentSearchItemDelete.swift */,
 				2FD258A52AE3B0880076A349 /* RecentCharacterItem.swift */,
-				2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */,
+				2F79D2B32AEA540000B9B06A /* RecentCharacterList.swift */,
 				2F7D6CE22AF47E6500CC309B /* RecentCharacterItemDelete.swift */,
 				2F7D6CE42AF47E8D00CC309B /* RecentCharacterItemListDelete.swift */,
 				2F7D6CEE2AF4812800CC309B /* RecentCharacterItemSave.swift */,
@@ -4577,7 +4577,7 @@
 				49C7221A2AA3185C0062650F /* ProductNotificationViewModel.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				49C7221E2AA32A970062650F /* KeywordNotificationViewController.swift in Sources */,
-				2F79D2B42AEA540000B9B06A /* RecentCharacterItemList.swift in Sources */,
+				2F79D2B42AEA540000B9B06A /* RecentCharacterList.swift in Sources */,
 				2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */,
 				2FFB4BD52A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
@@ -4699,7 +4699,7 @@
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FCD8C932A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift in Sources */,
 				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
-				2F7D6CD52AF47CCF00CC309B /* RecentSearchItemList.swift in Sources */,
+				2F7D6CD52AF47CCF00CC309B /* RecentSearchList.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2FD82D7C2A77474100372D24 /* GetCommentQuery.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,

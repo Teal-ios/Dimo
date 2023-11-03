@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecentCharacterItemList: Hashable {
+struct RecentCharacterList: Hashable {
     let code: Int
     let message: String
     let user_id: String

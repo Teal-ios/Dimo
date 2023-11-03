@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecentSearchItemList: Hashable {
+struct RecentSearchList: Hashable {
     let code: Int
     let message: String
     let user_id: String
