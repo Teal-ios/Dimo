@@ -127,7 +127,8 @@ final class SearchViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output(animationData: self.animationData, searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchWorkList: self.searchWorkList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory)
+        return Output(animationData: self.animationData,
+                      searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchWorkList: self.searchWorkList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory)
     }
 }
 

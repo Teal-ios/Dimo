@@ -90,7 +90,7 @@ final class SearchView: BaseView {
         return label
     }()
     
-    lazy var currentSearchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewCurrentSearchLayout())
+    lazy var recentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewCurrentSearchLayout())
     
     override func setHierarchy() {
         self.addSubview(titleLabel)
@@ -105,7 +105,7 @@ final class SearchView: BaseView {
         self.addSubview(searchExceptionContainView)
         self.addSubview(searchExceptionImageView)
         self.addSubview(searchExceptionExplainLabel)
-        self.addSubview(currentSearchCollectionView)
+        self.addSubview(recentCollectionView)
     }
     
     override func layoutSubviews() {
@@ -191,7 +191,7 @@ final class SearchView: BaseView {
             make.height.equalTo(42)
         }
         
-        currentSearchCollectionView.snp.makeConstraints { make in
+        recentCollectionView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
             make.top.equalTo(searchContainView.snp.bottom).offset(16)
             make.bottom.equalTo(safeAreaLayoutGuide)
@@ -226,9 +226,9 @@ extension SearchView {
                 { sectionIndex, layoutEnvironment in
                     switch sectionIndex {
                     case 0:
-                        return self.dynamicLayout()
+                        return self.dynamicCategoryLayout()
                     default:
-                        return self.characterLayout()
+                        return self.recentCharacterLayout()
                     }
                 },
             configuration: configuration)
@@ -294,6 +294,36 @@ extension SearchView {
         
         return section
     }
+    
+    private func recentCharacterLayout() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemRatio),
+            heightDimension: .fractionalHeight(itemRatio)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(groupRatio),
+            heightDimension: .absolute(66)
+        )
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(headerRatio),
+            heightDimension: .absolute(headerAbsolute)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: SearchHeaderView.identifier, alignment: .topLeading
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
+
+        return section
+    }
 }
 
 extension SearchView {
@@ -345,8 +375,10 @@ extension SearchView {
     func updateSearchTextField(text: String?) {
         if text == "" {
             searchImageView.image = UIImage(named: "Search")
+            recentCollectionView.isHidden = false
         } else {
             searchImageView.image = UIImage(named: "Search_On")
+            recentCollectionView.isHidden = true
         }
     }
 }

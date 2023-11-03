@@ -108,6 +108,38 @@
 		2F730BB12A971EF30072AB38 /* SearchWorkListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB02A971EF30072AB38 /* SearchWorkListQuery.swift */; };
 		2F730BB32A971F130072AB38 /* SearchWorkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB22A971F130072AB38 /* SearchWorkList.swift */; };
 		2F730BB52A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */; };
+		2F79D2B02AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2AF2AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift */; };
+		2F79D2B22AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2B12AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift */; };
+		2F79D2B42AEA540000B9B06A /* RecentCharacterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */; };
+		2F7D6CD52AF47CCF00CC309B /* RecentSearchItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */; };
+		2F7D6CD72AF47D2D00CC309B /* RecentSearchItemSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */; };
+		2F7D6CD92AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CD82AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift */; };
+		2F7D6CDB2AF47DAA00CC309B /* RecentSearchItemListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */; };
+		2F7D6CDD2AF47DDD00CC309B /* RecentSearchItemListDeleteQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CDC2AF47DDD00CC309B /* RecentSearchItemListDeleteQuery.swift */; };
+		2F7D6CDF2AF47E0D00CC309B /* RecentSearchItemDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CDE2AF47E0D00CC309B /* RecentSearchItemDelete.swift */; };
+		2F7D6CE12AF47E2E00CC309B /* RecentSearchItemDeleteQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CE02AF47E2E00CC309B /* RecentSearchItemDeleteQuery.swift */; };
+		2F7D6CE32AF47E6500CC309B /* RecentCharacterItemDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CE22AF47E6500CC309B /* RecentCharacterItemDelete.swift */; };
+		2F7D6CE52AF47E8D00CC309B /* RecentCharacterItemListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CE42AF47E8D00CC309B /* RecentCharacterItemListDelete.swift */; };
+		2F7D6CE72AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CE62AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift */; };
+		2F7D6CE92AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CE82AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift */; };
+		2F7D6CEB2AF480BF00CC309B /* ResponseRecentCharacterItemSaveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CEA2AF480BF00CC309B /* ResponseRecentCharacterItemSaveDTO.swift */; };
+		2F7D6CED2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CEC2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift */; };
+		2F7D6CEF2AF4812800CC309B /* RecentCharacterItemSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CEE2AF4812800CC309B /* RecentCharacterItemSave.swift */; };
+		2F7D6CF12AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CF02AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift */; };
+		2F7D6CF32AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CF22AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift */; };
+		2F7D6CF52AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CF42AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift */; };
+		2F7D6CF72AF4836100CC309B /* ResponseRecentSearchListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CF62AF4836100CC309B /* ResponseRecentSearchListDTO.swift */; };
+		2F7D6CF92AF4836E00CC309B /* ResponseRecentSearchItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CF82AF4836E00CC309B /* ResponseRecentSearchItemDTO.swift */; };
+		2F7D6CFB2AF48CE600CC309B /* ResponseRecentSearchItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CFA2AF48CE600CC309B /* ResponseRecentSearchItemDeleteDTO.swift */; };
+		2F7D6CFD2AF48D0200CC309B /* ResponseRecentSearchListDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CFC2AF48D0200CC309B /* ResponseRecentSearchListDeleteDTO.swift */; };
+		2F7D6CFF2AF48DCB00CC309B /* RecentSearchListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6CFE2AF48DCB00CC309B /* RecentSearchListQuery.swift */; };
+		2F7D6D012AF48F9600CC309B /* RecentCharacterListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D002AF48F9600CC309B /* RecentCharacterListQuery.swift */; };
+		2F7D6D032AF4940300CC309B /* RequestRecentSearchSaveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D022AF4940300CC309B /* RequestRecentSearchSaveDTO.swift */; };
+		2F7D6D052AF4941100CC309B /* RequestRecentSearchItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D042AF4941100CC309B /* RequestRecentSearchItemDeleteDTO.swift */; };
+		2F7D6D072AF4941B00CC309B /* RequestRecentSearchListDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D062AF4941B00CC309B /* RequestRecentSearchListDeleteDTO.swift */; };
+		2F7D6D092AF4943800CC309B /* RequestRecentCharacterSaveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D082AF4943800CC309B /* RequestRecentCharacterSaveDTO.swift */; };
+		2F7D6D0B2AF4944300CC309B /* RequestRecentCharacterItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D0A2AF4944300CC309B /* RequestRecentCharacterItemDeleteDTO.swift */; };
+		2F7D6D0D2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D6D0C2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift */; };
 		2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A12A52A43F0098939B /* SearchViewModel.swift */; };
 		2F9793A42A52A4450098939B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A32A52A4450098939B /* SearchView.swift */; };
 		2F9793A62A52A44B0098939B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9793A52A52A44B0098939B /* SearchViewController.swift */; };
@@ -770,6 +802,38 @@
 		2F730BB02A971EF30072AB38 /* SearchWorkListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorkListQuery.swift; sourceTree = "<group>"; };
 		2F730BB22A971F130072AB38 /* SearchWorkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorkList.swift; sourceTree = "<group>"; };
 		2F730BB42A971F2F0072AB38 /* ResponseSearchWorkListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSearchWorkListDTO.swift; sourceTree = "<group>"; };
+		2F79D2AF2AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterListDTO.swift; sourceTree = "<group>"; };
+		2F79D2B12AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterItemDTO.swift; sourceTree = "<group>"; };
+		2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemList.swift; sourceTree = "<group>"; };
+		2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemList.swift; sourceTree = "<group>"; };
+		2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemSave.swift; sourceTree = "<group>"; };
+		2F7D6CD82AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemSaveQuery.swift; sourceTree = "<group>"; };
+		2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemListDelete.swift; sourceTree = "<group>"; };
+		2F7D6CDC2AF47DDD00CC309B /* RecentSearchItemListDeleteQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemListDeleteQuery.swift; sourceTree = "<group>"; };
+		2F7D6CDE2AF47E0D00CC309B /* RecentSearchItemDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemDelete.swift; sourceTree = "<group>"; };
+		2F7D6CE02AF47E2E00CC309B /* RecentSearchItemDeleteQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchItemDeleteQuery.swift; sourceTree = "<group>"; };
+		2F7D6CE22AF47E6500CC309B /* RecentCharacterItemDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemDelete.swift; sourceTree = "<group>"; };
+		2F7D6CE42AF47E8D00CC309B /* RecentCharacterItemListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemListDelete.swift; sourceTree = "<group>"; };
+		2F7D6CE62AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemDeleteQuery.swift; sourceTree = "<group>"; };
+		2F7D6CE82AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemListDeleteQuery.swift; sourceTree = "<group>"; };
+		2F7D6CEA2AF480BF00CC309B /* ResponseRecentCharacterItemSaveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterItemSaveDTO.swift; sourceTree = "<group>"; };
+		2F7D6CEC2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemSaveQuery.swift; sourceTree = "<group>"; };
+		2F7D6CEE2AF4812800CC309B /* RecentCharacterItemSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterItemSave.swift; sourceTree = "<group>"; };
+		2F7D6CF02AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterItemDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6CF22AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentCharacterListDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6CF42AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentSearchItemSaveDTO.swift; sourceTree = "<group>"; };
+		2F7D6CF62AF4836100CC309B /* ResponseRecentSearchListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentSearchListDTO.swift; sourceTree = "<group>"; };
+		2F7D6CF82AF4836E00CC309B /* ResponseRecentSearchItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentSearchItemDTO.swift; sourceTree = "<group>"; };
+		2F7D6CFA2AF48CE600CC309B /* ResponseRecentSearchItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentSearchItemDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6CFC2AF48D0200CC309B /* ResponseRecentSearchListDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRecentSearchListDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6CFE2AF48DCB00CC309B /* RecentSearchListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchListQuery.swift; sourceTree = "<group>"; };
+		2F7D6D002AF48F9600CC309B /* RecentCharacterListQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCharacterListQuery.swift; sourceTree = "<group>"; };
+		2F7D6D022AF4940300CC309B /* RequestRecentSearchSaveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentSearchSaveDTO.swift; sourceTree = "<group>"; };
+		2F7D6D042AF4941100CC309B /* RequestRecentSearchItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentSearchItemDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6D062AF4941B00CC309B /* RequestRecentSearchListDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentSearchListDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6D082AF4943800CC309B /* RequestRecentCharacterSaveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentCharacterSaveDTO.swift; sourceTree = "<group>"; };
+		2F7D6D0A2AF4944300CC309B /* RequestRecentCharacterItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentCharacterItemDeleteDTO.swift; sourceTree = "<group>"; };
+		2F7D6D0C2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentCharacterListDeleteDTO.swift; sourceTree = "<group>"; };
 		2F9793A12A52A43F0098939B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		2F9793A32A52A4450098939B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		2F9793A52A52A44B0098939B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -3310,6 +3374,12 @@
 			isa = PBXGroup;
 			children = (
 				2FD82D852A7748B100372D24 /* RequestVoteCharacterDTO.swift */,
+				2F7D6D022AF4940300CC309B /* RequestRecentSearchSaveDTO.swift */,
+				2F7D6D042AF4941100CC309B /* RequestRecentSearchItemDeleteDTO.swift */,
+				2F7D6D062AF4941B00CC309B /* RequestRecentSearchListDeleteDTO.swift */,
+				2F7D6D082AF4943800CC309B /* RequestRecentCharacterSaveDTO.swift */,
+				2F7D6D0A2AF4944300CC309B /* RequestRecentCharacterItemDeleteDTO.swift */,
+				2F7D6D0C2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -3358,6 +3428,16 @@
 				2FFB4BCA2A8F0A71001D1D60 /* ResponseTop3MbtiDTO.swift */,
 				2FFB4BD42A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift */,
 				2FFB4BCC2A8F0A7D001D1D60 /* ResponseMbtiPercentDetailDTO.swift */,
+				2F79D2AF2AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift */,
+				2F79D2B12AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift */,
+				2F7D6CEA2AF480BF00CC309B /* ResponseRecentCharacterItemSaveDTO.swift */,
+				2F7D6CF02AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift */,
+				2F7D6CF22AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift */,
+				2F7D6CF42AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift */,
+				2F7D6CF62AF4836100CC309B /* ResponseRecentSearchListDTO.swift */,
+				2F7D6CF82AF4836E00CC309B /* ResponseRecentSearchItemDTO.swift */,
+				2F7D6CFA2AF48CE600CC309B /* ResponseRecentSearchItemDeleteDTO.swift */,
+				2F7D6CFC2AF48D0200CC309B /* ResponseRecentSearchListDeleteDTO.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -3550,7 +3630,15 @@
 				2FFB4BC02A8F05BF001D1D60 /* MbtiPercentDetail.swift */,
 				2FFB4BD22A8F56F3001D1D60 /* MbtiContainPercent.swift */,
 				2FD258A32AE39E9C0076A349 /* RecentSearchItem.swift */,
+				2F7D6CD42AF47CCF00CC309B /* RecentSearchItemList.swift */,
+				2F7D6CD62AF47D2D00CC309B /* RecentSearchItemSave.swift */,
+				2F7D6CDA2AF47DAA00CC309B /* RecentSearchItemListDelete.swift */,
+				2F7D6CDE2AF47E0D00CC309B /* RecentSearchItemDelete.swift */,
 				2FD258A52AE3B0880076A349 /* RecentCharacterItem.swift */,
+				2F79D2B32AEA540000B9B06A /* RecentCharacterItemList.swift */,
+				2F7D6CE22AF47E6500CC309B /* RecentCharacterItemDelete.swift */,
+				2F7D6CE42AF47E8D00CC309B /* RecentCharacterItemListDelete.swift */,
+				2F7D6CEE2AF4812800CC309B /* RecentCharacterItemSave.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -3591,6 +3679,14 @@
 				2FE111352A76688A0013A49E /* SameWorkCharacterListQuery.swift */,
 				2FFB4BCE2A8F1463001D1D60 /* InquireVoteResultQuery.swift */,
 				2FFB4BD02A8F1479001D1D60 /* InquireCharacterAnalyzeQuery.swift */,
+				2F7D6CFE2AF48DCB00CC309B /* RecentSearchListQuery.swift */,
+				2F7D6CD82AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift */,
+				2F7D6CDC2AF47DDD00CC309B /* RecentSearchItemListDeleteQuery.swift */,
+				2F7D6CE02AF47E2E00CC309B /* RecentSearchItemDeleteQuery.swift */,
+				2F7D6CE62AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift */,
+				2F7D6CE82AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift */,
+				2F7D6CEC2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift */,
+				2F7D6D002AF48F9600CC309B /* RecentCharacterListQuery.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -4422,11 +4518,13 @@
 				2FEC15F22A78B233009CF59D /* MyComment.swift in Sources */,
 				2FE111222A7664BB0013A49E /* VoteCharacter.swift in Sources */,
 				2FD11DDE2A02318F006796DD /* DigFinishCharacterCollectionViewCell.swift in Sources */,
+				2F7D6CED2AF480D800CC309B /* RecentCharacterItemSaveQuery.swift in Sources */,
 				93C48B3129D16D1800644F6A /* LoginViewController.swift in Sources */,
 				2FD82D6B2A77457C00372D24 /* CommentList.swift in Sources */,
 				2FC2EB3E29E2B64900ECE2ED /* LoginSplashViewController.swift in Sources */,
 				2F53D0A12A1F398C00898DCD /* EditMyInfoViewController.swift in Sources */,
 				2FC774652A998B8F00C36024 /* LikeCommentChoiceQuery.swift in Sources */,
+				2F7D6D0D2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift in Sources */,
 				2FC12C592AC015FC00FF5145 /* CharacterMoreCoordinator.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
@@ -4451,6 +4549,7 @@
 				2FCDD20B29EA72B9000B6CD7 /* WordLabelButton.swift in Sources */,
 				2FC367532A7F943F00635CBB /* LengthChartView.swift in Sources */,
 				2FBFF8392A6F5980007914A1 /* ResponseLikeChoiceDTO.swift in Sources */,
+				2F7D6D052AF4941100CC309B /* RequestRecentSearchItemDeleteDTO.swift in Sources */,
 				2FD4D9372A6E45A700E7972B /* Characters.swift in Sources */,
 				49F148102A94FDC80045E857 /* CharacterAskQuery.swift in Sources */,
 				49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */,
@@ -4478,6 +4577,7 @@
 				49C7221A2AA3185C0062650F /* ProductNotificationViewModel.swift in Sources */,
 				2FC2EB4529E3BB6B00ECE2ED /* LoginSplashViewModel.swift in Sources */,
 				49C7221E2AA32A970062650F /* KeywordNotificationViewController.swift in Sources */,
+				2F79D2B42AEA540000B9B06A /* RecentCharacterItemList.swift in Sources */,
 				2FD274102A5A8AE5003AA144 /* RecommendViewModel.swift in Sources */,
 				2FFB4BD52A8F572A001D1D60 /* ResponseMbtiContainPercentDTO.swift in Sources */,
 				2FC94E5229C00F0B0097E696 /* AppDelegate.swift in Sources */,
@@ -4490,6 +4590,7 @@
 				2FD87A432A58469B003C276B /* RequestKakaoLoginDTO.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
+				2F7D6CE92AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift in Sources */,
 				2FD87A512A584975003C276B /* ResponseSocialDTO.swift in Sources */,
 				2FD82D5B2A77436900372D24 /* GetReview.swift in Sources */,
 				2F53D0952A1F1EF900898DCD /* RequestPhoneNumberCheckDTO.swift in Sources */,
@@ -4504,6 +4605,7 @@
 				2FCDD20529E7A9EB000B6CD7 /* DimoLoginViewModel.swift in Sources */,
 				49C722262AA330EB0062650F /* MBTIKeywordNotificationView.swift in Sources */,
 				2FD82DBA2A775AD700372D24 /* ResponsePostCommentDTO.swift in Sources */,
+				2F79D2B02AEA52B600B9B06A /* ResponseRecentCharacterListDTO.swift in Sources */,
 				2FDD74582A10A75A00A75AB9 /* DetailHeaderView.swift in Sources */,
 				2FE111302A76682D0013A49E /* PopularCharacterRecommendListQuery.swift in Sources */,
 				2FDD74622A10AB3C00A75AB9 /* AnalyzeViewController.swift in Sources */,
@@ -4526,6 +4628,7 @@
 				2FC4BB072A132CA50070B67A /* BaseScrollView.swift in Sources */,
 				2FD4D9092A6BBFDA00E7972B /* ModifyMyProfileQuery.swift in Sources */,
 				2FD4D0BF2A2CA9F300B9AF61 /* ErrorNotFoundViewModel.swift in Sources */,
+				2F7D6CF72AF4836100CC309B /* ResponseRecentSearchListDTO.swift in Sources */,
 				2F437C0C2A4BEEF8000B7A61 /* ContentUseCase.swift in Sources */,
 				497454F12A3F68ED0043D67E /* MbtiChangeQuery.swift in Sources */,
 				2FC33F762A0648EC00AD284B /* JoinMbtiViewModel.swift in Sources */,
@@ -4533,6 +4636,7 @@
 				2FD87A532A58498B003C276B /* ResponseLogoutDTO.swift in Sources */,
 				49EEDF0E2A8A8324008C5D21 /* DiffableDataSource+Extension.swift in Sources */,
 				2FD11DDC2A010430006796DD /* CardCollectionViewCell.swift in Sources */,
+				2F7D6CD72AF47D2D00CC309B /* RecentSearchItemSave.swift in Sources */,
 				2F1AB9D72A10C6F9001178EA /* SettingEtcCollectionViewCell.swift in Sources */,
 				2FDD9E6F2A12235900A41FF7 /* FeedDetailModel.swift in Sources */,
 				2FD87A412A584627003C276B /* RequestLoginDTO.swift in Sources */,
@@ -4590,10 +4694,12 @@
 				2FBF4CA829CC964200B65125 /* CoordinatorDelegate.swift in Sources */,
 				2FCB16842A7DEB7300AE48A8 /* VoteCompleteViewController.swift in Sources */,
 				2FD274142A5A8B38003AA144 /* RecommendViewController.swift in Sources */,
+				2F7D6CE52AF47E8D00CC309B /* RecentCharacterItemListDelete.swift in Sources */,
 				2FD54DFA2AB6D5D000C9216A /* OtherProfileView.swift in Sources */,
 				2F979F352A0CFE4100A1CD53 /* FindingPWViewController.swift in Sources */,
 				2FCD8C932A824805002A39B0 /* FeedDetailMoreAnotherViewModel.swift in Sources */,
 				2FE9681B2A7BA2AB000E705E /* GetAnimationQuery.swift in Sources */,
+				2F7D6CD52AF47CCF00CC309B /* RecentSearchItemList.swift in Sources */,
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2FD82D7C2A77474100372D24 /* GetCommentQuery.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
@@ -4601,6 +4707,7 @@
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
 				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
 				2FD87A4B2A5848BD003C276B /* ResponseLoginDTO.swift in Sources */,
+				2F7D6D092AF4943800CC309B /* RequestRecentCharacterSaveDTO.swift in Sources */,
 				2FD82D932A774D7E00372D24 /* RequestModifyReviewDTO.swift in Sources */,
 				2F53D0AA2A1F4A5700898DCD /* EditNicknameView.swift in Sources */,
 				2FD82DA02A774F4F00372D24 /* ResponseCharacterInfoDTO.swift in Sources */,
@@ -4645,6 +4752,7 @@
 				2FD4D93C2A6E46DD00E7972B /* ResponseCharactersDTO.swift in Sources */,
 				2F53D0C92A1F6E4D00898DCD /* EditMbtiViewController.swift in Sources */,
 				2FCF862C2A482A0700759F71 /* CharacterMbtiCollectionViewCell.swift in Sources */,
+				2F7D6CD92AF47D7E00CC309B /* RecentSearchItemSaveQuery.swift in Sources */,
 				2FD82D8B2A774D3500372D24 /* RequestPostReviewDTO.swift in Sources */,
 				2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */,
 				2FD4D93A2A6E468900E7972B /* ResponseDetailAnimationDataDTO.swift in Sources */,
@@ -4661,11 +4769,13 @@
 				2F53D08F2A1F1BF500898DCD /* ResponsePhoneNumberCheckDTO.swift in Sources */,
 				2FD82DB62A775AB800372D24 /* ResponseModifyReviewDTO.swift in Sources */,
 				2FFB4BD72A8F8CBE001D1D60 /* ResponseGetReviewDetailDTO.swift in Sources */,
+				2F7D6CFF2AF48DCB00CC309B /* RecentSearchListQuery.swift in Sources */,
 				2FDD9E652A121EB300A41FF7 /* FeedDetailView.swift in Sources */,
 				2FCD8CA52A825644002A39B0 /* FeedDetailHideUserAlertViewModel.swift in Sources */,
 				2FC94ECC29C038000097E696 /* OnBoardingView.swift in Sources */,
 				49E726C12AAC980D001828CB /* RegisteredMbtiCollectionViewCell.swift in Sources */,
 				49EEDEEA2A88EB4C008C5D21 /* NoticeContents.swift in Sources */,
+				2F7D6CE32AF47E6500CC309B /* RecentCharacterItemDelete.swift in Sources */,
 				2FD2DD032A70E3F7000C5EB7 /* UIImage+Extension.swift in Sources */,
 				49C722242AA330AA0062650F /* MBTINotificationViewModel.swift in Sources */,
 				933028DF29CC736500165B1E /* BaseCollectionViewCell.swift in Sources */,
@@ -4673,6 +4783,7 @@
 				2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */,
 				2FD4D9162A6CC52B00E7972B /* LikeAnimationContent.swift in Sources */,
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
+				2F7D6CF12AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift in Sources */,
 				2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */,
 				2F437C212A4C57AA000B7A61 /* FeedDetailMoreMyView.swift in Sources */,
 				2FEE5DB72AA569F30090B406 /* MyCommentMoreView.swift in Sources */,
@@ -4754,6 +4865,7 @@
 				2FCD8C9B2A82505E002A39B0 /* FeedDetailHideReviewAlertView.swift in Sources */,
 				2FBD19D929FF80BD0005B1FA /* VoteModel.swift in Sources */,
 				2FD4D91A2A6CC5B600E7972B /* LikeContent.swift in Sources */,
+				2F7D6CDD2AF47DDD00CC309B /* RecentSearchItemListDeleteQuery.swift in Sources */,
 				2FD4D8FE2A6BB15500E7972B /* MyMomentumRepositoryImpl.swift in Sources */,
 				2FD4D9122A6CC3D300E7972B /* LikeMovieContentQuery.swift in Sources */,
 				2FD2589A2AE371280076A349 /* DeleteCommentAlertViewModel.swift in Sources */,
@@ -4789,6 +4901,7 @@
 				2FCF0F6E2A7D2DA200C164C4 /* DigView.swift in Sources */,
 				2FC2EB4029E2B78200ECE2ED /* LoginCustomBaseView.swift in Sources */,
 				2FBD19DD29FF91790005B1FA /* CharacterRecommandAndSearchCollectionViewCell.swift in Sources */,
+				2F7D6CDF2AF47E0D00CC309B /* RecentSearchItemDelete.swift in Sources */,
 				2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */,
 				49C722282AA330F30062650F /* MBTIKeywordNotificationViewController.swift in Sources */,
 				2FCD8C772A81BEE2002A39B0 /* GetMyVotedCharacter.swift in Sources */,
@@ -4803,8 +4916,11 @@
 				2FFB4BD32A8F56F3001D1D60 /* MbtiContainPercent.swift in Sources */,
 				2F979F272A0C9A9600A1CD53 /* FindIDView.swift in Sources */,
 				2FE968272A7BD578000E705E /* ResponseSameMbtiCharacterDTO.swift in Sources */,
+				2F7D6D072AF4941B00CC309B /* RequestRecentSearchListDeleteDTO.swift in Sources */,
 				2FC33F742A0648AC00AD284B /* JoinMbtiView.swift in Sources */,
+				2F7D6CDB2AF47DAA00CC309B /* RecentSearchItemListDelete.swift in Sources */,
 				2FD82DC22A77609200372D24 /* VoteRouter.swift in Sources */,
+				2F7D6CEB2AF480BF00CC309B /* ResponseRecentCharacterItemSaveDTO.swift in Sources */,
 				2F6D7D0D2A14A52500FA457D /* ContentMoreViewModel.swift in Sources */,
 				2FD69EB42A03984600AA5A6E /* CircleCollectionViewCell.swift in Sources */,
 				933028C629CB46AF00165B1E /* UIColor+Extension.swift in Sources */,
@@ -4818,6 +4934,7 @@
 				2FDD9E712A122FFA00A41FF7 /* TabmanCoordinator.swift in Sources */,
 				49F148122A9500A80045E857 /* CharacterAsk.swift in Sources */,
 				49EEDF0C2A8A7951008C5D21 /* BasePaddingLabel.swift in Sources */,
+				2F7D6CEF2AF4812800CC309B /* RecentCharacterItemSave.swift in Sources */,
 				2FC7745F2A98326100C36024 /* DateFormatterTransform.swift in Sources */,
 				49C7222C2AA454EF0062650F /* KeywordNotificationViewModel.swift in Sources */,
 				49A7A1D82A90B1FF0011EDC4 /* Date+Extension.swift in Sources */,
@@ -4826,6 +4943,7 @@
 				2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */,
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
 				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
+				2F7D6CF32AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift in Sources */,
 				2FE111202A7664AB0013A49E /* SearchCharacterList.swift in Sources */,
 				2FBD19DB29FF8C6D0005B1FA /* VoteCoordinator.swift in Sources */,
 				2FCD8C862A8209D6002A39B0 /* MovieDetailEvaluateViewModel.swift in Sources */,
@@ -4869,6 +4987,7 @@
 				93C48BA129D5AF7200644F6A /* IDRegisterView.swift in Sources */,
 				2FD4D0BD2A2CA9D000B9AF61 /* ErrorNotFoundViewController.swift in Sources */,
 				2F53D0B52A1F61FB00898DCD /* EditNicknameAlertViewModel.swift in Sources */,
+				2F7D6CFD2AF48D0200CC309B /* ResponseRecentSearchListDeleteDTO.swift in Sources */,
 				49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */,
 				93C48B3929D16E0A00644F6A /* SignupIdentificationView.swift in Sources */,
 				49A7A1D62A90A5F60011EDC4 /* ResponseUserInfoDTO.swift in Sources */,
@@ -4892,11 +5011,13 @@
 				2FCC96582A0A665A0031F1CF /* MbtiAlphabetView.swift in Sources */,
 				2FBD19CA29FF65860005B1FA /* VoteViewController.swift in Sources */,
 				2FD87A3F2A58431D003C276B /* Logout.swift in Sources */,
+				2F7D6D032AF4940300CC309B /* RequestRecentSearchSaveDTO.swift in Sources */,
 				2F0328BE2A91F35600639BAC /* ResponseGetGradeEvaluateResultDTO.swift in Sources */,
 				2FDF32552A95A91C00A9F3BC /* SearchCategoryViewController.swift in Sources */,
 				2FC94E9F29C013880097E696 /* AuthRouter.swift in Sources */,
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */,
+				2F7D6CE72AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift in Sources */,
 				2F437C062A4BE8F0000B7A61 /* ContentRepositoryImpl.swift in Sources */,
 				2FD69EB02A0387F600AA5A6E /* PosterCollectionViewCell.swift in Sources */,
 				2FDD9E6C2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift in Sources */,
@@ -4917,6 +5038,7 @@
 				2FE111162A7663AD0013A49E /* VoteRepository.swift in Sources */,
 				2FD82DC42A7760A400372D24 /* CharacterDetailRouter.swift in Sources */,
 				2FEC15F02A78B22F009CF59D /* MyReview.swift in Sources */,
+				2F7D6D0B2AF4944300CC309B /* RequestRecentCharacterItemDeleteDTO.swift in Sources */,
 				493C5C732A5D992300AF1F63 /* RequestPasswordChangeDTO.swift in Sources */,
 				2FD4D0CA2A2CB16900B9AF61 /* PushNotificationSettingView.swift in Sources */,
 				2FEC15EC2A78B1CF009CF59D /* GetMyReviewQuery.swift in Sources */,
@@ -4929,19 +5051,23 @@
 				2FE968212A7BCC1B000E705E /* ResponseHitDTO.swift in Sources */,
 				2F1AB9C92A10BA39001178EA /* FeedViewModel.swift in Sources */,
 				49C7221C2AA321770062650F /* KeywordSearchTextField.swift in Sources */,
+				2F7D6CE12AF47E2E00CC309B /* RecentSearchItemDeleteQuery.swift in Sources */,
 				2F53D0C72A1F6E3E00898DCD /* EditMbtiView.swift in Sources */,
 				4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */,
 				93C48BA329D5AF7E00644F6A /* IDRegisterViewController.swift in Sources */,
+				2F7D6D012AF48F9600CC309B /* RecentCharacterListQuery.swift in Sources */,
 				2FD82D612A7743B800372D24 /* ModifyReview.swift in Sources */,
 				2FD82DD22A777DA200372D24 /* VoteRepositoyImpl.swift in Sources */,
 				2FEE5DC02AA56E570090B406 /* MovieCharacterMoreViewModel.swift in Sources */,
 				2FC94ED029C03C3D0097E696 /* Font.swift in Sources */,
 				2F9793A22A52A43F0098939B /* SearchViewModel.swift in Sources */,
+				2F7D6CF92AF4836E00CC309B /* ResponseRecentSearchItemDTO.swift in Sources */,
 				2F53D0D42A1F7C1400898DCD /* WithdrawViewController.swift in Sources */,
 				2F53D0892A1F1B4E00898DCD /* PhoneNumberQuery.swift in Sources */,
 				49A7A1DA2A90D6880011EDC4 /* MbtiChangeDate.swift in Sources */,
 				2FD258A02AE373CE0076A349 /* RequestDeleteCommentDTO.swift in Sources */,
 				2FD82D652A7743D600372D24 /* PostComment.swift in Sources */,
+				2F7D6CFB2AF48CE600CC309B /* ResponseRecentSearchItemDeleteDTO.swift in Sources */,
 				2FD4D9222A6CCAAB00E7972B /* ResponseModifyMyProfileDTO.swift in Sources */,
 				2FD8F1E72AE2743900E3D0EF /* ModifyCommentViewModel.swift in Sources */,
 				493C5C7D2A76925000AF1F63 /* RequestWithdrawDTO.swift in Sources */,
@@ -4955,6 +5081,7 @@
 				93C48B3629D16DDF00644F6A /* SignupTermsViewController.swift in Sources */,
 				2FD54DF42AB6CE7700C9216A /* OtherMomentumViewModel.swift in Sources */,
 				2FD69EBE2A03AC5300AA5A6E /* CategoryViewModel.swift in Sources */,
+				2F79D2B22AEA530100B9B06A /* ResponseRecentCharacterItemDTO.swift in Sources */,
 				2F9793A42A52A4450098939B /* SearchView.swift in Sources */,
 				2F1AB9CB2A10C243001178EA /* SettingCoordinator.swift in Sources */,
 				2FE968232A7BCC28000E705E /* ResponseContentDTO.swift in Sources */,
@@ -5001,6 +5128,7 @@
 				2FEE5DC62AA572FC0090B406 /* VoteFlowCoordinator.swift in Sources */,
 				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
+				2F7D6CF52AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift in Sources */,
 				2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

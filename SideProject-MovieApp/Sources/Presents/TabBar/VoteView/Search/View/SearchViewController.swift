@@ -52,6 +52,7 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.selfView.collectionView.delegate = self
+        self.selfView.recentCollectionView.delegate = self
         self.selfView.searchTextField.delegate = self
         setDataSource()
         setRecentCollectionView()
@@ -139,13 +140,24 @@ extension SearchViewController {
 extension SearchViewController {
     
     func setRecentCollectionView() {
-        selfView.currentSearchCollectionView.register(VoteCollectionViewCell.self, forCellWithReuseIdentifier: VoteCollectionViewCell.identifier)
-        selfView.currentSearchCollectionView.register(RecentSearchCollectionViewCell.self, forCellWithReuseIdentifier: RecentSearchCollectionViewCell.identifier)
+        selfView.recentCollectionView.register(VoteCollectionViewCell.self, forCellWithReuseIdentifier: VoteCollectionViewCell.identifier)
+        selfView.recentCollectionView.register(RecentSearchCollectionViewCell.self, forCellWithReuseIdentifier: RecentSearchCollectionViewCell.identifier)
     }
     
     func setRecentDataSource() {
         
-        recentDataSource = UICollectionViewDiffableDataSource(collectionView: selfView.currentSearchCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<SearchHeaderView>(elementKind: SearchHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            switch indexPath.section {
+            case 0:
+                supplementaryView.titleLabel.text = "11"
+            case 1:
+                supplementaryView.titleLabel.text = "22"
+            default:
+                break
+            }
+        }
+        
+        recentDataSource = UICollectionViewDiffableDataSource(collectionView: selfView.recentCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let section = RecentSearchKeywordCase(rawValue: indexPath.section)
             
@@ -161,15 +173,26 @@ extension SearchViewController {
             
             switch section {
             case .search:
-                guard let cell = self.selfView.currentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as? RecentSearchCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = self.selfView.recentCollectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as? RecentSearchCollectionViewCell else { return UICollectionViewCell() }
                 return cell
+                
             case .character:
-                guard let cell = self.selfView.currentSearchCollectionView.dequeueReusableCell(withReuseIdentifier: VoteCollectionViewCell.identifier, for: indexPath) as? VoteCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = self.selfView.recentCollectionView.dequeueReusableCell(withReuseIdentifier: VoteCollectionViewCell.identifier, for: indexPath) as? VoteCollectionViewCell else { return UICollectionViewCell() }
                 return cell
             case .none:
                 return UICollectionViewCell()
             }
         })
+        
+        recentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        })
+        
+//        recentDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+//            let header = collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+//
+//            return header
+//        })
     }
     
     func recentSnapshot() {
@@ -188,8 +211,6 @@ extension SearchViewController {
         recentDataSource.apply(snapshot)
     }
 }
-
-
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
