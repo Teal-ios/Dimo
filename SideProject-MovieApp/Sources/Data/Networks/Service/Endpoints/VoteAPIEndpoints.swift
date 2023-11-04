@@ -39,4 +39,36 @@ struct VoteAPIEndpoints {
     static func getInquireCharacterAnalyze(with query: InquireCharacterAnalyzeQuery) -> VoteRouter<ResponseInquireCharacterAnalyzeDTO> {
         return VoteRouter<ResponseInquireCharacterAnalyzeDTO>.inquireCharacterAnalyze(parameters: query)
     }
+    
+    static func getRecentSearchList(with query: RecentSearchListQuery) -> VoteRouter<ResponseRecentSearchListDTO> {
+        return VoteRouter<ResponseRecentSearchListDTO>.recentSearchList(parameters: query)
+    }
+    
+    static func getRecentCharacterList(with query: RecentCharacterListQuery) -> VoteRouter<ResponseRecentCharacterListDTO> {
+        return VoteRouter<ResponseRecentCharacterListDTO>.recentCharacterList(parameters: query)
+    }
+    
+    static func postRecentSearchItemSave(with requestDTO: RequestRecentSearchSaveDTO) -> VoteRouter<ResponseRecentSearchItemSaveDTO> {
+        return VoteRouter<ResponseRecentSearchItemSaveDTO>.recentSearchItemSave(parameters: RecentSearchItemSaveQuery(user_id: requestDTO.user_id, search_content: requestDTO.search_content))
+    }
+    
+    static func postRecentCharacterItemSave(with requestDTO: RequestRecentCharacterSaveDTO) -> VoteRouter<ResponseRecentCharacterItemSaveDTO> {
+        return VoteRouter<ResponseRecentCharacterItemSaveDTO>.recentCharacterItemSave(parameters: RecentCharacterItemSaveQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id))
+    }
+    
+    static func deleteRecentSearchItemDelete(with requestDTO: RequestRecentSearchItemDeleteDTO) -> VoteRouter<ResponseRecentSearchItemDeleteDTO> {
+        return VoteRouter<ResponseRecentSearchItemDeleteDTO>.recentSearchItemDelete(parameters: RecentSearchItemDeleteQuery(user_id: requestDTO.user_id, search_content: requestDTO.search_content))
+    }
+    
+    static func deleteRecentSearchListDelete(with requestDTO: RequestRecentSearchListDeleteDTO) -> VoteRouter<ResponseRecentSearchListDeleteDTO> {
+        return VoteRouter<ResponseRecentSearchListDeleteDTO>.recentSearchListDelete(parameters: RecentSearchItemListDeleteQuery(user_id: requestDTO.user_id))
+    }
+    
+    static func deleteRecentCharacterItemDelete(with requestDTO: RequestRecentCharacterItemDeleteDTO) -> VoteRouter<ResponseRecentCharacterItemDeleteDTO> {
+        return VoteRouter<ResponseRecentCharacterItemDeleteDTO>.recentCharacterItemDelete(parameters: RecentCharacterItemDeleteQuery(user_id: requestDTO.user_id, character_id: requestDTO.character_id))
+    }
+    
+    static func deleteRecentCharacterListDelete(with requestDTO: RequestRecentCharacterListDeleteDTO) -> VoteRouter<ResponseRecentCharacterListDeleteDTO> {
+        return VoteRouter<ResponseRecentCharacterListDeleteDTO>.recentCharacterListDelete(parameters: RecentCharacterItemListDeleteQuery(user_id: requestDTO.user_id))
+    }
 }

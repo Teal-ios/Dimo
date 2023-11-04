@@ -90,6 +90,8 @@ final class SearchView: BaseView {
         return label
     }()
     
+    lazy var recentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewCurrentSearchLayout())
+    
     override func setHierarchy() {
         self.addSubview(titleLabel)
         self.addSubview(searchContainView)
@@ -103,6 +105,7 @@ final class SearchView: BaseView {
         self.addSubview(searchExceptionContainView)
         self.addSubview(searchExceptionImageView)
         self.addSubview(searchExceptionExplainLabel)
+        self.addSubview(recentCollectionView)
     }
     
     override func layoutSubviews() {
@@ -187,6 +190,12 @@ final class SearchView: BaseView {
             make.horizontalEdges.equalTo(searchExceptionContainView).inset(16)
             make.height.equalTo(42)
         }
+        
+        recentCollectionView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(searchContainView.snp.bottom).offset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
     
     private let itemRatio = 1.0
@@ -204,6 +213,23 @@ extension SearchView {
             sectionProvider:
                 { sectionIndex, layoutEnvironment in
                     return self.characterLayout()
+                },
+            configuration: configuration)
+        return collectionViewLayout
+        
+    }
+    
+    private func collectionViewCurrentSearchLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let collectionViewLayout = UICollectionViewCompositionalLayout(
+            sectionProvider:
+                { sectionIndex, layoutEnvironment in
+                    switch sectionIndex {
+                    case 0:
+                        return self.dynamicCategoryLayout()
+                    default:
+                        return self.recentCharacterLayout()
+                    }
                 },
             configuration: configuration)
         return collectionViewLayout
@@ -268,6 +294,36 @@ extension SearchView {
         
         return section
     }
+    
+    private func recentCharacterLayout() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(itemRatio),
+            heightDimension: .fractionalHeight(itemRatio)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 8, trailing: 4)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(groupRatio),
+            heightDimension: .absolute(66)
+        )
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(headerRatio),
+            heightDimension: .absolute(headerAbsolute)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: SearchHeaderView.identifier, alignment: .topLeading
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
+
+        return section
+    }
 }
 
 extension SearchView {
@@ -319,8 +375,10 @@ extension SearchView {
     func updateSearchTextField(text: String?) {
         if text == "" {
             searchImageView.image = UIImage(named: "Search")
+            recentCollectionView.isHidden = false
         } else {
             searchImageView.image = UIImage(named: "Search_On")
+            recentCollectionView.isHidden = true
         }
     }
 }
@@ -330,5 +388,32 @@ extension SearchView {
         self.searchExceptionContainView.isHidden = searchListExist
         self.searchExceptionImageView.isHidden = searchListExist
         self.searchExceptionExplainLabel.isHidden = searchListExist
+    }
+}
+
+extension SearchView {
+    private func dynamicLayout() -> NSCollectionLayoutSection {
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(200),
+            heightDimension: .absolute(32)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(32)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(8)
+        //sections
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return section
     }
 }

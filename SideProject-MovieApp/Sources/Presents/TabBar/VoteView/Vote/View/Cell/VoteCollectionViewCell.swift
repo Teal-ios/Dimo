@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class VoteCollectionViewCell: BaseCollectionViewCell {
-    static let voteCollectionViewIdentifier = "VoteCollectionViewCell"
+    static let identifier = "VoteCollectionViewCell"
+    
+    var disposeBag = DisposeBag()
 
     let nameLabel: UILabel = {
         let view = UILabel()
@@ -52,6 +55,13 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Icon_close"), for: .normal)
+        button.isHidden = true
+        return button
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = imgView.bounds.height / 2
@@ -64,6 +74,7 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
         addSubview(movieTitleLabel)
         addSubview(blurView)
         addSubview(checkImageView)
+        addSubview(cancelButton)
     }
     
     override func setConstraints() {
@@ -94,6 +105,12 @@ class VoteCollectionViewCell: BaseCollectionViewCell {
         checkImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(imgView)
             make.width.height.equalTo(32)
+        }
+        
+        cancelButton.snp.makeConstraints { make in
+            make.centerY.equalTo(safeAreaLayoutGuide)
+            make.width.height.equalTo(24)
+            make.trailing.equalTo(safeAreaLayoutGuide)
         }
     }
 }
@@ -168,5 +185,17 @@ extension VoteCollectionViewCell {
         imgView.contentMode = .scaleToFill
         nameLabel.text = item.character_name
         movieTitleLabel.text = item.character_mbti ?? "미정"
+    }
+}
+
+extension VoteCollectionViewCell {
+    func configureAtrributeWithRecentCharacter(with item: RecentCharacterItem?) {
+        guard let item = item else { return }
+        cancelButton.isHidden = false
+        let imageURL = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageURL)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.title
     }
 }

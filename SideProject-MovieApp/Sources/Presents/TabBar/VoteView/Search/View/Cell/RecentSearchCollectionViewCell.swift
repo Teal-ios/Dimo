@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class RecentSearchCollectionViewCell: BaseCollectionViewCell {
     static let identifier = "RecentSearchCollectionViewCell"
+    var disposeBag = DisposeBag()
 
     let bgView: UIView = {
         let view = UIView()
@@ -30,10 +32,10 @@ class RecentSearchCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    let xView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "X")
-        return view
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "X"), for: .normal)
+        return button
     }()
     
     override func layoutSubviews() {
@@ -44,7 +46,7 @@ class RecentSearchCollectionViewCell: BaseCollectionViewCell {
     override func configure() {
         self.addSubview(bgView)
         self.addSubview(categoryLabel)
-        self.addSubview(xView)
+        self.addSubview(cancelButton)
     }
     
     override func setConstraints() {
@@ -59,7 +61,7 @@ class RecentSearchCollectionViewCell: BaseCollectionViewCell {
             make.verticalEdges.equalTo(bgView.snp.verticalEdges).inset(4)
         }
         
-        xView.snp.makeConstraints { make in
+        cancelButton.snp.makeConstraints { make in
             make.leading.equalTo(categoryLabel.snp.trailing).offset(4)
             make.height.width.equalTo(8)
             make.centerY.equalTo(safeAreaLayoutGuide)
@@ -70,5 +72,11 @@ class RecentSearchCollectionViewCell: BaseCollectionViewCell {
 extension RecentSearchCollectionViewCell {
     func configureAttribute(with item: AnimationData) {
 //        categoryLabel.text = item.characters[0].characterName
+    }
+    
+    func configureAttribute(with item: RecentSearchItem?) {
+        guard let item = item else { return }
+        print(item)
+        categoryLabel.text = item.content
     }
 }

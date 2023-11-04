@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class SearchHeaderView: UICollectionReusableView {
     static let identifier = "SearchHeaderView"
+    var disposeBag = DisposeBag()
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -34,6 +36,10 @@ final class SearchHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(title: String) {
+        self.init()
+        titleLabel.text = title
+    }
     func makeConstraints() {
         let safeArea = self.safeAreaLayoutGuide
         titleLabel.snp.makeConstraints { make in
