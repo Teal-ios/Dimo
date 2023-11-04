@@ -21,6 +21,7 @@ enum CharacterDetailRouter<R> {
     case getReviewDetail(parameters: GetReviewDetailQuery)
     case postBlindReview(parameters: PostBlindReviewQuery)
     case postReportUser(parameters: PostReportUserQuery)
+    case deleteComment(parameters: DeleteCommentQuery)
 }
 
 extension CharacterDetailRouter: TargetType2 {
@@ -67,6 +68,8 @@ extension CharacterDetailRouter: TargetType2 {
             return "/character/blind_review"
         case .postReportUser:
             return "/character/report_user"
+        case .deleteComment:
+            return "/character/delete_comment"
         }
     }
     
@@ -136,6 +139,14 @@ extension CharacterDetailRouter: TargetType2 {
             let requestDTO = RequestPostReportUserDTO(user_id: parameters.user_id, review_id: parameters.review_id, report_reason: parameters.report_reason)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
+        case .deleteComment(let parameters):
+            let requestDTO = RequestDeleteCommentDTO(
+                user_id: parameters.user_id,
+                character_id: parameters.character_id,
+                review_id: parameters.review_id,
+                comment_id: parameters.comment_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         default:
             return nil
         }
@@ -147,7 +158,7 @@ extension CharacterDetailRouter: TargetType2 {
             return .get
         case .postReview, .likeReviewChoice, .likeReviewCancel, .modifyReview,  .postComment, .likeCommentCancel, .likeCommentChoice, .postBlindReview, .postReportUser:
             return .post
-        case .deleteReview:
+        case .deleteReview, .deleteComment:
             return .delete
         }
     }

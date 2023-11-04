@@ -29,6 +29,7 @@ final class FeedViewController: BaseViewController {
     let viewDidLoadTrigger = PublishRelay<Void>()
     let viewWillAppearTrigger = PublishRelay<Void>()
     let feedButtonCellSelected = PublishRelay<ReviewList>()
+    let pullToRefreshTrigger = PublishRelay<Void>()
     
     override func loadView() {
         view = selfView
@@ -38,6 +39,7 @@ final class FeedViewController: BaseViewController {
         super.viewDidLoad()
         self.selfView.collectionView.delegate = self
         setDataSource()
+        setRegisterRefreshControl()
         self.viewDidLoadTrigger.accept(())
     }
     
@@ -47,7 +49,7 @@ final class FeedViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap, viewDidLoad: self.viewDidLoadTrigger, viewWillAppear: self.viewWillAppearTrigger, feedButtonCellSelected: self.feedButtonCellSelected)
+        let input = FeedViewModel.Input(reviewCellSelected: self.reviewCellSelected, writeButtonTapped: self.selfView.writeButton.rx.tap, viewDidLoad: self.viewDidLoadTrigger, viewWillAppear: self.viewWillAppearTrigger, feedButtonCellSelected: self.feedButtonCellSelected, pullToRefreshTrigger: self.pullToRefreshTrigger)
         
         let output = self.viewModel.transform(input: input)
         
@@ -119,5 +121,24 @@ extension FeedViewController {
     func dataFetchingToReviewCell(indexPath: IndexPath) {
         let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
         self.reviewCellSelected.accept(selectedItem)
+    }
+}
+
+extension FeedViewController {
+    private func setRegisterRefreshControl() {
+        self.selfView.collectionView.refreshControl = UIRefreshControl()
+        self.selfView.collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+}
+
+extension FeedViewController {
+    
+    @objc
+    func handleRefreshControl() {
+        print("쏴라")
+        self.pullToRefreshTrigger.accept(())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.selfView.collectionView.refreshControl?.endRefreshing()
+        }
     }
 }

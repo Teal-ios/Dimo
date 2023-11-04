@@ -12,7 +12,6 @@ enum AuthRepositoryError: Error {
 }
 
 final class AuthRepositoryImpl: AuthRepository {
-    
     private let dataTransferService: DataTransferService
     
     init(dataTransferService: DataTransferService) {
@@ -92,7 +91,7 @@ extension AuthRepositoryImpl {
 
 extension AuthRepositoryImpl {
     func requestKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin {
-        let requestDTO = RequestKakaoLoginDTO(user_id: query.user_id, name: query.name, sns_type: query.sns_type)
+        let requestDTO = RequestKakaoLoginDTO(user_id: query.userId, name: query.name, sns_type: query.snsType)
         let target = AuthAPIEndpoints.postKakaoLogin(with: requestDTO)
         
         do {
@@ -115,6 +114,21 @@ extension AuthRepositoryImpl {
         } catch {
             throw AuthRepositoryError.request
         }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin {
+        let requestDTO = RequestAppleLoginDTO(user_id: query.user_id, name: query.name, sns_type: query.sns_type)
+        let target = AuthAPIEndpoints.postAppleLogin(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+        
     }
 }
 
@@ -159,8 +173,20 @@ extension AuthRepositoryImpl {
 }
 
 extension AuthRepositoryImpl {
-    func fetchSocialLoginCheck(user_id: String, sns_type: String) async throws -> SocialLoginCheck {
-        let target = AuthAPIEndpoints.getSocialLoginCheck(user_id: user_id, sns_type: sns_type)
+    func fetchSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck {
+        let target = AuthAPIEndpoints.getSocialLoginCheck(user_id: query.userId, sns_type: query.snsType)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+    
+    func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin {
+        let requestDTO = RequestUserInfoInSnsLoginDTO(userId: query.user_id, nickname: query.nickname, mbti: query.mbti, pushCheck: query.push_check)
+        let target = AuthAPIEndpoints.postUserInfoInSnsLogin(with: requestDTO  )
+        
         do {
             let data = try await dataTransferService.request(with: target)
             return data.toDomain

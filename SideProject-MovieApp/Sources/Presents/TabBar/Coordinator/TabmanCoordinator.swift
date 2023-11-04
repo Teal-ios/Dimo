@@ -28,9 +28,11 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
     var characterId = PublishRelay<Int>()
     var modifyText = PublishRelay<String>()
     var deleteReview = PublishRelay<Void>()
+    var deleteComment = PublishRelay<Void>()
     var currentCase: ConnetTabmanCoordinatorViewControllerCase = .tabman
     var review: ReviewList?
-
+    var modifyCommentDismiss = PublishRelay<Void>()
+    
     init(_ navigationController: UINavigationController, character: Characters, connectconnetTabmanCoordinatorViewController: ConnetTabmanCoordinatorViewControllerCase, review: ReviewList?) {
         self.navigationController = navigationController
         self.character = character
@@ -51,12 +53,12 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         }
     }
     
-    
     func showFeedDetailViewController(review: ReviewList) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview)
+        let viewModel = FeedDetailViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, review: review, modifyText: self.modifyText, deleteReviewEvent: self.deleteReview, modifyCommentDismiss: self.modifyCommentDismiss, deleteComment: self.deleteComment
+        )
         let vc = FeedDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -116,6 +118,17 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.present(vc, animated: true)
     }
     
+    func showDeleteCommentAlertViewController(comment: CommentList) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterUseCaseImpl = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
+        let viewModel = DeleteCommentAlertViewModel(coordinator: self, characterDetailUseCase: characterUseCaseImpl, comment: comment)
+        viewModel.delegate = self
+        let vc = DeleteCommentAlertViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
+    
     func showFeedDetailHideReviewAlertViewController(review_id: Int) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
@@ -158,6 +171,14 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(myMomentumCoordinator)
         myMomentumCoordinator.start()
     }
+    
+    func showModifyCommentViewController(comment: CommentList) {
+        let viewModel = ModifyCommentViewModel(coordinator: self, comment: comment)
+        viewModel.delegate = self
+        let vc = ModifyCommentViewController(viewModel: viewModel)
+        vc.modalPresentationStyle = .overFullScreen
+        navigationController.present(vc, animated: true)
+    }
 }
 
 extension TabmanCoordinator: sendPostReviewDelegate {
@@ -177,5 +198,18 @@ extension TabmanCoordinator: sendModifyReviewDelegate {
 extension TabmanCoordinator: sendDeleteReviewDelegate {
     func sendDeleteReview() {
         self.deleteReview.accept(())
+    }
+}
+
+extension TabmanCoordinator: sendDeleteCommentDelegate {
+    func sendDeleteComment() {
+        self.deleteComment.accept(())
+    }
+}
+
+extension TabmanCoordinator: modifyCommentDismissDelegate {
+    func dismiss() {
+        print("🍊")
+        self.modifyCommentDismiss.accept(())
     }
 }

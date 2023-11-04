@@ -16,6 +16,16 @@ enum VoteRouter<R> {
     case sameWorkCharacterList(parameters: SameWorkCharacterListQuery)
     case inquireVoteResult(parameters: InquireVoteResultQuery)
     case inquireCharacterAnalyze(parameters: InquireCharacterAnalyzeQuery)
+    
+    case recentSearchList(parameters: RecentSearchListQuery)
+    case recentSearchItemSave(parameters: RecentSearchItemSaveQuery)
+    case recentSearchItemDelete(parameters: RecentSearchItemDeleteQuery)
+    case recentSearchListDelete(parameters: RecentSearchItemListDeleteQuery)
+    
+    case recentCharacterList(parameters: RecentCharacterListQuery)
+    case recentCharacterItemSave(parameters: RecentCharacterItemSaveQuery)
+    case recentCharacterItemDelete(parameters: RecentCharacterItemDeleteQuery)
+    case recentCharacterListDelete(parameters: RecentCharacterItemListDeleteQuery)
 }
 
 extension VoteRouter: TargetType2 {
@@ -52,12 +62,28 @@ extension VoteRouter: TargetType2 {
             return "/vote"
         case .inquireCharacterAnalyze:
             return "/vote/view_result"
+        case .recentSearchList:
+            return "/vote/view_save_search"
+        case .recentSearchItemSave:
+            return "/vote/save_search"
+        case .recentSearchItemDelete:
+            return "/vote/delete_search"
+        case .recentSearchListDelete:
+            return "/vote/delete_all_search"
+            
+        case .recentCharacterList:
+            return "/vote/view_recent_seen_chr"
+        case .recentCharacterItemSave:
+            return "/vote/save_chr_list"
+        case .recentCharacterItemDelete:
+            return "/vote/delete_seen_chr"
+        case .recentCharacterListDelete:
+            return "/vote/delete_all_seen_chr"
         }
     }
     
     var queryItems: [URLQueryItem]? {
         switch self {
-
         case .randomCharacterRecommend(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "category", value: "rand")]
         case .popularCharacterRecommendList(parameters: let parameters):
@@ -74,6 +100,12 @@ extension VoteRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
         case .inquireCharacterAnalyze(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "character_id", value: String(parameters.character_id))]
+        case .recentSearchList(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        case .recentCharacterList(let parameters):
+            return [URLQueryItem(name: "user_id", value: parameters.user_id)]
+        default:
+            return nil
         }
     }
     
@@ -83,7 +115,23 @@ extension VoteRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .randomCharacterRecommend, .popularCharacterRecommendList, .searchCharacterList, .voteCharacter, .sameWorkCharacterList, .inquireCharacterAnalyze, .inquireVoteResult, .searchWorkList:
+        case
+                .randomCharacterRecommend,
+                .popularCharacterRecommendList,
+                .searchCharacterList,
+                .voteCharacter,
+                .sameWorkCharacterList,
+                .inquireCharacterAnalyze,
+                .inquireVoteResult,
+                .searchWorkList,
+                .recentSearchList,
+                .recentSearchItemSave,
+                .recentSearchItemDelete,
+                .recentSearchListDelete,
+                .recentCharacterList,
+                .recentCharacterItemSave,
+                .recentCharacterItemDelete,
+                .recentCharacterListDelete:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -94,7 +142,37 @@ extension VoteRouter: TargetType2 {
             let requestDTO = RequestVoteCharacterDTO(user_id: parameters.user_id, contentId: parameters.content_id, character_id: parameters.character_id, ei: parameters.ei, sn: parameters.sn, tf: parameters.tf, jp: parameters.jp)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
-
+            
+        case .recentSearchItemSave(let parameters):
+            let requestDTO = RequestRecentSearchSaveDTO(user_id: parameters.user_id, search_content: parameters.user_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
+        case .recentSearchItemDelete(let parameters):
+            let requestDTO = RequestRecentSearchItemDeleteDTO(user_id: parameters.user_id, search_content: parameters.search_content)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
+        case .recentSearchListDelete(let parameters):
+            let requestDTO = RequestRecentSearchListDeleteDTO(user_id: parameters.user_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
+        case .recentCharacterItemSave(let parameters):
+            let requestDTO = RequestRecentCharacterSaveDTO(user_id: parameters.user_id, character_id: parameters.character_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
+        case .recentCharacterItemDelete(let parameters):
+            let requestDTO = RequestRecentCharacterItemDeleteDTO(user_id: parameters.user_id, character_id: parameters.character_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
+        case .recentCharacterListDelete(let parameters):
+            let requestDTO = RequestRecentCharacterListDeleteDTO(user_id: parameters.user_id)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
+            
         default:
             return nil
         }
@@ -102,9 +180,19 @@ extension VoteRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList, .inquireCharacterAnalyze, .inquireVoteResult, .searchWorkList:
+        case .popularCharacterRecommendList, .randomCharacterRecommend, .sameWorkCharacterList, .searchCharacterList, .inquireCharacterAnalyze, .inquireVoteResult, .searchWorkList, .recentSearchList, .recentCharacterList:
             return .get
-        case .voteCharacter:
+        case
+                .recentSearchItemDelete,
+                .recentSearchListDelete,
+                .recentCharacterItemDelete,
+                .recentCharacterListDelete:
+            return .delete
+            
+        case
+                .voteCharacter,
+                .recentCharacterItemSave,
+                .recentSearchItemSave:
             return .post
         }
     }

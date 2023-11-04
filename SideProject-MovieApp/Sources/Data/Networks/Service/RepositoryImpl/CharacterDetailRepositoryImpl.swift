@@ -186,3 +186,16 @@ extension CharacterDetailRepositoryImpl {
         }
     }
 }
+
+extension CharacterDetailRepositoryImpl {
+    func deleteComment(query: DeleteCommentQuery) async throws -> DeleteComment {
+        let requestDTO = RequestDeleteCommentDTO(user_id: query.user_id, character_id: query.character_id, review_id: query.review_id, comment_id: query.comment_id)
+        let target = CharacterDetailAPIEndpoints.deleteComment(with: requestDTO)
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw CharacterDetailRepositoryError.request
+        }
+    }
+}

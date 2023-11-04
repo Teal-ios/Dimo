@@ -37,6 +37,8 @@ final class MyMomentumViewController: BaseViewController {
     
     let myReviewCellSelected = PublishRelay<MyReview>()
     let myCommentCellSelected = PublishRelay<MyComment>()
+    let myLikeContentCellSelected = PublishRelay<LikeContent>()
+    let myDigCharacterCellSelected = PublishRelay<MyVotedCharacter>()
     
     override func loadView() {
         view = myMomentumView
@@ -58,7 +60,7 @@ final class MyMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap, myReviewCellSelected: self.myReviewCellSelected, myCommentCellSelected: self.myCommentCellSelected)
+        let input = MyMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, editProfileButtonTap: self.myMomentumView.profileView.profileSettingButton.rx.tap, likeContentMoreButtonTap: self.myMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.myMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.myMomentumView.reviewMoreButton.rx.tap, commentMoreButtonTap: self.myMomentumView.commentMoreButton.rx.tap, myReviewCellSelected: self.myReviewCellSelected, myCommentCellSelected: self.myCommentCellSelected, myLikeContentCellSelected: self.myLikeContentCellSelected, myDigCharacterCellSelected: self.myDigCharacterCellSelected)
         
         let output = viewModel.transform(input: input)
         
@@ -289,9 +291,9 @@ extension MyMomentumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case self.myMomentumView.profileCollectionView:
-            print("내찜꽁")
+            self.myLikeContentCellDataFetching(indexPath: indexPath)
         case self.myMomentumView.digFinishCharacherCollectionView:
-            print("캐릭터")
+            self.myDigCharacterCellDataFetching(indexPath: indexPath)
         case self.myMomentumView.reviewCollectionView:
             self.myReviewCellDataFetching(indexPath: indexPath)
         case self.myMomentumView.commentCollectionView:
@@ -313,5 +315,19 @@ extension MyMomentumViewController {
     private func myCommentCellDataFetching(indexPath: IndexPath) {
         let selectedItem = commentDataSource.snapshot().itemIdentifiers[indexPath.row]
         self.myCommentCellSelected.accept(selectedItem)
+    }
+}
+
+extension MyMomentumViewController {
+    private func myLikeContentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = likeContentDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myLikeContentCellSelected.accept(selectedItem)
+    }
+}
+
+extension MyMomentumViewController {
+    private func myDigCharacterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = digFinishDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myDigCharacterCellSelected.accept(selectedItem)
     }
 }

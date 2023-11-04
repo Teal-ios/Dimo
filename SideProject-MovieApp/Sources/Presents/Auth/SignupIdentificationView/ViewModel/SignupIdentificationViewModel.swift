@@ -130,7 +130,7 @@ extension SignupIdentificationViewModel {
         let query = PhoneNumberCheckQuery(phone_number: phoneNumber)
         
         Task {
-            let phoneNumberCheck = try await authUseCase.excutePhoneNumberCheck(query: query)
+            let phoneNumberCheck = try await authUseCase.executePhoneNumberCheck(query: query)
             print("🔥", phoneNumberCheck)
             if phoneNumberCheck.msg == "success" {
                 UserDefaultManager.phoneNumber = query.phone_number

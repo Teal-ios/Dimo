@@ -110,7 +110,7 @@ extension DimoLoginViewModel {
         let query = LoginQuery(user_id: user_id, password: password)
         
         Task {
-            let login = try await authUseCase.excuteLogin(query: query)
+            let login = try await authUseCase.executeLogin(query: query)
             print("🔥", login)
             
             if login.code == 200 {

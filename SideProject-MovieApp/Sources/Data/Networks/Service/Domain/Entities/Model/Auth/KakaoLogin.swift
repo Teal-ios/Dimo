@@ -10,7 +10,7 @@ import Foundation
 struct KakaoLogin: Hashable {
     let code: Int
     let message: String
-    let user_id: String
-    let access_token: String
-    let refresh_token: String
+    let userId: String
+    let accessToken: String
+    let refreshToken: String
 }

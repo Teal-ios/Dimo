@@ -15,10 +15,12 @@ enum AuthRouter<R> {
     case login(parameters: LoginQuery)
     case kakaoLogin(parameters: KakaoLoginQuery)
     case googleLogin(parameters: GoogleLoginQuery)
+    case appleLogin(parameters: AppleLoginQuery)
     case social(parameters: SocialQuery)
     case logout
     case drop(parameters: DropQuery)
     case socialLoginCheck(parameters: SocialLoginCheckQuery)
+    case userInfoRegistration(parameters: UserInfoInSnsLoginQuery)
 }
 
 extension AuthRouter: TargetType2 {
@@ -27,7 +29,7 @@ extension AuthRouter: TargetType2 {
 
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -35,7 +37,6 @@ extension AuthRouter: TargetType2 {
     var port: Int {
         return 3000
     }
-    
     
     var scheme: String {
         return "http"
@@ -61,6 +62,8 @@ extension AuthRouter: TargetType2 {
             return "/social/kakao_login"
         case .googleLogin:
             return "/social/google_login"
+        case .appleLogin:
+            return "/social/apple_login"
         case .social:
             return "/social"
         case .logout:
@@ -69,6 +72,8 @@ extension AuthRouter: TargetType2 {
             return "/drop"
         case .socialLoginCheck:
             return "/social/check"
+        case .userInfoRegistration:
+            return "/social"
         }
     }
     
@@ -77,7 +82,7 @@ extension AuthRouter: TargetType2 {
         case .duplicationId(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .socialLoginCheck(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "sns_type", value: parameters.sns_type)]
+            return [URLQueryItem(name: "user_id", value: parameters.userId), URLQueryItem(name: "sns_type", value: parameters.snsType)]
         default:
             return nil
         }
@@ -85,7 +90,7 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .drop, .userInfoRegistration:
             return .post
         case .duplicationId, .logout, .socialLoginCheck:
             return .get
@@ -126,7 +131,7 @@ extension AuthRouter: TargetType2 {
             return nil
             
         case .kakaoLogin(let parameters):
-            let requestKakaoLoginDTO = RequestKakaoLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let requestKakaoLoginDTO = RequestKakaoLoginDTO(user_id: parameters.userId, name: parameters.name, sns_type: parameters.snsType)
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestKakaoLoginDTO)
@@ -136,6 +141,12 @@ extension AuthRouter: TargetType2 {
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestGoogleLoginDTO)
+            
+        case .appleLogin(let parameters):
+            let requestAppleLoginDTO = RequestAppleLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestAppleLoginDTO)
             
         case .social(let parameters):
             let requestSocialDTO = RequestSocialDTO(user_id: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti)
@@ -154,6 +165,11 @@ extension AuthRouter: TargetType2 {
             
         case .socialLoginCheck:
             return nil
+            
+        case .userInfoRegistration(let parameters):
+            let requestDTO = RequestUserInfoInSnsLoginDTO(userId: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti, pushCheck: parameters.push_check)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         }
     }
 }

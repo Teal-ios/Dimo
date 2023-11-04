@@ -24,6 +24,8 @@ final class FeedDetailViewModel: ViewModelType {
     var deleteReviewTrigger: PublishRelay<Void>
     var review_id: BehaviorRelay<Int>
     var totalCommentList: [CommentList?] = []
+    private var modifyCommentDismiss: PublishRelay<Void>
+    private var deleteComment: PublishRelay<Void>
     
     struct Input{
         let plusNavigationButtonTapped: PublishSubject<Void>
@@ -37,6 +39,7 @@ final class FeedDetailViewModel: ViewModelType {
         let spoilerFilterButtonTapped: ControlEvent<Void>
         let otherFeedButtonTapped: ControlEvent<Void>
         let viewWillAppear: PublishRelay<Void>
+        let modifyCommentButtonCellSelected: PublishRelay<CommentList>
     }
     
     struct Output{
@@ -50,15 +53,18 @@ final class FeedDetailViewModel: ViewModelType {
         let commentLikeValid: BehaviorRelay<Bool>
         let modifyReviewTextAfter: PublishRelay<String>
         let currentSpoilerValid: BehaviorRelay<SpoilerComment>
+        let modifyCommentDismiss: PublishRelay<Void>
     }
     
-    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>) {
+    init(coordinator: TabmanCoordinator? = nil, characterDetailUseCase: CharacterDetailUseCase, review: ReviewList, modifyText: PublishRelay<String>, deleteReviewEvent: PublishRelay<Void>, modifyCommentDismiss: PublishRelay<Void>, deleteComment: PublishRelay<Void>) {
         self.coordinator = coordinator
         self.characterDetailUseCase = characterDetailUseCase
         self.review = BehaviorRelay(value: review)
         self.modifyText = modifyText
         self.deleteReviewTrigger = deleteReviewEvent
         self.review_id = BehaviorRelay(value: review.review_id)
+        self.modifyCommentDismiss = modifyCommentDismiss
+        self.deleteComment = deleteComment
     }
     
     let getCommentList = PublishRelay<[CommentList?]>()
@@ -271,8 +277,26 @@ final class FeedDetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.modifyCommentButtonCellSelected
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { vm, commentList in
+                //여기서 화면전환
+                vm.coordinator?.showModifyCommentViewController(comment: commentList)
+            }
+            .disposed(by: disposeBag)
         
-        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText, currentSpoilerValid: self.currentSpoiler)
+        self.deleteComment
+            .withLatestFrom(self.review)
+            .bind { [weak self] review in
+                guard let self else { return }
+                guard let user_id = UserDefaultManager.userId else { return }
+                self.getCommentList(user_id: user_id, review_id: review.review_id)
+            }
+            .disposed(by: disposeBag)
+        
+        
+        return Output(spoilerValid: self.spoilerValid, textValid: self.textValid, review: self.review, commentList: self.getCommentList, postCommentSuccess: self.postComment, reviewDetail: self.getReviewDetail, reviewLikeValid: self.reviewLikeValid, commentLikeValid: self.commentLikeValid, modifyReviewTextAfter: self.modifyText, currentSpoilerValid: self.currentSpoiler, modifyCommentDismiss: self.modifyCommentDismiss)
     }
 }
 

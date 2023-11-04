@@ -29,9 +29,45 @@
 | [Docs]   | Readme 수정작업                     |
 
 ### UI
-![Simulator Screen Recording - iPhone 14 Pro - 2023-08-07 at 09 50 19](https://github.com/SideProject-DIMO/iOS/assets/81552265/7cf77911-6c13-49d5-8c5a-ca1a4a558f1b)
-![Simulator Screen Recording - iPhone 14 Pro - 2023-08-07 at 09 49 17](https://github.com/SideProject-DIMO/iOS/assets/81552265/9441d5db-f989-4fe6-a4f9-e146e71967cc)
-![Simulator Screen Recording - iPhone 14 Pro - 2023-08-07 at 09 48 55](https://github.com/SideProject-DIMO/iOS/assets/81552265/3c3d4fe8-b594-47da-bd30-0f7b11a534e8)
+
+<img width="1082" alt="스크린샷 2023-08-01 오후 8 34 28" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/e0610849-f5b7-4466-8c8e-ccc0e9cdc79b">
+
+### Architecture 구성도
+
+<img width="1082" alt="스크린샷 2023-09-21 오전 9 57 18" src="https://github.com/SideProject-DIMO/iOS/assets/81552265/c22a0e09-0f64-4e77-a531-31ef0da6372a">
+
+
+### 회고
+
+**실제 출시 프로젝트에서의 Architecture에 대한 고찰**
+
+- Figma 기준 View 개수 80개 이상, API 개수 70개 이상의 서비스
+- 기획자 / 디자이너 / 안드로이드 / iOS / 서버 / 웹 으로 구성된 단체 협업 프로젝트
+- Clean Architecture을 사용하면서 UseCase를 통한 ViewModel의 코드 재사용성 증가
+- 다른 iOS 개발자가 구성한 Logic도 Layer 분리를 통해 빠른 코드 이해 및 적용 가능
+- 초기 구현단계에서의 개발 속도는 낮아지지만, 추가 / 수정되는 Feature에 대한 유지보수성 및 개발 퍼포먼스 증가의 이점
+- 서비스 규모에 따른 구조적 설계의 필요성 체감
+
+**ViewModel에서의 DIP에 대한 고민**
+
+- MVVM Pattern에서 DIP를 적용한 TestCode 작성
+- View Builder / ViewModel Input / Output Protocol / ViewModel Protocol / ViewModel Impl의 추가 코드 작성 필요
+- Testable의 관점에서는 용이하나, 실제 프로젝트에 전체 적용하기에는 개발 퍼포먼스 측면에서 과도한 제약 및 시간 소요가 된다고 판단
+- 내부 iOS 개발자와 회의 후, 이 부분에서는 기존 MVVM 구조를 가져가기로 협의
+
+**Coordinator 분리에 대한 고민**
+
+- 4개의 Tabbar 영역의 Coordinator Flow로 각각의 화면 전환을 담당하는 구조로 구성
+- 3번째 탭에서 1번째 탭의 화면으로 이동해야 하는 이슈 발생.
+- 각 탭의 Coordinator에서 추가로 화면 Flow에 따른 Coordinator를 분리
+- 다른 Coordinator에서도 필요한 화면 Flow에 따른 Coordinator에 Navigation을 주입시켜주는 방식으로 구조 변경
+- 화면 전환에 대해 유연한 대처가 가능
+
+**다양한 예외처리에 대한 고민**
+
+- 게시글 / 댓글 / 스포일러 / 좋아요 여부에 따른 처리 등 다양한 화면에서의 예외처리 로직
+- 다양한 예외처리에 대해 iOS 개발자와 논의 및 케이스 다이어그램 구성
+- 직관적인 케이스 다이어그램으로 꼼꼼한 예외처리 적용
 
 ### 트러블 슈팅
 

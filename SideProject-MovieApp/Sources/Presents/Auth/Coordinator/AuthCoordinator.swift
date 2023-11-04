@@ -45,14 +45,15 @@ final class AuthCoordinator: Coordinator {
         let viewModel = OnBoardingViewModel(coordinator: self)
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
-        showSignupTermsViewController()
-        
+        showTermsOfUseViewController(isSnsLogin:  false)
     }
-    func showSignupTermsViewController() {
-        let viewModel = SignupTermsViewModel(coordinator: self)
-        let vc = SignupTermsViewController(viewModel: viewModel)
+    
+    func showTermsOfUseViewController(isSnsLogin: Bool) {
+        let viewModel = TermsOfUseViewModel(coordinator: self, isSnsLogin: isSnsLogin)
+        let vc = TermsOfUseViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showSignupIdentificationViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
@@ -61,6 +62,7 @@ final class AuthCoordinator: Coordinator {
         let vc = SignupIdentificationViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showIDRegisterViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
@@ -69,19 +71,22 @@ final class AuthCoordinator: Coordinator {
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
-    func showNickNameViewController() {
+    
+    func showNickNameViewController(isSnsLogin: Bool) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
+        let viewModel = NicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, isSnsLogin: isSnsLogin)
         let vc = NickNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showPasswordViewController() {
         let viewModel = PasswordViewModel(coordinator: self)
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showDimoLoginViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
@@ -90,21 +95,23 @@ final class AuthCoordinator: Coordinator {
         let vc = DimoLoginViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showPopupViewController() {
         let viewModel = PopupViewModel(coordinator: self)
         let vc = PopupViewController(viewModel: viewModel)
         vc.modalPresentationStyle = .overFullScreen
         navigationController.present(vc, animated: true)
     }
+    
     func popPopupViewController() {
         navigationController.dismiss(animated: true)
     }
     
-    func showJoinMbtiViewController() {
+    func showJoinMbtiViewController(isSnsLogin: Bool) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
-        let viewModel = JoinMbtiViewModel(coordinator: self, authUseCase: authUseCaseImpl)
+        let viewModel = JoinMbtiViewModel(coordinator: self, authUseCase: authUseCaseImpl, isSnsLogin: isSnsLogin)
         let vc = JoinMbtiViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -166,6 +173,3 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 }
-
-
-

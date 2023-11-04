@@ -8,6 +8,6 @@
 import Foundation
 
 struct SocialLoginCheckQuery: Hashable {
-    let user_id: String
-    let sns_type: String
+    let userId: String
+    let snsType: String
 }

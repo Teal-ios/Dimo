@@ -23,11 +23,15 @@ protocol AuthRepository: AnyObject {
     
     func requestGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
     
+    func requestAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin
+    
     func requestSocial(query: SocialQuery) async throws -> Social
     
     func requestDrop(query: DropQuery) async throws -> Drop
     
     func fetchLogout() async throws -> Logout
     
-    func fetchSocialLoginCheck(user_id: String, sns_type: String) async throws -> SocialLoginCheck
+    func fetchSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
+    
+    func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin
 }

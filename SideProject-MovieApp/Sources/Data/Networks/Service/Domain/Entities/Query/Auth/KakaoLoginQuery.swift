@@ -8,7 +8,13 @@
 import Foundation
 
 struct KakaoLoginQuery: Hashable {
-    let user_id: String
+    let userId: String
     let name: String
-    let sns_type: String
+    let snsType: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case name
+        case snsType = "sns_type"
+    }
 }

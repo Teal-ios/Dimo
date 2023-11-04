@@ -62,9 +62,7 @@ final class DigViewModel: ViewModelType {
                 if i == true {
                     count += 1
                 }
-                if count == 4 {
-                    self.mbtiDefindLogic(mbti: mbti)
-                }
+                self.mbtiDefindLogic(mbti: mbti)
             }
         }
         .disposed(by: disposeBag)
@@ -134,7 +132,11 @@ extension DigViewModel {
                 }
             }
         }
-        self.mbtiValid.accept(true)
+        if self.mbtiString.count == 4 {
+            self.mbtiValid.accept(true)
+        } else {
+            self.mbtiValid.accept(false)
+        }
     }
 }
 

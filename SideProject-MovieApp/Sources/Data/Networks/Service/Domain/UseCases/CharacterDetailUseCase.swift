@@ -33,6 +33,8 @@ protocol CharacterDetailUseCase {
     func excuteBlindReview(query: PostBlindReviewQuery) async throws -> BlindReview
     
     func excuteReportUser(query: PostReportUserQuery) async throws -> ReportUser
+    
+    func excuteDeleteComment(query: DeleteCommentQuery) async throws -> DeleteComment
 }
 
 enum CharacterDetailUseCaseError: String, Error {
@@ -128,6 +130,7 @@ extension CharacterDetailUseCaseImpl {
         }
     }
 }
+
 extension CharacterDetailUseCaseImpl {
     func excutePostComment(query: PostCommentQuery) async throws -> PostComment {
         do {
@@ -172,6 +175,16 @@ extension CharacterDetailUseCaseImpl {
     func excuteReportUser(query: PostReportUserQuery) async throws -> ReportUser {
         do {
             return try await characterDetailRepository.reqeustReportUser(query: query)
+        } catch {
+            throw VoteUseCaseError.excute
+        }
+    }
+}
+
+extension CharacterDetailUseCaseImpl {
+    func excuteDeleteComment(query: DeleteCommentQuery) async throws -> DeleteComment {
+        do {
+            return try await characterDetailRepository.deleteComment(query: query)
         } catch {
             throw VoteUseCaseError.excute
         }
