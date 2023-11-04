@@ -23,6 +23,7 @@ class LoginStartViewController: BaseViewController {
     private lazy var input = LoginStartViewModel.Input(didTappedDimoLoginButton: self.loginStartView.dimoLoginButton.rx.tap,
                                                        didTappedKakaoLoginButton: self.loginStartView.kakaoLoginButton.rx.tap,
                                                        didTappedGoogleLoginButton: self.loginStartView.googleLoginButton.rx.tap,
+                                                       didTappedAppleLoginButton: self.loginStartView.appleLoginButton.rx.tap,
                                                        didTappedSignupButton: self.loginStartView.signupButton.rx.tap)
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +33,6 @@ class LoginStartViewController: BaseViewController {
     init(viewModel: LoginStartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     override func loadView() {
@@ -41,7 +41,6 @@ class LoginStartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("check")
         self.loginStartView.appleLoginButton.addTarget(self, action: #selector(appleLoginButtonTapped), for: .touchUpInside)
         
     }
@@ -59,15 +58,15 @@ class LoginStartViewController: BaseViewController {
         output.googleLoginButtonTapped
             .withUnretained(self)
             .bind { vc, _ in
-
-        }
-        .disposed(by: disposeBag)
+                vc.didTappedGoogleLoginButton()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension LoginStartViewController: ASAuthorizationControllerDelegate {
-    @objc
-    func appleLoginButtonTapped() {
+    
+    @objc func appleLoginButtonTapped() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         
@@ -85,7 +84,6 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
             // Create an account in your system.
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
             
             if  let authorizationCode = appleIDCredential.authorizationCode,
                 let identityToken = appleIDCredential.identityToken,
@@ -97,10 +95,22 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
                 print("tokenString: \(tokenString)")
             }
             
-            print("useridentifier: \(userIdentifier)")
-            print("fullName: \(fullName)")
-            print("email: \(email)")
+            if let fullName = fullName {
+                guard let firstName = fullName.givenName else { return } // 이름
+                guard let lastName = fullName.familyName else { return } // 성
+                let name = lastName + firstName
+                UserDefaultMa
+            } else {
+
+            }
             
+            print("useridentifier: \(userIdentifier)")
+//            guard let firstName = fullName?.givenName else { return } // 이름
+//            guard let lastName = fullName?.familyName else { return } // 성
+//            let name = lastName + firstName
+//            print("✅ APPLE LOGIN NAME: \(name)")
+//            print("✅ APPLE LOGIN Email: \(email)")
+            print("✅ APPLE LOGIN UserIdentifier: \(userIdentifier)")
         case let passwordCredential as ASPasswordCredential:
             // Sign in using an existing iCloud Keychain credential.
             let username = passwordCredential.user
@@ -142,24 +152,8 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
     }
 }
 
-// MARK: Kakao 로그인
+// MARK: - Kakao 로그인
 extension LoginStartViewController {
-//    func kakaoLoginButtonTouchUpInside() {
-//        // 카카오톡 설치 여부 확인
-//        if (UserApi.isKakaoTalkLoginAvailable()) {
-//            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-//                if let error = error {
-//                    print(error)
-//                }
-//                else {
-//                    print("loginWithKakaoTalk() success.")
-//
-//                    //do something
-//                    _ = oauthToken
-//                }
-//            }
-//        }
-//    }
     
     private func presentKakaoOAuthFailedAlert() {
         DispatchQueue.main.async {
@@ -170,7 +164,7 @@ extension LoginStartViewController {
         }
     }
     
-    func didTappedKakaoLoginButton() {
+    private func didTappedKakaoLoginButton() {
        let kakaoTalkIsDownloaded = UserApi.isKakaoTalkLoginAvailable()
         
         if kakaoTalkIsDownloaded {
@@ -215,4 +209,36 @@ extension LoginStartViewController {
             }
         }
     }
+}
+
+// MARK: - Google 로그인
+extension LoginStartViewController {
+    
+    private func didTappedGoogleLoginButton() {
+        let gidConfig = GIDConfiguration(clientID: APIKey.googleClientID)
+        
+        
+        GIDSignIn.sharedInstance.signIn(with: gidConfig, presenting: self) { gidGoogleUser, error in
+            guard error == nil else { return }
+            guard let gidGoogleUser = gidGoogleUser else { return }
+            self.showGoogleAuthorizationView(user: gidGoogleUser)
+        }
+    }
+    
+    func showGoogleAuthorizationView(user: GIDGoogleUser) {
+        user.authentication.do { [weak self] authentication, error in
+            guard error == nil else { return }
+            guard let authentication = authentication,
+                  let idToken = authentication.idToken else { return }
+            guard let userId = user.userID else { return }
+            guard let userName = user.profile?.name else { return }
+            let snsType = "google"
+            self?.viewModel.didTrySocialLogin(with: .google(name: userName, id: userId, snsType: snsType))
+        }
+    }
+}
+
+// MARK: - Apple 로그인
+extension LoginStartViewController {
+    
 }
