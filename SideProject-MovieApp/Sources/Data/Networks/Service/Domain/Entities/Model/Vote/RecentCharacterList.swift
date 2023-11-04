@@ -11,5 +11,5 @@ struct RecentCharacterList: Hashable {
     let code: Int
     let message: String
     let user_id: String
-    let seen_chr_list: [RecentCharacterItem?]
+    let seen_chr_list: [RecentCharacterItem?]?
 }

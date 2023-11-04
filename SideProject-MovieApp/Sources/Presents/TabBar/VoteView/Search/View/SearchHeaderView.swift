@@ -7,10 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class SearchHeaderView: UICollectionReusableView {
     static let identifier = "SearchHeaderView"
-    
+    var disposeBag = DisposeBag()
     
     let titleLabel: UILabel = {
         let label = UILabel()

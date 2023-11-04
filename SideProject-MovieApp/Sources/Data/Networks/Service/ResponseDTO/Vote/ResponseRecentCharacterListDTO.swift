@@ -11,7 +11,7 @@ struct ResponseRecentCharacterListDTO: Decodable {
     let code: Int
     let message: String
     let user_id: String
-    let seen_chr_list: [ResponseRecentCharacterItemDTO?]
+    let seen_chr_list: [ResponseRecentCharacterItemDTO?]?
     
     enum CodingKeys: String, CodingKey {
         case code, message, user_id, seen_chr_list
@@ -20,6 +20,6 @@ struct ResponseRecentCharacterListDTO: Decodable {
 
 extension ResponseRecentCharacterListDTO {
     var toDomain: RecentCharacterList {
-        return .init(code: code, message: message, user_id: user_id, seen_chr_list: seen_chr_list.map { $0?.toDomain })
+        return .init(code: code, message: message, user_id: user_id, seen_chr_list: seen_chr_list?.map { $0?.toDomain })
     }
 }

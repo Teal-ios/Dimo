@@ -11,5 +11,5 @@ struct RecentSearchList: Hashable {
     let code: Int
     let message: String
     let user_id: String
-    let search_list: [RecentSearchItem?]
+    let search_list: [RecentSearchItem?]?
 }
