@@ -75,12 +75,9 @@ final class MyMomentumViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.editProfileButtonTap
-            .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
-//                self.coordinator?.showEditProfileViewController()
-                print("몇번 울리니")
-                self.coordinator?.showOtherMomentumViewController(other_id: "dimmo1004")
+                self.coordinator?.showEditProfileViewController()
             }
             .disposed(by: disposeBag)
         

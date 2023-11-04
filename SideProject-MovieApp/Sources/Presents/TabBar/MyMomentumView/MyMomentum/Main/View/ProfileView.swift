@@ -140,7 +140,6 @@ extension ProfileView {
         } else {
             self.introduceLabel.text = profile.intro
         }
-        
         let imageURL = URL(string: profile.profile_img ?? "nil")
         if imageURL != URL(string: "nil") {
             self.profileImageView.kf.setImage(with: imageURL)
