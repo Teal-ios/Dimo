@@ -53,7 +53,6 @@ final class TabmanCoordinator: Coordinator, CoordinatorDelegate {
         }
     }
     
-    
     func showFeedDetailViewController(review: ReviewList) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)

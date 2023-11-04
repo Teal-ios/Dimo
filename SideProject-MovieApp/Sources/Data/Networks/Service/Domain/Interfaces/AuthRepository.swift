@@ -29,5 +29,5 @@ protocol AuthRepository: AnyObject {
     
     func fetchLogout() async throws -> Logout
     
-    func fetchSocialLoginCheck(user_id: String, sns_type: String) async throws -> SocialLoginCheck
+    func fetchSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
 }

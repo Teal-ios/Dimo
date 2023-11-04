@@ -16,7 +16,7 @@ protocol AuthUseCase {
     
     func executeDuplicationId(user_id: String) async throws -> DuplicationId
     
-    func excuteLogin(query: LoginQuery) async throws -> Login
+    func executeLogin(query: LoginQuery) async throws -> Login
     
     func executeKakaoLogin(query: KakaoLoginQuery) async throws -> KakaoLogin
     
@@ -28,7 +28,7 @@ protocol AuthUseCase {
 
     func executeLogout() async throws -> Logout
     
-    func excuteSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
+    func executeSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
 }
 
 enum AuthUseCaseError: String, Error {
@@ -45,7 +45,7 @@ final class AuthUseCaseImpl: AuthUseCase {
 }
 
 extension AuthUseCaseImpl {
-    func excuteSignUp(query: SignUpQuery) async throws -> SignUp {
+    func executeSignUp(query: SignUpQuery) async throws -> SignUp {
         do {
             return try await authRepository.requestSignUp(query: query)
         } catch {
@@ -55,7 +55,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteDuplicationId(user_id: String) async throws -> DuplicationId {
+    func executeDuplicationId(user_id: String) async throws -> DuplicationId {
         do {
             return try await authRepository.fetchDuplicationId(query: DuplicationIdQuery(user_id: user_id))
         } catch {
@@ -65,7 +65,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excutePhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck {
+    func executePhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck {
         do {
             return try await authRepository.requestPhoneNumberCheck(query: query)
         } catch {
@@ -75,7 +75,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excutePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify {
+    func executePhoneNumberVerify(query: PhoneNumberVerifyQuery) async throws -> PhoneNumberVerify {
         do {
             return try await authRepository.requestPhoneNumberVerify(query: query)
         } catch {
@@ -85,7 +85,7 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteLogin(query: LoginQuery) async throws -> Login {
+    func executeLogin(query: LoginQuery) async throws -> Login {
         do {
             return try await authRepository.requestLogin(query: query)
         } catch {
@@ -145,9 +145,9 @@ extension AuthUseCaseImpl {
 }
 
 extension AuthUseCaseImpl {
-    func excuteSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck {
+    func executeSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck {
         do {
-            return try await authRepository.fetchSocialLoginCheck(user_id: query.user_id, sns_type: query.sns_type)
+            return try await authRepository.fetchSocialLoginCheck(query: query)
         } catch {
             throw AuthUseCaseError.execute
         }

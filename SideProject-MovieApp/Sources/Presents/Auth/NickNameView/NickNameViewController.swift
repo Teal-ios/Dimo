@@ -10,51 +10,71 @@ import RxCocoa
 import RxSwift
 
 class NickNameViewController: BaseViewController {
-    private let nickNameView = NicknameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
-    private var viewModel: NickNameViewModel
-    override func loadView() {
-        view = nickNameView
-    }
-    init(viewModel: NickNameViewModel) {
+    
+    private let nicknameView = NicknameView(title: "DIMO에서 사용할\n닉네임을 입력해 주세요", placeholder: "닉네임")
+    private var viewModel: NicknameViewModel
+    
+    init(viewModel: NicknameViewModel) {
         self.viewModel = viewModel
         super.init()
+    }
+
+    override func loadView() {
+        self.view = nicknameView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
     }
+    
     override func setupBinding() {
-        let input = NickNameViewModel.Input(textFieldInput: nickNameView.idTextFieldView.tf.rx.text, nextButtonTapped: nickNameView.nextButton.rx.tap, duplicationButtonTap: nickNameView.duplicateCheckButton.rx.tap)
-        
+        let input = NicknameViewModel.Input(
+            textFieldEditingDidBegin: nicknameView.idTextFieldView.tf.rx.controlEvent(.editingDidBegin),
+            textFieldEditingChanged: nicknameView.idTextFieldView.tf.rx.controlEvent(.editingChanged),
+            textFieldEditingDidEnd: nicknameView.idTextFieldView.tf.rx.controlEvent(.editingDidEnd),
+            textFieldInput: nicknameView.idTextFieldView.tf.rx.text,
+            didTappedNextButton: nicknameView.nextButton.rx.tap
+        )
+
         let output = viewModel.transform(input: input)
         
-        output.nicknameValid
-            .withUnretained(self)
-            .bind { vc, bool in
-                if vc.nickNameView.idTextFieldView.tf.text?.count == 0 {
-                    vc.nickNameView.duplicateCheckButton.configuration?.baseForegroundColor = .black80
-                    vc.nickNameView.duplicateCheckButton.isEnabled = false
-                    vc.nickNameView.policyLabel.textColor = .black60
-                    vc.nickNameView.policyLabel.text =  ""
-                } else {
-                    vc.nickNameView.duplicateCheckButton.configuration?.baseForegroundColor = bool ? .white : .black80
-                    vc.nickNameView.duplicateCheckButton.isEnabled = bool
-                    vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
-                    vc.nickNameView.policyLabel.text = bool ? "" : "두 글자 이상 입력해 주세요."
+        output.isTextFieldEditingDidBegin
+            .bind { [weak self] isEditingBegin in
+                if isEditingBegin {
+                    self?.nicknameView.showEmptyMessage()
                 }
             }
             .disposed(by: disposeBag)
         
-        output.nextButtonValid
-            .withUnretained(self)
-            .observe(on: MainScheduler.instance)  // 메인 스레드에서 실행하도록 함
-            .bind { vc, bool in
-                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
-                vc.nickNameView.policyLabel.text = bool ? "사용 가능한 닉네임입니다." : "중복된 닉네임이 존재합니다."
-                vc.nickNameView.policyLabel.textColor = bool ? .black60 : .error
-                vc.nickNameView.nextButton.isEnabled = bool
-                vc.nickNameView.nextButton.configuration?.baseBackgroundColor = bool ? .purple100 : .black80
-            }.disposed(by: disposeBag)
+        output.isTextFieldChanged
+            .bind { [weak self] isEditingChanged in
+                self?.nicknameView.checkNextButton(isValid: false)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isTextFieldEditingChanged
+            .skip(1)
+            .bind { [weak self] isValidFormat in
+                if isValidFormat == false {
+                    self?.nicknameView.showUnvalidNicknameFormatMessage()
+                } else {
+                    self?.nicknameView.showEmptyMessage()
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.isDuplicatedNickname
+            .observe(on: MainScheduler.instance)
+            .skip(1)
+            .bind { [weak self] isDuplicatedNickname in
+                if isDuplicatedNickname {
+                    self?.nicknameView.showDuplicatedNicknameMessage()
+                } else {
+                    self?.nicknameView.showValidNicknameMessage()
+                    self?.nicknameView.checkNextButton(isValid: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

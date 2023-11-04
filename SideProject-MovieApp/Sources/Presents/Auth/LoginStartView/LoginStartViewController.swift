@@ -171,13 +171,26 @@ extension LoginStartViewController {
     }
     
     func didTappedKakaoLoginButton() {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
+       let kakaoTalkIsDownloaded = UserApi.isKakaoTalkLoginAvailable()
+        
+        if kakaoTalkIsDownloaded {
             UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
                 if let error = error {
                     print(error)
                     self?.presentKakaoOAuthFailedAlert()
                 } else {
-                    self?.viewModel.didTryLogin(with: .kakao(oauthToken?.accessToken ?? ""))
+                    UserApi.shared.me() {(user, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        else {
+                            guard let userId = user?.id else { return }
+                            guard let userName = user?.properties?["nickname"] else { return }
+                            let snsType = "kakao"
+                            self?.viewModel.didTrySocialLogin(with: .kakao(name: userName, id: String(userId), snsType: snsType))
+                            
+                        }
+                    }
                 }
             }
         } else {
@@ -186,7 +199,18 @@ extension LoginStartViewController {
                     print(error)
                     self?.presentKakaoOAuthFailedAlert()
                 } else {
-                    self?.viewModel.didTryLogin(with: .kakao(oauthToken?.accessToken ?? ""))
+                    
+                    UserApi.shared.me() {(user, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        else {
+                            guard let userId = user?.id else { return }
+                            guard let userName = user?.properties?["nickname"] else { return }
+                            let snsType = "kakao"
+                            self?.viewModel.didTrySocialLogin(with: .kakao(name: userName, id: String(userId), snsType: snsType))
+                        }
+                    }
                 }
             }
         }

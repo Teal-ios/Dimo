@@ -45,14 +45,15 @@ final class AuthCoordinator: Coordinator {
         let viewModel = OnBoardingViewModel(coordinator: self)
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
-        showSignupTermsViewController()
-        
+        showTermsOfUseViewController()
     }
-    func showSignupTermsViewController() {
-        let viewModel = SignupTermsViewModel(coordinator: self)
-        let vc = SignupTermsViewController(viewModel: viewModel)
+    
+    func showTermsOfUseViewController() {
+        let viewModel = TermsOfUseViewModel(coordinator: self)
+        let vc = TermsOfUseViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
+    
     func showSignupIdentificationViewController() {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
@@ -69,11 +70,11 @@ final class AuthCoordinator: Coordinator {
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
-    func showNickNameViewController() {
+    func showNickNameViewController(coordinatorFlow: NicknameViewModel.CoordinatorFlow) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = NickNameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl)
+        let viewModel = NicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, coordinatorFlow: coordinatorFlow)
         let vc = NickNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -166,6 +167,3 @@ final class AuthCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 }
-
-
-

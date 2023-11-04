@@ -7,20 +7,23 @@
 
 import Foundation
 
-struct ResponseKakaoLoginDTO: Codable {
+struct ResponseKakaoLoginDTO: Decodable {
     let code: Int
     let message: String
-    let user_id: String
-    let access_token: String
-    let refresh_token: String
+    let userId: String
+    let accessToken: String
+    let refreshToken: String
     
     enum CodingKeys: String, CodingKey {
-        case code, message, user_id, access_token, refresh_token
+        case code, message
+        case userId = "user_id"
+        case accessToken = "access_token"
+        case refreshToken = "refresh_token"
     }
 }
 
 extension ResponseKakaoLoginDTO {
     var toDomain: KakaoLogin {
-        return .init(code: code, message: message, user_id: user_id, access_token: access_token, refresh_token: refresh_token)
+        return .init(code: code, message: message, userId: userId, accessToken: accessToken, refreshToken: refreshToken)
     }
 }

@@ -29,7 +29,7 @@ struct AuthAPIEndpoints {
     }
     
     static func postKakaoLogin(with requestDTO: RequestKakaoLoginDTO) -> AuthRouter<ResponseKakaoLoginDTO> {
-        return AuthRouter<ResponseKakaoLoginDTO>.kakaoLogin(parameters: KakaoLoginQuery(user_id: requestDTO.user_id, name: requestDTO.name, sns_type: requestDTO.sns_type))
+        return AuthRouter<ResponseKakaoLoginDTO>.kakaoLogin(parameters: KakaoLoginQuery(userId: requestDTO.user_id, name: requestDTO.name, snsType: requestDTO.sns_type))
     }
     
     static func postGoogleLogin(with requestDTO: RequestGoogleLoginDTO) -> AuthRouter<ResponseGoogleLoginDTO> {
@@ -49,7 +49,7 @@ struct AuthAPIEndpoints {
     }
     
     static func getSocialLoginCheck(user_id: String, sns_type: String) -> AuthRouter<ResponseSocialLoginCheckDTO> {
-        return AuthRouter<ResponseSocialLoginCheckDTO>.socialLoginCheck(parameters: SocialLoginCheckQuery(user_id: user_id, sns_type: sns_type))
+        return AuthRouter<ResponseSocialLoginCheckDTO>.socialLoginCheck(parameters: SocialLoginCheckQuery(userId: user_id, snsType: sns_type))
     }
 }
 

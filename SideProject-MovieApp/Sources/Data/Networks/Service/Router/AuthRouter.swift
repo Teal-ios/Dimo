@@ -36,7 +36,6 @@ extension AuthRouter: TargetType2 {
         return 3000
     }
     
-    
     var scheme: String {
         return "http"
     }
@@ -77,7 +76,7 @@ extension AuthRouter: TargetType2 {
         case .duplicationId(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .socialLoginCheck(let parameters):
-            return [URLQueryItem(name: "user_id", value: parameters.user_id), URLQueryItem(name: "sns_type", value: parameters.sns_type)]
+            return [URLQueryItem(name: "user_id", value: parameters.userId), URLQueryItem(name: "sns_type", value: parameters.snsType)]
         default:
             return nil
         }
@@ -126,7 +125,7 @@ extension AuthRouter: TargetType2 {
             return nil
             
         case .kakaoLogin(let parameters):
-            let requestKakaoLoginDTO = RequestKakaoLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let requestKakaoLoginDTO = RequestKakaoLoginDTO(user_id: parameters.userId, name: parameters.name, sns_type: parameters.snsType)
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestKakaoLoginDTO)

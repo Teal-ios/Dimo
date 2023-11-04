@@ -11,13 +11,18 @@ import RxCocoa
 
 final class LoginStartViewModel: ViewModelType {
     
+    enum SocialLoginType {
+        case kakao(name: String, id: String, snsType: String)
+        case google
+        case apple
+    }
+    
     var disposeBag = DisposeBag()
     private var authUseCase: AuthUseCase
     private weak var coordinator: AuthCoordinator?
     
     struct Input{
         var didTappedDimoLoginButton: ControlEvent<Void>
-        
         var didTappedKakaoLoginButton: ControlEvent<Void>
         var didTappedGoogleLoginButton: ControlEvent<Void>
 //        var appleLoginButtonTapped: ControlEvent<Void>
@@ -71,11 +76,23 @@ final class LoginStartViewModel: ViewModelType {
 
 extension LoginStartViewModel {
     
-    func didTryKaKaoLogin() {
-        Task {
-            self.authUseCase.executeKakaoLogin(query:)
+    func didTrySocialLogin(with snsType: SocialLoginType) {
+        switch snsType {
+        case .kakao(let name, let id, let snsType):
+            let kakaoLoginQuery = KakaoLoginQuery(userId: id, name: name, snsType: snsType)
+            Task {
+                let kakaoLogin = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
+                print("KAKO LOGIN: ", kakaoLogin)
+                if kakaoLogin.code == 200 {
+                    await MainActor.run {
+                        self.coordinator?.showTermsOfUseViewController()
+                    }
+                }
+            }
+        case .google:
+            print("GOOGLE LOGIN")
+        case .apple:
+            print("APPLE LOGIN")
         }
-        
     }
-    
 }
