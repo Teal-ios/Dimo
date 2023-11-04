@@ -54,6 +54,17 @@ struct UserDefaultManager {
     
     @UserDefault(key: "push_check", defaultValue: nil)
     static var pushCheck: Int?
-
     
+    static func removeAllUserDefault() {
+        UserDefaults.standard.removeObject(forKey: "userId")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "userName")
+        UserDefaults.standard.removeObject(forKey: "nickname")
+        UserDefaults.standard.removeObject(forKey: "sns_type")
+        UserDefaults.standard.removeObject(forKey: "agency")
+        UserDefaults.standard.removeObject(forKey: "mbti")
+        UserDefaults.standard.removeObject(forKey: "phoneNumber")
+        UserDefaults.standard.removeObject(forKey: "lastNicknameChangeDate")
+        UserDefaults.standard.removeObject(forKey: "push_check")
+    }
 }
