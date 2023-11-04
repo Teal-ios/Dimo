@@ -19,8 +19,7 @@ final class EditMyInfoViewModel: ViewModelType {
         let cellSelected: PublishSubject<IndexPath>
     }
     
-    struct Output{
-    }
+    struct Output{ }
     
     init(coordinator: SettingCoordinator? = nil, nicknameChangeDate: Date?) {
         self.coordinator = coordinator
@@ -31,12 +30,12 @@ final class EditMyInfoViewModel: ViewModelType {
         input.cellSelected.bind { indexPath in
             switch indexPath {
             case [0, 0]:
-                print("닉네임 변경")
                 self.coordinator?.showEditNicknameViewController(nicknameChangeDate: self.nicknameChangeDate)
             case [0, 1]:
-                print("비밀번호 변경")
                 self.coordinator?.showEditPasswordViewController()
             case [0, 2]:
+                UserDefaultManager.removeAllUserDefault()
+                self.coordinator?.connectAuthFlow()
                 print("로그아웃")
             case [0, 3]:
                 self.coordinator?.showWithDrawViewController()
