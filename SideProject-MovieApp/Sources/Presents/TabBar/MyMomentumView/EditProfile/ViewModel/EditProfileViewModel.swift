@@ -9,12 +9,17 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+protocol editProfileUpdateDelegate {
+    func editProfileFinish(data: ModifyMyProfileQuery)
+}
+
 final class EditProfileViewModel: ViewModelType {
     
     private weak var coordinator: MyMomentumCoordinator?
     private let myMomentumUseCase: MyMomentumUseCase
     
     var disposeBag: DisposeBag = DisposeBag()
+    var delegate: editProfileUpdateDelegate?
     
     init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase) {
         self.coordinator = coordinator
@@ -59,6 +64,7 @@ extension EditProfileViewModel {
             let query = ModifyMyProfileQuery(user_id: user_id, profile_img: imageData, intro: text)
             let editProfile = try await myMomentumUseCase.excuteModifyMyProfile(query: query)
             print(editProfile, "프로필 수정 완료")
+            self.delegate?.editProfileFinish(data: query)
         }
     }
 }

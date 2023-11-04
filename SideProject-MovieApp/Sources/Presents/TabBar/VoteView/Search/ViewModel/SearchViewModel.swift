@@ -46,6 +46,8 @@ final class SearchViewModel: ViewModelType {
         let recentSearchList: PublishRelay<[RecentSearchItem?]?>
         let recentCharacterList: PublishRelay<[RecentCharacterItem?]?>
         let updateSearchTextTrigger: PublishRelay<String>
+        let recentDataIsEmptyTrigger: PublishRelay<Void>
+
     }
     
     var animationData = PublishRelay<[AnimationData]>()
@@ -62,6 +64,7 @@ final class SearchViewModel: ViewModelType {
     let updateSearchTextTrigger = PublishRelay<String>()
     let recentSearchAllItemDeleteTrigger = PublishRelay<RecentSearchItemListDelete>()
     let recentCharacterAllItemDeleteTrigger = PublishRelay<RecentCharacterItemListDelete>()
+    let recentDataIsEmptyTrigger = PublishRelay<Void>()
 
     func transform(input: Input) -> Output {
         
@@ -148,6 +151,15 @@ final class SearchViewModel: ViewModelType {
                     } else {
                         vm.getSearchWorkList(user_id: user_id, searchText: text)
                     }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(input.searchText, recentSearchList, recentCharacterList)
+            .bind { [weak self] text, searchList, characterList in
+                guard let self = self else { return }
+                if text == nil && searchList == nil && characterList == nil {
+                    self.recentDataIsEmptyTrigger.accept(())
                 }
             }
             .disposed(by: disposeBag)
@@ -256,7 +268,7 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(animationData: self.animationData,
-                      searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchWorkList: self.searchWorkList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory, recentSearchList: self.recentSearchList, recentCharacterList: self.recentCharacterList, updateSearchTextTrigger: self.updateSearchTextTrigger)
+                      searchText: input.searchText, searchCharacterList: self.searchCharacterList, searchWorkList: self.searchWorkList, searchTextNil: self.searchTextNil, currentCategory: self.currentCategory, recentSearchList: self.recentSearchList, recentCharacterList: self.recentCharacterList, updateSearchTextTrigger: self.updateSearchTextTrigger, recentDataIsEmptyTrigger: self.recentDataIsEmptyTrigger)
     }
 }
 
