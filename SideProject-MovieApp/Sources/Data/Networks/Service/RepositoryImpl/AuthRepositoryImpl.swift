@@ -118,6 +118,21 @@ extension AuthRepositoryImpl {
 }
 
 extension AuthRepositoryImpl {
+    func requestAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin {
+        let requestDTO = RequestAppleLoginDTO(user_id: query.user_id, name: query.name, sns_type: query.sns_type)
+        let target = AuthAPIEndpoints.postAppleLogin(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+        
+    }
+}
+
+extension AuthRepositoryImpl {
     func requestSocial(query: SocialQuery) async throws -> Social {
         let requestDTO = RequestSocialDTO(user_id: query.user_id, nickname: query.nickname, mbti: query.mbti)
         let target = AuthAPIEndpoints.postSocial(with: requestDTO)

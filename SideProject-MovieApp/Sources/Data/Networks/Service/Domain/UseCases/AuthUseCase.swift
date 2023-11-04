@@ -22,6 +22,8 @@ protocol AuthUseCase {
     
     func executeGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
     
+    func executeAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin
+    
     func executeSocial(query: SocialQuery) async throws -> Social
     
     func executeDrop(query: DropQuery) async throws -> Drop
@@ -110,6 +112,16 @@ extension AuthUseCaseImpl {
     func executeGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin {
         do {
             return try await authRepository.requestGoogleLogin(query: query)
+        } catch {
+            throw AuthUseCaseError.execute
+        }
+    }
+}
+
+extension AuthUseCaseImpl {
+    func executeAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin {
+        do {
+            return try await authRepository.requestAppleLogin(query: query)
         } catch {
             throw AuthUseCaseError.execute
         }

@@ -23,6 +23,8 @@ protocol AuthRepository: AnyObject {
     
     func requestGoogleLogin(query: GoogleLoginQuery) async throws -> GoogleLogin
     
+    func requestAppleLogin(query: AppleLoginQuery) async throws -> AppleLogin
+    
     func requestSocial(query: SocialQuery) async throws -> Social
     
     func requestDrop(query: DropQuery) async throws -> Drop

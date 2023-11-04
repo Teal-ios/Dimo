@@ -36,6 +36,10 @@ struct AuthAPIEndpoints {
         return AuthRouter<ResponseGoogleLoginDTO>.googleLogin(parameters:  GoogleLoginQuery(user_id: requestDTO.user_id, name: requestDTO.name, sns_type: requestDTO.sns_type))
     }
     
+    static func postAppleLogin(with requestDTO: RequestAppleLoginDTO) -> AuthRouter<ResponseAppleLoginDTO> {
+        return AuthRouter<ResponseAppleLoginDTO>.appleLogin(parameters: AppleLoginQuery(user_id: requestDTO.user_id, name: requestDTO.name, sns_type: requestDTO.sns_type))
+    }
+    
     static func postSocial(with requestDTO: RequestSocialDTO) -> AuthRouter<ResponseSocialDTO> {
         return AuthRouter<ResponseSocialDTO>.social(parameters:  SocialQuery(user_id: requestDTO.user_id, nickname: requestDTO.nickname, mbti: requestDTO.mbti))
     }

@@ -14,7 +14,7 @@ final class LoginStartViewModel: ViewModelType {
     enum SocialLoginType {
         case kakao(name: String, id: String, snsType: String)
         case google(name: String, id: String, snsType: String)
-        case apple(name: String, id: String, snsType: String)
+        case apple(name: String?, id: String, snsType: String)
     }
     
     var disposeBag = DisposeBag()
@@ -122,8 +122,30 @@ extension LoginStartViewModel {
                     }
                 }
             }
-        case .apple:
-            print("APPLE LOGIN")
+        case .apple(let name, let id, let snsType):
+            let appleLoginQuery = AppleLoginQuery(user_id: id, name: name ?? "", sns_type: snsType)
+            
+            Task {
+                let appleLogin = try await authUseCase.executeAppleLogin(query: appleLoginQuery)
+                print("✅ APPLE LOGIN: \(appleLogin)")
+                if appleLogin.code == 200 {
+                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: "apple")
+                    let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
+                    print("✅ APPLE LOGIN CHECK: \(socialLoginCheck)")
+                    if socialLoginCheck?.code == 200 {
+                        await MainActor.run {
+                            self.coordinator?.connectHomeTabBarCoordinator()
+                        }
+                    } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
+                        await MainActor.run {
+                            self.saveUserInformation(userId: id, userName: name ?? "", snsType: snsType)
+                            self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                        }
+                    } else {
+                        print("애플 로그인 실패")
+                    }
+                }
+            }
         }
     }
     

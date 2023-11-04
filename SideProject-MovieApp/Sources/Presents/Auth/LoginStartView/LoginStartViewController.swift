@@ -36,13 +36,7 @@ class LoginStartViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = loginStartView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loginStartView.appleLoginButton.addTarget(self, action: #selector(appleLoginButtonTapped), for: .touchUpInside)
-        
+        self.view = loginStartView
     }
     
     override func setupBinding() {
@@ -61,20 +55,25 @@ class LoginStartViewController: BaseViewController {
                 vc.didTappedGoogleLoginButton()
             }
             .disposed(by: disposeBag)
+        
+        output.appleLoginButtonTapped
+            .withUnretained(self)
+            .bind { vc, _ in
+                let request = ASAuthorizationAppleIDProvider().createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let controller = ASAuthorizationController(authorizationRequests: [request])
+                controller.delegate = self
+                controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+                controller.performRequests()
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
 
+// MARK: - Apple 로그인
 extension LoginStartViewController: ASAuthorizationControllerDelegate {
-    
-    @objc func appleLoginButtonTapped() {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
-        controller.performRequests()
-    }
     
     // 로그인 성공시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -84,6 +83,8 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
             // Create an account in your system.
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
+            let snsType = "apple"
+            print("Apple UID: \(userIdentifier)")
             
             if  let authorizationCode = appleIDCredential.authorizationCode,
                 let identityToken = appleIDCredential.identityToken,
@@ -96,59 +97,30 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
             }
             
             if let fullName = fullName {
-                guard let firstName = fullName.givenName else { return } // 이름
-                guard let lastName = fullName.familyName else { return } // 성
-                let name = lastName + firstName
-                UserDefaultMa
-            } else {
-
+                if let givenName = fullName.givenName {
+                    guard let firstName = fullName.givenName else { return } // 이름
+                    let lastName = givenName
+                    let name = lastName + firstName
+                    viewModel.didTrySocialLogin(with: .apple(name: name, id: userIdentifier, snsType: snsType))
+                } else {
+                    viewModel.didTrySocialLogin(with: .apple(name: "가나다라", id: userIdentifier, snsType: snsType))
+                }
             }
-            
-            print("useridentifier: \(userIdentifier)")
-//            guard let firstName = fullName?.givenName else { return } // 이름
-//            guard let lastName = fullName?.familyName else { return } // 성
-//            let name = lastName + firstName
-//            print("✅ APPLE LOGIN NAME: \(name)")
-//            print("✅ APPLE LOGIN Email: \(email)")
-            print("✅ APPLE LOGIN UserIdentifier: \(userIdentifier)")
         case let passwordCredential as ASPasswordCredential:
             // Sign in using an existing iCloud Keychain credential.
             let username = passwordCredential.user
             let password = passwordCredential.password
-            
-            print("username: \(username)")
-            print("password: \(password)")
-            
         default:
             break
         }
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000") { (credentialState, error) in
-            switch credentialState {
-            case .authorized:
-                print("authorized")
-                // The Apple ID credential is valid.
-            case .revoked:
-                print("revoked")
-            case .notFound:
-                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
-                print("notFound")
-                DispatchQueue.main.async {
-                    // self.window?.rootViewController?.showLoginViewController()
-                }
-            default:
-                break
-            }
-        }
-        return true
-    }
-    
     // 로그인 실패시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("--login err")
+        let alert = UIAlertController(title: "애플 로그인 실패", message: "애플 로그인에 실패했습니다.", preferredStyle: UIAlertController.Style.alert)
+        let addAlertAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(addAlertAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -236,9 +208,4 @@ extension LoginStartViewController {
             self?.viewModel.didTrySocialLogin(with: .google(name: userName, id: userId, snsType: snsType))
         }
     }
-}
-
-// MARK: - Apple 로그인
-extension LoginStartViewController {
-    
 }

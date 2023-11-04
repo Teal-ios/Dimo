@@ -599,6 +599,10 @@
 		497454F32A3F68FC0043D67E /* MbtiChangeDateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */; };
 		497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F42A3F69050043D67E /* PasswordChangeQuery.swift */; };
 		497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497454F72A42025D0043D67E /* APIEndpoints.swift */; };
+		497D24602AF62D0900BA81E3 /* AppleLoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D245F2AF62D0900BA81E3 /* AppleLoginQuery.swift */; };
+		497D24622AF62D6900BA81E3 /* AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24612AF62D6900BA81E3 /* AppleLogin.swift */; };
+		497D24642AF6317800BA81E3 /* RequestAppleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */; };
+		497D24662AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */; };
 		49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */; };
 		49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */; };
 		49A7A1D22A90A4A40011EDC4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */; };
@@ -1306,6 +1310,10 @@
 		497454F22A3F68FC0043D67E /* MbtiChangeDateQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiChangeDateQuery.swift; sourceTree = "<group>"; };
 		497454F42A3F69050043D67E /* PasswordChangeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeQuery.swift; sourceTree = "<group>"; };
 		497454F72A42025D0043D67E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		497D245F2AF62D0900BA81E3 /* AppleLoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginQuery.swift; sourceTree = "<group>"; };
+		497D24612AF62D6900BA81E3 /* AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLogin.swift; sourceTree = "<group>"; };
+		497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAppleLoginDTO.swift; sourceTree = "<group>"; };
+		497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAppleLoginDTO.swift; sourceTree = "<group>"; };
 		49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDTO.swift; sourceTree = "<group>"; };
 		49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -1662,6 +1670,7 @@
 				2FD87A562A5849B3003C276B /* ResponseSocialLoginCheckDTO.swift */,
 				2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */,
 				49E31E042AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift */,
+				497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1678,6 +1687,7 @@
 				2FD87A442A5846D0003C276B /* RequestGoogleLoginDTO.swift */,
 				2FD87A462A5846F7003C276B /* ReqeustSocialDTO.swift */,
 				2FD87A482A58472F003C276B /* RequestDropDTO.swift */,
+				497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -3496,6 +3506,7 @@
 				2FD87A242A583F28003C276B /* LoginQuery.swift */,
 				2FD87A262A583F69003C276B /* KakaoLoginQuery.swift */,
 				2FD87A282A583F92003C276B /* GoogleLoginQuery.swift */,
+				497D245F2AF62D0900BA81E3 /* AppleLoginQuery.swift */,
 				2FD87A2A2A583FCF003C276B /* SocialQuery.swift */,
 				2FD87A362A58420F003C276B /* DropQuery.swift */,
 				2FD87A382A584268003C276B /* SocialLoginkQuery.swift */,
@@ -4031,6 +4042,7 @@
 				2FD87A2E2A58409A003C276B /* Login.swift */,
 				2FD87A302A5840CE003C276B /* KakaoLogin.swift */,
 				2FD87A322A5840F0003C276B /* GoogleLogin.swift */,
+				497D24612AF62D6900BA81E3 /* AppleLogin.swift */,
 				2FD87A342A584114003C276B /* Social.swift */,
 				2FD87A3A2A5842BB003C276B /* Drop.swift */,
 				2FD87A3C2A5842E0003C276B /* SocialLoginCheck.swift */,
@@ -4620,6 +4632,7 @@
 				93C48BAC29D6AE6D00644F6A /* IDNickNameViewModel.swift in Sources */,
 				2FEC15EE2A78B1D5009CF59D /* GetMyCommentQuery.swift in Sources */,
 				2FD82DA22A774F5A00372D24 /* ResponseResultDTO.swift in Sources */,
+				497D24622AF62D6900BA81E3 /* AppleLogin.swift in Sources */,
 				2FD87A432A58469B003C276B /* RequestKakaoLoginDTO.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
@@ -4720,6 +4733,7 @@
 				2FD4D9422A6E9FDE00E7972B /* MyMomentumDigExceptionHandlingView.swift in Sources */,
 				2FBFF83B2A6F5987007914A1 /* ResponseLikeCancelDTO.swift in Sources */,
 				2FCB527B2AA8401400D71A64 /* PostBlindReviewQuery.swift in Sources */,
+				497D24602AF62D0900BA81E3 /* AppleLoginQuery.swift in Sources */,
 				2FCD8C792A81BFC9002A39B0 /* ResponseMyVotedCharacterDTO.swift in Sources */,
 				49A7A1DE2A91E9250011EDC4 /* UserMbtiViewModel.swift in Sources */,
 				2FCD8CA12A8255FA002A39B0 /* FeedDetailHideUserAlertView.swift in Sources */,
@@ -4737,6 +4751,7 @@
 				2FBD19D429FF786D0005B1FA /* VoteViewModel.swift in Sources */,
 				2FD82D7C2A77474100372D24 /* GetCommentQuery.swift in Sources */,
 				2F4D9CAA29FE82AC007B89E8 /* TabBarPageCase.swift in Sources */,
+				497D24642AF6317800BA81E3 /* RequestAppleLoginDTO.swift in Sources */,
 				4926773F2A5935510003C882 /* UserDefault.swift in Sources */,
 				2FC2EB4C29E3BC8B00ECE2ED /* LoginStartView.swift in Sources */,
 				2F979F1E2A0C927100A1CD53 /* JoinCompleteView.swift in Sources */,
@@ -5008,6 +5023,7 @@
 				2FE1112A2A76656B0013A49E /* MbtiPercent.swift in Sources */,
 				2FD82DB82A775AC100372D24 /* ResponseDeleteReviewDTO.swift in Sources */,
 				49E726BF2AAC9800001828CB /* AllMbtiCollectionViewCell.swift in Sources */,
+				497D24662AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift in Sources */,
 				2F6D7D132A14B28800FA457D /* MovieDetailViewController.swift in Sources */,
 				2FEC15D62A7788DB009CF59D /* VoteUseCase.swift in Sources */,
 				2F124ADA2A4EBFFD00A452F1 /* WriteViewController.swift in Sources */,

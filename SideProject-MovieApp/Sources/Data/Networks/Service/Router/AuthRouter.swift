@@ -15,6 +15,7 @@ enum AuthRouter<R> {
     case login(parameters: LoginQuery)
     case kakaoLogin(parameters: KakaoLoginQuery)
     case googleLogin(parameters: GoogleLoginQuery)
+    case appleLogin(parameters: AppleLoginQuery)
     case social(parameters: SocialQuery)
     case logout
     case drop(parameters: DropQuery)
@@ -28,7 +29,7 @@ extension AuthRouter: TargetType2 {
 
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -61,6 +62,8 @@ extension AuthRouter: TargetType2 {
             return "/social/kakao_login"
         case .googleLogin:
             return "/social/google_login"
+        case .appleLogin:
+            return "/social/apple_login"
         case .social:
             return "/social"
         case .logout:
@@ -87,7 +90,7 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .social, .drop, .userInfoRegistration:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .drop, .userInfoRegistration:
             return .post
         case .duplicationId, .logout, .socialLoginCheck:
             return .get
@@ -138,6 +141,12 @@ extension AuthRouter: TargetType2 {
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestGoogleLoginDTO)
+            
+        case .appleLogin(let parameters):
+            let requestAppleLoginDTO = RequestAppleLoginDTO(user_id: parameters.user_id, name: parameters.name, sns_type: parameters.sns_type)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestAppleLoginDTO)
             
         case .social(let parameters):
             let requestSocialDTO = RequestSocialDTO(user_id: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti)
