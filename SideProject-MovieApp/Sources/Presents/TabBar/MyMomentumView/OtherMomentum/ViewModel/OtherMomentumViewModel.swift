@@ -30,6 +30,8 @@ final class OtherMomentumViewModel: ViewModelType {
         let digFinishMoreButtonTap: ControlEvent<Void>
         let reviewMoreButtonTap: ControlEvent<Void>
         let myReviewCellSelected: PublishRelay<MyReview>
+        let digCharacterCellSelected: PublishRelay<MyVotedCharacter>
+        let myLikeContentCellSelected: PublishRelay<LikeContent>
     }
     
     struct Output {
@@ -52,6 +54,7 @@ final class OtherMomentumViewModel: ViewModelType {
     let getReivewDetail = PublishRelay<GetReviewDetail>()
     let characters = PublishRelay<Characters>()
     let other_id: String
+    var otherNickname: String?
     
     func transform(input: Input) -> Output {
         
@@ -68,7 +71,6 @@ final class OtherMomentumViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.likeContentMoreButtonTap
-            .debug()
             .withUnretained(self)
             .withLatestFrom(self.likeAnimationContent)
             .bind { [weak self] likeAnimation in
@@ -82,7 +84,7 @@ final class OtherMomentumViewModel: ViewModelType {
             .withLatestFrom(self.myReviewList)
             .bind { [weak self] myReviewList in
                 guard let self = self else { return }
-                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review)
+                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review, define: .other, otherNickname: otherNickname)
             }
             .disposed(by: disposeBag)
         
@@ -96,7 +98,6 @@ final class OtherMomentumViewModel: ViewModelType {
         
         likeButtonTapToNotificationEventTrigger
             .delay(.seconds(1), scheduler: MainScheduler.instance)
-            .debug()
             .observe(on: MainScheduler.instance)
             .bind { [weak self] _ in
                 guard let self else { return }
@@ -123,6 +124,20 @@ final class OtherMomentumViewModel: ViewModelType {
                 self.coordinator?.showTabmanCoordinator(character: character, review: review.review_list[0])
             }
             .disposed(by: disposeBag)
+        
+        input.digCharacterCellSelected
+            .withUnretained(self)
+            .bind { vm, character in
+                vm.coordinator?.showTabmanCharacterCoordinator(character: Characters(character_id: character.character_id, character_name: character.character_name, character_img: character.character_img, character_mbti: character.character_mbti))
+            }
+            .disposed(by: disposeBag)
+        
+        input.myLikeContentCellSelected
+            .withUnretained(self)
+            .bind { vm, content in
+                vm.coordinator?.showMovieDetailViewController(content_id: String(content.anime_id))
+            }
+            .disposed(by: disposeBag)
                 
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myVotedCharacterList: self.myVotedCharacterList)
     }
@@ -134,6 +149,7 @@ extension OtherMomentumViewModel {
             let myProfile = try await myMomentumUseCase.excuteMyProfile(query: MyProfileQuery(user_id: user_id))
             print(myProfile, "다른사람 프로필 조회")
             self.myProfile.accept(myProfile)
+            otherNickname = myProfile.nickname
         }
     }
 }

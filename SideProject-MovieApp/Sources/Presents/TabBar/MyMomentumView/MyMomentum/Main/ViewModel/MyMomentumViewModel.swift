@@ -99,7 +99,7 @@ final class MyMomentumViewModel: ViewModelType {
             .withLatestFrom(self.myReviewList)
             .bind { [weak self] myReviewList in
                 guard let self = self else { return }
-                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review)
+                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review, define: .my, otherNickname: nil)
             }
             .disposed(by: disposeBag)
         

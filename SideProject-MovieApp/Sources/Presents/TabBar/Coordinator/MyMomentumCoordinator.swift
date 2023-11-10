@@ -94,8 +94,11 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showMyReviewMoreViewController(myReview: [MyReview?]) {
-        let viewModel = MyReviewMoreViewModel(coordinator: self, myReview: myReview)
+    func showMyReviewMoreViewController(myReview: [MyReview?], define: DefineTrigger, otherNickname: String?) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterRepository = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterRepository)
+        let viewModel = MyReviewMoreViewModel(coordinator: self, characterDetailUseCase: characterDetailUseCase, myReview: myReview, define: define, otherNickname: otherNickname)
         let vc = MyReviewMoreViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
