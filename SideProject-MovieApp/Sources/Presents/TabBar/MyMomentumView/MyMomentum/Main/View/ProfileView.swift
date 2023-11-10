@@ -140,10 +140,11 @@ extension ProfileView {
         } else {
             self.introduceLabel.text = profile.intro
         }
-        
-        let imageURL = URL(string: profile.profile_img ?? "nil")
-        if imageURL != URL(string: "nil") {
-            self.profileImageView.kf.setImage(with: imageURL)
-        }
+//        let imageURL = URL(string: profile.profile_img ?? "nil")
+//        if imageURL != URL(string: "nil") {
+//            self.profileImageView.kf.setImage(with: imageURL)
+//        }
+        guard let data = profile.profile_img?.data(using: .utf8) else { return }
+        self.profileImageView.image = UIImage(data: data)
     }
 }

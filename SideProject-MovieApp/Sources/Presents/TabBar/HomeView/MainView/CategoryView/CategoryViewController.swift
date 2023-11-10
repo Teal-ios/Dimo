@@ -31,6 +31,8 @@ class CategoryViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
+        self.categoryView.movieButton.isHidden = true
+        
         output.category.bind { [weak self] category in
             guard let self else { return }
             self.category.accept(category)

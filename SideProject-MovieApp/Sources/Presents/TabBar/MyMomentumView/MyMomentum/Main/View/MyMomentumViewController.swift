@@ -50,7 +50,7 @@ final class MyMomentumViewController: BaseViewController {
         self.myMomentumView.commentCollectionView.delegate = self
         self.myMomentumView.digFinishCharacherCollectionView.delegate = self
         self.myMomentumView.profileCollectionView.delegate = self
-        setNavigation()
+//        setNavigation()
         setLikeContentDataSource()
         setDigFinishCharacterDataSource()
         setReviewDataSource()
@@ -171,6 +171,7 @@ final class MyMomentumViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
     }
 }
 

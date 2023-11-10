@@ -465,3 +465,8 @@ extension MyMomentumView {
         self.layoutIfNeeded()
     }
 }
+
+extension MyMomentumView {
+    func configureEditProfile(with item: ModifyMyProfileQuery) {
+    }
+}

@@ -9,6 +9,6 @@ import Foundation
 
 struct ModifyMyProfileQuery: Hashable {
     let user_id: String
-    let profile_img: String?
+    let profile_img: Data?
     let intro: String?
 }

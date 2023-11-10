@@ -16,11 +16,13 @@ final class MyMomentumViewModel: ViewModelType {
     private let characterDetailUseCase: CharacterDetailUseCase
     
     var disposeBag: DisposeBag = DisposeBag()
+    var editProfileFinishTrigger: PublishRelay<ModifyMyProfileQuery>
     
-    init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase, characterDetailUseCase: CharacterDetailUseCase) {
+    init(coordinator: MyMomentumCoordinator?, myMomentumUseCase: MyMomentumUseCase, characterDetailUseCase: CharacterDetailUseCase, editProfileFinishTrigger: PublishRelay<ModifyMyProfileQuery>) {
         self.coordinator = coordinator
         self.myMomentumUseCase = myMomentumUseCase
         self.characterDetailUseCase = characterDetailUseCase
+        self.editProfileFinishTrigger = editProfileFinishTrigger
     }
     
     struct Input {
@@ -44,6 +46,7 @@ final class MyMomentumViewModel: ViewModelType {
         let myReviewList: PublishRelay<GetMyReview>
         let myCommentList: PublishRelay<GetMyComment>
         let myVotedCharacterList: PublishRelay<GetMyVotedCharacter>
+        let editProfileFinishTrigger: PublishRelay<ModifyMyProfileQuery>
     }
     
     let myProfile = PublishRelay<MyProfile>()
@@ -75,12 +78,9 @@ final class MyMomentumViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.editProfileButtonTap
-            .debug()
             .bind { [weak self] _ in
                 guard let self else { return }
-//                self.coordinator?.showEditProfileViewController()
-                print("몇번 울리니")
-                self.coordinator?.showOtherMomentumViewController(other_id: "dimmo1004")
+                self.coordinator?.showEditProfileViewController()
             }
             .disposed(by: disposeBag)
         
@@ -99,7 +99,7 @@ final class MyMomentumViewModel: ViewModelType {
             .withLatestFrom(self.myReviewList)
             .bind { [weak self] myReviewList in
                 guard let self = self else { return }
-                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review)
+                self.coordinator?.showMyReviewMoreViewController(myReview: myReviewList.review, define: .my, otherNickname: nil)
             }
             .disposed(by: disposeBag)
         
@@ -171,9 +171,16 @@ final class MyMomentumViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        editProfileFinishTrigger
+            .withUnretained(self)
+            .bind { owner, data in
+                owner.getMyProfile(user_id: data.user_id)
+            }
+            .disposed(by: disposeBag)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
         
-        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myCommentList: self.myCommentList, myVotedCharacterList: self.myVotedCharacterList)
+        return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myCommentList: self.myCommentList, myVotedCharacterList: self.myVotedCharacterList, editProfileFinishTrigger: self.editProfileFinishTrigger)
     }
 }
 

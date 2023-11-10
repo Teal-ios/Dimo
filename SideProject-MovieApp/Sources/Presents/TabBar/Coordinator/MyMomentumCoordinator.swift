@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum FeedCase {
     case my
@@ -13,6 +15,7 @@ enum FeedCase {
 }
 
 final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
+    
     
     func didFinish(childCoordinator: Coordinator) {
         self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
@@ -25,6 +28,7 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
     var type: CoordinatorStyleCase = .tab
     var feedCase: FeedCase
     var other_id: String?
+    let editProfileTrigger = PublishRelay<ModifyMyProfileQuery>()
     
     init(_ navigationController: UINavigationController, feedCase: FeedCase, other_id: String? = nil) {
         self.navigationController = navigationController
@@ -48,7 +52,8 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
         let characterDetailRepositoryImpl = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
         let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterDetailRepositoryImpl)
-        let viewModel = MyMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl, characterDetailUseCase: characterDetailUseCase)
+        let viewModel = MyMomentumViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl, characterDetailUseCase: characterDetailUseCase, editProfileFinishTrigger: self.editProfileTrigger
+        )
         let vc = MyMomentumViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
     }
@@ -69,6 +74,7 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         let myMomentumRepositoryImpl = MyMomentumRepositoryImpl(dataTransferService: dataTransferService)
         let myMomentumUseCaseImpl = MyMomentumUseCaseImpl(myMomentumRepository: myMomentumRepositoryImpl)
         let viewModel = EditProfileViewModel(coordinator: self, myMomentumUseCase: myMomentumUseCaseImpl)
+        viewModel.delegate = self
         let vc = EditProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -88,8 +94,11 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showMyReviewMoreViewController(myReview: [MyReview?]) {
-        let viewModel = MyReviewMoreViewModel(coordinator: self, myReview: myReview)
+    func showMyReviewMoreViewController(myReview: [MyReview?], define: DefineTrigger, otherNickname: String?) {
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterRepository = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterRepository)
+        let viewModel = MyReviewMoreViewModel(coordinator: self, characterDetailUseCase: characterDetailUseCase, myReview: myReview, define: define, otherNickname: otherNickname)
         let vc = MyReviewMoreViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -119,5 +128,19 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         movieDetailCoordinator.delegate = self
         self.childCoordinators.append(movieDetailCoordinator)
         movieDetailCoordinator.start()
+    }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+}
+
+extension MyMomentumCoordinator: editProfileUpdateDelegate {
+    func editProfileFinish(data: ModifyMyProfileQuery) {
+        self.editProfileTrigger.accept(data)
     }
 }

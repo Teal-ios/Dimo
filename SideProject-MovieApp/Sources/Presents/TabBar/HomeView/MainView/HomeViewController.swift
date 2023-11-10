@@ -64,7 +64,7 @@ final class HomeViewController: BaseViewController {
         self.homeView.recommendCollectionView.delegate = self
         self.homeView.nowHotCollectionView.delegate = self
         
-        setNavigation()
+//        setNavigation()
         setPosterDataSource()
         setMbtiHeroDataSource()
         setCharacterDataSource()

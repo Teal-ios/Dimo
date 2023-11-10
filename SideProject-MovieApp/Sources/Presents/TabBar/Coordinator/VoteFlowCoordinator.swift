@@ -78,5 +78,11 @@ final class VoteFlowCoordinator: Coordinator, CoordinatorDelegate {
     func popViewController() {
         navigationController.popViewController(animated: true)
     }
+    
+    func showVoteAnotherCharacterViewController(characters: [Result?]) {
+        let viewModel = VoteAnotherCharacterViewModel(coordinator: self, characters: characters)
+        let viewController = VoteAnotherCharacterViewController(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }
 

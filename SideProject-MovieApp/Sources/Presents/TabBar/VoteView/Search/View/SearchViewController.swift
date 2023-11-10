@@ -147,6 +147,13 @@ final class SearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.recentDataIsEmptyTrigger
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.selfView.recentCollectionView.isHidden = true
+            }
+            .disposed(by: disposeBag)
+        
         Observable.combineLatest(output.recentSearchList, output.recentCharacterList)
             .observe(on: MainScheduler.instance)
             .bind { [weak self] searchList, characterList in

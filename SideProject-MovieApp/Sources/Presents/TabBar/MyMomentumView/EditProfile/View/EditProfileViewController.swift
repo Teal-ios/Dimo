@@ -23,7 +23,7 @@ final class EditProfileViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    let profileImage = PublishRelay<String?>()
+    let profileImage = PublishRelay<Data?>()
     
     let textViewPlaceHolder = "자기소개를 입력해 보세요"
     
@@ -35,6 +35,7 @@ final class EditProfileViewController: BaseViewController {
         super.viewDidLoad()
         self.hideKeyboard()
         self.selfView.introduceEditTextView.delegate = self
+        self.profileImage.accept(nil)
     }
     
     override func setupBinding() {
@@ -76,10 +77,9 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.selfView.updateProfileImage(image: pickedImage)
-            
-            if let data = pickedImage.jpegData(compressionQuality: 1) {
-                let base64 = data.base64EncodedString()
-                self.profileImage.accept(base64)
+            let resizeImage = pickedImage.resizeImageTo(size: CGSize(width: 100, height: 100))
+            if let data = resizeImage?.jpegData(compressionQuality: 0.5) {
+                self.profileImage.accept(data)
             }
         }
         self.dismiss(animated: true)

@@ -21,7 +21,7 @@ final class MyReviewMoreViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, MyReview>!
     
-    let cardCellSelected = PublishRelay<Void>()
+    let cardCellSelected = PublishRelay<MyReview>()
     let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
@@ -41,7 +41,7 @@ final class MyReviewMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MyReviewMoreViewModel.Input()
+        let input = MyReviewMoreViewModel.Input(myReviewCellSelected: self.cardCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -60,14 +60,52 @@ final class MyReviewMoreViewController: BaseViewController {
                 self.dataSource.apply(snapshot)
             }
             .disposed(by: disposeBag)
+        
+        Observable
+            .zip(output.defineTrigger, output.myReview)
+            .withUnretained(self)
+            .bind { owner, data in
+                switch data.0 {
+                    
+                case .my:
+                    owner.selfView.titleLabel.text = "내가 쓴 리뷰"
+                case .other:
+                    owner.selfView.titleLabel.text = "내가 쓴 리뷰"
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        Observable
+            .zip(output.defineTrigger, output.otherNickname)
+            .withUnretained(self)
+            .bind { owner, data in
+                switch data.0 {
+                    
+                case .my:
+                    owner.selfView.titleLabel.text = "내가 쓴 리뷰"
+                case .other:
+                    guard let name = data.1 else { return }
+                    owner.selfView.titleLabel.text = "\(name)님이 쓴 리뷰"
+                }
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
 
 extension MyReviewMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.accept(())
+        reviewDataFetching(indexPath: indexPath)
     }
 }
+
+extension MyReviewMoreViewController {
+    private func reviewDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.cardCellSelected.accept(selectedItem)
+    }
+}
+
 
 extension MyReviewMoreViewController {
     func setDataSource() {

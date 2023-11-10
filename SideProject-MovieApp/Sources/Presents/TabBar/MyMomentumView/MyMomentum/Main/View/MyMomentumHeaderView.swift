@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class MyMomentumHeaderView: UICollectionReusableView {
     static let identifier = "MyMomentumHeaderView"
+    var disposeBag = DisposeBag()
     
     let titleLabel: UILabel = {
         let label = UILabel()

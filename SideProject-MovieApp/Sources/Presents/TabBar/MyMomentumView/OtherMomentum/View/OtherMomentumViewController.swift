@@ -34,6 +34,8 @@ final class OtherMomentumViewController: BaseViewController {
 
     
     let myReviewCellSelected = PublishRelay<MyReview>()
+    let myLikeContentCellSelected = PublishRelay<LikeContent>()
+    let digCharacterCellSelected = PublishRelay<MyVotedCharacter>()
     
     override func loadView() {
         view = otherMomentumView
@@ -52,7 +54,7 @@ final class OtherMomentumViewController: BaseViewController {
     
     override func setupBinding() {
         
-        let input = OtherMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, likeContentMoreButtonTap: self.otherMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.otherMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.otherMomentumView.reviewMoreButton.rx.tap, myReviewCellSelected: self.myReviewCellSelected)
+        let input = OtherMomentumViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, likeContentMoreButtonTap: self.otherMomentumView.likeContentMoreButton.rx.tap, digFinishMoreButtonTap: self.otherMomentumView.digFinishMoreButton.rx.tap, reviewMoreButtonTap: self.otherMomentumView.reviewMoreButton.rx.tap, myReviewCellSelected: self.myReviewCellSelected, digCharacterCellSelected: self.digCharacterCellSelected, myLikeContentCellSelected: self.myLikeContentCellSelected)
         
         let output = viewModel.transform(input: input)
         
@@ -250,9 +252,9 @@ extension OtherMomentumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case self.otherMomentumView.profileCollectionView:
-            print("내찜꽁")
+            self.myLikeContentCellDataFetching(indexPath: indexPath)
         case self.otherMomentumView.digFinishCharacherCollectionView:
-            print("캐릭터")
+            self.digCharacterCellDataFetching(indexPath: indexPath)
         case self.otherMomentumView.reviewCollectionView:
             self.myReviewCellDataFetching(indexPath: indexPath)
         default:
@@ -266,5 +268,16 @@ extension OtherMomentumViewController {
         let selectedItem = reviewDataSource.snapshot().itemIdentifiers[indexPath.row]
         self.myReviewCellSelected.accept(selectedItem)
     }
+    
+    private func myLikeContentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = likeContentDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myLikeContentCellSelected.accept(selectedItem)
+    }
 }
 
+extension OtherMomentumViewController {
+    private func digCharacterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = digFinishDataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.digCharacterCellSelected.accept(selectedItem)
+    }
+}

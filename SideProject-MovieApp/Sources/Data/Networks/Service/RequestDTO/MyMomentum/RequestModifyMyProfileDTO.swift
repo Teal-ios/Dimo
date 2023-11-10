@@ -9,7 +9,7 @@ import Foundation
 
 struct RequestModifyMyProfileDTO: Encodable {
     let user_id: String
-    let profile_img: String?
+    let profile_img: Data?
     let intro: String?
     
     enum CodingKeys: String, CodingKey {

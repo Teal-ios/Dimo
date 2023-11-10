@@ -189,6 +189,16 @@ extension VoteCollectionViewCell {
 }
 
 extension VoteCollectionViewCell {
+    func configureAttributeWithResult(with item: Result) {
+        let imageUrl = URL(string: item.character_img)
+        imgView.kf.setImage(with: imageUrl)
+        imgView.contentMode = .scaleToFill
+        nameLabel.text = item.character_name
+        movieTitleLabel.text = item.character_mbti ?? "미정"
+    }
+}
+
+extension VoteCollectionViewCell {
     func configureAtrributeWithRecentCharacter(with item: RecentCharacterItem?) {
         guard let item = item else { return }
         cancelButton.isHidden = false
