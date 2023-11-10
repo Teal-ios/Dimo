@@ -16,7 +16,6 @@ enum FeedCase {
 
 final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
     
-    
     func didFinish(childCoordinator: Coordinator) {
         self.childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
     }
@@ -104,7 +103,10 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
     }
     
     func showMyCommentMoreViewController(myComment: [MyComment?]) {
-        let viewModel = MyCommentMoreViewModel(coordinator: self, myComment: myComment)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let characterRepository = CharacterDetailRepositoryImpl(dataTransferService: dataTransferService)
+        let characterDetailUseCase = CharacterDetailUseCaseImpl(characterDetailRepository: characterRepository)
+        let viewModel = MyCommentMoreViewModel(coordinator: self, characterUseCase: characterDetailUseCase, myComment: myComment)
         let vc = MyCommentMoreViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

@@ -15,8 +15,7 @@ final class MovieCharacterMoreViewModel: ViewModelType {
     private weak var coordinator: MovieDetailCoordinator?
     
     struct Input{
-
-
+        let cardCellSelected: PublishRelay<Characters>
     }
     
     struct Output{
@@ -32,6 +31,13 @@ final class MovieCharacterMoreViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
 
+        input.cardCellSelected
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { owner, character in
+                owner.coordinator?.showTabmanCoordinator(character: character)
+            }
+            .disposed(by: disposeBag)
         return Output(characters: self.characters)
     }
 }
