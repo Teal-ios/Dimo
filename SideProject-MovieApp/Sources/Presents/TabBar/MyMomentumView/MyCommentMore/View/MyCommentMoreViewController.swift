@@ -20,8 +20,7 @@ final class MyCommentMoreViewController: BaseViewController {
     }
     
     var dataSource: UICollectionViewDiffableDataSource<Int, MyComment>!
-    
-    let cardCellSelected = PublishRelay<Void>()
+    let myCommentCellSelected = PublishRelay<MyComment>()
     let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
@@ -41,7 +40,7 @@ final class MyCommentMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MyCommentMoreViewModel.Input()
+        let input = MyCommentMoreViewModel.Input(myCommentCellSelected: self.myCommentCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -65,7 +64,7 @@ final class MyCommentMoreViewController: BaseViewController {
 
 extension MyCommentMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.accept(())
+        myCommentCellDataFetching(indexPath: indexPath)
     }
 }
 
@@ -80,5 +79,12 @@ extension MyCommentMoreViewController {
 
             return cell
         })
+    }
+}
+
+extension MyCommentMoreViewController {
+    private func myCommentCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.myCommentCellSelected.accept(selectedItem)
     }
 }

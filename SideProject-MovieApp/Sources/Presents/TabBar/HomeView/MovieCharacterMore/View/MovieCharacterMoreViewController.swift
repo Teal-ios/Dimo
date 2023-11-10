@@ -21,7 +21,7 @@ final class MovieCharacterMoreViewController: BaseViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, Characters>!
     
-    let cardCellSelected = PublishRelay<Void>()
+    let cardCellSelected = PublishRelay<Characters>()
     let viewDidLoadTrigger = PublishRelay<Void>()
 
     override func loadView() {
@@ -41,7 +41,7 @@ final class MovieCharacterMoreViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = MovieCharacterMoreViewModel.Input()
+        let input = MovieCharacterMoreViewModel.Input(cardCellSelected: self.cardCellSelected)
         
         let output = self.viewModel.transform(input: input)
         
@@ -65,7 +65,14 @@ final class MovieCharacterMoreViewController: BaseViewController {
 
 extension MovieCharacterMoreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCellSelected.accept(())
+        self.characterCellDataFetching(indexPath: indexPath)
+    }
+}
+
+extension MovieCharacterMoreViewController {
+    private func characterCellDataFetching(indexPath: IndexPath) {
+        let selectedItem = dataSource.snapshot().itemIdentifiers[indexPath.row]
+        self.cardCellSelected.accept(selectedItem)
     }
 }
 
