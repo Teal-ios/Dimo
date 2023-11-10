@@ -322,6 +322,7 @@ extension SearchViewModel {
     private func postRecentSearchItemSave(user_id: String, search_content: String) {
         Task {
             let query = RecentSearchItemSaveQuery(user_id: user_id, search_content: search_content)
+            print(query, "보내는 쿼리")
             let recentSearchItemSave = try await voteUseCase.excuteRecentSearchItemSave(query: query)
             print(recentSearchItemSave, "최근 검색어 저장 완료")
             self.recentSearchItemSaveTrigger.accept(recentSearchItemSave)

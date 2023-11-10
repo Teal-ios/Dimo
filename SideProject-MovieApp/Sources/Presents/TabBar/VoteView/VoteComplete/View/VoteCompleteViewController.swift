@@ -22,7 +22,6 @@ final class VoteCompleteViewController: BaseViewController {
     }
     
     private var characterDataSource: UICollectionViewDiffableDataSource<Int, Result>!
-
     
     override func loadView() {
         view = selfView
@@ -30,6 +29,8 @@ final class VoteCompleteViewController: BaseViewController {
     
     let viewDidLoadTrigger = PublishRelay<Void>()
     let rightNavigationXButtonTapped = PublishRelay<Void>()
+    let characterCellSelected = PublishRelay<Result>()
+    let moreButtonTapped = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,8 @@ final class VoteCompleteViewController: BaseViewController {
     }
     
     override func setupBinding() {
-        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, rightNavigationXButtonTapped: self.rightNavigationXButtonTapped, characterSelectButtonTapped: self.selfView.characterSelectButton.rx.tap)
+        let input = VoteCompleteViewModel.Input(viewDidLoad: self.viewDidLoadTrigger, rightNavigationXButtonTapped: self.rightNavigationXButtonTapped, characterSelectButtonTapped: self.selfView.characterSelectButton.rx.tap, characterCellSelected: self.characterCellSelected, moreButtonTapped: self.moreButtonTapped)
+        
         let output = viewModel.transform(input: input)
         
         output.sameWorkAnotherCharacterList
@@ -93,6 +95,8 @@ final class VoteCompleteViewController: BaseViewController {
 
 extension VoteCompleteViewController {
     private func setCharacterDataSource() {
+        selfView.characterMoreCollectionView.delegate = self
+        
         let cellCharacterRegistration = UICollectionView.CellRegistration<DigFinishCharacterCollectionViewCell, Result> { cell, indexPath, itemIdentifier in
             cell.configureUIToResultData(with: itemIdentifier)
             cell.configureIsVoted(vote: itemIdentifier.is_vote ?? 0)
@@ -104,6 +108,15 @@ extension VoteCompleteViewController {
         })
         
         let myMomentumHeader = UICollectionView.SupplementaryRegistration<MyMomentumHeaderView>(elementKind: MyMomentumHeaderView.identifier) { supplementaryView, elementKind, indexPath in
+            supplementaryView.moreButton
+                .rx
+                .tap
+                .withUnretained(self)
+                .bind { owner, _ in
+                    owner.moreButtonTapped.accept(())
+                    supplementaryView.disposeBag = DisposeBag()
+                }
+                .disposed(by: supplementaryView.disposeBag)
         }
         
         characterDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
@@ -111,6 +124,17 @@ extension VoteCompleteViewController {
             header.titleLabel.text = "같은 작품 속 캐릭터 투표하기"
             return header
         })
+    }
+}
+
+extension VoteCompleteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dataFetctingToCharacterCell(indexPath: indexPath)
+    }
+    
+    private func dataFetctingToCharacterCell(indexPath: IndexPath) {
+        let selectedItem = characterDataSource.snapshot().itemIdentifiers(inSection: 0)[indexPath.row]
+        characterCellSelected.accept(selectedItem)
     }
 }
 

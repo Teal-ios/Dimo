@@ -28,6 +28,8 @@ final class VoteCompleteViewModel: ViewModelType {
         let viewDidLoad: PublishRelay<Void>
         let rightNavigationXButtonTapped: PublishRelay<Void>
         let characterSelectButtonTapped: ControlEvent<Void>
+        let characterCellSelected: PublishRelay<Result>
+        let moreButtonTapped: PublishRelay<Void>
     }
     
     struct Output{
@@ -64,6 +66,24 @@ final class VoteCompleteViewModel: ViewModelType {
             .bind {[weak self] characterInfo in
                 guard let self = self else { return }
                 self.coordinator?.showTabmanCoordinator(character: Characters(character_id: characterInfo.character_id, character_name: characterInfo.character_name, character_img: characterInfo.character_img, character_mbti: characterInfo.character_mbti))
+            }
+            .disposed(by: disposeBag)
+        
+        input.characterCellSelected
+            .withUnretained(self)
+            .bind { owner, result in
+                let characterInfo = owner.characterInfo.value
+                let dto = CharacterInfo(character_id: result.character_id, content_id: characterInfo.content_id, anime_id: result.anime_id, character_img: result.character_img, character_name: result.character_name, character_mbti: result.character_mbti, title: result.title, is_vote: result.is_vote)
+                owner.coordinator?.showDigViewController(characterInfo: dto)
+            }
+            .disposed(by: disposeBag)
+        
+        input
+            .moreButtonTapped
+            .withLatestFrom(sameWorkAnotherCharacterList)
+            .withUnretained(self)
+            .bind { owner, sameWorkList in
+                owner.coordinator?.showVoteAnotherCharacterViewController(characters: sameWorkList.result)
             }
             .disposed(by: disposeBag)
         

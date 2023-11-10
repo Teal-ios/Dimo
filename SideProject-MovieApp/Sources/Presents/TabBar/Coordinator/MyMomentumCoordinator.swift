@@ -126,6 +126,14 @@ final class MyMomentumCoordinator: Coordinator, CoordinatorDelegate {
         self.childCoordinators.append(movieDetailCoordinator)
         movieDetailCoordinator.start()
     }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
 }
 
 extension MyMomentumCoordinator: editProfileUpdateDelegate {

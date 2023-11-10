@@ -556,6 +556,9 @@
 		2FEE5DCB2AA5CF9F0090B406 /* ModifyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCA2AA5CF9F0090B406 /* ModifyWriteViewController.swift */; };
 		2FEE5DCD2AA5CFA50090B406 /* ModifyWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCC2AA5CFA50090B406 /* ModifyWriteView.swift */; };
 		2FEE5DCF2AA5CFB00090B406 /* ModifyWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE5DCE2AA5CFB00090B406 /* ModifyWriteViewModel.swift */; };
+		2FEEB3EB2AFDB78600E1F182 /* VoteAnotherCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEB3EA2AFDB78600E1F182 /* VoteAnotherCharacterView.swift */; };
+		2FEEB3ED2AFDB7A100E1F182 /* VoteAnotherCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEB3EC2AFDB7A100E1F182 /* VoteAnotherCharacterViewController.swift */; };
+		2FEEB3EF2AFDB7EE00E1F182 /* VoteAnotherCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEEB3EE2AFDB7EE00E1F182 /* VoteAnotherCharacterViewModel.swift */; };
 		2FF6585B2ADD243400880592 /* ModifyCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF6585A2ADD243400880592 /* ModifyCommentView.swift */; };
 		2FFB4BBB2A8F0450001D1D60 /* InquireVoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */; };
 		2FFB4BBD2A8F047D001D1D60 /* InquireCharacterAnalyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */; };
@@ -1267,6 +1270,9 @@
 		2FEE5DCA2AA5CF9F0090B406 /* ModifyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteViewController.swift; sourceTree = "<group>"; };
 		2FEE5DCC2AA5CFA50090B406 /* ModifyWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteView.swift; sourceTree = "<group>"; };
 		2FEE5DCE2AA5CFB00090B406 /* ModifyWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWriteViewModel.swift; sourceTree = "<group>"; };
+		2FEEB3EA2AFDB78600E1F182 /* VoteAnotherCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAnotherCharacterView.swift; sourceTree = "<group>"; };
+		2FEEB3EC2AFDB7A100E1F182 /* VoteAnotherCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAnotherCharacterViewController.swift; sourceTree = "<group>"; };
+		2FEEB3EE2AFDB7EE00E1F182 /* VoteAnotherCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAnotherCharacterViewModel.swift; sourceTree = "<group>"; };
 		2FF6585A2ADD243400880592 /* ModifyCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCommentView.swift; sourceTree = "<group>"; };
 		2FFB4BBA2A8F0450001D1D60 /* InquireVoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireVoteResult.swift; sourceTree = "<group>"; };
 		2FFB4BBC2A8F047D001D1D60 /* InquireCharacterAnalyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireCharacterAnalyze.swift; sourceTree = "<group>"; };
@@ -2205,6 +2211,7 @@
 				2F9793A92A53EE1F0098939B /* Vote */,
 				2F97939E2A52A42D0098939B /* Search */,
 				2FDF324F2A95A24A00A9F3BC /* SearchCategory */,
+				2FEEB3E72AFDB76000E1F182 /* VoteAnotherCharacter */,
 				2FD2740C2A5A8ABD003AA144 /* Recommend */,
 			);
 			path = VoteView;
@@ -3927,6 +3934,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2FEEB3E72AFDB76000E1F182 /* VoteAnotherCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				2FEEB3E92AFDB77900E1F182 /* ViewModel */,
+				2FEEB3E82AFDB77700E1F182 /* View */,
+			);
+			path = VoteAnotherCharacter;
+			sourceTree = "<group>";
+		};
+		2FEEB3E82AFDB77700E1F182 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FEEB3EA2AFDB78600E1F182 /* VoteAnotherCharacterView.swift */,
+				2FEEB3EC2AFDB7A100E1F182 /* VoteAnotherCharacterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FEEB3E92AFDB77900E1F182 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FEEB3EE2AFDB7EE00E1F182 /* VoteAnotherCharacterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FF658572ADD23F900880592 /* ModifyComment */ = {
 			isa = PBXGroup;
 			children = (
@@ -4635,6 +4668,7 @@
 				497D24622AF62D6900BA81E3 /* AppleLogin.swift in Sources */,
 				2FD87A432A58469B003C276B /* RequestKakaoLoginDTO.swift in Sources */,
 				2FBD19CC29FF67330005B1FA /* VoteView.swift in Sources */,
+				2FEEB3EF2AFDB7EE00E1F182 /* VoteAnotherCharacterViewModel.swift in Sources */,
 				2FBF4CAA29CC96A100B65125 /* CoordinatorStyleCase.swift in Sources */,
 				2F7D6CE92AF47ECB00CC309B /* RecentCharacterItemListDeleteQuery.swift in Sources */,
 				2FD87A512A584975003C276B /* ResponseSocialDTO.swift in Sources */,
@@ -4994,7 +5028,8 @@
 				93C48B3B29D16E1000644F6A /* SignupIdentificationViewController.swift in Sources */,
 				2FBFE1182A262708001D5425 /* NicknameChangeQuery.swift in Sources */,
 				2FDD74552A10A4DA00A75AB9 /* CharacterDetailViewController.swift in Sources */,
-				93C48B3429D16DD100644F6A /* SignupTermsView.swift in Sources */,
+				93C48B3429D16DD100644F6A /* TermsOfUseView.swift in Sources */,
+				2FEEB3ED2AFDB7A100E1F182 /* VoteAnotherCharacterViewController.swift in Sources */,
 				2F7D6CF32AF482E600CC309B /* ResponseRecentCharacterListDeleteDTO.swift in Sources */,
 				93C48B3429D16DD100644F6A /* TermsOfUseView.swift in Sources */,
 				49B1368E2AC0140F00B55E10 /* TermsOfUseButton.swift in Sources */,
@@ -5186,6 +5221,7 @@
 				2FBFF8302A6F5505007914A1 /* LikeContentCheckQuery.swift in Sources */,
 				2FC94EA729C013F30097E696 /* Coordinator.swift in Sources */,
 				2F7D6CF52AF4834D00CC309B /* ResponseRecentSearchItemSaveDTO.swift in Sources */,
+				2FEEB3EB2AFDB78600E1F182 /* VoteAnotherCharacterView.swift in Sources */,
 				2FEE5DB92AA569FB0090B406 /* MyCommentMoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

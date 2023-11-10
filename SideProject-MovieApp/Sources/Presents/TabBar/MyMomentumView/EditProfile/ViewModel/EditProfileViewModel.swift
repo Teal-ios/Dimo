@@ -37,6 +37,8 @@ final class EditProfileViewModel: ViewModelType {
         let editProfileImageButtonTap: ControlEvent<Void>
     }
     
+    let editProfileFinish = PublishRelay<ModifyMyProfile>()
+    
     func transform(input: Input) -> Output {
         
         let editProfileData = Observable.combineLatest(input.introduceText, input.profileImage)
@@ -54,6 +56,15 @@ final class EditProfileViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        editProfileFinish
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind { owner, _ in
+                //여기서 화면 뒤로 1초뒤에 보내기
+                owner.coordinator?.popViewController()
+            }
+            .disposed(by: disposeBag)
+        
         return Output(editProfileImageButtonTap: input.editProfileImageButtonTap)
     }
 }
@@ -65,6 +76,7 @@ extension EditProfileViewModel {
             let editProfile = try await myMomentumUseCase.excuteModifyMyProfile(query: query)
             print(editProfile, "프로필 수정 완료")
             self.delegate?.editProfileFinish(data: query)
+            self.editProfileFinish.accept(editProfile)
         }
     }
 }
