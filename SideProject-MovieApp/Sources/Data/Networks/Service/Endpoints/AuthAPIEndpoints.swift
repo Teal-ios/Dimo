@@ -71,6 +71,8 @@ struct AuthAPIEndpoints {
         return AuthRouter<ResponseIdFindDTO>.idFind(parameters: query)
     }
     
-    
+    static func postForgottenPassword(with requestDTO: RequestPasswordFindDTO) -> AuthRouter<ResponsePasswordFindDTO> {
+        return AuthRouter<ResponsePasswordFindDTO>.passwordFind(parameters: PasswordFindQuery(user_id: requestDTO.userId, phone_number: requestDTO.phoneNumber))
+    }
 }
 

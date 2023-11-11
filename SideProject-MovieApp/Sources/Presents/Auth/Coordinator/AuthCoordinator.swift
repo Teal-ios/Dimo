@@ -153,7 +153,10 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showFindPWViewController() {
-        let viewModel = FindPWViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = FindPWViewModel(authUseCase: authUseCaseImpl, coordinator: self)
         let vc = FindPWViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

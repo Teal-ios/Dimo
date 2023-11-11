@@ -30,6 +30,8 @@ final class FindIDViewModel: ViewModelType {
     private var verifyCode: String? // 메세지 인증번호
     private var formattedPhoneNum = BehaviorRelay<String?>(value: nil)
     private var authCode: String?
+    private var isInvalidCode = PublishRelay<Bool>()
+    private var isInvalidUser = PublishRelay<Bool>()
     
     struct Output {
         var formattedPhoneNumber: BehaviorRelay<String?>
@@ -38,6 +40,8 @@ final class FindIDViewModel: ViewModelType {
         var idRequestButtonTapped: ControlEvent<Void>
         var nextButtonTapped: ControlEvent<Void>
         var nextButtonValid: Observable<Bool>
+        var isInvalidateCode: PublishRelay<Bool>
+        var isInvalidateUser: PublishRelay<Bool>
     }
     
     init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase) {
@@ -46,8 +50,6 @@ final class FindIDViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
-        
         input.phoneNumberInput
             .orEmpty
             .withUnretained(self)
@@ -109,14 +111,15 @@ final class FindIDViewModel: ViewModelType {
                 vm.loadIdFind(query: idFindQuery)
             })
             .disposed(by: disposeBag)
-            
         
         return Output(formattedPhoneNumber: formattedPhoneNum,
                       phoneNumberValid: phoneValid,
                       telecomButtonTapped: input.telecomButtonTapped,
                       idRequestButtonTapped: input.didTappedRequestButtonTapped,
                       nextButtonTapped: input.nextButtonTapped,
-                      nextButtonValid: valid)
+                      nextButtonValid: valid,
+                      isInvalidateCode: self.isInvalidCode,
+                      isInvalidateUser: self.isInvalidUser)
     }
     
     func set(agency: String) {
@@ -143,24 +146,16 @@ extension FindIDViewModel {
         print("✅ IdFindQuery: ", query)
         Task {
             let idFind = try await authUseCase.executeIdFind(query: query)
-            print("✅ IdFind: ", idFind)
+            if idFind.code == 200 {
+                await MainActor.run {
+                     self.coordinator?.showNotificationIDViewController()
+                }
+            } else if idFind.code == 400 {
+                self.isInvalidCode.accept(false)
+            } else if idFind.code == 401 {
+                self.isInvalidUser.accept(false)
+            }
         }
     }
-    
-//    func loadSmsAuthentication(authCode: String) {
-//        guard let phoneNumber = formattedPhoneNum.value else { return }
-//        let query = PhoneNumberVerifyQuery(phone_number: phoneNumber,
-//                                           code: authCode)
-//        Task {
-//            let smsVerification = try await authUseCase.executePhoneNumberVerify(query: query)
-//            print("✅ PhoneNumVerify: ", smsVerification)
-//
-//            if smsVerification.phone_valid == true {
-//
-//            } else {
-//                // toast
-//            }
-//        }
-//    }
-    
+
 }

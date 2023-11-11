@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Toast
 
 final class FindIDViewController: BaseViewController {
     
@@ -101,6 +102,23 @@ final class FindIDViewController: BaseViewController {
                 vc.findIDView.idRequestButton.isEnabled = bool
             }.disposed(by: disposeBag)
         
+        output.isInvalidateCode
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { (vc, isValid) in
+                if isValid == false {
+                    vc.findIDView.makeToast("유효하지 않은 코드입니다.", style: .dimo)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.isInvalidateUser
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { (vc, isValid) in
+                vc.findIDView.makeToast("존재하지 않는 사용자 정보입니다.", style: .dimo)
+            }
+            .disposed(by: disposeBag)
         
         output.idRequestButtonTapped
             .withUnretained(self)

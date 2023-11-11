@@ -39,6 +39,8 @@ protocol AuthUseCase {
     func formatPhoneNumber(_ phoneNumber: String, shouldRemoveLastDigit: Bool) -> String
     
     func executeIdFind(query: IdFindQuery) async throws -> IdFind
+    
+    func executePasswordFind(query: PasswordFindQuery) async throws -> PasswordFind
 }
 
 enum AuthUseCaseError: String, Error {
@@ -47,8 +49,6 @@ enum AuthUseCaseError: String, Error {
 
 final class AuthUseCaseImpl: AuthUseCase {
     
-    
-
     let authRepository: AuthRepository
 
     init(authRepository: AuthRepository) {
@@ -198,6 +198,14 @@ extension AuthUseCaseImpl {
     func executeIdFind(query: IdFindQuery) async throws -> IdFind {
         do {
             return try await authRepository.requestIdFind(query: query)
+        } catch {
+            throw AuthUseCaseError.execute
+        }
+    }
+    
+    func executePasswordFind(query: PasswordFindQuery) async throws -> PasswordFind {
+        do {
+            return try await authRepository.requestPasswordFind(query: query)
         } catch {
             throw AuthUseCaseError.execute
         }

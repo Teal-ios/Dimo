@@ -11,6 +11,7 @@ import RxCocoa
 
 final class FindPWViewModel: ViewModelType {
     private weak var coordinator: AuthCoordinator?
+    private let authUseCase: AuthUseCase
     var disposeBag: DisposeBag = DisposeBag()
     var leftTime: Int?
     
@@ -21,77 +22,97 @@ final class FindPWViewModel: ViewModelType {
         var nameInput: ControlProperty<String?>
         var nextButtonTapped: ControlEvent<Void>
     }
+    
+    private var userId: String?
+    private var agency: String?
+    private var formattedPhoneNum = BehaviorRelay<String?>(value: nil)
+    private var isInvalidUser = PublishRelay<Bool>()
+    
     struct Output {
-        var phoneNumberOutput: ControlProperty<String>
+        var formattedPhoneNumber: BehaviorRelay<String?>
         var phoneNumberValid: Observable<Bool>
         var telecomButtonTapped: ControlEvent<Void>
         var nextButtonTapped: ControlEvent<Void>
         var nextButtonValid: Observable<Bool>
+        var isInvalidateUser: PublishRelay<Bool>
     }
     
-    init(coordinator: AuthCoordinator?) {
+    init(authUseCase: AuthUseCase, coordinator: AuthCoordinator?) {
+        self.authUseCase = authUseCase
         self.coordinator = coordinator
-        
     }
     
     func transform(input: Input) -> Output {
-        let phoneStr = input.phoneNumberInput.orEmpty
+        input.phoneNumberInput
+            .orEmpty
+            .withUnretained(self)
+            .bind { (vm, text) in
+                let formattedPhoneNum = vm.authUseCase.formatPhoneNumber(text, shouldRemoveLastDigit: false)
+                vm.formattedPhoneNum.accept(formattedPhoneNum)
+            }
+            .disposed(by: disposeBag)
+            
+        input.idInput
+            .withUnretained(self)
+            .bind { (vm, text) in
+                vm.userId = text
+            }
+            .disposed(by: disposeBag)
+        
         let nameValid = input.nameInput.orEmpty.map { str in
             return str.count >= 2 && str.count <= 15
         }
+        
         let phoneValid = input.phoneNumberInput.orEmpty.map { str in
             return str.count == 12 || str.count == 13
         }
+        
         let idValid = input.idInput.orEmpty.map { str in
             return str.count >= 6
         }
-        let idCheck = input.idInput.orEmpty.map { str in
-            // 인증번호 확인 해야함
-            return true
-        }
+        
         let valid = Observable.combineLatest(nameValid, phoneValid, idValid).map {
             return $0 && $1 && $2
         }
         
+        input.nextButtonTapped
+            .withUnretained(self)
+            .bind { (vm, _) in
+                guard let userId = self.userId,
+                      let phoneNum = self.formattedPhoneNum.value else { return }
+                vm.loadPasswordFind(userId: userId, phoneNum: phoneNum)
+            }
+            .disposed(by: disposeBag)
         
-        input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showSendMessageViewController()
-        }.disposed(by: disposeBag)
-        
-        return Output(phoneNumberOutput: phoneStr, phoneNumberValid: phoneValid, telecomButtonTapped: input.telecomButtonTapped, nextButtonTapped: input.nextButtonTapped ,nextButtonValid: valid)
+        return Output(formattedPhoneNumber: self.formattedPhoneNum,
+                      phoneNumberValid: phoneValid,
+                      telecomButtonTapped: input.telecomButtonTapped,
+                      nextButtonTapped: input.nextButtonTapped,
+                      nextButtonValid: valid,
+                      isInvalidateUser: self.isInvalidUser)
     }
-    ///  추후 USECase로 뺄 예정입니다!
-    func phoneNumberFormat(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
-        guard !phoneNumber.isEmpty else { return "" }
-        guard let regex = try? NSRegularExpression(pattern: "[\\s-\\(\\)]", options: .caseInsensitive) else { return "" }
-        let r = NSString(string: phoneNumber).range(of: phoneNumber)
-        var number = regex.stringByReplacingMatches(in: phoneNumber, options: .init(rawValue: 0), range: r, withTemplate: "")
+    
+    func set(agency: String) {
+        self.agency = agency
+    }
+}
+
+extension FindPWViewModel {
+    
+    func loadPasswordFind(userId: String, phoneNum: String) {
+        let query = PasswordFindQuery(user_id: userId, phone_number: phoneNum)
         
-        if number.count > 11 {
-            let tenthDigitIndex = number.index(number.startIndex, offsetBy: 11)
-            number = String(number[number.startIndex..<tenthDigitIndex])
-        }
-        
-        if shouldRemoveLastDigit {
-            let end = number.index(number.startIndex, offsetBy: number.count-1)
-            number = String(number[number.startIndex..<end])
-        }
-        
-        if number.count < 7 {
-            let end = number.index(number.startIndex, offsetBy: number.count)
-            let range = number.startIndex..<end
-            number = number.replacingOccurrences(of: "(\\d{3})(\\d+)", with: "$1-$2", options: .regularExpression, range: range)
-        } else {
-            let end = number.index(number.startIndex, offsetBy: number.count)
-            let range = number.startIndex..<end
+        Task {
+            let passwordFind = try await authUseCase.executePasswordFind(query: query)
+            print("✅ Password Find ", passwordFind)
             
-            if number.count <= 10{
-                number = number.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: range)
-            } else if number.count == 11 {
-                number = number.replacingOccurrences(of: "(\\d{3})(\\d{4})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: range)
+            if passwordFind.code == 200 {
+                await MainActor.run {
+                    self.coordinator?.showSendMessageViewController()
+                }
+            } else {
+                self.isInvalidUser.accept(false)
             }
         }
-        
-        return number
     }
 }

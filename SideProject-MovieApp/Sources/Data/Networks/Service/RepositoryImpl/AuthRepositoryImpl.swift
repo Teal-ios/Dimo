@@ -207,4 +207,16 @@ extension AuthRepositoryImpl {
             throw AuthRepositoryError.request
         }
     }
+    
+    func requestPasswordFind(query: PasswordFindQuery) async throws -> PasswordFind {
+        let requestDTO = RequestPasswordFindDTO(userId: query.user_id, phoneNumber: query.phone_number)
+        let target = AuthAPIEndpoints.postForgottenPassword(with: requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
 }

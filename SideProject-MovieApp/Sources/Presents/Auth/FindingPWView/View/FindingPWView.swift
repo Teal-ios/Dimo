@@ -63,13 +63,16 @@ final class FindPWView: BaseView {
     let nextButton: OnboardingButton = {
         return OnboardingButton(title: "다음", ofSize: 14)
     }()
+    
     let validLabel: UILabel = {
         let label = UILabel()
         label.font = Font.caption
         label.textColor = .error
         label.text = "존재하지 않는 사용자 정보입니다."
+        label.isHidden = true
         return label
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
