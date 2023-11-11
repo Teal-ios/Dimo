@@ -34,4 +34,8 @@ protocol AuthRepository: AnyObject {
     func fetchSocialLoginCheck(query: SocialLoginCheckQuery) async throws -> SocialLoginCheck
     
     func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin
+    
+    func requestIdFind(query: IdFindQuery) async throws -> IdFind
+    
+    func requestPasswordFind(query: PasswordFindQuery) async throws -> PasswordFind
 }

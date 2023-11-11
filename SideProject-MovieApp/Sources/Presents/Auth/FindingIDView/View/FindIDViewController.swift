@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Toast
 
 final class FindIDViewController: BaseViewController {
     
@@ -34,25 +35,25 @@ final class FindIDViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-
     }
     
     override func setupBinding() {
         let input = FindIDViewModel.Input(
             phoneNumberInput: findIDView.phoneNumberTextFieldView.tf.rx.text,
             telecomButtonTapped: findIDView.telecomButton.rx.tap,
-            authInput: findIDView.authTextFieldView.tf.rx.text,
+            authCodeInput: findIDView.authTextFieldView.tf.rx.text,
             nameInput: findIDView.nameTextFieldView.tf.rx.text,
-            idRequestButtonTapped: findIDView.idRequestButton.rx.tap,
+            didTappedRequestButtonTapped: findIDView.idRequestButton.rx.tap,
             nextButtonTapped: findIDView.nextButton.rx.tap)
         
         let output = viewModel.transform(input: input)
         
-        output.phoneNumberOutput
+        output.formattedPhoneNumber
             .withUnretained(self)
-            .bind { vc, str in
-                vc.findIDView.phoneNumberTextFieldView.tf.text = vc.viewModel.phoneNumberFormat(phoneNumber: str)
-            }.disposed(by: viewModel.disposeBag)
+            .bind { (vc, phoneNum) in
+                vc.findIDView.phoneNumberTextFieldView.tf.text = phoneNum
+            }
+            .disposed(by: disposeBag)
         
         output.nextButtonValid
             .withUnretained(self)
@@ -82,12 +83,15 @@ final class FindIDViewController: BaseViewController {
             button?.rx.tap
                 .withUnretained(self)
                 .bind { vc, _ in
-                    var attrStr = AttributedString(button?.titleLabel?.text ?? "")
+                    let agency = button?.titleLabel?.text ?? ""
+                    var attrStr = AttributedString(agency)
                     attrStr.font = .suitFont(ofSize: 16, weight: .Medium)
                     vc.findIDView.telecomButton.configuration?.attributedTitle = attrStr
                     vc.findIDView.telecomButton.configuration?.baseForegroundColor = .white
                     vc.findIDView.telecomSelectView.isHidden = vc.isTelecomButtonSelected
                     vc.isTelecomButtonSelected.toggle()
+                    vc.viewModel.set(agency: agency)
+                    print("AGENCY: \(agency)")
                 }.disposed(by: disposeBag)
         }
         
@@ -98,6 +102,23 @@ final class FindIDViewController: BaseViewController {
                 vc.findIDView.idRequestButton.isEnabled = bool
             }.disposed(by: disposeBag)
         
+        output.isInvalidateCode
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { (vc, isValid) in
+                if isValid == false {
+                    vc.findIDView.makeToast("유효하지 않은 코드입니다.", style: .dimo)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.isInvalidateUser
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .bind { (vc, isValid) in
+                vc.findIDView.makeToast("존재하지 않는 사용자 정보입니다.", style: .dimo)
+            }
+            .disposed(by: disposeBag)
         
         output.idRequestButtonTapped
             .withUnretained(self)

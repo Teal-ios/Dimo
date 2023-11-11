@@ -36,7 +36,6 @@ final class EditMyInfoViewModel: ViewModelType {
             case [0, 2]:
                 UserDefaultManager.removeAllUserDefault()
                 self.coordinator?.connectAuthFlow()
-                print("로그아웃")
             case [0, 3]:
                 self.coordinator?.showWithDrawViewController()
             default:

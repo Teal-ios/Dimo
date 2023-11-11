@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct ResponsePhoneNumberCheckDTO: Codable {
+struct ResponsePhoneNumberCheckDTO: Decodable {
     let msg: String
     
     enum CodingKeys: String, CodingKey {
