@@ -17,7 +17,7 @@ struct AuthAPIEndpoints {
     }
     
     static func postPhoneNumberCheck(with requestDTO: RequestPhoneNumberCheckDTO) -> AuthRouter<ResponsePhoneNumberCheckDTO> {
-        return AuthRouter<ResponsePhoneNumberCheckDTO>.phoneNumberCheck(parameters: PhoneNumberCheckQuery(phone_number: requestDTO.phone_number))
+        return AuthRouter<ResponsePhoneNumberCheckDTO>.phoneNumberCheck(parameters: PhoneNumberCheckQuery(phone_number: requestDTO.phoneNumber))
     }
     
     static func getDuplicationId(with user_id: String) -> AuthRouter<ResponseDuplicationIdDTO> {
@@ -66,5 +66,11 @@ struct AuthAPIEndpoints {
             )
         )
     }
+    
+    static func getForgottenId(query: IdFindQuery) -> AuthRouter<ResponseIdFindDTO> {
+        return AuthRouter<ResponseIdFindDTO>.idFind(parameters: query)
+    }
+    
+    
 }
 

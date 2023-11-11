@@ -606,6 +606,13 @@
 		497D24622AF62D6900BA81E3 /* AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24612AF62D6900BA81E3 /* AppleLogin.swift */; };
 		497D24642AF6317800BA81E3 /* RequestAppleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */; };
 		497D24662AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */; };
+		49917F042AFF4A4E00443B7E /* IdFindQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F032AFF4A4E00443B7E /* IdFindQuery.swift */; };
+		49917F062AFF4A5400443B7E /* PasswordFindQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F052AFF4A5400443B7E /* PasswordFindQuery.swift */; };
+		49917F082AFF4AF700443B7E /* IdFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F072AFF4AF700443B7E /* IdFind.swift */; };
+		49917F0A2AFF4B4D00443B7E /* PasswordFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F092AFF4B4D00443B7E /* PasswordFind.swift */; };
+		49917F0C2AFF4BED00443B7E /* RequestPasswordFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F0B2AFF4BED00443B7E /* RequestPasswordFindDTO.swift */; };
+		49917F0E2AFF4C3500443B7E /* ResponseIdFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F0D2AFF4C3500443B7E /* ResponseIdFindDTO.swift */; };
+		49917F102AFF4C4200443B7E /* ResponsePasswordFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49917F0F2AFF4C4200443B7E /* ResponsePasswordFindDTO.swift */; };
 		49A6EBBB2A49E2EF009200E6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */; };
 		49A743832A46BF9A00651011 /* RequestNicknameChangeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */; };
 		49A7A1D22A90A4A40011EDC4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */; };
@@ -1320,6 +1327,13 @@
 		497D24612AF62D6900BA81E3 /* AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLogin.swift; sourceTree = "<group>"; };
 		497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAppleLoginDTO.swift; sourceTree = "<group>"; };
 		497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAppleLoginDTO.swift; sourceTree = "<group>"; };
+		49917F032AFF4A4E00443B7E /* IdFindQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindQuery.swift; sourceTree = "<group>"; };
+		49917F052AFF4A5400443B7E /* PasswordFindQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFindQuery.swift; sourceTree = "<group>"; };
+		49917F072AFF4AF700443B7E /* IdFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFind.swift; sourceTree = "<group>"; };
+		49917F092AFF4B4D00443B7E /* PasswordFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFind.swift; sourceTree = "<group>"; };
+		49917F0B2AFF4BED00443B7E /* RequestPasswordFindDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordFindDTO.swift; sourceTree = "<group>"; };
+		49917F0D2AFF4C3500443B7E /* ResponseIdFindDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseIdFindDTO.swift; sourceTree = "<group>"; };
+		49917F0F2AFF4C4200443B7E /* ResponsePasswordFindDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePasswordFindDTO.swift; sourceTree = "<group>"; };
 		49A6EBBA2A49E2EF009200E6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		49A743822A46BF9A00651011 /* RequestNicknameChangeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNicknameChangeDTO.swift; sourceTree = "<group>"; };
 		49A7A1D12A90A4A40011EDC4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -1677,6 +1691,8 @@
 				2FD87A582A584D21003C276B /* ResponseSignUpDTO.swift */,
 				49E31E042AEE6E5E003E245B /* ResponseUserInfoRegistrationDTO.swift */,
 				497D24652AF631EF00BA81E3 /* ResponseAppleLoginDTO.swift */,
+				49917F0D2AFF4C3500443B7E /* ResponseIdFindDTO.swift */,
+				49917F0F2AFF4C4200443B7E /* ResponsePasswordFindDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1694,6 +1710,7 @@
 				2FD87A462A5846F7003C276B /* ReqeustSocialDTO.swift */,
 				2FD87A482A58472F003C276B /* RequestDropDTO.swift */,
 				497D24632AF6317800BA81E3 /* RequestAppleLoginDTO.swift */,
+				49917F0B2AFF4BED00443B7E /* RequestPasswordFindDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2179,8 +2196,8 @@
 		2F979F232A0C9A7700A1CD53 /* FindingIDView */ = {
 			isa = PBXGroup;
 			children = (
-				2F979F242A0C9A8E00A1CD53 /* FindIDViewController.swift */,
-				2F979F262A0C9A9600A1CD53 /* FindIDView.swift */,
+				497D24682AF78CF100BA81E3 /* ViewModel */,
+				497D24672AF78CED00BA81E3 /* View */,
 			);
 			path = FindingIDView;
 			sourceTree = "<group>";
@@ -2197,8 +2214,8 @@
 		2F979F312A0CFE0A00A1CD53 /* FindingPWView */ = {
 			isa = PBXGroup;
 			children = (
-				2F979F322A0CFE3A00A1CD53 /* FindingPWView.swift */,
-				2F979F342A0CFE4100A1CD53 /* FindingPWViewController.swift */,
+				497D246A2AF78D2100BA81E3 /* ViewModel */,
+				497D24692AF78D1E00BA81E3 /* View */,
 			);
 			path = FindingPWView;
 			sourceTree = "<group>";
@@ -2256,9 +2273,7 @@
 				2FC2EB4429E3BB6B00ECE2ED /* LoginSplashViewModel.swift */,
 				2FD84E9B29FC2C3800A42F0F /* PopupViewModel.swift */,
 				2F979F212A0C929900A1CD53 /* JoinCompleteViewModel.swift */,
-				2F979F282A0CA4E100A1CD53 /* FindIDViewModel.swift */,
 				2F979F2F2A0CB3ED00A1CD53 /* NotificationIDViewModel.swift */,
-				2F979F362A0D016F00A1CD53 /* FindingPWViewModel.swift */,
 				2FDFB18C2A0DD80F00732788 /* SendMessageViewModel.swift */,
 			);
 			path = ViewModel;
@@ -2724,9 +2739,9 @@
 				2FD6C9342A4D5B0D00EFB684 /* JoinTerms */,
 				2F979F1C2A0C925D00A1CD53 /* JoinCompleteView */,
 				2F979F232A0C9A7700A1CD53 /* FindingIDView */,
+				2F979F312A0CFE0A00A1CD53 /* FindingPWView */,
 				2F979F2A2A0CABA700A1CD53 /* NotificaionIDView */,
 				2FDFB1872A0DD7CB00732788 /* SendMessageView */,
-				2F979F312A0CFE0A00A1CD53 /* FindingPWView */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -3519,6 +3534,8 @@
 				2FD87A382A584268003C276B /* SocialLoginkQuery.swift */,
 				49E31DFE2AEE51CF003E245B /* UserInfoInSnsLoginQuery.swift */,
 				49E31E062AEE8A74003E245B /* SnsAccountCheckQuery.swift */,
+				49917F032AFF4A4E00443B7E /* IdFindQuery.swift */,
+				49917F052AFF4A5400443B7E /* PasswordFindQuery.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -4065,6 +4082,40 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		497D24672AF78CED00BA81E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F262A0C9A9600A1CD53 /* FindIDView.swift */,
+				2F979F242A0C9A8E00A1CD53 /* FindIDViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		497D24682AF78CF100BA81E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F282A0CA4E100A1CD53 /* FindIDViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		497D24692AF78D1E00BA81E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F322A0CFE3A00A1CD53 /* FindingPWView.swift */,
+				2F979F342A0CFE4100A1CD53 /* FindingPWViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		497D246A2AF78D2100BA81E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F979F362A0D016F00A1CD53 /* FindingPWViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		49A743842A46C17B00651011 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -4082,6 +4133,8 @@
 				2FD87A3E2A58431D003C276B /* Logout.swift */,
 				49E31E002AEE68DD003E245B /* UserInfoInSnsLogin.swift */,
 				49E31E082AEE8A7F003E245B /* SnsAccountCheck.swift */,
+				49917F072AFF4AF700443B7E /* IdFind.swift */,
+				49917F092AFF4B4D00443B7E /* PasswordFind.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -4605,6 +4658,7 @@
 				2F7D6D0D2AF4944B00CC309B /* RequestRecentCharacterListDeleteDTO.swift in Sources */,
 				2FC12C592AC015FC00FF5145 /* CharacterMoreCoordinator.swift in Sources */,
 				2F1AB9D02A10C28F001178EA /* SettingView.swift in Sources */,
+				49917F102AFF4C4200443B7E /* ResponsePasswordFindDTO.swift in Sources */,
 				2FDD74642A10ABEC00A75AB9 /* CharacterDetailViewModel.swift in Sources */,
 				2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */,
 				2FD82D692A77443100372D24 /* ReviewList.swift in Sources */,
@@ -4803,6 +4857,7 @@
 				2FD82D702A77469000372D24 /* GetReviewQuery.swift in Sources */,
 				2FD11DCD2A00DEFA006796DD /* MyMomentumCoordinator.swift in Sources */,
 				2FC2EB4A29E3BC8400ECE2ED /* LoginStartViewController.swift in Sources */,
+				49917F0C2AFF4BED00443B7E /* RequestPasswordFindDTO.swift in Sources */,
 				49F148162A9505A00045E857 /* ResponseCharacterAskDTO.swift in Sources */,
 				497454F82A42025D0043D67E /* APIEndpoints.swift in Sources */,
 				2FC2EB4E29E3DF8500ECE2ED /* UILabel+Extension.swift in Sources */,
@@ -4867,6 +4922,7 @@
 				2FD4D9242A6CCAD200E7972B /* ResponseLikeAnimationContentDTO.swift in Sources */,
 				2FD4D9162A6CC52B00E7972B /* LikeAnimationContent.swift in Sources */,
 				2F1AB9CE2A10C28B001178EA /* SettingViewController.swift in Sources */,
+				49917F062AFF4A5400443B7E /* PasswordFindQuery.swift in Sources */,
 				2F7D6CF12AF482D200CC309B /* ResponseRecentCharacterItemDeleteDTO.swift in Sources */,
 				2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */,
 				2F437C212A4C57AA000B7A61 /* FeedDetailMoreMyView.swift in Sources */,
@@ -4895,6 +4951,7 @@
 				2FBD19CE29FF6DF30005B1FA /* VoteCollectionViewCell.swift in Sources */,
 				2FE1111C2A76645C0013A49E /* RandomCharacterRecommendList.swift in Sources */,
 				2FD87A472A5846F7003C276B /* ReqeustSocialDTO.swift in Sources */,
+				49917F082AFF4AF700443B7E /* IdFind.swift in Sources */,
 				2FD87A292A583F92003C276B /* GoogleLoginQuery.swift in Sources */,
 				49E31E072AEE8A74003E245B /* SnsAccountCheckQuery.swift in Sources */,
 				2FCD8C9D2A8250C4002A39B0 /* FeedDetailHideReviewAlertViewController.swift in Sources */,
@@ -4978,6 +5035,7 @@
 				2FD4D9182A6CC59500E7972B /* LikeMovieContent.swift in Sources */,
 				2F53D0972A1F1F0F00898DCD /* RequestPhoneNumberVerifyDTO.swift in Sources */,
 				2FCD8C9F2A8250EA002A39B0 /* FeedDetailHideReviewAlertViewModel.swift in Sources */,
+				49917F0A2AFF4B4D00443B7E /* PasswordFind.swift in Sources */,
 				2FDD9E752A12622F00A41FF7 /* DynamicCollectionView.swift in Sources */,
 				2FDFB18F2A0DDECD00732788 /* UIView + Extension.swift in Sources */,
 				2FEE5DB22AA563E60090B406 /* MyReviewMoreViewModel.swift in Sources */,
@@ -5110,8 +5168,10 @@
 				93C48B4C29D1855600644F6A /* SignupIdentificationViewModel.swift in Sources */,
 				2F53D0B02A1F4DF900898DCD /* CustomAlertView.swift in Sources */,
 				2F7D6CE72AF47EC100CC309B /* RecentCharacterItemDeleteQuery.swift in Sources */,
+				49917F0E2AFF4C3500443B7E /* ResponseIdFindDTO.swift in Sources */,
 				2F437C062A4BE8F0000B7A61 /* ContentRepositoryImpl.swift in Sources */,
 				2FD69EB02A0387F600AA5A6E /* PosterCollectionViewCell.swift in Sources */,
+				49917F042AFF4A4E00443B7E /* IdFindQuery.swift in Sources */,
 				2FDD9E6C2A1220DF00A41FF7 /* DetailReviewCollectionViewCell.swift in Sources */,
 				2FD69EAA2A03843C00AA5A6E /* HomeViewModel.swift in Sources */,
 				2F979F2E2A0CABFD00A1CD53 /* NotificationIDViewController.swift in Sources */,

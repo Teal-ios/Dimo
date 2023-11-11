@@ -138,7 +138,10 @@ final class AuthCoordinator: Coordinator {
     }
     
     func showFindIDViewController() {
-        let viewModel = FindIDViewModel(coordinator: self)
+        let dataTransferService = DataTransferService(networkService: NetworkService())
+        let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
+        let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
+        let viewModel = FindIDViewModel(coordinator: self, authUseCase: authUseCaseImpl)
         let vc = FindIDViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

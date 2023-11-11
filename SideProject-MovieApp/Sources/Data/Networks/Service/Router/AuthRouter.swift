@@ -21,6 +21,8 @@ enum AuthRouter<R> {
     case drop(parameters: DropQuery)
     case socialLoginCheck(parameters: SocialLoginCheckQuery)
     case userInfoRegistration(parameters: UserInfoInSnsLoginQuery)
+    case idFind(parameters: IdFindQuery)
+    case passwordFind(parameters: PasswordFindQuery)
 }
 
 extension AuthRouter: TargetType2 {
@@ -29,7 +31,7 @@ extension AuthRouter: TargetType2 {
 
     var header: [String : String] {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .duplicationId, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .logout, .drop, .socialLoginCheck, .userInfoRegistration, .idFind, .passwordFind:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -74,6 +76,10 @@ extension AuthRouter: TargetType2 {
             return "/social/check"
         case .userInfoRegistration:
             return "/social"
+        case .idFind:
+            return "/login/find_id"
+        case .passwordFind:
+            return "/login/find_pw"
         }
     }
     
@@ -83,6 +89,11 @@ extension AuthRouter: TargetType2 {
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
         case .socialLoginCheck(let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.userId), URLQueryItem(name: "sns_type", value: parameters.snsType)]
+        case .idFind(let parameters):
+            return [URLQueryItem(name: "name", value: parameters.name),
+                    URLQueryItem(name: "agency", value: parameters.agency),
+                    URLQueryItem(name: "phone_number", value: parameters.phone_number),
+                    URLQueryItem(name: "ver_code", value: parameters.ver_code)]
         default:
             return nil
         }
@@ -90,9 +101,9 @@ extension AuthRouter: TargetType2 {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .drop, .userInfoRegistration:
+        case .signup, .phoneNumberCheck, .phoneNumberVerify, .login, .kakaoLogin, .googleLogin, .appleLogin, .social, .drop, .userInfoRegistration, .passwordFind:
             return .post
-        case .duplicationId, .logout, .socialLoginCheck:
+        case .duplicationId, .logout, .socialLoginCheck, .idFind:
             return .get
         }
     }
@@ -111,7 +122,7 @@ extension AuthRouter: TargetType2 {
             return try? encoder.encode(requestSignUpDTO)
             
         case .phoneNumberCheck(let parameters):
-            let requestPhoneNumberCheckDTO = RequestPhoneNumberCheckDTO(phone_number: parameters.phone_number)
+            let requestPhoneNumberCheckDTO = RequestPhoneNumberCheckDTO(phoneNumber: parameters.phone_number)
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
             return try? encoder.encode(requestPhoneNumberCheckDTO)
@@ -170,6 +181,16 @@ extension AuthRouter: TargetType2 {
             let requestDTO = RequestUserInfoInSnsLoginDTO(userId: parameters.user_id, nickname: parameters.nickname, mbti: parameters.mbti, pushCheck: parameters.push_check)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
+            
+        case .idFind:
+            return nil
+            
+        case .passwordFind(let parameters):
+            let requestDTO = RequestPasswordFindDTO(userId: parameters.user_id,
+                                                    phoneNumber: parameters.phone_number)
+            let encoder = JSONEncoder()
+            return try? encoder.encode(requestDTO)
         }
+        
     }
 }

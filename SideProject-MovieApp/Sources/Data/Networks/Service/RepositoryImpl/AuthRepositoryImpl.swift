@@ -36,7 +36,7 @@ extension AuthRepositoryImpl {
 
 extension AuthRepositoryImpl {
     func requestPhoneNumberCheck(query: PhoneNumberCheckQuery) async throws -> PhoneNumberCheck {
-        let requestDTO = RequestPhoneNumberCheckDTO(phone_number: query.phone_number)
+        let requestDTO = RequestPhoneNumberCheckDTO(phoneNumber: query.phone_number)
         let target = AuthAPIEndpoints.postPhoneNumberCheck(with: requestDTO)
         
         do {
@@ -186,6 +186,19 @@ extension AuthRepositoryImpl {
     func fetchUserInfoInSnsLogin(query: UserInfoInSnsLoginQuery) async throws -> UserInfoInSnsLogin {
         let requestDTO = RequestUserInfoInSnsLoginDTO(userId: query.user_id, nickname: query.nickname, mbti: query.mbti, pushCheck: query.push_check)
         let target = AuthAPIEndpoints.postUserInfoInSnsLogin(with: requestDTO  )
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw AuthRepositoryError.request
+        }
+    }
+}
+
+extension AuthRepositoryImpl {
+    func requestIdFind(query: IdFindQuery) async throws -> IdFind {
+        let target = AuthAPIEndpoints.getForgottenId(query: query)
         
         do {
             let data = try await dataTransferService.request(with: target)
