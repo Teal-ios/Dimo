@@ -73,7 +73,12 @@ final class NicknameViewModel: ViewModelType {
             .withUnretained(self)
             .bind { (vm, _) in
                 vm.saveNickname()
-                vm.coordinator?.showJoinMbtiViewController(isSnsLogin: vm.isSnsLogin)
+                if vm.isSnsLogin {
+                    vm.coordinator?.showJoinMbtiViewController(isSnsLogin: vm.isSnsLogin)
+                } else {
+                    vm.coordinator?.showPasswordViewController()
+                }
+                
             }
             .disposed(by: disposeBag)
         
