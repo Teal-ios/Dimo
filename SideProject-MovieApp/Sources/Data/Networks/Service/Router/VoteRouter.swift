@@ -144,7 +144,7 @@ extension VoteRouter: TargetType2 {
             return try? encoder.encode(requestDTO)
             
         case .recentSearchItemSave(let parameters):
-            let requestDTO = RequestRecentSearchSaveDTO(user_id: parameters.user_id, search_content: parameters.user_id)
+            let requestDTO = RequestRecentSearchSaveDTO(user_id: parameters.user_id, search_content: parameters.search_content)
             let encoder = JSONEncoder()
             return try? encoder.encode(requestDTO)
             
