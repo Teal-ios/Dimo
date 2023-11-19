@@ -9,6 +9,11 @@ import UIKit
 
 final class AuthCoordinator: Coordinator {
     
+    enum SignUpFlow {
+        case dimo
+        case sns
+    }
+    
     weak var delegate: CoordinatorDelegate?
     var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
@@ -45,44 +50,50 @@ final class AuthCoordinator: Coordinator {
         let viewModel = OnBoardingViewModel(coordinator: self)
         let vc = OnBoardingViewController(viewModel: viewModel)
         navigationController.viewControllers = [vc]
-        showTermsOfUseViewController(isSnsLogin:  false)
+        showTermsOfUseViewController(with: .dimo)
     }
     
-    func showTermsOfUseViewController(isSnsLogin: Bool) {
-        let viewModel = TermsOfUseViewModel(coordinator: self, isSnsLogin: isSnsLogin)
+    func showTermsOfUseViewController(with flow: SignUpFlow) {
+        let viewModel = TermsOfUseViewModel(coordinator: self, signUpFlow: flow)
         let vc = TermsOfUseViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showSignupIdentificationViewController() {
+    func showSignupIdentificationViewController(with flow: SignUpFlow) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
-        let viewModel = SignupIdentificationViewModel(coordinator: self, authUseCase: authUseCaseImpl)
+        let viewModel = SignupIdentificationViewModel(coordinator: self,
+                                                      authUseCase: authUseCaseImpl,
+                                                      signUpFlow: flow)
         let vc = SignupIdentificationViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showIDRegisterViewController() {
+    func showIDRegisterViewController(with flow: SignUpFlow) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
-        let viewModel = IDNickNameViewModel(coordinator: self, authUseCase: authUseCaseImpl)
+        let viewModel = IDNickNameViewModel(coordinator: self,
+                                            authUseCase: authUseCaseImpl,
+                                            signUpFlow: flow)
         let vc = IDRegisterViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showNickNameViewController(isSnsLogin: Bool) {
+    func showNickNameViewController(with flow: SignUpFlow) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUseCaseImpl = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
-        let viewModel = NicknameViewModel(coordinator: self, settingUseCase: settingUseCaseImpl, isSnsLogin: isSnsLogin)
+        let viewModel = NicknameViewModel(coordinator: self,
+                                          settingUseCase: settingUseCaseImpl,
+                                          signUpFlow: flow)
         let vc = NickNameViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showPasswordViewController() {
-        let viewModel = PasswordViewModel(coordinator: self)
+    func showPasswordViewController(with flow: SignUpFlow) {
+        let viewModel = PasswordViewModel(coordinator: self, signUpFlow: flow)
         let vc = PasswordViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -107,18 +118,14 @@ final class AuthCoordinator: Coordinator {
         navigationController.dismiss(animated: true)
     }
     
-    func showJoinMbtiViewController(isSnsLogin: Bool) {
+    func showJoinMbtiViewController(with flow: SignUpFlow) {
         let dataTransferService = DataTransferService(networkService: NetworkService())
         let authRepositoryImpl = AuthRepositoryImpl(dataTransferService: dataTransferService)
         let authUseCaseImpl = AuthUseCaseImpl(authRepository: authRepositoryImpl)
-        let viewModel = JoinMbtiViewModel(coordinator: self, authUseCase: authUseCaseImpl, isSnsLogin: isSnsLogin)
+        let viewModel = JoinMbtiViewModel(coordinator: self,
+                                          authUseCase: authUseCaseImpl,
+                                          signUpFlow: flow)
         let vc = JoinMbtiViewController(viewModel: viewModel)
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func showJoinTermsViewController() {
-        let viewModel = JoinTermsViewModel(coordinator: self)
-        let vc = JoinTermsViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }
     

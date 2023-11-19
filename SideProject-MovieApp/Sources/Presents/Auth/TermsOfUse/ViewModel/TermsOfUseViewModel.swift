@@ -10,9 +10,10 @@ import RxSwift
 import RxCocoa
 
 final class TermsOfUseViewModel: ViewModelType {
+    
     var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
-    private var isSnsLogin: Bool
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     
     struct Input {
         let acceptButtonTapped: ControlEvent<Void>
@@ -26,9 +27,9 @@ final class TermsOfUseViewModel: ViewModelType {
         let totalValid: BehaviorSubject<[Bool]>
     }
     
-    init(coordinator: AuthCoordinator? = nil, isSnsLogin: Bool) {
+    init(coordinator: AuthCoordinator? = nil, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
-        self.isSnsLogin = isSnsLogin
+        self.signUpFlow = signUpFlow
     }
     
     func transform(input: Input) -> Output {
@@ -95,24 +96,43 @@ final class TermsOfUseViewModel: ViewModelType {
             totalValidSubject.onNext(totalValid)
         }.disposed(by: disposeBag)
         
-        input.acceptButtonTapped
-            .withLatestFrom(totalValidSubject)
-            .withUnretained(self)
-            .bind { vm, totalValid in
-                let pushValid = totalValid[3]
-                switch pushValid {
-                    
-                case true:
-                    UserDefaultManager.pushCheck = 1
-                case false:
-                    UserDefaultManager.pushCheck = 0
+        switch self.signUpFlow {
+        case .dimo:
+            input.acceptButtonTapped
+                .withLatestFrom(totalValidSubject)
+                .withUnretained(self)
+                .bind { vm, totalValid in
+                    let isAgreed = totalValid[3]
+                    self.savePushCheck(isAgreed)
+                    vm.coordinator?.showSignupIdentificationViewController(with: self.signUpFlow)
                 }
-                vm.coordinator?.showNickNameViewController(isSnsLogin: vm.isSnsLogin)
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
+            
+        case .sns:
+            input.acceptButtonTapped
+                .withLatestFrom(totalValidSubject)
+                .withUnretained(self)
+                .bind { vm, totalValid in
+                    let isAgreed = totalValid[3]
+                    self.savePushCheck(isAgreed)
+                    vm.coordinator?.showNickNameViewController(with: self.signUpFlow)
+                }
+                .disposed(by: disposeBag)
+        }
         
         return Output(totalValid: totalValidSubject)
     }
-
     
+}
+
+// MARK: - UserDefaultManager
+extension TermsOfUseViewModel {
+    
+    private func savePushCheck(_ isAgreed: Bool) {
+        if isAgreed {
+            UserDefaultManager.pushCheck = 1
+        } else {
+            UserDefaultManager.pushCheck = 0
+        }
+    }
 }

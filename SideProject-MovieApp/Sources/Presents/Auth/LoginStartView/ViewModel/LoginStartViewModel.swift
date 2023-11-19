@@ -44,14 +44,14 @@ final class LoginStartViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.didTappedDimoLoginButton.bind { [weak self] _ in
             guard let self else { return }
-            UserDefaultManager.snsType = "none"
+            self.saveDimoLoginType()
             self.coordinator?.showDimoLoginViewController()
         }.disposed(by: disposeBag)
         
         input.didTappedSignupButton.bind { [weak self] _ in
             guard let self else { return }
-            UserDefaultManager.snsType = "none"
-            self.coordinator?.showJoinTermsViewController()
+            self.saveDimoLoginType()
+            self.coordinator?.showTermsOfUseViewController(with: .dimo)
         }
         .disposed(by: disposeBag)
         
@@ -84,16 +84,18 @@ extension LoginStartViewModel {
                 let kakaoLogin = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
                 
                 if kakaoLogin.code == 200 {
-                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: "kakao")
+                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
                     if socialLoginCheck?.code == 200 {
                         await MainActor.run {
-                            self.coordinator?.connectHomeTabBarCoordinator()
+                            self.saveUserInformation(userId: id, userName: name, snsType: snsType)
+                            self.coordinator?.showTermsOfUseViewController(with: .sns)
+//                            self.coordinator?.connectHomeTabBarCoordinator()
                         }
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
                             self.saveUserInformation(userId: id, userName: name, snsType: snsType)
-                            self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                            self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
                         print("카카오 로그인 실패")
@@ -106,7 +108,7 @@ extension LoginStartViewModel {
             Task {
                 let googleLogin = try await authUseCase.executeGoogleLogin(query: googleLoginQuery)
                 if googleLogin.code == 200 {
-                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: "google")
+                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
                     if socialLoginCheck?.code == 200 {
                         await MainActor.run {
@@ -115,7 +117,7 @@ extension LoginStartViewModel {
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
                             self.saveUserInformation(userId: id, userName: name, snsType: snsType)
-                            self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                            self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
                         print("구글 로그인 실패")
@@ -129,7 +131,7 @@ extension LoginStartViewModel {
                 let appleLogin = try await authUseCase.executeAppleLogin(query: appleLoginQuery)
                 print("✅ APPLE LOGIN: \(appleLogin)")
                 if appleLogin.code == 200 {
-                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: "apple")
+                    let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
                     print("✅ APPLE LOGIN CHECK: \(socialLoginCheck)")
                     if socialLoginCheck?.code == 200 {
@@ -139,7 +141,7 @@ extension LoginStartViewModel {
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
                             self.saveUserInformation(userId: id, userName: name ?? "", snsType: snsType)
-                            self.coordinator?.showTermsOfUseViewController(isSnsLogin: true)
+                            self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
                         print("애플 로그인 실패")
@@ -166,5 +168,9 @@ extension LoginStartViewModel {
         UserDefaultManager.userId = userId
         UserDefaultManager.userName = userName
         UserDefaultManager.snsType = snsType
+    }
+    
+    private func saveDimoLoginType() {
+        UserDefaultManager.snsType = "none"
     }
 }

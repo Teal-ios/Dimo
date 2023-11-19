@@ -86,7 +86,7 @@ final class DimoLoginViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.dimoFirstStartButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showJoinTermsViewController()
+            self?.coordinator?.showTermsOfUseViewController(with: .dimo)
         }
         .disposed(by: disposeBag)
         

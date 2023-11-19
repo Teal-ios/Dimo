@@ -10,9 +10,10 @@ import RxCocoa
 import RxSwift
 
 class PasswordViewModel: ViewModelType {
-    var disposeBag: DisposeBag = DisposeBag()
     
+    var disposeBag: DisposeBag = DisposeBag()
     private weak var coordinator: AuthCoordinator?
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     
     struct Input {
         let passwordText: ControlProperty<String?>
@@ -27,9 +28,11 @@ class PasswordViewModel: ViewModelType {
     }
     
     
-    init(coordinator: AuthCoordinator? = nil) {
+    init(coordinator: AuthCoordinator? = nil, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
+        self.signUpFlow = signUpFlow
     }
+    
     func transform(input: Input) -> Output {
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$])[A-Za-z\\d!@#$]{8,16}$"
         
@@ -39,16 +42,23 @@ class PasswordViewModel: ViewModelType {
             .share()
         
         input.didNextButtonTap
-            .emit { [weak self] text in
+            .emit(onNext: { [weak self] text in
                 guard let self = self else { return }
-                print("password", text)
-                UserDefaultManager.password = text
-                self.coordinator?.showJoinMbtiViewController(isSnsLogin: false)
-            }
+                self.save(password: text)
+                self.coordinator?.showNickNameViewController(with: self.signUpFlow)
+            })
             .disposed(by: disposeBag)
         
         let passwordDuplicationValid = Observable.combineLatest(input.passwordText.orEmpty, input.checkpwText.orEmpty).map { $0 == $1 && $0.count >= 8 && $0.count <= 16 }
         
-        return Output(pwConditionValidation: pwValid, passwordDuplicationValid: passwordDuplicationValid)
+        return Output(pwConditionValidation: pwValid,
+                      passwordDuplicationValid: passwordDuplicationValid)
+    }
+}
+
+// MARK: UserDefaultManager
+extension PasswordViewModel {
+    private func save(password: String?) {
+        UserDefaultManager.password = password
     }
 }
