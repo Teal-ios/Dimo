@@ -169,7 +169,9 @@ final class SearchViewController: BaseViewController {
                     guard let searchList = searchList else { return }
                     for ele in searchList {
                         guard let ele = ele else { return }
-                        searchArr.append(ele)
+                        if searchArr.count < 5 {
+                            searchArr.append(ele)
+                        }
                     }
                 }
                 
@@ -177,7 +179,9 @@ final class SearchViewController: BaseViewController {
                     guard let characterList = characterList else { return }
                     for ele in characterList {
                         guard let ele = ele else { return }
-                        characterArr.append(ele)
+                        if characterList.count < 5 {
+                            characterArr.append(ele)
+                        }
                     }
                 }
                 

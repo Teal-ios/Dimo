@@ -32,7 +32,8 @@ final class SettingViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.cellSelected.bind { indexPath in
+        input.cellSelected.bind { [weak self] indexPath in
+            guard let self = self else { return }
             switch indexPath {
             case [0, 0]:
                 print("내 정보 변경")
@@ -49,8 +50,14 @@ final class SettingViewModel: ViewModelType {
                 self.coordinator?.showFrequentQuestionViewController()
             case [2, 3]:
                 self.coordinator?.showCharacterAskViewController()
+            case [3, 0]:
+                self.coordinator?.showServiceTermsOfUseViewController()
+            case [3, 1]:
+                self.coordinator?.showPrivacyPolicyViewController()
+            case [3, 2]:
+                self.coordinator?.showOpenSourceLicenseViewController()
             default:
-                print("미설정")
+                self.coordinator?.showPrivacyPolicyViewController()
             }
         }
         .disposed(by: disposeBag)
