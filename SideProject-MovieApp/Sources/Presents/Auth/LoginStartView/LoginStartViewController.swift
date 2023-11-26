@@ -119,11 +119,11 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         let alert = UIAlertController(title: "애플 로그인 실패", message: "애플 로그인에 실패했습니다.", preferredStyle: UIAlertController.Style.alert)
         let addAlertAction = UIAlertAction(title: "확인", style: .default) { _ in
-            UserDefaultManager.isSocialLogin = nil
+            UserDefaultManager.isSocialLogin = false
         }
         alert.addAction(addAlertAction)
         self.present(alert, animated: true, completion: nil)
-        UserDefaultManager.isSocialLogin = nil
+        UserDefaultManager.isSocialLogin = false
     }
 }
 
@@ -134,7 +134,7 @@ extension LoginStartViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "카카오 로그인 실패", message: "카카오 로그인에 실패했습니다.", preferredStyle: UIAlertController.Style.alert)
             let addAlertAction = UIAlertAction(title: "확인", style: .default) { _ in
-                UserDefaultManager.isSocialLogin = nil
+                UserDefaultManager.isSocialLogin = false
             }
             alert.addAction(addAlertAction)
             self.present(alert, animated: true, completion: nil)

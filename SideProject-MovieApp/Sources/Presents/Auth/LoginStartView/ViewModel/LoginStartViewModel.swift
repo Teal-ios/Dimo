@@ -86,15 +86,14 @@ extension LoginStartViewModel {
                 if kakaoLogin.code == 200 {
                     let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
+                    self.saveUserInformation(userId: id, userName: name, snsType: snsType)
+                    
                     if socialLoginCheck?.code == 200 {
                         await MainActor.run {
-                            self.saveUserInformation(userId: id, userName: name, snsType: snsType)
-                            self.coordinator?.showTermsOfUseViewController(with: .sns)
-//                            self.coordinator?.connectHomeTabBarCoordinator()
+                            self.coordinator?.connectHomeTabBarCoordinator()
                         }
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
-                            self.saveUserInformation(userId: id, userName: name, snsType: snsType)
                             self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
@@ -110,13 +109,14 @@ extension LoginStartViewModel {
                 if googleLogin.code == 200 {
                     let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
+                    self.saveUserInformation(userId: id, userName: name, snsType: snsType)
+                    
                     if socialLoginCheck?.code == 200 {
                         await MainActor.run {
                             self.coordinator?.connectHomeTabBarCoordinator()
                         }
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
-                            self.saveUserInformation(userId: id, userName: name, snsType: snsType)
                             self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
@@ -133,6 +133,8 @@ extension LoginStartViewModel {
                 if appleLogin.code == 200 {
                     let socialLoginCheckQuery = SocialLoginCheckQuery(userId: id, snsType: snsType)
                     let socialLoginCheck = await checkIsRegisteredAccount(query: socialLoginCheckQuery)
+                    self.saveUserInformation(userId: id, userName: name ?? "", snsType: snsType)
+                    
                     print("✅ APPLE LOGIN CHECK: \(socialLoginCheck)")
                     if socialLoginCheck?.code == 200 {
                         await MainActor.run {
@@ -140,7 +142,6 @@ extension LoginStartViewModel {
                         }
                     } else if socialLoginCheck?.code == 201 { // 가입된 사용자가 아닌 경우
                         await MainActor.run {
-                            self.saveUserInformation(userId: id, userName: name ?? "", snsType: snsType)
                             self.coordinator?.showTermsOfUseViewController(with: .sns)
                         }
                     } else {
