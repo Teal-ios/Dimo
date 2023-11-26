@@ -66,7 +66,7 @@ KakaoOpenADK 프로젝트는 Apache License 2.0 하에 배포됩니다. Apache L
 
 6. KingFisher
 
-- GitHub 링크: [KingFisher GitHub](https://github.com/onevcat/Kingfisher)
+- GitHub 링크: https://github.com/onevcat/Kingfisher
 - 라이선스: MIT 라이선스
 
 KingFisher 프로젝트는 MIT 라이선스 하에 배포됩니다. MIT 라이선스에 대한 자세한 내용은 [MIT 라이선스 전문](https://github.com/onevcat/Kingfisher/blob/master/LICENSE)을 참조하십시오.
