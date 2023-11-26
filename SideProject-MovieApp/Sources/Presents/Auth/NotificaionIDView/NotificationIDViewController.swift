@@ -10,12 +10,11 @@ import RxCocoa
 import RxSwift
 
 final class NotificationIDViewController: BaseViewController {
-    //MARK: Delegate
+    
     let notificationIDView = NotificationIDView()
     
     private var viewModel: NotificationIDViewModel
     
-    //MARK: Input
     private lazy var input = NotificationIDViewModel.Input(pwFindButtonTapped: notificationIDView.passwordFindButton.rx.tap, nextButtonTapped: notificationIDView.nextButton.rx.tap)
     
     init(viewModel: NotificationIDViewModel) {
@@ -24,12 +23,12 @@ final class NotificationIDViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = notificationIDView
+        self.view = notificationIDView
     }
     
     override func viewDidLoad() {
+        self.notificationIDView.setNotificationIDLabelText(userName: viewModel.userName,userId: viewModel.userId)
         super.viewDidLoad()
-        
     }
     
     override func setupBinding() {
@@ -40,7 +39,7 @@ final class NotificationIDViewController: BaseViewController {
         
         let attributedStr = NSMutableAttributedString(string: notificationIDView.notificationIDLabel.text!)
         
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.purple80, range: (notificationIDView.notificationIDLabel.text! as NSString).range(of: "dimmo0000"))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.purple80, range: (notificationIDView.notificationIDLabel.text! as NSString).range(of: "\(viewModel.userId)"))
         
         notificationIDView.notificationIDLabel.attributedText = attributedStr
     }

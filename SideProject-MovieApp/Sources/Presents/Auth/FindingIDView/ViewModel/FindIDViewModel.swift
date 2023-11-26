@@ -148,7 +148,7 @@ extension FindIDViewModel {
             let idFind = try await authUseCase.executeIdFind(query: query)
             if idFind.code == 200 {
                 await MainActor.run {
-                     self.coordinator?.showNotificationIDViewController()
+                    self.coordinator?.showNotificationIDViewController(userName: idFind.name, userId: idFind.user_id)
                 }
             } else if idFind.code == 400 {
                 self.isInvalidCode.accept(false)
