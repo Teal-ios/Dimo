@@ -121,7 +121,6 @@ final class MyMomentumViewModel: ViewModelType {
         
         likeButtonTapToNotificationEventTrigger
             .delay(.seconds(1), scheduler: MainScheduler.instance)
-            .debug()
             .observe(on: MainScheduler.instance)
             .bind { [weak self] _ in
                 guard let self else { return }
@@ -180,6 +179,8 @@ final class MyMomentumViewModel: ViewModelType {
         
         NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("likeButtonTap"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(likeButtonTapToMovieDetailViewModel(_:)), name: NSNotification.Name("voteFinish"), object: nil)
+        
         return Output(myProfileData: self.myProfile, likeAnimationContentData: self.likeAnimationContent, likeMovieContentData: self.likeMoviewContent, likeButtonTapToNotificaiton: self.likeButtonTapToNotificationEventTrigger, myReviewList: self.myReviewList, myCommentList: self.myCommentList, myVotedCharacterList: self.myVotedCharacterList, editProfileFinishTrigger: self.editProfileFinishTrigger)
     }
 }
@@ -217,6 +218,11 @@ extension MyMomentumViewModel {
 extension MyMomentumViewModel {
     @objc
     func likeButtonTapToMovieDetailViewModel(_ notification: Notification) {
+        self.likeButtonTapToNotificationEventTrigger.accept(())
+    }
+    
+    @objc
+    func voteFinishToMovieDetailViewModel(_ notification: Notification) {
         self.likeButtonTapToNotificationEventTrigger.accept(())
     }
 }

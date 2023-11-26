@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F017E552B0AE130005FB54B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F017E542B0AE130005FB54B /* FirebaseStorage */; };
+		2F017E572B0AE130005FB54B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 2F017E562B0AE130005FB54B /* FirebaseStorageCombine-Community */; };
+		2F017E592B0AE160005FB54B /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F017E582B0AE160005FB54B /* FirebaseStorageManager.swift */; };
 		2F0328B22A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */; };
 		2F0328B42A91EDC500639BAC /* GetEvaluateMbtiQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */; };
 		2F0328B62A91EE2F00639BAC /* GetEvaluateMbti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */; };
@@ -732,6 +735,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F017E582B0AE160005FB54B /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		2F0328B12A91ED4900639BAC /* GetGradeEvaluateResultQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGradeEvaluateResultQuery.swift; sourceTree = "<group>"; };
 		2F0328B32A91EDC500639BAC /* GetEvaluateMbtiQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvaluateMbtiQuery.swift; sourceTree = "<group>"; };
 		2F0328B52A91EE2F00639BAC /* GetEvaluateMbti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEvaluateMbti.swift; sourceTree = "<group>"; };
@@ -1446,6 +1450,8 @@
 				2FE111142A750C220013A49E /* GoogleSignIn in Frameworks */,
 				2FC94EAE29C014E80097E696 /* SnapKit in Frameworks */,
 				2FE110F02A74C08A0013A49E /* FirebaseAuth in Frameworks */,
+				2F017E572B0AE130005FB54B /* FirebaseStorageCombine-Community in Frameworks */,
+				2F017E552B0AE130005FB54B /* FirebaseStorage in Frameworks */,
 				2FDD745B2A10AA8200A75AB9 /* Tabman in Frameworks */,
 				2FE110F22A74C08A0013A49E /* FirebaseCrashlytics in Frameworks */,
 				2FE110EE2A74C08A0013A49E /* FirebaseAnalytics in Frameworks */,
@@ -4073,6 +4079,7 @@
 			isa = PBXGroup;
 			children = (
 				4926773E2A5935510003C882 /* UserDefault.swift */,
+				2F017E582B0AE160005FB54B /* FirebaseStorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -4540,6 +4547,8 @@
 				2FE110F12A74C08A0013A49E /* FirebaseCrashlytics */,
 				2FE111092A74ED3A0013A49E /* KakaoSDK */,
 				2FE111132A750C220013A49E /* GoogleSignIn */,
+				2F017E542B0AE130005FB54B /* FirebaseStorage */,
+				2F017E562B0AE130005FB54B /* FirebaseStorageCombine-Community */,
 			);
 			productName = "SideProject-MovieApp";
 			productReference = 2FC94E4E29C00F0B0097E696 /* SideProject-MovieApp.app */;
@@ -4862,6 +4871,7 @@
 				2FD87A272A583F69003C276B /* KakaoLoginQuery.swift in Sources */,
 				2FBFF8472A6FA5DD007914A1 /* EditProfileViewController.swift in Sources */,
 				2FC774732A998C9600C36024 /* RequestLikeCommentCancelDTO.swift in Sources */,
+				2F017E592B0AE160005FB54B /* FirebaseStorageManager.swift in Sources */,
 				2FE1112E2A7668170013A49E /* RandomCharacterRecommendQuery.swift in Sources */,
 				2F9793AE2A54102A0098939B /* CustomSearchBar.swift in Sources */,
 				2FD87A592A584D21003C276B /* ResponseSignUpDTO.swift in Sources */,
@@ -5781,6 +5791,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2F017E542B0AE130005FB54B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseStorage;
+		};
+		2F017E562B0AE130005FB54B /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "FirebaseStorageCombine-Community";
+		};
 		2F124ACF2A4EA0CD00A452F1 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F124ACE2A4EA0CD00A452F1 /* XCRemoteSwiftPackageReference "lottie-ios" */;

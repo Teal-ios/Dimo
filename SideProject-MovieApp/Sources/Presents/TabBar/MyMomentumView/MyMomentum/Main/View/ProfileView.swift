@@ -140,11 +140,16 @@ extension ProfileView {
         } else {
             self.introduceLabel.text = profile.intro
         }
-        let newProfileString = profile.profile_img ?? ""
-        print("\("gs://dimo-b40ac.appspot.com/" + newProfileString)")
-        let imageURL = URL(string: "https://console.firebase.google.com/u/2/project/dimo-b40ac/storage/dimo-b40ac.appspot.com/" + newProfileString)
-        if imageURL != URL(string: "nil") {
-            self.profileImageView.kf.setImage(with: imageURL)
+//        let newProfileString = profile.profile_img ?? ""
+//        print("\("gs://dimo-b40ac.appspot.com/" + newProfileString)")
+//        let imageURL = URL(string: "https://console.firebase.google.com/u/2/project/dimo-b40ac/storage/dimo-b40ac.appspot.com/" + newProfileString)
+//        if imageURL != URL(string: "nil") {
+//            self.profileImageView.kf.setImage(with: imageURL)
+//        }
+        let urlString = "gs://dimo-1681785342159.appspot.com/koreanFood.jpeg"
+        print(urlString)
+        FirebaseStorageManager.downloadImage(urlString: urlString) { [weak self] image in
+            self?.profileImageView.image = image
         }
     }
 }

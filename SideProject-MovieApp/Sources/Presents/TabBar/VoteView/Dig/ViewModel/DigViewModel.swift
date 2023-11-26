@@ -156,6 +156,8 @@ extension DigViewModel {
             let voteCharacterResponse = try await voteUseCase.excuteVoteCharacter(query: query)
             print(voteCharacterResponse, "투표 완료")
             self.voteCharacterResponse.accept(voteCharacterResponse)
+            NotificationCenter.default.post(name: NSNotification.Name("voteFinish"), object: ())
+
         }
     }
 }
