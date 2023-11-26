@@ -39,6 +39,10 @@ class EditPasswordViewModel {
         let isChangeable: BehaviorRelay<(Bool?, Bool?)>
     }
     
+    var isSocialLogin: Bool? {
+        return UserDefaultManager.isSocialLogin
+    }
+    
     private var currentPasswordTextFieldText = BehaviorRelay<String?>(value: nil)
     private var newPasswordIsSameWithCurrentPassword = BehaviorRelay<Bool>(value: false)
     private var isSameWithCurrentPassword = BehaviorRelay<Bool>(value: true)

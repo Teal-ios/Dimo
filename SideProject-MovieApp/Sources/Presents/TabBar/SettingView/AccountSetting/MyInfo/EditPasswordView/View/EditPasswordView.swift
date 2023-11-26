@@ -129,6 +129,7 @@ class EditPasswordView: BaseView {
             make.bottom.equalTo(self.safeAreaLayoutGuide).inset(36)
         }
     }
+    
 }
 
 extension EditPasswordView {

@@ -115,6 +115,13 @@ final class SettingCoordinator: Coordinator, CoordinatorDelegate {
         let settingRepositoryImpl = SettingRepositoryImpl(dataTransferService: dataTransferService)
         let settingUsecase = SettingUseCaseImpl(settingRepository: settingRepositoryImpl)
         
+        guard let mbtiChangeDate = mbtiChangeDate else {
+            let editMbtiViewModel = EditMbtiViewModel(coordinator: self, settingUseCase: settingUsecase, mbti: mbti, mbtiChangeDate: mbtiChangeDate)
+            let vc = EditMbtiViewController(viewModel: editMbtiViewModel)
+            navigationController.pushViewController(vc, animated: true)
+            return
+        }
+        
         let isOverOneMonth = Date.checkOverOneMonth(from: mbtiChangeDate)
         
         if isOverOneMonth {

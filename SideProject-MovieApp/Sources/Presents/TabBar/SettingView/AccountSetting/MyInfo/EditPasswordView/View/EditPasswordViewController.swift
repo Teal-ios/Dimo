@@ -13,6 +13,7 @@ import Toast
 final class EditPasswordViewController: BaseViewController {
     
     private let editPasswordView = EditPasswordView()
+    private let socialLoginEditPasswordView = SocialLoginEditPasswordView()
     
     private var viewModel: EditPasswordViewModel
     
@@ -27,7 +28,11 @@ final class EditPasswordViewController: BaseViewController {
     )
     
     override func loadView() {
-        self.view = editPasswordView
+        if viewModel.isSocialLogin ?? false {
+            self.view = socialLoginEditPasswordView
+        } else {
+            self.view = editPasswordView
+        }
     }
     
     init(viewModel: EditPasswordViewModel) {
@@ -124,4 +129,5 @@ final class EditPasswordViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
 }
