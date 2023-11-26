@@ -14,7 +14,7 @@ final class JoinMbtiViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     private var authUseCase: AuthUseCase
     private weak var coordinator: AuthCoordinator?
-    private var isSnsLogin: Bool
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     
     struct Input{
         let findMbtiButtonTapped: ControlEvent<Void>
@@ -46,10 +46,10 @@ final class JoinMbtiViewModel: ViewModelType {
     let mbtiValid = PublishRelay<Bool>()
     let signUpSuccess = PublishRelay<Bool>()
     
-    init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase, isSnsLogin: Bool) {
+    init(coordinator: AuthCoordinator? = nil, authUseCase: AuthUseCase, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
         self.authUseCase = authUseCase
-        self.isSnsLogin = isSnsLogin
+        self.signUpFlow = signUpFlow
     }
     
     func transform(input: Input) -> Output {
@@ -58,24 +58,58 @@ final class JoinMbtiViewModel: ViewModelType {
             print("Mbti 찾는 곳으로 이동")
         }.disposed(by: disposeBag)
         
-        input.nextButtonTapped.bind { [weak self] _ in
-            guard let self else { return }
-            guard let userId = UserDefaultManager.userId,
-                  let password = UserDefaultManager.password,
-                  let name = UserDefaultManager.userName,
-                  let nickname = UserDefaultManager.nickname,
-                  let snsType = UserDefaultManager.snsType,
-                  let agency = UserDefaultManager.agency, // 통신사
-                  let phoneNumber = UserDefaultManager.phoneNumber else { return }
-
-            let query = SignUpQuery(user_id: userId, password: password, name: name, sns_type: snsType, agency: agency, phone_number: phoneNumber, nickname: nickname, mbti: self.mbtiString, push_check: UserDefaultManager.pushCheck ?? 0)
-            
-            if self.isSnsLogin {
-                self.signUpWithSnsAccount(query: query)
-            } else {
+        switch self.signUpFlow {
+        case .dimo:
+            input.nextButtonTapped.bind { [weak self] _ in
+                guard let self else { return }
+                guard let userId = UserDefaultManager.userId,
+                      let password = UserDefaultManager.password,
+                      let name = UserDefaultManager.userName,
+                      let nickname = UserDefaultManager.nickname,
+                      let snsType = UserDefaultManager.snsType,
+                      let agency = UserDefaultManager.agency, // 통신사
+                      let phoneNumber = UserDefaultManager.phoneNumber else { return }
+                
+                let query = SignUpQuery(user_id: userId,
+                                        password: password,
+                                        name: name,
+                                        sns_type: snsType,
+                                        agency: agency,
+                                        phone_number: phoneNumber,
+                                        nickname: nickname,
+                                        mbti: self.mbtiString,
+                                        push_check: UserDefaultManager.pushCheck ?? 0)
+                
                 self.signUp(query: query)
-            }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
+            
+        case .sns:
+            input.nextButtonTapped.bind { [weak self] _ in
+                guard let self else { return }
+                guard let userId = UserDefaultManager.userId,
+                      let name = UserDefaultManager.userName,
+                      let nickname = UserDefaultManager.nickname,
+                      let snsType = UserDefaultManager.snsType else { return }
+
+                let query = SnsSignUpQuery(user_id: userId,
+                                           name: name,
+                                           nickname: nickname,
+                                           sns_type: snsType,
+                                           mbti: self.mbtiString,
+                                           push_check: UserDefaultManager.pushCheck ?? 0)
+                
+                switch SnsLoginType(rawValue: snsType) {
+                case .kakao:
+                    self.signUpWithKakaoAccount(query: query)
+                case .google:
+                    self.signUpWithGoogleAccount(query: query)
+                case .apple:
+                    self.signUpWithAppleAccount(query: query)
+                case .none:
+                    print("❌ New SnsLoginType")
+                }
+            }.disposed(by: disposeBag)
+        }
         
         input.mbtiInfo.bind { [weak self] mbti in
             guard let self = self else { return }
@@ -161,8 +195,10 @@ extension JoinMbtiViewModel {
         }
     }
     
-    private func signUpWithSnsAccount(query: SignUpQuery) {
-        let kakaoLoginQuery = KakaoLoginQuery(userId: query.user_id, name: query.name, snsType: query.sns_type)
+    private func signUpWithKakaoAccount(query: SnsSignUpQuery) {
+        let kakaoLoginQuery = KakaoLoginQuery(userId: query.user_id,
+                                              name: query.name,
+                                              snsType: query.sns_type)
         
         Task {
             let snsSignUp = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
@@ -170,7 +206,10 @@ extension JoinMbtiViewModel {
             if snsSignUp.code == 200 {
                 UserDefaultManager.mbti = mbtiString
                 
-                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id, nickname: query.nickname, mbti: query.mbti, push_check: query.push_check)
+                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id,
+                                                     nickname: query.nickname,
+                                                     mbti: query.mbti,
+                                                     push_check: query.push_check)
                 let userInfoInSnsLogin = await registerUserInformationInSnsLogin(query: query)
                 
                 if userInfoInSnsLogin?.code == 200 {
@@ -179,6 +218,75 @@ extension JoinMbtiViewModel {
             }
         }
     }
+    
+    private func signUpWithGoogleAccount(query: SnsSignUpQuery) {
+        let googleLoginQuery = GoogleLoginQuery(user_id: query.user_id,
+                                                name: query.name,
+                                                sns_type: query.sns_type)
+        
+        Task {
+            let snsSignUp = try await authUseCase.executeGoogleLogin(query: googleLoginQuery)
+            
+            if snsSignUp.code == 200 {
+                UserDefaultManager.mbti = mbtiString
+                
+                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id,
+                                                     nickname: query.nickname,
+                                                     mbti: query.mbti,
+                                                     push_check: query.push_check)
+                let userInfoInSnsLogin = await registerUserInformationInSnsLogin(query: query)
+                
+                if userInfoInSnsLogin?.code == 200 {
+                    signUpSuccess.accept(true)
+                }
+            }
+        }
+    }
+    
+    private func signUpWithAppleAccount(query: SnsSignUpQuery) {
+        let appleLoginQuery = AppleLoginQuery(user_id: query.user_id,
+                                              name: query.name,
+                                              sns_type: query.sns_type)
+        
+        Task {
+            let snsSignUp = try await authUseCase.executeAppleLogin(query: appleLoginQuery)
+            
+            if snsSignUp.code == 200 {
+                UserDefaultManager.mbti = mbtiString
+                
+                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id,
+                                                     nickname: query.nickname,
+                                                     mbti: query.mbti,
+                                                     push_check: query.push_check)
+                let userInfoInSnsLogin = await registerUserInformationInSnsLogin(query: query)
+                
+                if userInfoInSnsLogin?.code == 200 {
+                    signUpSuccess.accept(true)
+                }
+            }
+        }
+    }
+    
+//    private func signUpWithSnsAccount(query: SnsSignUpQuery) {
+//
+//
+//        let kakaoLoginQuery = KakaoLoginQuery(userId: query.user_id, name: query.name, snsType: query.sns_type)
+//
+//        Task {
+//            let snsSignUp = try await authUseCase.executeKakaoLogin(query: kakaoLoginQuery)
+//
+//            if snsSignUp.code == 200 {
+//                UserDefaultManager.mbti = mbtiString
+//
+//                let query =  UserInfoInSnsLoginQuery(user_id: query.user_id, nickname: query.nickname, mbti: query.mbti, push_check: query.push_check)
+//                let userInfoInSnsLogin = await registerUserInformationInSnsLogin(query: query)
+//
+//                if userInfoInSnsLogin?.code == 200 {
+//                    signUpSuccess.accept(true)
+//                }
+//            }
+//        }
+//    }
     
     private func registerUserInformationInSnsLogin(query: UserInfoInSnsLoginQuery) async -> UserInfoInSnsLogin? {
         let query = UserInfoInSnsLoginQuery(user_id: query.user_id,

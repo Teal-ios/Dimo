@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 final class NicknameViewModel: ViewModelType {
-    
+        
     var disposeBag: DisposeBag = DisposeBag()
     private var settingUseCase: SettingUseCase
     private weak var coordinator: AuthCoordinator?
-    private var isSnsLogin: Bool
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     
     struct Input {
         var textFieldEditingDidBegin: ControlEvent<Void>
@@ -37,10 +37,10 @@ final class NicknameViewModel: ViewModelType {
     private var isTextFieldChanged = BehaviorRelay<Bool>(value: false)
     private var isTextFieldEditingChanged = BehaviorRelay<Bool>(value: false)
     
-    init(coordinator: AuthCoordinator, settingUseCase: SettingUseCase, isSnsLogin: Bool = false) {
+    init(coordinator: AuthCoordinator, settingUseCase: SettingUseCase, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
         self.settingUseCase = settingUseCase
-        self.isSnsLogin = isSnsLogin
+        self.signUpFlow = signUpFlow
     }
     
     func transform(input: Input) -> Output {
@@ -68,18 +68,13 @@ final class NicknameViewModel: ViewModelType {
                 self?.isTextFieldChanged.accept(true)
             }
             .disposed(by: disposeBag)
-        
+            
         input.didTappedNextButton
             .withUnretained(self)
-            .bind { (vm, _) in
+            .bind(onNext: { (vm, _) in
                 vm.saveNickname()
-                if vm.isSnsLogin {
-                    vm.coordinator?.showJoinMbtiViewController(isSnsLogin: vm.isSnsLogin)
-                } else {
-                    vm.coordinator?.showPasswordViewController()
-                }
-                
-            }
+                vm.coordinator?.showJoinMbtiViewController(with: self.signUpFlow)
+            })
             .disposed(by: disposeBag)
         
         return Output(isTextFieldEditingDidBegin: isTextFielEditingDidBegin,

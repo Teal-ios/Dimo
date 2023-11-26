@@ -14,6 +14,7 @@ class IDNickNameViewModel: ViewModelType {
     
     private weak var coordinator: AuthCoordinator?
     private var authUseCase: AuthUseCase
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     var id: String? = ""
     var duplicationValid = PublishRelay<Bool>()
 
@@ -26,14 +27,17 @@ class IDNickNameViewModel: ViewModelType {
         var idValid: Observable<Bool>
         var nextButtonValid: PublishRelay<Bool>
     }
-    init(coordinator: AuthCoordinator, authUseCase: AuthUseCase) {
+    init(coordinator: AuthCoordinator, authUseCase: AuthUseCase, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
         self.authUseCase = authUseCase
+        self.signUpFlow = signUpFlow
     }
     func transform(input: Input) -> Output {
         
-        input.nextButtonTapped.bind { [weak self] _ in
-            self?.coordinator?.showNickNameViewController(isSnsLogin: false)
+        input.nextButtonTapped
+            .withUnretained(self)
+            .bind { (vm, _) in
+                vm.coordinator?.showPasswordViewController(with: vm.signUpFlow)
         }.disposed(by: disposeBag)
         
         // 닉네임 중복확인

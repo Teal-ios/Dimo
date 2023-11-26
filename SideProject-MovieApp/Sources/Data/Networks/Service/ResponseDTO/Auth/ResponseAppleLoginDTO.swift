@@ -21,6 +21,10 @@ struct ResponseAppleLoginDTO: Decodable {
 
 extension ResponseAppleLoginDTO {
     var toDomain: AppleLogin {
-        return .init(code: code, message: message, user_id: user_id, access_token: access_token, refresh_token: refresh_token)
+        return .init(code: code,
+                     message: message,
+                     user_id: user_id,
+                     access_token: access_token,
+                     refresh_token: refresh_token)
     }
 }

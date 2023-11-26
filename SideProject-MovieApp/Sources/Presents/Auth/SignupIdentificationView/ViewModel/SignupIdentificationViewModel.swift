@@ -10,8 +10,10 @@ import RxSwift
 import RxCocoa
 
 final class SignupIdentificationViewModel: ViewModelType {
+    
     private weak var coordinator: AuthCoordinator?
     private var authUseCase: AuthUseCase
+    private let signUpFlow: AuthCoordinator.SignUpFlow
     var disposeBag: DisposeBag = DisposeBag()
     var timer: Timer?
     var leftTime: Int?
@@ -37,9 +39,10 @@ final class SignupIdentificationViewModel: ViewModelType {
     
     let toastMessage = PublishRelay<String>()
     
-    init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase) {
+    init(coordinator: AuthCoordinator?, authUseCase: AuthUseCase, signUpFlow: AuthCoordinator.SignUpFlow) {
         self.coordinator = coordinator
         self.authUseCase = authUseCase
+        self.signUpFlow = signUpFlow
     }
     
     func transform(input: Input) -> Output {
@@ -76,7 +79,7 @@ final class SignupIdentificationViewModel: ViewModelType {
         
         input.nextButtonTapped.bind { [weak self] _ in
             guard let self else { return }
-            self.coordinator?.showIDRegisterViewController()
+            self.coordinator?.showIDRegisterViewController(with: self.signUpFlow)
         }.disposed(by: disposeBag)
         
         input.idRequestButtonTapped

@@ -105,7 +105,7 @@ final class JoinTermsViewModel: ViewModelType {
                 case false:
                     UserDefaultManager.pushCheck = 0
                 }
-                vm.coordinator?.showSignupIdentificationViewController()
+//                vm.coordinator?.showSignupIdentificationViewController()
             }
             .disposed(by: disposeBag)
         

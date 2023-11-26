@@ -83,7 +83,7 @@ extension LoginStartViewController: ASAuthorizationControllerDelegate {
             // Create an account in your system.
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
-            let snsType = "apple"
+            let snsType = SnsLoginType.apple.rawValue
             print("Apple UID: \(userIdentifier)")
             
             if  let authorizationCode = appleIDCredential.authorizationCode,
@@ -152,7 +152,7 @@ extension LoginStartViewController {
                         else {
                             guard let userId = user?.id else { return }
                             guard let userName = user?.properties?["nickname"] else { return }
-                            let snsType = "kakao"
+                            let snsType = SnsLoginType.kakao.rawValue
                             self?.viewModel.didTrySocialLogin(with: .kakao(name: userName, id: String(userId), snsType: snsType))
                             
                         }
@@ -173,7 +173,7 @@ extension LoginStartViewController {
                         else {
                             guard let userId = user?.id else { return }
                             guard let userName = user?.properties?["nickname"] else { return }
-                            let snsType = "kakao"
+                            let snsType = SnsLoginType.kakao.rawValue
                             self?.viewModel.didTrySocialLogin(with: .kakao(name: userName, id: String(userId), snsType: snsType))
                         }
                     }
@@ -204,7 +204,7 @@ extension LoginStartViewController {
                   let idToken = authentication.idToken else { return }
             guard let userId = user.userID else { return }
             guard let userName = user.profile?.name else { return }
-            let snsType = "google"
+            let snsType = SnsLoginType.google.rawValue
             self?.viewModel.didTrySocialLogin(with: .google(name: userName, id: userId, snsType: snsType))
         }
     }
