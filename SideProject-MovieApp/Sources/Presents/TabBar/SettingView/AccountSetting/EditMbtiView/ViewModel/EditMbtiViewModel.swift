@@ -42,7 +42,7 @@ final class EditMbtiViewModel: MbtiViewModelType {
     private(set) var userMbti = BehaviorRelay<String?>(value: nil)
     private(set) var mbtiChangedDate = BehaviorRelay<Date?>(value: nil)
     
-    struct Output{
+    struct Output {
         let eButtonTapped: ControlEvent<Void>
         let iButtonTapped: ControlEvent<Void>
         let nButtonTapped: ControlEvent<Void>
@@ -430,7 +430,10 @@ extension EditMbtiViewModel {
         
         Task {
             let mbtiChange = try await self.settingUseCase.executeMbtiChange(query: query)
-        
+            #if DEBUG
+            print("✅ MBTI CHANGE: ", mbtiChange)
+            #endif
+            
             if mbtiChange.code == 200 {
                 self.isChanged.accept(true)
                 guard let changedMbti = mbtiChange.mbti else { return }

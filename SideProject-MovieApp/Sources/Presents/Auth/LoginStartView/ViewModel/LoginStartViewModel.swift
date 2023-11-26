@@ -149,6 +149,8 @@ extension LoginStartViewModel {
                 }
             }
         }
+        
+        UserDefaultManager.isSocialLogin = true
     }
     
     private func checkIsRegisteredAccount(query: SocialLoginCheckQuery) async -> SocialLoginCheck? {
@@ -172,5 +174,6 @@ extension LoginStartViewModel {
     
     private func saveDimoLoginType() {
         UserDefaultManager.snsType = "none"
+        UserDefaultManager.isSocialLogin = false
     }
 }

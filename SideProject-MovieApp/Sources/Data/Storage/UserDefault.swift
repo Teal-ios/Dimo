@@ -40,6 +40,9 @@ struct UserDefaultManager {
     @UserDefault(key: "sns_type", defaultValue: nil)
     static var snsType: String?
     
+    @UserDefault(key: "isSocialLogin", defaultValue: nil)
+    static var isSocialLogin: Bool?
+    
     @UserDefault(key: "agency", defaultValue: nil)
     static var agency: String?
     
@@ -61,6 +64,7 @@ struct UserDefaultManager {
         UserDefaults.standard.removeObject(forKey: "userName")
         UserDefaults.standard.removeObject(forKey: "nickname")
         UserDefaults.standard.removeObject(forKey: "sns_type")
+        UserDefaults.standard.removeObject(forKey: "isSocialLogin")
         UserDefaults.standard.removeObject(forKey: "agency")
         UserDefaults.standard.removeObject(forKey: "mbti")
         UserDefaults.standard.removeObject(forKey: "phoneNumber")

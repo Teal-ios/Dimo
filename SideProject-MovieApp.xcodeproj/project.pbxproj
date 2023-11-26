@@ -588,6 +588,7 @@
 		2FFD1C832A9457E00079A0C9 /* VoteFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD1C822A9457E00079A0C9 /* VoteFooterCell.swift */; };
 		490600A72B09DE85001928E5 /* SnsLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490600A62B09DE85001928E5 /* SnsLoginType.swift */; };
 		490600A92B09F938001928E5 /* SnsSignUpQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490600A82B09F938001928E5 /* SnsSignUpQuery.swift */; };
+		490600AB2B135295001928E5 /* SocialLoginEditPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490600AA2B135295001928E5 /* SocialLoginEditPasswordView.swift */; };
 		4926773C2A5714E20003C882 /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773B2A5714E20003C882 /* Toast+Extension.swift */; };
 		4926773F2A5935510003C882 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926773E2A5935510003C882 /* UserDefault.swift */; };
 		4932D77B2A4EB99800D4E68F /* NicknameChangeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */; };
@@ -1317,6 +1318,7 @@
 		2FFD1C822A9457E00079A0C9 /* VoteFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteFooterCell.swift; sourceTree = "<group>"; };
 		490600A62B09DE85001928E5 /* SnsLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsLoginType.swift; sourceTree = "<group>"; };
 		490600A82B09F938001928E5 /* SnsSignUpQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsSignUpQuery.swift; sourceTree = "<group>"; };
+		490600AA2B135295001928E5 /* SocialLoginEditPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginEditPasswordView.swift; sourceTree = "<group>"; };
 		4926773B2A5714E20003C882 /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
 		4926773E2A5935510003C882 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		4932D77A2A4EB99800D4E68F /* NicknameChangeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameChangeDate.swift; sourceTree = "<group>"; };
@@ -2017,6 +2019,7 @@
 			isa = PBXGroup;
 			children = (
 				2F53D0BF2A1F67FE00898DCD /* EditPasswordView.swift */,
+				490600AA2B135295001928E5 /* SocialLoginEditPasswordView.swift */,
 				2F53D0C12A1F680600898DCD /* EditPasswordViewController.swift */,
 			);
 			path = View;
@@ -5018,6 +5021,7 @@
 				2F437C082A4BE912000B7A61 /* ContentRepository.swift in Sources */,
 				2FD82DC62A7771D500372D24 /* VoteAPIEndpoints.swift in Sources */,
 				2FCB52752AA83F8800D71A64 /* ResponseReportUserDTO.swift in Sources */,
+				490600AB2B135295001928E5 /* SocialLoginEditPasswordView.swift in Sources */,
 				49EEDF132A8B5BF7008C5D21 /* FrequentQuestionView.swift in Sources */,
 				497454F52A3F69050043D67E /* PasswordChangeQuery.swift in Sources */,
 				2FDD745E2A10AADA00A75AB9 /* FeedViewController.swift in Sources */,
