@@ -175,4 +175,19 @@ final class SettingCoordinator: Coordinator, CoordinatorDelegate {
     func connectAuthFlow() {
         self.parentCoordinator?.parentCoordinator?.start()
     }
+    
+    func showPrivacyPolicyViewController() {
+        let vc = PrivacyPolicyViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showServiceTermsOfUseViewController() {
+        let vc = ServiceTermsOfUseViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showOpenSourceLicenseViewController() {
+        let vc = OpenSourceLicenseViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

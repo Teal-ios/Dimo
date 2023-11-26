@@ -73,7 +73,12 @@ final class MovieDetailViewController: BaseViewController {
                 guard let self else { return }
                 var snapshot = NSDiffableDataSourceSnapshot<Int, Characters>()
                 snapshot.appendSections([0])
-                var sectionArr: [Characters] = characters
+                var sectionArr: [Characters] = []
+                for ele in characters {
+                    if sectionArr.count < 10 {
+                        sectionArr.append(ele)
+                    }
+                }
                 snapshot.appendItems(sectionArr, toSection: 0)
                 self.dataSource.apply(snapshot)
             }

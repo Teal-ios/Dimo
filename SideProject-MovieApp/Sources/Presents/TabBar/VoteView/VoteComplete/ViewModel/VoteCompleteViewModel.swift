@@ -58,6 +58,7 @@ final class VoteCompleteViewModel: ViewModelType {
             .withUnretained(self)
             .bind { vm, _ in
                 vm.coordinator?.popViewController()
+                vm.coordinator?.popViewController()
             }
             .disposed(by: disposeBag)
         
