@@ -116,34 +116,10 @@ extension OtherProfileView {
             self.introduceLabel.text = profile.intro
         }
         
-//        let imageURL = URL(string: profile.profile_img ?? "nil")
-//        if imageURL != URL(string: "nil") {
-//            self.profileImageView.kf.setImage(with: imageURL)
-//        }
-        
-        guard let profileImgPath = profile.profile_img else { return }
-        
-        if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            
-            // 이미지 파일의 전체 경로 생성
-            let imagePath = documentsDirectory.appendingPathComponent(profileImgPath)
-            
-            // 이미지 파일이 존재하는지 확인
-            if FileManager.default.fileExists(atPath: imagePath.path) {
-                
-                // UIImage 생성
-                if let image = UIImage(contentsOfFile: imagePath.path) {
-                    // 이제 'image'를 사용하여 프로필 이미지를 표시하면 됩니다.
-                    // 예를 들어, 이미지 뷰에 설정할  수 있습니다.
-                    // imageView.image = image
-                    self.profileImageView.image = image
-                } else {
-                    print("이미지를 불러올 수 없습니다.")
-                }
-                
-            } else {
-                print("이미지 파일이 존재하지 않습니다.")
-            }
+        guard let urlString = profile.profile_img else { return }
+        let newURL = "gs://dimo-b40ac.appspot.com/\(urlString)"
+        FirebaseStorageManager.downloadImage(urlString: newURL) { [weak self] image in
+            self?.profileImageView.image = image
         }
     }
 }

@@ -11,9 +11,9 @@ struct MyProfile: Hashable {
     let code: Int
     let message: String
     let user_id: String
-    let name: String
-    let nickname: String
-    let mbti: String
+    let name: String?
+    let nickname: String?
+    let mbti: String?
     let intro: String?
     let profile_img: String?
 }

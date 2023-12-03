@@ -11,8 +11,8 @@ struct UserInfo {
     let code: Int
     let message: String
     let userId: String
-    let nickname: String
-    let mbti: String
+    let nickname: String?
+    let mbti: String?
     let nicknameUpdateDate: Date?
     let mbtiUpdateDate: Date?
 }

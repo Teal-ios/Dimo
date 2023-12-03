@@ -203,10 +203,10 @@ extension HomeViewModel {
                 print("⭐️ My Profile: \(myProfile)")
                 #endif
                 self.saveUserInformation(userId: myProfile.user_id,
-                                         userName: myProfile.name,
-                                         nickname: myProfile.nickname,
-                                         mbti: myProfile.mbti)
-                self.mbti.accept(myProfile.mbti)
+                                         userName: myProfile.name ?? "유저네임",
+                                         nickname: myProfile.nickname ?? "닉네임",
+                                         mbti: myProfile.mbti ?? "mbti")
+                self.mbti.accept(myProfile.mbti ?? "ISFJ")
             }
         }
     }
