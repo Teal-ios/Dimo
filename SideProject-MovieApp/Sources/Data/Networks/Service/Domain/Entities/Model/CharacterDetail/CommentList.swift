@@ -12,6 +12,8 @@ struct CommentList: Hashable {
     let review_id: Int
     let user_id: String
     let nickname: String
+    let mbti: String
+    let profile_img: String?
     let comment_like: Int
     let comment_content: String
     let comment_spoiler: Int
