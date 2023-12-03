@@ -36,6 +36,7 @@ extension MyMomentumRepositoryImpl {
         let requestDTO = RequestModifyMyProfileDTO(user_id: query.user_id, profile_img: query.profile_img, intro: query.intro)
        
         let target = MyMomentumAPIEndpoints.postModifyMyProfile(with: requestDTO)
+        print(requestDTO)
         
         do {
             let data = try await dataTransferService.request(with: target)

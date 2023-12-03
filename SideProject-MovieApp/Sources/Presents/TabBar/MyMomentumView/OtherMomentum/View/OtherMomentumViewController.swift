@@ -70,7 +70,7 @@ final class OtherMomentumViewController: BaseViewController {
             .bind { [weak self] profile in
             guard let self else { return }
                 self.otherMomentumView.profileView.configureProfileUpdate(profile: profile)
-                self.otherMomentumView.configureReviewTitleUpdate(user_name: profile.nickname)
+                self.otherMomentumView.configureReviewTitleUpdate(user_name: profile.nickname ?? "")
                 if profile.intro == nil {
                     self.otherMomentumView.configureProfileExplainRemoveUI()
                 }
