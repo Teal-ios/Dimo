@@ -41,11 +41,10 @@ final class HomeViewModel: ViewModelType {
         let characterPlusButtonTapped: ControlEvent<Void>
         let cancelAlertButtonTapped: ControlEvent<Void>
         let okAlertButtonTapped: ControlEvent<Void>
-        let mbtiUpdate: PublishRelay<Void>
     }
     
     let animationData = PublishRelay<AnimationData>()
-    let mbtiUpdate = PublishRelay<Void>()
+    var mbti = BehaviorRelay<String>(value: "")
 
     init(coordinator: HomeCoordinator?, contentUseCase: ContentUseCase, myMomentumUseCase: MyMomentumUseCase, category: String) {
         self.coordinator = coordinator
@@ -148,17 +147,9 @@ final class HomeViewModel: ViewModelType {
         input.viewDidLoad
             .withUnretained(self)
             .bind { vm, _ in
-                print("viewDidLoad 실행")
-                guard let user_id = UserDefaultManager.userId else { return }
-                vm.getMyProfile(user_id: user_id)
-            }
-            .disposed(by: disposeBag)
-        
-        self.mbtiUpdate
-            .withUnretained(self)
-            .bind { vm, _ in
-                guard let user_id = UserDefaultManager.userId else { return }
-                vm.getAnimationDataList(user_id: user_id)
+                guard let userId = UserDefaultManager.userId else { return }
+                vm.getMyProfile(user_id: userId)
+                vm.getAnimationDataList(user_id: userId)
             }
             .disposed(by: disposeBag)
         
@@ -182,7 +173,11 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
 
-        return Output(animationData: self.animationData, category: self.category, characterPlusButtonTapped: input.characterPlusButtonTapped, cancelAlertButtonTapped: input.cancelAlertButtonTapped, okAlertButtonTapped: input.okAlertButtonTapped, mbtiUpdate: self.mbtiUpdate)
+        return Output(animationData: self.animationData,
+                      category: self.category,
+                      characterPlusButtonTapped: input.characterPlusButtonTapped,
+                      cancelAlertButtonTapped: input.cancelAlertButtonTapped,
+                      okAlertButtonTapped: input.okAlertButtonTapped)
     }
 }
 
@@ -190,7 +185,9 @@ extension HomeViewModel {
     private func getAnimationDataList(user_id: String) {
         Task {
             let animationData = try await contentUseCase.excuteFetchAnimationData(query: GetAnimationQuery(user_id: user_id))
-            print(animationData, "애니메이션 데이터 들어옴")
+            #if DEBUG
+            print("⭐️ Animation Data: ", animationData)
+            #endif
             self.animationData.accept(animationData)
         }
     }
@@ -200,10 +197,27 @@ extension HomeViewModel {
     private func getMyProfile(user_id: String) {
         Task {
             let myProfile = try await myMomentumUseCase.excuteMyProfile(query: MyProfileQuery(user_id: user_id))
-            print(myProfile, "내 프로필 조회")
-            UserDefaultManager.mbti = myProfile.mbti
-            print("\(UserDefaultManager.mbti ?? "mbti 저장이상") mbti 홈화면")
-            self.mbtiUpdate.accept(())
+            
+            if myProfile.code == 200 {
+                #if DEBUG
+                print("⭐️ My Profile: \(myProfile)")
+                #endif
+                self.saveUserInformation(userId: myProfile.user_id,
+                                         userName: myProfile.name,
+                                         nickname: myProfile.nickname,
+                                         mbti: myProfile.mbti)
+                self.mbti.accept(myProfile.mbti)
+            }
         }
+    }
+}
+
+// MARK: - UserDefaultManager
+extension HomeViewModel {
+    private func saveUserInformation(userId: String, userName: String, nickname: String, mbti: String) {
+        UserDefaultManager.userId = userId
+        UserDefaultManager.userName = userName
+        UserDefaultManager.nickname = nickname
+        UserDefaultManager.mbti = mbti
     }
 }
