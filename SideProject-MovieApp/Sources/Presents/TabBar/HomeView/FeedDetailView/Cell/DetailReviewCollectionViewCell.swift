@@ -164,6 +164,8 @@ extension DetailReviewCollectionViewCell {
         reviewLabel.text = item.comment_content
         characterNameLabel.text = item.nickname
         likeCountLabel.text = "\(item.comment_like)"
+        mbtiLabel.text = item.mbti
+        
         
         if item.is_liked == nil {
             self.updateLikeImage(is_like: false)
@@ -172,6 +174,12 @@ extension DetailReviewCollectionViewCell {
         }
         
         updateModifyButton(user_id: item.user_id)
+        
+        guard let urlString = item.profile_img else { return }
+        let newURL = "gs://dimo-b40ac.appspot.com/\(urlString)"
+        FirebaseStorageManager.downloadImage(urlString: newURL) { [weak self] image in
+            self?.imgView.image = image
+        }
     }
 }
 

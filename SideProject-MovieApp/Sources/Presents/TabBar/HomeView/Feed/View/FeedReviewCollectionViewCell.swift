@@ -102,6 +102,11 @@ final class FeedReviewCollectionViewCell: BaseCollectionViewCell {
         imgView.layer.cornerRadius = imgView.frame.width / 2
         bgView.layer.cornerRadius = 8
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
         
     override func configure() {
         [bgView, imgView, nameNameLabel, mbtiLabel, reviewLabel, likeAndReviewAndInquireLabel, spoilerContainView, feedButton].forEach { self.addSubview($0) }
@@ -181,5 +186,10 @@ extension FeedReviewCollectionViewCell {
         reviewLabel.text = item.review_content
         mbtiLabel.text = item.mbti
         likeAndReviewAndInquireLabel.text = "좋아요 \(item.review_like)  |  댓글 \(item.comment_count ?? 0)  |  조회 \( item.review_hits)"
+        guard let urlString = item.profile_img else { return }
+        let newURL = "gs://dimo-b40ac.appspot.com/\(urlString)"
+        FirebaseStorageManager.downloadImage(urlString: newURL) { [weak self] image in
+            self?.imgView.image = image
+        }
     }
 }

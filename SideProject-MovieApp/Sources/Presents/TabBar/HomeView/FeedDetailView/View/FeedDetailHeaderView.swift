@@ -296,9 +296,11 @@ extension FeedDetailHeaderView {
     }
     
     func updateProfileImage(with url: String?) {
-        guard let url else { return }
-        guard let imageURL = URL(string: url) else { return }
-        profileImgView.kf.setImage(with: imageURL)
+        guard let urlString = url else { return }
+        let newURL = "gs://dimo-b40ac.appspot.com/\(urlString)"
+        FirebaseStorageManager.downloadImage(urlString: newURL) { [weak self] image in
+            self?.profileImgView.image = image
+        }
     }
 }
 

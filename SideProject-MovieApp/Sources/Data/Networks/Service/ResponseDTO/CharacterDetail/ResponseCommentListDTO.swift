@@ -15,16 +15,18 @@ struct ResponseCommentListDTO: Decodable {
     let comment_like: Int
     let comment_content: String
     let comment_spoiler: Int
+    let mbti: String
+    let profile_img: String?
     let character_id: Int
     let is_liked: ResponseCommentIsLikedDTO?
     
     enum CodingKeys: String, CodingKey {
-        case comment_id, review_id, user_id, nickname, comment_like, comment_content, comment_spoiler, character_id, is_liked
+        case comment_id, review_id, user_id, nickname, comment_like, comment_content, comment_spoiler, character_id, is_liked, mbti, profile_img
     }
 }
 
 extension ResponseCommentListDTO {
     var toDomain: CommentList {
-        .init(comment_id: comment_id, review_id: review_id, user_id: user_id, nickname: nickname, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id, is_liked: is_liked?.toDomain)
+        .init(comment_id: comment_id, review_id: review_id, user_id: user_id, nickname: nickname, mbti: mbti, profile_img: profile_img, comment_like: comment_like, comment_content: comment_content, comment_spoiler: comment_spoiler, character_id: character_id, is_liked: is_liked?.toDomain)
     }
 }
