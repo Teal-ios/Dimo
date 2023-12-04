@@ -46,6 +46,20 @@ extension MyMomentumRepositoryImpl {
         }
     }
     
+    func requestModifyImageOnMyProfile(query: ModifyImageOnProfileQuery) async throws -> ModifyMyProfile {
+        let requestDTO = RequestModifyImageOnProfileDTO(user_id: query.user_id, profile_img: query.profile_img, intro: query.intro)
+       
+        let target = MyMomentumAPIEndpoints.postModifyMyProfileOnImage(with: requestDTO)
+        print(requestDTO)
+        
+        do {
+            let data = try await dataTransferService.request(with: target)
+            return data.toDomain
+        } catch {
+            throw MyMomentumRepositoryError.request
+        }
+    }
+    
     func fetchLikeAnimationContent(query: LikeAnimationContentQuery) async throws -> LikeAnimationContent {
         let target = MyMomentumAPIEndpoints.getLikeAnimationContent(with: query.user_id)
         

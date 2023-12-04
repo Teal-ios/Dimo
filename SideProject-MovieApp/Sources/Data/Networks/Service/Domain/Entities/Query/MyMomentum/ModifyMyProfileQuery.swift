@@ -12,3 +12,9 @@ struct ModifyMyProfileQuery: Hashable {
     let profile_img: Data?
     let intro: String?
 }
+
+struct ModifyImageOnProfileQuery: Hashable {
+    let user_id: String
+    let profile_img: Data
+    let intro: String?
+}
