@@ -24,9 +24,22 @@ final class DateFormatterManager {
         return formatter
     }()
     
+    let outputFormatterInDayMinute: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd.HH.mm"
+        return formatter   
+    }()
+    
     func convertDateToYears(_ dateString: String) -> String? {
         if let date = inputFormatter.date(from: dateString) {
             return outputFormatter.string(from: date)
+        }
+        return nil
+    }
+    
+    func convertDateToMinute(_ dateString: String) -> String? {
+        if let date = inputFormatter.date(from: dateString) {
+            return outputFormatterInDayMinute.string(from: date)
         }
         return nil
     }

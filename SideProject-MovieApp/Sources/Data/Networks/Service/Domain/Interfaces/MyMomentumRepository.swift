@@ -13,6 +13,8 @@ protocol MyMomentumRepository: AnyObject {
     
     func requestModifyMyProfile(query: ModifyMyProfileQuery) async throws -> ModifyMyProfile
     
+    func requestModifyImageOnMyProfile(query: ModifyImageOnProfileQuery) async throws -> ModifyMyProfile
+    
     func fetchLikeAnimationContent(query: LikeAnimationContentQuery) async throws -> LikeAnimationContent
     
     func fetchLikeMovieContent(query: LikeMovieContentQuery) async throws -> LikeMovieContent

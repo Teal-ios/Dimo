@@ -12,6 +12,8 @@ protocol MyMomentumUseCase {
     
     func excuteModifyMyProfile(query: ModifyMyProfileQuery) async throws -> ModifyMyProfile
 
+    func excuteModifyImageOnMyProfile(query: ModifyImageOnProfileQuery) async throws -> ModifyMyProfile
+    
     func excuteLikeAnimationContent(query: LikeAnimationContentQuery) async throws -> LikeAnimationContent
 
     func excuteLikeMovieContent(query: LikeMovieContentQuery) async throws -> LikeMovieContent
@@ -52,6 +54,14 @@ extension MyMomentumUseCaseImpl {
     func excuteModifyMyProfile(query: ModifyMyProfileQuery) async throws -> ModifyMyProfile {
         do {
             return try await myMomentumRepository.requestModifyMyProfile(query: query)
+        } catch {
+            throw MyMomentumUseCaseError.excute
+        }
+    }
+    
+    func excuteModifyImageOnMyProfile(query: ModifyImageOnProfileQuery) async throws -> ModifyMyProfile {
+        do {
+            return try await myMomentumRepository.requestModifyImageOnMyProfile(query: query)
         } catch {
             throw MyMomentumUseCaseError.excute
         }

@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FirebaseStorage
+import Alamofire
 
 protocol editProfileUpdateDelegate {
     func editProfileFinish(data: ModifyMyProfileQuery)
@@ -53,7 +54,11 @@ final class EditProfileViewModel: ViewModelType {
                     return
                 } else {
                     if image != nil {
-                        self.editProfile(user_id: user_id, text: text, imageData: image, filePath: "\(Date.now)")
+                        guard let imageData = image else { return }
+                        guard let date = Date.dateToString(from: Date.now) else { return }
+                        self.editImageOnProfile(user_id: user_id, text: text, imageData: imageData, filePath: user_id + date) { bool in
+                            print("성공여부", bool)
+                        }
                     } else {
                         self.editProfile(user_id: user_id, text: text, imageData: nil, filePath: nil)
                     }
@@ -79,20 +84,48 @@ extension EditProfileViewModel {
         Task {
             
             var query = ModifyMyProfileQuery(user_id: user_id, profile_img: imageData, intro: text)
+            
             if imageData != nil {
                 guard let data = imageData else { return }
                 query = ModifyMyProfileQuery(user_id: user_id, profile_img: data, intro: text)
+                print(query)
             }
             let editProfile = try await myMomentumUseCase.excuteModifyMyProfile(query: query)
             print(editProfile, "프로필 수정 완료")
             self.delegate?.editProfileFinish(data: query)
             self.editProfileFinish.accept(editProfile)
             
-            guard let data = imageData else { return }
-            guard let path = filePath else { return }
-            uploadImage(imageData: data, filePath: "/profile/\(path)")
-            
         }
+    }
+    
+    private func editImageOnProfile(user_id: String, text: String?, imageData: Data, filePath: String, completion: @escaping ((Bool) -> Void)) {
+        let url = URL(string: "http://101.101.208.91:3000/my_momentum/mod_profile")!
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(user_id.data(using: .utf8)!, withName: "user_id")
+            multipartFormData.append((text?.data(using: .utf8))!, withName: "intro")
+            multipartFormData.append(imageData, withName: "image", fileName: String(filePath), mimeType: "image/jpeg")
+
+        }, to: url,
+                  headers: ["accept": "application/json", "Content-Type":"application/x-www-form-urlencoded"])
+               .response { response in
+                   print(response.response?.statusCode)
+                   print(response.description)
+                   print(response.error)
+                   
+                   guard let statusCode = response.response?.statusCode else { return }
+                   switch statusCode {
+                   case 200:
+                       print("통신 성공")
+                       self.delegate?.editProfileFinish(data: ModifyMyProfileQuery(user_id: user_id, profile_img: imageData, intro: text))
+                       self.editProfileFinish.accept(ModifyMyProfile(code: statusCode, message: "성공", user_id: user_id))
+                       completion(true)
+                   default:
+                       print(statusCode, "통신 실패")
+                       debugPrint(response)
+                       completion(false)
+                   }
+               }
+        
     }
 }
 

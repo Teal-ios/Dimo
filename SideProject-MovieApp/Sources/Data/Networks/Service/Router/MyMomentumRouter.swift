@@ -10,6 +10,7 @@ import Foundation
 enum MyMomentumRouter<R> {
     case myProfile(parameters: MyProfileQuery)
     case modifyMyProfile(parameters: ModifyMyProfileQuery)
+    case modifyImageOnMyProfile(parameters: ModifyImageOnProfileQuery)
     case likeAnimationContent(parameters: LikeAnimationContentQuery)
     case likeMovieContent(parameters: LikeMovieContentQuery)
     case getMyReview(parameters: GetMyReviewQuery)
@@ -37,7 +38,7 @@ extension MyMomentumRouter: TargetType2 {
         switch self {
         case .myProfile:
             return "/my_momentum"
-        case .modifyMyProfile:
+        case .modifyMyProfile, .modifyImageOnMyProfile:
             return "/my_momentum/mod_profile"
         case .likeAnimationContent:
             return "/my_momentum/like_anime_content"
@@ -57,7 +58,7 @@ extension MyMomentumRouter: TargetType2 {
         
         case .myProfile(parameters: let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
-        case .modifyMyProfile:
+        case .modifyMyProfile, .modifyImageOnMyProfile:
             return nil
         case .likeAnimationContent(parameters: let parameters):
             return [URLQueryItem(name: "user_id", value: parameters.user_id)]
@@ -78,7 +79,7 @@ extension MyMomentumRouter: TargetType2 {
     
     var header: [String : String] {
         switch self {
-        case .myProfile, .modifyMyProfile, .likeAnimationContent, .likeMovieContent, .getMyComment, .getMyReview, .getMyVotedCharacter:
+        case .myProfile, .modifyMyProfile, .likeAnimationContent, .likeMovieContent, .getMyComment, .getMyReview, .getMyVotedCharacter, .modifyImageOnMyProfile:
             return ["accept" : "application/json" , "Content-Type": "application/json"]
         }
     }
@@ -90,7 +91,11 @@ extension MyMomentumRouter: TargetType2 {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         return try? encoder.encode(requestModifyMyProfileDTO)
-
+        case .modifyImageOnMyProfile(parameters: let parameters):
+            let requestModifyImageOnMyProfileDTO = RequestModifyImageOnProfileDTO(user_id: parameters.user_id, profile_img: parameters.profile_img, intro: parameters.intro)
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return try? encoder.encode(requestModifyImageOnMyProfileDTO)
         default:
             return nil
         }
@@ -100,7 +105,7 @@ extension MyMomentumRouter: TargetType2 {
         switch self {
         case .myProfile, .likeAnimationContent, .likeMovieContent, .getMyReview, .getMyComment, .getMyVotedCharacter:
             return .get
-        case .modifyMyProfile:
+        case .modifyMyProfile, .modifyImageOnMyProfile:
             return .post
         }
     }

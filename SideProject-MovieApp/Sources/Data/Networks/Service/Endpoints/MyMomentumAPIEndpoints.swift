@@ -16,6 +16,10 @@ struct MyMomentumAPIEndpoints {
         return MyMomentumRouter<ResponseModifyMyProfileDTO>.modifyMyProfile(parameters: ModifyMyProfileQuery(user_id: requestDTO.user_id, profile_img: requestDTO.profile_img, intro: requestDTO.intro))
     }
     
+    static func postModifyMyProfileOnImage(with requestDTO: RequestModifyImageOnProfileDTO) -> MyMomentumRouter<ResponseModifyMyProfileDTO>{
+        return MyMomentumRouter<ResponseModifyMyProfileDTO>.modifyMyProfile(parameters: ModifyMyProfileQuery(user_id: requestDTO.user_id, profile_img: requestDTO.profile_img, intro: requestDTO.intro))
+    }
+    
     static func getLikeAnimationContent(with user_id: String) -> MyMomentumRouter<ResponseLikeAnimationContentDTO> {
         return MyMomentumRouter<ResponseLikeAnimationContentDTO>.likeAnimationContent(parameters: LikeAnimationContentQuery(user_id: user_id))
     }
