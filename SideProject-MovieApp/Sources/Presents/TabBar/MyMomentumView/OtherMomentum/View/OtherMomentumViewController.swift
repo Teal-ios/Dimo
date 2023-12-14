@@ -124,7 +124,8 @@ final class OtherMomentumViewController: BaseViewController {
                 
                 self.reviewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
                     let header = collectionView.dequeueConfiguredReusableSupplementary(using: myMomentumHeader, for: indexPath)
-                    header.titleLabel.text = "\(profile.nickname)님이 쓴 리뷰"
+                    guard let nickname = profile.nickname else { return header }
+                    header.titleLabel.text = "\(nickname)님이 쓴 리뷰"
                     return header
                 })
                 

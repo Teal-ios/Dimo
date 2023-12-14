@@ -108,9 +108,6 @@ extension EditProfileViewModel {
         }, to: url,
                   headers: ["accept": "application/json", "Content-Type":"application/x-www-form-urlencoded"])
                .response { response in
-                   print(response.response?.statusCode)
-                   print(response.description)
-                   print(response.error)
                    
                    guard let statusCode = response.response?.statusCode else { return }
                    switch statusCode {
