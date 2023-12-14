@@ -31,6 +31,7 @@ final class VoteViewController: BaseViewController {
     let viewDidLoadTrigger = PublishRelay<Void>()
     let characterCellTapped = PublishRelay<CharacterInfo>()
     let characterMoreButtonCellSelect = PublishRelay<Void>()
+    let viewWillAppearTrigger = PublishRelay<Void>()
     
     
     override func loadView() {
@@ -44,8 +45,13 @@ final class VoteViewController: BaseViewController {
         self.viewDidLoadTrigger.accept(())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearTrigger.accept(())
+    }
+    
     override func setupBinding() {
-        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger, characterCellTapped: self.characterCellTapped, characterMoreButtonCellTapped: self.characterMoreButtonCellSelect)
+        let input = VoteViewModel.Input(characterRandomRecommandCellTapped: self.characterRandomRecommandCellSelected, characterSearchCellTapped: self.characterSearchCellSelected, viewDidLoad: self.viewDidLoadTrigger, characterCellTapped: self.characterCellTapped, characterMoreButtonCellTapped: self.characterMoreButtonCellSelect, viewWillAppear: self.viewWillAppearTrigger)
         
         let output = viewModel.transform(input: input)
         

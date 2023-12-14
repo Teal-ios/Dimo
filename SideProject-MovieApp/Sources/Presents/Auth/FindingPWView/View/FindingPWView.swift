@@ -24,7 +24,7 @@ final class FindPWView: BaseView {
     }()
     
     let telecomButton: TelecomButton = {
-        return TelecomButton(title: "통신사", foregroundColor: .black60)
+        return TelecomButton(title: "통신사", foregroundColor: .black80)
     }()
     let sktButton: TelecomButton = {
         return TelecomButton(title: "SKT", foregroundColor: .black5)

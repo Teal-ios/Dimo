@@ -26,6 +26,7 @@ final class VoteViewModel: ViewModelType {
         let viewDidLoad: PublishRelay<Void>
         let characterCellTapped: PublishRelay<CharacterInfo>
         let characterMoreButtonCellTapped: PublishRelay<Void>
+        let viewWillAppear: PublishRelay<Void>
     }
     
     struct Output{
@@ -49,7 +50,7 @@ final class VoteViewModel: ViewModelType {
         }
         .disposed(by: disposeBag)
         
-        input.viewDidLoad
+        input.viewWillAppear
             .withUnretained(self)
             .bind { vm, _ in
                 guard let user_id = UserDefaultManager.userId else { return }

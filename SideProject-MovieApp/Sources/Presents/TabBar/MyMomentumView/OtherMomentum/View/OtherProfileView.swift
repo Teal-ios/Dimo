@@ -105,7 +105,8 @@ class OtherProfileView: BaseView {
 
 extension OtherProfileView {
     func configureProfileUpdate(profile: MyProfile) {
-        self.nicknameLabel.text = profile.nickname
+        guard let nickname = profile.nickname else { return }
+        self.nicknameLabel.text = nickname
         self.mbtiLabel.text = profile.mbti
         if profile.intro == nil {
             self.introduceLabel.isHidden = true
