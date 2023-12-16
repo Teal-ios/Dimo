@@ -40,22 +40,24 @@ final class SettingViewModel: ViewModelType {
                 self.coordinator?.showEditMyInfoViewController(nicknameChangeDate: self.nicknameChangeDate)
             case [0, 1]:
                 self.coordinator?.showEditMbtiViewController(mbti: self.mbti, mbtiChangeDate: self.mbtiChangeDate)
+//            case [1, 0]:
+//                self.coordinator?.showPushNotificationSettingViewController()
+//            case [1, 1]:
+//                self.coordinator?.showKeywordNotificationViewController()
             case [1, 0]:
-                self.coordinator?.showPushNotificationSettingViewController()
-            case [1, 1]:
-                self.coordinator?.showKeywordNotificationViewController()
-            case [2, 0]:
                 self.coordinator?.showNoticeViewController()
-            case [2, 1]:
+            case [1, 1]:
                 self.coordinator?.showFrequentQuestionViewController()
-            case [2, 3]:
+            case [1, 3]:
                 self.coordinator?.showCharacterAskViewController()
-            case [3, 0]:
+            case [2, 0]:
                 self.coordinator?.showServiceTermsOfUseViewController()
-            case [3, 1]:
+            case [2, 1]:
                 self.coordinator?.showPrivacyPolicyViewController()
-            case [3, 2]:
+            case [2, 2]:
                 self.coordinator?.showOpenSourceLicenseViewController()
+            case [2, 3]:
+                break
             default:
                 self.coordinator?.showPrivacyPolicyViewController()
             }

@@ -47,7 +47,6 @@
 		2F1AB9D72A10C6F9001178EA /* SettingEtcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */; };
 		2F1AB9DA2A10C710001178EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9D92A10C710001178EA /* SettingModel.swift */; };
 		2F1AB9DC2A10C784001178EA /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */; };
-		2F2B08AE2B1B13C9000B23E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F2B08AD2B1B13C9000B23E0 /* GoogleService-Info.plist */; };
 		2F39F67329FBA9B400F5D368 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67229FBA9B400F5D368 /* PopupViewController.swift */; };
 		2F39F67529FBA9BF00F5D368 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F39F67429FBA9BF00F5D368 /* PopupView.swift */; };
 		2F437BFA2A4BDFDC000B7A61 /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */; };
@@ -671,6 +670,7 @@
 		49EEDF172A8B5C11008C5D21 /* FrequentQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */; };
 		49EEDF192A8B5EBA008C5D21 /* FrequentQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */; };
 		49EEDF1C2A8B7251008C5D21 /* QuestionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */; };
+		49EF65D52B2D827700130910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EF65D42B2D827700130910 /* GoogleService-Info.plist */; };
 		49F1480A2A9385050045E857 /* CharacterAskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F148092A9385050045E857 /* CharacterAskViewController.swift */; };
 		49F1480C2A9385170045E857 /* CharacterAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1480B2A9385170045E857 /* CharacterAskView.swift */; };
 		49F1480E2A9385290045E857 /* CharacterAskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1480D2A9385290045E857 /* CharacterAskViewModel.swift */; };
@@ -770,7 +770,6 @@
 		2F1AB9D62A10C6F9001178EA /* SettingEtcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEtcCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F1AB9D92A10C710001178EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		2F1AB9DB2A10C784001178EA /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
-		2F2B08AD2B1B13C9000B23E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F39F67229FBA9B400F5D368 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2F39F67429FBA9BF00F5D368 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2F437BF92A4BDFDC000B7A61 /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
@@ -1402,6 +1401,7 @@
 		49EEDF162A8B5C11008C5D21 /* FrequentQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestionViewModel.swift; sourceTree = "<group>"; };
 		49EEDF182A8B5EBA008C5D21 /* FrequentQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentQuestion.swift; sourceTree = "<group>"; };
 		49EEDF1B2A8B7251008C5D21 /* QuestionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListCell.swift; sourceTree = "<group>"; };
+		49EF65D42B2D827700130910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49F148092A9385050045E857 /* CharacterAskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskViewController.swift; sourceTree = "<group>"; };
 		49F1480B2A9385170045E857 /* CharacterAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskView.swift; sourceTree = "<group>"; };
 		49F1480D2A9385290045E857 /* CharacterAskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAskViewModel.swift; sourceTree = "<group>"; };
@@ -2578,7 +2578,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC94E5F29C00F0C0097E696 /* Info.plist */,
-				2F2B08AD2B1B13C9000B23E0 /* GoogleService-Info.plist */,
+				49EF65D42B2D827700130910 /* GoogleService-Info.plist */,
 			);
 			path = Supportings;
 			sourceTree = "<group>";
@@ -4656,7 +4656,6 @@
 				2FC94EC329C036DD0097E696 /* NotoSansKR-Light.otf in Resources */,
 				2FC94E5E29C00F0C0097E696 /* LaunchScreen.storyboard in Resources */,
 				2FC94E5B29C00F0C0097E696 /* Assets.xcassets in Resources */,
-				2F2B08AE2B1B13C9000B23E0 /* GoogleService-Info.plist in Resources */,
 				2FC94EC029C036DD0097E696 /* NotoSansKR-Black.otf in Resources */,
 				93C48B4029D17CAA00644F6A /* SUIT-Bold.otf in Resources */,
 				2F437C132A4C0FDA000B7A61 /* Mock.json in Resources */,
@@ -4666,6 +4665,7 @@
 				2FC94EC129C036DD0097E696 /* NotoSansKR-Bold.otf in Resources */,
 				93C48B4429D17CB500644F6A /* SUIT-Light.otf in Resources */,
 				93C48B4729D17CBC00644F6A /* SUIT-SemiBold.otf in Resources */,
+				49EF65D52B2D827700130910 /* GoogleService-Info.plist in Resources */,
 				93C48B4829D17CBE00644F6A /* SUIT-Thin.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
