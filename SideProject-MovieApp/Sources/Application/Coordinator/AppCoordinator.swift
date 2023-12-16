@@ -14,15 +14,23 @@ final class AppCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     var type: CoordinatorStyleCase = .app
-
+    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
+    /**
+     isSocialLogin == nil -> AuthFlow
+     isSocialLogin == true or false(디모 로그인) -> TabBarFlow
+     **/
     func start() {
-        /// 조건에 따른 분기처리 필요
-//        connectTabBarFlow()
-        connectAuthFlow()
+        if let isLogined = UserDefaultManager.isSocialLogin {
+            if isLogined {
+                connectTabBarFlow()
+            }
+        } else {
+            connectAuthFlow()
+        }
     }
 
     private func connectAuthFlow() {

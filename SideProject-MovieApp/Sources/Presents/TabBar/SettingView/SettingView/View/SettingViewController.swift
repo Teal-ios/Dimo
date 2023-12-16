@@ -67,10 +67,11 @@ final class SettingViewController: BaseViewController {
             case 0:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellSettingRegistration, for: indexPath, item: itemIdentifier)
                 return cell
+//            case 1:
+//                let cell = collectionView.dequeueConfiguredReusableCell(using: cellSettingRegistration, for: indexPath, item: itemIdentifier)
+//                cell.isHidden = true
+//                return cell
             case 1:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: cellSettingRegistration, for: indexPath, item: itemIdentifier)
-                return cell
-            case 2:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: cellSettingRegistration, for: indexPath, item: itemIdentifier)
                 return cell
             default:
@@ -92,11 +93,12 @@ final class SettingViewController: BaseViewController {
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: titleSettingHeader, for: indexPath)
                 header.titleLabel.text = "계정 설정"
                 return header
+//            case 1:
+//                let header = collectionView.dequeueConfiguredReusableSupplementary(using: settingHeader, for: indexPath)
+//                header.titleLabel.text = "알림 설정"
+//                header.isHidden = true
+//                return header
             case 1:
-                let header = collectionView.dequeueConfiguredReusableSupplementary(using: settingHeader, for: indexPath)
-                header.titleLabel.text = "알림 설정"
-                return header
-            case 2:
                 let header = collectionView.dequeueConfiguredReusableSupplementary(using: settingHeader, for: indexPath)
                 header.titleLabel.text = "고객센터"
                 return header
@@ -107,17 +109,17 @@ final class SettingViewController: BaseViewController {
             }
         })
         
-        snapshot.appendSections([0, 1, 2, 3])
+        snapshot.appendSections([0, 1, 2])
         var acountArr: [SettingModel] = []
-        var notificationArr: [SettingModel] = []
+//        var notificationArr: [SettingModel] = []
         var customerArr: [SettingModel] = []
         var etcArr: [SettingModel] = []
         
         acountArr.append(SettingModel(title: "내 정보 변경"))
         acountArr.append(SettingModel(title: "MBTI 변경"))
         
-        notificationArr.append(SettingModel(title: "푸시 알림"))
-        notificationArr.append(SettingModel(title: "키워드 알림"))
+//        notificationArr.append(SettingModel(title: "푸시 알림"))
+//        notificationArr.append(SettingModel(title: "키워드 알림"))
         customerArr.append(SettingModel(title: "공지사항"))
         customerArr.append(SettingModel(title: "자주 묻는 질문"))
         customerArr.append(SettingModel(title: "1:1 문의"))
@@ -129,9 +131,9 @@ final class SettingViewController: BaseViewController {
         etcArr.append(SettingModel(title: "버전 정보"))
         
         snapshot.appendItems(acountArr, toSection: 0)
-        snapshot.appendItems(notificationArr, toSection: 1)
-        snapshot.appendItems(customerArr, toSection: 2)
-        snapshot.appendItems(etcArr, toSection: 3)
+//        snapshot.appendItems(notificationArr, toSection: 1)
+        snapshot.appendItems(customerArr, toSection: 1)
+        snapshot.appendItems(etcArr, toSection: 2)
         
         dataSource.apply(snapshot)
     }
